@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="http://localhost:4000/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2022-07-04T23:54:37+09:00</updated>
+  <id>http://localhost:4000/author/rubisco/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Rubisco’s Programming Note | </title>
+  
+
+  
+    <subtitle>IT기반기술교육 블로그</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">자바 테스트</title>
+      <link href="http://localhost:4000/java-basic" rel="alternate" type="text/html" title="자바 테스트" />
+      <published>2022-07-04T19:18:00+09:00</published>
+      <updated>2022-07-04T19:18:00+09:00</updated>
+      <id>http://localhost:4000/java-basic</id>
+      <content type="html" xml:base="http://localhost:4000/java-basic">&lt;h1 id=&quot;자바-글작성-테스트-입니다&quot;&gt;자바 글작성 테스트 입니다.&lt;/h1&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="java" />
+      
+
+      
+        <summary type="html">자바 글작성 테스트 입니다.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
