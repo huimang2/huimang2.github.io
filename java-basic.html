@@ -18,6 +18,16 @@
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css" />
     <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/built/custom.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- 웹폰트 추가 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
     <!-- highlight.js -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <style>.hljs { background: none; }</style>
@@ -34,9 +44,9 @@
     <![endif]-->
     
     <!-- This tag outputs SEO meta+structured data and other important settings -->
-    <meta name="description" content="IT기반기술교육 블로그" />
-    <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/java-basic" />
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/java-basic" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
@@ -45,8 +55,8 @@
     <meta property="og:title" content="자바 테스트" />
     <meta property="og:description" content="자바 글작성 테스트 입니다.
 " />
-    <meta property="og:url" content="http://localhost:4000/java-basic" />
-    <meta property="og:image" content="http://localhost:4000/assets/images/bus.jpg" />
+    <meta property="og:url" content="https://huimang2.github.io/java-basic" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/built/images/java-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
     <meta property="article:published_time" content="2022-07-04T19:18:00+09:00" />
@@ -56,8 +66,8 @@
     <meta name="twitter:title" content="자바 테스트" />
     <meta name="twitter:description" content="자바 글작성 테스트 입니다.
 " />
-    <meta name="twitter:url" content="http://localhost:4000/" />
-    <meta name="twitter:image" content="http://localhost:4000/assets/images/bus.jpg" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/built/images/java-logo.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Rubisco's Programming Note" />
     <meta name="twitter:label2" content="Filed under" />
@@ -74,18 +84,18 @@
     "publisher": {
         "@type": "Organization",
         "name": "Rubisco's Programming Note",
-        "logo": "http://localhost:4000/"
+        "logo": "https://huimang2.github.io/"
     },
-    "url": "http://localhost:4000/java-basic",
+    "url": "https://huimang2.github.io/java-basic",
     "image": {
         "@type": "ImageObject",
-        "url": "http://localhost:4000/assets/images/bus.jpg",
+        "url": "https://huimang2.github.io/assets/built/images/java-logo.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/java-basic"
+        "@id": "https://huimang2.github.io/java-basic"
     },
     "description": "자바 글작성 테스트 입니다.
 "
@@ -120,19 +130,19 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             
-                <a class="site-nav-logo" href="http://localhost:4000/">Rubisco's Programming Note</a>
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
             
         
         
             <ul class="nav" role="menu">
     <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
-    <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
-    <li class="nav-getting-started" role="menuitem"><a href="/tag/getting-started/">Getting Started</a></li>
-    <li class="nav-try-ghost" role="menuitem"><a href="https://ghost.org">Try Ghost</a></li>
     <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
     <li class="nav-javascript" role="menuitem"><a href="/tag/javascript/">Javascript</a></li>
     <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
     <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+
 </ul>
 
         
@@ -175,7 +185,7 @@ into the {body} of the default.hbs template -->
             </header>
 
             <!-- 
-            <figure class="post-full-image" style="background-image: url(/assets/images/bus.jpg)">
+            <figure class="post-full-image" style="background-image: url(/assets/built/images/java-logo.png)">
             </figure>
              -->
 
@@ -221,13 +231,13 @@ into the {body} of the default.hbs template -->
                     <div id="disqus_thread"></div>
                     <script>
                         var disqus_config = function () {
-                            var this_page_url = 'http://localhost:4000/java-basic';
+                            var this_page_url = 'https://huimang2.github.io/java-basic';
                             var this_page_identifier = '/java-basic';
                             var this_page_title = '자바 테스트';
                         };
                         (function() {
                             var d = document, s = d.createElement('script');
-                            s.src = 'https://xxxxxxxx.disqus.com/embed.js';
+                            s.src = 'https://huimang2-github-io.disqus.com/embed.js';
                             s.setAttribute('data-timestamp', +new Date());
                             (d.head || d.body).appendChild(s);
                         })();
@@ -249,9 +259,102 @@ into the {body} of the default.hbs template -->
                 
                 
                 
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/built/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/java/">Java</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java-gof-pattern">GOF 패턴 정리</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/java/">
+                                
+                                    See all 1 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/java-gof-pattern">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/java-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/java-gof-pattern">
+                <header class="post-card-header">
+                    
+                        
+                            
+                                <span class="post-card-tags">Java</span>
+                            
+                        
+                    
+
+                    <h2 class="post-card-title">GOF 패턴 정리</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>GOF 패턴
+
+    생성 패턴
+    구조 패턴
+    행위 패턴
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
             
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
@@ -302,7 +405,7 @@ into the {body} of the default.hbs template -->
 <!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="http://localhost:4000/">
+        <a href="https://huimang2.github.io/">
             
             <span>Rubisco's Programming Note</span>
         </a>
@@ -344,7 +447,7 @@ into the {body} of the default.hbs template -->
         <!-- The footer at the very bottom of the screen -->
         <footer class="site-footer outer">
             <div class="site-footer-content inner">
-                <section class="copyright"><a href="http://localhost:4000/">Rubisco's Programming Note</a> &copy; 2022</section>
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2022</section>
                 <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
                     <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
                     <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
