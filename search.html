@@ -11,7 +11,7 @@
 
 
 
-    <title>All Posts</title>
+    <title>Search Result</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -49,19 +49,19 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/archive" />
+    <link rel="canonical" href="https://huimang2.github.io/search" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="All Posts" />
+    <meta property="og:title" content="Search Result" />
     <meta property="og:description" content="프로그래밍 노트" />
-    <meta property="og:url" content="https://huimang2.github.io/archive" />
+    <meta property="og:url" content="https://huimang2.github.io/search" />
     <meta property="og:image" content="https://huimang2.github.io/assets/built/images/M31_starspike.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="All Posts" />
+    <meta name="twitter:title" content="Search Result" />
     <meta name="twitter:description" content="프로그래밍 노트" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/built/images/M31_starspike.jpg" />
@@ -81,7 +81,7 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/archive",
+    "url": "https://huimang2.github.io/search",
     "image": {
         "@type": "ImageObject",
         "url": "https://huimang2.github.io/assets/built/images/M31_starspike.jpg",
@@ -90,7 +90,7 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/archive"
+        "@id": "https://huimang2.github.io/search"
     },
     "description": "프로그래밍 노트"
 }
@@ -105,7 +105,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="All Posts" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Search Result" href="/feed.xml" />
 
 
 </head>
@@ -164,56 +164,62 @@ into the {body} of the default.hbs template -->
         <article class="post-full  post page no-image">
 
             <header class="post-full-header">
-                <h1 class="post-full-title">All Posts</h1>
+                <h1 class="post-full-title">Search Result</h1>
             </header>
 
             
 
             <section class="post-full-content">
-                <div class="well article">
+                <form action="/search" method="get" hidden="hidden">
+    <label for="search-box"></label>
+    <input type="text" id="search-box" name="query">
+</form>
 
-    
-        <h2>2022</h2>
-        <ul>
-    
-    <li><span class="post-date">
-        
-        2022-07-08 </span><a href="./python-basic" target="_blank">파이썬 기본</a></li>
+<ul class="mylist" id="search-results"></ul>
 
+<script>
+    window.store = {
     
-        
-        
-        
+    "python-basic": {
+        "title": "파이썬 기본",
+            "author": "rubisco",
+            "category": "",
+            "content": "파이썬 기본",
+        "url": "/python-basic"
+    }
+    ,
     
-    <li><span class="post-date">
-        
-        2022-07-08 </span><a href="./java-gof-pattern" target="_blank">GOF 패턴 정리</a></li>
-
+    "java-gof-pattern": {
+        "title": "GOF 패턴 정리",
+            "author": "rubisco",
+            "category": "",
+            "content": "GOF 패턴    생성 패턴    구조 패턴    행위 패턴",
+        "url": "/java-gof-pattern"
+    }
+    ,
     
-        
-        
-        
+    "java-basic": {
+        "title": "자바 테스트",
+            "author": "rubisco",
+            "category": "",
+            "content": "자바 글작성 테스트 입니다.",
+        "url": "/java-basic"
+    }
+    ,
     
-    <li><span class="post-date">
-        
-        2022-07-04 </span><a href="./java-basic" target="_blank">자바 테스트</a></li>
-
+    "gettysburg-address": {
+        "title": "Gettysburg Address",
+            "author": "abraham",
+            "category": "",
+            "content": "Fourscore and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.Now we are engaged in a great civil war, testing whether that nation, or any nation so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.But, in a larger sense, we can not dedicate-we can not consecrate-we can not hallow-this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us-that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion-that we here highly resolve that these dead shall not have died in vain-that this nation, under God, shall have a new birth of freedom-and that government of the people, by the people, for the people shall not perish from the earth.",
+        "url": "/gettysburg-address"
+    }
     
-        
-        
-        
-            </ul>
-            <h3>1863</h3>
-            <ul>
-        
     
-    <li><span class="post-date">
-        
-        1863-11-19 </span><a href="./gettysburg-address" target="_blank">Gettysburg Address</a></li>
-
-</ul>
-</div>
-
+    };
+</script>
+<script src="assets/js/lunr.js"></script>
+<script src="assets/js/search.js"></script>
             </section>
 
         </article>
