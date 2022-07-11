@@ -4,11 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-<<<<<<< HEAD
-  <updated>2022-07-11T18:16:23+09:00</updated>
-=======
-  <updated>2022-07-09T23:45:56+00:00</updated>
->>>>>>> 0ee86921be28e34b5da7dbb91321334c595c25cb
+  <updated>2022-07-11T19:42:44+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -103,75 +99,4 @@
       
     </entry>
   
-<<<<<<< HEAD
-=======
-    <entry>
-      <title type="html">파이썬 기본</title>
-      <link href="https://huimang2.github.io/python-basic" rel="alternate" type="text/html" title="파이썬 기본" />
-      <published>2022-07-08T10:18:00+00:00</published>
-      <updated>2022-07-08T10:18:00+00:00</updated>
-      <id>https://huimang2.github.io/python-basic</id>
-      <content type="html" xml:base="https://huimang2.github.io/python-basic">&lt;h1 id=&quot;파이썬-기본&quot;&gt;파이썬 기본&lt;/h1&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>huimang2</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="python" />
-      
-
-      
-        <summary type="html">파이썬 기본</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">자바 테스트</title>
-      <link href="https://huimang2.github.io/java-basic" rel="alternate" type="text/html" title="자바 테스트" />
-      <published>2022-07-04T10:18:00+00:00</published>
-      <updated>2022-07-04T10:18:00+00:00</updated>
-      <id>https://huimang2.github.io/java-basic</id>
-      <content type="html" xml:base="https://huimang2.github.io/java-basic">&lt;h1 id=&quot;자바-글작성-테스트-입니다123456&quot;&gt;자바 글작성 테스트 입니다.123456&lt;/h1&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>huimang2</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="java" />
-      
-
-      
-        <summary type="html">자바 글작성 테스트 입니다.123456</summary>
-      
-
-      
-      
-    </entry>
-  
->>>>>>> 0ee86921be28e34b5da7dbb91321334c595c25cb
 </feed>
