@@ -8,21 +8,7 @@
     
       
       <item>
-        <title>파이썬 기본</title>
-        
-          <description>&lt;h1 id=&quot;파이썬-기본&quot;&gt;파이썬 기본&lt;/h1&gt;
-</description>
-        
-        <pubDate>Fri, 08 Jul 2022 10:18:00 +0000</pubDate>
-        <link>
-        https://huimang2.github.io/python-basic</link>
-        <guid isPermaLink="true">https://huimang2.github.io/python-basic</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>GOF 패턴 정리</title>
+        <title>싱글톤 패턴(Singleton Pattern)</title>
         
           <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
@@ -30,26 +16,13 @@
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;구조 패턴&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;행위 패턴&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
 </description>
         
-        <pubDate>Fri, 08 Jul 2022 10:18:00 +0000</pubDate>
+        <pubDate>Fri, 08 Jul 2022 19:18:00 +0900</pubDate>
         <link>
-        https://huimang2.github.io/java-gof-pattern</link>
-        <guid isPermaLink="true">https://huimang2.github.io/java-gof-pattern</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>자바 테스트</title>
-        
-          <description>&lt;h1 id=&quot;자바-글작성-테스트-입니다123&quot;&gt;자바 글작성 테스트 입니다.123&lt;/h1&gt;
-</description>
-        
-        <pubDate>Mon, 04 Jul 2022 10:18:00 +0000</pubDate>
-        <link>
-        https://huimang2.github.io/java-basic</link>
-        <guid isPermaLink="true">https://huimang2.github.io/java-basic</guid>
+        https://huimang2.github.io/singleton</link>
+        <guid isPermaLink="true">https://huimang2.github.io/singleton</guid>
       </item>
       
     

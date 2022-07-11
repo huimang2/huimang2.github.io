@@ -180,30 +180,12 @@ into the {body} of the default.hbs template -->
 <script>
     window.store = {
     
-    "python-basic": {
-        "title": "파이썬 기본",
+    "singleton": {
+        "title": "싱글톤 패턴(Singleton Pattern)",
             "author": "rubisco",
             "category": "",
-            "content": "파이썬 기본",
-        "url": "/python-basic"
-    }
-    ,
-    
-    "java-gof-pattern": {
-        "title": "GOF 패턴 정리",
-            "author": "rubisco",
-            "category": "",
-            "content": "GOF 패턴    생성 패턴    구조 패턴    행위 패턴",
-        "url": "/java-gof-pattern"
-    }
-    ,
-    
-    "java-basic": {
-        "title": "자바 테스트",
-            "author": "rubisco",
-            "category": "",
-            "content": "자바 글작성 테스트 입니다.123",
-        "url": "/java-basic"
+            "content": "GOF 패턴    생성 패턴    구조 패턴    행위 패턴디자인 패턴디자인 패턴(Design Pattern)&lt;/span&gt;은 객체지향 프로그래밍을 할때 자주 접할 수 있는 문제를 해결하고자 만든 일종의 코드 패턴에 대한 템플릿(template)입니다. 1990년대 초반 에리히 감마(Erich Gamma)에 의해 첫 소개된 이후 1995년에 이분야의 GoF(Gang of Four)라 불리는 에리히 감마(Erich Gamma), 리처드 헬름(Richard Helm), 랄프 존슨(Ralph Johnson), 존 블리시데스(John Vlissides)에 의해 집대성 되었고, 이것이 GoF의 디자인 패턴(Design Pattern)으로 널리 알려졌습니다.Main.javapackage design_pattern.creational.singleton;public class Main {        public static void main(String[] args) {                Donation donationInstance = Donation.getInstance();        Person person1 = new Person(\"마석도\");        Person person2 = new Person(\"강해상\");        Person person3 = new Person(\"장이수\");        person1.donation(100);        person2.donation(20);        person3.donation(60);        System.out.println(\"총 기부액 : \" + donationInstance.getTotal());        System.out.println(\"기부자 명단 : \" + donationInstance.getContributors());    } }",
+        "url": "/singleton"
     }
     
     
