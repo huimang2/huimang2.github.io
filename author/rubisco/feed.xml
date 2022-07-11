@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-07-11T19:42:44+09:00</updated>
+  <updated>2022-07-12T07:34:22+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -46,27 +46,29 @@
 
 &lt;h1 id=&quot;디자인-패턴&quot;&gt;디자인 패턴&lt;/h1&gt;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;디자인 패턴(Design Pattern)&amp;lt;/span&amp;gt;&lt;/code&gt;은 객체지향 프로그래밍을 할때 자주 접할 수 있는 문제를 해결하고자 만든 일종의 코드 패턴에 대한 템플릿(template)입니다. 1990년대 초반 에리히 감마(Erich Gamma)에 의해 첫 소개된 이후 1995년에 이분야의 GoF(Gang of Four)라 불리는 에리히 감마(Erich Gamma), 리처드 헬름(Richard Helm), 랄프 존슨(Ralph Johnson), 존 블리시데스(John Vlissides)에 의해 집대성 되었고, 이것이 GoF의 디자인 패턴(Design Pattern)으로 널리 알려졌습니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;디자인 패턴(Design Pattern)&lt;/code&gt;은 객체지향 프로그래밍을 할때 자주 접할 수 있는 문제를 해결하고자 만든 일종의 코드 패턴에 대한 템플릿(template)입니다.&lt;br /&gt;
+&lt;br /&gt;
+1990년대 초반 에리히 감마(Erich Gamma)에 의해 첫 소개된 이후 1995년에 이분야의 GoF(Gang of Four)라 불리는 에리히 감마(Erich Gamma), 리처드 헬름(Richard Helm), 랄프 존슨(Ralph Johnson), 존 블리시데스(John Vlissides)에 의해 집대성 되었고, 이것이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GoF의 디자인 패턴(Design Pattern)&lt;/code&gt;으로 널리 알려졌습니다.&lt;br /&gt;
+&lt;br /&gt;
+디자인 패턴은 객체지향 모델링의 장점인 재사용성과 모듈성을 극대화 시켜서 이를 적용하면 시스템 개발은 물론 유지보수에도 큰 효과를 얻을 수 있습니다. 반면 객체지향 모델에 사용되므로 초기 개발시간이 길어져 소규모 프로젝트에는 적합하지 않을 수도 있습니다.&lt;/p&gt;
 
-&lt;h1 id=&quot;mainjava&quot;&gt;Main.java&lt;/h1&gt;
+&lt;h1 id=&quot;디자인-패턴의-종류&quot;&gt;디자인 패턴의 종류&lt;/h1&gt;
+
+&lt;p&gt;디자인 패턴은 크게 생성 패턴(Creational Pattern)과 구조 패턴(Structural Patterns), 행위 패턴(Behavioral Patterns)으로 나눠집니다.&lt;br /&gt;
+&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;생성 패턴(Creational Pattern)&lt;/code&gt;은 &lt;u&gt;객체(Object)의 인스턴스(Instance) 생성을 위한 패턴&lt;/u&gt;입니다. 클라이언트와 객체 인스턴스 사이의 연결을 끊어줍니다.&lt;br /&gt;
+&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;구조 패턴(Structural Patterns&lt;/code&gt;은 &lt;u&gt;객체(Object)의 합성에 관한 패턴&lt;/u&gt;입니다. 객체의 조직화에 대한 패턴을 제공합니다.&lt;br /&gt;
+&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;행위 패턴(Behavioral Patterns)&lt;/code&gt;은 &lt;u&gt;객체(Object)의 상호작용과 책임 분산에 대한 패턴&lt;/u&gt;을 제공합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;mainjava&quot;&gt;Main.java&lt;/h6&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Main&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     
     &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
         
-        &lt;span class=&quot;nc&quot;&gt;Donation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;donationInstance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Donation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-
-        &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;마석도&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;강해상&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;person3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;장이수&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;person1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;donation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;person2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;donation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;person3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;donation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;총 기부액 : &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;donationInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTotal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;기부자 명단 : &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;donationInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getContributors&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>

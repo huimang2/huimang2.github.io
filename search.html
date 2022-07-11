@@ -184,7 +184,7 @@ into the {body} of the default.hbs template -->
         "title": "싱글톤 패턴(Singleton Pattern)",
             "author": "rubisco",
             "category": "",
-            "content": "GOF 패턴    생성 패턴    구조 패턴    행위 패턴디자인 패턴디자인 패턴(Design Pattern)&lt;/span&gt;은 객체지향 프로그래밍을 할때 자주 접할 수 있는 문제를 해결하고자 만든 일종의 코드 패턴에 대한 템플릿(template)입니다. 1990년대 초반 에리히 감마(Erich Gamma)에 의해 첫 소개된 이후 1995년에 이분야의 GoF(Gang of Four)라 불리는 에리히 감마(Erich Gamma), 리처드 헬름(Richard Helm), 랄프 존슨(Ralph Johnson), 존 블리시데스(John Vlissides)에 의해 집대성 되었고, 이것이 GoF의 디자인 패턴(Design Pattern)으로 널리 알려졌습니다.Main.javapackage design_pattern.creational.singleton;public class Main {        public static void main(String[] args) {                Donation donationInstance = Donation.getInstance();        Person person1 = new Person(\"마석도\");        Person person2 = new Person(\"강해상\");        Person person3 = new Person(\"장이수\");        person1.donation(100);        person2.donation(20);        person3.donation(60);        System.out.println(\"총 기부액 : \" + donationInstance.getTotal());        System.out.println(\"기부자 명단 : \" + donationInstance.getContributors());    } }",
+            "content": "GOF 패턴    생성 패턴    구조 패턴    행위 패턴디자인 패턴디자인 패턴(Design Pattern)은 객체지향 프로그래밍을 할때 자주 접할 수 있는 문제를 해결하고자 만든 일종의 코드 패턴에 대한 템플릿(template)입니다.1990년대 초반 에리히 감마(Erich Gamma)에 의해 첫 소개된 이후 1995년에 이분야의 GoF(Gang of Four)라 불리는 에리히 감마(Erich Gamma), 리처드 헬름(Richard Helm), 랄프 존슨(Ralph Johnson), 존 블리시데스(John Vlissides)에 의해 집대성 되었고, 이것이 GoF의 디자인 패턴(Design Pattern)으로 널리 알려졌습니다.디자인 패턴은 객체지향 모델링의 장점인 재사용성과 모듈성을 극대화 시켜서 이를 적용하면 시스템 개발은 물론 유지보수에도 큰 효과를 얻을 수 있습니다. 반면 객체지향 모델에 사용되므로 초기 개발시간이 길어져 소규모 프로젝트에는 적합하지 않을 수도 있습니다.디자인 패턴의 종류디자인 패턴은 크게 생성 패턴(Creational Pattern)과 구조 패턴(Structural Patterns), 행위 패턴(Behavioral Patterns)으로 나눠집니다.생성 패턴(Creational Pattern)은 객체(Object)의 인스턴스(Instance) 생성을 위한 패턴입니다. 클라이언트와 객체 인스턴스 사이의 연결을 끊어줍니다.구조 패턴(Structural Patterns은 객체(Object)의 합성에 관한 패턴입니다. 객체의 조직화에 대한 패턴을 제공합니다.행위 패턴(Behavioral Patterns)은 객체(Object)의 상호작용과 책임 분산에 대한 패턴을 제공합니다.Main.javapackage design_pattern.creational.singleton;public class Main {        public static void main(String[] args) {            } }",
         "url": "/singleton"
     }
     
@@ -266,12 +266,12 @@ $(function() {
 
 
     <!-- highlight.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
     <script>$(document).ready(function() {
       $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
       });
-    });</script>
+    });</script> -->
 
     <!-- jQuery + Fitvids, which makes all video embeds responsive -->
     <script
