@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-07-11T18:16:23+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">싱글톤 패턴(Singleton Pattern)</title><link href="https://huimang2.github.io/singleton" rel="alternate" type="text/html" title="싱글톤 패턴(Singleton Pattern)" /><published>2022-07-08T19:18:00+09:00</published><updated>2022-07-08T19:18:00+09:00</updated><id>https://huimang2.github.io/singleton</id><content type="html" xml:base="https://huimang2.github.io/singleton">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
+=======
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-07-09T23:45:56+00:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">GOF 패턴 정리</title><link href="https://huimang2.github.io/java-gof-pattern" rel="alternate" type="text/html" title="GOF 패턴 정리" /><published>2022-07-08T10:18:00+00:00</published><updated>2022-07-08T10:18:00+00:00</updated><id>https://huimang2.github.io/java-gof-pattern</id><content type="html" xml:base="https://huimang2.github.io/java-gof-pattern">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
+>>>>>>> 0ee86921be28e34b5da7dbb91321334c595c25cb
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;생성 패턴&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;구조 패턴&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;행위 패턴&lt;/a&gt;&lt;/li&gt;
+<<<<<<< HEAD
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;디자인-패턴&quot;&gt;디자인 패턴&lt;/h1&gt;
@@ -31,3 +36,6 @@
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>huimang2</name></author><category term="JAVA" /><category term="디자인패턴" /><summary type="html">GOF 패턴 생성 패턴 구조 패턴 행위 패턴</summary></entry></feed>
+=======
+&lt;/ul&gt;</content><author><name>huimang2</name></author><category term="java" /><summary type="html">GOF 패턴 생성 패턴 구조 패턴 행위 패턴</summary></entry><entry><title type="html">파이썬 기본</title><link href="https://huimang2.github.io/python-basic" rel="alternate" type="text/html" title="파이썬 기본" /><published>2022-07-08T10:18:00+00:00</published><updated>2022-07-08T10:18:00+00:00</updated><id>https://huimang2.github.io/python-basic</id><content type="html" xml:base="https://huimang2.github.io/python-basic">&lt;h1 id=&quot;파이썬-기본&quot;&gt;파이썬 기본&lt;/h1&gt;</content><author><name>huimang2</name></author><category term="python" /><summary type="html">파이썬 기본</summary></entry><entry><title type="html">자바 테스트</title><link href="https://huimang2.github.io/java-basic" rel="alternate" type="text/html" title="자바 테스트" /><published>2022-07-04T10:18:00+00:00</published><updated>2022-07-04T10:18:00+00:00</updated><id>https://huimang2.github.io/java-basic</id><content type="html" xml:base="https://huimang2.github.io/java-basic">&lt;h1 id=&quot;자바-글작성-테스트-입니다123456&quot;&gt;자바 글작성 테스트 입니다.123456&lt;/h1&gt;</content><author><name>huimang2</name></author><category term="java" /><summary type="html">자바 글작성 테스트 입니다.123456</summary></entry></feed>
+>>>>>>> 0ee86921be28e34b5da7dbb91321334c595c25cb
