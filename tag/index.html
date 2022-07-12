@@ -11,7 +11,7 @@
 
 
 
-    <title>Search Result</title>
+    <title> - Rubisco's Programming Note</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -49,19 +49,19 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/search" />
+    <link rel="canonical" href="https://huimang2.github.io/tag/" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Search Result" />
+    <meta property="og:title" content=" - Rubisco's Programming Note" />
     <meta property="og:description" content="프로그래밍 노트" />
-    <meta property="og:url" content="https://huimang2.github.io/search" />
+    <meta property="og:url" content="https://huimang2.github.io/tag/" />
     <meta property="og:image" content="https://huimang2.github.io/assets/built/images/M31_starspike.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Search Result" />
+    <meta name="twitter:title" content=" - Rubisco's Programming Note" />
     <meta name="twitter:description" content="프로그래밍 노트" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/built/images/M31_starspike.jpg" />
@@ -81,7 +81,7 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/search",
+    "url": "https://huimang2.github.io/tag/",
     "image": {
         "@type": "ImageObject",
         "url": "https://huimang2.github.io/assets/built/images/M31_starspike.jpg",
@@ -90,7 +90,7 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/search"
+        "@id": "https://huimang2.github.io/tag/"
     },
     "description": "프로그래밍 노트"
 }
@@ -105,20 +105,24 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Search Result" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Tag Page" href="/feed.xml" />
 
 
 </head>
-<body class="page-template">
+<body class="tag-template">
 
     <div class="site-wrapper">
         <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
-        <!-- < default -->
-<!-- The tag above means: insert everything in this file
-into the {body} of the default.hbs template -->
+        <!-- default -->
+<!-- The tag above means - insert everything in this file into the {body} of the default.hbs template -->
 
 <!-- The big featured header, it uses blog cover image as a BG if available -->
-<header class="site-header outer">
+<!-- #tag -->
+<!-- dynamically loading backgrounds for tags,  descriptions and page titles -->
+
+
+
+<header class="site-header outer no-cover">
     <div class="inner">
         <nav class="site-nav">
     <div class="site-nav-left">
@@ -152,73 +156,82 @@ into the {body} of the default.hbs template -->
     </div>
 </nav>
 
+        <div class="site-header-content">
+            <h1 class="site-title"></h1>
+            <h2 class="site-description">
+                
+    			    A collection of 1 posts
+                
+            </h2>
+        </div>
     </div>
 </header>
+<!-- tag -->
 
-<!-- Everything inside the #post tags pulls data from the post -->
-<!-- #post -->
-
+<!-- The main content area -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
-
-        <article class="post-full  post page no-image">
-
-            <header class="post-full-header">
-                <h1 class="post-full-title">Search Result</h1>
-            </header>
-
+        <div class="post-feed">
+            <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
             
 
-            <section class="post-full-content">
-                <form action="/search" method="get" hidden="hidden">
-    <label for="search-box"></label>
-    <input type="text" id="search-box" name="query">
-</form>
 
-<ul class="mylist" id="search-results"></ul>
+    <article class="post-card tag-template">
+        
+            <a class="post-card-image-link" href="/singleton-pattern">
+                <div class="post-card-image" style="background-image: url(/assets/built/images/java-gof-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/singleton-pattern">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                                
+                                    <span class="post-card-tags"></span>
+                                
+                            
+                                
+                                    <span class="post-card-tags"></span>
+                                
+                            
+                        </div>
+                    
 
-<script>
-    window.store = {
-    
-    "singleton-pattern": {
-        "title": "디자인 패턴(Design Pattern)",
-            "author": "rubisco",
-            "category": "",
-            "content": "GOF 패턴    생성 패턴    구조 패턴    행위 패턴싱글톤 패턴(Singleton Pattern)싱글톤 패턴은Main.javapackage design_pattern.creational.singleton;public class Main {        public static void main(String[] args) {            } }",
-        "url": "/singleton-pattern"
-    }
-    ,
-    
-    "design-pattern": {
-        "title": "디자인 패턴(Design Pattern)",
-            "author": "rubisco",
-            "category": "",
-            "content": "GOF 패턴    생성 패턴    구조 패턴    행위 패턴디자인 패턴디자인 패턴(Design Pattern)은 객체지향 프로그래밍을 할때 자주 접할 수 있는 문제를 해결하고자 만든 일종의 코드 패턴에 대한 템플릿(template)입니다.1990년대 초반 에리히 감마(Erich Gamma)에 의해 첫 소개된 이후 1995년에 이분야의 GoF(Gang of Four)라 불리는 에리히 감마(Erich Gamma), 리처드 헬름(Richard Helm), 랄프 존슨(Ralph Johnson), 존 블리시데스(John Vlissides)에 의해 집대성 되었고, 이것이 GoF의 디자인 패턴(Design Pattern)으로 널리 알려졌습니다.디자인 패턴은 객체지향 모델링의 장점인 재사용성과 모듈성을 극대화 시켜서 이를 적용하면 시스템 개발은 물론 유지보수에도 큰 효과를 얻을 수 있습니다. 반면 객체지향 모델에 사용되므로 초기 개발시간이 길어져 소규모 프로젝트에는 적합하지 않을 수도 있습니다.디자인 패턴의 종류디자인 패턴은 크게 생성 패턴(Creational Pattern)과 구조 패턴(Structural Patterns), 행위 패턴(Behavioral Patterns)으로 나눠집니다.생성 패턴(Creational Pattern)은 객체(Object)의 인스턴스(Instance) 생성을 위한 패턴입니다. 클라이언트와 객체 인스턴스 사이의 연결을 끊어줍니다.생성 패턴에는 싱글톤 패턴(Singleton Pattern), 빌더 패턴(Builder Pattern), 팩토리 메서드 패턴(Factory Method Pattern), 추상 팩토리 패턴(Abstract Factory Pattern), 프로토타입 패턴(Prototype Pattern)이 있습니다.구조 패턴(Structural Patterns은 객체(Object)의 합성에 관한 패턴입니다. 객체의 조직화에 대한 패턴을 제공합니다.구조 패턴에는 어댑터 패턴(Adapter Pattern), 브리지 패턴(Bridge Pattern), 컴포지트 패턴(Composit Pattern), 데코레이터 패턴(Decorator Pattern), 퍼사드 패턴(Facade Pattern), 플라이웨이트 패턴(Flyweight Pattern), 프록시 패턴(Proxy Pattern)이 있습니다.행위 패턴(Behavioral Patterns)은 객체(Object)의 상호작용과 책임 분산에 대한 패턴을 제공합니다.행위 패턴에는 책임 연쇄 패턴(Chain of Responsibility Pattern), 커맨드 패턴(Command Pattern), 인터프리터 패턴(Interpreter Pattern), 이터레이터 패턴(Iterator Pattern), 메디에이터 패턴(Mediator Pattern), 메멘토 패턴(Memento Pattern), 옵저버 패턴(Observer Pattern), 상태 패턴(State Pattern), 전략 패턴(Strategy Pattern), 템플릿 메소드 패턴(Template Method Pattern), 비지터 패턴(Visitor Pattern)이 있습니다.",
-        "url": "/design-pattern"
-    }
-    
-    
-    };
-</script>
-<script src="assets/js/lunr.js"></script>
-<script src="assets/js/search.js"></script>
-            </section>
+                    <h2 class="post-card-title">디자인 패턴(Design Pattern)</h2>
+                </header>
+                <section class="post-card-excerpt">
+                    
+                        <p>GOF 패턴
 
-        </article>
+    생성 패턴
+    구조 패턴
+    행위 패턴
 
+
+</p>
+                    
+                </section>
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+
+        </div>
     </div>
 </main>
-
-<!-- /post -->
-
-<!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs -->
-<script>
-$(function() {
-    var $postContent = $(".post-full-content");
-    $postContent.fitVids();
-});
-</script>
-
 
 
         <!-- Previous/next page links - displayed on every page -->
@@ -295,7 +308,7 @@ $(function() {
     <!-- Paginator increased to "infinit" in _config.yml -->
     <!-- if paginator.posts  -->
     <!-- <script>
-        var maxPages = parseInt('');
+        var maxPages = parseInt('1');
     </script>
     <script src="/assets/js/infinitescroll.js"></script> -->
     <!-- /endif -->
@@ -318,14 +331,6 @@ $(function() {
 
 
     <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
-    
-        <script>
-$(function() {
-    var $postContent = $(".post-full-content");
-    $postContent.fitVids();
-});
-</script>
-
     
 
     <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
