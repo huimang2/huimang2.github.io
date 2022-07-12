@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/java/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-07-12T08:11:32+09:00</updated>
+  <updated>2022-07-12T16:49:35+09:00</updated>
   <id>https://huimang2.github.io/tag/java/feed.xml</id>
 
   
@@ -32,12 +32,12 @@
 
   
     <entry>
-      <title type="html">싱글톤 패턴(Singleton Pattern)</title>
-      <link href="https://huimang2.github.io/singleton" rel="alternate" type="text/html" title="싱글톤 패턴(Singleton Pattern)" />
-      <published>2022-07-08T19:18:00+09:00</published>
-      <updated>2022-07-08T19:18:00+09:00</updated>
-      <id>https://huimang2.github.io/singleton</id>
-      <content type="html" xml:base="https://huimang2.github.io/singleton">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
+      <title type="html">디자인 패턴(Design Pattern)</title>
+      <link href="https://huimang2.github.io/design-pattern" rel="alternate" type="text/html" title="디자인 패턴(Design Pattern)" />
+      <published>2022-07-12T07:18:00+09:00</published>
+      <updated>2022-07-12T07:18:00+09:00</updated>
+      <id>https://huimang2.github.io/design-pattern</id>
+      <content type="html" xml:base="https://huimang2.github.io/design-pattern">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;생성 패턴&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&quot;#&quot;&gt;구조 패턴&lt;/a&gt;&lt;/li&gt;
@@ -54,24 +54,19 @@
 
 &lt;h1 id=&quot;디자인-패턴의-종류&quot;&gt;디자인 패턴의 종류&lt;/h1&gt;
 
-&lt;p&gt;디자인 패턴은 크게 생성 패턴(Creational Pattern)과 구조 패턴(Structural Patterns), 행위 패턴(Behavioral Patterns)으로 나눠집니다.&lt;br /&gt;
-&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;생성 패턴(Creational Pattern)&lt;/code&gt;은 &lt;u&gt;객체(Object)의 인스턴스(Instance) 생성을 위한 패턴&lt;/u&gt;입니다. 클라이언트와 객체 인스턴스 사이의 연결을 끊어줍니다.&lt;br /&gt;
-&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;구조 패턴(Structural Patterns&lt;/code&gt;은 &lt;u&gt;객체(Object)의 합성에 관한 패턴&lt;/u&gt;입니다. 객체의 조직화에 대한 패턴을 제공합니다.&lt;br /&gt;
-&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;행위 패턴(Behavioral Patterns)&lt;/code&gt;은 &lt;u&gt;객체(Object)의 상호작용과 책임 분산에 대한 패턴&lt;/u&gt;을 제공합니다.&lt;/p&gt;
+&lt;p&gt;디자인 패턴은 크게 생성 패턴(Creational Pattern)과 구조 패턴(Structural Patterns), 행위 패턴(Behavioral Patterns)으로 나눠집니다.&lt;/p&gt;
 
-&lt;h6 id=&quot;mainjava&quot;&gt;Main.java&lt;/h6&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;생성 패턴(Creational Pattern)&lt;/code&gt;은 &lt;u&gt;객체(Object)의 인스턴스(Instance) 생성을 위한 패턴&lt;/u&gt;입니다. 클라이언트와 객체 인스턴스 사이의 연결을 끊어줍니다.&lt;/p&gt;
 
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Main&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; 
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+&lt;p&gt;생성 패턴에는 싱글톤 패턴(Singleton Pattern), 빌더 패턴(Builder Pattern), 팩토리 메서드 패턴(Factory Method Pattern), 추상 팩토리 패턴(Abstract Factory Pattern), 프로토타입 패턴(Prototype Pattern)이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;구조 패턴(Structural Patterns&lt;/code&gt;은 &lt;u&gt;객체(Object)의 합성에 관한 패턴&lt;/u&gt;입니다. 객체의 조직화에 대한 패턴을 제공합니다.&lt;/p&gt;
+
+&lt;p&gt;구조 패턴에는 어댑터 패턴(Adapter Pattern), 브리지 패턴(Bridge Pattern), 컴포지트 패턴(Composit Pattern), 데코레이터 패턴(Decorator Pattern), 퍼사드 패턴(Facade Pattern), 플라이웨이트 패턴(Flyweight Pattern), 프록시 패턴(Proxy Pattern)이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;행위 패턴(Behavioral Patterns)&lt;/code&gt;은 &lt;u&gt;객체(Object)의 상호작용과 책임 분산에 대한 패턴&lt;/u&gt;을 제공합니다.&lt;/p&gt;
+
+&lt;p&gt;행위 패턴에는 책임 연쇄 패턴(Chain of Responsibility Pattern), 커맨드 패턴(Command Pattern), 인터프리터 패턴(Interpreter Pattern), 이터레이터 패턴(Iterator Pattern), 메디에이터 패턴(Mediator Pattern), 메멘토 패턴(Memento Pattern), 옵저버 패턴(Observer Pattern), 상태 패턴(State Pattern), 전략 패턴(Strategy Pattern), 템플릿 메소드 패턴(Template Method Pattern), 비지터 패턴(Visitor Pattern)이 있습니다.&lt;/p&gt;</content>
 
       
       
@@ -88,9 +83,9 @@
       
 
       
-        <category term="JAVA" />
+        <category term="java" />
       
-        <category term="디자인패턴" />
+        <category term="design_pattern" />
       
 
       

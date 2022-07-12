@@ -8,7 +8,7 @@
     
       
       <item>
-        <title>싱글톤 패턴(Singleton Pattern)</title>
+        <title>디자인 패턴(Design Pattern)</title>
         
           <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
 &lt;ul class=&quot;table-of-contents-list&quot;&gt;
@@ -19,10 +19,10 @@
 
 </description>
         
-        <pubDate>Fri, 08 Jul 2022 19:18:00 +0900</pubDate>
+        <pubDate>Tue, 12 Jul 2022 07:18:00 +0900</pubDate>
         <link>
-        https://huimang2.github.io/singleton</link>
-        <guid isPermaLink="true">https://huimang2.github.io/singleton</guid>
+        https://huimang2.github.io/design-pattern</link>
+        <guid isPermaLink="true">https://huimang2.github.io/design-pattern</guid>
       </item>
       
     
