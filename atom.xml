@@ -21,26 +21,6 @@
         
         <pubDate>Tue, 12 Jul 2022 07:18:00 +0900</pubDate>
         <link>
-        https://huimang2.github.io/singleton-pattern</link>
-        <guid isPermaLink="true">https://huimang2.github.io/singleton-pattern</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>디자인 패턴(Design Pattern)</title>
-        
-          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;생성 패턴&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;구조 패턴&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;행위 패턴&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-</description>
-        
-        <pubDate>Tue, 12 Jul 2022 07:18:00 +0900</pubDate>
-        <link>
         https://huimang2.github.io/design-pattern</link>
         <guid isPermaLink="true">https://huimang2.github.io/design-pattern</guid>
       </item>
