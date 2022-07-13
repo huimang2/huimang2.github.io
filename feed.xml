@@ -1,8 +1,384 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-07-12T18:33:46+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">디자인 패턴(Design Pattern)</title><link href="https://huimang2.github.io/design-pattern" rel="alternate" type="text/html" title="디자인 패턴(Design Pattern)" /><published>2022-07-12T07:18:00+09:00</published><updated>2022-07-12T07:18:00+09:00</updated><id>https://huimang2.github.io/design-pattern</id><content type="html" xml:base="https://huimang2.github.io/design-pattern">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;생성 패턴&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;구조 패턴&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;행위 패턴&lt;/a&gt;&lt;/li&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-07-14T04:38:52+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">싱글톤 패턴(Singleton Pattern)</title><link href="https://huimang2.github.io/design_pattern/creational/singleton-pattern" rel="alternate" type="text/html" title="싱글톤 패턴(Singleton Pattern)" /><published>2022-07-12T18:18:00+09:00</published><updated>2022-07-12T18:18:00+09:00</updated><id>https://huimang2.github.io/design_pattern/creational/singleton-pattern</id><content type="html" xml:base="https://huimang2.github.io/design_pattern/creational/singleton-pattern">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;생성 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;active&quot;&gt;
+                
+                    &lt;span&gt;싱글톤 패턴(Singleton Pattern)&lt;/span&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;팩토리 메서드 패턴(Factory Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;추상 팩토리 패턴(Abstract Factory Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;빌더 패턴(Builder Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프로토타입 패턴(Prototype Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;구조 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;어댑터 패턴(Adapter Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;브리지 패턴(Bridge Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;컴포지트 패턴(Composit Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;데코레이터 패턴(Decorator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;퍼사드 패턴(Facade Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;플라이웨이트 패턴(Flyweight Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프록시 패턴(Proxy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;행위 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;책임 연쇄 패턴(Chain of Responsibility Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;커맨드 패턴(Command Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;이터레이터 패턴(Iterator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메디에이터 패턴(Mediator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메멘토 패턴(Memento Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;옵저버 패턴(Observer Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;상태 패턴(State Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;전략 패턴(Strategy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;템플릿 메소드 패턴(Template Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;비지터 패턴(Visitor Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;싱글톤-패턴singleton-pattern&quot;&gt;싱글톤 패턴(Singleton Pattern)&lt;/h1&gt;
+
+&lt;p&gt;싱글톤 패턴은 특정 클래스의 인스턴스가 오직 하나임을 보장하고, 이 인스턴스에 접근할 수 있는 방법을 제공합니다. 즉, 특정 클래스의 객체는 하나만 생성되도록 하여 동일 인스턴스를 재사용 하는 패턴입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;구조&quot;&gt;구조&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;../../assets/diagram/Singleton.png&quot; alt=&quot;singleton&quot; title=&quot;싱글톤 패턴 클래스 다이어그램&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참여-객체&quot;&gt;참여 객체&lt;/h2&gt;
+
+&lt;h4 id=&quot;singleton&quot;&gt;Singleton&lt;/h4&gt;
+
+&lt;p&gt;생성자의 접근자를 private로 설정하여 새로운 인스턴스를 생성하지 못하도록 하고, 인스턴스(Instance)의 접근을 위한 오퍼레이션(Operation)을 정의하여 해당 메소드에 의해서만 인스턴스의 접근이 가능하도록 합니다.&lt;/p&gt;
+
+&lt;p&gt;인스턴스는 싱글턴 객체의 클래스 변수로 설정되어 클래스가 메모리의 데이터영역에 저장될 때 같이 저장됨으로써 오직 한번만 인스턴스를 생성할 수 있습니다. 이로써 싱글턴 객체는 유일한 인스턴스의 생성에 대한 책임을 지게 됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;종류&quot;&gt;종류&lt;/h2&gt;
+
+&lt;h3 id=&quot;이른-초기화-방식-eager-initialization&quot;&gt;이른 초기화 방식 (Eager Initialization)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;이른 초기화 방식&lt;/code&gt;은 싱글톤 패턴의 가장 기본적인 유형입니다.&lt;/p&gt;
+
+&lt;p&gt;전역변수로 인스턴스를 생성하고 접근자를 private로 설정함으로써 싱글톤 객체의 오퍼레이션 메소드에 의해서만 접근이 가능하도록 합니다. 또한 생성자의 접근자를 private로 절정함으로써 외부에서 인스턴스를 생성할 수 없도록 만듭니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;eagersingletonjava&quot;&gt;EagerSingleton.java&lt;/h6&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EagerSingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EagerSingleton&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EagerSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;EagerSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EagerSingleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;자바에서는 static으로 선언한 클래스 변수가 곧 전역변수가 됩니다. 클래스가 메모리의 데이터 영역에 저장될 때 클래스 변수인 INSTANCE는 싱글톤 인스턴스를 한번만 생성하여 싱글톤 객체를 참조함으로써 동일한 인스턴스를 재사용하는 싱글톤 원칙을 지킬 수 있게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;이른 초기화 방식의 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;장점&lt;/span&gt;&lt;/strong&gt;은 전역변수로 싱글톤 인스턴스를 만들었기때문에 클래스 로더에 의하여 클래스가 로딩될 때 오직 한번만 인스턴스가 생성되므로 Thread-safe하게 싱글톤 객체를 생성할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:orangered&quot;&gt;단점&lt;/span&gt;&lt;/strong&gt;은 객체의 사용여부와 상관없이 클래스 로딩 시점에 인스턴스가 생성되어 프로그램이 종료될때까지 메모리를 점유하기때문에 자주 사용하지 않는 객체라면 비효율적일 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;늦은-초기화-방식-lazy-initialization&quot;&gt;늦은 초기화 방식 (Lazy Initialization)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;늦은 초기화 방식&lt;/code&gt;은 이른 초기화 방식과 반대로 클래스의 오퍼레이션 메소드가 호출될 때 인스턴스를 생성합니다. 즉, 클래스 메소드가 호출될 때까지 메모리를 점유하지 않습니다.&lt;/p&gt;
+
+&lt;p&gt;늦은 초기화 방식의 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;장점&lt;/span&gt;&lt;/strong&gt;은&lt;/p&gt;
+
+&lt;h6 id=&quot;lazysingletonjava&quot;&gt;LazySingleton.java&lt;/h6&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LazySingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LazySingleton&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LazySingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LazySingleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LazySingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>huimang2</name></author><category term="design_pattern" /><category term="creational" /><category term="java" /><category term="design_pattern" /><summary type="html">GOF 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄 패턴(Chain of Responsibility Pattern) 커맨드 패턴(Command Pattern) 이터레이터 패턴(Iterator Pattern) 메디에이터 패턴(Mediator Pattern) 메멘토 패턴(Memento Pattern) 옵저버 패턴(Observer Pattern) 상태 패턴(State Pattern) 전략 패턴(Strategy Pattern) 템플릿 메소드 패턴(Template Method Pattern) 비지터 패턴(Visitor Pattern)</summary></entry><entry><title type="html">디자인 패턴(Design Pattern)</title><link href="https://huimang2.github.io/design_pattern/intro" rel="alternate" type="text/html" title="디자인 패턴(Design Pattern)" /><published>2022-07-11T22:18:00+09:00</published><updated>2022-07-11T22:18:00+09:00</updated><id>https://huimang2.github.io/design_pattern/intro</id><content type="html" xml:base="https://huimang2.github.io/design_pattern/intro">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;생성 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li&gt;
+                
+                    &lt;a href=&quot;/design_pattern/creational/singleton-pattern&quot;&gt;싱글톤 패턴(Singleton Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;팩토리 메서드 패턴(Factory Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;추상 팩토리 패턴(Abstract Factory Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;빌더 패턴(Builder Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프로토타입 패턴(Prototype Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;구조 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;어댑터 패턴(Adapter Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;브리지 패턴(Bridge Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;컴포지트 패턴(Composit Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;데코레이터 패턴(Decorator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;퍼사드 패턴(Facade Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;플라이웨이트 패턴(Flyweight Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프록시 패턴(Proxy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;행위 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;책임 연쇄 패턴(Chain of Responsibility Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;커맨드 패턴(Command Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;이터레이터 패턴(Iterator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메디에이터 패턴(Mediator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메멘토 패턴(Memento Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;옵저버 패턴(Observer Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;상태 패턴(State Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;전략 패턴(Strategy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;템플릿 메소드 패턴(Template Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;비지터 패턴(Visitor Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;디자인-패턴&quot;&gt;디자인 패턴&lt;/h1&gt;
@@ -27,4 +403,4 @@
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;행위 패턴(Behavioral Patterns)&lt;/code&gt;은 &lt;u&gt;객체(Object)의 상호작용과 책임 분산에 대한 패턴&lt;/u&gt;을 제공합니다.&lt;/p&gt;
 
-&lt;p&gt;행위 패턴에는 책임 연쇄 패턴(Chain of Responsibility Pattern), 커맨드 패턴(Command Pattern), 인터프리터 패턴(Interpreter Pattern), 이터레이터 패턴(Iterator Pattern), 메디에이터 패턴(Mediator Pattern), 메멘토 패턴(Memento Pattern), 옵저버 패턴(Observer Pattern), 상태 패턴(State Pattern), 전략 패턴(Strategy Pattern), 템플릿 메소드 패턴(Template Method Pattern), 비지터 패턴(Visitor Pattern)이 있습니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="java" /><category term="design_pattern" /><summary type="html">GOF 패턴 생성 패턴 구조 패턴 행위 패턴</summary></entry></feed>
+&lt;p&gt;행위 패턴에는 책임 연쇄 패턴(Chain of Responsibility Pattern), 커맨드 패턴(Command Pattern), 인터프리터 패턴(Interpreter Pattern), 이터레이터 패턴(Iterator Pattern), 메디에이터 패턴(Mediator Pattern), 메멘토 패턴(Memento Pattern), 옵저버 패턴(Observer Pattern), 상태 패턴(State Pattern), 전략 패턴(Strategy Pattern), 템플릿 메소드 패턴(Template Method Pattern), 비지터 패턴(Visitor Pattern)이 있습니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="design_pattern" /><category term="java" /><category term="design_pattern" /><summary type="html">GOF 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄 패턴(Chain of Responsibility Pattern) 커맨드 패턴(Command Pattern) 이터레이터 패턴(Iterator Pattern) 메디에이터 패턴(Mediator Pattern) 메멘토 패턴(Memento Pattern) 옵저버 패턴(Observer Pattern) 상태 패턴(State Pattern) 전략 패턴(Strategy Pattern) 템플릿 메소드 패턴(Template Method Pattern) 비지터 패턴(Visitor Pattern)</summary></entry></feed>

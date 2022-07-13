@@ -8,21 +8,343 @@
     
       
       <item>
-        <title>디자인 패턴(Design Pattern)</title>
+        <title>싱글톤 패턴(Singleton Pattern)</title>
         
           <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
-&lt;ul class=&quot;table-of-contents-list&quot;&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;생성 패턴&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;구조 패턴&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;행위 패턴&lt;/a&gt;&lt;/li&gt;
+&lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;생성 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;active&quot;&gt;
+                
+                    &lt;span&gt;싱글톤 패턴(Singleton Pattern)&lt;/span&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;팩토리 메서드 패턴(Factory Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;추상 팩토리 패턴(Abstract Factory Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;빌더 패턴(Builder Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프로토타입 패턴(Prototype Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;구조 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;어댑터 패턴(Adapter Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;브리지 패턴(Bridge Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;컴포지트 패턴(Composit Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;데코레이터 패턴(Decorator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;퍼사드 패턴(Facade Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;플라이웨이트 패턴(Flyweight Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프록시 패턴(Proxy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;행위 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;책임 연쇄 패턴(Chain of Responsibility Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;커맨드 패턴(Command Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;이터레이터 패턴(Iterator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메디에이터 패턴(Mediator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메멘토 패턴(Memento Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;옵저버 패턴(Observer Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;상태 패턴(State Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;전략 패턴(Strategy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;템플릿 메소드 패턴(Template Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;비지터 패턴(Visitor Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
 &lt;/ul&gt;
 
 </description>
         
-        <pubDate>Tue, 12 Jul 2022 07:18:00 +0900</pubDate>
+        <pubDate>Tue, 12 Jul 2022 18:18:00 +0900</pubDate>
         <link>
-        https://huimang2.github.io/design-pattern</link>
-        <guid isPermaLink="true">https://huimang2.github.io/design-pattern</guid>
+        https://huimang2.github.io/design_pattern/creational/singleton-pattern</link>
+        <guid isPermaLink="true">https://huimang2.github.io/design_pattern/creational/singleton-pattern</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>디자인 패턴(Design Pattern)</title>
+        
+          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
+&lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;생성 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li&gt;
+                
+                    &lt;a href=&quot;/design_pattern/creational/singleton-pattern&quot;&gt;싱글톤 패턴(Singleton Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;팩토리 메서드 패턴(Factory Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;추상 팩토리 패턴(Abstract Factory Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;빌더 패턴(Builder Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프로토타입 패턴(Prototype Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;구조 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;어댑터 패턴(Adapter Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;브리지 패턴(Bridge Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;컴포지트 패턴(Composit Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;데코레이터 패턴(Decorator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;퍼사드 패턴(Facade Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;플라이웨이트 패턴(Flyweight Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프록시 패턴(Proxy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;행위 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;책임 연쇄 패턴(Chain of Responsibility Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;커맨드 패턴(Command Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;이터레이터 패턴(Iterator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메디에이터 패턴(Mediator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메멘토 패턴(Memento Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;옵저버 패턴(Observer Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;상태 패턴(State Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;전략 패턴(Strategy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;템플릿 메소드 패턴(Template Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;비지터 패턴(Visitor Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+&lt;/ul&gt;
+
+</description>
+        
+        <pubDate>Mon, 11 Jul 2022 22:18:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/design_pattern/intro</link>
+        <guid isPermaLink="true">https://huimang2.github.io/design_pattern/intro</guid>
       </item>
       
     
