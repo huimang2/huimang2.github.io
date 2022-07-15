@@ -11,7 +11,7 @@
 
 
 
-    <title>싱글톤 패턴(Singleton Pattern)</title>
+    <title>디자인 패턴(Design Pattern)</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -21,6 +21,7 @@
 
     <!-- custom.css -->
     <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/design_pattern.css" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -46,23 +47,23 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/design_pattern/creational/singleton-pattern" />
+    <link rel="canonical" href="https://huimang2.github.io/design-pattern/intro" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="싱글톤 패턴(Singleton Pattern)" />
+    <meta property="og:title" content="디자인 패턴(Design Pattern)" />
     <meta property="og:description" content="GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임" />
-    <meta property="og:url" content="https://huimang2.github.io/design_pattern/creational/singleton-pattern" />
+    <meta property="og:url" content="https://huimang2.github.io/design-pattern/intro" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/java-gof-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-07-12T18:18:00+09:00" />
-    <meta property="article:modified_time" content="2022-07-12T18:18:00+09:00" />
+    <meta property="article:published_time" content="2022-07-11T22:18:00+09:00" />
+    <meta property="article:modified_time" content="2022-07-11T22:18:00+09:00" />
     <meta property="article:tag" content="Java" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="싱글톤 패턴(Singleton Pattern)" />
+    <meta name="twitter:title" content="디자인 패턴(Design Pattern)" />
     <meta name="twitter:description" content="GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/java-gof-logo.png" />
@@ -84,7 +85,7 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/design_pattern/creational/singleton-pattern",
+    "url": "https://huimang2.github.io/design-pattern/intro",
     "image": {
         "@type": "ImageObject",
         "url": "https://huimang2.github.io/assets/images/java-gof-logo.png",
@@ -93,7 +94,7 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/design_pattern/creational/singleton-pattern"
+        "@id": "https://huimang2.github.io/design-pattern/intro"
     },
     "description": "GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임"
 }
@@ -108,7 +109,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="싱글톤 패턴(Singleton Pattern)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="디자인 패턴(Design Pattern)" href="/feed.xml" />
 
 
 </head>
@@ -164,11 +165,11 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-java tag-design-pattern post tag-java tag-design_pattern ">
+        <article class="post-full  tag-java tag-design-pattern post ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="12 July 2022">12 July 2022</time>
+                    <time class="post-full-meta-date" datetime="11 July 2022">11 July 2022</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -186,7 +187,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">싱글톤 패턴(Singleton Pattern)</h1>
+                <h1 class="post-full-title">디자인 패턴(Design Pattern)</h1>
             </header>
 
             <!-- 
@@ -197,21 +198,19 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#싱글톤-패턴singleton-pattern"><span>싱글톤 패턴(Singleton Pattern)</span></a><ul><li><a href="#구조"><span>구조</span></a></li><li><a href="#참여-객체"><span>참여 객체</span></a><ul><li><a href="#singleton"><span>Singleton</span></a></li></ul></li><li><a href="#종류"><span>종류</span></a><ul><li><a href="#이른-초기화-방식-eager-initialization"><span>이른 초기화 방식 (Eager Initialization)</span></a></li><li><a href="#늦은-초기화-방식-lazy-initialization"><span>늦은 초기화 방식 (Lazy Initialization)</span></a></li><li><a href="#쓰레드-안전-이른-초기화-방식-thread-safe-lazy-initialization"><span>쓰레드 안전 이른 초기화 방식 (Thread safe Lazy Initialization)</span></a></li><li><a href="#dcl-방식-double-checked-locking"><span>DCL 방식 (Double-Checked locking)</span></a></li><li><a href="#holder에-의한-초기화-방식-initialization-on-demand-holder-idiom"><span>Holder에 의한 초기화 방식 (Initialization on demand holder idiom)</span></a></li></ul></li></ul></li></ul>
+                        <ul><li><a href="#디자인-패턴"><span>디자인 패턴</span></a></li><li><a href="#디자인-패턴의-종류"><span>디자인 패턴의 종류</span></a></li></ul>
 
                     </div>
-                    <link rel="stylesheet" type="text/css" href="/assets/css/design_pattern.css" />
-
-<div class="table-of-contents-list">GOF 디자인 패턴</div>
+                    <div class="table-of-contents-list">GOF 디자인 패턴</div>
 <ul class="table-of-contents-list design_pattern">
     
     <li>
         <span>생성 패턴</span>
         <ul class="table-of-contents-list">
             
-            <li class="active">
+            <li>
                 
-                    <span>싱글톤 패턴(Singleton Pattern)</span>
+                    <a href="/design_pattern/creational/singleton-pattern">싱글톤 패턴(Singleton Pattern)</a>
                 
             </li>
             
@@ -360,160 +359,29 @@ into the {body} of the default.hbs template -->
     
 </ul>
 
-<h1 id="싱글톤-패턴singleton-pattern">싱글톤 패턴(Singleton Pattern)</h1>
+<h1 id="디자인-패턴">디자인 패턴</h1>
 
-<p>싱글톤 패턴은 특정 클래스의 인스턴스가 오직 하나임을 보장하고, 이 인스턴스에 접근할 수 있는 방법을 제공합니다. 즉, 특정 클래스의 객체는 하나만 생성되도록 하여 동일 인스턴스를 재사용 하는 패턴입니다.</p>
+<p><code class="language-plaintext highlighter-rouge">디자인 패턴(Design Pattern)</code>은 객체지향 프로그래밍을 할때 자주 접할 수 있는 문제를 해결하고자 만든 일종의 코드 패턴에 대한 템플릿(template)입니다.<br />
+<br />
+1990년대 초반 에리히 감마(Erich Gamma)에 의해 첫 소개된 이후 1995년에 이분야의 GoF(Gang of Four)라 불리는 에리히 감마(Erich Gamma), 리처드 헬름(Richard Helm), 랄프 존슨(Ralph Johnson), 존 블리시데스(John Vlissides)에 의해 집대성 되었고, 이것이 <code class="language-plaintext highlighter-rouge">GoF의 디자인 패턴(Design Pattern)</code>으로 널리 알려졌습니다.<br />
+<br />
+디자인 패턴은 객체지향 모델링의 장점인 재사용성과 모듈성을 극대화 시켜서 이를 적용하면 시스템 개발은 물론 유지보수에도 큰 효과를 얻을 수 있습니다. 반면 객체지향 모델에 사용되므로 초기 개발시간이 길어져 소규모 프로젝트에는 적합하지 않을 수도 있습니다.</p>
 
-<h2 id="구조">구조</h2>
+<h1 id="디자인-패턴의-종류">디자인 패턴의 종류</h1>
 
-<p><img src="../../assets/diagram/Singleton.png" alt="singleton" title="싱글톤 패턴 클래스 다이어그램" /></p>
+<p>디자인 패턴은 크게 생성 패턴(Creational Pattern)과 구조 패턴(Structural Patterns), 행위 패턴(Behavioral Patterns)으로 나눠집니다.</p>
 
-<h2 id="참여-객체">참여 객체</h2>
+<p><code class="language-plaintext highlighter-rouge">생성 패턴(Creational Pattern)</code>은 <u>객체(Object)의 인스턴스(Instance) 생성을 위한 패턴</u>입니다. 클라이언트와 객체 인스턴스 사이의 연결을 끊어줍니다.</p>
 
-<h3 id="singleton">Singleton</h3>
+<p>생성 패턴에는 싱글톤 패턴(Singleton Pattern), 빌더 패턴(Builder Pattern), 팩토리 메서드 패턴(Factory Method Pattern), 추상 팩토리 패턴(Abstract Factory Pattern), 프로토타입 패턴(Prototype Pattern)이 있습니다.</p>
 
-<p>생성자의 접근자를 private로 설정하여 새로운 인스턴스를 생성하지 못하도록 하고, 인스턴스(Instance)의 접근을 위한 오퍼레이션(Operation)을 static으로 정의하여 해당 메소드에 의해서만 인스턴스의 접근이 가능하도록 합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">구조 패턴(Structural Patterns</code>은 <u>객체(Object)의 합성에 관한 패턴</u>입니다. 객체의 조직화에 대한 패턴을 제공합니다.</p>
 
-<p>인스턴스는 싱글턴 객체의 클래스 변수로 설정되어 클래스가 메모리의 데이터영역에 저장될 때 같이 저장됨으로써 오직 한번만 인스턴스를 생성할 수 있습니다. 이로써 싱글턴 객체는 유일한 인스턴스의 생성에 대한 책임을 지게 됩니다.</p>
+<p>구조 패턴에는 어댑터 패턴(Adapter Pattern), 브리지 패턴(Bridge Pattern), 컴포지트 패턴(Composit Pattern), 데코레이터 패턴(Decorator Pattern), 퍼사드 패턴(Facade Pattern), 플라이웨이트 패턴(Flyweight Pattern), 프록시 패턴(Proxy Pattern)이 있습니다.</p>
 
-<h2 id="종류">종류</h2>
+<p><code class="language-plaintext highlighter-rouge">행위 패턴(Behavioral Patterns)</code>은 <u>객체(Object)의 상호작용과 책임 분산에 대한 패턴</u>을 제공합니다.</p>
 
-<h3 id="이른-초기화-방식-eager-initialization">이른 초기화 방식 (Eager Initialization)</h3>
-
-<p><code class="language-plaintext highlighter-rouge">이른 초기화 방식</code>은 싱글톤 패턴의 가장 기본적인 유형입니다.</p>
-
-<p>전역변수로 인스턴스를 생성하고 접근자를 private로 설정함으로써 싱글톤 객체의 오퍼레이션 메소드에 의해서만 접근이 가능하도록 합니다. 또한 생성자의 접근자를 private로 절정함으로써 외부에서 인스턴스를 생성할 수 없도록 만듭니다.</p>
-
-<h6 id="eagersingletonjava">EagerSingleton.java</h6>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EagerSingleton</span> <span class="o">{</span>
-    
-    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">EagerSingleton</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">EagerSingleton</span><span class="o">();</span>
-
-    <span class="kd">private</span> <span class="nf">EagerSingleton</span><span class="o">()</span> <span class="o">{}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">EagerSingleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>자바에서는 static으로 선언한 클래스 변수가 곧 전역변수입니다. 클래스가 메모리의 데이터 영역에 저장될 때 클래스 변수인 INSTANCE는 싱글톤 인스턴스를 한번만 생성하여 참조함으로써 동일한 인스턴스를 재사용하는 싱글톤 원칙을 지킬 수 있게 됩니다.</p>
-
-<p>이른 초기화 방식의 <strong><span style="color:green">장점</span></strong>은 전역변수로 싱글톤 인스턴스를 만들었기때문에 클래스 로더에 의하여 클래스가 로딩될 때 오직 한번만 인스턴스가 생성되므로 <code class="language-plaintext highlighter-rouge">Thread-safe</code>하게 싱글톤 객체를 생성할 수 있습니다.</p>
-
-<p><strong><span style="color:orangered">단점</span></strong>은 객체의 사용여부와 상관없이 클래스 로딩 시점에 인스턴스가 생성되어 프로그램이 종료될때까지 메모리를 점유하기때문에 자주 사용하지 않는 객체라면 비효율적일 수 있습니다.</p>
-
-<h3 id="늦은-초기화-방식-lazy-initialization">늦은 초기화 방식 (Lazy Initialization)</h3>
-
-<p><code class="language-plaintext highlighter-rouge">늦은 초기화 방식</code>은 이른 초기화 방식과 반대로 클래스의 오퍼레이션 메소드가 호출될 때 인스턴스를 생성합니다. 즉, 클래스 메소드가 호출될 때까지 메모리를 점유하지 않습니다.</p>
-
-<h6 id="lazysingletonjava">LazySingleton.java</h6>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LazySingleton</span> <span class="o">{</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">LazySingleton</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="nf">LazySingleton</span><span class="o">()</span> <span class="o">{}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">LazySingleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="no">INSTANCE</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
-            <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LazySingleton</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>늦은 초기화 방식의 <strong><span style="color:green">장점</span></strong>은 필요할때 객체를 생성할 수 있다는 것입니다.</p>
-
-<p><strong><span style="color:orangered">단점</span></strong>은 멀티 쓰레드(Thread) 환경에서 동시에 호출되어 싱글톤 원칙을 보장할 수 없다는 것입니다.</p>
-
-<h3 id="쓰레드-안전-이른-초기화-방식-thread-safe-lazy-initialization">쓰레드 안전 이른 초기화 방식 (Thread safe Lazy Initialization)</h3>
-
-<p>늦은 초기화 방식을 보완하여 <code class="language-plaintext highlighter-rouge">synchronized</code> 키워드를 메소드에 선언하여 <code class="language-plaintext highlighter-rouge">쓰레드 안전(Thread safe)</code> 상태로 싱글톤을 생성할 수 있는 방식입니다. <code class="language-plaintext highlighter-rouge">synchronized</code>로 선언된 메소드는 하나의 쓰레드가 메소드를 사용하면 lock을 걸어 다른 쓰레드를 대기상태로 만듭니다.</p>
-
-<h6 id="threadsafelazysingletonjava">ThreadSafeLazySingleton.java</h6>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThreadSafeLazySingleton</span> <span class="o">{</span>
-
-    <span class="kd">private</span> <span class="kd">static</span> <span class="nc">ThreadSafeLazySingleton</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="nf">ThreadSafeLazySingleton</span><span class="o">()</span> <span class="o">{}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">synchronized</span> <span class="nc">ThreadSafeLazySingleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="no">INSTANCE</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
-            <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ThreadSafeLazySingleton</span><span class="o">();</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>이 방식의 <strong><span style="color:green">장점</span></strong>은 Thread-safe 환경이라는 것입니다.</p>
-
-<p><strong><span style="color:orangered">단점</span></strong>은 syncronized가 선언된 메소드가 호출이 많으면 성능이 나빠질 수 있습니다.</p>
-
-<h3 id="dcl-방식-double-checked-locking">DCL 방식 (Double-Checked locking)</h3>
-
-<p>DCL 방식은 <code class="language-plaintext highlighter-rouge">syncronized</code>를 메소드에 선언하는 것이 아니라 메소드 내부에 <code class="language-plaintext highlighter-rouge">syncronized</code> 블락을 만드는 방식입니다.</p>
-
-<h6 id="dclsingletonjava">DCLSingleton.java</h6>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DCLSingleton</span> <span class="o">{</span>
-
-    <span class="kd">private</span> <span class="kd">volatile</span> <span class="kd">static</span> <span class="nc">DCLSingleton</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-
-    <span class="kd">private</span> <span class="nf">DCLSingleton</span><span class="o">()</span> <span class="o">{}</span>
-
-    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">DCLSingleton</span> <span class="nf">getInstance</span><span class="o">()</span> <span class="o">{</span>
-        <span class="k">if</span><span class="o">(</span><span class="no">INSTANCE</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
-            <span class="kd">synchronized</span><span class="o">(</span><span class="nc">DCLSingleton</span><span class="o">.</span><span class="na">class</span><span class="o">){</span>
-                <span class="k">if</span><span class="o">(</span><span class="no">INSTANCE</span> <span class="o">==</span> <span class="kc">null</span><span class="o">){</span>
-                    <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DCLSingleton</span><span class="o">();</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-        <span class="o">}</span>
-        <span class="k">return</span> <span class="no">INSTANCE</span><span class="o">;</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>위에 코드와 같이 인스턴스가 없을때 <code class="language-plaintext highlighter-rouge">synchronized</code> 키워드를 통해 블락을 만들어 하나의 쓰레드만 작업할 수 있도록 하고 블락 내부에서 다시한번 인스턴스 존재 여부를 체크하게 됩니다. 2번 체크하기때문에 <code class="language-plaintext highlighter-rouge">DCL(Double Checking Locking)</code> 방식이라 불립니다.</p>
-
-<p>private 접근자로 설정한 INSTANCE 클래스를 보면 <code class="language-plaintext highlighter-rouge">volatile</code>이라는 키워드를 사용했습니다. 하나의 프로세서(CPU)는 최적화를 위해 변수를 메인 메모리에 바로 저장하지 않고 캐쉬메모리에 저장하여 성능을 향상시킵니다. 그러나 volatile로 선언된 변수는 변수를 캐쉬메모리에 저장하지 않고 곧바로 메인메모리에 반영하도록 합니다.</p>
-
-<p>volatile 키워드를 사용하지 않고 멀티코어 환경에서 작업한다면 인스턴스를 캐쉬메모리에 저장하여 메인메모리에 인스턴스를 생성하기전에 다른 코어의 쓰레드가 비어있는 메모리를 참조하기때문에 문제가 발생할 수 있습니다.</p>
-
-<h3 id="holder에-의한-초기화-방식-initialization-on-demand-holder-idiom">Holder에 의한 초기화 방식 (Initialization on demand holder idiom)</h3>
-
-<p>이 방식은 클래스안에 클래스 홀더(Holder)를 두어 JVM 클래스 로더 매커니즘과 클래스가 로드되는 시점을 이용한 방식입니다. 현재까지 가장 많이 이용되고 있는 방식입니다.</p>
-
-<h6 id="staticholdersingletonjava">StaticHolderSingleton.java</h6>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaticHolderSingleton</span> <span class="o">{</span>
-
-    <span class="kd">private</span> <span class="nf">StaticHolderSingleton</span><span class="o">(){}</span>
-	
-	<span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">SingleTonHolder</span> <span class="o">{</span>
-		<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">StaticHolderSingleton</span> <span class="no">INSTANCE</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StaticHolderSingleton</span><span class="o">();</span>
-	<span class="o">}</span>
-	
-	<span class="kd">public</span> <span class="kd">static</span> <span class="nc">StaticHolderSingleton</span> <span class="nf">getInstance</span><span class="o">(){</span>
-		<span class="k">return</span> <span class="nc">SingleTonHolder</span><span class="o">.</span><span class="na">INSTANCE</span><span class="o">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-</code></pre></div></div>
-
-<p>위에 코드에서 보는 바와 같이 클래스 안에 private 접근자로 <code class="language-plaintext highlighter-rouge">중첩클래스</code>를 선언하고 중첩클래스 내부에 private 접근자로 클래스 변수를 선언했습니다. 중첩 클래스는 <code class="language-plaintext highlighter-rouge">오퍼레이션 메소드(Operation Method)</code>에 의하여 호출되기 전까지 참조되지 않으며, 오퍼레이션 메소드에 의하여 호출될때 클래스 로더에 의하여 싱글톤 인스턴스를 생성하게 됩니다.</p>
-
-<p>중첩클래스 내부에 선언된 클래스 변수는 <code class="language-plaintext highlighter-rouge">static</code>으로 선언되었기 때문에 중첩클래스가 로드되는 시점에 한번만 싱글톤 인스턴스를 생성할 수 있게 됩니다. 또한 <code class="language-plaintext highlighter-rouge">final</code> 키워드를 통해 다시 값이 할당되지 않도록 하여 싱글톤 원칙을 지킬 수 있게 됩니다.</p>
-
+<p>행위 패턴에는 책임 연쇄 패턴(Chain of Responsibility Pattern), 커맨드 패턴(Command Pattern), 인터프리터 패턴(Interpreter Pattern), 이터레이터 패턴(Iterator Pattern), 메디에이터 패턴(Mediator Pattern), 메멘토 패턴(Memento Pattern), 옵저버 패턴(Observer Pattern), 상태 패턴(State Pattern), 전략 패턴(Strategy Pattern), 템플릿 메소드 패턴(Template Method Pattern), 비지터 패턴(Visitor Pattern)이 있습니다.</p>
 
                 </div>
             </section>
@@ -596,14 +464,16 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
+                                        
+                                        
+                                            <li><a href="/design-pattern/creational/singleton-pattern">싱글톤 패턴(Singleton Pattern)</a></li>
+                                        
+                                    
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                            <li><a href="/design_pattern/intro">디자인 패턴(Design Pattern)</a></li>
-                                        
+                                
+                                  
                                     
                                   
                                 
@@ -622,37 +492,32 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-
-            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
-            
                 
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/design_pattern/intro">
-                <div class="post-card-image" style="background-image: url(/assets/images/java-gof-logo.png)"></div>
+            <a class="post-card-image-link" href="/etc/docker">
+                <div class="post-card-image" style="background-image: url(/assets/images/docker-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/design_pattern/intro">
+            <a class="post-card-content-link" href="/etc/docker">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Java</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Design_pattern</span>
+                                <span class="post-card-tags">Docker</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">디자인 패턴(Design Pattern)</h2>
+                    <h2 class="post-card-title">도커(Docker) 설치하기</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트</p>
+                        <p>도커란?
+
+</p>
                     
                 </section>
             </a>
@@ -672,6 +537,9 @@ into the {body} of the default.hbs template -->
 
             
 
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
         </div>
     </div>
 </aside>
@@ -685,18 +553,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">싱글톤 패턴(Singleton Pattern)</div>
+    <div class="floating-header-title">디자인 패턴(Design Pattern)</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%8B%B1%EA%B8%80%ED%86%A4+%ED%8C%A8%ED%84%B4%28Singleton+Pattern%29&amp;url=design_pattern/creational/singleton-pattern"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EB%94%94%EC%9E%90%EC%9D%B8+%ED%8C%A8%ED%84%B4%28Design+Pattern%29&amp;url=design-pattern/intro"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=design_pattern/creational/singleton-pattern"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=design-pattern/intro"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
@@ -956,6 +824,7 @@ $(document).ready(function () {
 
     document.querySelectorAll('.highlighter-rouge').forEach(el => {
         if(el.classList.contains('language-java')) el.getElementsByTagName('code')[0].setAttribute("data-lang","JAVA");
+        else if(el.classList.contains('language-bash')) el.getElementsByTagName('code')[0].setAttribute("data-lang","BASH");
     });
 });
 </script>

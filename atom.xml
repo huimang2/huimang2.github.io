@@ -10,9 +10,7 @@
       <item>
         <title>싱글톤 패턴(Singleton Pattern)</title>
         
-          <description>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/assets/css/design_pattern.css&quot; /&gt;
-
-&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
+          <description>&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
 &lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
     
     &lt;li&gt;
@@ -174,8 +172,23 @@
         
         <pubDate>Tue, 12 Jul 2022 18:18:00 +0900</pubDate>
         <link>
-        https://huimang2.github.io/design_pattern/creational/singleton-pattern</link>
-        <guid isPermaLink="true">https://huimang2.github.io/design_pattern/creational/singleton-pattern</guid>
+        https://huimang2.github.io/design-pattern/creational/singleton-pattern</link>
+        <guid isPermaLink="true">https://huimang2.github.io/design-pattern/creational/singleton-pattern</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>도커(Docker) 설치하기</title>
+        
+          <description>&lt;h1 id=&quot;도커란&quot;&gt;도커란?&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Tue, 12 Jul 2022 18:18:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/docker</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/docker</guid>
       </item>
       
     
@@ -183,9 +196,7 @@
       <item>
         <title>디자인 패턴(Design Pattern)</title>
         
-          <description>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/assets/css/design_pattern.css&quot; /&gt;
-
-&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
+          <description>&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
 &lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
     
     &lt;li&gt;
@@ -347,8 +358,8 @@
         
         <pubDate>Mon, 11 Jul 2022 22:18:00 +0900</pubDate>
         <link>
-        https://huimang2.github.io/design_pattern/intro</link>
-        <guid isPermaLink="true">https://huimang2.github.io/design_pattern/intro</guid>
+        https://huimang2.github.io/design-pattern/intro</link>
+        <guid isPermaLink="true">https://huimang2.github.io/design-pattern/intro</guid>
       </item>
       
     
