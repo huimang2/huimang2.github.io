@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>도커(Docker) 설치하기</title>
+        
+          <description>&lt;h1 id=&quot;도커란&quot;&gt;도커란?&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Fri, 15 Jul 2022 20:18:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/docker</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/docker</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>싱글톤 패턴(Singleton Pattern)</title>
         
           <description>&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
@@ -174,21 +189,6 @@
         <link>
         https://huimang2.github.io/design-pattern/creational/singleton-pattern</link>
         <guid isPermaLink="true">https://huimang2.github.io/design-pattern/creational/singleton-pattern</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>도커(Docker) 설치하기</title>
-        
-          <description>&lt;h1 id=&quot;도커란&quot;&gt;도커란?&lt;/h1&gt;
-
-</description>
-        
-        <pubDate>Tue, 12 Jul 2022 18:18:00 +0900</pubDate>
-        <link>
-        https://huimang2.github.io/etc/docker</link>
-        <guid isPermaLink="true">https://huimang2.github.io/etc/docker</guid>
       </item>
       
     
