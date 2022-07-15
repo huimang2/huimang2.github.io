@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-07-14T04:38:52+09:00</updated>
+  <updated>2022-07-15T12:38:13+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -37,7 +37,9 @@
       <published>2022-07-12T18:18:00+09:00</published>
       <updated>2022-07-12T18:18:00+09:00</updated>
       <id>https://huimang2.github.io/design_pattern/creational/singleton-pattern</id>
-      <content type="html" xml:base="https://huimang2.github.io/design_pattern/creational/singleton-pattern">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
+      <content type="html" xml:base="https://huimang2.github.io/design_pattern/creational/singleton-pattern">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/assets/css/design_pattern.css&quot; /&gt;
+
+&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
 &lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
     
     &lt;li&gt;
@@ -205,9 +207,9 @@
 
 &lt;h2 id=&quot;참여-객체&quot;&gt;참여 객체&lt;/h2&gt;
 
-&lt;h4 id=&quot;singleton&quot;&gt;Singleton&lt;/h4&gt;
+&lt;h3 id=&quot;singleton&quot;&gt;Singleton&lt;/h3&gt;
 
-&lt;p&gt;생성자의 접근자를 private로 설정하여 새로운 인스턴스를 생성하지 못하도록 하고, 인스턴스(Instance)의 접근을 위한 오퍼레이션(Operation)을 정의하여 해당 메소드에 의해서만 인스턴스의 접근이 가능하도록 합니다.&lt;/p&gt;
+&lt;p&gt;생성자의 접근자를 private로 설정하여 새로운 인스턴스를 생성하지 못하도록 하고, 인스턴스(Instance)의 접근을 위한 오퍼레이션(Operation)을 static으로 정의하여 해당 메소드에 의해서만 인스턴스의 접근이 가능하도록 합니다.&lt;/p&gt;
 
 &lt;p&gt;인스턴스는 싱글턴 객체의 클래스 변수로 설정되어 클래스가 메모리의 데이터영역에 저장될 때 같이 저장됨으로써 오직 한번만 인스턴스를 생성할 수 있습니다. 이로써 싱글턴 객체는 유일한 인스턴스의 생성에 대한 책임을 지게 됩니다.&lt;/p&gt;
 
@@ -234,17 +236,15 @@
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;자바에서는 static으로 선언한 클래스 변수가 곧 전역변수가 됩니다. 클래스가 메모리의 데이터 영역에 저장될 때 클래스 변수인 INSTANCE는 싱글톤 인스턴스를 한번만 생성하여 싱글톤 객체를 참조함으로써 동일한 인스턴스를 재사용하는 싱글톤 원칙을 지킬 수 있게 됩니다.&lt;/p&gt;
+&lt;p&gt;자바에서는 static으로 선언한 클래스 변수가 곧 전역변수입니다. 클래스가 메모리의 데이터 영역에 저장될 때 클래스 변수인 INSTANCE는 싱글톤 인스턴스를 한번만 생성하여 참조함으로써 동일한 인스턴스를 재사용하는 싱글톤 원칙을 지킬 수 있게 됩니다.&lt;/p&gt;
 
-&lt;p&gt;이른 초기화 방식의 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;장점&lt;/span&gt;&lt;/strong&gt;은 전역변수로 싱글톤 인스턴스를 만들었기때문에 클래스 로더에 의하여 클래스가 로딩될 때 오직 한번만 인스턴스가 생성되므로 Thread-safe하게 싱글톤 객체를 생성할 수 있습니다.&lt;/p&gt;
+&lt;p&gt;이른 초기화 방식의 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;장점&lt;/span&gt;&lt;/strong&gt;은 전역변수로 싱글톤 인스턴스를 만들었기때문에 클래스 로더에 의하여 클래스가 로딩될 때 오직 한번만 인스턴스가 생성되므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Thread-safe&lt;/code&gt;하게 싱글톤 객체를 생성할 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:orangered&quot;&gt;단점&lt;/span&gt;&lt;/strong&gt;은 객체의 사용여부와 상관없이 클래스 로딩 시점에 인스턴스가 생성되어 프로그램이 종료될때까지 메모리를 점유하기때문에 자주 사용하지 않는 객체라면 비효율적일 수 있습니다.&lt;/p&gt;
 
 &lt;h3 id=&quot;늦은-초기화-방식-lazy-initialization&quot;&gt;늦은 초기화 방식 (Lazy Initialization)&lt;/h3&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;늦은 초기화 방식&lt;/code&gt;은 이른 초기화 방식과 반대로 클래스의 오퍼레이션 메소드가 호출될 때 인스턴스를 생성합니다. 즉, 클래스 메소드가 호출될 때까지 메모리를 점유하지 않습니다.&lt;/p&gt;
-
-&lt;p&gt;늦은 초기화 방식의 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;장점&lt;/span&gt;&lt;/strong&gt;은&lt;/p&gt;
 
 &lt;h6 id=&quot;lazysingletonjava&quot;&gt;LazySingleton.java&lt;/h6&gt;
 &lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
@@ -262,7 +262,94 @@
         &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;늦은 초기화 방식의 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;장점&lt;/span&gt;&lt;/strong&gt;은 필요할때 객체를 생성할 수 있다는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:orangered&quot;&gt;단점&lt;/span&gt;&lt;/strong&gt;은 멀티 쓰레드(Thread) 환경에서 동시에 호출되어 싱글톤 원칙을 보장할 수 없다는 것입니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;쓰레드-안전-이른-초기화-방식-thread-safe-lazy-initialization&quot;&gt;쓰레드 안전 이른 초기화 방식 (Thread safe Lazy Initialization)&lt;/h3&gt;
+
+&lt;p&gt;늦은 초기화 방식을 보완하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt; 키워드를 메소드에 선언하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;쓰레드 안전(Thread safe)&lt;/code&gt; 상태로 싱글톤을 생성할 수 있는 방식입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;로 선언된 메소드는 하나의 쓰레드가 메소드를 사용하면 lock을 걸어 다른 쓰레드를 대기상태로 만듭니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;threadsafelazysingletonjava&quot;&gt;ThreadSafeLazySingleton.java&lt;/h6&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;synchronized&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 방식의 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;장점&lt;/span&gt;&lt;/strong&gt;은 Thread-safe 환경이라는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:orangered&quot;&gt;단점&lt;/span&gt;&lt;/strong&gt;은 syncronized가 선언된 메소드가 호출이 많으면 성능이 나빠질 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dcl-방식-double-checked-locking&quot;&gt;DCL 방식 (Double-Checked locking)&lt;/h3&gt;
+
+&lt;p&gt;DCL 방식은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;syncronized&lt;/code&gt;를 메소드에 선언하는 것이 아니라 메소드 내부에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;syncronized&lt;/code&gt; 블락을 만드는 방식입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;dclsingletonjava&quot;&gt;DCLSingleton.java&lt;/h6&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;volatile&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DCLSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;synchronized&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+                    &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위에 코드와 같이 인스턴스가 없을때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt; 키워드를 통해 블락을 만들어 하나의 쓰레드만 작업할 수 있도록 하고 블락 내부에서 다시한번 인스턴스 존재 여부를 체크하게 됩니다. 2번 체크하기때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DCL(Double Checking Locking)&lt;/code&gt; 방식이라 불립니다.&lt;/p&gt;
+
+&lt;p&gt;private 접근자로 설정한 INSTANCE 클래스를 보면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;volatile&lt;/code&gt;이라는 키워드를 사용했습니다. 하나의 프로세서(CPU)는 최적화를 위해 변수를 메인 메모리에 바로 저장하지 않고 캐쉬메모리에 저장하여 성능을 향상시킵니다. 그러나 volatile로 선언된 변수는 변수를 캐쉬메모리에 저장하지 않고 곧바로 메인메모리에 반영하도록 합니다.&lt;/p&gt;
+
+&lt;p&gt;volatile 키워드를 사용하지 않고 멀티코어 환경에서 작업한다면 인스턴스를 캐쉬메모리에 저장하여 메인메모리에 인스턴스를 생성하기전에 다른 코어의 쓰레드가 비어있는 메모리를 참조하기때문에 문제가 발생할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;holder에-의한-초기화-방식-initialization-on-demand-holder-idiom&quot;&gt;Holder에 의한 초기화 방식 (Initialization on demand holder idiom)&lt;/h3&gt;
+
+&lt;p&gt;이 방식은 클래스안에 클래스 홀더(Holder)를 두어 JVM 클래스 로더 매커니즘과 클래스가 로드되는 시점을 이용한 방식입니다. 현재까지 가장 많이 이용되고 있는 방식입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;staticholdersingletonjava&quot;&gt;StaticHolderSingleton.java&lt;/h6&gt;
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StaticHolderSingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StaticHolderSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){}&lt;/span&gt;
+	
+	&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SingleTonHolder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StaticHolderSingleton&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StaticHolderSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StaticHolderSingleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SingleTonHolder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위에 코드에서 보는 바와 같이 클래스 안에 private 접근자로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;중첩클래스&lt;/code&gt;를 선언하고 중첩클래스 내부에 private 접근자로 클래스 변수를 선언했습니다. 중첩 클래스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오퍼레이션 메소드(Operation Method)&lt;/code&gt;에 의하여 호출되기 전까지 참조되지 않으며, 오퍼레이션 메소드에 의하여 호출될때 클래스 로더에 의하여 싱글톤 인스턴스를 생성하게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;중첩클래스 내부에 선언된 클래스 변수는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;static&lt;/code&gt;으로 선언되었기 때문에 중첩클래스가 로드되는 시점에 한번만 싱글톤 인스턴스를 생성할 수 있게 됩니다. 또한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;final&lt;/code&gt; 키워드를 통해 다시 값이 할당되지 않도록 하여 싱글톤 원칙을 지킬 수 있게 됩니다.&lt;/p&gt;</content>
 
       
       
@@ -285,7 +372,7 @@
       
 
       
-        <summary type="html">GOF 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄 패턴(Chain of Responsibility Pattern) 커맨드 패턴(Command Pattern) 이터레이터 패턴(Iterator Pattern) 메디에이터 패턴(Mediator Pattern) 메멘토 패턴(Memento Pattern) 옵저버 패턴(Observer Pattern) 상태 패턴(State Pattern) 전략 패턴(Strategy Pattern) 템플릿 메소드 패턴(Template Method Pattern) 비지터 패턴(Visitor Pattern)</summary>
+        <summary type="html">GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄 패턴(Chain of Responsibility Pattern) 커맨드 패턴(Command Pattern) 이터레이터 패턴(Iterator Pattern) 메디에이터 패턴(Mediator Pattern) 메멘토 패턴(Memento Pattern) 옵저버 패턴(Observer Pattern) 상태 패턴(State Pattern) 전략 패턴(Strategy Pattern) 템플릿 메소드 패턴(Template Method Pattern) 비지터 패턴(Visitor Pattern)</summary>
       
 
       
@@ -298,7 +385,9 @@
       <published>2022-07-11T22:18:00+09:00</published>
       <updated>2022-07-11T22:18:00+09:00</updated>
       <id>https://huimang2.github.io/design_pattern/intro</id>
-      <content type="html" xml:base="https://huimang2.github.io/design_pattern/intro">&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
+      <content type="html" xml:base="https://huimang2.github.io/design_pattern/intro">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/assets/css/design_pattern.css&quot; /&gt;
+
+&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
 &lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
     
     &lt;li&gt;
@@ -501,7 +590,7 @@
       
 
       
-        <summary type="html">GOF 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄 패턴(Chain of Responsibility Pattern) 커맨드 패턴(Command Pattern) 이터레이터 패턴(Iterator Pattern) 메디에이터 패턴(Mediator Pattern) 메멘토 패턴(Memento Pattern) 옵저버 패턴(Observer Pattern) 상태 패턴(State Pattern) 전략 패턴(Strategy Pattern) 템플릿 메소드 패턴(Template Method Pattern) 비지터 패턴(Visitor Pattern)</summary>
+        <summary type="html">GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄 패턴(Chain of Responsibility Pattern) 커맨드 패턴(Command Pattern) 이터레이터 패턴(Iterator Pattern) 메디에이터 패턴(Mediator Pattern) 메멘토 패턴(Memento Pattern) 옵저버 패턴(Observer Pattern) 상태 패턴(State Pattern) 전략 패턴(Strategy Pattern) 템플릿 메소드 패턴(Template Method Pattern) 비지터 패턴(Visitor Pattern)</summary>
       
 
       

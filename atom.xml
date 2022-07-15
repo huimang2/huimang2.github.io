@@ -10,7 +10,9 @@
       <item>
         <title>싱글톤 패턴(Singleton Pattern)</title>
         
-          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
+          <description>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/assets/css/design_pattern.css&quot; /&gt;
+
+&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
 &lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
     
     &lt;li&gt;
@@ -181,7 +183,9 @@
       <item>
         <title>디자인 패턴(Design Pattern)</title>
         
-          <description>&lt;p&gt;&lt;span class=&quot;table-of-contents-list&quot;&gt;GOF 패턴&lt;/span&gt;&lt;/p&gt;
+          <description>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/assets/css/design_pattern.css&quot; /&gt;
+
+&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
 &lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
     
     &lt;li&gt;

@@ -25,9 +25,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- 웹폰트 설정 -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
-
     <!-- syntax.css -->
     <link rel="stylesheet" href="/assets/css/syntax.css">
     
@@ -56,7 +53,7 @@
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="디자인 패턴(Design Pattern)" />
-    <meta property="og:description" content="GOF 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄" />
+    <meta property="og:description" content="GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임" />
     <meta property="og:url" content="https://huimang2.github.io/design_pattern/intro" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/java-gof-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -66,7 +63,7 @@
     <meta property="article:tag" content="Java" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="디자인 패턴(Design Pattern)" />
-    <meta name="twitter:description" content="GOF 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄" />
+    <meta name="twitter:description" content="GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/java-gof-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -98,7 +95,7 @@
         "@type": "WebPage",
         "@id": "https://huimang2.github.io/design_pattern/intro"
     },
-    "description": "GOF 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄"
+    "description": "GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임"
 }
     </script>
 
@@ -199,7 +196,13 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p><span class="table-of-contents-list">GOF 패턴</span></p>
+                    <div id="toc">
+                        <ul><li><a href="#디자인-패턴"><span>디자인 패턴</span></a></li><li><a href="#디자인-패턴의-종류"><span>디자인 패턴의 종류</span></a></li></ul>
+
+                    </div>
+                    <link rel="stylesheet" type="text/css" href="/assets/css/design_pattern.css" />
+
+<div class="table-of-contents-list">GOF 디자인 패턴</div>
 <ul class="table-of-contents-list design_pattern">
     
     <li>
@@ -515,7 +518,7 @@ into the {body} of the default.hbs template -->
                 </header>
                 <section class="post-card-excerpt">
                     
-                        <p>GOF 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit</p>
+                        <p>GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트</p>
                     
                 </section>
             </a>
@@ -526,7 +529,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      1 min read
+                      3 min read
                     
                 </span>
             </footer>
@@ -574,7 +577,6 @@ into the {body} of the default.hbs template -->
         </div>
     </progress>
 </div>
-
 
 
 
@@ -697,6 +699,46 @@ $(document).ready(function () {
     var lastDocumentHeight = $(document).height();
     var ticking = false;
 
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3";
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
     function onScroll() {
         lastScrollY = window.scrollY;
         requestTick();
@@ -723,14 +765,57 @@ $(document).ready(function () {
         // show/hide floating header
         if (lastScrollY >= trigger + triggerOffset) {
             header.classList.add('floating-active');
+            toc.classList.add('floating-active');
         } else {
             header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
         }
 
         progressBar.setAttribute('max', progressMax);
         progressBar.setAttribute('value', lastScrollY);
 
         ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
     }
 
     window.addEventListener('scroll', onScroll, {passive: true});
