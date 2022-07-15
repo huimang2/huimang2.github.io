@@ -14,10 +14,14 @@
     <title>디자인 패턴(Design Pattern)</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Styles'n'Scripts -->
     <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
 
     <!-- custom.css -->
     <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
@@ -528,7 +532,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      1 min read
+                      2 min read
                     
                 </span>
             </footer>
@@ -736,6 +740,14 @@ $(document).ready(function () {
         });
     });
 
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
     /*--------------------------------------------------------------------------*/
 
     function onScroll() {
@@ -823,8 +835,8 @@ $(document).ready(function () {
     update();
 
     document.querySelectorAll('.highlighter-rouge').forEach(el => {
-        if(el.classList.contains('language-java')) el.getElementsByTagName('code')[0].setAttribute("data-lang","JAVA");
-        else if(el.classList.contains('language-bash')) el.getElementsByTagName('code')[0].setAttribute("data-lang","BASH");
+        if(el.classList.contains('language-java')) el.setAttribute('data-lang', 'JAVA');
+        else if(el.classList.contains('language-bash')) el.setAttribute('data-lang', 'BASH');
     });
 });
 </script>

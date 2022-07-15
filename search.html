@@ -14,14 +14,18 @@
     <title>Search Result</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Styles'n'Scripts -->
     <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
 
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
     <!-- custom.css -->
     <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
-    
+    <link rel="stylesheet" type="text/css" href="/assets/css/.css" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -191,7 +195,7 @@ into the {body} of the default.hbs template -->
         "title": "도커(Docker) 설치하기",
             "author": "rubisco",
             "category": "",
-            "content": "도커란?도커는 컨테이너 기반 오픈소스 가상화 플랫폼입니다. 컨테이너란 격리된 공간에서 프로세스가 실행되도록 하는 기술입니다.버추얼머신(VM)이라고 들어보셨을겁니다. 버추얼머신은 격리된 공간에서 OS가 실행되도록 하는 기술입니다. 윈도우에 격리된 리눅스를 설치한 것이라 보면 됩니다. 쉽게말해서 컴퓨터 안에 가상의 컴퓨터가 있는겁니다.버추얼머신은 이미 설치되어 있는 OS위에 새로운 OS를 실행시키기때문에 조금 무겁습니다. 그에 비하여 도커는 기존 OS 위에 격리된 프로세스 공간을 만들어 실행시키때문에 가볍고 빠르게 동작합니다.도커를 사용하는 이유는 프로그램마다 운영환경이 다르기때문입니다. 예를 들어 A라는 프로그램은 파이썬3.8을 기반으로 작동하는데 OS에는 파이썬 3.5가 설치되어있다면 파이썬3.8을 추가적으로 설치해야합니다. ‘그럼 그냥 파이썬 3.8을 설치하면 되지’라고 생각하는 분도 있을겁니다.  하지만 프로그램은 무수히 많고 프로그램을 설치할때마다 환경을 따로 설정하는 것은 여간 번거로운 일이 아닙니다.도커를 사용한다면 격리된 가상의 공간에 배포자가 작성한 운영환경에 필요한 라이브러리를 설치하여 프로세스를 실행시키게 됩니다. 즉 따로 프로그램에 맞춰 환경설정을 할 필요가 없다는 뜻입니다.도커 설치오라클 클라우드를 통해 우분투 20.04 환경에서 도커를 설치해보겠습니다.우선 SSH를 통해 오라클 클라우드에 원격접속해주세요.$ ssh [USER]@[HOSTNAME] -p [PORT]",
+            "content": "도커란?도커는 컨테이너 기반 오픈소스 가상화 플랫폼입니다. 컨테이너란 격리된 공간에서 프로세스가 실행되도록 하는 기술입니다.버추얼머신(VM)이라고 들어보셨을겁니다. 버추얼머신은 격리된 공간에서 OS가 실행되도록 하는 기술입니다. 윈도우에 격리된 리눅스를 설치한 것이라 보면 됩니다. 쉽게말해서 컴퓨터 안에 가상의 컴퓨터가 있는겁니다.버추얼머신은 이미 설치되어 있는 OS위에 새로운 OS를 실행시키기때문에 조금 무겁습니다. 그에 비하여 도커는 기존 OS 위에 격리된 프로세스 공간을 만들어 실행시키때문에 가볍고 빠르게 동작합니다.도커를 사용하는 이유는 프로그램마다 운영환경이 다르기때문입니다. 예를 들어 A라는 프로그램은 파이썬3.8을 기반으로 작동하는데 OS에는 파이썬 3.5가 설치되어있다면 파이썬3.8을 추가적으로 설치해야합니다. ‘그럼 그냥 파이썬 3.8을 설치하면 되지’라고 생각하는 분도 있을겁니다.  하지만 프로그램은 무수히 많고 프로그램을 설치할때마다 환경을 따로 설정하는 것은 여간 번거로운 일이 아닙니다.도커를 사용한다면 격리된 가상의 공간에 배포자가 작성한 운영환경에 필요한 라이브러리를 설치하여 프로세스를 실행시키게 됩니다. 즉 따로 프로그램에 맞춰 환경설정을 할 필요가 없다는 뜻입니다.도커 설치오라클 클라우드를 통해 우분투 20.04 환경에서 도커를 설치해보겠습니다.(1) 우선 SSH를 통해 오라클 클라우드에 원격접속해주세요.$ ssh [USER]@[HOSTNAME] -p [PORT](2) 패키지를 최신상태로 업데이트 해주세요.$ sudo apt update &amp;&amp; sudo apt upgrade(3) 필수 패키지를 설치하세요.$ sudo apt install apt-transport-https ca-certificates curl gnupg lsb-release(4) 도커와 암호화 통신을 위한 GPG 키를 추가해주세요.$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg(5) apt로 설치하기위해 stable repository를 등록합니다.echo \\  \"deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \\  $(lsb_release -cs) stable\" | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null(6) apt로 도커 엔진을 설치합니다.$ sudo apt update$ sudo apt install docker-ce docker-ce-cli containerd.io(7) 버전을 확인해봅시다.$ sudo docker version(8) 권한을 지정하여 sudo 없이 도커를 사용할 수 있도록 합시다.$ sudo usermod -aG docker $USER포테이너(Portainer) 설치포테이너는 도커를 웹에서 GUI로 관리할 수 있는 도구입니다. 포테이너를 도커에 설치하겠습니다.(1) 포테이너 데이터를 저장할 볼륨(공간)을 만듭니다.$ docker volume create portainer_data(2) 도커로 포테이너 컨테이너를 생성합니다.$ docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce-d : 백그라운드 모드(detached mode) 실행-p 9000:9000 : 호스트 포트를 컨테이너 포트에 연결 (호스트:컨테이너)--name portainer : 컨테이너 이름 설정--restart aloways : 도커 실행시 컨테이너 실행 여부 설정-v portainer_data:/data : 호스트 볼륨을 컨테이너 볼륨에 연결portainer/portainer-ce : 컨테이너 이미지 이름포테이너가 9000번 포트에서 실행됩니다. 그러나 오라클 클라우드의 경우 22번 포트만 열려 있으므로 방화벽을 Open해야합니다. 아래 방화벽 오픈(Open)를 참조하세요.(3) 아이디와 암호를 입력하고 Create user를 클릭하여 계정을 생성합니다.(4) Get Started를 클릭합니다.(5) 설정이 완료되었습니다! 아래 사진과 같이 도커의 상태를 확인할 수 있습니다.방화벽 오픈(Open)(1) 오라클 클라우드에 로그인 후 홈 -&gt; 인스턴스를 선택합니다.(2) 생성된 인스턴스를 클릭합니다.(3) 보안 목록을 클릭합니다.22번 포트만 열려있는 것을 확인할 수 있습니다.(4) 수신 규칙 추가를 클릭합니다.(5) 소스 CIDR에 0.0.0.0/0, 대상 포트 범위에 9000을 입력하고 수신 규칙 추가를 클릭합니다.(6) OS 방화벽을 오픈합니다.iptables은 재부팅할때마다 설정 내용이 초기화되므로 iptables을 날리고 ufw를 사용하겠습니다.우선 iptables 룰 정책을 저장하기 위한 패키지를 설치합니다.$ sudo apt install iptables-persistent netfilter-persistent net-tools(7) 정책을 영구 저장합니다.$ sudo netfilter-persistent save(8) ufw에서 9000번 포트를 허용해줍니다. SSH 접속을 유지하기위해 22번 포트도 추가해줍니다.$ sudo ufw allow 9000$ sudo ufw allow 22(9) ufw를 켭니다.$ sudo ufw enable",
         "url": "/etc/docker"
     }
     ,
