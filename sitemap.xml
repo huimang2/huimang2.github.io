@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://huimang2.github.io/etc/iso-standard-7498.html</loc>
+        
+        <lastmod>2022-07-16T12:40:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://huimang2.github.io/etc/docker.html</loc>
         
         <lastmod>2022-07-15T20:18:00+09:00</lastmod>
