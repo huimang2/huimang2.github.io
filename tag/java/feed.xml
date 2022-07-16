@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/java/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-07-16T12:41:01+09:00</updated>
+  <updated>2022-07-16T13:40:28+09:00</updated>
   <id>https://huimang2.github.io/tag/java/feed.xml</id>
 
   
@@ -201,7 +201,7 @@
 
 &lt;h2 id=&quot;구조&quot;&gt;구조&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../assets/diagram/Singleton.png&quot; alt=&quot;singleton&quot; title=&quot;싱글톤 패턴 클래스 다이어그램&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/diagram/Singleton.png&quot; alt=&quot;singleton&quot; title=&quot;싱글톤 패턴 클래스 다이어그램&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;참여-객체&quot;&gt;참여 객체&lt;/h2&gt;
 

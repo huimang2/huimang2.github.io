@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-07-16T12:41:01+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">OSI 7계층(ISO Standard 7498)</title><link href="https://huimang2.github.io/etc/iso-standard-7498" rel="alternate" type="text/html" title="OSI 7계층(ISO Standard 7498)" /><published>2022-07-16T12:40:00+09:00</published><updated>2022-07-16T12:40:00+09:00</updated><id>https://huimang2.github.io/etc/iso-standard-7498</id><content type="html" xml:base="https://huimang2.github.io/etc/iso-standard-7498">&lt;p&gt;&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-07-16T13:40:28+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">OSI 7계층(ISO Standard 7498)</title><link href="https://huimang2.github.io/etc/iso-standard-7498" rel="alternate" type="text/html" title="OSI 7계층(ISO Standard 7498)" /><published>2022-07-16T12:40:00+09:00</published><updated>2022-07-16T12:40:00+09:00</updated><id>https://huimang2.github.io/etc/iso-standard-7498</id><content type="html" xml:base="https://huimang2.github.io/etc/iso-standard-7498">&lt;p&gt;&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;osi-7계층&quot;&gt;OSI 7계층&lt;/h1&gt;
@@ -445,7 +445,7 @@
 
 &lt;h2 id=&quot;구조&quot;&gt;구조&lt;/h2&gt;
 
-&lt;p&gt;&lt;img src=&quot;../../assets/diagram/Singleton.png&quot; alt=&quot;singleton&quot; title=&quot;싱글톤 패턴 클래스 다이어그램&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/diagram/Singleton.png&quot; alt=&quot;singleton&quot; title=&quot;싱글톤 패턴 클래스 다이어그램&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;참여-객체&quot;&gt;참여 객체&lt;/h2&gt;
 
