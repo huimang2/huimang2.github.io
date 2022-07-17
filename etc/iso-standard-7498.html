@@ -202,10 +202,13 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#osi-7계층"><span>OSI 7계층</span></a><ul><li><a href="#물리-계층-physical-layer"><span>물리 계층 (Physical Layer)</span></a></li><li><a href="#데이터-링크-계층-datalink-layer"><span>데이터 링크 계층 (Datalink Layer)</span></a></li><li><a href="#네트워크-계층-network-layer"><span>네트워크 계층 (Network Layer)</span></a></li><li><a href="#전송-계층-transport-layer"><span>전송 계층 (Transport Layer)</span></a></li><li><a href="#세션-계층-session-layer"><span>세션 계층 (Session Layer)</span></a></li><li><a href="#표현-계층-presentation-layer"><span>표현 계층 (Presentation Layer)</span></a></li><li><a href="#응용-계층-application-layer"><span>응용 계층 (Application Layer)</span></a></li></ul></li><li><a href="#tcpip"><span>TCP/IP</span></a><ul><li><a href="#네트워크-인터페이스-계층-network-interface-layer"><span>네트워크 인터페이스 계층 (Network Interface Layer)</span></a></li><li><a href="#인터넷-계층-internet-layer"><span>인터넷 계층 (Internet Layer)</span></a></li><li><a href="#전송-계층-transport-layer-1"><span>전송 계층 (Transport Layer)</span></a></li><li><a href="#응용-계층-application-layer-1"><span>응용 계층 (Application Layer)</span></a></li></ul></li></ul>
+                        <ul><li><a href="#osi-7계층"><span>OSI 7계층</span></a><ul><li><a href="#물리-계층-physical-layer"><span>물리 계층 (Physical Layer)</span></a></li><li><a href="#데이터-링크-계층-datalink-layer"><span>데이터 링크 계층 (Datalink Layer)</span></a></li><li><a href="#네트워크-계층-network-layer"><span>네트워크 계층 (Network Layer)</span></a></li><li><a href="#전송-계층-transport-layer"><span>전송 계층 (Transport Layer)</span></a></li><li><a href="#세션-계층-session-layer"><span>세션 계층 (Session Layer)</span></a></li><li><a href="#표현-계층-presentation-layer"><span>표현 계층 (Presentation Layer)</span></a></li><li><a href="#응용-계층-application-layer"><span>응용 계층 (Application Layer)</span></a></li></ul></li><li><a href="#tcpip"><span>TCP/IP</span></a><ul><li><a href="#네트워크-인터페이스network-interface-계층"><span>네트워크 인터페이스(Network Interface) 계층</span></a></li><li><a href="#인터넷internet-계층"><span>인터넷(Internet) 계층</span></a></li><li><a href="#전송transport-계층"><span>전송(Transport) 계층</span></a></li><li><a href="#응용application-계층"><span>응용(Application) 계층</span></a></li></ul></li></ul>
 
                     </div>
                     <p><br />
+<br />
+<br />
+<br />
 <br /></p>
 
 <h1 id="osi-7계층">OSI 7계층</h1>
@@ -303,17 +306,25 @@ into the {body} of the default.hbs template -->
 
 <p><img src="/assets/images/osi7/osi_img_02.png" alt="img02" /></p>
 
-<h2 id="네트워크-인터페이스-계층-network-interface-layer">네트워크 인터페이스 계층 (Network Interface Layer)</h2>
+<h2 id="네트워크-인터페이스network-interface-계층">네트워크 인터페이스(Network Interface) 계층</h2>
 
 <p>네트워크 인터페이스 계층은 운영체제의 네트워크 카드와 디바이스 드라이버 등과 같이 하드웨어적인 요소와 관련된 모든 것을 지원하는 계층입니다. 상위 계층(IP)에서 패킷이 도착하면 헤더에 프리앰블(Preamble)과 CRC(Cyclic Redundancy Check)를 추가합니다. 송신 측 단말기는 인터넷 계층으로부터 전달받은 패킷에 물리적 주소(MAC) 정보를 가지는 헤더를 추가하여 프레임을 만들어 전달합니다.</p>
 
 <p>관련 프로토콜에는 <code class="language-plaintext highlighter-rouge">이더넷(Ethernet)</code>, <code class="language-plaintext highlighter-rouge">802.11x</code>, <code class="language-plaintext highlighter-rouge">MAC/LLC</code>, <code class="language-plaintext highlighter-rouge">PPP</code> 등이 있습니다.</p>
 
-<h2 id="인터넷-계층-internet-layer">인터넷 계층 (Internet Layer)</h2>
+<h2 id="인터넷internet-계층">인터넷(Internet) 계층</h2>
 
 <p>인터넷 계층은 패킷의 인터넷 주소를 결정하고 경로를 배정하는 역할을 합니다. 관련된 프로토콜에는 <code class="language-plaintext highlighter-rouge">IP(Internet Protocol)</code>, IP를 MAC으로 변환하는 <code class="language-plaintext highlighter-rouge">ARP(Address Resolution Protocol)</code>, IP 패킷을 전달하는 동안 발생한 오류를 보고하는 <code class="language-plaintext highlighter-rouge">ICMP(Internet Control Message Protocol)</code> 등이 있습니다.</p>
 
-<h2 id="전송-계층-transport-layer-1">전송 계층 (Transport Layer)</h2>
+<p>인터넷은 <b style="color:green">INTER</b>connected <b style="color:green">NET</b>work에서 만들어진 합성어로, TCP/IP를 통해 연결된 모든 네트워크의 집합체입니다.</p>
+
+<p>IP 주소에는 32비트 체계인 <code class="language-plaintext highlighter-rouge">IPv4</code>와 128비트 체계인 <code class="language-plaintext highlighter-rouge">IPv6</code>가 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">IPv4</code>는 최대 65,532byte로 이루어져 있으며, 5개의 클래스로 나눠집니다. <code class="language-plaintext highlighter-rouge">유니캐스트</code>, <code class="language-plaintext highlighter-rouge">브로드캐스트</code>, <code class="language-plaintext highlighter-rouge">멀티캐스트</code>를 지원합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">IPv6</code>는 IPv4의 주소 부족 문제를 해결하기 위해 만들어졌으며, <code class="language-plaintext highlighter-rouge">유니캐스트</code>, <code class="language-plaintext highlighter-rouge">멀티캐스트</code>, <code class="language-plaintext highlighter-rouge">애니캐스트</code>를 지원합니다.</p>
+
+<h2 id="전송transport-계층">전송(Transport) 계층</h2>
 
 <p>전송 계층은 네트워크 양단의 호스트 사이의 신뢰성 있는 전송 기능을 제공합니다. 시스템의 논리 주소와 포트를 가지며, <code class="language-plaintext highlighter-rouge">TCP</code>와 <code class="language-plaintext highlighter-rouge">UDP</code>가 사용됩니다.</p>
 
@@ -362,7 +373,7 @@ into the {body} of the default.hbs template -->
 
 <p>쉽게 말해서 클라이언트가 <strong>“내말 들려?”</strong> 라고 요청을 보내면 서버가 <strong>“응 들려, 넌 내말 들려?”</strong> 라고 응답하고,  클라이언트가 <strong>“응, 나도 들려”</strong> 라고 대답하면서 대화가 시작되는겁니다.</p>
 
-<h2 id="응용-계층-application-layer-1">응용 계층 (Application Layer)</h2>
+<h2 id="응용application-계층">응용(Application) 계층</h2>
 
 <p>OSI 참조 모델의 세션, 표현, 응용 계층을 합친 계층입니다.</p>
 

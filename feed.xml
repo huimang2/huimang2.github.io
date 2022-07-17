@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-07-18T04:21:00+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">OSI 7계층(ISO Standard 7498)</title><link href="https://huimang2.github.io/etc/iso-standard-7498" rel="alternate" type="text/html" title="OSI 7계층(ISO Standard 7498)" /><published>2022-07-16T12:40:00+09:00</published><updated>2022-07-16T12:40:00+09:00</updated><id>https://huimang2.github.io/etc/iso-standard-7498</id><content type="html" xml:base="https://huimang2.github.io/etc/iso-standard-7498">&lt;p&gt;&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-07-18T04:42:16+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">OSI 7계층(ISO Standard 7498)</title><link href="https://huimang2.github.io/etc/iso-standard-7498" rel="alternate" type="text/html" title="OSI 7계층(ISO Standard 7498)" /><published>2022-07-16T12:40:00+09:00</published><updated>2022-07-16T12:40:00+09:00</updated><id>https://huimang2.github.io/etc/iso-standard-7498</id><content type="html" xml:base="https://huimang2.github.io/etc/iso-standard-7498">&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
 &lt;br /&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;osi-7계층&quot;&gt;OSI 7계층&lt;/h1&gt;
@@ -96,17 +99,25 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/osi7/osi_img_02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;네트워크-인터페이스-계층-network-interface-layer&quot;&gt;네트워크 인터페이스 계층 (Network Interface Layer)&lt;/h2&gt;
+&lt;h2 id=&quot;네트워크-인터페이스network-interface-계층&quot;&gt;네트워크 인터페이스(Network Interface) 계층&lt;/h2&gt;
 
 &lt;p&gt;네트워크 인터페이스 계층은 운영체제의 네트워크 카드와 디바이스 드라이버 등과 같이 하드웨어적인 요소와 관련된 모든 것을 지원하는 계층입니다. 상위 계층(IP)에서 패킷이 도착하면 헤더에 프리앰블(Preamble)과 CRC(Cyclic Redundancy Check)를 추가합니다. 송신 측 단말기는 인터넷 계층으로부터 전달받은 패킷에 물리적 주소(MAC) 정보를 가지는 헤더를 추가하여 프레임을 만들어 전달합니다.&lt;/p&gt;
 
 &lt;p&gt;관련 프로토콜에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;이더넷(Ethernet)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;802.11x&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MAC/LLC&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PPP&lt;/code&gt; 등이 있습니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;인터넷-계층-internet-layer&quot;&gt;인터넷 계층 (Internet Layer)&lt;/h2&gt;
+&lt;h2 id=&quot;인터넷internet-계층&quot;&gt;인터넷(Internet) 계층&lt;/h2&gt;
 
 &lt;p&gt;인터넷 계층은 패킷의 인터넷 주소를 결정하고 경로를 배정하는 역할을 합니다. 관련된 프로토콜에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IP(Internet Protocol)&lt;/code&gt;, IP를 MAC으로 변환하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ARP(Address Resolution Protocol)&lt;/code&gt;, IP 패킷을 전달하는 동안 발생한 오류를 보고하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ICMP(Internet Control Message Protocol)&lt;/code&gt; 등이 있습니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;전송-계층-transport-layer-1&quot;&gt;전송 계층 (Transport Layer)&lt;/h2&gt;
+&lt;p&gt;인터넷은 &lt;b style=&quot;color:green&quot;&gt;INTER&lt;/b&gt;connected &lt;b style=&quot;color:green&quot;&gt;NET&lt;/b&gt;work에서 만들어진 합성어로, TCP/IP를 통해 연결된 모든 네트워크의 집합체입니다.&lt;/p&gt;
+
+&lt;p&gt;IP 주소에는 32비트 체계인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IPv4&lt;/code&gt;와 128비트 체계인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IPv6&lt;/code&gt;가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IPv4&lt;/code&gt;는 최대 65,532byte로 이루어져 있으며, 5개의 클래스로 나눠집니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;유니캐스트&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;브로드캐스트&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;멀티캐스트&lt;/code&gt;를 지원합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IPv6&lt;/code&gt;는 IPv4의 주소 부족 문제를 해결하기 위해 만들어졌으며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;유니캐스트&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;멀티캐스트&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;애니캐스트&lt;/code&gt;를 지원합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;전송transport-계층&quot;&gt;전송(Transport) 계층&lt;/h2&gt;
 
 &lt;p&gt;전송 계층은 네트워크 양단의 호스트 사이의 신뢰성 있는 전송 기능을 제공합니다. 시스템의 논리 주소와 포트를 가지며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TCP&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UDP&lt;/code&gt;가 사용됩니다.&lt;/p&gt;
 
@@ -155,7 +166,7 @@
 
 &lt;p&gt;쉽게 말해서 클라이언트가 &lt;strong&gt;“내말 들려?”&lt;/strong&gt; 라고 요청을 보내면 서버가 &lt;strong&gt;“응 들려, 넌 내말 들려?”&lt;/strong&gt; 라고 응답하고,  클라이언트가 &lt;strong&gt;“응, 나도 들려”&lt;/strong&gt; 라고 대답하면서 대화가 시작되는겁니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;응용-계층-application-layer-1&quot;&gt;응용 계층 (Application Layer)&lt;/h2&gt;
+&lt;h2 id=&quot;응용application-계층&quot;&gt;응용(Application) 계층&lt;/h2&gt;
 
 &lt;p&gt;OSI 참조 모델의 세션, 표현, 응용 계층을 합친 계층입니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="exam" /><category term="network" /><summary type="html"></summary></entry><entry><title type="html">도커(Docker) 설치하기</title><link href="https://huimang2.github.io/etc/docker" rel="alternate" type="text/html" title="도커(Docker) 설치하기" /><published>2022-07-15T20:18:00+09:00</published><updated>2022-07-15T20:18:00+09:00</updated><id>https://huimang2.github.io/etc/docker</id><content type="html" xml:base="https://huimang2.github.io/etc/docker">&lt;h1 id=&quot;도커란&quot;&gt;도커란?&lt;/h1&gt;
 
