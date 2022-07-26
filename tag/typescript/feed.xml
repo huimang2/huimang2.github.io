@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="https://huimang2.github.io/tag/typescript/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
+  <updated>2022-07-27T03:41:45+09:00</updated>
+  <id>https://huimang2.github.io/tag/typescript/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Rubisco’s Programming Note | </title>
+  
+
+  
+    <subtitle>프로그래밍 노트</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">타입스크립트(TypeScript)란?</title>
+      <link href="https://huimang2.github.io/typescript/typescript" rel="alternate" type="text/html" title="타입스크립트(TypeScript)란?" />
+      <published>2022-07-26T19:00:00+09:00</published>
+      <updated>2022-07-26T19:00:00+09:00</updated>
+      <id>https://huimang2.github.io/typescript/typescript</id>
+      <content type="html" xml:base="https://huimang2.github.io/typescript/typescript">&lt;h1 id=&quot;자바스크립트javascript&quot;&gt;자바스크립트(JavaScript)&lt;/h1&gt;
+
+&lt;p&gt;자바스크립트는 모질라 재단에서 개발한 프로토타입 기반의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스크립트 언어&lt;/code&gt;입니다. HTML, CSS와 함께 웹을 구성하는 요소중 하나입니다. HTML이 웹페이지의 구조를 정의하고 CSS가 웹페이지를 디자인 한다면 자바스크립트는 클라이언트 단에서 웹페이지가 동적으로 동작하도록 합니다.&lt;/p&gt;
+
+&lt;p&gt;HTML5가 등장하기 이전에 웹 애플리케이션(Web Application)은 어도비 플래시(Adobe Flash)나 마이크로소프트 실버라이트(Microsoft Silverlight), 마이크로소프트 액티브X(Microsoft ActiveX) 등의 외부 플러그인에 의존했습니다.&lt;/p&gt;
+
+&lt;p&gt;그러나 HTML5의 등장 이후 플러그인의 기능이 자바스크립트로 구현가능해졌고, AJAX의 활성화로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SPA(Single Page Application)&lt;/code&gt;가 대세가 되었습니다.&lt;/p&gt;
+
+&lt;p&gt;또한 예전에는 웹브라우저의 인터프리터에 의해 클라이언트 단에서만 동작했지만 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Node.js&lt;/code&gt;가 등장하면서 서버 단에서도 런타임 환경에서 동작이 가능해졌습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;타입스크립트typescript&quot;&gt;타입스크립트(TypeScript)&lt;/h1&gt;
+
+&lt;p&gt;타입스크립트는 마이크로소프트에서 구현한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;자바스크립트 슈퍼셋 프로그래밍 언어&lt;/code&gt;입니다. 즉, 자바스크립트 문법에 타입스크립트 문법을 추가한 언어입니다. 이때문에 올바르게 작성된 자바스크립트 코드는 타입스크립트 코드로 사용가능합니다.&lt;/p&gt;
+
+&lt;p&gt;자바스크립트가 동적 타입의 인터프리터 언어로 런타임에서 오류를 발견할 수 있는 반면 타입스크립트는 정적 타입의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;컴파일 언어&lt;/code&gt;로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;타입스크립트 컴파일러&lt;/code&gt; 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;바벨(Babel)&lt;/code&gt;을 통해 자바스크립트 코드로 컴파일해야합니다. 즉, 타입스크립트는 변수나 함수에 타입을 명시하여 사전에 오류를 발견하여 자바스크립트 개발의 생산성을 높일 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;타입스크립트는 2020년 스택 오버플로(Stack Overflow)에서 전세계 6만 5천 명의 개발자를 대상으로 실시한 설문조사에서 개발자가 가장 좋아하고 관심을 가지는 프로그래밍 언어 2위에 오를 정도로 인기있는 언어입니다. 요즘은 대형 SI 프로젝트에서 흔하게 사용되고 있으며, 개발자 구인 시 자바스크립트보다 타입스크립트를 우대기술로 언급하고 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;타입스크립트-사용-이유&quot;&gt;타입스크립트 사용 이유&lt;/h2&gt;
+
+&lt;h3 id=&quot;에러를-사전에-발견&quot;&gt;에러를 사전에 발견&lt;/h3&gt;
+
+&lt;p&gt;앞서 설명했듯이 타입스크립트는 코드를 컴파일을 필요로 정적인 언어이며, 타입을 명시하기때문에 사전에 에러를 검출하는 것이 가능합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// '12'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위의 덧셈 함수는 1 + 2를 의도했을테지만, 자바스크립트의 경우 타입이 명시적이지 않기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;동적 타이핑(Dynamic Typing)&lt;/code&gt;에 의하여 숫자 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3&lt;/code&gt;이 아닌 문자열 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'12'&lt;/code&gt;를 출력합니다.
+즉, 개발자가 의도하지 않은 값이 나올 수 있으며 디버깅이 어렵게 됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// error TS2345: Argument of type '&quot;1&quot;' is not assignable to parameter of type 'number'.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;반면 타입스크립트의 경우 타입을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;number&lt;/code&gt;라고 명시했기때문에 문자열이 들어간다면 컴파일 단계에서 사전에 오류를 포착할 수 있습니다. 명시적인 정적 타입 지정은 개발자의 의도를 명확하게 기술하여 코드 가독성을 높이고 디버깅을 쉽게 할 수 있도록 합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;도구의-지원&quot;&gt;도구의 지원&lt;/h3&gt;
+
+&lt;p&gt;타입스크립트는 IDE를 포함한 다양한 도구의 지원을 받을 수 있습니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Visual Studio Code&lt;/code&gt;의 경우 툴의 내부가 타입스크립트로 작성되어 있기 때문에 타입스크립트 개발에 최적화 되어 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/typescript/typescript-img-01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;변수 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt;의 타입은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;number&lt;/code&gt; 이므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;toLocaleString&lt;/code&gt; 함수를 사용가능합니다. 자바스크립트의 경우 함수명을 직접 입력해야 하지만, 타입스크립트는 스니펫을 통해 빠른 코드 작성이 가능합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;자바스크립트-호환&quot;&gt;자바스크립트 호환&lt;/h3&gt;
+
+&lt;p&gt;타입스크립트는 자바스크립트의 슈퍼셋 언어이므로 자바스크립트와 100% 호환됩니다. 따라서 자바스크립트로 작성된 코드를 쉽게 타입스크립트로 변환할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;개발환경-구축&quot;&gt;개발환경 구축&lt;/h2&gt;
+
+&lt;p&gt;우분투 20.04 LTS 버전을 기준으로 타입스크립트 개발환경을 구축해 보겠습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;작업공간work-space-만들기&quot;&gt;작업공간(work space) 만들기&lt;/h3&gt;
+
+&lt;p&gt;프로젝트를 위한 작업공간을 하나 생성합시다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; ws/typescript &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ws/typescript
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;nodejs-설치&quot;&gt;nodejs 설치&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt&lt;/code&gt;를 통해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nodejs&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm&lt;/code&gt;을 설치합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/ws/typescript&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt upgrade &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nodejs npm
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;nodejs의 여러버전을 관리하고 싶다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nvm&lt;/code&gt;을 통해 설치할 수도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/nvm-sh/nvm&quot; target=&quot;_blank&quot;&gt;NVM GitHub&lt;/a&gt;에서 버전을 확인후 설치해주세요.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/ws/typescript&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-o-&lt;/span&gt; https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;설치후 다음 명령어를 입력하여 NVM을 활성화 시킵니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/ws/typescript&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.bashrc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;nodejs 설치는 다음과 같습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;node  &lt;span class=&quot;c&quot;&gt;# 최신 버전 설치&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--lts&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 최신 LTS 버전 설치&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;16.14.0  &lt;span class=&quot;c&quot;&gt;# 특정 버전 설치&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;16  &lt;span class=&quot;c&quot;&gt;# 특정 버전 16의 최신 릴리즈 설치&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;typescript-설치&quot;&gt;typescript 설치&lt;/h3&gt;
+
+&lt;p&gt;npm을 통해 타입스크립트를 전역으로 설치합니다. nodejs와 npm이 설치되어있어야 합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/ws/typescript&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;npm i &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; typescript
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;설치가 되었는지 확인하기 위해 다음 명령어를 입력합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/ws/typescript&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tsc &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;프로젝트 내에서만 타입스크립트를 설치하고 싶다면 다음과 같이 명령어를 입력합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/ws/typescript&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm i typescript &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/ws/typescript&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npx tsc &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;타입스크립트-파일-코드-작성&quot;&gt;타입스크립트 파일 코드 작성&lt;/h3&gt;
+
+&lt;p&gt;타입스크립트의 확장자는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.ts&lt;/code&gt;입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;app.ts&lt;/code&gt; 파일을 생성후 에디터로 엽니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/ws/typescript&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;app.ts &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nano app.ts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음 예제 코드를 작성하세요.&lt;/p&gt;
+
+&lt;div class=&quot;language-typescript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;hello world&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;컴파일compile&quot;&gt;컴파일(Compile)&lt;/h3&gt;
+
+&lt;p&gt;코드를 저장하고 다음 명령어를 입력하여 컴파일합니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~/ws/typescript&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tsc app.ts
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;컴파일이 완료되면 자바스크립트 파일(app.js)이 생성됩니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;hello world&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;자동으로 컴파일하고 싶다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--watch&lt;/code&gt; 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-w&lt;/code&gt; 옵션을 주면 됩니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;설정파일--tsconfigjson&quot;&gt;설정파일 : tsconfig.json&lt;/h3&gt;
+
+&lt;p&gt;컴파일시 명령어를 통해 여러 옵션을 줄 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tsc app.ts &lt;span class=&quot;nt&quot;&gt;--strict&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt; ES6 &lt;span class=&quot;nt&quot;&gt;--lib&lt;/span&gt; ES2015,DOM &lt;span class=&quot;nt&quot;&gt;--module&lt;/span&gt; CommonJS
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;옵션 명령어 뿐만 아니라 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tsconfig.json&lt;/code&gt; 파일을 통해서도 옵션을 줄 수 있습니다. 다음 명령어를 통해 default 설정파일을 생성할 수 있습니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;~&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tsc &lt;span class=&quot;nt&quot;&gt;--init&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;컴파일 옵션에 대해서는 다음 페이지를 참조하세요: &lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/compiler-options.html&quot; target=&quot;_blank&quot;&gt;영문&lt;/a&gt; / &lt;a href=&quot;https://typescript-kr.github.io/pages/compiler-options.html&quot; target=&quot;_blank&quot;&gt;한글&lt;/a&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="typescript" />
+      
+
+      
+        <summary type="html">자바스크립트(JavaScript)</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

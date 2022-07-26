@@ -602,6 +602,8 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                
+                                  
                                     
                                   
                                 
@@ -941,7 +943,7 @@ $(document).ready(function () {
 
     function update() {
         var trigger = title.getBoundingClientRect().top + window.scrollY;
-        var triggerOffset = title.offsetHeight + 35;
+        var triggerOffset = title.offsetHeight + 30;
         var progressMax = lastDocumentHeight - lastWindowHeight;
 
         // show/hide floating header
@@ -1005,9 +1007,15 @@ $(document).ready(function () {
 
     update();
 
+    const languages = ['java', 'bash', 'javascript', 'typescript'];
+
     document.querySelectorAll('.highlighter-rouge').forEach(el => {
-        if(el.classList.contains('language-java')) el.setAttribute('data-lang', 'JAVA');
-        else if(el.classList.contains('language-bash')) el.setAttribute('data-lang', 'BASH');
+        for (let language of languages) {
+            if(el.classList.contains('language-' + language)) {
+                el.setAttribute('data-lang', language.toUpperCase());
+                break;
+            }
+        }
     });
 });
 </script>

@@ -11,7 +11,7 @@
 
 
 
-    <title>도커(Docker) 설치하기</title>
+    <title>타입스크립트(TypeScript)란?</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -25,7 +25,7 @@
 
     <!-- custom.css -->
     <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/docker.css" />
+    
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -51,30 +51,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/etc/docker" />
+    <link rel="canonical" href="https://huimang2.github.io/typescript/typescript" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="도커(Docker) 설치하기" />
-    <meta property="og:description" content="도커란? 도커는 컨테이너 기반 오픈소스 가상화 플랫폼입니다. 컨테이너란 격리된 공간에서 프로세스가 실행되도록 하는 기술입니다. 버추얼머신(VM)이라고 들어보셨을겁니다. 버추얼머신은 격리된 공간에서 OS가 실행되도록 하는 기술입니다. 윈도우에 격리된 리눅스를 설치한 것이라 보면 됩니다. 쉽게말해서 컴퓨터 안에 가상의 컴퓨터가 있는겁니다. 버추얼머신은 이미 설치되어 있는 OS위에 새로운 OS를 실행시키기때문에 조금 무겁습니다. 그에 비하여 도커는 기존" />
-    <meta property="og:url" content="https://huimang2.github.io/etc/docker" />
-    <meta property="og:image" content="https://huimang2.github.io/assets/images/docker-logo.png" />
+    <meta property="og:title" content="타입스크립트(TypeScript)란?" />
+    <meta property="og:description" content="자바스크립트(JavaScript) 자바스크립트는 모질라 재단에서 개발한 프로토타입 기반의 스크립트 언어입니다. HTML, CSS와 함께 웹을 구성하는 요소중 하나입니다. HTML이 웹페이지의 구조를 정의하고 CSS가 웹페이지를 디자인 한다면 자바스크립트는 클라이언트 단에서 웹페이지가 동적으로 동작하도록 합니다. HTML5가 등장하기 이전에 웹 애플리케이션(Web Application)은 어도비 플래시(Adobe Flash)나 마이크로소프트 실버라이트(Microsoft Silverlight), 마이크로소프트 액티브X(Microsoft ActiveX) 등의 외부 플러그인에 의존했습니다." />
+    <meta property="og:url" content="https://huimang2.github.io/typescript/typescript" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/typescript-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-07-15T20:18:00+09:00" />
-    <meta property="article:modified_time" content="2022-07-15T20:18:00+09:00" />
-    <meta property="article:tag" content="Docker" />
+    <meta property="article:published_time" content="2022-07-26T19:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-07-26T19:00:00+09:00" />
+    <meta property="article:tag" content="Typescript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="도커(Docker) 설치하기" />
-    <meta name="twitter:description" content="도커란? 도커는 컨테이너 기반 오픈소스 가상화 플랫폼입니다. 컨테이너란 격리된 공간에서 프로세스가 실행되도록 하는 기술입니다. 버추얼머신(VM)이라고 들어보셨을겁니다. 버추얼머신은 격리된 공간에서 OS가 실행되도록 하는 기술입니다. 윈도우에 격리된 리눅스를 설치한 것이라 보면 됩니다. 쉽게말해서 컴퓨터 안에 가상의 컴퓨터가 있는겁니다. 버추얼머신은 이미 설치되어 있는 OS위에 새로운 OS를 실행시키기때문에 조금 무겁습니다. 그에 비하여 도커는 기존" />
+    <meta name="twitter:title" content="타입스크립트(TypeScript)란?" />
+    <meta name="twitter:description" content="자바스크립트(JavaScript) 자바스크립트는 모질라 재단에서 개발한 프로토타입 기반의 스크립트 언어입니다. HTML, CSS와 함께 웹을 구성하는 요소중 하나입니다. HTML이 웹페이지의 구조를 정의하고 CSS가 웹페이지를 디자인 한다면 자바스크립트는 클라이언트 단에서 웹페이지가 동적으로 동작하도록 합니다. HTML5가 등장하기 이전에 웹 애플리케이션(Web Application)은 어도비 플래시(Adobe Flash)나 마이크로소프트 실버라이트(Microsoft Silverlight), 마이크로소프트 액티브X(Microsoft ActiveX) 등의 외부 플러그인에 의존했습니다." />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
-    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/docker-logo.png" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/typescript-logo.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Rubisco's Programming Note" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Docker" />
+    <meta name="twitter:data2" content="Typescript" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -89,18 +89,18 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/etc/docker",
+    "url": "https://huimang2.github.io/typescript/typescript",
     "image": {
         "@type": "ImageObject",
-        "url": "https://huimang2.github.io/assets/images/docker-logo.png",
+        "url": "https://huimang2.github.io/assets/images/typescript-logo.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/etc/docker"
+        "@id": "https://huimang2.github.io/typescript/typescript"
     },
-    "description": "도커란? 도커는 컨테이너 기반 오픈소스 가상화 플랫폼입니다. 컨테이너란 격리된 공간에서 프로세스가 실행되도록 하는 기술입니다. 버추얼머신(VM)이라고 들어보셨을겁니다. 버추얼머신은 격리된 공간에서 OS가 실행되도록 하는 기술입니다. 윈도우에 격리된 리눅스를 설치한 것이라 보면 됩니다. 쉽게말해서 컴퓨터 안에 가상의 컴퓨터가 있는겁니다. 버추얼머신은 이미 설치되어 있는 OS위에 새로운 OS를 실행시키기때문에 조금 무겁습니다. 그에 비하여 도커는 기존"
+    "description": "자바스크립트(JavaScript) 자바스크립트는 모질라 재단에서 개발한 프로토타입 기반의 스크립트 언어입니다. HTML, CSS와 함께 웹을 구성하는 요소중 하나입니다. HTML이 웹페이지의 구조를 정의하고 CSS가 웹페이지를 디자인 한다면 자바스크립트는 클라이언트 단에서 웹페이지가 동적으로 동작하도록 합니다. HTML5가 등장하기 이전에 웹 애플리케이션(Web Application)은 어도비 플래시(Adobe Flash)나 마이크로소프트 실버라이트(Microsoft Silverlight), 마이크로소프트 액티브X(Microsoft ActiveX) 등의 외부 플러그인에 의존했습니다."
 }
     </script>
 
@@ -113,7 +113,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="도커(Docker) 설치하기" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="타입스크립트(TypeScript)란?" href="/feed.xml" />
 
 
 </head>
@@ -169,181 +169,191 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-docker post tag-docker ">
+        <article class="post-full  tag-typescript post typescript ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="15 July 2022">15 July 2022</time>
+                    <time class="post-full-meta-date" datetime="26 July 2022">26 July 2022</time>
                     
                         <span class="date-divider">/</span>
                         
                             
                                 
-                                <a href='/tag/docker/'>#도커</a>
+                                <a href='/tag/typescript/'>#타입스크립트</a>
                                 
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">도커(Docker) 설치하기</h1>
+                <h1 class="post-full-title">타입스크립트(TypeScript)란?</h1>
             </header>
 
             <!-- 
-            <figure class="post-full-image" style="background-image: url(/assets/images/docker-logo.png)">
+            <figure class="post-full-image" style="background-image: url(/assets/images/typescript-logo.png)">
             </figure>
              -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#도커란"><span>도커란?</span></a></li><li><a href="#도커-설치"><span>도커 설치</span></a></li><li><a href="#포테이너portainer-설치"><span>포테이너(Portainer) 설치</span></a></li><li><a href="#방화벽-오픈open"><span>방화벽 오픈(Open)</span></a></li></ul>
+                        <ul><li><a href="#자바스크립트javascript"><span>자바스크립트(JavaScript)</span></a></li><li><a href="#타입스크립트typescript"><span>타입스크립트(TypeScript)</span></a><ul><li><a href="#타입스크립트-사용-이유"><span>타입스크립트 사용 이유</span></a><ul><li><a href="#에러를-사전에-발견"><span>에러를 사전에 발견</span></a></li><li><a href="#도구의-지원"><span>도구의 지원</span></a></li><li><a href="#자바스크립트-호환"><span>자바스크립트 호환</span></a></li></ul></li><li><a href="#개발환경-구축"><span>개발환경 구축</span></a><ul><li><a href="#작업공간work-space-만들기"><span>작업공간(work space) 만들기</span></a></li><li><a href="#nodejs-설치"><span>nodejs 설치</span></a></li><li><a href="#typescript-설치"><span>typescript 설치</span></a></li><li><a href="#타입스크립트-파일-코드-작성"><span>타입스크립트 파일 코드 작성</span></a></li><li><a href="#컴파일compile"><span>컴파일(Compile)</span></a></li><li><a href="#설정파일--tsconfigjson"><span>설정파일 : tsconfig.json</span></a></li></ul></li></ul></li></ul>
 
                     </div>
-                    <h1 id="도커란">도커란?</h1>
+                    <h1 id="자바스크립트javascript">자바스크립트(JavaScript)</h1>
 
-<p>도커는 <code class="language-plaintext highlighter-rouge">컨테이너 기반 오픈소스 가상화 플랫폼</code>입니다. 컨테이너란 격리된 공간에서 프로세스가 실행되도록 하는 기술입니다.</p>
+<p>자바스크립트는 모질라 재단에서 개발한 프로토타입 기반의 <code class="language-plaintext highlighter-rouge">스크립트 언어</code>입니다. HTML, CSS와 함께 웹을 구성하는 요소중 하나입니다. HTML이 웹페이지의 구조를 정의하고 CSS가 웹페이지를 디자인 한다면 자바스크립트는 클라이언트 단에서 웹페이지가 동적으로 동작하도록 합니다.</p>
 
-<p>버추얼머신(VM)이라고 들어보셨을겁니다. 버추얼머신은 격리된 공간에서 OS가 실행되도록 하는 기술입니다. 윈도우에 격리된 리눅스를 설치한 것이라 보면 됩니다. 쉽게말해서 컴퓨터 안에 가상의 컴퓨터가 있는겁니다.</p>
+<p>HTML5가 등장하기 이전에 웹 애플리케이션(Web Application)은 어도비 플래시(Adobe Flash)나 마이크로소프트 실버라이트(Microsoft Silverlight), 마이크로소프트 액티브X(Microsoft ActiveX) 등의 외부 플러그인에 의존했습니다.</p>
 
-<p>버추얼머신은 이미 설치되어 있는 OS위에 새로운 OS를 실행시키기때문에 조금 무겁습니다. 그에 비하여 도커는 기존 OS 위에 격리된 프로세스 공간을 만들어 실행시키때문에 가볍고 빠르게 동작합니다.</p>
+<p>그러나 HTML5의 등장 이후 플러그인의 기능이 자바스크립트로 구현가능해졌고, AJAX의 활성화로 <code class="language-plaintext highlighter-rouge">SPA(Single Page Application)</code>가 대세가 되었습니다.</p>
 
-<p><img src="/assets/images/docker/docker-architecture.png" alt="docker" title="도커와 버추얼머신의 비교" /></p>
+<p>또한 예전에는 웹브라우저의 인터프리터에 의해 클라이언트 단에서만 동작했지만 <code class="language-plaintext highlighter-rouge">Node.js</code>가 등장하면서 서버 단에서도 런타임 환경에서 동작이 가능해졌습니다.</p>
 
-<p>도커를 사용하는 이유는 프로그램마다 운영환경이 다르기때문입니다. 예를 들어 A라는 프로그램은 파이썬3.8을 기반으로 작동하는데 OS에는 파이썬 3.5가 설치되어있다면 파이썬3.8을 추가적으로 설치해야합니다. <strong>‘그럼 그냥 파이썬 3.8을 설치하면 되지’</strong>라고 생각하는 분도 있을겁니다.  하지만 프로그램은 무수히 많고 프로그램을 설치할때마다 환경을 따로 설정하는 것은 여간 번거로운 일이 아닙니다.</p>
+<h1 id="타입스크립트typescript">타입스크립트(TypeScript)</h1>
 
-<p>도커를 사용한다면 격리된 가상의 공간에 배포자가 작성한 운영환경에 필요한 라이브러리를 설치하여 프로세스를 실행시키게 됩니다. 즉 따로 프로그램에 맞춰 환경설정을 할 필요가 없다는 뜻입니다.</p>
+<p>타입스크립트는 마이크로소프트에서 구현한 <code class="language-plaintext highlighter-rouge">자바스크립트 슈퍼셋 프로그래밍 언어</code>입니다. 즉, 자바스크립트 문법에 타입스크립트 문법을 추가한 언어입니다. 이때문에 올바르게 작성된 자바스크립트 코드는 타입스크립트 코드로 사용가능합니다.</p>
 
-<h1 id="도커-설치">도커 설치</h1>
+<p>자바스크립트가 동적 타입의 인터프리터 언어로 런타임에서 오류를 발견할 수 있는 반면 타입스크립트는 정적 타입의 <code class="language-plaintext highlighter-rouge">컴파일 언어</code>로 <code class="language-plaintext highlighter-rouge">타입스크립트 컴파일러</code> 또는 <code class="language-plaintext highlighter-rouge">바벨(Babel)</code>을 통해 자바스크립트 코드로 컴파일해야합니다. 즉, 타입스크립트는 변수나 함수에 타입을 명시하여 사전에 오류를 발견하여 자바스크립트 개발의 생산성을 높일 수 있습니다.</p>
 
-<p>오라클 클라우드를 통해 우분투 20.04 환경에서 도커를 설치해보겠습니다.</p>
+<p>타입스크립트는 2020년 스택 오버플로(Stack Overflow)에서 전세계 6만 5천 명의 개발자를 대상으로 실시한 설문조사에서 개발자가 가장 좋아하고 관심을 가지는 프로그래밍 언어 2위에 오를 정도로 인기있는 언어입니다. 요즘은 대형 SI 프로젝트에서 흔하게 사용되고 있으며, 개발자 구인 시 자바스크립트보다 타입스크립트를 우대기술로 언급하고 있습니다.</p>
 
-<p><strong>(1) 우선 SSH를 통해 오라클 클라우드에 원격접속해주세요.</strong></p>
+<h2 id="타입스크립트-사용-이유">타입스크립트 사용 이유</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh <span class="o">[</span>USER]@[HOSTNAME] <span class="nt">-p</span> <span class="o">[</span>PORT]
+<h3 id="에러를-사전에-발견">에러를 사전에 발견</h3>
+
+<p>앞서 설명했듯이 타입스크립트는 코드를 컴파일을 필요로 정적인 언어이며, 타입을 명시하기때문에 사전에 에러를 검출하는 것이 가능합니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">sum</span><span class="p">(</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">2</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// '12'</span>
 </code></pre></div></div>
 
-<p><strong>(2) 패키지를 최신상태로 업데이트 해주세요.</strong></p>
+<p>위의 덧셈 함수는 1 + 2를 의도했을테지만, 자바스크립트의 경우 타입이 명시적이지 않기 때문에 <code class="language-plaintext highlighter-rouge">동적 타이핑(Dynamic Typing)</code>에 의하여 숫자 <code class="language-plaintext highlighter-rouge">3</code>이 아닌 문자열 <code class="language-plaintext highlighter-rouge">'12'</code>를 출력합니다.
+즉, 개발자가 의도하지 않은 값이 나올 수 있으며 디버깅이 어렵게 됩니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt upgrade
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">sum</span><span class="p">(</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">2</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// error TS2345: Argument of type '"1"' is not assignable to parameter of type 'number'.</span>
 </code></pre></div></div>
 
-<p><strong>(3) 필수 패키지를 설치하세요.</strong></p>
+<p>반면 타입스크립트의 경우 타입을 <code class="language-plaintext highlighter-rouge">number</code>라고 명시했기때문에 문자열이 들어간다면 컴파일 단계에서 사전에 오류를 포착할 수 있습니다. 명시적인 정적 타입 지정은 개발자의 의도를 명확하게 기술하여 코드 가독성을 높이고 디버깅을 쉽게 할 수 있도록 합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>apt-transport-https ca-certificates curl gnupg lsb-release
+<h3 id="도구의-지원">도구의 지원</h3>
+
+<p>타입스크립트는 IDE를 포함한 다양한 도구의 지원을 받을 수 있습니다. <code class="language-plaintext highlighter-rouge">Visual Studio Code</code>의 경우 툴의 내부가 타입스크립트로 작성되어 있기 때문에 타입스크립트 개발에 최적화 되어 있습니다.</p>
+
+<p><img src="/assets/images/typescript/typescript-img-01.png" alt="img01" /></p>
+
+<p>변수 <code class="language-plaintext highlighter-rouge">a</code>의 타입은 <code class="language-plaintext highlighter-rouge">number</code> 이므로 <code class="language-plaintext highlighter-rouge">toLocaleString</code> 함수를 사용가능합니다. 자바스크립트의 경우 함수명을 직접 입력해야 하지만, 타입스크립트는 스니펫을 통해 빠른 코드 작성이 가능합니다.</p>
+
+<h3 id="자바스크립트-호환">자바스크립트 호환</h3>
+
+<p>타입스크립트는 자바스크립트의 슈퍼셋 언어이므로 자바스크립트와 100% 호환됩니다. 따라서 자바스크립트로 작성된 코드를 쉽게 타입스크립트로 변환할 수 있습니다.</p>
+
+<h2 id="개발환경-구축">개발환경 구축</h2>
+
+<p>우분투 20.04 LTS 버전을 기준으로 타입스크립트 개발환경을 구축해 보겠습니다.</p>
+
+<h3 id="작업공간work-space-만들기">작업공간(work space) 만들기</h3>
+
+<p>프로젝트를 위한 작업공간을 하나 생성합시다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~<span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> ws/typescript <span class="o">&amp;&amp;</span> <span class="nb">cd </span>ws/typescript
 </code></pre></div></div>
 
-<p><strong>(4) 도커와 암호화 통신을 위한 GPG 키를 추가해주세요.</strong></p>
+<h3 id="nodejs-설치">nodejs 설치</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>gpg <span class="nt">--dearmor</span> <span class="nt">-o</span> /usr/share/keyrings/docker-archive-keyring.gpg
+<p><code class="language-plaintext highlighter-rouge">apt</code>를 통해 <code class="language-plaintext highlighter-rouge">nodejs</code>와 <code class="language-plaintext highlighter-rouge">npm</code>을 설치합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt upgrade <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install </span>nodejs npm
 </code></pre></div></div>
 
-<p><strong>(5) apt로 설치하기위해 stable repository를 등록합니다.</strong></p>
+<p>nodejs의 여러버전을 관리하고 싶다면 <code class="language-plaintext highlighter-rouge">nvm</code>을 통해 설치할 수도 있습니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="se">\</span>
-  <span class="s2">"deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu </span><span class="se">\</span><span class="s2">
-  </span><span class="si">$(</span>lsb_release <span class="nt">-cs</span><span class="si">)</span><span class="s2"> stable"</span> | <span class="nb">sudo tee</span> /etc/apt/sources.list.d/docker.list <span class="o">&gt;</span> /dev/null
+<p><a href="https://github.com/nvm-sh/nvm" target="_blank">NVM GitHub</a>에서 버전을 확인후 설치해주세요.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>curl <span class="nt">-o-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 </code></pre></div></div>
 
-<p><strong>(6) apt로 도커 엔진을 설치합니다.</strong></p>
+<p>설치후 다음 명령어를 입력하여 NVM을 활성화 시킵니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt update
-<span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>docker-ce docker-ce-cli containerd.io
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">source</span> ~/.bashrc
 </code></pre></div></div>
 
-<p><strong>(7) 버전을 확인해봅시다.</strong></p>
+<p>nodejs 설치는 다음과 같습니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>docker version
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nvm <span class="nb">install </span>node  <span class="c"># 최신 버전 설치</span>
+<span class="nv">$ </span>nvm <span class="nb">install</span> <span class="nt">--lts</span> <span class="c"># 최신 LTS 버전 설치</span>
+<span class="nv">$ </span>nvm <span class="nb">install </span>16.14.0  <span class="c"># 특정 버전 설치</span>
+<span class="nv">$ </span>nvm <span class="nb">install </span>16  <span class="c"># 특정 버전 16의 최신 릴리즈 설치</span>
 </code></pre></div></div>
 
-<p><strong>(8) 권한을 지정하여 sudo 없이 도커를 사용할 수 있도록 합시다.</strong></p>
+<h3 id="typescript-설치">typescript 설치</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>usermod <span class="nt">-aG</span> docker <span class="nv">$USER</span>
+<p>npm을 통해 타입스크립트를 전역으로 설치합니다. nodejs와 npm이 설치되어있어야 합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">sudo </span>npm i <span class="nt">-g</span> typescript
 </code></pre></div></div>
 
-<h1 id="포테이너portainer-설치">포테이너(Portainer) 설치</h1>
+<p>설치가 되었는지 확인하기 위해 다음 명령어를 입력합니다.</p>
 
-<p>포테이너는 도커를 웹에서 GUI로 관리할 수 있는 도구입니다. 포테이너를 도커에 설치하겠습니다.</p>
-
-<p><strong>(1) 포테이너 데이터를 저장할 볼륨(공간)을 만듭니다.</strong></p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker volume create portainer_data
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>tsc <span class="nt">-v</span>
 </code></pre></div></div>
 
-<p><strong>(2) 도커로 포테이너 컨테이너를 생성합니다.</strong></p>
+<p>프로젝트 내에서만 타입스크립트를 설치하고 싶다면 다음과 같이 명령어를 입력합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-d</span> <span class="nt">-p</span> 9000:9000 <span class="nt">--name</span> portainer <span class="nt">--restart</span> always <span class="nt">-v</span> /var/run/docker.sock:/var/run/docker.sock <span class="nt">-v</span> portainer_data:/data portainer/portainer-ce
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>npm i typescript <span class="nt">-D</span>
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">-d</code> : 백그라운드 모드(detached mode) 실행<br />
-<code class="language-plaintext highlighter-rouge">-p 9000:9000</code> : 호스트 포트를 컨테이너 포트에 연결 (호스트:컨테이너)<br />
-<code class="language-plaintext highlighter-rouge">--name portainer</code> : 컨테이너 이름 설정<br />
-<code class="language-plaintext highlighter-rouge">--restart aloways</code> : 도커 실행시 컨테이너 실행 여부 설정<br />
-<code class="language-plaintext highlighter-rouge">-v portainer_data:/data</code> : 호스트 볼륨을 컨테이너 볼륨에 연결<br />
-<code class="language-plaintext highlighter-rouge">portainer/portainer-ce</code> : 컨테이너 이미지 이름<br />
-<br /></p>
-
-<p>포테이너가 9000번 포트에서 실행됩니다. 그러나 오라클 클라우드의 경우 22번 포트만 열려 있으므로 방화벽을 Open해야합니다. 아래 <a href="#방화벽-오픈open">방화벽 오픈(Open)</a>를 참조하세요.</p>
-
-<p><strong>(3) 아이디와 암호를 입력하고 <code class="language-plaintext highlighter-rouge">Create user</code>를 클릭하여 계정을 생성합니다.</strong></p>
-
-<p><img src="/assets/images/docker/docker-img-06.png" alt="img06" /></p>
-
-<p><strong>(4) <code class="language-plaintext highlighter-rouge">Get Started</code>를 클릭합니다.</strong></p>
-
-<p><img src="/assets/images/docker/docker-img-07.png" alt="img07" /></p>
-
-<p><strong>(5) 설정이 완료되었습니다! 아래 사진과 같이 도커의 상태를 확인할 수 있습니다.</strong></p>
-
-<p><img src="/assets/images/docker/docker-img-08.png" alt="img08" /></p>
-
-<h1 id="방화벽-오픈open">방화벽 오픈(Open)</h1>
-
-<p><strong>(1) 오라클 클라우드에 로그인 후 <code class="language-plaintext highlighter-rouge">홈 -&gt; 인스턴스</code>를 선택합니다.</strong></p>
-
-<p><img src="/assets/images/docker/docker-img-01.png" alt="img01" /></p>
-
-<p><strong>(2) 생성된 인스턴스를 클릭합니다.</strong></p>
-
-<p><img src="/assets/images/docker/docker-img-02.png" alt="img02" /></p>
-
-<p><strong>(3) 보안 목록을 클릭합니다.</strong></p>
-
-<p><img src="/assets/images/docker/docker-img-03.png" alt="img03" /></p>
-
-<p>22번 포트만 열려있는 것을 확인할 수 있습니다.</p>
-
-<p><strong>(4) 수신 규칙 추가를 클릭합니다.</strong></p>
-
-<p><img src="/assets/images/docker/docker-img-04.png" alt="img04" /></p>
-
-<p><strong>(5) 소스 CIDR에 <code class="language-plaintext highlighter-rouge">0.0.0.0/0</code>, 대상 포트 범위에 <code class="language-plaintext highlighter-rouge">9000</code>을 입력하고 수신 규칙 추가를 클릭합니다.</strong></p>
-
-<p><img src="/assets/images/docker/docker-img-05.png" alt="img05" /></p>
-
-<p><strong>(6) OS 방화벽을 오픈합니다.</strong></p>
-
-<p>iptables은 재부팅할때마다 설정 내용이 초기화되므로 iptables을 날리고 ufw를 사용하겠습니다.</p>
-
-<p>우선 iptables 룰 정책을 저장하기 위한 패키지를 설치합니다.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>iptables-persistent netfilter-persistent net-tools
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>npx tsc <span class="nt">-v</span>
 </code></pre></div></div>
 
-<p><strong>(7) 정책을 영구 저장합니다.</strong></p>
+<h3 id="타입스크립트-파일-코드-작성">타입스크립트 파일 코드 작성</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>netfilter-persistent save
+<p>타입스크립트의 확장자는 <code class="language-plaintext highlighter-rouge">.ts</code>입니다. <code class="language-plaintext highlighter-rouge">app.ts</code> 파일을 생성후 에디터로 엽니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">touch </span>app.ts <span class="o">&amp;&amp;</span> nano app.ts
 </code></pre></div></div>
 
-<p><strong>(8) ufw에서 9000번 포트를 허용해줍니다. SSH 접속을 유지하기위해 22번 포트도 추가해줍니다.</strong></p>
+<p>다음 예제 코드를 작성하세요.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>ufw allow 9000
-<span class="nv">$ </span><span class="nb">sudo </span>ufw allow 22
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">message</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello world</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p><strong>(9) ufw를 켭니다.</strong></p>
+<h3 id="컴파일compile">컴파일(Compile)</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>ufw <span class="nb">enable</span>
+<p>코드를 저장하고 다음 명령어를 입력하여 컴파일합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>tsc app.ts
 </code></pre></div></div>
+
+<p>컴파일이 완료되면 자바스크립트 파일(app.js)이 생성됩니다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello world</span><span class="dl">'</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>자동으로 컴파일하고 싶다면 <code class="language-plaintext highlighter-rouge">--watch</code> 또는 <code class="language-plaintext highlighter-rouge">-w</code> 옵션을 주면 됩니다.</p>
+
+<h3 id="설정파일--tsconfigjson">설정파일 : tsconfig.json</h3>
+
+<p>컴파일시 명령어를 통해 여러 옵션을 줄 수 있습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~<span class="nv">$ </span>tsc app.ts <span class="nt">--strict</span> <span class="nb">true</span> <span class="nt">--target</span> ES6 <span class="nt">--lib</span> ES2015,DOM <span class="nt">--module</span> CommonJS
+</code></pre></div></div>
+
+<p>옵션 명령어 뿐만 아니라 <code class="language-plaintext highlighter-rouge">tsconfig.json</code> 파일을 통해서도 옵션을 줄 수 있습니다. 다음 명령어를 통해 default 설정파일을 생성할 수 있습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~<span class="nv">$ </span>tsc <span class="nt">--init</span>
+</code></pre></div></div>
+
+<p>컴파일 옵션에 대해서는 다음 페이지를 참조하세요: <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html" target="_blank">영문</a> / <a href="https://typescript-kr.github.io/pages/compiler-options.html" target="_blank">한글</a></p>
+
 
                 </div>
             </section>
@@ -411,6 +421,9 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
                 
 
     <article class="post-card post-template">
@@ -445,49 +458,6 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      4 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
-
-            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
-            
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/design-pattern/creational/singleton-pattern">
-                <div class="post-card-image" style="background-image: url(/assets/diagram/Singleton.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/design-pattern/creational/singleton-pattern">
-                <header class="post-card-header">
-                    
-                        <div class="post-card-tags-container">
-                            
-                        </div>
-                    
-
-                    <h2 class="post-card-title">싱글톤 패턴(Singleton Pattern)</h2>
-                </header>
-                <!-- <section class="post-card-excerpt">
-                    
-                        <p>GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트</p>
-                    
-                </section> -->
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
                       3 min read
                     
                 </span>
@@ -510,18 +480,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">도커(Docker) 설치하기</div>
+    <div class="floating-header-title">타입스크립트(TypeScript)란?</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EB%8F%84%EC%BB%A4%28Docker%29+%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0&amp;url=etc/docker"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%28TypeScript%29%EB%9E%80%3F&amp;url=typescript/typescript"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=etc/docker"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=typescript/typescript"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

@@ -205,13 +205,7 @@ into the {body} of the default.hbs template -->
                         <ul><li><a href="#osi-7계층"><span>OSI 7계층</span></a><ul><li><a href="#물리-계층-physical-layer"><span>물리 계층 (Physical Layer)</span></a></li><li><a href="#데이터-링크-계층-datalink-layer"><span>데이터 링크 계층 (Datalink Layer)</span></a></li><li><a href="#네트워크-계층-network-layer"><span>네트워크 계층 (Network Layer)</span></a></li><li><a href="#전송-계층-transport-layer"><span>전송 계층 (Transport Layer)</span></a></li><li><a href="#세션-계층-session-layer"><span>세션 계층 (Session Layer)</span></a></li><li><a href="#표현-계층-presentation-layer"><span>표현 계층 (Presentation Layer)</span></a></li><li><a href="#응용-계층-application-layer"><span>응용 계층 (Application Layer)</span></a></li></ul></li><li><a href="#tcpip"><span>TCP/IP</span></a><ul><li><a href="#네트워크-인터페이스network-interface-계층"><span>네트워크 인터페이스(Network Interface) 계층</span></a></li><li><a href="#인터넷internet-계층"><span>인터넷(Internet) 계층</span></a></li><li><a href="#전송transport-계층"><span>전송(Transport) 계층</span></a></li><li><a href="#응용application-계층"><span>응용(Application) 계층</span></a></li></ul></li></ul>
 
                     </div>
-                    <p><br />
-<br />
-<br />
-<br />
-<br /></p>
-
-<h1 id="osi-7계층">OSI 7계층</h1>
+                    <h1 id="osi-7계층">OSI 7계층</h1>
 
 <p>데이터를 주고 받는 과정에는 많은 단계가 있습니다. 국제표준화기구(ISO)에서는 이를 역할에 따라 7개의 계층으로 나누었습니다. 이것을 <code class="language-plaintext highlighter-rouge">OSI 7계층(Open Systems Interconnection 7 Layer)</code>이라고 합니다.</p>
 
@@ -442,6 +436,48 @@ into the {body} of the default.hbs template -->
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/typescript/typescript">
+                <div class="post-card-image" style="background-image: url(/assets/images/typescript-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/typescript/typescript">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">타입스크립트(TypeScript)란?</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>자바스크립트(JavaScript)
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      3 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
             
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
@@ -715,7 +751,7 @@ $(document).ready(function () {
 
     function update() {
         var trigger = title.getBoundingClientRect().top + window.scrollY;
-        var triggerOffset = title.offsetHeight + 35;
+        var triggerOffset = title.offsetHeight + 30;
         var progressMax = lastDocumentHeight - lastWindowHeight;
 
         // show/hide floating header
@@ -779,9 +815,15 @@ $(document).ready(function () {
 
     update();
 
+    const languages = ['java', 'bash', 'javascript', 'typescript'];
+
     document.querySelectorAll('.highlighter-rouge').forEach(el => {
-        if(el.classList.contains('language-java')) el.setAttribute('data-lang', 'JAVA');
-        else if(el.classList.contains('language-bash')) el.setAttribute('data-lang', 'BASH');
+        for (let language of languages) {
+            if(el.classList.contains('language-' + language)) {
+                el.setAttribute('data-lang', language.toUpperCase());
+                break;
+            }
+        }
     });
 });
 </script>
