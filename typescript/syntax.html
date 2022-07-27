@@ -58,7 +58,7 @@
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="타입스크립트 문법(TypeScript Syntax)" />
-    <meta property="og:description" content="기본 문법 자바스크립트는 다음과 같이 7가지 내장 타입을 제공합니다. Number String Boolean Symbol Null Undefined Object 타입스크립트에는 자바스크립트의 내장 타입에 해당하는 원시 타입이 있습니다. number string boolean symbol null undefined object 타입스크립트에만 존재하는 원시 타입도 있습니다. unknown never void any 그 외에도 다음과 같은 참조 타입이 있습니다. Array Tuple Enum" />
+    <meta property="og:description" content="기본 타입 자바스크립트는 다음과 같이 7가지 내장 타입을 제공합니다. Number String Boolean Symbol Null Undefined Object 타입스크립트에는 자바스크립트의 내장 타입에 해당하는 원시 타입이 있습니다. number string boolean symbol null undefined object 타입스크립트에만 존재하는 원시 타입도 있습니다. unknown never void any 그 외에도 다음과 같은 참조 타입이 있습니다. Array Tuple Enum" />
     <meta property="og:url" content="https://huimang2.github.io/typescript/syntax" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/typescript-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -68,7 +68,7 @@
     <meta property="article:tag" content="Typescript" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="타입스크립트 문법(TypeScript Syntax)" />
-    <meta name="twitter:description" content="기본 문법 자바스크립트는 다음과 같이 7가지 내장 타입을 제공합니다. Number String Boolean Symbol Null Undefined Object 타입스크립트에는 자바스크립트의 내장 타입에 해당하는 원시 타입이 있습니다. number string boolean symbol null undefined object 타입스크립트에만 존재하는 원시 타입도 있습니다. unknown never void any 그 외에도 다음과 같은 참조 타입이 있습니다. Array Tuple Enum" />
+    <meta name="twitter:description" content="기본 타입 자바스크립트는 다음과 같이 7가지 내장 타입을 제공합니다. Number String Boolean Symbol Null Undefined Object 타입스크립트에는 자바스크립트의 내장 타입에 해당하는 원시 타입이 있습니다. number string boolean symbol null undefined object 타입스크립트에만 존재하는 원시 타입도 있습니다. unknown never void any 그 외에도 다음과 같은 참조 타입이 있습니다. Array Tuple Enum" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/typescript-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -100,7 +100,7 @@
         "@type": "WebPage",
         "@id": "https://huimang2.github.io/typescript/syntax"
     },
-    "description": "기본 문법 자바스크립트는 다음과 같이 7가지 내장 타입을 제공합니다. Number String Boolean Symbol Null Undefined Object 타입스크립트에는 자바스크립트의 내장 타입에 해당하는 원시 타입이 있습니다. number string boolean symbol null undefined object 타입스크립트에만 존재하는 원시 타입도 있습니다. unknown never void any 그 외에도 다음과 같은 참조 타입이 있습니다. Array Tuple Enum"
+    "description": "기본 타입 자바스크립트는 다음과 같이 7가지 내장 타입을 제공합니다. Number String Boolean Symbol Null Undefined Object 타입스크립트에는 자바스크립트의 내장 타입에 해당하는 원시 타입이 있습니다. number string boolean symbol null undefined object 타입스크립트에만 존재하는 원시 타입도 있습니다. unknown never void any 그 외에도 다음과 같은 참조 타입이 있습니다. Array Tuple Enum"
 }
     </script>
 
@@ -196,10 +196,10 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#기본-문법"><span>기본 문법</span></a></li><li><a href="#원시-타입primitive-type"><span>원시 타입(Primitive Type)</span></a><ul><li><a href="#불리언boolean"><span>불리언(Boolean)</span></a></li><li><a href="#숫자number"><span>숫자(Number)</span></a></li><li><a href="#문자열string"><span>문자열(String)</span></a></li><li><a href="#null--undefined"><span>Null / Undefined</span></a></li><li><a href="#any--unknown"><span>Any / Unknown</span></a></li><li><a href="#void--never"><span>Void / Never</span></a></li></ul></li><li><a href="#참조-타입reference-type"><span>참조 타입(Reference Type)</span></a><ul><li><a href="#객체object"><span>객체(Object)</span></a></li><li><a href="#배열array"><span>배열(Array)</span></a></li><li><a href="#튜플tuple"><span>튜플(Tuple)</span></a></li><li><a href="#열거enum"><span>열거(Enum)</span></a></li></ul></li></ul>
+                        <ul><li><a href="#기본-타입"><span>기본 타입</span></a><ul><li><a href="#원시-타입primitive-type"><span>원시 타입(Primitive Type)</span></a><ul><li><a href="#불리언boolean"><span>불리언(Boolean)</span></a></li><li><a href="#숫자number"><span>숫자(Number)</span></a></li><li><a href="#문자열string"><span>문자열(String)</span></a></li><li><a href="#null--undefined"><span>Null / Undefined</span></a></li><li><a href="#any--unknown"><span>Any / Unknown</span></a></li><li><a href="#void--never"><span>Void / Never</span></a></li></ul></li><li><a href="#참조-타입reference-type"><span>참조 타입(Reference Type)</span></a><ul><li><a href="#객체object"><span>객체(Object)</span></a></li><li><a href="#배열array"><span>배열(Array)</span></a></li><li><a href="#튜플tuple"><span>튜플(Tuple)</span></a></li><li><a href="#열거enum"><span>열거(Enum)</span></a></li></ul></li></ul></li><li><a href="#타입-추론과-타입-단언"><span>타입 추론과 타입 단언</span></a><ul><li><a href="#타입-추론type-inference"><span>타입 추론(Type Inference)</span></a></li><li><a href="#타입-단언type-assertion"><span>타입 단언(type assertion)</span></a></li></ul></li><li><a href="#제네릭generic"><span>제네릭(Generic)</span></a></li></ul>
 
                     </div>
-                    <h1 id="기본-문법">기본 문법</h1>
+                    <h1 id="기본-타입">기본 타입</h1>
 
 <p>자바스크립트는 다음과 같이 7가지 내장 타입을 제공합니다.</p>
 
@@ -242,16 +242,16 @@ into the {body} of the default.hbs template -->
   <li>Enum</li>
 </ul>
 
-<h1 id="원시-타입primitive-type">원시 타입(Primitive Type)</h1>
+<h2 id="원시-타입primitive-type">원시 타입(Primitive Type)</h2>
 
-<h2 id="불리언boolean">불리언(Boolean)</h2>
+<h3 id="불리언boolean">불리언(Boolean)</h3>
 
 <p><code class="language-plaintext highlighter-rouge">boolean</code>은 가장 기본적인 데이터 타입으로, <code class="language-plaintext highlighter-rouge">참/거짓(true/false)</code>값을 나타냅니다.</p>
 
 <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">isDone</span><span class="p">:</span> <span class="nx">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 </code></pre></div></div>
 
-<h2 id="숫자number">숫자(Number)</h2>
+<h3 id="숫자number">숫자(Number)</h3>
 
 <p>자바스크립트처럼 타입스크립트의 모든 숫자는 부동소수점을 사용합니다. 16진수, 10진수 literal과 2진수, 8진수 literal도 지원합니다.</p>
 
@@ -261,7 +261,7 @@ into the {body} of the default.hbs template -->
 <span class="kd">let</span> <span class="nx">octet</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mo">0o777</span><span class="p">;</span>
 </code></pre></div></div>
 
-<h2 id="문자열string">문자열(String)</h2>
+<h3 id="문자열string">문자열(String)</h3>
 
 <p>자바스크립트와 마찬가지로 <code class="language-plaintext highlighter-rouge">큰따옴표(")</code> 또는 <code class="language-plaintext highlighter-rouge">작은따옴표(')</code>를 통해 문자열을 나타냅니다.</p>
 
@@ -275,7 +275,7 @@ into the {body} of the default.hbs template -->
 <span class="kd">let</span> <span class="nx">introduce</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">`안녕하세요? </span><span class="p">${</span> <span class="nx">name</span> <span class="p">}</span><span class="s2"> 입니다.`</span><span class="p">;</span> <span class="c1">// "안녕하세요? " + name + " 입니다." 와 동일</span>
 </code></pre></div></div>
 
-<h2 id="null--undefined">Null / Undefined</h2>
+<h3 id="null--undefined">Null / Undefined</h3>
 
 <p>null과 undefined 타입은 각각 <code class="language-plaintext highlighter-rouge">null</code>과 <code class="language-plaintext highlighter-rouge">undefined</code>라는 하나의 값만을 가집니다. null은 변수를 선언했지만 빈값을 할당한 상태를 의미하며, undefined는 변수를 선언했지만 값이 없는 상태 즉, 타입이 없는 상태를 의미합니다. typeof 메소드를 통해 자료형을 확인해보면 null은 <code class="language-plaintext highlighter-rouge">object</code>, undefined는 <code class="language-plaintext highlighter-rouge">undefined</code> 타입인 것을 확인할 수 있습니다.</p>
 
@@ -286,7 +286,7 @@ into the {body} of the default.hbs template -->
 
 <p>하지만 이러한 동작은 버그를 양산하기 쉽습니다. 엄격한 타입 체크를 위해 타입스크립트 2.0부터 옵션으로 <code class="language-plaintext highlighter-rouge">--strictNullChecks</code> 플래그가 추가되었습니다. 옵션에 이 플래그를 추가하면 null과 undefined 값을 다른 타입에 할당하는 것을 방지할 수 있습니다.</p>
 
-<h2 id="any--unknown">Any / Unknown</h2>
+<h3 id="any--unknown">Any / Unknown</h3>
 
 <p><code class="language-plaintext highlighter-rouge">any</code> 타입은 모든 데이터 타입을 허용할 때 사용합니다. 데이터 타입을 미리 알 수 없는 경우 사용할 수 있지만 불가피한 경우를 제외하고는 사용하지 않는것이 권장됩니다. 보통 자바스크립트 문법을 점진적으로 타입스크립트 문법으로 바꿀때 사용합니다.</p>
 
@@ -316,7 +316,7 @@ into the {body} of the default.hbs template -->
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h2 id="void--never">Void / Never</h2>
+<h3 id="void--never">Void / Never</h3>
 
 <p><code class="language-plaintext highlighter-rouge">void</code> 타입은 null과 undefined만 값으로 가질 수 있는 타입입니다. 함수에서는 리턴값이 없을때 사용합니다.</p>
 
@@ -336,9 +336,9 @@ into the {body} of the default.hbs template -->
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h1 id="참조-타입reference-type">참조 타입(Reference Type)</h1>
+<h2 id="참조-타입reference-type">참조 타입(Reference Type)</h2>
 
-<h2 id="객체object">객체(Object)</h2>
+<h3 id="객체object">객체(Object)</h3>
 
 <p>자바스크립트는 프로토타입 객체 기반 언어로, 원시 자료형을 제외한 모든 데이터가 객체(Object)로 구성됩니다.
 object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({})</code>를 사용하여 선언할 수 있습니다.</p>
@@ -375,7 +375,7 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 <span class="nx">user</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">고길동</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// error TS2540: Cannot assign to 'name' because it is a constant or a read-only property.</span>
 </code></pre></div></div>
 
-<h2 id="배열array">배열(Array)</h2>
+<h3 id="배열array">배열(Array)</h3>
 
 <p>배열의 경우 2가지 방법으로 타입을 지정할 수 있습니다.</p>
 
@@ -389,14 +389,14 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">colors</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">orange</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">];</span>
 </code></pre></div></div>
 
-<h2 id="튜플tuple">튜플(Tuple)</h2>
+<h3 id="튜플tuple">튜플(Tuple)</h3>
 
 <p>튜플은 배열과 유사하며, 요소(element)의 수가 고정된 배열을 나타낼 수 있습니다.</p>
 
 <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">member</span><span class="p">:</span> <span class="p">[</span><span class="kr">number</span><span class="p">,</span> <span class="kr">string</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">rubisco</span><span class="dl">'</span><span class="p">];</span>
 </code></pre></div></div>
 
-<h2 id="열거enum">열거(Enum)</h2>
+<h3 id="열거enum">열거(Enum)</h3>
 
 <p>열거형은 자바의 열거형과 마찬가지로 숫자 또는 문자열 값의 집합에 이름을 부여할 수 있습니다.</p>
 
@@ -429,6 +429,102 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 
 <span class="kd">let</span> <span class="nx">color</span><span class="p">:</span> <span class="nx">Color</span> <span class="o">=</span> <span class="nx">Color</span><span class="p">.</span><span class="nx">RED</span><span class="p">;</span> <span class="c1">// 문자열 "red"와 동일</span>
 </code></pre></div></div>
+
+<h1 id="타입-추론과-타입-단언">타입 추론과 타입 단언</h1>
+
+<h2 id="타입-추론type-inference">타입 추론(Type Inference)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">타입 추론(Type Inference)</code>이란 타입스크립트가 코드를 해석해나가는 동작을 의미합니다. 아래와 같이 타입을 선언하지 않고 변수에 값을 할당하면 타입스크립트에서는 str 변수를 string 타입으로 추론합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">spot</span><span class="dl">"</span> <span class="c1">// string 타입 값이 할당되었으므로 string 타입으로 추론</span>
+</code></pre></div></div>
+
+<p>그러므로 str 변수에 문자열이 아닌 숫자를 재할당한다면 오류가 발생합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">str</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// Type 'number' is not assignable to type 'string'.</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">const</code>나 <code class="language-plaintext highlighter-rouge">readonly</code> 키워드가 있는 경우 타입스크립트는 구체적인 literal 타입을 추론합니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 1로 추론</span>
+
+</code></pre></div></div>
+
+<h2 id="타입-단언type-assertion">타입 단언(type assertion)</h2>
+
+<p>타입스크립트 컴파일러는 타입 표기, 타입 추론 등을 이용해 값의 타입을 판단합니다. 하지만 때로는 컴파일러가 가진 정보를 무시하고 개발자가 원하는 임의의 타입을 값에 할당하고 싶을 수 있는데, 이때 필요한 것이 <code class="language-plaintext highlighter-rouge">타입 단언(type assertion)</code>입니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">div</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">rubisco</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// Object is possibly 'null'.ts(2531)</span>
+</code></pre></div></div>
+
+<p>위의 코드의 경우 타입스크립트는 div가 null일 경우까지 추론하게 됩니다. div가 null일 경우 innerText 메소드가 존재하지 않게 되므로 오류를 출력하게 됩니다. 이럴때 변수 뒤에 as 키워드를 붙여 타입 단언을 해줄 수 있습니다. 자바에서 <code class="language-plaintext highlighter-rouge">명시적 형변환(Casting)</code>과 같은데, 형변환은 런타임에서 발생하는 동작이고 타입 단언은 컴파일시 발생하는 동작이라는 차이가 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">(</span><span class="nx">div</span> <span class="k">as</span> <span class="nx">HTMLDivElement</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">rubisco</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>변수 뒤에 <code class="language-plaintext highlighter-rouge">느낌표(!)</code>를 붙여서 값이 무조건 존재한다는 <code class="language-plaintext highlighter-rouge">확정적 할당 단언(definitive assignment assertion)</code>을 함으로써 이를 해결할 수도 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">div</span><span class="o">!</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">rubisco</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h1 id="제네릭generic">제네릭(Generic)</h1>
+
+<p>제네릭은 자바 또는 C# 등의 언어에서 재사용성이 높은 컴포넌트를 만들 때 자주 활용되는 특징입니다. 특히, 한가지 타입보다 여러 가지 타입에서 동작하는 컴포넌트를 생성하는데 사용됩니다. 함수나 클래스를 사용하는 시점에 타입을 선언함으로써 타입을 파라미터처럼 사용할 수 있습니다.</p>
+
+<p>제네릭 타입은 함수 이름 뒤에 괄호(&lt;&gt;)로 표기하며 괄호안에 타입명을 적습니다. 관습적으로 <code class="language-plaintext highlighter-rouge">T</code>는 <code class="language-plaintext highlighter-rouge">Type</code>, <code class="language-plaintext highlighter-rouge">E</code>는 <code class="language-plaintext highlighter-rouge">Element</code>, <code class="language-plaintext highlighter-rouge">K</code>는 <code class="language-plaintext highlighter-rouge">Key</code>, <code class="language-plaintext highlighter-rouge">V</code>는 <code class="language-plaintext highlighter-rouge">Value</code>, <code class="language-plaintext highlighter-rouge">N</code>은 <code class="language-plaintext highlighter-rouge">Number</code>를 뜻합니다.</p>
+
+<p>아래와 같이 코드를 작성해 봅시다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">):</span> <span class="p">(</span><span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">)[]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">o1</span> <span class="o">=</span> <span class="nx">toArray</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 배열 [1, 2]가 대입</span>
+<span class="kd">let</span> <span class="nx">o2</span> <span class="o">=</span> <span class="nx">toArray</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 배열 ["a", "b"]가 대입</span>
+</code></pre></div></div>
+
+<p>타입 선언에서 <code class="language-plaintext highlighter-rouge">|</code> 기호는 <code class="language-plaintext highlighter-rouge">OR</code>를 의미합니다. 다시 말해서 toArray 함수의 파라미터는 숫자형이나 문자형의 데이터를 받을 수 있습니다. 이를 제네릭을 통해 선언하면 다음과 같이 작성할 수 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">o1</span> <span class="o">=</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="kr">number</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 배열 [1, 2]가 대입</span>
+<span class="kd">let</span> <span class="nx">o2</span> <span class="o">=</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 배열 ["a", "b"]가 대입</span>
+</code></pre></div></div>
+
+<p>타입 추론을 통해 아래와 같이 타입 변수를 생략해도 됩니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span><span class="p">[]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">o1</span> <span class="o">=</span> <span class="nx">toArray</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span> <span class="c1">// 배열 [1, 2]가 대입</span>
+<span class="kd">let</span> <span class="nx">o2</span> <span class="o">=</span> <span class="nx">toArray</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 배열 ["a", "b"]가 대입</span>
+</code></pre></div></div>
+
+<p>타입 변수를 여러 개 지정할 수도 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">U</span><span class="p">):</span> <span class="p">[</span><span class="nx">T</span><span class="p">,</span> <span class="nx">U</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kd">let</span> <span class="nx">o1</span> <span class="o">=</span> <span class="nx">toArray</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// 배열 [1, "a"]가 대입</span>
+</code></pre></div></div>
+
+<p>제네릭을 사용하지 않으면 선언해준 데이터 타입으로만 반환값을 선언할 수 있습니다. 즉, 정적입니다. 하지만 제네릭을 사용한다면 동적으로 반환값을 선언할 수 있습니다.</p>
+
+<p>물론 다음과 같이 <code class="language-plaintext highlighter-rouge">any</code> 타입으로 동적 선언을 해줄 수도 있습니다.</p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">any</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="kr">any</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 타입을 선언한다고 해서 함수의 동작에 문제가 발생하지는 않지만, 타입 검사를 하지 않기때문에 오류를 찾아내는 것이 힘들어집니다. 제네릭을 통해 타입을 선언한다면 타입 검증 과정을 거치기 때문에 좀 더 효율성 있는 개발이 이루어질 수 있을 것입니다.</p>
 
                 </div>
             </section>
@@ -774,11 +870,7 @@ $(document).ready(function () {
     function getHeaderNodes(master) {
         var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
         var headerNodes = nodes.filter(function(elem) {
-            if(elem.hasAttribute("id") && (elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3")) {
-                console.log(elem);
-            }
-            
-            return elem.hasAttribute("id") && (elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3");
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3";
         });
         return headerNodes;
     }

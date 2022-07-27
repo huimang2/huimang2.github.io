@@ -491,7 +491,7 @@ into the {body} of the default.hbs template -->
                 </header>
                 <!-- <section class="post-card-excerpt">
                     
-                        <p>기본 문법
+                        <p>기본 타입
 
 </p>
                     
@@ -504,7 +504,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      4 min read
+                      6 min read
                     
                 </span>
             </footer>
@@ -741,11 +741,7 @@ $(document).ready(function () {
     function getHeaderNodes(master) {
         var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
         var headerNodes = nodes.filter(function(elem) {
-            if(elem.hasAttribute("id") && (elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3")) {
-                console.log(elem);
-            }
-            
-            return elem.hasAttribute("id") && (elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3");
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3";
         });
         return headerNodes;
     }

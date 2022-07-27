@@ -729,11 +729,7 @@ $(document).ready(function () {
     function getHeaderNodes(master) {
         var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
         var headerNodes = nodes.filter(function(elem) {
-            if(elem.hasAttribute("id") && (elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3")) {
-                console.log(elem);
-            }
-            
-            return elem.hasAttribute("id") && (elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3");
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3";
         });
         return headerNodes;
     }
