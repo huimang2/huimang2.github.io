@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>클래스와 인터페이스</title>
+        
+          <description>&lt;h1 id=&quot;클래스class&quot;&gt;클래스(class)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Wed, 27 Jul 2022 13:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/typescript/interface</link>
+        <guid isPermaLink="true">https://huimang2.github.io/typescript/interface</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>타입스크립트 문법(TypeScript Syntax)</title>
         
           <description>&lt;h1 id=&quot;기본-타입&quot;&gt;기본 타입&lt;/h1&gt;
