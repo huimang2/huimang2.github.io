@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-07-30T07:00:59+09:00</updated>
+  <updated>2022-07-30T07:30:01+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -1528,46 +1528,6 @@ object 타입은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;
 
       
         <summary type="html">자바스크립트(JavaScript)</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">데이터베이스(DataBase, DB)</title>
-      <link href="https://huimang2.github.io/etc/database" rel="alternate" type="text/html" title="데이터베이스(DataBase, DB)" />
-      <published>2022-07-26T07:00:00+09:00</published>
-      <updated>2022-07-26T07:00:00+09:00</updated>
-      <id>https://huimang2.github.io/etc/database</id>
-      <content type="html" xml:base="https://huimang2.github.io/etc/database">&lt;h1 id=&quot;데이터베이스란&quot;&gt;데이터베이스란?&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터베이스(Database, DB)&lt;/code&gt;는 여러 사람이 공유하고 사용할 목적으로 통합하여 관리되는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터의 집합체&lt;/code&gt;를 의미합니다.&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;데이터베이스는 중복된 데이터를 없애고, 자료를 구조화하여 효율적인 처리를 할 수 있도록 관리되며,&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>huimang2</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="exam" />
-      
-        <category term="db" />
-      
-
-      
-        <summary type="html">데이터베이스란?</summary>
       
 
       
