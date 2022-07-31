@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/algorithm/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-07-31T17:42:53+09:00</updated>
+  <updated>2022-07-31T17:57:48+09:00</updated>
   <id>https://huimang2.github.io/tag/algorithm/feed.xml</id>
 
   
@@ -112,7 +112,7 @@ B = b/G&lt;/p&gt;
 
 &lt;p&gt;이를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a = bq + r&lt;/code&gt;에 대입하면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GA = GBq + r&lt;/code&gt; 이므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r = G(A - Bq)&lt;/code&gt;가 됩니다. 여기서 &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;G는 b와 r의 공약수&lt;/u&gt;&lt;/strong&gt;임을 확인할 수 있으며, 그러므로 &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;G는 G'의 약수&lt;/u&gt;&lt;/strong&gt;임을 알 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = mG&lt;/code&gt;라고 가정한다면, 서로소인 두 정수 k, l에 대하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GB = G'k = Gmk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G(A - Bq) = G'l = Gml&lt;/code&gt;이 성립하며, 양변을 G로 나누면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;B = mk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A - Bq = ml&lt;/code&gt;이 됩니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = mG&lt;/code&gt;라고 가정한다면, 서로소인 두 정수 k, l에 대하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b = GB = G'k = Gmk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r = G(A - Bq) = G'l = Gml&lt;/code&gt;이 성립하며, 양변을 G로 나누면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;B = mk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A - Bq = ml&lt;/code&gt;이 됩니다.&lt;/p&gt;
 
 &lt;p&gt;두 연립 방정식에 의하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A = ml + Bq = ml + mkq = m(l + kq)&lt;/code&gt; 가 되며, &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;m은 A와 B의 공약수&lt;/u&gt;&lt;/strong&gt;가 됨을 알 수 있습니다.&lt;/p&gt;
 
