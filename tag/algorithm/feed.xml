@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/algorithm/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-07-31T16:28:15+09:00</updated>
+  <updated>2022-07-31T16:48:36+09:00</updated>
   <id>https://huimang2.github.io/tag/algorithm/feed.xml</id>
 
   
@@ -133,6 +133,7 @@ B = b/G&lt;/p&gt;
   &lt;li&gt;&lt;strong&gt;프로그래머스(Programmers)&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;https://school.programmers.co.kr/learn/courses/30/lessons/12940&quot; target=&quot;_blank&quot;&gt;[12969] 최대공약수와 최소공배수&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://school.programmers.co.kr/learn/courses/30/lessons/12953&quot; target=&quot;_blank&quot;&gt;[12953] N개의 최소공배수&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</content>
