@@ -386,7 +386,7 @@ into the {body} of the default.hbs template -->
 <p>전역변수로 인스턴스를 생성하고 접근자를 private로 설정함으로써 싱글톤 객체의 오퍼레이션 메소드에 의해서만 접근이 가능하도록 합니다. 또한 생성자의 접근자를 private로 절정함으로써 외부에서 인스턴스를 생성할 수 없도록 만듭니다.</p>
 
 <h6 id="eagersingletonjava">EagerSingleton.java</h6>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">EagerSingleton</span> <span class="o">{</span>
     
@@ -411,7 +411,7 @@ into the {body} of the default.hbs template -->
 <p><code class="language-plaintext highlighter-rouge">늦은 초기화 방식</code>은 이른 초기화 방식과 반대로 클래스의 오퍼레이션 메소드가 호출될 때 인스턴스를 생성합니다. 즉, 클래스 메소드가 호출될 때까지 메모리를 점유하지 않습니다.</p>
 
 <h6 id="lazysingletonjava">LazySingleton.java</h6>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">LazySingleton</span> <span class="o">{</span>
 
@@ -437,7 +437,7 @@ into the {body} of the default.hbs template -->
 <p>늦은 초기화 방식을 보완하여 <code class="language-plaintext highlighter-rouge">synchronized</code> 키워드를 메소드에 선언하여 <code class="language-plaintext highlighter-rouge">쓰레드 안전(Thread safe)</code> 상태로 싱글톤을 생성할 수 있는 방식입니다. <code class="language-plaintext highlighter-rouge">synchronized</code>로 선언된 메소드는 하나의 쓰레드가 메소드를 사용하면 lock을 걸어 다른 쓰레드를 대기상태로 만듭니다.</p>
 
 <h6 id="threadsafelazysingletonjava">ThreadSafeLazySingleton.java</h6>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThreadSafeLazySingleton</span> <span class="o">{</span>
 
@@ -463,7 +463,7 @@ into the {body} of the default.hbs template -->
 <p>DCL 방식은 <code class="language-plaintext highlighter-rouge">syncronized</code>를 메소드에 선언하는 것이 아니라 메소드 내부에 <code class="language-plaintext highlighter-rouge">syncronized</code> 블락을 만드는 방식입니다.</p>
 
 <h6 id="dclsingletonjava">DCLSingleton.java</h6>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">DCLSingleton</span> <span class="o">{</span>
 
@@ -495,7 +495,7 @@ into the {body} of the default.hbs template -->
 <p>이 방식은 클래스안에 클래스 홀더(Holder)를 두어 JVM 클래스 로더 매커니즘과 클래스가 로드되는 시점을 이용한 방식입니다. 현재까지 가장 많이 이용되고 있는 방식입니다.</p>
 
 <h6 id="staticholdersingletonjava">StaticHolderSingleton.java</h6>
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">design_pattern.creational.singleton</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaticHolderSingleton</span> <span class="o">{</span>
 
@@ -594,6 +594,10 @@ into the {body} of the default.hbs template -->
                         <div class="read-next-card-content">
                             <ul>
                                 
+                                
+                                  
+                                
+                                  
                                 
                                   
                                 
@@ -1010,17 +1014,6 @@ $(document).ready(function () {
     window.addEventListener('resize', onResize, false);
 
     update();
-
-    const languages = ['java', 'bash', 'javascript', 'typescript', 'json', 'html'];
-
-    document.querySelectorAll('.highlighter-rouge').forEach(el => {
-        for (let language of languages) {
-            if(el.classList.contains('language-' + language)) {
-                el.setAttribute('data-lang', language.toUpperCase());
-                break;
-            }
-        }
-    });
 });
 </script>
 

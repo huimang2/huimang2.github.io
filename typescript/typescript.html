@@ -221,7 +221,7 @@ into the {body} of the default.hbs template -->
 
 <p>앞서 설명했듯이 타입스크립트는 코드를 컴파일을 필요로 정적인 언어이며, 타입을 명시하기때문에 사전에 에러를 검출하는 것이 가능합니다.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -231,7 +231,7 @@ into the {body} of the default.hbs template -->
 <p>위의 덧셈 함수는 1 + 2를 의도했을테지만, 자바스크립트의 경우 타입이 명시적이지 않기 때문에 <code class="language-plaintext highlighter-rouge">동적 타이핑(Dynamic Typing)</code>에 의하여 숫자 <code class="language-plaintext highlighter-rouge">3</code>이 아닌 문자열 <code class="language-plaintext highlighter-rouge">'12'</code>를 출력합니다.
 즉, 개발자가 의도하지 않은 값이 나올 수 있으며 디버깅이 어렵게 됩니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">sum</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
 <span class="p">}</span>
 
@@ -260,31 +260,31 @@ into the {body} of the default.hbs template -->
 
 <p>프로젝트를 위한 작업공간을 하나 생성합시다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~<span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> ws/typescript <span class="o">&amp;&amp;</span> <span class="nb">cd </span>ws/typescript
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~<span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> ws/typescript <span class="o">&amp;&amp;</span> <span class="nb">cd </span>ws/typescript
 </code></pre></div></div>
 
 <h3 id="nodejs-설치">nodejs 설치</h3>
 
 <p><code class="language-plaintext highlighter-rouge">apt</code>를 통해 <code class="language-plaintext highlighter-rouge">nodejs</code>와 <code class="language-plaintext highlighter-rouge">npm</code>을 설치합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt upgrade <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install </span>nodejs npm
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt upgrade <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt <span class="nb">install </span>nodejs npm
 </code></pre></div></div>
 
 <p>nodejs의 여러버전을 관리하고 싶다면 <code class="language-plaintext highlighter-rouge">nvm</code>을 통해 설치할 수도 있습니다.</p>
 
 <p><a href="https://github.com/nvm-sh/nvm" target="_blank">NVM GitHub</a>에서 버전을 확인후 설치해주세요.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>curl <span class="nt">-o-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>curl <span class="nt">-o-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 </code></pre></div></div>
 
 <p>설치후 다음 명령어를 입력하여 NVM을 활성화 시킵니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">source</span> ~/.bashrc
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">source</span> ~/.bashrc
 </code></pre></div></div>
 
 <p>nodejs 설치는 다음과 같습니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nvm <span class="nb">install </span>node  <span class="c"># 최신 버전 설치</span>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>nvm <span class="nb">install </span>node  <span class="c"># 최신 버전 설치</span>
 <span class="nv">$ </span>nvm <span class="nb">install</span> <span class="nt">--lts</span> <span class="c"># 최신 LTS 버전 설치</span>
 <span class="nv">$ </span>nvm <span class="nb">install </span>16.14.0  <span class="c"># 특정 버전 설치</span>
 <span class="nv">$ </span>nvm <span class="nb">install </span>16  <span class="c"># 특정 버전 16의 최신 릴리즈 설치</span>
@@ -294,32 +294,32 @@ into the {body} of the default.hbs template -->
 
 <p>npm을 통해 타입스크립트를 전역으로 설치합니다. nodejs와 npm이 설치되어있어야 합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">sudo </span>npm i <span class="nt">-g</span> typescript
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">sudo </span>npm i <span class="nt">-g</span> typescript
 </code></pre></div></div>
 
 <p>설치가 되었는지 확인하기 위해 다음 명령어를 입력합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>tsc <span class="nt">-v</span>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>tsc <span class="nt">-v</span>
 </code></pre></div></div>
 
 <p>프로젝트 내에서만 타입스크립트를 설치하고 싶다면 다음과 같이 명령어를 입력합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>npm i typescript <span class="nt">-D</span>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>npm i typescript <span class="nt">-D</span>
 </code></pre></div></div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>npx tsc <span class="nt">-v</span>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>npx tsc <span class="nt">-v</span>
 </code></pre></div></div>
 
 <h3 id="타입스크립트-파일-코드-작성">타입스크립트 파일 코드 작성</h3>
 
 <p>타입스크립트의 확장자는 <code class="language-plaintext highlighter-rouge">.ts</code>입니다. <code class="language-plaintext highlighter-rouge">app.ts</code> 파일을 생성후 에디터로 엽니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">touch </span>app.ts <span class="o">&amp;&amp;</span> nano app.ts
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span><span class="nb">touch </span>app.ts <span class="o">&amp;&amp;</span> nano app.ts
 </code></pre></div></div>
 
 <p>다음 예제 코드를 작성하세요.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">message</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello world</span><span class="dl">'</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">message</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello world</span><span class="dl">'</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
 </code></pre></div></div>
 
@@ -327,12 +327,12 @@ into the {body} of the default.hbs template -->
 
 <p>코드를 저장하고 다음 명령어를 입력하여 컴파일합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>tsc app.ts
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/ws/typescript<span class="nv">$ </span>tsc app.ts
 </code></pre></div></div>
 
 <p>컴파일이 완료되면 자바스크립트 파일(app.js)이 생성됩니다.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello world</span><span class="dl">'</span><span class="p">;</span>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">message</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello world</span><span class="dl">'</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
 </code></pre></div></div>
 
@@ -342,12 +342,12 @@ into the {body} of the default.hbs template -->
 
 <p>컴파일시 명령어를 통해 여러 옵션을 줄 수 있습니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~<span class="nv">$ </span>tsc app.ts <span class="nt">--strict</span> <span class="nb">true</span> <span class="nt">--target</span> ES6 <span class="nt">--lib</span> ES2015,DOM <span class="nt">--module</span> CommonJS
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~<span class="nv">$ </span>tsc app.ts <span class="nt">--strict</span> <span class="nb">true</span> <span class="nt">--target</span> ES6 <span class="nt">--lib</span> ES2015,DOM <span class="nt">--module</span> CommonJS
 </code></pre></div></div>
 
 <p>옵션 명령어 뿐만 아니라 <code class="language-plaintext highlighter-rouge">tsconfig.json</code> 파일을 통해서도 옵션을 줄 수 있습니다. 다음 명령어를 통해 default 설정파일을 생성할 수 있습니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~<span class="nv">$ </span>tsc <span class="nt">--init</span>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~<span class="nv">$ </span>tsc <span class="nt">--init</span>
 </code></pre></div></div>
 
 <p>컴파일 옵션에 대해서는 다음 페이지를 참조하세요: <a href="https://www.typescriptlang.org/docs/handbook/compiler-options.html" target="_blank">영문</a> / <a href="https://typescript-kr.github.io/pages/compiler-options.html" target="_blank">한글</a></p>
@@ -433,6 +433,8 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
+                                
+                                  
                                     
                                         
                                         
@@ -461,6 +463,8 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
+                                  
+                                
                                   
                                 
                                   
@@ -520,7 +524,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      6 min read
+                      7 min read
                     
                 </span>
             </footer>
@@ -533,14 +537,10 @@ into the {body} of the default.hbs template -->
             
                 
 
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/etc/iso-standard-7498">
-                <div class="post-card-image" style="background-image: url(/assets/images/osi7/osi_img_01.png)"></div>
-            </a>
+    <article class="post-card post-template no-image">
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/etc/iso-standard-7498">
+            <a class="post-card-content-link" href="/etc/database">
                 <header class="post-card-header">
                     
                         <div class="post-card-tags-container">
@@ -548,11 +548,11 @@ into the {body} of the default.hbs template -->
                         </div>
                     
 
-                    <h2 class="post-card-title">OSI 7계층(ISO Standard 7498)</h2>
+                    <h2 class="post-card-title">데이터베이스(DataBase, DB)</h2>
                 </header>
                 <!-- <section class="post-card-excerpt">
                     
-                        <p>OSI 7계층
+                        <p>데이터베이스란?
 
 </p>
                     
@@ -565,7 +565,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      3 min read
+                      1 min read
                     
                 </span>
             </footer>
@@ -863,17 +863,6 @@ $(document).ready(function () {
     window.addEventListener('resize', onResize, false);
 
     update();
-
-    const languages = ['java', 'bash', 'javascript', 'typescript', 'json', 'html'];
-
-    document.querySelectorAll('.highlighter-rouge').forEach(el => {
-        for (let language of languages) {
-            if(el.classList.contains('language-' + language)) {
-                el.setAttribute('data-lang', language.toUpperCase());
-                break;
-            }
-        }
-    });
 });
 </script>
 

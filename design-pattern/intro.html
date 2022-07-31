@@ -477,6 +477,10 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                
+                                  
+                                
+                                  
                                     
                                         
                                         
@@ -837,17 +841,6 @@ $(document).ready(function () {
     window.addEventListener('resize', onResize, false);
 
     update();
-
-    const languages = ['java', 'bash', 'javascript', 'typescript', 'json', 'html'];
-
-    document.querySelectorAll('.highlighter-rouge').forEach(el => {
-        for (let language of languages) {
-            if(el.classList.contains('language-' + language)) {
-                el.setAttribute('data-lang', language.toUpperCase());
-                break;
-            }
-        }
-    });
 });
 </script>
 

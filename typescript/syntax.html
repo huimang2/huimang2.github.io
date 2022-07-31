@@ -246,14 +246,14 @@ into the {body} of the default.hbs template -->
 
 <p><code class="language-plaintext highlighter-rouge">boolean</code>은 가장 기본적인 데이터 타입으로, <code class="language-plaintext highlighter-rouge">참/거짓(true/false)</code>값을 나타냅니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">isDone</span><span class="p">:</span> <span class="nx">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">isDone</span><span class="p">:</span> <span class="nx">boolean</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 </code></pre></div></div>
 
 <h3 id="숫자number">숫자(Number)</h3>
 
 <p>자바스크립트처럼 타입스크립트의 모든 숫자는 부동소수점을 사용합니다. 16진수, 10진수 literal과 2진수, 8진수 literal도 지원합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">decimal</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">decimal</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">hex</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mh">0xff0a</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">binary</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mb">0b1010</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">octet</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="mo">0o777</span><span class="p">;</span>
@@ -263,13 +263,13 @@ into the {body} of the default.hbs template -->
 
 <p>자바스크립트와 마찬가지로 <code class="language-plaintext highlighter-rouge">큰따옴표(")</code> 또는 <code class="language-plaintext highlighter-rouge">작은따옴표(')</code>를 통해 문자열을 나타냅니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">color</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">color</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">rubisco</span><span class="dl">'</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">백틱(`)</code>으로 문자열을 감싸서 템플릿 문자열을 만들 수도 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">rubisco</span><span class="dl">"</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">rubisco</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">introduce</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s2">`안녕하세요? </span><span class="p">${</span> <span class="nx">name</span> <span class="p">}</span><span class="s2"> 입니다.`</span><span class="p">;</span> <span class="c1">// "안녕하세요? " + name + " 입니다." 와 동일</span>
 </code></pre></div></div>
 
@@ -279,7 +279,7 @@ into the {body} of the default.hbs template -->
 
 <p>null과 undefined는 기본적으로 모든 타입의 하위타입이므로 아무런 설정이 없다면 아래와 같은 할당이 허용됩니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>하지만 이러한 동작은 버그를 양산하기 쉽습니다. 엄격한 타입 체크를 위해 타입스크립트 2.0부터 옵션으로 <code class="language-plaintext highlighter-rouge">--strictNullChecks</code> 플래그가 추가되었습니다. 옵션에 이 플래그를 추가하면 null과 undefined 값을 다른 타입에 할당하는 것을 방지할 수 있습니다.</p>
@@ -288,13 +288,13 @@ into the {body} of the default.hbs template -->
 
 <p><code class="language-plaintext highlighter-rouge">any</code> 타입은 모든 데이터 타입을 허용할 때 사용합니다. 데이터 타입을 미리 알 수 없는 경우 사용할 수 있지만 불가피한 경우를 제외하고는 사용하지 않는것이 권장됩니다. 보통 자바스크립트 문법을 점진적으로 타입스크립트 문법으로 바꿀때 사용합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">letter</span><span class="p">:</span> <span class="kr">any</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">문자</span><span class="dl">"</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">letter</span><span class="p">:</span> <span class="kr">any</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">문자</span><span class="dl">"</span><span class="p">;</span>
 <span class="nx">letter</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="c1">// string 타입이 들어있지만 number 타입이 들어갈 수 있습니다.</span>
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">unknown</code> 타입은 타입스크립트 3.0부터 도입되었습니다. any 타입과 동일하게 모든 타입의 값을 허용하지만 엄격한 타입 체크를 요구합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">num</span><span class="p">:</span> <span class="kr">any</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">num</span><span class="p">:</span> <span class="kr">any</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span> <span class="c1">// undefined 출력</span>
 
 <span class="kd">let</span> <span class="nx">unknownValue</span><span class="p">:</span> <span class="nx">unknown</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
@@ -305,7 +305,7 @@ into the {body} of the default.hbs template -->
 
 <p>unknown 타입의 경우 다음과 같은 엄격한 타입체크가 필요합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">unknownValue</span><span class="p">:</span> <span class="nx">unknown</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">unknownValue</span><span class="p">:</span> <span class="nx">unknown</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 
 <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">unknownValue</span> <span class="o">===</span> <span class="dl">"</span><span class="s2">string</span><span class="dl">"</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">unknownValue</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
@@ -318,14 +318,14 @@ into the {body} of the default.hbs template -->
 
 <p><code class="language-plaintext highlighter-rouge">void</code> 타입은 null과 undefined만 값으로 가질 수 있는 타입입니다. 함수에서는 리턴값이 없을때 사용합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">msg_logger</span><span class="p">(</span><span class="nx">msg</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">msg_logger</span><span class="p">(</span><span class="nx">msg</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">never</code> 타입은 아무런 값을 가지지 않는 타입입니다. null, undefined를 포함한 모든 타입의 최하위 타입에 속하기 때문에 never을 제외한 어떤 값도 할당될 수 없습니다. 무한 루프를 돌거나 에러를 출력하는 함수의 경우 리턴값 자체가 없기때문에 never 타입을 가집니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">infiniteLoop</span><span class="p">():</span> <span class="nx">never</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">infiniteLoop</span><span class="p">():</span> <span class="nx">never</span> <span class="p">{</span>
     <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{}</span> <span class="c1">// 무한 루프</span>
 <span class="p">}</span>
 
@@ -341,12 +341,12 @@ into the {body} of the default.hbs template -->
 <p>자바스크립트는 프로토타입 객체 기반 언어로, 원시 자료형을 제외한 모든 데이터가 객체(Object)로 구성됩니다.
 object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({})</code>를 사용하여 선언할 수 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span><span class="p">:</span> <span class="p">{</span><span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">홍길동</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">};</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span><span class="p">:</span> <span class="p">{</span><span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">홍길동</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">};</span>
 </code></pre></div></div>
 
 <p>위에 코드에 보는 바와 같이 <code class="language-plaintext highlighter-rouge">콜론(:)</code>의 좌변에는 속성의 <code class="language-plaintext highlighter-rouge">키워드값</code>이, 우변에는 <code class="language-plaintext highlighter-rouge">속성 타입</code>이 들어갑니다. 각 속성의 구분은 위에 코드처럼 <code class="language-plaintext highlighter-rouge">콤마(,)</code>로 구분하며, <code class="language-plaintext highlighter-rouge">세미콜론(;)</code>을 통해서도 구분가능합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span><span class="p">:</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span><span class="p">:</span> <span class="p">{</span>
     <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> 
     <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
 <span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">홍길동</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">};</span>
@@ -354,7 +354,7 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 
 <p>속성명 뒤에 <code class="language-plaintext highlighter-rouge">물음표(?)</code>를 붙이면 해당 속성을 선택 속성으로 선언할 수 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span><span class="p">:</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span><span class="p">:</span> <span class="p">{</span>
     <span class="nl">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> 
     <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
     <span class="nl">comment</span><span class="p">?:</span> <span class="kr">string</span><span class="p">;</span>
@@ -365,7 +365,7 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 
 <p>속성명 앞에 <code class="language-plaintext highlighter-rouge">readonly</code> 키워드를 붙이면 값의 재할당을 막을 수 있습니다. 변수에서 <code class="language-plaintext highlighter-rouge">const</code> 키워드를 통한 변수 할당과 동일합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span><span class="p">:</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">user</span><span class="p">:</span> <span class="p">{</span>
     <span class="k">readonly</span> <span class="nx">name</span><span class="p">:</span> <span class="kr">string</span><span class="p">;</span> 
     <span class="nl">age</span><span class="p">:</span> <span class="kr">number</span><span class="p">;</span>
 <span class="p">}</span> <span class="o">=</span> <span class="p">{</span><span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">홍길동</span><span class="dl">'</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="mi">19</span><span class="p">};</span>
@@ -379,47 +379,47 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 
 <p>첫번째 방법은 타입 뒤에 <code class="language-plaintext highlighter-rouge">[]</code>을 붙이는 것입니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">colors</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">orange</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">];</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">colors</span><span class="p">:</span> <span class="kr">string</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">orange</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">];</span>
 </code></pre></div></div>
 
 <p>두번째 방법은 <code class="language-plaintext highlighter-rouge">제네릭(generic)</code> 배열 타입을 사용하는 것입니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">colors</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">orange</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">];</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">colors</span><span class="p">:</span> <span class="nb">Array</span><span class="o">&lt;</span><span class="kr">string</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">orange</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">yellow</span><span class="dl">'</span><span class="p">,</span><span class="dl">'</span><span class="s1">green</span><span class="dl">'</span><span class="p">];</span>
 </code></pre></div></div>
 
 <h3 id="튜플tuple">튜플(Tuple)</h3>
 
 <p>튜플은 배열과 유사하며, 요소(element)의 수가 고정된 배열을 나타낼 수 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">member</span><span class="p">:</span> <span class="p">[</span><span class="kr">number</span><span class="p">,</span> <span class="kr">string</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">rubisco</span><span class="dl">'</span><span class="p">];</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">member</span><span class="p">:</span> <span class="p">[</span><span class="kr">number</span><span class="p">,</span> <span class="kr">string</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="dl">'</span><span class="s1">rubisco</span><span class="dl">'</span><span class="p">];</span>
 </code></pre></div></div>
 
 <h3 id="열거enum">열거(Enum)</h3>
 
 <p>열거형은 자바의 열거형과 마찬가지로 숫자 또는 문자열 값의 집합에 이름을 부여할 수 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Week</span> <span class="p">{</span> <span class="nx">SUN</span><span class="p">,</span> <span class="nx">MON</span><span class="p">,</span> <span class="nx">TUE</span><span class="p">,</span> <span class="nx">WED</span><span class="p">,</span> <span class="nx">THU</span><span class="p">,</span> <span class="nx">FRI</span><span class="p">,</span> <span class="nx">SAT</span> <span class="p">}</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Week</span> <span class="p">{</span> <span class="nx">SUN</span><span class="p">,</span> <span class="nx">MON</span><span class="p">,</span> <span class="nx">TUE</span><span class="p">,</span> <span class="nx">WED</span><span class="p">,</span> <span class="nx">THU</span><span class="p">,</span> <span class="nx">FRI</span><span class="p">,</span> <span class="nx">SAT</span> <span class="p">}</span>
 
 <span class="kd">let</span> <span class="nx">today</span><span class="p">:</span> <span class="nx">Week</span> <span class="o">=</span> <span class="nx">Week</span><span class="p">.</span><span class="nx">WED</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>인덱스 번호로도 접근가능합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Week</span> <span class="p">{</span> <span class="nx">SUN</span><span class="p">,</span> <span class="nx">MON</span><span class="p">,</span> <span class="nx">TUE</span><span class="p">,</span> <span class="nx">WED</span><span class="p">,</span> <span class="nx">THU</span><span class="p">,</span> <span class="nx">FRI</span><span class="p">,</span> <span class="nx">SAT</span> <span class="p">}</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Week</span> <span class="p">{</span> <span class="nx">SUN</span><span class="p">,</span> <span class="nx">MON</span><span class="p">,</span> <span class="nx">TUE</span><span class="p">,</span> <span class="nx">WED</span><span class="p">,</span> <span class="nx">THU</span><span class="p">,</span> <span class="nx">FRI</span><span class="p">,</span> <span class="nx">SAT</span> <span class="p">}</span>
 
 <span class="kd">let</span> <span class="nx">tomarrow</span><span class="p">:</span> <span class="nx">Week</span> <span class="o">=</span> <span class="nx">Week</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span> <span class="c1">// Week.THU와 동일</span>
 </code></pre></div></div>
 
 <p>자바처럼 초기 인덱스 번호를 지정해 줄 수도 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Week</span> <span class="p">{</span> <span class="nx">SUN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">MON</span><span class="p">,</span> <span class="nx">TUE</span><span class="p">,</span> <span class="nx">WED</span><span class="p">,</span> <span class="nx">THU</span><span class="p">,</span> <span class="nx">FRI</span><span class="p">,</span> <span class="nx">SAT</span> <span class="p">}</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Week</span> <span class="p">{</span> <span class="nx">SUN</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">MON</span><span class="p">,</span> <span class="nx">TUE</span><span class="p">,</span> <span class="nx">WED</span><span class="p">,</span> <span class="nx">THU</span><span class="p">,</span> <span class="nx">FRI</span><span class="p">,</span> <span class="nx">SAT</span> <span class="p">}</span>
 
 <span class="kd">let</span> <span class="nx">yesterday</span><span class="p">:</span> <span class="nx">Week</span> <span class="o">=</span> <span class="nx">Week</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span> <span class="c1">// Week.TUE와 동일</span>
 </code></pre></div></div>
 
 <p>또한 자바와 달리 문자열 값을 지정해 줄 수 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">enum</span> <span class="nx">Color</span> <span class="p">{</span>
     <span class="nx">RED</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">red</span><span class="dl">"</span><span class="p">,</span>
     <span class="nx">BLUE</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">blue</span><span class="dl">"</span><span class="p">,</span>
     <span class="nx">GREEN</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">green</span><span class="dl">"</span>
@@ -434,37 +434,36 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 
 <p><code class="language-plaintext highlighter-rouge">타입 추론(Type Inference)</code>이란 타입스크립트가 코드를 해석해나가는 동작을 의미합니다. 아래와 같이 타입을 선언하지 않고 변수에 값을 할당하면 타입스크립트에서는 str 변수를 string 타입으로 추론합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">spot</span><span class="dl">"</span> <span class="c1">// string 타입 값이 할당되었으므로 string 타입으로 추론</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">spot</span><span class="dl">"</span> <span class="c1">// string 타입 값이 할당되었으므로 string 타입으로 추론</span>
 </code></pre></div></div>
 
 <p>그러므로 str 변수에 문자열이 아닌 숫자를 재할당한다면 오류가 발생합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">str</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// Type 'number' is not assignable to type 'string'.</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">str</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// Type 'number' is not assignable to type 'string'.</span>
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">const</code>나 <code class="language-plaintext highlighter-rouge">readonly</code> 키워드가 있는 경우 타입스크립트는 구체적인 literal 타입을 추론합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 1로 추론</span>
-
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 1로 추론</span>
 </code></pre></div></div>
 
 <h2 id="타입-단언type-assertion">타입 단언(type assertion)</h2>
 
 <p>타입스크립트 컴파일러는 타입 표기, 타입 추론 등을 이용해 값의 타입을 판단합니다. 하지만 때로는 컴파일러가 가진 정보를 무시하고 개발자가 원하는 임의의 타입을 값에 할당하고 싶을 수 있는데, 이때 필요한 것이 <code class="language-plaintext highlighter-rouge">타입 단언(type assertion)</code>입니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">div</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">rubisco</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// Object is possibly 'null'.ts(2531)</span>
 </code></pre></div></div>
 
 <p>위의 코드의 경우 타입스크립트는 div가 null일 경우까지 추론하게 됩니다. div가 null일 경우 innerText 메소드가 존재하지 않게 되므로 오류를 출력하게 됩니다. 이럴때 변수 뒤에 as 키워드를 붙여 타입 단언을 해줄 수 있습니다. 자바에서 <code class="language-plaintext highlighter-rouge">명시적 형변환(Casting)</code>과 같은데, 형변환은 런타임에서 발생하는 동작이고 타입 단언은 컴파일시 발생하는 동작이라는 차이가 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">(</span><span class="nx">div</span> <span class="k">as</span> <span class="nx">HTMLDivElement</span><span class="p">).</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">rubisco</span><span class="dl">"</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>변수 뒤에 <code class="language-plaintext highlighter-rouge">느낌표(!)</code>를 붙여서 값이 무조건 존재한다는 <code class="language-plaintext highlighter-rouge">확정적 할당 단언(definitive assignment assertion)</code>을 함으로써 이를 해결할 수도 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">div</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">div</span><span class="dl">'</span><span class="p">);</span>
 <span class="nx">div</span><span class="o">!</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">rubisco</span><span class="dl">"</span><span class="p">;</span>
 </code></pre></div></div>
 
@@ -476,7 +475,7 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 
 <p>아래와 같이 코드를 작성해 봅시다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">):</span> <span class="p">(</span><span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">)[]</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">):</span> <span class="p">(</span><span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">)[]</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
 <span class="p">}</span>
 
@@ -486,7 +485,7 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 
 <p>타입 선언에서 <code class="language-plaintext highlighter-rouge">|</code> 기호는 <code class="language-plaintext highlighter-rouge">OR</code>를 의미합니다. 다시 말해서 toArray 함수의 파라미터는 숫자형이나 문자형의 데이터를 받을 수 있습니다. 이를 제네릭을 통해 선언하면 다음과 같이 작성할 수 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span><span class="p">[]</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span><span class="p">[]</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
 <span class="p">}</span>
 
@@ -496,7 +495,7 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 
 <p>타입 추론을 통해 아래와 같이 타입 변수를 생략해도 됩니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span><span class="p">[]</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">T</span><span class="p">):</span> <span class="nx">T</span><span class="p">[]</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
 <span class="p">}</span>
 
@@ -506,7 +505,7 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 
 <p>타입 변수를 여러 개 지정할 수도 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">U</span><span class="p">):</span> <span class="p">[</span><span class="nx">T</span><span class="p">,</span> <span class="nx">U</span><span class="p">]</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="o">&lt;</span><span class="nx">T</span><span class="p">,</span> <span class="nx">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="nx">U</span><span class="p">):</span> <span class="p">[</span><span class="nx">T</span><span class="p">,</span> <span class="nx">U</span><span class="p">]</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
 <span class="p">}</span>
 
@@ -517,7 +516,7 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
 
 <p>물론 다음과 같이 <code class="language-plaintext highlighter-rouge">any</code> 타입으로 동적 선언을 해줄 수도 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">any</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="kr">any</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">toArray</span><span class="p">(</span><span class="nx">a</span><span class="p">:</span> <span class="kr">any</span><span class="p">,</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="kr">any</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -604,6 +603,8 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
                                 
                                 
                                   
+                                
+                                  
                                     
                                         
                                         
@@ -632,6 +633,8 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
                                             <li><a href="/typescript/typescript">타입스크립트(TypeScript)란?</a></li>
                                         
                                     
+                                  
+                                
                                   
                                 
                                   
@@ -691,7 +694,7 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
                 <span class="reading-time">
                     
                     
-                      5 min read
+                      6 min read
                     
                 </span>
             </footer>
@@ -1034,17 +1037,6 @@ $(document).ready(function () {
     window.addEventListener('resize', onResize, false);
 
     update();
-
-    const languages = ['java', 'bash', 'javascript', 'typescript', 'json', 'html'];
-
-    document.querySelectorAll('.highlighter-rouge').forEach(el => {
-        for (let language of languages) {
-            if(el.classList.contains('language-' + language)) {
-                el.setAttribute('data-lang', language.toUpperCase());
-                break;
-            }
-        }
-    });
 });
 </script>
 

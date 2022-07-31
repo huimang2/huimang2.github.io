@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="https://huimang2.github.io/tag/algorithm/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
+  <updated>2022-07-31T16:28:15+09:00</updated>
+  <id>https://huimang2.github.io/tag/algorithm/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Rubisco’s Programming Note | </title>
+  
+
+  
+    <subtitle>프로그래밍 노트</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">최대공약수와 최소공배수</title>
+      <link href="https://huimang2.github.io/algorithm/gcd_lcm" rel="alternate" type="text/html" title="최대공약수와 최소공배수" />
+      <published>2022-07-31T10:00:00+09:00</published>
+      <updated>2022-07-31T10:00:00+09:00</updated>
+      <id>https://huimang2.github.io/algorithm/gcd_lcm</id>
+      <content type="html" xml:base="https://huimang2.github.io/algorithm/gcd_lcm">&lt;h1 id=&quot;최대공약수와-최소공배수&quot;&gt;최대공약수와 최소공배수&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;최대공약수(GCD, Greateast Common Division)&lt;/code&gt;는 두 수에 대한 공약수의 최대값을 의미하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;최소공배수(LCM, Least Common Multiple)&lt;/code&gt;는 두 수에 대한 공배수의 최소값을 말합니다. 최대공약수와 최소공배수는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;소인수분해(Integer factorization)&lt;/code&gt;를 통해 구할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;최대공약수는 소인수의 교집합을 모두 곱한 값이고, 최소공배수는 소인수의 합집합을 모두 곱한 값입니다. 예를 들어 a = 12, b = 20 인 경우, a와 b의 최대공약수와 최소공배수는 다음과 같이 구할 수 있습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;a = 12 = &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 * 2&lt;/code&gt; * 3&lt;br /&gt;
+b = 20 = &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 * 2&lt;/code&gt; * 5&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;a와 b의 소인수에 대한 교집합은 [2, 2]가 되고, 이를 모두 곱한 4가 최대공약수가 됩니다. 또한 a와 b의 소인수에 대한 합집합은 [2, 2, 3, 5]가 되고, 이를 모두 곱한 60이 최소공배수가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;최대공약수를 G, 최소공배수를 L이라고 한다면, 다음과 같은 식이 성립합니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;a = 12 = G * A&lt;br /&gt;
+b = 20 = G * B&lt;/p&gt;
+
+  &lt;p&gt;A = a/G
+B = b/G&lt;/p&gt;
+
+  &lt;p&gt;L = G * A * B = G * (a/G) * (b/G) = a*b/G&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이때 A와 B는 서로소가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;이를 자바스크립트 코드로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LCM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;유클리드-호제법euclidean-algorithm&quot;&gt;유클리드 호제법(Euclidean algorithm)&lt;/h1&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;두 양의 정수 a, b (a &amp;gt; b)에 대하여 a = bq + r (0 ≤ r &amp;lt; b)이라 하면, &lt;strong&gt;a, b의 최대공약수&lt;/strong&gt;는 &lt;strong&gt;b, r의 최대공약수&lt;/strong&gt;와 같다.&lt;/p&gt;
+
+  &lt;p&gt;즉, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcd(a, b) = gcd(b, r)&lt;/code&gt;이다.&lt;/p&gt;
+
+  &lt;p&gt;r = 0이라면, &lt;strong&gt;a, b의 최대공약수&lt;/strong&gt;는 &lt;strong&gt;b&lt;/strong&gt;가 된다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;두 양의 정수, 혹은 두 다항식의 최대공약수를 구하는 방법입니다. 이 알고리즘은 유클리드의 원론에 적혀있는 내용으로, 인류 최초의 알고리즘이라 합니다.&lt;/p&gt;
+
+&lt;p&gt;소인수 분해를 통해 최대공약수를 구하면 시간 복잡도가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(N)&lt;/code&gt; 이지만, 유클리드 호제법으로 최대공약수를 구하면 시간 복잡도를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(logN)&lt;/code&gt;으로 줄일 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;증명&quot;&gt;증명&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcd(a, b) = G&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcd(b, r) = G'&lt;/code&gt; 라고 가정 한다면, &lt;strong style=&quot;color: orangered&quot;&gt;서로소인 두 정수 A, B&lt;/strong&gt;에 대하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a = GA&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b = GB&lt;/code&gt;가 성립합니다.&lt;/p&gt;
+
+&lt;p&gt;이를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a = bq + r&lt;/code&gt;에 대입하면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GA = GBq + r&lt;/code&gt; 이므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r = G(A - Bq)&lt;/code&gt;가 됩니다. 여기서 &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;G는 b와 r의 공약수&lt;/u&gt;&lt;/strong&gt;임을 확인할 수 있으며, 그러므로 &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;G는 G'의 약수&lt;/u&gt;&lt;/strong&gt;임을 알 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = mG&lt;/code&gt;라고 가정한다면, 서로소인 두 정수 k, l에 대하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GB = G'k = Gmk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G(A - Bq) = G'l = Gml&lt;/code&gt;이 성립하며, 양변을 G로 나누면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;B = mk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A - Bq = ml&lt;/code&gt;이 됩니다.&lt;/p&gt;
+
+&lt;p&gt;두 연립 방정식에 의하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A = ml + Bq = ml + mkq = m(l + kq)&lt;/code&gt; 가 되며, &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;m은 A와 B의 공약수&lt;/u&gt;&lt;/strong&gt;가 됨을 알 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;여기에서 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color: orangered&quot;&gt;A와 B는 서로소 관계&lt;/code&gt;에 있으므로, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m = 1&lt;/code&gt; 이 되며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = mG&lt;/code&gt;라고 가정했으므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = G&lt;/code&gt; 가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;즉, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcd(a, b) = gcd(b, r)&lt;/code&gt;입니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;소스-코드&quot;&gt;소스 코드&lt;/h1&gt;
+
+&lt;div data-lang=&quot;JAVASCRIPT&quot; style=&quot;top:0&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LCM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;관련-문제&quot;&gt;관련 문제&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;프로그래머스(Programmers)&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://school.programmers.co.kr/learn/courses/30/lessons/12940&quot; target=&quot;_blank&quot;&gt;[12969] 최대공약수와 최소공배수&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="algorithm" />
+      
+
+      
+        <summary type="html">최대공약수와 최소공배수</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

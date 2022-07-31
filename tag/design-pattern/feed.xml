@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/design-pattern/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-07-30T07:46:17+09:00</updated>
+  <updated>2022-07-31T16:28:15+09:00</updated>
   <id>https://huimang2.github.io/tag/design-pattern/feed.xml</id>
 
   
@@ -220,7 +220,7 @@
 &lt;p&gt;전역변수로 인스턴스를 생성하고 접근자를 private로 설정함으로써 싱글톤 객체의 오퍼레이션 메소드에 의해서만 접근이 가능하도록 합니다. 또한 생성자의 접근자를 private로 절정함으로써 외부에서 인스턴스를 생성할 수 없도록 만듭니다.&lt;/p&gt;
 
 &lt;h6 id=&quot;eagersingletonjava&quot;&gt;EagerSingleton.java&lt;/h6&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EagerSingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
     
@@ -245,7 +245,7 @@
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;늦은 초기화 방식&lt;/code&gt;은 이른 초기화 방식과 반대로 클래스의 오퍼레이션 메소드가 호출될 때 인스턴스를 생성합니다. 즉, 클래스 메소드가 호출될 때까지 메모리를 점유하지 않습니다.&lt;/p&gt;
 
 &lt;h6 id=&quot;lazysingletonjava&quot;&gt;LazySingleton.java&lt;/h6&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LazySingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
@@ -271,7 +271,7 @@
 &lt;p&gt;늦은 초기화 방식을 보완하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt; 키워드를 메소드에 선언하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;쓰레드 안전(Thread safe)&lt;/code&gt; 상태로 싱글톤을 생성할 수 있는 방식입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;로 선언된 메소드는 하나의 쓰레드가 메소드를 사용하면 lock을 걸어 다른 쓰레드를 대기상태로 만듭니다.&lt;/p&gt;
 
 &lt;h6 id=&quot;threadsafelazysingletonjava&quot;&gt;ThreadSafeLazySingleton.java&lt;/h6&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
@@ -297,7 +297,7 @@
 &lt;p&gt;DCL 방식은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;syncronized&lt;/code&gt;를 메소드에 선언하는 것이 아니라 메소드 내부에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;syncronized&lt;/code&gt; 블락을 만드는 방식입니다.&lt;/p&gt;
 
 &lt;h6 id=&quot;dclsingletonjava&quot;&gt;DCLSingleton.java&lt;/h6&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 
@@ -329,7 +329,7 @@
 &lt;p&gt;이 방식은 클래스안에 클래스 홀더(Holder)를 두어 JVM 클래스 로더 매커니즘과 클래스가 로드되는 시점을 이용한 방식입니다. 현재까지 가장 많이 이용되고 있는 방식입니다.&lt;/p&gt;
 
 &lt;h6 id=&quot;staticholdersingletonjava&quot;&gt;StaticHolderSingleton.java&lt;/h6&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StaticHolderSingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 

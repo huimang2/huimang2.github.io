@@ -219,26 +219,26 @@ into the {body} of the default.hbs template -->
 
 <p>우분투 20.04 LTS 환경을 기준으로 프로젝트를 생성해보겠습니다. 웹브라우저 환경에서 실행되므로 웹서버를 필요로 합니다. 간단하게 nodejs를 통해 웹서버를 만들도록 합시다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>phaser3 <span class="o">&amp;&amp;</span> <span class="nb">cd </span>phaser3 <span class="o">&amp;&amp;</span> <span class="nb">mkdir </span>public <span class="o">&amp;&amp;</span>  npm i http-server
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">mkdir </span>phaser3 <span class="o">&amp;&amp;</span> <span class="nb">cd </span>phaser3 <span class="o">&amp;&amp;</span> <span class="nb">mkdir </span>public <span class="o">&amp;&amp;</span>  npm i http-server
 </code></pre></div></div>
 
 <p>웹서버를 실행하면 public 폴더가 루트폴더로 설정됩니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npx http-server
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npx http-server
 </code></pre></div></div>
 
 <p>타입스크립트를 통해 프로젝트를 만들도록 하겠습니다. 새로운 터미널을 열고 npm을 통해 typescript와 phaser를 설치합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i typescript phaser
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i typescript phaser
 </code></pre></div></div>
 
 <p>타입스크립트 설정파일(tsconfig.json)을 생성하고 다음과 같이 작성해줍니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npx tsc <span class="nt">--init</span> <span class="o">&amp;&amp;</span> nano 
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npx tsc <span class="nt">--init</span> <span class="o">&amp;&amp;</span> nano 
 </code></pre></div></div>
 
 <h6 id="tsconfigjson">tsconfig.json</h6>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+<div data-lang="JSON" class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ES2015"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"commonJS"</span><span class="p">,</span><span class="w">
@@ -265,16 +265,16 @@ into the {body} of the default.hbs template -->
 
 <p>모듈을 합치고 호환성을 위해 웹팩을 사용하도록 하겠습니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i webpack webpack-cli ts-loader
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i webpack webpack-cli ts-loader
 </code></pre></div></div>
 
 <p>웹팩 설정파일을 작성합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">touch </span>webpack.config.js <span class="o">&amp;&amp;</span> nano webpack.config.js
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">touch </span>webpack.config.js <span class="o">&amp;&amp;</span> nano webpack.config.js
 </code></pre></div></div>
 
 <h6 id="webpackconfigjs">webpack.config.js</h6>
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">path</span><span class="dl">"</span><span class="p">);</span>
+<div data-lang="TYPESCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">path</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">entry</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./src/main.ts</span><span class="dl">"</span><span class="p">,</span>
@@ -300,20 +300,20 @@ into the {body} of the default.hbs template -->
 
 <p>웹팩을 <code class="language-plaintext highlighter-rouge">watch mode</code>로 실행하면 코드가 수정될 때마다 자동으로 컴파일 됩니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npx webpack <span class="nt">-w</span>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npx webpack <span class="nt">-w</span>
 </code></pre></div></div>
 
 <h1 id="게임-생성">게임 생성</h1>
 
 <p>우선 메인 문서를 생성합시다. http-server는 <code class="language-plaintext highlighter-rouge">index.html</code>를 메인 문서로 인식합니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">touch</span> /public/index.html
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">touch</span> /public/index.html
 </code></pre></div></div>
 
 <p>다음과 같이 컴파일된 자바스크립트 파일을 추가해주세요.</p>
 
 <h6 id="indexhtml">index.html</h6>
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
     <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
@@ -329,11 +329,11 @@ into the {body} of the default.hbs template -->
 
 <p>게임 인스턴스는 <code class="language-plaintext highlighter-rouge">new Phaser.Game()</code>을 호출하여 생성할 수 있습니다. 타입스크립트 파일을 작성하겠습니다.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">touch</span> /src/main.ts <span class="o">&amp;&amp;</span> nano /src/main.ts
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">touch</span> /src/main.ts <span class="o">&amp;&amp;</span> nano /src/main.ts
 </code></pre></div></div>
 
 <h6 id="maints">main.ts</h6>
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Phaser</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">phaser</span><span class="dl">'</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Phaser</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">phaser</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">config</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">GameConfig</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">type</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">AUTO</span><span class="p">,</span>
@@ -360,7 +360,7 @@ into the {body} of the default.hbs template -->
 <p>게임 객체의 동적인 작용을 위해서는 씬 객체를 생성해야 합니다. 씬 객체의 라이프 사이클은 다음과 같습니다.</p>
 
 <h6 id="mainscenets">mainScene.ts</h6>
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MainScene</span> <span class="kd">extends</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Scene</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MainScene</span> <span class="kd">extends</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Scene</span> <span class="p">{</span>
 
     <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">({</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">main</span><span class="dl">'</span><span class="p">,</span> <span class="na">active</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
@@ -382,7 +382,7 @@ into the {body} of the default.hbs template -->
 
 <p>첨부파일의 이미지를 로드하기위해 다음 코드를 작성하세요.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">preload</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">preload</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="dl">'</span><span class="s1">sky</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">assets/image/sky.png</span><span class="dl">'</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="dl">'</span><span class="s1">ground</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">assets/image/platform.png</span><span class="dl">'</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">load</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="dl">'</span><span class="s1">star</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">assets/image/star.png</span><span class="dl">'</span><span class="p">);</span>
@@ -397,7 +397,7 @@ into the {body} of the default.hbs template -->
 
 <p>로드한 asset은 <code class="language-plaintext highlighter-rouge">create()</code> 메소드에 Scene 객체의 add 프로퍼티를 통해 Scene에 추가할 수 있습니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">create</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">create</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="dl">'</span><span class="s1">sky</span><span class="dl">'</span><span class="p">);</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="dl">'</span><span class="s1">star</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">}</span>
@@ -408,7 +408,7 @@ into the {body} of the default.hbs template -->
 <p>씬 코드를 작성했다면 게임 설정 객체의 scene 프로퍼티에 배열로 넣어주면 됩니다. 다음과 같이 작성하고 컴파일 후 <code class="language-plaintext highlighter-rouge">localhost:8080</code> 으로 들어가봅시다.</p>
 
 <h6 id="maints-1">main.ts</h6>
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Phaser</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">phaser</span><span class="dl">'</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Phaser</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">phaser</span><span class="dl">'</span><span class="p">;</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">MainScene</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./mainScene</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">config</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">GameConfig</span> <span class="o">=</span> <span class="p">{</span>
@@ -423,7 +423,7 @@ into the {body} of the default.hbs template -->
 </code></pre></div></div>
 
 <h6 id="mainscenets-1">mainScene.ts</h6>
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">MainScene</span> <span class="kd">extends</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Scene</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">class</span> <span class="nx">MainScene</span> <span class="kd">extends</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Scene</span> <span class="p">{</span>
 
     <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">super</span><span class="p">({</span> <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">main</span><span class="dl">'</span><span class="p">,</span> <span class="na">active</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
@@ -458,7 +458,7 @@ into the {body} of the default.hbs template -->
 
 <p>Phaser 튜토리얼에 따라 arcade 엔진으로 물리 객체를 생성해보겠습니다. 우선 게임 설정 객체에 physics 프로퍼티를 설정해주세요.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">config</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">GameConfig</span> <span class="o">=</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">config</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Core</span><span class="p">.</span><span class="nx">GameConfig</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">type</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">AUTO</span><span class="p">,</span>
     <span class="na">width</span><span class="p">:</span> <span class="mi">800</span><span class="p">,</span>
     <span class="na">height</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
@@ -476,7 +476,7 @@ into the {body} of the default.hbs template -->
 
 <p>씬 객체의 create 메소드에 다음과 같이 물리 객체를 생성하는 코드를 작성해 주세요.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">create</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">create</span><span class="p">():</span> <span class="k">void</span> <span class="p">{</span>
 
     <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">image</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="dl">'</span><span class="s1">sky</span><span class="dl">'</span><span class="p">);</span>
 
@@ -501,7 +501,7 @@ into the {body} of the default.hbs template -->
 
 <p>다음 코드를 create 메소드에 추가해주세요.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">sprite</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dude</span><span class="dl">'</span><span class="p">).</span><span class="nx">setName</span><span class="p">(</span><span class="dl">"</span><span class="s2">player</span><span class="dl">"</span><span class="p">);</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">sprite</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="dl">'</span><span class="s1">dude</span><span class="dl">'</span><span class="p">).</span><span class="nx">setName</span><span class="p">(</span><span class="dl">"</span><span class="s2">player</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="nx">player</span><span class="p">.</span><span class="nx">setBounce</span><span class="p">(</span><span class="mf">0.2</span><span class="p">);</span>
 <span class="nx">player</span><span class="p">.</span><span class="nx">setCollideWorldBounds</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
@@ -537,7 +537,7 @@ into the {body} of the default.hbs template -->
 
 <p>지형 객체는 static 객체이기 때문에 dinamic 객체인 캐릭터와 상호작용하기 위해서는 <code class="language-plaintext highlighter-rouge">collider</code> 객체로 충돌을 설정해야 합니다. 다음 코드를 씬 객체의 create 메소드에 추가해주세요.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">collider</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span> <span class="nx">platforms</span><span class="p">);</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">collider</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span> <span class="nx">platforms</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p><img src="/assets/images/phaser3/phaser3-img-04.png" alt="pahser-04" title="collider 설정" /></p>
@@ -548,7 +548,7 @@ into the {body} of the default.hbs template -->
 
 <p>update 메소드에 다음 코드를 작성합니다. update 메소드는 씬 객체가 존재하는 동안 주기적으로 실행되는 메소드 입니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">update</span><span class="p">(</span><span class="nx">_time</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">_delta</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">update</span><span class="p">(</span><span class="nx">_time</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="nx">_delta</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
 
     <span class="kd">const</span> <span class="nx">cursors</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">keyboard</span><span class="p">.</span><span class="nx">createCursorKeys</span><span class="p">();</span>
     <span class="kd">const</span> <span class="nx">player</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">getByName</span><span class="p">(</span><span class="dl">"</span><span class="s2">player</span><span class="dl">"</span><span class="p">)</span> <span class="k">as</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">SpriteWithDynamicBody</span><span class="p">;</span>
@@ -585,7 +585,7 @@ into the {body} of the default.hbs template -->
 
 <p>이제 별을 모으는 코드를 작성해보겠습니다. 우선 별을 static 객체로 생성합니다. 다음 코드를 create 메소드에 추가합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">stars</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">group</span><span class="p">({</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">stars</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">group</span><span class="p">({</span>
     <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">star</span><span class="dl">'</span><span class="p">,</span>
     <span class="na">repeat</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
     <span class="na">setXY</span><span class="p">:</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">stepX</span><span class="p">:</span> <span class="mi">70</span> <span class="p">}</span>
@@ -602,17 +602,17 @@ into the {body} of the default.hbs template -->
 
 <p>static 객체인 지형과 별 그룹 객체가 상호작용 하도록 다음 코드를 create 메소드에 추가합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">collider</span><span class="p">(</span><span class="nx">stars</span><span class="p">,</span> <span class="nx">platforms</span><span class="p">);</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">collider</span><span class="p">(</span><span class="nx">stars</span><span class="p">,</span> <span class="nx">platforms</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>캐릭터가 별을 수집하면 별 객체가 사라지도록 설정해줍시다. 이것은 arcade 물리 객체의 overlap 메소드를 통해 가능합니다. 다음 코드를 create 메소드에 추가해 주세요.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">overlap</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span> <span class="nx">stars</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">collectStar</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">overlap</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span> <span class="nx">stars</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">collectStar</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="k">this</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>player 객체가 stars 객체와 overlap 되면 collectStar 메소드를 호출합니다. 해당 메소드를 작성해주세요.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">collectStar</span> <span class="p">(</span><span class="nx">_player</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">GameObjectWithBody</span><span class="p">,</span> <span class="nx">star</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">GameObjectWithBody</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">collectStar</span> <span class="p">(</span><span class="nx">_player</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">GameObjectWithBody</span><span class="p">,</span> <span class="nx">star</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">GameObjectWithBody</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
     <span class="p">(</span><span class="nx">star</span> <span class="k">as</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">Image</span><span class="p">).</span><span class="nx">disableBody</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -625,13 +625,13 @@ into the {body} of the default.hbs template -->
 
 <p>별을 모으면 점수가 증가 하도록 하겠습니다. 우선 create 메소드에 점수 데이터와 텍스트 asset을 추가해주세요.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">score</span><span class="dl">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">score</span><span class="dl">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="dl">'</span><span class="s1">score: 0</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">fontSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">32px</span><span class="dl">'</span><span class="p">,</span> <span class="na">backgroundColor</span><span class="p">:</span> <span class="dl">'</span><span class="s1">#000</span><span class="dl">'</span> <span class="p">}).</span><span class="nx">setName</span><span class="p">(</span><span class="dl">"</span><span class="s2">scoreText</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>다음으로 위에서 생성한 collectStar 메소드에 다음 코드를 추가합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">score</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">score</span><span class="dl">"</span><span class="p">)</span> <span class="k">as</span> <span class="kr">number</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">score</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">score</span><span class="dl">"</span><span class="p">)</span> <span class="k">as</span> <span class="kr">number</span> <span class="o">+</span> <span class="mi">10</span><span class="p">);</span>
 <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">getByName</span><span class="p">(</span><span class="dl">"</span><span class="s2">scoreText</span><span class="dl">"</span><span class="p">)</span> <span class="k">as</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">GameObjects</span><span class="p">.</span><span class="nx">Text</span><span class="p">).</span><span class="nx">setText</span><span class="p">(</span><span class="dl">'</span><span class="s1">Score: </span><span class="dl">'</span> <span class="o">+</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">score</span><span class="dl">"</span><span class="p">)</span> <span class="k">as</span> <span class="kr">number</span><span class="p">));</span>
 </code></pre></div></div>
 
@@ -641,7 +641,7 @@ into the {body} of the default.hbs template -->
 
 <p>마지막으로 장애물을 설정해 보겠습니다. 별을 모두 수집하면 폭탄이 하나 나오고 새로운 별 그룹 객체가 생성됩니다. create 메소드에 다음 코드를 추가합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bombs</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">group</span><span class="p">();</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">bombs</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">group</span><span class="p">();</span>
 
 <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">bombs</span><span class="dl">"</span><span class="p">,</span> <span class="nx">bombs</span><span class="p">);</span>
 <span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">add</span><span class="p">.</span><span class="nx">collider</span><span class="p">(</span><span class="nx">bombs</span><span class="p">,</span> <span class="nx">platforms</span><span class="p">);</span>
@@ -652,7 +652,7 @@ into the {body} of the default.hbs template -->
 
 <p>hitBomb 메소드는 다음과 같이 작성합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">hitBomb</span> <span class="p">(</span><span class="nx">player</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">GameObjectWithBody</span><span class="p">,</span> <span class="nx">_bomb</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">GameObjectWithBody</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">hitBomb</span> <span class="p">(</span><span class="nx">player</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">GameObjectWithBody</span><span class="p">,</span> <span class="nx">_bomb</span><span class="p">:</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">GameObjectWithBody</span><span class="p">):</span> <span class="k">void</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">physics</span><span class="p">.</span><span class="nx">pause</span><span class="p">();</span>
     <span class="p">(</span><span class="nx">player</span> <span class="k">as</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">SpriteWithDynamicBody</span><span class="p">).</span><span class="nx">setTint</span><span class="p">(</span><span class="mh">0xff0000</span><span class="p">);</span>
     <span class="p">(</span><span class="nx">player</span> <span class="k">as</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Types</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">SpriteWithDynamicBody</span><span class="p">).</span><span class="nx">anims</span><span class="p">.</span><span class="nx">play</span><span class="p">(</span><span class="dl">'</span><span class="s1">turn</span><span class="dl">'</span><span class="p">);</span>
@@ -663,7 +663,7 @@ into the {body} of the default.hbs template -->
 
 <p>마지막으로 collectStar 메소드에 다음 코드를 추가합니다.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">stars</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">stars</span><span class="dl">"</span><span class="p">)</span> <span class="k">as</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">Group</span><span class="p">;</span>
+<div data-lang="TYPESCRIPT" class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">stars</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">stars</span><span class="dl">"</span><span class="p">)</span> <span class="k">as</span> <span class="nx">Phaser</span><span class="p">.</span><span class="nx">Physics</span><span class="p">.</span><span class="nx">Arcade</span><span class="p">.</span><span class="nx">Group</span><span class="p">;</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nx">stars</span><span class="p">.</span><span class="nx">countActive</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">stars</span><span class="p">.</span><span class="nx">children</span><span class="p">.</span><span class="nx">iterate</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">child</span><span class="p">)</span> <span class="p">{</span>
@@ -764,6 +764,8 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
+                                
+                                  
                                     
                                   
                                 
@@ -802,6 +804,8 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                 
+                                  
+                                
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
@@ -816,6 +820,48 @@ into the {body} of the default.hbs template -->
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/algorithm/gcd_lcm">
+                <div class="post-card-image" style="background-image: url(/assets/images/typescript-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/algorithm/gcd_lcm">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">최대공약수와 최소공배수</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>최대공약수와 최소공배수
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      2 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
             
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
@@ -1152,17 +1198,6 @@ $(document).ready(function () {
     window.addEventListener('resize', onResize, false);
 
     update();
-
-    const languages = ['java', 'bash', 'javascript', 'typescript', 'json', 'html'];
-
-    document.querySelectorAll('.highlighter-rouge').forEach(el => {
-        for (let language of languages) {
-            if(el.classList.contains('language-' + language)) {
-                el.setAttribute('data-lang', language.toUpperCase());
-                break;
-            }
-        }
-    });
 });
 </script>
 
