@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/algorithm/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-07-31T17:57:48+09:00</updated>
+  <updated>2022-07-31T18:03:09+09:00</updated>
   <id>https://huimang2.github.io/tag/algorithm/feed.xml</id>
 
   
@@ -114,7 +114,7 @@ B = b/G&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = mG&lt;/code&gt;라고 가정한다면, 서로소인 두 정수 k, l에 대하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b = GB = G'k = Gmk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r = G(A - Bq) = G'l = Gml&lt;/code&gt;이 성립하며, 양변을 G로 나누면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;B = mk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A - Bq = ml&lt;/code&gt;이 됩니다.&lt;/p&gt;
 
-&lt;p&gt;두 연립 방정식에 의하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A = ml + Bq = ml + mkq = m(l + kq)&lt;/code&gt; 가 되며, &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;m은 A와 B의 공약수&lt;/u&gt;&lt;/strong&gt;가 됨을 알 수 있습니다.&lt;/p&gt;
+&lt;p&gt;두 연립 방정식에 의하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A = ml + Bq = ml + mkq = m(l + kq)&lt;/code&gt; 가 되므로, &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;m은 A와 B의 공약수&lt;/u&gt;&lt;/strong&gt;가 됨을 알 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;여기에서 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color: orangered&quot;&gt;A와 B는 서로소 관계&lt;/code&gt;에 있으므로, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m = 1&lt;/code&gt; 이 되며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = mG&lt;/code&gt;라고 가정했으므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = G&lt;/code&gt; 가 됩니다.&lt;/p&gt;
 
