@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>조합과 순열</title>
+        
+          <description>&lt;h1 id=&quot;팩토리얼factorial&quot;&gt;팩토리얼(Factorial)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Mon, 01 Aug 2022 22:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/algorithm/combination_permutation</link>
+        <guid isPermaLink="true">https://huimang2.github.io/algorithm/combination_permutation</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>최대공약수와 최소공배수</title>
         
           <description>&lt;h1 id=&quot;최대공약수와-최소공배수&quot;&gt;최대공약수와 최소공배수&lt;/h1&gt;

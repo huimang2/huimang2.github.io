@@ -11,7 +11,7 @@
 
 
 
-    <title>최대공약수와 최소공배수</title>
+    <title>조합과 순열</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,24 +51,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/algorithm/gcd_lcm" />
+    <link rel="canonical" href="https://huimang2.github.io/algorithm/combination_permutation" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="최대공약수와 최소공배수" />
-    <meta property="og:description" content="최대공약수와 최소공배수 최대공약수(GCD, Greateast Common Division)는 두 수에 대한 공약수의 최대값을 의미하며, 최소공배수(LCM, Least Common Multiple)는 두 수에 대한 공배수의 최소값을 의미합니다. 최대공약수와 최소공배수는 소인수분해(Integer factorization)를 통해 구할 수 있습니다. 최대공약수는 소인수의 교집합을 모두 곱한 값이고, 최소공배수는 소인수의 합집합을 모두 곱한 값입니다. 예를 들어 a = 12, b = 20" />
-    <meta property="og:url" content="https://huimang2.github.io/algorithm/gcd_lcm" />
+    <meta property="og:title" content="조합과 순열" />
+    <meta property="og:description" content="팩토리얼(Factorial) 서로 다른 n개를 나열하는 경우의 수를 팩토리얼이라고 하며. 기호로는 !로 나타냅니다. $$ n! = n(n-1)(n-2) \cdots 1 $$ 자바스크립트 코드 function factorial(n) { return n &gt; 1 ? n * factorial(n-1) : 1; } 조합(Combination) 서로 다른 n개의 원소를 가지는 어떤 집합에서 r개의 원소를 순서에 상관없이 선택하는 것을 조합이라고" />
+    <meta property="og:url" content="https://huimang2.github.io/algorithm/combination_permutation" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/algorithm-cover.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-07-31T10:00:00+09:00" />
-    <meta property="article:modified_time" content="2022-07-31T10:00:00+09:00" />
+    <meta property="article:published_time" content="2022-08-01T22:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-08-01T22:00:00+09:00" />
     <meta property="article:tag" content="Algorithm" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="최대공약수와 최소공배수" />
-    <meta name="twitter:description" content="최대공약수와 최소공배수 최대공약수(GCD, Greateast Common Division)는 두 수에 대한 공약수의 최대값을 의미하며, 최소공배수(LCM, Least Common Multiple)는 두 수에 대한 공배수의 최소값을 의미합니다. 최대공약수와 최소공배수는 소인수분해(Integer factorization)를 통해 구할 수 있습니다. 최대공약수는 소인수의 교집합을 모두 곱한 값이고, 최소공배수는 소인수의 합집합을 모두 곱한 값입니다. 예를 들어 a = 12, b = 20" />
+    <meta name="twitter:title" content="조합과 순열" />
+    <meta name="twitter:description" content="팩토리얼(Factorial) 서로 다른 n개를 나열하는 경우의 수를 팩토리얼이라고 하며. 기호로는 !로 나타냅니다. $$ n! = n(n-1)(n-2) \cdots 1 $$ 자바스크립트 코드 function factorial(n) { return n &gt; 1 ? n * factorial(n-1) : 1; } 조합(Combination) 서로 다른 n개의 원소를 가지는 어떤 집합에서 r개의 원소를 순서에 상관없이 선택하는 것을 조합이라고" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/algorithm-cover.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -89,7 +89,7 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/algorithm/gcd_lcm",
+    "url": "https://huimang2.github.io/algorithm/combination_permutation",
     "image": {
         "@type": "ImageObject",
         "url": "https://huimang2.github.io/assets/images/algorithm-cover.png",
@@ -98,9 +98,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/algorithm/gcd_lcm"
+        "@id": "https://huimang2.github.io/algorithm/combination_permutation"
     },
-    "description": "최대공약수와 최소공배수 최대공약수(GCD, Greateast Common Division)는 두 수에 대한 공약수의 최대값을 의미하며, 최소공배수(LCM, Least Common Multiple)는 두 수에 대한 공배수의 최소값을 의미합니다. 최대공약수와 최소공배수는 소인수분해(Integer factorization)를 통해 구할 수 있습니다. 최대공약수는 소인수의 교집합을 모두 곱한 값이고, 최소공배수는 소인수의 합집합을 모두 곱한 값입니다. 예를 들어 a = 12, b = 20"
+    "description": "팩토리얼(Factorial) 서로 다른 n개를 나열하는 경우의 수를 팩토리얼이라고 하며. 기호로는 !로 나타냅니다. $$ n! = n(n-1)(n-2) \cdots 1 $$ 자바스크립트 코드 function factorial(n) { return n &gt; 1 ? n * factorial(n-1) : 1; } 조합(Combination) 서로 다른 n개의 원소를 가지는 어떤 집합에서 r개의 원소를 순서에 상관없이 선택하는 것을 조합이라고"
 }
     </script>
 
@@ -113,10 +113,34 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="최대공약수와 최소공배수" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="조합과 순열" href="/feed.xml" />
 
 
     <!-- MathJax -->
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        TeX: {
+          equationNumbers: {
+            autoNumber: "AMS"
+          }
+        },
+        tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      }
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
     
 
 </head>
@@ -175,7 +199,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="31 July 2022">31 July 2022</time>
+                    <time class="post-full-meta-date" datetime=" 1 August 2022"> 1 August 2022</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -187,7 +211,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">최대공약수와 최소공배수</h1>
+                <h1 class="post-full-title">조합과 순열</h1>
             </header>
 
             <!-- 
@@ -198,133 +222,182 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#최대공약수와-최소공배수"><span>최대공약수와 최소공배수</span></a></li><li><a href="#유클리드-호제법euclidean-algorithm"><span>유클리드 호제법(Euclidean algorithm)</span></a><ul><li><a href="#증명"><span>증명</span></a></li></ul></li><li><a href="#소스-코드"><span>소스 코드</span></a></li><li><a href="#관련-문제"><span>관련 문제</span></a></li></ul>
+                        <ul><li><a href="#팩토리얼factorial"><span>팩토리얼(Factorial)</span></a></li><li><a href="#조합combination"><span>조합(Combination)</span></a><ul><li><a href="#중복조합"><span>중복조합</span></a></li></ul></li><li><a href="#순열permutation"><span>순열(Permutation)</span></a><ul><li><a href="#중복순열"><span>중복순열</span></a></li></ul></li><li><a href="#소스-코드"><span>소스 코드</span></a><ul><li><a href="#swap을-통한-백트래킹"><span>swap을 통한 백트래킹</span></a></li><li><a href="#visited-배열을-통한-백트래킹"><span>visited 배열을 통한 백트래킹</span></a></li><li><a href="#비트셋을-통한-조합"><span>비트셋을 통한 조합</span></a></li></ul></li><li><a href="#관련-문제"><span>관련 문제</span></a></li></ul>
 
                     </div>
-                    <h1 id="최대공약수와-최소공배수">최대공약수와 최소공배수</h1>
+                    <h1 id="팩토리얼factorial">팩토리얼(Factorial)</h1>
 
-<p><code class="language-plaintext highlighter-rouge">최대공약수(GCD, Greateast Common Division)</code>는 두 수에 대한 공약수의 최대값을 의미하며, <code class="language-plaintext highlighter-rouge">최소공배수(LCM, Least Common Multiple)</code>는 두 수에 대한 공배수의 최소값을 의미합니다.</p>
+<p>서로 다른 n개를 나열하는 경우의 수를 <code class="language-plaintext highlighter-rouge">팩토리얼</code>이라고 하며. 기호로는 !로 나타냅니다.</p>
 
-<p>최대공약수와 최소공배수는 <code class="language-plaintext highlighter-rouge">소인수분해(Integer factorization)</code>를 통해 구할 수 있습니다.</p>
+<p>$$
+n! = n(n-1)(n-2) \cdots 1
+$$</p>
 
-<p>최대공약수는 소인수의 교집합을 모두 곱한 값이고, 최소공배수는 소인수의 합집합을 모두 곱한 값입니다. 예를 들어 a = 12, b = 20 인 경우, a와 b의 최대공약수와 최소공배수는 다음과 같이 구할 수 있습니다.</p>
-
-<p><img src="/assets/images/algorithm/gcd_lcm/img01.png" alt="img01" /></p>
-
-<blockquote>
-  <p>a = 12 = <code class="language-plaintext highlighter-rouge">2 * 2</code> * 3<br />
-b = 20 = <code class="language-plaintext highlighter-rouge">2 * 2</code> * 5</p>
-</blockquote>
-
-<p>a와 b의 소인수에 대한 교집합은 [2, 2]가 되고, 이를 모두 곱한 4가 최대공약수가 됩니다. 또한 a와 b의 소인수에 대한 합집합은 [2, 2, 3, 5]가 되고, 이를 모두 곱한 60이 최소공배수가 됩니다.</p>
-
-<p>최대공약수를 G, 최소공배수를 L이라고 한다면, 다음과 같은 식이 성립합니다.</p>
-
-<blockquote>
-  <p>a = 12 = G * A<br />
-b = 20 = G * B</p>
-
-  <p>A = a/G
-B = b/G</p>
-
-  <p>L = G * A * B = G * (a/G) * (b/G) = a*b/G</p>
-</blockquote>
-
-<p>이때 A와 B는 서로소가 됩니다.</p>
-
-<p>이를 자바스크립트 코드로 나타내면 다음과 같습니다.</p>
-
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">GCD</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="nx">a</span> <span class="o">&gt;</span> <span class="nx">b</span><span class="p">)</span> <span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">b</span><span class="p">,</span> <span class="nx">a</span><span class="p">];</span>
-
-    <span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>    
-    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">while</span><span class="p">(</span><span class="nx">a</span><span class="o">%</span><span class="nx">i</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nx">b</span><span class="o">%</span><span class="nx">i</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">a</span> <span class="o">/=</span> <span class="nx">i</span><span class="p">;</span>
-            <span class="nx">b</span> <span class="o">/=</span> <span class="nx">i</span><span class="p">;</span>
-            <span class="nx">result</span> <span class="o">*=</span> <span class="nx">i</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">a</span> <span class="o">===</span> <span class="mi">1</span> <span class="o">||</span> <span class="nx">a</span> <span class="o">===</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">LCM</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">/</span> <span class="nx">GCD</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+<h6 id="자바스크립트-코드">자바스크립트 코드</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">factorial</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">n</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">?</span> <span class="nx">n</span> <span class="o">*</span> <span class="nx">factorial</span><span class="p">(</span><span class="nx">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h1 id="유클리드-호제법euclidean-algorithm">유클리드 호제법(Euclidean algorithm)</h1>
+<h1 id="조합combination">조합(Combination)</h1>
 
-<blockquote>
-  <p>두 양의 정수 a, b (a &gt; b)에 대하여 a = bq + r (0 ≤ r &lt; b)이라 하면, <strong>a, b의 최대공약수</strong>는 <strong>b, r의 최대공약수</strong>와 같다.</p>
+<p><u>서로 다른</u> n개의 원소를 가지는 어떤 집합에서 r개의 원소를 <u>순서에 상관없이</u> 선택하는 것을 <code class="language-plaintext highlighter-rouge">조합</code>이라고 하며, 기호로는 $ _{n}\mathrm{C}_{r} $로 나타냅니다.</p>
 
-  <p>즉, <code class="language-plaintext highlighter-rouge">gcd(a, b) = gcd(b, r)</code>이다.</p>
+<p>$$
+_{n}\mathrm{C}_{r} = {n! \over (n-r)!n!}
+$$</p>
 
-  <p>r = 0이라면, <strong>a, b의 최대공약수</strong>는 <strong>b</strong>가 된다.</p>
+<h2 id="중복조합">중복조합</h2>
+
+<p><u>중복 가능한</u> n개의 원소 중 r개의 원소를 <u>순서에 상관없이</u> 선택하는 것을 <code class="language-plaintext highlighter-rouge">조합</code>이라고 하며, 기호로는 $ _{n}\mathrm{H}_{r} $로 나타냅니다.</p>
+
+<p>$$
+_{n}\mathrm{H}_{r} = _{n+r-1}\mathrm{C}_{r}
+$$</p>
+
+<h6 id="문제">문제</h6>
+
+<blockquote style="margin-top:1.5rem">
+  <p>음이 아닌 정수 xx, yy, zz에 대해, $ x+y+z \le 3 $를 만족시키는 순서쌍 (x,y,z)의 수는?</p>
 </blockquote>
 
-<p><code class="language-plaintext highlighter-rouge">유클리드 호제법(Euclidean algorithm)</code>은 두 양의 정수, 혹은 두 다항식의 최대공약수를 구하는 방법입니다. 이 알고리즘은 유클리드의 원론에 적혀있는 내용으로, 인류 최초의 알고리즘이라 합니다.</p>
+<h6 class="sol opacity-0" onclick="this.classList.toggle('opacity-0')" id="풀이">풀이</h6>
 
-<p>소인수 분해를 통해 최대공약수를 구하면 시간 복잡도가 <code class="language-plaintext highlighter-rouge">O(N)</code> 이지만, 유클리드 호제법으로 최대공약수를 구하면 시간 복잡도를 <code class="language-plaintext highlighter-rouge">O(logN)</code>으로 줄일 수 있습니다.</p>
+<blockquote style="margin-top:1.5rem">
+  <p>주어진 식은 $ x + y + z = 3 - n (0 \le n \le 3) $ 으로 나타낼 수 있으며, 정수 x, y, z, n 에 대하여 $ x+y+z+n=3 $을 만족해야 합니다.</p>
 
-<h2 id="증명">증명</h2>
+  <p>즉, 0 ~ 3 중 3개를 순서에 상관 없이 선택하는 중복조합에 해당합니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">gcd(a, b) = G</code>, <code class="language-plaintext highlighter-rouge">gcd(b, r) = G'</code> 라고 가정 한다면, <strong style="color: orangered">서로소인 두 정수 A, B</strong>에 대하여 <code class="language-plaintext highlighter-rouge">a = GA</code>, <code class="language-plaintext highlighter-rouge">b = GB</code>가 성립합니다.</p>
+  <p>그러므로 $ _4\mathrm{H}_3 = _6\mathrm{C}_3 = {6! \over 3!3!} = 20$ 이 됩니다.</p>
+</blockquote>
 
-<p>이를 <code class="language-plaintext highlighter-rouge">a = bq + r</code>에 대입하면, <code class="language-plaintext highlighter-rouge">GA = GBq + r</code> 이므로 <code class="language-plaintext highlighter-rouge">r = G(A - Bq)</code>가 됩니다. 여기서 <strong><u class="bgcolor blue" style="color: royalblue">G는 b와 r의 공약수</u></strong>임을 확인할 수 있으며, 그러므로 <strong><u class="bgcolor blue" style="color: royalblue">G는 G'의 약수</u></strong>임을 알 수 있습니다.</p>
+<h1 id="순열permutation">순열(Permutation)</h1>
 
-<p><code class="language-plaintext highlighter-rouge">G' = mG</code>라고 가정한다면, 서로소인 두 정수 k, l에 대하여 <code class="language-plaintext highlighter-rouge">b = GB = G'k = Gmk</code>, <code class="language-plaintext highlighter-rouge">r = G(A - Bq) = G'l = Gml</code>이 성립하며, 양변을 G로 나누면 <code class="language-plaintext highlighter-rouge">B = mk</code>, <code class="language-plaintext highlighter-rouge">A - Bq = ml</code>이 됩니다.</p>
+<p><u>서로 다른</u> n개의 원소를 가지는 어떤 집합에서 r개의 원소를 <u>순서대로</u> 선택하는 것을 <code class="language-plaintext highlighter-rouge">순열</code>이라고 하며, 기호로는 $ _{n}\mathrm{P}_{r} $로 나타냅니다.</p>
 
-<p>두 연립 방정식에 의하여 <code class="language-plaintext highlighter-rouge">A = ml + Bq = ml + mkq = m(l + kq)</code> 가 되므로, <strong><u class="bgcolor blue" style="color: royalblue">m은 A와 B의 공약수</u></strong>가 됨을 알 수 있습니다.</p>
+<p>$$
+_{n}\mathrm{P}_{r} = {n! \over (n-r)!}
+$$</p>
 
-<p>여기에서 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">A와 B는 서로소 관계</code>에 있으므로, <code class="language-plaintext highlighter-rouge">m = 1</code> 이 되며, <code class="language-plaintext highlighter-rouge">G' = mG</code>라고 가정했으므로 <code class="language-plaintext highlighter-rouge">G' = G</code> 가 됩니다.</p>
+<h2 id="중복순열">중복순열</h2>
 
-<p>즉, <code class="language-plaintext highlighter-rouge">gcd(a, b) = gcd(b, r)</code>입니다.</p>
+<p><u>중복 가능한</u> n개의 원소 중 r개의 원소를 <u>순서대로</u> 선택하는 것을 <code class="language-plaintext highlighter-rouge">중복순열</code>이라고 하며, 기호로는 $ _{n}\mathrm{\Pi}_{r} $로 나타냅니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">r = 0</code>인 경우 <code class="language-plaintext highlighter-rouge">a = bq</code> 이므로, b가 최대공약수가 됩니다.</p>
+<p>$$
+_{n}\mathrm{\Pi}_{r} = n^r
+$$</p>
 
 <h1 id="소스-코드">소스 코드</h1>
 
-<h6 id="자바스크립트-코드">자바스크립트 코드</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">GCD</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">b</span> <span class="p">?</span> <span class="nx">GCD</span><span class="p">(</span><span class="nx">b</span><span class="p">,</span> <span class="nx">a</span> <span class="o">%</span> <span class="nx">b</span><span class="p">)</span> <span class="p">:</span> <span class="nx">a</span><span class="p">;</span>
+<p>조합과 순열은 백트래킹을 통해 구현할 수 있습니다.</p>
+
+<h2 id="swap을-통한-백트래킹">swap을 통한 백트래킹</h2>
+
+<p><img src="/assets/images/perm_combi/perm-combi-img01.png" alt="img01" /></p>
+
+<p>배열의 첫번째 값을 순차적으로 바꿔 전체적으로 한번씩 swap 된 형태로 순열을 출력합니다. depth를 기준으로 인덱스가 depth보다 작으면 고정시키고, depth보다 크면 다시 swap을 진행합니다.</p>
+
+<h6 id="자바스크립트-코드-1">자바스크립트 코드</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">permutation</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">output</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="nx">depth</span> <span class="o">===</span> <span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">output</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arr</span><span class="p">.</span><span class="nx">slice</span><span class="p">());</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">depth</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">swap</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">depth</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
+        <span class="nx">permutation</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">output</span><span class="p">);</span>
+        <span class="nx">swap</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">depth</span><span class="p">,</span> <span class="nx">i</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">depth</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nx">output</span><span class="p">;</span>
+
+    <span class="kd">function</span> <span class="nx">swap</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">depth</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">depth</span><span class="p">];</span>
+        <span class="nx">arr</span><span class="p">[</span><span class="nx">depth</span><span class="p">]</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">temp</span><span class="p">;</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">function</span> <span class="nx">LCM</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">a</span> <span class="o">*</span> <span class="nx">b</span> <span class="o">/</span> <span class="nx">GCD</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">permutation</span><span class="p">([</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">]));</span>
+
+<span class="c1">// ------- 출력 --------</span>
+<span class="c1">// 0: (3) ['A', 'B', 'C']</span>
+<span class="c1">// 1: (3) ['A', 'C', 'B']</span>
+<span class="c1">// 2: (3) ['B', 'A', 'C']</span>
+<span class="c1">// 3: (3) ['B', 'C', 'A']</span>
+<span class="c1">// 4: (3) ['C', 'B', 'A']</span>
+<span class="c1">// 5: (3) ['C', 'A', 'B']</span>
+</code></pre></div></div>
+
+<p>swap을 한 후 함수를 depth가 r이 될때까지 재귀호출을 합니다. 값이 돌아오면 다시 swap을 하여 배열을 원래상태로 되돌립니다.</p>
+
+<p>이 방법은 별도의 공간을 필요로 하지 않기 때문에 공간복잡도는 작지만 순열의 순서를 보장하지는 않습니다. 위에 출력된 코드를 보면 4번째 출력은 <code class="language-plaintext highlighter-rouge">C -&gt; A -&gt; B</code> 가 출력되어야 하지만, <code class="language-plaintext highlighter-rouge">C -&gt; B -&gt; A</code> 가 먼저 출력됨을 볼 수 있습니다.</p>
+
+<h2 id="visited-배열을-통한-백트래킹">visited 배열을 통한 백트래킹</h2>
+
+<p><img src="/assets/images/perm_combi/perm-combi-img02.png" alt="img01" /></p>
+
+<p>이 방법은 깊이우선탐색(DFS)를 통해 모든 인덱스를 방문합니다. 이때 visited 배열을 통해 중복값이 다시 들어가지 않도록 하면서 output 배열을 채워나갑니다.</p>
+
+<h6 id="자바스크립트-코드-2">자바스크립트 코드</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">permutation</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">n</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">r</span> <span class="o">=</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">visited</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">output</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+    
+    <span class="k">if</span><span class="p">(</span><span class="nx">depth</span> <span class="o">===</span> <span class="nx">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">output</span><span class="p">.</span><span class="nx">slice</span><span class="p">());</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">n</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">visited</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">{</span>
+            <span class="nx">visited</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="nx">output</span><span class="p">[</span><span class="nx">depth</span><span class="p">]</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+            <span class="nx">permutation</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">n</span><span class="p">,</span> <span class="nx">r</span><span class="p">,</span> <span class="nx">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">visited</span><span class="p">,</span> <span class="nx">output</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span>
+            <span class="nx">visited</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>  
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">depth</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
 <span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">permutation</span><span class="p">([</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">]));</span>
+
+<span class="c1">// ------- 출력 --------</span>
+<span class="c1">// 0: (3) ['A', 'B', 'C']</span>
+<span class="c1">// 1: (3) ['A', 'C', 'B']</span>
+<span class="c1">// 2: (3) ['B', 'A', 'C']</span>
+<span class="c1">// 3: (3) ['B', 'C', 'A']</span>
+<span class="c1">// 4: (3) ['C', 'A', 'B']</span>
+<span class="c1">// 5: (3) ['C', 'B', 'A']</span>
 </code></pre></div></div>
 
-<h6 id="자바-코드">자바 코드</h6>
-<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">Euclidean</span> <span class="o">{</span>
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">GCD</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span> <span class="no">GCD</span><span class="o">(</span><span class="n">b</span><span class="o">,</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="o">);</span>
-    <span class="o">}</span>
+<p>추가적인 공간을 필요로 하기에 공간 복잡도가 증가하지만 순열의 순서를 보장합니다.</p>
 
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">LCM</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">,</span> <span class="kt">int</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="no">GCD</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">);</span>
-    <span class="o">}</span>
-<span class="o">}</span>
+<h2 id="비트셋을-통한-조합">비트셋을 통한 조합</h2>
+
+<p>아이템의 존재 유무는 1 또는 0으로 표현할 수 있으므로, n개의 비트를 통해 n개의 아이템에 대한 하나의 상태를 표현할 수 있습니다.</p>
+
+<h6 id="자바스크립트-코드-3">자바스크립트 코드</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">];</span>
 </code></pre></div></div>
 
-<h6 id="파이썬-코드">파이썬 코드</h6>
-<div data-lang="PYTHON" class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">GCD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="k">if</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">GCD</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span>
+<p>위에 작성한 아이템 배열의 경우, A = 1 « 0, B = 1 « 1, C = 1 « 2 로 나타낼 수 있습니다. 이는 각각 $ 2^0, 2^1, 2^2 $을 나타냅니다. 즉, $ 2^n $까지 순회하여 비트셋을 해석하면 r에 대한 모든 조합을 얻을 수 있습니다.</p>
 
-<span class="k">def</span> <span class="nf">LCM</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">GCD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-</code></pre></div></div>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">combination</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">r</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="kd">const</span> <span class="nx">output</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">const</span> <span class="nx">length</span> <span class="o">=</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
 
-<h6 id="c-코드">C 코드</h6>
-<div data-lang="C" class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">GCD</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="n">b</span> <span class="o">?</span> <span class="n">GCD</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="p">)</span> <span class="o">:</span> <span class="n">a</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">**</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">cur</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">length</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">i</span> <span class="o">&amp;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="nx">j</span><span class="p">))</span> <span class="nx">cur</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">j</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">r</span> <span class="o">||</span> <span class="nx">cur</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="nx">r</span><span class="p">)</span> <span class="nx">output</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">cur</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">output</span><span class="p">;</span>
 <span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">LCM</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">GCD</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
 </code></pre></div></div>
 
 <h1 id="관련-문제">관련 문제</h1>
@@ -332,8 +405,9 @@ B = b/G</p>
 <ul>
   <li><strong>프로그래머스(Programmers)</strong>
     <ul>
-      <li><a href="https://school.programmers.co.kr/learn/courses/30/lessons/12940" target="_blank">[12969] 최대공약수와 최소공배수</a></li>
-      <li><a href="https://school.programmers.co.kr/learn/courses/30/lessons/12953" target="_blank">[12953] N개의 최소공배수</a></li>
+      <li><a href="https://school.programmers.co.kr/learn/courses/30/lessons/12936" target="_blank">[12936] 줄 서는 방법</a></li>
+      <li><a href="https://school.programmers.co.kr/learn/courses/30/lessons/49993" target="_blank">[49993] 스킬트리</a></li>
+      <li><a href="https://school.programmers.co.kr/learn/courses/30/lessons/49993" target="_blank">[84512] 모음사전</a></li>
     </ul>
   </li>
 </ul>
@@ -419,14 +493,14 @@ B = b/G</p>
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/algorithm/combination_permutation">조합과 순열</a></li>
-                                        
-                                    
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                            <li><a href="/algorithm/gcd_lcm">최대공약수와 최소공배수</a></li>
+                                        
                                     
                                   
                                 
@@ -461,16 +535,19 @@ B = b/G</p>
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
                 
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/algorithm/combination_permutation">
+            <a class="post-card-image-link" href="/algorithm/gcd_lcm">
                 <div class="post-card-image" style="background-image: url(/assets/images/algorithm-cover.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/algorithm/combination_permutation">
+            <a class="post-card-content-link" href="/algorithm/gcd_lcm">
                 <header class="post-card-header">
                     
                         <div class="post-card-tags-container">
@@ -478,11 +555,11 @@ B = b/G</p>
                         </div>
                     
 
-                    <h2 class="post-card-title">조합과 순열</h2>
+                    <h2 class="post-card-title">최대공약수와 최소공배수</h2>
                 </header>
                 <!-- <section class="post-card-excerpt">
                     
-                        <p>팩토리얼(Factorial)
+                        <p>최대공약수와 최소공배수
 
 </p>
                     
@@ -504,51 +581,6 @@ B = b/G</p>
 
             
 
-            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
-            
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/etc/phaser3">
-                <div class="post-card-image" style="background-image: url(/assets/images/phaser3/phaser3-cover.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/etc/phaser3">
-                <header class="post-card-header">
-                    
-                        <div class="post-card-tags-container">
-                            
-                        </div>
-                    
-
-                    <h2 class="post-card-title">게임 프레임워크 : Phaser3</h2>
-                </header>
-                <!-- <section class="post-card-excerpt">
-                    
-                        <p>Phaser3이란?
-
-</p>
-                    
-                </section> -->
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      7 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
-
         </div>
     </div>
 </aside>
@@ -562,18 +594,18 @@ B = b/G</p>
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">최대공약수와 최소공배수</div>
+    <div class="floating-header-title">조합과 순열</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%B5%9C%EB%8C%80%EA%B3%B5%EC%95%BD%EC%88%98%EC%99%80+%EC%B5%9C%EC%86%8C%EA%B3%B5%EB%B0%B0%EC%88%98&amp;url=algorithm/gcd_lcm"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%A1%B0%ED%95%A9%EA%B3%BC+%EC%88%9C%EC%97%B4&amp;url=algorithm/combination_permutation"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=algorithm/gcd_lcm"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=algorithm/combination_permutation"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
