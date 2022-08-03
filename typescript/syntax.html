@@ -611,6 +611,8 @@ object 타입은 <code class="language-plaintext highlighter-rouge">중괄호({}
                                   
                                 
                                   
+                                
+                                  
                                     
                                         
                                         
@@ -935,7 +937,7 @@ $(document).ready(function () {
     function getHeaderNodes(master) {
         var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
         var headerNodes = nodes.filter(function(elem) {
-            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3";
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
         });
         return headerNodes;
     }

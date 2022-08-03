@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>MVC 패턴</title>
+        
+          <description>&lt;h1 id=&quot;mvc-패턴이란&quot;&gt;MVC 패턴이란?&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Wed, 03 Aug 2022 19:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/design-pattern/mvc-pattern</link>
+        <guid isPermaLink="true">https://huimang2.github.io/design-pattern/mvc-pattern</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>조합과 순열</title>
         
           <description>&lt;h1 id=&quot;팩토리얼factorial&quot;&gt;팩토리얼(Factorial)&lt;/h1&gt;
