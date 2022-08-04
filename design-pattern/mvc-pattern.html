@@ -352,7 +352,7 @@ into the {body} of the default.hbs template -->
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         
         <span class="nc">Observable</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Model</span><span class="o">();</span>
-        <span class="nc">Observer</span> <span class="n">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConcreteObserver</span><span class="o">(</span><span class="s">"게시판1"</span><span class="o">);</span>
+        <span class="nc">Observer</span> <span class="n">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">View</span><span class="o">(</span><span class="s">"게시판1"</span><span class="o">);</span>
 
         <span class="n">model</span><span class="o">.</span><span class="na">registerObserver</span><span class="o">(</span><span class="n">view</span><span class="o">);</span>
         <span class="n">model</span><span class="o">.</span><span class="na">notifyObservers</span><span class="o">(</span><span class="s">"1번째 글"</span><span class="o">);</span>
