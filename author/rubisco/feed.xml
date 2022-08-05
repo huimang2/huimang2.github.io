@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-08-04T09:36:06+09:00</updated>
+  <updated>2022-08-05T09:53:32+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -85,7 +85,7 @@
 
 &lt;p&gt;모델과 뷰는 서로 알지 못하기 때문에 컨트롤러를 통해 변경을 중재받습니다. 컨트롤러가 모델과 뷰를 중재하려면 모델과 뷰에 대한 정보를 가지고 있어야만 합니다.&lt;/p&gt;
 
-&lt;h3 class=&quot;no-toc&quot;&gt;모델이나 뷰의 변경를 모니터링 해야 한다.&lt;/h3&gt;
+&lt;h3 class=&quot;no-toc&quot;&gt;모델이나 뷰의 변경을 모니터링 해야 한다.&lt;/h3&gt;
 
 &lt;p&gt;위의 규칙과 마찬가지로 모델과 뷰는 서로 알지 못하기에 컨트롤러가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;중재자(Mediator)&lt;/code&gt;가 되어 서로의 변경을 통지해야 합니다.&lt;/p&gt;
 
@@ -233,7 +233,7 @@
 
 &lt;p&gt;Spring MVC는 MVC2 모델의 발전된 형태의 구조입니다.&lt;/p&gt;
 
-&lt;p&gt;FrontController인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DispatcherServlet&lt;/code&gt;이 클라이언트의 요청을 받고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HanlerMapping&lt;/code&gt;을 통해 Controller와 매핑되어 해당 컨트롤러를 실행합니다.&lt;/p&gt;
+&lt;p&gt;FrontController인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DispatcherServlet&lt;/code&gt;이 클라이언트의 요청을 받고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HandlerMapping&lt;/code&gt;을 통해 Controller와 매핑되어 해당 컨트롤러를 실행합니다.&lt;/p&gt;
 
 &lt;p&gt;컨트롤러는 Model과 View가 Wrapping된 객체를 반환하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewResolver&lt;/code&gt;를 통해 View 객체를 처리한 후 클라이언트에게 해당 객체를 반환합니다.&lt;/p&gt;</content>
 
