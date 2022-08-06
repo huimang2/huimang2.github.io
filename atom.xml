@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>원격 코드 개발환경 구축</title>
+        
+          <description>&lt;p&gt;우분투 20.04 LTS 환경인 원격 컴퓨터에 코딩환경을 구축하고, VSCode를 통해 원격 환경에서 코드 개발을 해보도록 하겠습니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 06 Aug 2022 18:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/ubuntu-dev-env</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/ubuntu-dev-env</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>MVC 패턴</title>
         
           <description>&lt;h1 id=&quot;mvc-패턴이란&quot;&gt;MVC 패턴이란?&lt;/h1&gt;
