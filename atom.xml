@@ -23,6 +23,21 @@
     
       
       <item>
+        <title>JPA(Java Persistence API)</title>
+        
+          <description>&lt;h1 id=&quot;jpa란&quot;&gt;JPA란?&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Thu, 04 Aug 2022 07:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/java/jpa</link>
+        <guid isPermaLink="true">https://huimang2.github.io/java/jpa</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>MVC 패턴</title>
         
           <description>&lt;h1 id=&quot;mvc-패턴이란&quot;&gt;MVC 패턴이란?&lt;/h1&gt;
