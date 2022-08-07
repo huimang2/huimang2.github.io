@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-08-08T07:30:23+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">원격 코드 개발환경 구축</title><link href="https://huimang2.github.io/etc/ubuntu-dev-env" rel="alternate" type="text/html" title="원격 코드 개발환경 구축" /><published>2022-08-06T18:00:00+09:00</published><updated>2022-08-06T18:00:00+09:00</updated><id>https://huimang2.github.io/etc/ubuntu-dev-env</id><content type="html" xml:base="https://huimang2.github.io/etc/ubuntu-dev-env">&lt;p&gt;우분투 20.04 LTS 환경인 원격 컴퓨터에 코딩환경을 구축하고, VSCode를 통해 원격 환경에서 코드 개발을 해보도록 하겠습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-08-08T08:30:12+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">원격 코드 개발환경 구축</title><link href="https://huimang2.github.io/etc/ubuntu-dev-env" rel="alternate" type="text/html" title="원격 코드 개발환경 구축" /><published>2022-08-06T18:00:00+09:00</published><updated>2022-08-06T18:00:00+09:00</updated><id>https://huimang2.github.io/etc/ubuntu-dev-env</id><content type="html" xml:base="https://huimang2.github.io/etc/ubuntu-dev-env">&lt;p&gt;우분투 20.04 LTS 환경인 원격 컴퓨터에 코딩환경을 구축하고, VSCode를 통해 원격 환경에서 코드 개발을 해보도록 하겠습니다.&lt;/p&gt;
 
 &lt;h1 style=&quot;margin-top:1.5rem&quot; id=&quot;원격-접속&quot;&gt;원격 접속&lt;/h1&gt;
 
@@ -1377,7 +1377,7 @@ dependencies &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
 	implementation &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter'&lt;/span&gt;
 	implementation &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-data-jpa'&lt;/span&gt;
 	testImplementation &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-test'&lt;/span&gt;
-    testImplementation &lt;span class=&quot;s1&quot;&gt;'junit:junit'&lt;/span&gt;
+	testImplementation &lt;span class=&quot;s1&quot;&gt;'junit:junit'&lt;/span&gt;
 
 	compileOnly &lt;span class=&quot;s1&quot;&gt;'org.projectlombok:lombok'&lt;/span&gt;
 	annotationProcessor &lt;span class=&quot;s1&quot;&gt;'org.projectlombok:lombok'&lt;/span&gt;
