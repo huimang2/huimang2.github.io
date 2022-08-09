@@ -184,6 +184,15 @@ into the {body} of the default.hbs template -->
 <script>
     window.store = {
     
+    "etc-plantuml": {
+        "title": "VSCode로 UML 그리기",
+            "author": "rubisco",
+            "category": "",
+            "content": "PlantUML클래스를 설계할 때 클래스 다이어그램(Class Diagram)을 그리게 됩니다. 클래스 다이어그램 뿐만 아니라 프로젝트의 문서를 작성한다면 시퀀스 다이어그램(Sequence Diagram), 유스케이스 다이어그램(Usecase Diagram) 등 다이어그램을 작성이 필요합니다.사용해 보지는 않았지만 UML을 그리는 대표적인 도구로 StarUML이 있습니다. 또한 인텔리제이(IntelliJ) 얼티메이트 에디션에는 자동으로 다이어그램을 그리는 플러그인이 포함되어 있습니다. 그러나 StarUML은 GUI를 통해 직접 UML을 그려야 하며, 인텔리제이의 경우 UML 기능이 유료입니다.인텔리제이의 기능만큼은 아니지만 자동으로 UML을 그려주는 도구가 있는데, 바로 PlantUML입니다. 간단한게 객체간의 관계를 정의해준다면 자동으로 UML을 생성해줍니다.설치PlantUML은 PlantUML Online Server를 제공하여 웹에서 UML을 만들 수 있지만 로컬에 설치하여 사용할 수도 있습니다. 간단하게는 apt를 통해 설치할 수 있습니다.$ sudo apt-get install plantumlVSCode의 확장팩을 통해 설치할 수도 있습니다. VScode Extension에서 plantuml을 검색하여 설치합니다.작동을 위해서는 DOT 스크립트로 그래프를 그려주는 graphviz라는 도구가 필요합니다. apt를 통해 설치해주도록 합시다.$ sudo apt install graphviz준비는 되었습니다. 이제 관계를 정의해주면 자동으로 UML을 그릴 수 있습니다. 지원하는 파일 확장자는 다음과 같습니다.  *.wsd, *.pu, *.puml, *.plantuml, *.iumlUML 그리기먼저 관계를 정의하기 위한 파일을 생성합니다.$ touch testuml.wsd간단하게 클래스의 관계를 정의해보겠습니다.testuml.wsd@startuml testinterface Subject {    +notify(Observer): void}class ConcreteSubject {    +notify(Observer): void}interface Observer {    +update(): void}class ConcreteObserverA {    +update(): void}class ConcreteObserverB {    +update(): void}class ConcreteObserverC {    +update(): void}Subject --&gt; ObserverSubject &lt;|.. ConcreteSubjectObserver &lt;|.. ConcreteObserverAObserver &lt;|.. ConcreteObserverBObserver &lt;|.. ConcreteObserverCConcreteSubject --&gt; ConcreteObserverAConcreteSubject --&gt; ConcreteObserverBConcreteSubject --&gt; ConcreteObserverC@enduml이제 vscode에서 ctrl + shift + p를 눌러 팔레트를 열고 PlantUML: Export Current Diagram을 선택하고 이미지 포멧을 선택하면 자동으로 UML 이미지가 만들어집니다.그래프 도구인 graphviz를 통해 그려서 depth가 구분됩니다. Observer와 Subject의 depth를 같도록 그려주고 싶은데 잘 찾아보면 방법이 있을듯 합니다.다르게 표현할 수 있을듯 한데 일단은 이런 형식으로 사용이 가능합니다.자세한 작성법은 PlantUML 문서(한글)를 참조하세요.",
+        "url": "/etc/plantuml"
+    }
+    ,
+    
     "etc-ubuntu-dev-env": {
         "title": "원격 코드 개발환경 구축",
             "author": "rubisco",

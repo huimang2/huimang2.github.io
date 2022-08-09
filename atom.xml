@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>VSCode로 UML 그리기</title>
+        
+          <description>&lt;h1 id=&quot;plantuml&quot;&gt;PlantUML&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Wed, 10 Aug 2022 06:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/plantuml</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/plantuml</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>원격 코드 개발환경 구축</title>
         
           <description>&lt;p&gt;우분투 20.04 LTS 환경인 원격 컴퓨터에 코딩환경을 구축하고, VSCode를 통해 원격 환경에서 코드 개발을 해보도록 하겠습니다.&lt;/p&gt;
