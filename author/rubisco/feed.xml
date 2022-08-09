@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-08-10T07:33:12+09:00</updated>
+  <updated>2022-08-10T07:40:23+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -2247,7 +2247,11 @@ Hibernate:
       <published>2022-08-01T22:00:00+09:00</published>
       <updated>2022-08-01T22:00:00+09:00</updated>
       <id>https://huimang2.github.io/algorithm/combination_permutation</id>
-      <content type="html" xml:base="https://huimang2.github.io/algorithm/combination_permutation">&lt;p&gt;조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함되는데 이번 글에서는 조합과 순열에 대해 알아보고, 예제를 통해 코드를 작성해보도록 하겠습니다.&lt;/p&gt;
+      <content type="html" xml:base="https://huimang2.github.io/algorithm/combination_permutation">&lt;p&gt;조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함됩니다.&lt;/p&gt;
+
+&lt;p&gt;조합은 서로 다른 n개의 원소를 가지는 집합에서 r개의 원소를 순서에 상관없이 선택하는 것을 의미하며, 순열은 서로 다른 n개의 원소를 가지는 집합에서 r개의 원소를 순서대로 선택하는 것을 의미합니다.&lt;/p&gt;
+
+&lt;p&gt;이번 글에서는 조합과 순열에 대해 자세히 알아보고, 예제를 통해 코드를 작성해보도록 하겠습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;팩토리얼factorial&quot;&gt;팩토리얼(Factorial)&lt;/h1&gt;
 
@@ -2455,7 +2459,7 @@ $$&lt;/p&gt;
       
 
       
-        <summary type="html">조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함되는데 이번 글에서는 조합과 순열에 대해 알아보고, 예제를 통해 코드를 작성해보도록 하겠습니다.</summary>
+        <summary type="html">조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함됩니다.</summary>
       
 
       
