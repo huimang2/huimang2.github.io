@@ -58,7 +58,7 @@
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="조합과 순열" />
-    <meta property="og:description" content="팩토리얼(Factorial) 서로 다른 n개를 나열하는 경우의 수를 팩토리얼이라고 하며. 기호로는 !로 나타냅니다. $$ n! = n(n-1)(n-2) \cdots 1 $$ 자바스크립트 코드 function factorial(n) { return n &gt; 1 ? n * factorial(n-1) : 1; } 조합(Combination) 서로 다른 n개의 원소를 가지는 어떤 집합에서 r개의 원소를 순서에 상관없이 선택하는 것을 조합이라고" />
+    <meta property="og:description" content="조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함되는데 이번 글에서는 조합과 순열에 대해 알아보고, 예제를 통해 코드를 작성해보도록 하겠습니다. 팩토리얼(Factorial) 서로 다른 n개를 나열하는 경우의 수를 팩토리얼이라고 하며. 기호로는 !로 나타냅니다. $$ n! = n(n-1)(n-2) \cdots 1 $$ 자바스크립트 코드" />
     <meta property="og:url" content="https://huimang2.github.io/algorithm/combination_permutation" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/algorithm-cover.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -68,7 +68,7 @@
     <meta property="article:tag" content="Algorithm" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="조합과 순열" />
-    <meta name="twitter:description" content="팩토리얼(Factorial) 서로 다른 n개를 나열하는 경우의 수를 팩토리얼이라고 하며. 기호로는 !로 나타냅니다. $$ n! = n(n-1)(n-2) \cdots 1 $$ 자바스크립트 코드 function factorial(n) { return n &gt; 1 ? n * factorial(n-1) : 1; } 조합(Combination) 서로 다른 n개의 원소를 가지는 어떤 집합에서 r개의 원소를 순서에 상관없이 선택하는 것을 조합이라고" />
+    <meta name="twitter:description" content="조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함되는데 이번 글에서는 조합과 순열에 대해 알아보고, 예제를 통해 코드를 작성해보도록 하겠습니다. 팩토리얼(Factorial) 서로 다른 n개를 나열하는 경우의 수를 팩토리얼이라고 하며. 기호로는 !로 나타냅니다. $$ n! = n(n-1)(n-2) \cdots 1 $$ 자바스크립트 코드" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/algorithm-cover.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -100,7 +100,7 @@
         "@type": "WebPage",
         "@id": "https://huimang2.github.io/algorithm/combination_permutation"
     },
-    "description": "팩토리얼(Factorial) 서로 다른 n개를 나열하는 경우의 수를 팩토리얼이라고 하며. 기호로는 !로 나타냅니다. $$ n! = n(n-1)(n-2) \cdots 1 $$ 자바스크립트 코드 function factorial(n) { return n &gt; 1 ? n * factorial(n-1) : 1; } 조합(Combination) 서로 다른 n개의 원소를 가지는 어떤 집합에서 r개의 원소를 순서에 상관없이 선택하는 것을 조합이라고"
+    "description": "조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함되는데 이번 글에서는 조합과 순열에 대해 알아보고, 예제를 통해 코드를 작성해보도록 하겠습니다. 팩토리얼(Factorial) 서로 다른 n개를 나열하는 경우의 수를 팩토리얼이라고 하며. 기호로는 !로 나타냅니다. $$ n! = n(n-1)(n-2) \cdots 1 $$ 자바스크립트 코드"
 }
     </script>
 
@@ -225,7 +225,9 @@ into the {body} of the default.hbs template -->
                         <ul><li><a href="#팩토리얼factorial"><span>팩토리얼(Factorial)</span></a></li><li><a href="#조합combination"><span>조합(Combination)</span></a><ul><li><a href="#중복조합"><span>중복조합</span></a></li></ul></li><li><a href="#순열permutation"><span>순열(Permutation)</span></a><ul><li><a href="#중복순열"><span>중복순열</span></a></li></ul></li><li><a href="#소스-코드"><span>소스 코드</span></a><ul><li><a href="#swap을-통한-백트래킹"><span>swap을 통한 백트래킹</span></a></li><li><a href="#visited-배열을-통한-백트래킹"><span>visited 배열을 통한 백트래킹</span></a></li><li><a href="#비트셋을-통한-조합"><span>비트셋을 통한 조합</span></a></li></ul></li><li><a href="#관련-문제"><span>관련 문제</span></a></li></ul>
 
                     </div>
-                    <h1 id="팩토리얼factorial">팩토리얼(Factorial)</h1>
+                    <p>조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함되는데 이번 글에서는 조합과 순열에 대해 알아보고, 예제를 통해 코드를 작성해보도록 하겠습니다.</p>
+
+<h1 id="팩토리얼factorial">팩토리얼(Factorial)</h1>
 
 <p>서로 다른 n개를 나열하는 경우의 수를 <code class="language-plaintext highlighter-rouge">팩토리얼</code>이라고 하며. 기호로는 !로 나타냅니다.</p>
 
