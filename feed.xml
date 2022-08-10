@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-08-10T07:46:36+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">VSCode로 UML 그리기</title><link href="https://huimang2.github.io/etc/plantuml" rel="alternate" type="text/html" title="VSCode로 UML 그리기" /><published>2022-08-10T06:00:00+09:00</published><updated>2022-08-10T06:00:00+09:00</updated><id>https://huimang2.github.io/etc/plantuml</id><content type="html" xml:base="https://huimang2.github.io/etc/plantuml">&lt;h1 id=&quot;plantuml&quot;&gt;PlantUML&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-08-10T12:13:44+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">VSCode로 UML 그리기</title><link href="https://huimang2.github.io/etc/plantuml" rel="alternate" type="text/html" title="VSCode로 UML 그리기" /><published>2022-08-10T06:00:00+09:00</published><updated>2022-08-10T06:00:00+09:00</updated><id>https://huimang2.github.io/etc/plantuml</id><content type="html" xml:base="https://huimang2.github.io/etc/plantuml">&lt;h1 id=&quot;plantuml&quot;&gt;PlantUML&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/plantUML.webp&quot; alt=&quot;logo&quot; /&gt;&lt;/p&gt;
 
@@ -1120,7 +1120,7 @@ tasks.named&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1
 
 &lt;p&gt;Entity가 persist 되기 전에 호출됩니다.&lt;/p&gt;
 
-&lt;h3 class=&quot;no-toc&quot;&gt;@Transient&lt;/h3&gt;
+&lt;h3 class=&quot;no-toc&quot;&gt;@PreUpdate&lt;/h3&gt;
 
 &lt;p&gt;Entity가 update 되기 전에 호출됩니다.&lt;/p&gt;
 
