@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/spring/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-08-10T12:13:44+09:00</updated>
+  <updated>2022-08-11T17:41:00+09:00</updated>
   <id>https://huimang2.github.io/tag/spring/feed.xml</id>
 
   
@@ -1227,27 +1227,27 @@ Hibernate:
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;findAllById(ID)&lt;/td&gt;
-      &lt;td&gt;Iterable&lt;T&gt;&lt;/T&gt;&lt;/td&gt;
+      &lt;td&gt;Iterable&amp;lt;T&amp;gt;&lt;/td&gt;
       &lt;td&gt;모든 Entity 목록 리턴&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;findAll(Iterable&lt;ID&gt;)&lt;/ID&gt;&lt;/td&gt;
-      &lt;td&gt;Iterable&lt;T&gt;&lt;/T&gt;&lt;/td&gt;
+      &lt;td&gt;findAll(Iterable&amp;lt;ID&amp;gt;)&lt;/td&gt;
+      &lt;td&gt;Iterable&amp;lt;T&amp;gt;&lt;/td&gt;
       &lt;td&gt;해당 식별키를 가진 Entity 목록 리턴&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
       &lt;td&gt;findById(ID)&lt;/td&gt;
-      &lt;td&gt;Optional&lt;T&gt;&lt;/T&gt;&lt;/td&gt;
+      &lt;td&gt;Optional&amp;lt;T&amp;gt;&lt;/td&gt;
       &lt;td&gt;해당 식별키에 해당하는 Entity 리턴&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;saveAll&lt;Iterable&gt;&lt;/Iterable&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;S extends=&quot;&quot; T=&quot;&quot;&gt;Iterable&lt;S&gt;&lt;/S&gt;&lt;/S&gt;&lt;/td&gt;
+      &lt;td&gt;saveAll&amp;lt;Iterable&amp;gt;&lt;/td&gt;
+      &lt;td&gt;&amp;lt;S extends T&amp;gt;Iterable&amp;lt;S&amp;gt;&lt;/td&gt;
       &lt;td&gt;여러 Entity들을 한 번에 등록, 수정&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;save&lt;S entity=&quot;&quot;&gt;&lt;/S&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;S extends=&quot;&quot; T=&quot;&quot;&gt;S&lt;/S&gt;&lt;/td&gt;
+      &lt;td&gt;save&amp;lt;S entity&amp;gt;&lt;/td&gt;
+      &lt;td&gt;&amp;lt;S extends T&amp;gt;S&lt;/td&gt;
       &lt;td&gt;하나의 Entity를 등록, 수정&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
