@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-08-11T17:41:00+09:00</updated>
+  <updated>2022-08-13T06:23:45+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -472,7 +472,7 @@
 
 &lt;p&gt;전체 패키지의 업데이트는 다음과 같습니다.&lt;/p&gt;
 
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda update &lt;span class=&quot;nt&quot;&gt;-all&lt;/span&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda update &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 class=&quot;no-toc&quot;&gt;패키지 정리&lt;/h3&gt;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-08-11T17:41:00+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">VSCode로 UML 그리기</title><link href="https://huimang2.github.io/etc/plantuml" rel="alternate" type="text/html" title="VSCode로 UML 그리기" /><published>2022-08-10T06:00:00+09:00</published><updated>2022-08-10T06:00:00+09:00</updated><id>https://huimang2.github.io/etc/plantuml</id><content type="html" xml:base="https://huimang2.github.io/etc/plantuml">&lt;h1 id=&quot;plantuml&quot;&gt;PlantUML&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-08-13T06:23:45+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">VSCode로 UML 그리기</title><link href="https://huimang2.github.io/etc/plantuml" rel="alternate" type="text/html" title="VSCode로 UML 그리기" /><published>2022-08-10T06:00:00+09:00</published><updated>2022-08-10T06:00:00+09:00</updated><id>https://huimang2.github.io/etc/plantuml</id><content type="html" xml:base="https://huimang2.github.io/etc/plantuml">&lt;h1 id=&quot;plantuml&quot;&gt;PlantUML&lt;/h1&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/plantUML.webp&quot; alt=&quot;logo&quot; /&gt;&lt;/p&gt;
 
@@ -399,7 +399,7 @@
 
 &lt;p&gt;전체 패키지의 업데이트는 다음과 같습니다.&lt;/p&gt;
 
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda update &lt;span class=&quot;nt&quot;&gt;-all&lt;/span&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda update &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 class=&quot;no-toc&quot;&gt;패키지 정리&lt;/h3&gt;
