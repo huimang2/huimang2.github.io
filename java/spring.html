@@ -235,7 +235,7 @@ into the {body} of the default.hbs template -->
 
 <p>HTTP 프로토콜 서비스를 지원하는 <code class="language-plaintext highlighter-rouge">HttpServlet</code>을 상속받고 있는데 HttpServlet의 <code class="language-plaintext highlighter-rouge">service</code> 메소드를 통해 DispatcherServlet의 <code class="language-plaintext highlighter-rouge">doDispatch</code> 메소드가 호출됩니다.</p>
 
-<p>doDispatch는 사용자의 요청에 대하여 적절한 컨트롤러를 찾아 매핑해주며, View까지 찾아서 렌더링 해주는 핵심저긴 메소드입니다.</p>
+<p>doDispatch는 사용자의 요청에 대하여 적절한 컨트롤러를 찾아 매핑해주며, View까지 찾아서 렌더링 해주는 핵심적인 메소드입니다.</p>
 
 <p>아래 메소드를 보면 <code class="language-plaintext highlighter-rouge">HandlerAdapter</code>를 통해 핸들러를 실행시켜 ModelAndView 객체를 생성하고, processDispatchResult를 호출하는 것을 확인할 수 있습니다.</p>
 
