@@ -1,0 +1,2023 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="https://huimang2.github.io/tag/java/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
+  <updated>2022-08-14T20:42:26+09:00</updated>
+  <id>https://huimang2.github.io/tag/java/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Rubisco’s Programming Note | </title>
+  
+
+  
+    <subtitle>프로그래밍 노트</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">JPA(Java Persistence API)</title>
+      <link href="https://huimang2.github.io/java/jpa" rel="alternate" type="text/html" title="JPA(Java Persistence API)" />
+      <published>2022-08-04T07:00:00+09:00</published>
+      <updated>2022-08-04T07:00:00+09:00</updated>
+      <id>https://huimang2.github.io/java/jpa</id>
+      <content type="html" xml:base="https://huimang2.github.io/java/jpa">&lt;h1 id=&quot;jpa란&quot;&gt;JPA란?&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JPA(Java Persistence API)&lt;/code&gt;는 자바 진영의 ORM 기술 표준으로, ORM 프레임워크를 쉽게 사용하기 위한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;인터페이스의 모음&lt;/code&gt;입니다.&lt;/p&gt;
+
+&lt;p&gt;데이터베이스 연동에 사용되는 기술은 JDBC에서부터 Spring DAO, MyBatis, Hibernate 등 다양합니다. 이 중에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hibernate&lt;/code&gt; 같은 ORM 프레임워크는 SQL까지 프레임워크에서 제공하여 개발자들이 처리해야 할 업무가 상당히 감소했습니다.&lt;/p&gt;
+
+&lt;p&gt;이전에는 데이터베이스에 연동하기 위해 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;SQL Query를 직접 작성&lt;/code&gt;하여 영속 데이터를 가져왔습니다. 이 경우 여러 문제점이 있는데 데이터베이스의 테이블이 변경되더라도 SQL Query는 String 형식으로 되어있어서 컴파일 에러가 나오지 않습니다. 또한 Query문을 잘못 작성하더라도 컴파일시 확인할 수 없어서 런타임에서 에러를 발생시킵니다. 이러한 이유로 개발자들은 순수 객체지향 프로그래밍에 집중하지 못하고 Query문 작성에 많은 비용을 지불해야만 했습니다.&lt;/p&gt;
+
+&lt;p&gt;하지만 Hibernate의 등장으로 이런 문제들이 해소되어 이후 많은 ORM 프레임워크가 등장했으며, 이런 ORM을 보다 쉽게 사용할 수 있도록 표준화 시킨 것이 JPA(Java Persistence API) 입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;JPA는 애플리케이션과 JDBC 사이에서 동작합니다. 기존 마이바티스 같은 프레임워크는 SQL을 개발자가 직접 XML 파일에 등록하여 사용했지만, JPA를 사용하면 JPA 내부에서 JDBC API를 통해 SQL을 호출하여 DB와 통신하게 됩니다. 즉, 개발자가 직접 JDBC API를 사용하지 않습니다.&lt;/p&gt;
+
+&lt;p&gt;JPA의 장점은 CRUD SQL을 작성할 필요가 없고 조회된 결과를 객체로 매핑하는 작업을 자동으로 처리하기 때문에 데이터 저장 계층에서 작성해야할 코드가 대폭적으로 줄어듭니다. 또한 SQL이 아닌 객체 중심으로 개발하여 생산성과 유지보수가 좋아집니다.&lt;/p&gt;
+
+&lt;p&gt;그러나 배우기가 어렵고 잘 이해하지 않으면 데이터 손실이 있을 수 있으며, 복잡한 작업에 대해서는 성능상 문제가 있을 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;예제-파일&quot;&gt;예제 파일&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;/file/jpa_board.zip&quot; target=&quot;_blank&quot;&gt;JPA 예제 파일&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;jpa-관련-용어&quot;&gt;JPA 관련 용어&lt;/h1&gt;
+
+&lt;h2 id=&quot;객체-관계-매핑object-relational-mapping-orm&quot;&gt;객체-관계 매핑(Object Relational Mapping, ORM)&lt;/h2&gt;
+
+&lt;p&gt;ORM이란 객체와 관계형 데이터베이스의 데이터를 자동으로 매핑해주는 기술을 말합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기본적으로 객체 지향 프로그래밍은 클래스를 사용하고, 관계형 데이터베이스는 테이블을 사용하기 때문에 객체 모델과 관계형 모델 간에 불일치가 존재합니다. ORM은 객체 간의 관계를 바탕으로 SQL을 자동으로 생성함으로써 이런 패러다임의 불일치 문제를 해결해줍니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;hibernate&quot;&gt;Hibernate&lt;/h2&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-06.png&quot; alt=&quot;img06&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;JPA가 제공하는 인터페이스를 이용하여 데이터베이스를 처리하면 실제로는 Hibernate 같은 구현체(Implimentations)가 동작합니다. 그렇기 때문에 Hibernate를 통해 개발하더라도 실제 서비스에서는 다른 ORM 기술인 EclipseLink로 변경하더라도 동일한 서비스를 제공할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;5-레이어-아키텍처5-layer-architecture&quot;&gt;5 레이어 아키텍처(5 Layer Architecture)&lt;/h2&gt;
+
+&lt;p&gt;스프링 프레임워크는 MVC 패턴을 좀더 세분화 하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5 레이어 아키텍처(5 Layer Architecture)&lt;/code&gt;로 나타낼 수 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-04.png&quot; alt=&quot;img04&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;모델(Model)&lt;/code&gt;은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;비즈니스 로직 계층(Business Logic Layer)&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;영구 계층(Persistence Layer)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;도메인 모델 계층(Domain Model Layer)&lt;/code&gt;에 해당합니다.&lt;/p&gt;
+
+&lt;p&gt;여기에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;비즈니스 로직 계층(Business Logic Layer)&lt;/code&gt;은 주로 상태 변화를 처리하는 역할을 하며, 컨트롤러와 JPA를 연결해주는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;서비스(Service)&lt;/code&gt;와 객체를 연관 테이블과 매핑해주는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;도메인(Domain)&lt;/code&gt;으로 나눌 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;기존에는 비즈니스 로직과 ORM 기능을 모두 이 계층에서 수행했지만 이를 분리하여 비즈니스 로직은 서비스에서, ORM 기능은 도메인에서 수행합니다.&lt;/p&gt;
+
+&lt;p&gt;5 레이어 아키텍처는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;도메인 주도 설계(Domain Driven Design, DDD)&lt;/code&gt;와 관련있는데, 아직 이에 대한 이해도가 부족하여 생략하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;아래에는 비즈니스 로직 계층과 관련된 객체들에 대한 설명입니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;DAO(Data Access Object)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DAO(Data Access Object)&lt;/code&gt;는 DB에 접근하여 CRUD를 할 수 있는 객체입니다. 서비스와 DB를 연결해주며, 구현체에 CRUD 기능을 구현하고 이를 의존성 주입(DI)해주는 방식으로 사용됩니다. 스프링에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Repository&lt;/code&gt;가 DAO 역할을 하는데, DB 접근 방식에 약간의 차이가 있다고 합니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;DTO(Data Transfer Object)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DTO(Data Transfer Object)&lt;/code&gt;는 계층 간 데이터 교환을 하기 위해 사용하는 객체입니다. 로직을 가지지 않는 순수한 데이터 객체로서, getter나 setter 정도의 메소드를 가질 수 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-05.png&quot; alt=&quot;img05&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이와 비슷한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;VO(value Object)&lt;/code&gt; 객체는 오직 읽기만 가능한 read-Only 특징을 가지며, getter 메소드만 가지고 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardjava&quot;&gt;Board.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lombok.Getter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lombok.Setter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lombok.ToString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Getter&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Setter&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@ToString&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;Domain(=Entity)&lt;/h3&gt;
+
+&lt;p&gt;도메인은 DB 테이블과 매핑되는 객체입니다. 변경사항이 생기면 여러 다른 클래스에 영향을 주기때문에 변경사항이 많은 DTO와 분리하여 사용됩니다.&lt;/p&gt;
+
+&lt;p&gt;도메인의 생성에는 @Entity, @Column, @Id 등과 같은 어노테이션(annotation)이 사용됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardjava-1&quot;&gt;Board.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lombok.*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Getter&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Setter&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@ToString&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@GeneratedValue&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Temporal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TemporalType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;jpa-설정&quot;&gt;JPA 설정&lt;/h1&gt;
+
+&lt;p&gt;Hibernate를 사용하여 JPA를 구현해보도록 하겠습니다. 빌드는 gradle을 사용하며, Oracle DB에 연결하겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;의존성dependency-설정&quot;&gt;의존성(dependency) 설정&lt;/h2&gt;
+
+&lt;p&gt;gradle에 의존성 패키지로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hibernate-entitymanager&lt;/code&gt;를 추가합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;GRADLE&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;implementation &lt;span class=&quot;s1&quot;&gt;'org.hibernate:hibernate-entitymanager'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Entity 작성을 편하게 하기 위해 Lombok 패키지도 의존성에 추가하고, 암호키로 오라클DB에 접근하기 위해 ojdbc와 security 패키지도 추가합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;GRADLE&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;compileOnly &lt;span class=&quot;s1&quot;&gt;'org.projectlombok:lombok'&lt;/span&gt;
+annotationProcessor &lt;span class=&quot;s1&quot;&gt;'org.projectlombok:lombok'&lt;/span&gt;
+
+runtimeOnly &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.jdbc:ojdbc8'&lt;/span&gt;
+implementation &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.security:oraclepki'&lt;/span&gt;
+implementation &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.security:osdt_core'&lt;/span&gt;
+implementation &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.security:osdt_cert'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;전체 코드입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;buildgradle&quot;&gt;build.gradle&lt;/h6&gt;
+&lt;div data-lang=&quot;GRADLE&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plugins &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot'&lt;/span&gt; version &lt;span class=&quot;s1&quot;&gt;'2.7.2'&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'io.spring.dependency-management'&lt;/span&gt; version &lt;span class=&quot;s1&quot;&gt;'1.0.12.RELEASE'&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'java'&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+group &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'com.example'&lt;/span&gt;
+version &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'0.0.1-SNAPSHOT'&lt;/span&gt;
+sourceCompatibility &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'17'&lt;/span&gt;
+
+configurations &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	compileOnly &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		extendsFrom annotationProcessor
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+repositories &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	mavenCentral&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+dependencies &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+	implementation &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter'&lt;/span&gt;
+	testImplementation &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-test'&lt;/span&gt;
+
+	compileOnly &lt;span class=&quot;s1&quot;&gt;'org.projectlombok:lombok'&lt;/span&gt;
+	annotationProcessor &lt;span class=&quot;s1&quot;&gt;'org.projectlombok:lombok'&lt;/span&gt;
+
+	implementation &lt;span class=&quot;s1&quot;&gt;'org.hibernate:hibernate-entitymanager'&lt;/span&gt;
+
+	runtimeOnly &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.jdbc:ojdbc8'&lt;/span&gt;
+	implementation &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.security:oraclepki'&lt;/span&gt;
+	implementation &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.security:osdt_core'&lt;/span&gt;
+	implementation &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.security:osdt_cert'&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+tasks.named&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'test'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	useJUnitPlatform&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;영속성-컨텍스트persistence-context-설정&quot;&gt;영속성 컨텍스트(Persistence Context) 설정&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;영속성(Persistence)&lt;/code&gt;이란 데이터를 생성한 프로그램이 종료되더라도 사라지지 않는 데이터의 특성을 말합니다. 영속성이 없는 데이터는 메모리에서만 존재하기 때문에 프로그램을 종료하면 사라져 버립니다. 데이터가 영속성을 가지기 위해서는 파일 시스템이나 데이터베이스 등을 통해 영속성을 부여해야만 합니다.&lt;/p&gt;
+
+&lt;p&gt;JPA는 영속성이 없는 데이터에 영속성을 부여하는 역할을 하며, 이렇게 영속성이 부여되는 환경을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;영속성 컨텍스트(Persistence Context)&lt;/code&gt;라고 합니다. 프로그램이 종료되기 전까지 Entity가 영구적으로 저장되는 환경입니다.&lt;/p&gt;
+
+&lt;p&gt;영속성 컨텍스트는 기본적으로는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;persistence.xml&lt;/code&gt; 파일을 통해 설정됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;resourcesmeta-infpersistencexml&quot;&gt;/resources/META-INF/persistence.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;persistence&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://xmlns.jcp.org/xml/ns/persistence&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2.1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;persistence-unit&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;practice&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;class&amp;gt;&lt;/span&gt;com.example.demo.Board&lt;span class=&quot;nt&quot;&gt;&amp;lt;/class&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;javax.persistence.jdbc.driver&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;oracle.jdbc.OracleDriver&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;javax.persistence.jdbc.user&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;아이디&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;javax.persistence.jdbc.password&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;암호&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;javax.persistence.jdbc.url&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;주소&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hibernate.dialect&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.hibernate.dialect.Oracle12cDialect&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hibernate.show_sql&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hibernate.format_sql&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hibernate.use_sql_comments&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hibernate.id.new_generator_mappings&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;false&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hibernate.hbm2ddl.auto&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;create&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/persistence-unit&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/persistence&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;영속성 유닛(persistence-unit) 설정&lt;/h3&gt;
+
+&lt;p&gt;persistence.xml 파일의 루트는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;persistence&amp;gt;&lt;/code&gt;이며, 영속성 유닛인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;persistence-unit&amp;gt;&lt;/code&gt;을 엘리먼트로 가집니다.&lt;/p&gt;
+
+&lt;p&gt;영속성 유닛은 데이터베이스당 하나씩 설정할 수 있습니다. 즉, 데이터베이스가 하나 이상이면 영속성 유닛 또한 여러 개 이므로 이를 구분하기 위해 유일한 이름(name)을 지정해야 합니다. 위의 코드에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;practice&lt;/code&gt;라는 이름으로 영속성 유닛을 하나 생성합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-07.png&quot; alt=&quot;img07&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;영속성 유닛은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EntityManagerFactory&lt;/code&gt;를 생성할 수 있습니다. JPA를 사용하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EntityManager&lt;/code&gt; 객체가 필요한데, EntityManager는 EntityManagerFactory로부터 생성됩니다. 생성 비용이 크기때문에 싱글톤으로 만들어 사용하며, Thread-safe 입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;EntityManager&lt;/code&gt;는 CRUD를 처리합니다. Thread-unsafe 이기 때문에 Thread 환경에서는 주의해야 합니다. 각각 영속성 컨텍스트를 가지고 있으며, 데이터를 변경하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트랜잭션(transaction)&lt;/code&gt;이 이루어져야 합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;entitymanager-생성&quot;&gt;EntityManager 생성&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;EntityManagerFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Persistence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManagerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;practice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;EntityManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;Entity 클래스 등록&lt;/h3&gt;
+
+&lt;p&gt;Entity 클래스 목록은 영속성 유닛 설정에서 가장 먼저 등록되는 정보입니다. 순수 JPA만 사용한다면 Entity 클래스를 영속성 유닛에 명시적으로 등록해야만 합니다. Entity 작성은 아래 &lt;a href=&quot;#entity-매핑-설정&quot;&gt;&lt;code class=&quot;language-plaintext bgcolor blue highlighter-rouge&quot; style=&quot;color:royalblue&quot;&gt;Entity 매핑 설정&lt;/code&gt;&lt;/a&gt;항목을 참조하세요.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;프로퍼티(property) 설정&lt;/h3&gt;
+
+&lt;p&gt;이제 각종 프로퍼티를 설정해줍니다.&lt;/p&gt;
+
+&lt;p&gt;우선 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터소스(Datasource)&lt;/code&gt;를 설정합니다. JPA 구현체는 데이터소스를 참조하여 특정 데이터베이스와 연결할 수 있습니다. 데이터소스의 설정은 프로퍼티 이름만으로 어느정도 의미를 알 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;데이터-소스datasource-프로퍼티&quot;&gt;데이터 소스(Datasource) 프로퍼티&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;프로퍼티&lt;/th&gt;
+      &lt;th&gt;의미&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;javax.persistence.jdbc.driver&lt;/td&gt;
+      &lt;td&gt;JDBC 드라이버&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;javax.persistence.jdbc.user&lt;/td&gt;
+      &lt;td&gt;DB 아이디&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;javax.persistence.jdbc.password&lt;/td&gt;
+      &lt;td&gt;DB 암호&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;javax.persistence.jdbc.url&lt;/td&gt;
+      &lt;td&gt;DB 주소&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;다음으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dialect&lt;/code&gt;를 설정합니다. Dialect는 번역하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;방언&lt;/code&gt; 입니다. JPA의 큰 장점 중 하나가 SQL을 자동으로 생성한다는 점인데 데이터베이스마다 SQL이 조금씩 차이가 있습니다. 그러므로 Dialect를 설정하여 특정 데이터베이스에 최적화된 SQL이 생성되도록 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hibernate-core&lt;/code&gt; 패키지에는 대부분의 데이터베이스에 해당하는 Dialect가 포함되어 있습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;데이터베이스&lt;/th&gt;
+      &lt;th&gt;Dialect&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DB2&lt;/td&gt;
+      &lt;td&gt;org.hibernate.dialect.DB2Dialect&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;PostgreSQL&lt;/td&gt;
+      &lt;td&gt;org.hibernate.dialect.PostgreDialect&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MySQL&lt;/td&gt;
+      &lt;td&gt;org.hibernate.dialect.MySQLDialect&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Oracle&lt;/td&gt;
+      &lt;td&gt;org.hibernate.dialect.OracleDialect&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Sybase&lt;/td&gt;
+      &lt;td&gt;org.hibernate.dialect.SybaseDialect&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Microsoft SQL Server&lt;/td&gt;
+      &lt;td&gt;org.hibernate.dialect.SQLServerDialect&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SAP DB&lt;/td&gt;
+      &lt;td&gt;org.hibernate.dialect.SAPDBDialect&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;H2&lt;/td&gt;
+      &lt;td&gt;org.hibernate.dialect.H2Dialect&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Hibernate에서 지원하는 Dialect의 종류는 &lt;a href=&quot;https://docs.jboss.org/hibernate/orm/current/javadocs/org/hibernate/dialect/package-summary.html&quot; target=&quot;_blank&quot;&gt;공식문서&lt;/a&gt;를 참조하세요.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;마지막으로 JPA 구현체를 설정하겠습니다. Hibernate를 사용할 것이므로 이에 대한 프로퍼티를 설정하면 됩니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;프로퍼티&lt;/th&gt;
+      &lt;th&gt;의미&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hibernate.show_sql&lt;/td&gt;
+      &lt;td&gt;하이버네이트에서 생성한 SQL을 콘솔에 출력&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hibernate.format_sql&lt;/td&gt;
+      &lt;td&gt;SQL을 출력할 때 특정 포맷으로 출력&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hibernate.use_sql_comments&lt;/td&gt;
+      &lt;td&gt;SQL에 포함된 주석을 포함하여 출력&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hibernate.id.new_generator_mapping&lt;/td&gt;
+      &lt;td&gt;키(key) 생성전략 사용 여부&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hibernate.hbm2ddl.auto&lt;/td&gt;
+      &lt;td&gt;DDL 자동 실행 여부&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;여기에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hibernate.hbm2ddl.auto&lt;/code&gt;는 SessionFactory가 생성될 때 실행될 DDL을 정의합니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;옵션&lt;/th&gt;
+      &lt;th&gt;의미&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;create&lt;/td&gt;
+      &lt;td&gt;기존 테이블을 삭제하고 다시 생성 (DROP + CREATE)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;create-drop&lt;/td&gt;
+      &lt;td&gt;SessionFactory가 종료되면 테이블을 삭제&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;update&lt;/td&gt;
+      &lt;td&gt;변경된 부분에만 UPDATE 적용&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;validate&lt;/td&gt;
+      &lt;td&gt;Entity와 테이블이 정상적으로 매핑되었는지 확인&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;none&lt;/td&gt;
+      &lt;td&gt;(default) 아무것도 하지 않음&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;주의할 점은 개발 단계나 테스트 단계에서만 사용하며, 운영서버에서는 validate나 none으로 설정해야 합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;entity-매핑-설정&quot;&gt;Entity 매핑 설정&lt;/h2&gt;
+
+&lt;p&gt;JPA는 어노테이션(annotation)만 적절히 설정한다면 Entity를 통해 데이터를 쉽게 관리할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardjava-2&quot;&gt;Board.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lombok.*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.hibernate.annotations.ColumnDefault&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.hibernate.annotations.DynamicInsert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.hibernate.annotations.DynamicUpdate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Getter&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Builder&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@AllArgsConstructor&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@NoArgsConstructor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;access&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AccessLevel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;PROTECTED&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@DynamicInsert&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@DynamicUpdate&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@GeneratedValue&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Setter&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nullable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nullable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Setter&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columnDefinition&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;varchar(100) default 'No Contents'&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Temporal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TemporalType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;updatable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@ColumnDefault&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@PrePersist&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;createDate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@Entity&lt;/h3&gt;
+
+&lt;p&gt;클래스를 JPA가 관리하는 Entity로 인식하도록 합니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@DynamicInsert&lt;/h3&gt;
+
+&lt;p&gt;null이 아닌 필드만 사용하여 동적인 INSERT Query를 생성합니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@DynamicUpdate&lt;/h3&gt;
+
+&lt;p&gt;변경된 필드만 사용하여 동적인 UPDATE Query를 생성합니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@Id&lt;/h3&gt;
+
+&lt;p&gt;다른 객체와 식별할 수 있는 고유값을 가지는 필드로, 테이블의 기본키(Primary key)와 매핑됩니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@GeneratedValue&lt;/h3&gt;
+
+&lt;p&gt;식별자값을 자동으로 증가시키며, 다음과 같은 속성을 줄 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;generatedvalue&quot;&gt;@GeneratedValue&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;속성&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;strategy&lt;/td&gt;
+      &lt;td&gt;기본키 자동 생성 전략 선택&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;generator&lt;/td&gt;
+      &lt;td&gt;이미 생성된 키 생성기 참조&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;기본키를 생성하는 전략은 다음과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;기본키-생성-전략&quot;&gt;기본키 생성 전략&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;strategy&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GenerationType.TABLE&lt;/td&gt;
+      &lt;td&gt;테이블을 사용하여 기본키 생성 (기본키를 생성하는 별도의 테이블 필요)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GenerationType.SEQUENCE&lt;/td&gt;
+      &lt;td&gt;시퀀스를 이용하여 기본키 생성 (시퀀스를 지원하는 DB에서 사용 가능)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GenerationType.IDENTITY&lt;/td&gt;
+      &lt;td&gt;auto_increment 또는 IDENTITY를 이용하여 기본키 생성&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;GenerationType.AUTO&lt;/td&gt;
+      &lt;td&gt;(기본값) Hibernate가 DB에 맞는 전략을 자동으로 선택&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@Table&lt;/h3&gt;
+
+&lt;p&gt;Entity를 테이블과 매핑할 때 사용하며, 다음과 같은 속성을 줄 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;table&quot;&gt;@Table&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;속성&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;name&lt;/td&gt;
+      &lt;td&gt;테이블 이름 지정&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;catalog&lt;/td&gt;
+      &lt;td&gt;DB 카탈로그 지정&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;schema&lt;/td&gt;
+      &lt;td&gt;DB 스키마 지정&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;uniqueConstraints&lt;/td&gt;
+      &lt;td&gt;결합 unique 제약조건을 지정&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@Column&lt;/h3&gt;
+
+&lt;p&gt;Entity 필드와 테이블 column을 매핑할 때 사용하며, 다음과 같은 속성을 줄 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;column&quot;&gt;@Column&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;속성&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;name&lt;/td&gt;
+      &lt;td&gt;column 이름 지정 (생략시 프로퍼티명과 동일)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;unique&lt;/td&gt;
+      &lt;td&gt;제약조건 추가 (기본값: false)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;nullable&lt;/td&gt;
+      &lt;td&gt;null 허용 여부 (기본값: true)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;insertable&lt;/td&gt;
+      &lt;td&gt;INSERT 가능 여부 (기본값: true)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;updatable&lt;/td&gt;
+      &lt;td&gt;UPDATE 가능 여부 (기본값: true)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;columnDefinition&lt;/td&gt;
+      &lt;td&gt;column에 대한 DDL을 직접 기술&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;length&lt;/td&gt;
+      &lt;td&gt;문자열 타입 column 길이 지정 (기본값: 255)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;precision&lt;/td&gt;
+      &lt;td&gt;숫자 타입의 자리수 지정 (기본값: 0)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;scale&lt;/td&gt;
+      &lt;td&gt;숫자 타입의 소수점 자리수 지정 (기본값: 0)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@ColumnDefault&lt;/h3&gt;
+
+&lt;p&gt;스키마 생성시 필드의 기본값을 설정합니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@Transient&lt;/h3&gt;
+
+&lt;p&gt;Entity 필드를 매핑에서 제외할 때 사용합니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@Temporal&lt;/h3&gt;
+
+&lt;p&gt;java.util.Date 타입의 날짜 데이터를 매핑할 때 사용하며, 다음과 같은 값을 가집니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;temporal&quot;&gt;@Temporal&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;값&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TemporalType.DATE&lt;/td&gt;
+      &lt;td&gt;날짜만 출력&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TemporalType.TIME&lt;/td&gt;
+      &lt;td&gt;시간만 출력&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TemporalType.STAMP&lt;/td&gt;
+      &lt;td&gt;날짜와 시간 모두 출력&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@PrePersist&lt;/h3&gt;
+
+&lt;p&gt;Entity가 persist 되기 전에 호출됩니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;@PreUpdate&lt;/h3&gt;
+
+&lt;p&gt;Entity가 update 되기 전에 호출됩니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;jpa-이해&quot;&gt;JPA 이해&lt;/h1&gt;
+
+&lt;p&gt;JPA를 이용하여 CRUD 프로그램을 구현하기에 앞서 영속성 컨텍스트와 Entity의 생명주기(Lifecycle)에 대해 알아보도록 하겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;영속성-컨텍스트persistence-context&quot;&gt;영속성 컨텍스트(Persistence Context)&lt;/h2&gt;
+
+&lt;p&gt;영속성 유닛을 설정할 때 잠깐 언급했지만 영속성 컨텍스트는 &lt;strong&gt;&lt;u&gt;데이터가 영속성을 부여받는 환경&lt;/u&gt;&lt;/strong&gt;을 말합니다. 영속성을 부여받았다고 해서 완전히 사라지지 않는 것은 의미하지는 않습니다. 앞서 말했지만 영속성 컨텍스트에 저장된 데이터는 프로그램이 종료되면 컨텍스트와 함께 메모리에서 사라져 버립니다.&lt;/p&gt;
+
+&lt;p&gt;영속성 컨텍스트는 EntityManager가 가지고 있습니다. EntityManager는 영속성 컨텍스트를 통해 CRUD를 수행할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;영속성 컨텍스트는 크게 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1차 캐시 저장소&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SQL 저장소&lt;/code&gt;로 구분됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-12.png&quot; alt=&quot;img12&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1차 캐시 저장소&lt;/code&gt;에는 Entity 정보를 저장합니다. 이 상태를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;영속 상태&lt;/code&gt;라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SQL 저장소&lt;/code&gt;에는 SQL Query를 저장합니다. 저장된 쿼리는 EntityManager의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flush()&lt;/code&gt; 메소드에 의하여 DB에 반영됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;entity-생명주기lifecycle&quot;&gt;Entity 생명주기(Lifecycle)&lt;/h2&gt;
+
+&lt;p&gt;Entity는 EntityManager가 제공하는 메소드를 통해 관리되며, 다음과 같이 4가지 상태로 존재합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-08.png&quot; alt=&quot;img08&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;비영속 상태(New)&lt;/h3&gt;
+
+&lt;p&gt;비영속 상태는 Entity 객체만 생성하고 아직 Entity를 영속성 컨텍스트에 저장하지 않은 상태입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-09.png&quot; alt=&quot;img09&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;비영속-상태&quot;&gt;비영속 상태&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;테이블 제목&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Rubisco&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;첫번째 글입니다.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;영속 상태(Managed)&lt;/h3&gt;
+
+&lt;p&gt;영속 상태는 Entity 객체가 영속성 컨텍스트에 저장된 상태입니다. Id를 키(key)로 하여 Entity가 1차 캐시 저장소에 저장됨과 동시에 SQL 저장소에는 INSERT Query가 저장됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-10.png&quot; alt=&quot;img10&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 상태에서는 Entity를 영속성 컨텍스트가 관리하는 상태이므로 객체의 상태변경을 자동으로 감지합니다. 이것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dirty Checking&lt;/code&gt;이라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;영속 상태가 되기 위해서는 EntityManager의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;persist()&lt;/code&gt; 메소드를 사용합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;entitymanagerpersist&quot;&gt;EntityManager.persist()&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;EntityManagerFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Persistence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManagerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;practice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;EntityManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;persist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;persist()&lt;/code&gt; 메소드를 통해 Entity가 영속화 되어도 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flush()&lt;/code&gt; 메소드가 호출되기 전까지는 DB에 쿼리가 전달되지 않고 SQL 저장소에 쌓입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-13.png&quot; alt=&quot;img13&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;EntityManager의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;flush()&lt;/code&gt; 메소드가 호출되면 SQL 저장소의 모든 쿼리가 DB에 반영됩니다. flush를 하더라도 Entity는 영속성 컨텍스트에 계속 저장되어 있습니다. 단지 영속성 컨텍스트와 DB를 동기화(Synchronize)할 뿐입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-14.png&quot; alt=&quot;img14&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;EntityManager의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find()&lt;/code&gt; 메소드를 통해서도 DB의 데이터를 통해 Entity 객체를 만들어 영속성 컨텍스트에 저장함으로써 영속 상태가 될 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;entitymanagerfind&quot;&gt;EntityManager.find()&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-11.png&quot; alt=&quot;img11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 같은 Entity를 조회한다면 JPA는 1차 캐시 저장소에 있는 Entity를 반환하게 되므로 성능상 큰 이점을 얻을 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;아래 코드를 실행시켜보면 영속화된 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;board&lt;/code&gt; 객체와 find()로 호출한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;findBoard&lt;/code&gt; 객체는 동일한 객체라는 것을 확인할 수 있습니다.&lt;/p&gt;
+&lt;h6 id=&quot;jpaclientjava&quot;&gt;JPAClient.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityManagerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.Persistence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JPAClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityManagerFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Persistence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManagerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;practice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityTransaction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;테이블 제목&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Rubisco&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;첫번째 글입니다.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;persist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;flush&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findBoard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;동일성 여부 : &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findBoard&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true 출력&lt;/span&gt;
+            
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rollback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;준영속 상태(Detatched)&lt;/h3&gt;
+
+&lt;p&gt;EntityManager의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;detach()&lt;/code&gt; 메소드 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clear()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;close()&lt;/code&gt; 메소드가 호출된 경우 Entity는 준영속 상태가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;detach()&lt;/code&gt; 메소드는 특정 Entity를 준영속 상태로 전환합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-15.png&quot; alt=&quot;img15&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;entitymanagerdetach&quot;&gt;EntityManager.detach()&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;detach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clear()&lt;/code&gt; 메소드는 영속성 컨텍스트 안의 모든 Entity를 준영속 상태로 만듭니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-16.png&quot; alt=&quot;img16&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;close()&lt;/code&gt; 메소드는 EntityManager를 닫아 영속성 컨텍스트를 종료하고 영속성 컨텍스트 안의 모든 Entity를 준영속 상태로 만듭니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-17.png&quot; alt=&quot;img17&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;준영속 상태가 된 Entity는 EntityManager의 관리를 벗어나기 때문에 Dirty Checking을 하지 않습니다. 하지만 완전히 메모리에서 사라진 것은 아니기 때문에 EntityManager의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;merge()&lt;/code&gt; 메소드를 통해 다시 영속상태로 전환될 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;entitymanagermerge&quot;&gt;EntityManager.merge()&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;여기에서 중요한 것은 board 객체 자체가 다시 영속상태가 되는 것이 아니라는 것입니다. merge라는 말처럼 새로운 Entity에 board 객체의 모든 필드를 합병하고 새로운 객체를 1차 캐시 저장소에 저장합니다. 즉, merge는 UPDATE 기능을 수행합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-18.png&quot; alt=&quot;img18&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;EntityManager로부터 merge 메소드가 호출되면 우선 DB에서 Id 필드와 같은 동일한 기본키를 조회합니다. 동일한 기본키가 없다면 새로운 Entity에 board Entity를 합병하고 합병된 Entity를 반환합니다. 이때 SQL 저장소에는 INSERT Query가 저장됩니다.&lt;/p&gt;
+
+&lt;p&gt;동일한 기본키가 있다면 해당 Entity를 영속화하여 board Entity를 합병합니다. 이때 SQL 저장소에는 UPDATE Query가 저장됩니다.&lt;/p&gt;
+
+&lt;p&gt;실제 아래 코드를 통해 1차 캐시 저장소에 저장된 객체는 board가 아닌 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mergedBoard&lt;/code&gt;라는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;jpaclientjava-1&quot;&gt;JPAClient.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityManagerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.Persistence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JPAClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityManagerFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Persistence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManagerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;practice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityTransaction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;테이블 제목&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Rubisco&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;첫번째 글입니다.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            
+            &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mergedBoard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;flush&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;findBoard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;동일성 여부 : &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;findBoard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mergedBoard&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// true 출력&lt;/span&gt;
+            
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rollback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;사실 1차 캐시 저장소에는 entity 자체가 저장되는 것이 아니라 Entity의 Reference와 Snapsot을 저장하고 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-19.png&quot; alt=&quot;img19&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;flush가 호출되고 실행되기 전에 EntityManager는 실제 Entity와 Snapshot을 비교하여 변경을 감지할 수 있습니다. 내용이 변경되었다면 UPDATE Query를 생성하여 DB를 update 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;주의할 것은 Entity의 모든 필드가 교체되므로 값이 null이 될 가능성이 있다는 것을 숙지해야합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;jpaclientjava-2&quot;&gt;JPAClient.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityManagerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.Persistence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JPAClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityManagerFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Persistence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManagerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;practice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityTransaction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;테이블 제목&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Rubisco&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;첫번째 글입니다.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;persist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;flush&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;detach&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// board의 cnt는 null이므로 cnt가 null로 갱신&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;flush&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rollback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위에 코드를 실행하고 DB를 확인하면 cnt 값이 null이라는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;삭제 상태(Removed)&lt;/h3&gt;
+
+&lt;p&gt;EntityManger의 remove() 메소드로 Entity를 삭제하면 해당 Entity는 영속성 컨텍스트에서 제외되고 DELETE Query가 SQL 저장소에 저장됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-20.png&quot; alt=&quot;img20&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;entitymanagerremove&quot;&gt;EntityManager.remove()&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;removeBoard&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;removeBoard&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;jpqljava-persistence-query-language&quot;&gt;JPQL(Java Persistence Query Language)&lt;/h2&gt;
+
+&lt;p&gt;특정 데이터의 조회는 EntityManager의 find() 메소드를 사용하면 되지만, 목록을 조회하려면 JPQL 이라는 JPA에서 제공하는 별도의 쿼리 명령어를 사용해야 합니다. SQL문과 유사한 문법을 사용하므로 해석에는 특별한 어려움이 없지만 중요한 것은 검색 대상이 테이블이 아니라 Entity라는 점입니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityManagerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.EntityTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.Persistence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;JPAClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+        &lt;span class=&quot;nc&quot;&gt;EntityManagerFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Persistence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManagerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;practice&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityManager&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createEntityManager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;EntityTransaction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTransaction&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;begin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;테이블 제목&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Rubisco&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;번째 글입니다.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            
+                &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;persist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            
+            &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jpql&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;select b from Board b order by b.seq desc&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+            &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BoardList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createQuery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jpql&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getResultList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;brd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BoardList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;---&amp;gt; &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;brd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTitle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;printStackTrace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;tx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;rollback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;finally&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;emf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;spring-data-jpa&quot;&gt;Spring Data JPA&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring Data JPA&lt;/code&gt;는 JPA를 쉽게 사용하기 위해 Spring에서 제공하는 프레임워크 이며, JPA의 인터페이스 입니다. JPA는 아니지만 보통 JPA라고 하면 Spring Data JPA를 뜻합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-03.png&quot; alt=&quot;img03&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Spring Data JPA, Spring Data MongoDB, Spring Data Redis등 Spring Data의 하위 프로젝트들은 동일한 인터페이스를 가지고 있어서 Repository를 교체해도 기본적인 기능이 변하지 않습니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;프로젝트 생성&lt;/h3&gt;
+
+&lt;p&gt;빌드 도구를 Gradle로 하여 프로젝트를 만들겠습니다. 의존성 패키지로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spring-boot-starter-data-jpa&lt;/code&gt;를 추가합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;GRADLE&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;implementation &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-data-jpa'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;전체 코드는 다음과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;buildgradle-1&quot;&gt;build.gradle&lt;/h6&gt;
+&lt;div data-lang=&quot;GRADLE&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;plugins &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot'&lt;/span&gt; version &lt;span class=&quot;s1&quot;&gt;'2.7.2'&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'io.spring.dependency-management'&lt;/span&gt; version &lt;span class=&quot;s1&quot;&gt;'1.0.12.RELEASE'&lt;/span&gt;
+	&lt;span class=&quot;nb&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'java'&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+group &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'com.example'&lt;/span&gt;
+version &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'0.0.1-SNAPSHOT'&lt;/span&gt;
+sourceCompatibility &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'17'&lt;/span&gt;
+
+configurations &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	compileOnly &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		extendsFrom annotationProcessor
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+repositories &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	mavenCentral&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+dependencies &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+	implementation &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter'&lt;/span&gt;
+	implementation &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-data-jpa'&lt;/span&gt;
+	testImplementation &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-starter-test'&lt;/span&gt;
+	testImplementation &lt;span class=&quot;s1&quot;&gt;'junit:junit'&lt;/span&gt;
+
+	compileOnly &lt;span class=&quot;s1&quot;&gt;'org.projectlombok:lombok'&lt;/span&gt;
+	annotationProcessor &lt;span class=&quot;s1&quot;&gt;'org.projectlombok:lombok'&lt;/span&gt;
+
+	// 오라클DB 접근
+	runtimeOnly &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.jdbc:ojdbc8'&lt;/span&gt;
+	implementation &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.security:oraclepki'&lt;/span&gt;
+	implementation &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.security:osdt_core'&lt;/span&gt;
+	implementation &lt;span class=&quot;s1&quot;&gt;'com.oracle.database.security:osdt_cert'&lt;/span&gt;
+	
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+tasks.named&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'test'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+	useJUnitPlatform&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;프로퍼티 설정&lt;/h3&gt;
+
+&lt;p&gt;스프링 데이터 JPA는 persistence.xml 파일에 작성한 설정과 동일하게 application.properties 파일을 작성하면 됩니다. 아래와 같이 작성합시다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;PROPERTIES&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# DataSource Setting&lt;/span&gt;
+spring.datasource.driver-class-name&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;oracle.jdbc.OracleDriver
+spring.datasource.url&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;DB 주소
+spring.datasource.username&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;DB 아이디
+spring.datasource.password&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;DB 암호
+
+&lt;span class=&quot;c&quot;&gt;# JPA Setting&lt;/span&gt;
+spring.jpa.hibernate.ddl-auto&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;create
+spring.jpa.hibernate.use-new-id-generator-mappings&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false
+&lt;/span&gt;spring.jpa.generate-ddl&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false
+&lt;/span&gt;spring.jpa.show-sql&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true
+&lt;/span&gt;spring.jpa.database&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;oracle
+spring.jpa.database-platform&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;org.hibernate.dialect.OracleDialect
+spring.jpa.properties.hibernate.format_sql&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true
+&lt;/span&gt;spring.jpa.properties.hibernate.use_sql_comments&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Logging Setting&lt;/span&gt;
+logging.level.org.hibernate&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;info
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;Entity 설정&lt;/h3&gt;
+
+&lt;p&gt;Entity 매핑을 설정합니다. 위에 작성한 Board 클래스와 동일합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardjava-3&quot;&gt;Board.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lombok.*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.persistence.*&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.hibernate.annotations.ColumnDefault&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.hibernate.annotations.DynamicInsert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.hibernate.annotations.DynamicUpdate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@Getter&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@ToString&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Entity&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@Builder&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@AllArgsConstructor&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@NoArgsConstructor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;access&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AccessLevel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;PROTECTED&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@DynamicInsert&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@DynamicUpdate&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;nd&quot;&gt;@Id&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@GeneratedValue&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Setter&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nullable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nullable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Setter&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;columnDefinition&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;varchar(100) default 'No Contents'&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Temporal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TemporalType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;updatable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@ColumnDefault&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@PrePersist&lt;/span&gt;
+	&lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;onCreate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;createDate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spring.jpa.hibernate.ddl-auto&lt;/code&gt; 속성값을 create로 설정했기 때문에 Entity를 기준으로 테이블이 자동생성됩니다. 메인 클래스를 하나 만들어 다음과 같은 코드를 작성해주세요.&lt;/p&gt;
+
+&lt;h6 id=&quot;springdatajpaapplicationjava&quot;&gt;SpringDataJpaApplication.java&lt;/h6&gt;
+
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.WebApplicationType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.autoconfigure.SpringBootApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@SpringBootApplication&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringDataJpaApplication&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;nc&quot;&gt;SpringApplication&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;application&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SpringApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;SpringDataJpaApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setWebApplicationType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;WebApplicationType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;NONE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WebApplicationType&lt;/code&gt;을 NONE으로 설정하여 내장 톰캣을 껐습니다. 메인 클래스를 실행하면 다음과 같은 내용이 콘솔창에 출력됩니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Hibernate: 
+    
+    drop table board cascade constraints
+Hibernate: 
+    
+    drop sequence hibernate_sequence
+Hibernate: create sequence hibernate_sequence start with 1 increment by 1
+Hibernate: 
+    
+    create table board &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+       &lt;span class=&quot;nb&quot;&gt;seq &lt;/span&gt;number&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;19,0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; not null,
+        cnt number&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;19,0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; default 0,
+        content varchar&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;100&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; default &lt;span class=&quot;s1&quot;&gt;'No Contents'&lt;/span&gt;,
+        create_date &lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt;,
+        title varchar2&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;255&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; not null,
+        writer varchar2&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;40&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; not null,
+        primary key &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;시퀀스와 테이블이 자동으로 생성되었으며, createData 필드가 스네이크 표기법으로 바뀌었습니다. (create_data)&lt;/p&gt;
+
+&lt;p&gt;ddl-auto가 create 이므로 테이블이 삭제되고 다시 생성됨을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;repository-인터페이스-작성&quot;&gt;Repository 인터페이스 작성&lt;/h2&gt;
+
+&lt;p&gt;Entity의 CRUD 기능을 처리하기 위한 Repository 인터페이스를 작성하겠습니다. Repository는 위에서 설명했듯이 기존 DAO와 동일한 개념으로, 비즈니스 로직층에서는 Repository를 통해 DB 연동을 처리합니다. 스프링에서 제공하는 Repository 중 하나를 상속하여 작성하면 됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/jpa/jpa-img-21.png&quot; alt=&quot;img21&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;일반적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CrudRepository&lt;/code&gt;를 사용하며, 이름에서 알 수 있듯이 CRUD 기능을 제공합니다.&lt;/p&gt;
+
+&lt;p&gt;만약 검색 기능이 필요하고 페이징 처리를 하고자 한다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PagingAndSortingRepository&lt;/code&gt;를 사용하고, Spring Data JPA에서 추가한 기능을 사용하고 싶으면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JpaRepository&lt;/code&gt;를 사용하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;CrudRepository는 다음과 같이 T, ID 2개의 제네릭 타입을 지정해야 합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;CrudRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;T는 Entity 클래스, ID는 식별자(Id)의 타입을 지정합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardrepositoryjava&quot;&gt;BoardRepository.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.data.repository.CrudRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BoardRepository&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CrudRepository&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;crud-기능-테스트&quot;&gt;CRUD 기능 테스트&lt;/h2&gt;
+
+&lt;p&gt;CrudRepository 인터페이스가 제공하는 메소드는 다음과 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;메소드&lt;/th&gt;
+      &lt;th&gt;반환형&lt;/th&gt;
+      &lt;th&gt;기능&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;count()&lt;/td&gt;
+      &lt;td&gt;long&lt;/td&gt;
+      &lt;td&gt;모든 Entity 개수 리턴&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;delete(ID)&lt;/td&gt;
+      &lt;td&gt;void&lt;/td&gt;
+      &lt;td&gt;식별키 삭제&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;delete(Iterable&amp;lt;?Extends T&amp;gt;)&lt;/td&gt;
+      &lt;td&gt;void&lt;/td&gt;
+      &lt;td&gt;주어진 모든 Entity 삭제&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;deleteAll()&lt;/td&gt;
+      &lt;td&gt;void&lt;/td&gt;
+      &lt;td&gt;모든 Entity 삭제&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;exists(ID)&lt;/td&gt;
+      &lt;td&gt;boolean&lt;/td&gt;
+      &lt;td&gt;식별키를 가진 Entity 존재 확인&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;findAllById(ID)&lt;/td&gt;
+      &lt;td&gt;Iterable&amp;lt;T&amp;gt;&lt;/td&gt;
+      &lt;td&gt;모든 Entity 목록 리턴&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;findAll(Iterable&amp;lt;ID&amp;gt;)&lt;/td&gt;
+      &lt;td&gt;Iterable&amp;lt;T&amp;gt;&lt;/td&gt;
+      &lt;td&gt;해당 식별키를 가진 Entity 목록 리턴&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;findById(ID)&lt;/td&gt;
+      &lt;td&gt;Optional&amp;lt;T&amp;gt;&lt;/td&gt;
+      &lt;td&gt;해당 식별키에 해당하는 Entity 리턴&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;saveAll&amp;lt;Iterable&amp;gt;&lt;/td&gt;
+      &lt;td&gt;&amp;lt;S extends T&amp;gt;Iterable&amp;lt;S&amp;gt;&lt;/td&gt;
+      &lt;td&gt;여러 Entity들을 한 번에 등록, 수정&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;save&amp;lt;S entity&amp;gt;&lt;/td&gt;
+      &lt;td&gt;&amp;lt;S extends T&amp;gt;S&lt;/td&gt;
+      &lt;td&gt;하나의 Entity를 등록, 수정&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;CRUD 기능 테스트를 하기 전에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application.properties&lt;/code&gt;에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;spring.jpa.hibernate.ddl-auto&lt;/code&gt;를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update&lt;/code&gt;로 바꿔주세요.&lt;/p&gt;
+
+&lt;div data-lang=&quot;PROPERTIES&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;spring.jpa.hibernate.ddl-auto&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;update
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;등록(Create)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/test/java&lt;/code&gt; 폴더에 Junit 기반의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BoardRepositoryTest&lt;/code&gt;라는 테스트 케이스를 작성합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardrepositorytestjava&quot;&gt;BoardRepositoryTest.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.junit.Test&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.junit.runner.RunWith&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.beans.factory.annotation.Autowired&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.boot.test.context.SpringBootTest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.test.context.junit4.SpringRunner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@RunWith&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;SpringRunner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@SpringBootTest&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BoardRepositoryTest&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Autowired&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BoardRepository&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;boardRepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testInsertBoard&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;테이블 제목&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Rubisco&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;첫번째 글입니다.&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+                        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        
+        &lt;span class=&quot;n&quot;&gt;boardRepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;JPA에서는 persist() 메소드로 INSERT를 했지만, CrudRepository 인터페이스는 save() 메소드를 통해 INSERT를 합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Hibernate: 
+    &lt;span class=&quot;k&quot;&gt;select
+        &lt;/span&gt;hibernate_sequence.nextval 
+    from
+        dual
+Hibernate: 
+    insert 
+    into
+        board
+        &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;content, create_date, title, writer, &lt;span class=&quot;nb&quot;&gt;seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;시퀀스를 하나 증가시킨 후 INSERT 쿼리가 실행됨을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;조회(Read)&lt;/h3&gt;
+
+&lt;p&gt;조회 기능을 테스트 하기 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;testGetBoard&lt;/code&gt;라는 메소드를 작성합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardrepositorytestjava-1&quot;&gt;BoardRepositoryTest.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testGetBoard&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;boardRepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;findById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;데이터 하나를 조회하기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;findById()&lt;/code&gt; 메소드를 사용합니다. 그러면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Optional&lt;/code&gt; 타입의 객체가 리턴되며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get()&lt;/code&gt; 메소드를 통해 영속성 컨텍스트에 저장된 Board 객체를 받을 수 있습니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Hibernate: 
+    &lt;span class=&quot;k&quot;&gt;select
+        &lt;/span&gt;board0_.seq as seq1_0_0_,
+        board0_.cnt as cnt2_0_0_,
+        board0_.content as content3_0_0_,
+        board0_.create_date as create_d4_0_0_,
+        board0_.title as title5_0_0_,
+        board0_.writer as writer6_0_0_ 
+    from
+        board board0_ 
+    where
+        board0_.seq&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;?
+Board&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1, &lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;제목 수정, &lt;span class=&quot;nv&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;Rubisco, &lt;span class=&quot;nv&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;첫번째 글입니다., &lt;span class=&quot;nv&quot;&gt;createDate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2022-08-08, &lt;span class=&quot;nv&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;테스트 케이스를 실행하면 SELECT 쿼리가 실행되고, 터미널에 seq=1인 Entity의 속성이 출력되는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;수정(Update)&lt;/h3&gt;
+
+&lt;p&gt;수정 기능을 테스트 하기 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;testUpdateBoard&lt;/code&gt; 라는 메소드를 작성합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardrepositorytestjava-2&quot;&gt;BoardRepositoryTest.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testUpdateBoard&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;boardRepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;findById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setTitle&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;제목 수정&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;boardRepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;board&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;JPA에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;merge()&lt;/code&gt; 메소드를 사용했지만, CrudRepository는 INSERT 할때와 동일하게 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;save()&lt;/code&gt; 메소드를 사용합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Hibernate: 
+    &lt;span class=&quot;k&quot;&gt;select
+        &lt;/span&gt;board0_.seq as seq1_0_0_,
+        board0_.cnt as cnt2_0_0_,
+        board0_.content as content3_0_0_,
+        board0_.create_date as create_d4_0_0_,
+        board0_.title as title5_0_0_,
+        board0_.writer as writer6_0_0_ 
+    from
+        board board0_ 
+where
+        board0_.seq&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;?
+Hibernate: 
+    &lt;span class=&quot;k&quot;&gt;select
+        &lt;/span&gt;board0_.seq as seq1_0_0_,
+        board0_.cnt as cnt2_0_0_,
+        board0_.content as content3_0_0_,
+        board0_.create_date as create_d4_0_0_,
+        board0_.title as title5_0_0_,
+        board0_.writer as writer6_0_0_ 
+    from
+        board board0_ 
+    where
+        board0_.seq&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;?
+Hibernate: 
+    update
+        board 
+    &lt;span class=&quot;nb&quot;&gt;set
+        &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;? 
+    where
+        &lt;span class=&quot;nb&quot;&gt;seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;?
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;수정할 Entity를 영속성 컨텍스트에 저장하기 위해 처음 SELECT 구문을 실행했으며, 수정하기 직전 다시 한번 수정할 Entity를 영속성 컨텍스트에 저장하고 수정 작업이 이루어지기 때문에 2번의 SELECT와 1번의 UPDATE 쿼리가 실행되었음을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;삭제(Delete)&lt;/h3&gt;
+
+&lt;p&gt;삭제 기능을 테스트 하기 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;testDeleteBoard&lt;/code&gt; 라는 메소드를 작성합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardrepositorytestjava-3&quot;&gt;BoardRepositoryTest.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Test&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testDeleteBoard&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;boardRepo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;deleteById&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1L&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;단 한줄입니다.. JPA도 구문이 간단하다고 느꼈는데 Spring Data JPA는 더욱 단순화 되고 직관적입니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Hibernate: 
+    &lt;span class=&quot;k&quot;&gt;select
+        &lt;/span&gt;board0_.seq as seq1_0_0_,
+        board0_.cnt as cnt2_0_0_,
+        board0_.content as content3_0_0_,
+        board0_.create_date as create_d4_0_0_,
+        board0_.title as title5_0_0_,
+        board0_.writer as writer6_0_0_ 
+    from
+        board board0_ 
+    where
+        board0_.seq&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;?
+Hibernate: 
+    delete 
+    from
+        board 
+    where
+        &lt;span class=&quot;nb&quot;&gt;seq&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;?
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;수정과 마찬가지로 SELECT 쿼리를 통해 Entity를 영속성 컨텍스트에 저장한 후 DELETE 쿼리가 실행됨을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Hibernate로 CRUD를 만들때는 EntityManagerFactory를 짓고 EntityManager를 생성하여 EntityManager를 통해 Entity의 CRUD를 처리했습니다.&lt;/p&gt;
+
+&lt;p&gt;반면 Spring Data JPA로 CRUD를 만들때는 EntityManager가 등장하지 않았습니다. EntityManager는 Repository에 포함되어있어 직접 작성하지 않아도 내부에서 자동적으로 호출되는 모양새 입니다.&lt;/p&gt;
+
+&lt;p&gt;아직 완전히 이해하진 못했지만 Spring Data JPA를 사용하면 효율적인 개발이 될 것임은 확실해 보입니다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="java" />
+      
+        <category term="spring" />
+      
+        <category term="jpa" />
+      
+
+      
+        <summary type="html">JPA란?</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">싱글톤 패턴(Singleton Pattern)</title>
+      <link href="https://huimang2.github.io/design-pattern/creational/singleton-pattern" rel="alternate" type="text/html" title="싱글톤 패턴(Singleton Pattern)" />
+      <published>2022-07-12T18:18:00+09:00</published>
+      <updated>2022-07-12T18:18:00+09:00</updated>
+      <id>https://huimang2.github.io/design-pattern/creational/singleton-pattern</id>
+      <content type="html" xml:base="https://huimang2.github.io/design-pattern/creational/singleton-pattern">&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
+&lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;생성 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;active&quot;&gt;
+                
+                    &lt;span&gt;싱글톤 패턴(Singleton Pattern)&lt;/span&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;팩토리 메서드 패턴(Factory Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;추상 팩토리 패턴(Abstract Factory Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;빌더 패턴(Builder Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프로토타입 패턴(Prototype Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;구조 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;어댑터 패턴(Adapter Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;브리지 패턴(Bridge Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;컴포지트 패턴(Composit Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;데코레이터 패턴(Decorator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;퍼사드 패턴(Facade Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;플라이웨이트 패턴(Flyweight Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프록시 패턴(Proxy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;행위 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;책임 연쇄 패턴(Chain of Responsibility Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;커맨드 패턴(Command Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;이터레이터 패턴(Iterator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메디에이터 패턴(Mediator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메멘토 패턴(Memento Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;옵저버 패턴(Observer Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;상태 패턴(State Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;전략 패턴(Strategy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;템플릿 메소드 패턴(Template Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;비지터 패턴(Visitor Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;싱글톤-패턴singleton-pattern&quot;&gt;싱글톤 패턴(Singleton Pattern)&lt;/h1&gt;
+
+&lt;p&gt;싱글톤 패턴은 특정 클래스의 인스턴스가 오직 하나임을 보장하고, 이 인스턴스에 접근할 수 있는 방법을 제공합니다. 즉, 특정 클래스의 객체는 하나만 생성되도록 하여 동일 인스턴스를 재사용 하는 패턴입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;구조&quot;&gt;구조&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/diagram/Singleton.png&quot; alt=&quot;singleton&quot; title=&quot;싱글톤 패턴 클래스 다이어그램&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;참여-객체&quot;&gt;참여 객체&lt;/h2&gt;
+
+&lt;h3 id=&quot;singleton&quot;&gt;Singleton&lt;/h3&gt;
+
+&lt;p&gt;생성자의 접근자를 private로 설정하여 새로운 인스턴스를 생성하지 못하도록 하고, 인스턴스(Instance)의 접근을 위한 오퍼레이션(Operation)을 static으로 정의하여 해당 메소드에 의해서만 인스턴스의 접근이 가능하도록 합니다.&lt;/p&gt;
+
+&lt;p&gt;인스턴스는 싱글턴 객체의 클래스 변수로 설정되어 클래스가 메모리의 데이터영역에 저장될 때 같이 저장됨으로써 오직 한번만 인스턴스를 생성할 수 있습니다. 이로써 싱글턴 객체는 유일한 인스턴스의 생성에 대한 책임을 지게 됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;종류&quot;&gt;종류&lt;/h2&gt;
+
+&lt;h3 id=&quot;이른-초기화-방식-eager-initialization&quot;&gt;이른 초기화 방식 (Eager Initialization)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;이른 초기화 방식&lt;/code&gt;은 싱글톤 패턴의 가장 기본적인 유형입니다.&lt;/p&gt;
+
+&lt;p&gt;전역변수로 인스턴스를 생성하고 접근자를 private로 설정함으로써 싱글톤 객체의 오퍼레이션 메소드에 의해서만 접근이 가능하도록 합니다. 또한 생성자의 접근자를 private로 절정함으로써 외부에서 인스턴스를 생성할 수 없도록 만듭니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;eagersingletonjava&quot;&gt;EagerSingleton.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EagerSingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EagerSingleton&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EagerSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;EagerSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;EagerSingleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;자바에서는 static으로 선언한 클래스 변수가 곧 전역변수입니다. 클래스가 메모리의 데이터 영역에 저장될 때 클래스 변수인 INSTANCE는 싱글톤 인스턴스를 한번만 생성하여 참조함으로써 동일한 인스턴스를 재사용하는 싱글톤 원칙을 지킬 수 있게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;이른 초기화 방식의 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;장점&lt;/span&gt;&lt;/strong&gt;은 전역변수로 싱글톤 인스턴스를 만들었기때문에 클래스 로더에 의하여 클래스가 로딩될 때 오직 한번만 인스턴스가 생성되므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Thread-safe&lt;/code&gt;하게 싱글톤 객체를 생성할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:orangered&quot;&gt;단점&lt;/span&gt;&lt;/strong&gt;은 객체의 사용여부와 상관없이 클래스 로딩 시점에 인스턴스가 생성되어 프로그램이 종료될때까지 메모리를 점유하기때문에 자주 사용하지 않는 객체라면 비효율적일 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;늦은-초기화-방식-lazy-initialization&quot;&gt;늦은 초기화 방식 (Lazy Initialization)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;늦은 초기화 방식&lt;/code&gt;은 이른 초기화 방식과 반대로 클래스의 오퍼레이션 메소드가 호출될 때 인스턴스를 생성합니다. 즉, 클래스 메소드가 호출될 때까지 메모리를 점유하지 않습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;lazysingletonjava&quot;&gt;LazySingleton.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LazySingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LazySingleton&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LazySingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LazySingleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LazySingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;늦은 초기화 방식의 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;장점&lt;/span&gt;&lt;/strong&gt;은 필요할때 객체를 생성할 수 있다는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:orangered&quot;&gt;단점&lt;/span&gt;&lt;/strong&gt;은 멀티 쓰레드(Thread) 환경에서 동시에 호출되어 싱글톤 원칙을 보장할 수 없다는 것입니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;쓰레드-안전-이른-초기화-방식-thread-safe-lazy-initialization&quot;&gt;쓰레드 안전 이른 초기화 방식 (Thread safe Lazy Initialization)&lt;/h3&gt;
+
+&lt;p&gt;늦은 초기화 방식을 보완하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt; 키워드를 메소드에 선언하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;쓰레드 안전(Thread safe)&lt;/code&gt; 상태로 싱글톤을 생성할 수 있는 방식입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;로 선언된 메소드는 하나의 쓰레드가 메소드를 사용하면 lock을 걸어 다른 쓰레드를 대기상태로 만듭니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;threadsafelazysingletonjava&quot;&gt;ThreadSafeLazySingleton.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;synchronized&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ThreadSafeLazySingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 방식의 &lt;strong&gt;&lt;span style=&quot;color:green&quot;&gt;장점&lt;/span&gt;&lt;/strong&gt;은 Thread-safe 환경이라는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color:orangered&quot;&gt;단점&lt;/span&gt;&lt;/strong&gt;은 syncronized가 선언된 메소드가 호출이 많으면 성능이 나빠질 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;dcl-방식-double-checked-locking&quot;&gt;DCL 방식 (Double-Checked locking)&lt;/h3&gt;
+
+&lt;p&gt;DCL 방식은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;syncronized&lt;/code&gt;를 메소드에 선언하는 것이 아니라 메소드 내부에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;syncronized&lt;/code&gt; 블락을 만드는 방식입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;dclsingletonjava&quot;&gt;DCLSingleton.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;volatile&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DCLSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+            &lt;span class=&quot;kd&quot;&gt;synchronized&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;
+                    &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DCLSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위에 코드와 같이 인스턴스가 없을때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;synchronized&lt;/code&gt; 키워드를 통해 블락을 만들어 하나의 쓰레드만 작업할 수 있도록 하고 블락 내부에서 다시한번 인스턴스 존재 여부를 체크하게 됩니다. 2번 체크하기때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DCL(Double Checking Locking)&lt;/code&gt; 방식이라 불립니다.&lt;/p&gt;
+
+&lt;p&gt;private 접근자로 설정한 INSTANCE 클래스를 보면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;volatile&lt;/code&gt;이라는 키워드를 사용했습니다. 하나의 프로세서(CPU)는 최적화를 위해 변수를 메인 메모리에 바로 저장하지 않고 캐쉬메모리에 저장하여 성능을 향상시킵니다. 그러나 volatile로 선언된 변수는 변수를 캐쉬메모리에 저장하지 않고 곧바로 메인메모리에 반영하도록 합니다.&lt;/p&gt;
+
+&lt;p&gt;volatile 키워드를 사용하지 않고 멀티코어 환경에서 작업한다면 인스턴스를 캐쉬메모리에 저장하여 메인메모리에 인스턴스를 생성하기전에 다른 코어의 쓰레드가 비어있는 메모리를 참조하기때문에 문제가 발생할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;holder에-의한-초기화-방식-initialization-on-demand-holder-idiom&quot;&gt;Holder에 의한 초기화 방식 (Initialization on demand holder idiom)&lt;/h3&gt;
+
+&lt;p&gt;이 방식은 클래스안에 클래스 홀더(Holder)를 두어 JVM 클래스 로더 매커니즘과 클래스가 로드되는 시점을 이용한 방식입니다. 현재까지 가장 많이 이용되고 있는 방식입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;staticholdersingletonjava&quot;&gt;StaticHolderSingleton.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;design_pattern.creational.singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StaticHolderSingleton&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;StaticHolderSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){}&lt;/span&gt;
+	
+	&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SingleTonHolder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StaticHolderSingleton&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;INSTANCE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StaticHolderSingleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+	
+	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StaticHolderSingleton&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getInstance&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(){&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SingleTonHolder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;INSTANCE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위에 코드에서 보는 바와 같이 클래스 안에 private 접근자로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;중첩클래스&lt;/code&gt;를 선언하고 중첩클래스 내부에 private 접근자로 클래스 변수를 선언했습니다. 중첩 클래스는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;오퍼레이션 메소드(Operation Method)&lt;/code&gt;에 의하여 호출되기 전까지 참조되지 않으며, 오퍼레이션 메소드에 의하여 호출될때 클래스 로더에 의하여 싱글톤 인스턴스를 생성하게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;중첩클래스 내부에 선언된 클래스 변수는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;static&lt;/code&gt;으로 선언되었기 때문에 중첩클래스가 로드되는 시점에 한번만 싱글톤 인스턴스를 생성할 수 있게 됩니다. 또한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;final&lt;/code&gt; 키워드를 통해 다시 값이 할당되지 않도록 하여 싱글톤 원칙을 지킬 수 있게 됩니다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="java" />
+      
+        <category term="design-pattern" />
+      
+
+      
+        <summary type="html">GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄 패턴(Chain of Responsibility Pattern) 커맨드 패턴(Command Pattern) 이터레이터 패턴(Iterator Pattern) 메디에이터 패턴(Mediator Pattern) 메멘토 패턴(Memento Pattern) 옵저버 패턴(Observer Pattern) 상태 패턴(State Pattern) 전략 패턴(Strategy Pattern) 템플릿 메소드 패턴(Template Method Pattern) 비지터 패턴(Visitor Pattern)</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">디자인 패턴(Design Pattern)</title>
+      <link href="https://huimang2.github.io/design-pattern/intro" rel="alternate" type="text/html" title="디자인 패턴(Design Pattern)" />
+      <published>2022-07-11T22:18:00+09:00</published>
+      <updated>2022-07-11T22:18:00+09:00</updated>
+      <id>https://huimang2.github.io/design-pattern/intro</id>
+      <content type="html" xml:base="https://huimang2.github.io/design-pattern/intro">&lt;div class=&quot;table-of-contents-list&quot;&gt;GOF 디자인 패턴&lt;/div&gt;
+&lt;ul class=&quot;table-of-contents-list design_pattern&quot;&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;생성 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li&gt;
+                
+                    &lt;a href=&quot;/design-pattern/creational/singleton-pattern&quot;&gt;싱글톤 패턴(Singleton Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;팩토리 메서드 패턴(Factory Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;추상 팩토리 패턴(Abstract Factory Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;빌더 패턴(Builder Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프로토타입 패턴(Prototype Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;구조 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;어댑터 패턴(Adapter Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;브리지 패턴(Bridge Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;컴포지트 패턴(Composit Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;데코레이터 패턴(Decorator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;퍼사드 패턴(Facade Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;플라이웨이트 패턴(Flyweight Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;프록시 패턴(Proxy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+    &lt;li&gt;
+        &lt;span&gt;행위 패턴&lt;/span&gt;
+        &lt;ul class=&quot;table-of-contents-list&quot;&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;책임 연쇄 패턴(Chain of Responsibility Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;커맨드 패턴(Command Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;이터레이터 패턴(Iterator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메디에이터 패턴(Mediator Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;메멘토 패턴(Memento Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;옵저버 패턴(Observer Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;상태 패턴(State Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;전략 패턴(Strategy Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;템플릿 메소드 패턴(Template Method Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+            &lt;li class=&quot;none&quot;&gt;
+                
+                    &lt;a href=&quot;#&quot;&gt;비지터 패턴(Visitor Pattern)&lt;/a&gt;
+                
+            &lt;/li&gt;
+            
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;디자인-패턴&quot;&gt;디자인 패턴&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;디자인 패턴(Design Pattern)&lt;/code&gt;은 객체지향 프로그래밍을 할때 자주 접할 수 있는 문제를 해결하고자 만든 일종의 코드 패턴에 대한 템플릿(template)입니다.&lt;br /&gt;
+&lt;br /&gt;
+1990년대 초반 에리히 감마(Erich Gamma)에 의해 첫 소개된 이후 1995년에 이분야의 GoF(Gang of Four)라 불리는 에리히 감마(Erich Gamma), 리처드 헬름(Richard Helm), 랄프 존슨(Ralph Johnson), 존 블리시데스(John Vlissides)에 의해 집대성 되었고, 이것이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GoF의 디자인 패턴(Design Pattern)&lt;/code&gt;으로 널리 알려졌습니다.&lt;br /&gt;
+&lt;br /&gt;
+디자인 패턴은 객체지향 모델링의 장점인 재사용성과 모듈성을 극대화 시켜서 이를 적용하면 시스템 개발은 물론 유지보수에도 큰 효과를 얻을 수 있습니다. 반면 객체지향 모델에 사용되므로 초기 개발시간이 길어져 소규모 프로젝트에는 적합하지 않을 수도 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;디자인-패턴의-종류&quot;&gt;디자인 패턴의 종류&lt;/h1&gt;
+
+&lt;p&gt;디자인 패턴은 크게 생성 패턴(Creational Pattern)과 구조 패턴(Structural Patterns), 행위 패턴(Behavioral Patterns)으로 나눠집니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;생성 패턴(Creational Pattern)&lt;/code&gt;은 &lt;u&gt;객체(Object)의 인스턴스(Instance) 생성을 위한 패턴&lt;/u&gt;입니다. 클라이언트와 객체 인스턴스 사이의 연결을 끊어줍니다.&lt;/p&gt;
+
+&lt;p&gt;생성 패턴에는 싱글톤 패턴(Singleton Pattern), 빌더 패턴(Builder Pattern), 팩토리 메서드 패턴(Factory Method Pattern), 추상 팩토리 패턴(Abstract Factory Pattern), 프로토타입 패턴(Prototype Pattern)이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;구조 패턴(Structural Patterns&lt;/code&gt;은 &lt;u&gt;객체(Object)의 합성에 관한 패턴&lt;/u&gt;입니다. 객체의 조직화에 대한 패턴을 제공합니다.&lt;/p&gt;
+
+&lt;p&gt;구조 패턴에는 어댑터 패턴(Adapter Pattern), 브리지 패턴(Bridge Pattern), 컴포지트 패턴(Composit Pattern), 데코레이터 패턴(Decorator Pattern), 퍼사드 패턴(Facade Pattern), 플라이웨이트 패턴(Flyweight Pattern), 프록시 패턴(Proxy Pattern)이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;행위 패턴(Behavioral Patterns)&lt;/code&gt;은 &lt;u&gt;객체(Object)의 상호작용과 책임 분산에 대한 패턴&lt;/u&gt;을 제공합니다.&lt;/p&gt;
+
+&lt;p&gt;행위 패턴에는 책임 연쇄 패턴(Chain of Responsibility Pattern), 커맨드 패턴(Command Pattern), 인터프리터 패턴(Interpreter Pattern), 이터레이터 패턴(Iterator Pattern), 메디에이터 패턴(Mediator Pattern), 메멘토 패턴(Memento Pattern), 옵저버 패턴(Observer Pattern), 상태 패턴(State Pattern), 전략 패턴(Strategy Pattern), 템플릿 메소드 패턴(Template Method Pattern), 비지터 패턴(Visitor Pattern)이 있습니다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="java" />
+      
+        <category term="design-pattern" />
+      
+
+      
+        <summary type="html">GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임 연쇄 패턴(Chain of Responsibility Pattern) 커맨드 패턴(Command Pattern) 이터레이터 패턴(Iterator Pattern) 메디에이터 패턴(Mediator Pattern) 메멘토 패턴(Memento Pattern) 옵저버 패턴(Observer Pattern) 상태 패턴(State Pattern) 전략 패턴(Strategy Pattern) 템플릿 메소드 패턴(Template Method Pattern) 비지터 패턴(Visitor Pattern)</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>OSI 7계층(ISO Standard 7498)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/etc/iso-standard-7498" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="OSI 7계층(ISO Standard 7498)" />
+    <meta property="og:description" content="OSI 7계층 데이터를 주고 받는 과정에는 많은 단계가 있습니다. 국제표준화기구(ISO)에서는 이를 역할에 따라 7개의 계층으로 나누었습니다. 이것을 OSI 7계층(Open Systems Interconnection 7 Layer)이라고 합니다. 각 계층은 독립적으로 작용하며 수많은 프로토콜(Protocol)이 존재하는데 프로토콜이란 데이터를 주고 받기위한 일종의 약속을 말합니다. 프로토콜에 의해 하위 계층으로 갈수록 헤더가 붙으면서 데이터의 크기는 커집니다. OSI 모델" />
+    <meta property="og:url" content="https://huimang2.github.io/etc/iso-standard-7498" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/osi7/osi_img_01.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2022-07-16T12:40:00+09:00" />
+    <meta property="article:modified_time" content="2022-07-16T12:40:00+09:00" />
+    <meta property="article:tag" content="Exam" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OSI 7계층(ISO Standard 7498)" />
+    <meta name="twitter:description" content="OSI 7계층 데이터를 주고 받는 과정에는 많은 단계가 있습니다. 국제표준화기구(ISO)에서는 이를 역할에 따라 7개의 계층으로 나누었습니다. 이것을 OSI 7계층(Open Systems Interconnection 7 Layer)이라고 합니다. 각 계층은 독립적으로 작용하며 수많은 프로토콜(Protocol)이 존재하는데 프로토콜이란 데이터를 주고 받기위한 일종의 약속을 말합니다. 프로토콜에 의해 하위 계층으로 갈수록 헤더가 붙으면서 데이터의 크기는 커집니다. OSI 모델" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/osi7/osi_img_01.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Exam" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/etc/iso-standard-7498",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/osi7/osi_img_01.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/etc/iso-standard-7498"
+    },
+    "description": "OSI 7계층 데이터를 주고 받는 과정에는 많은 단계가 있습니다. 국제표준화기구(ISO)에서는 이를 역할에 따라 7개의 계층으로 나누었습니다. 이것을 OSI 7계층(Open Systems Interconnection 7 Layer)이라고 합니다. 각 계층은 독립적으로 작용하며 수많은 프로토콜(Protocol)이 존재하는데 프로토콜이란 데이터를 주고 받기위한 일종의 약속을 말합니다. 프로토콜에 의해 하위 계층으로 갈수록 헤더가 붙으면서 데이터의 크기는 커집니다. OSI 모델"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="OSI 7계층(ISO Standard 7498)" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-exam tag-network post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="16 July 2022">16 July 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/exam/'>#정보처리기사</a>,&nbsp;
+                                
+                            
+                        
+                            
+                                
+                                <a href='/tag/network/'>#네트워크</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">OSI 7계층(ISO Standard 7498)</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/osi7/osi_img_01.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#osi-7계층"><span>OSI 7계층</span></a><ul><li><a href="#물리-계층-physical-layer"><span>물리 계층 (Physical Layer)</span></a></li><li><a href="#데이터-링크-계층-datalink-layer"><span>데이터 링크 계층 (Datalink Layer)</span></a></li><li><a href="#네트워크-계층-network-layer"><span>네트워크 계층 (Network Layer)</span></a></li><li><a href="#전송-계층-transport-layer"><span>전송 계층 (Transport Layer)</span></a></li><li><a href="#세션-계층-session-layer"><span>세션 계층 (Session Layer)</span></a></li><li><a href="#표현-계층-presentation-layer"><span>표현 계층 (Presentation Layer)</span></a></li><li><a href="#응용-계층-application-layer"><span>응용 계층 (Application Layer)</span></a></li></ul></li><li><a href="#tcpip"><span>TCP/IP</span></a><ul><li><a href="#네트워크-인터페이스network-interface-계층"><span>네트워크 인터페이스(Network Interface) 계층</span></a></li><li><a href="#인터넷internet-계층"><span>인터넷(Internet) 계층</span></a></li><li><a href="#전송transport-계층"><span>전송(Transport) 계층</span></a></li><li><a href="#응용application-계층"><span>응용(Application) 계층</span></a></li></ul></li></ul>
+
+                    </div>
+                    <h1 id="osi-7계층">OSI 7계층</h1>
+
+<p>데이터를 주고 받는 과정에는 많은 단계가 있습니다. 국제표준화기구(ISO)에서는 이를 역할에 따라 7개의 계층으로 나누었습니다. 이것을 <code class="language-plaintext highlighter-rouge">OSI 7계층(Open Systems Interconnection 7 Layer)</code>이라고 합니다.</p>
+
+<p><img src="/assets/images/osi7/osi_img_01.png" alt="img01" /></p>
+
+<p>각 계층은 독립적으로 작용하며 수많은 <code class="language-plaintext highlighter-rouge">프로토콜(Protocol)</code>이 존재하는데 프로토콜이란 데이터를 주고 받기위한 <u>일종의 약속</u>을 말합니다. 프로토콜에 의해 하위 계층으로 갈수록 헤더가 붙으면서 데이터의 크기는 커집니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">OSI 모델</th>
+      <th style="text-align: center">프로토콜</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1층: 물리 계층</td>
+      <td style="text-align: center">1000BASE-T, RS-232, RS-485</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2층: 데이터 링크 계층</td>
+      <td style="text-align: center">이더넷(Ethernet), PPP, UART</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3층: 네트워크 계층</td>
+      <td style="text-align: center">IP, ICMP</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4층: 전송 계층</td>
+      <td style="text-align: center">TCP, UDP</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5층: 세션 계층</td>
+      <td style="text-align: center">SSH, TLS, RPC</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6층: 표현 계층</td>
+      <td style="text-align: center">ASCII, MPEG, JPEG</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7층: 응용 계층</td>
+      <td style="text-align: center">HTTP, FTP, Telnet, DHCP</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="물리-계층-physical-layer">물리 계층 (Physical Layer)</h2>
+
+<p>물리 계층의 데이터 단위는 <code class="language-plaintext highlighter-rouge">비트(bit)</code>이며, 네트워크 케이블과 신호에 관한 규칙을 다루고 있는 계층입니다. 통신 케이블의 종류와 신호의 규격 및 무선통신 주파수 설정, 커넥터 형태 등을 정합니다.</p>
+
+<p>물리 계층과 관련된 장비로는 동축 케이블의 아날로그 신호를 디지털 데이터로 변환하는 <code class="language-plaintext highlighter-rouge">모뎀(Modem)</code>, 다수의 컴퓨터를 연결하여 하나의 네트워크로 보내는 <code class="language-plaintext highlighter-rouge">허브(Hub)</code>, 디지털 신호를 증폭해주는 <code class="language-plaintext highlighter-rouge">리피터(Repeater)</code> 등이 있습니다.</p>
+
+<h2 id="데이터-링크-계층-datalink-layer">데이터 링크 계층 (Datalink Layer)</h2>
+
+<p>데이터 링크 계층의 데이터 단위는 <code class="language-plaintext highlighter-rouge">프레임(frame)</code>이며, 물리적 매체를 통해 데이터를 전달하는 계층입니다. 네트워크 계층에 데이터를 전달하고 물리계층에서 발생하는 오류를 탐지하고 수정하는 기능을 담당합니다. 또한 <code class="language-plaintext highlighter-rouge">MAC주소(Media Access Control Address)</code>라는 물리적 주소를 사용하여 각 기기들의 구분을 가능하게 합니다.</p>
+
+<p>이 계층과 관련된 프로토콜에는 <code class="language-plaintext highlighter-rouge">HDLC</code>, <code class="language-plaintext highlighter-rouge">PPP</code>, <code class="language-plaintext highlighter-rouge">LLC</code> 등이 있으며, 관련된 장비로는 데이터를 MAC주소를 기반으로 빠르게 전달하는 <code class="language-plaintext highlighter-rouge">스위치(Switch)</code>, 2개의 랜을 연결하는 <code class="language-plaintext highlighter-rouge">브릿지(Bridge)</code> 등이 있습니다.</p>
+
+<h2 id="네트워크-계층-network-layer">네트워크 계층 (Network Layer)</h2>
+
+<p>네트워크 계층의 데이터 단위는 <code class="language-plaintext highlighter-rouge">패킷(packet)</code>이며, 네트워크를 논리적으로 구분하는 계층입니다. 인터넷에서는 <code class="language-plaintext highlighter-rouge">IP주소(Internet Protocol Address)</code>라는 논리적 주소를 사용합니다. 이 계층에서는 전송 계층에서 요구하는 <code class="language-plaintext highlighter-rouge">서비스 품질(Qos)</code>를 위한 수단을 제공합니다. 또한 라우팅 프로토콜을 통해 데이터를 전송하는 최적의 경로를 찾아냅니다.</p>
+
+<p>관련된 프로토콜에는 <code class="language-plaintext highlighter-rouge">IP</code>, <code class="language-plaintext highlighter-rouge">ARP</code>, <code class="language-plaintext highlighter-rouge">RARP</code>, <code class="language-plaintext highlighter-rouge">ICMP</code>, <code class="language-plaintext highlighter-rouge">IGMP</code> 등이 있으며, 관련된 장비로는 랜을 연결하는 <code class="language-plaintext highlighter-rouge">라우터(Router)</code>가 있습니다.</p>
+
+<h2 id="전송-계층-transport-layer">전송 계층 (Transport Layer)</h2>
+
+<p>전송 계층은 서비스를 구분하고 사용자 사이의 신뢰성 있는 데이터 전달을 담당하는 계층입니다.</p>
+
+<p>이 계층의 프로토콜에는 신뢰성있는 데이터 전송이 목적인 <code class="language-plaintext highlighter-rouge">TCP(Transmission Control Protocol)</code>와 빠른 데이터 전송이 목적인 <code class="language-plaintext highlighter-rouge">UDP(User Datagram Protocol)</code>가 있습니다.</p>
+
+<p>TCP는 <code class="language-plaintext highlighter-rouge">세그먼트(Segment)</code>라는 데이터 단위를 사용하며 UDP는 <code class="language-plaintext highlighter-rouge">데이터그램(Datagram)</code>이라는 데이터 단위를 사용합니다.</p>
+
+<p>TCP는 세그먼트를 작은 패킷으로 나눠 여러 경로를 통해 데이터를 전송하고 목적지에서 순서대로 패킷을 조립하여 데이터를 전달합니다. 반면 데이터그램은 순서에 상관없이 데이터를 전달하기때문에 신뢰성은 없습니다.</p>
+
+<h2 id="세션-계층-session-layer">세션 계층 (Session Layer)</h2>
+
+<p>세션 계층은 두 컴퓨터 사이에 연결을 형성하고 유지 및 종료하는 기능을 담당하는 계층입니다. 일종의 대화통로라고 보면 됩니다. 데이터의 송수신 타이밍과 방법은 이 계층에서 규정됩니다.</p>
+
+<p>세션 계층의 프로토콜에는 <code class="language-plaintext highlighter-rouge">SSH</code>, <code class="language-plaintext highlighter-rouge">TLS</code>, <code class="language-plaintext highlighter-rouge">RPC</code> 등이 있으며, 데이터 전송 보안과 관련있습니다.</p>
+
+<h2 id="표현-계층-presentation-layer">표현 계층 (Presentation Layer)</h2>
+
+<p>표현 계층은 전송되는 정보의 구문(Syntax) 및 의미(Semantics)에 관여하는 계층으로, 인코딩(Encoding), 데이터 압축(Compression), 암호화(Cryptography) 등 주요한 동작을 수행합니다. 파일의 확장자(txt, jpeg, mp4, html 등)는 이 계층과 관련된 프로토콜입니다.</p>
+
+<h2 id="응용-계층-application-layer">응용 계층 (Application Layer)</h2>
+
+<p>응용 계층은 응용 서비스를 수행하고 사용자 인터페이스를 제공하는 계층입니다. 대표적인 프로토콜로는 html 문서 전송 프로토콜인 <code class="language-plaintext highlighter-rouge">HTTP(HyperText Transfer Protocol)</code>, 파일 전송 프로토콜인 <code class="language-plaintext highlighter-rouge">FTP(File Transfer Protocol)</code>, 메일 전송 프로토콜인 <code class="language-plaintext highlighter-rouge">SMTP(Simple Mail Transfer Protocol)</code> 등이 있습니다.</p>
+
+<h1 id="tcpip">TCP/IP</h1>
+
+<p>인터넷에서 데이터를 주고 받을때 대부분 전송 계층에 속하는 <code class="language-plaintext highlighter-rouge">TCP(Transmission Control Protocol)</code>​와 네트워크 계층에 속하는 <code class="language-plaintext highlighter-rouge">IP(Internet Protocol)</code>를 많이 사용하는데 이를 묶어 <code class="language-plaintext highlighter-rouge">TCP/IP(Transmission Control Protocol/Internet Protocol)</code>라고 합니다. 1960년대 미 국방성에서 개발한 통신 프로토콜이며, 현재는 대부분의 컴퓨터가 기본으로 제공하는 인터넷 표준 프로토콜입니다. TCP/IP는 데이터 전송 과정을 4계층으로 나누며, OSI 모델과 다르게 각 계층이 서로 <b style="color:hotpink">종속적</b>입니다.</p>
+
+<p><img src="/assets/images/osi7/osi_img_02.png" alt="img02" /></p>
+
+<h2 id="네트워크-인터페이스network-interface-계층">네트워크 인터페이스(Network Interface) 계층</h2>
+
+<p>네트워크 인터페이스 계층은 운영체제의 네트워크 카드와 디바이스 드라이버 등과 같이 하드웨어적인 요소와 관련된 모든 것을 지원하는 계층입니다. 상위 계층(IP)에서 패킷이 도착하면 헤더에 프리앰블(Preamble)과 CRC(Cyclic Redundancy Check)를 추가합니다. 송신 측 단말기는 인터넷 계층으로부터 전달받은 패킷에 물리적 주소(MAC) 정보를 가지는 헤더를 추가하여 프레임을 만들어 전달합니다.</p>
+
+<p>관련 프로토콜에는 <code class="language-plaintext highlighter-rouge">이더넷(Ethernet)</code>, <code class="language-plaintext highlighter-rouge">802.11x</code>, <code class="language-plaintext highlighter-rouge">MAC/LLC</code>, <code class="language-plaintext highlighter-rouge">PPP</code> 등이 있습니다.</p>
+
+<h2 id="인터넷internet-계층">인터넷(Internet) 계층</h2>
+
+<p>인터넷 계층은 패킷의 인터넷 주소를 결정하고 경로를 배정하는 역할을 합니다. 관련된 프로토콜에는 <code class="language-plaintext highlighter-rouge">IP(Internet Protocol)</code>, IP를 MAC으로 변환하는 <code class="language-plaintext highlighter-rouge">ARP(Address Resolution Protocol)</code>, IP 패킷을 전달하는 동안 발생한 오류를 보고하는 <code class="language-plaintext highlighter-rouge">ICMP(Internet Control Message Protocol)</code> 등이 있습니다.</p>
+
+<p>인터넷은 <b style="color:green">INTER</b>connected <b style="color:green">NET</b>work에서 만들어진 합성어로, TCP/IP를 통해 연결된 모든 네트워크의 집합체입니다.</p>
+
+<p>IP 주소에는 32비트 체계인 <code class="language-plaintext highlighter-rouge">IPv4</code>와 128비트 체계인 <code class="language-plaintext highlighter-rouge">IPv6</code>가 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">IPv4</code>는 최대 65,532byte로 이루어져 있으며, 5개의 클래스로 나눠집니다. <code class="language-plaintext highlighter-rouge">유니캐스트</code>, <code class="language-plaintext highlighter-rouge">브로드캐스트</code>, <code class="language-plaintext highlighter-rouge">멀티캐스트</code>를 지원합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">IPv6</code>는 IPv4의 주소 부족 문제를 해결하기 위해 만들어졌으며, <code class="language-plaintext highlighter-rouge">유니캐스트</code>, <code class="language-plaintext highlighter-rouge">멀티캐스트</code>, <code class="language-plaintext highlighter-rouge">애니캐스트</code>를 지원합니다.</p>
+
+<h2 id="전송transport-계층">전송(Transport) 계층</h2>
+
+<p>전송 계층은 네트워크 양단의 호스트 사이의 신뢰성 있는 전송 기능을 제공합니다. 시스템의 논리 주소와 포트를 가지며, <code class="language-plaintext highlighter-rouge">TCP</code>와 <code class="language-plaintext highlighter-rouge">UDP</code>가 사용됩니다.</p>
+
+<p>TCP의 경우 <code class="language-plaintext highlighter-rouge">3 Way-Handshake</code>라는 방식으로 통신합니다. 장치간에 연결이 잘 되었는를 3번의 과정을 통해 확인하여 데이터 전송의 신뢰성을 확보합니다.</p>
+
+<p><img src="/assets/images/osi7/osi_img_03.png" alt="img03" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">SYN</code>은<b style="color:green">syn</b>chronize sequence numbers의 약자이고 <code class="language-plaintext highlighter-rouge">ACK</code>는 <b style="color:green">ack</b>nowledgements의 약자입니다. 상태에 대한 설명은 아래 테이블을 참조하세요.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">상태</th>
+      <th style="text-align: center">설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">CLOSED</td>
+      <td style="text-align: center">닫힌 상태</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">LISTEN</td>
+      <td style="text-align: center">요청 대기 상태</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SYN-SENT</td>
+      <td style="text-align: center">SYN 요청 상태</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">SYN-RECEIVED</td>
+      <td style="text-align: center">SYN 요청을 받은 상태</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">ESTABLISHED</td>
+      <td style="text-align: center">연결 확인 상태</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>(1) 클라이언트가 서버에게 <code class="language-plaintext highlighter-rouge">SYN</code>을 요청하고 <code class="language-plaintext highlighter-rouge">SYN-SENT</code> 상태가 됩니다.</p>
+
+<p>(2) <code class="language-plaintext highlighter-rouge">SYN</code>을 요청받은 서버는 <code class="language-plaintext highlighter-rouge">SYN-RECEIVED</code> 상태가 되고, <code class="language-plaintext highlighter-rouge">SYN</code>과 함께 <code class="language-plaintext highlighter-rouge">ACK</code>를 클라이언트에게 읍답합니다.</p>
+
+<p>(3) <code class="language-plaintext highlighter-rouge">SYN+ACK</code>를 응답받은 클라이언트는 <code class="language-plaintext highlighter-rouge">ACK</code>를 서버에 요청하고 클라이언트와 서버는 <code class="language-plaintext highlighter-rouge">ESTABLISHED</code> 상태가 됩니다.</p>
+
+<p>쉽게 말해서 클라이언트가 <strong>“내말 들려?”</strong> 라고 요청을 보내면 서버가 <strong>“응 들려, 넌 내말 들려?”</strong> 라고 응답하고,  클라이언트가 <strong>“응, 나도 들려”</strong> 라고 대답하면서 대화가 시작되는겁니다.</p>
+
+<h2 id="응용application-계층">응용(Application) 계층</h2>
+
+<p>OSI 참조 모델의 세션, 표현, 응용 계층을 합친 계층입니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/typescript/typescript">
+                <div class="post-card-image" style="background-image: url(/assets/images/typescript-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/typescript/typescript">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">타입스크립트(TypeScript)란?</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>자바스크립트(JavaScript)
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      3 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/etc/docker">
+                <div class="post-card-image" style="background-image: url(/assets/images/docker-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/etc/docker">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">도커(Docker) 설치하기</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>도커란?
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      2 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">OSI 7계층(ISO Standard 7498)</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=OSI+7%EA%B3%84%EC%B8%B5%28ISO+Standard+7498%29&amp;url=etc/iso-standard-7498"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=etc/iso-standard-7498"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

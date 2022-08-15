@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>스프링 프레임워크(Spring Framework)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/java/spring" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="스프링 프레임워크(Spring Framework)" />
+    <meta property="og:description" content="스프링(Spring) 스프링(Spring)은 자바 엔터프라이즈 개발을 위한 오픈소스 경량 애플리케이션 프레임워크 입니다. 파이썬에는 Django, 자바스크립트에는 Nodejs를 통해 웹서버를 개발한다면, 자바에서는 Spring을 사용하여 웹서비스를 만들 수 있습니다. 우리나라에서는 공공기관의 웹 서비스 개발 시 사용하는 전자정부 표준프레임워크의 기반 기술로 스프링을 사용하고 있습니다. 스프링 이전에는 엔터프라이즈 자바빈즈(Enterprise JavaBeans, EJB)라는 엔터프라이즈 에디션(Java Enterprise Edition, Java" />
+    <meta property="og:url" content="https://huimang2.github.io/java/spring" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/spring/spring-img-01.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2022-08-15T10:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-08-15T10:00:00+09:00" />
+    <meta property="article:tag" content="Java" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="스프링 프레임워크(Spring Framework)" />
+    <meta name="twitter:description" content="스프링(Spring) 스프링(Spring)은 자바 엔터프라이즈 개발을 위한 오픈소스 경량 애플리케이션 프레임워크 입니다. 파이썬에는 Django, 자바스크립트에는 Nodejs를 통해 웹서버를 개발한다면, 자바에서는 Spring을 사용하여 웹서비스를 만들 수 있습니다. 우리나라에서는 공공기관의 웹 서비스 개발 시 사용하는 전자정부 표준프레임워크의 기반 기술로 스프링을 사용하고 있습니다. 스프링 이전에는 엔터프라이즈 자바빈즈(Enterprise JavaBeans, EJB)라는 엔터프라이즈 에디션(Java Enterprise Edition, Java" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/spring/spring-img-01.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Java" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/java/spring",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/spring/spring-img-01.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/java/spring"
+    },
+    "description": "스프링(Spring) 스프링(Spring)은 자바 엔터프라이즈 개발을 위한 오픈소스 경량 애플리케이션 프레임워크 입니다. 파이썬에는 Django, 자바스크립트에는 Nodejs를 통해 웹서버를 개발한다면, 자바에서는 Spring을 사용하여 웹서비스를 만들 수 있습니다. 우리나라에서는 공공기관의 웹 서비스 개발 시 사용하는 전자정부 표준프레임워크의 기반 기술로 스프링을 사용하고 있습니다. 스프링 이전에는 엔터프라이즈 자바빈즈(Enterprise JavaBeans, EJB)라는 엔터프라이즈 에디션(Java Enterprise Edition, Java"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="스프링 프레임워크(Spring Framework)" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-java tag-spring post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="15 August 2022">15 August 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/java/'>#JAVA</a>,&nbsp;
+                                
+                            
+                        
+                            
+                                
+                                <a href='/tag/spring/'>#SPRING</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">스프링 프레임워크(Spring Framework)</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/spring/spring-img-01.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#스프링spring"><span>스프링(Spring)</span></a><ul><li><a href="#spring-framework"><span>Spring Framework</span></a></li><li><a href="#spring-mvc"><span>Spring MVC</span></a></li><li><a href="#spring-boot"><span>Spring Boot</span></a></li><li><a href="#spring-data"><span>Spring Data</span></a></li></ul></li><li><a href="#스프링의-핵심"><span>스프링의 핵심</span></a><ul><li><a href="#제어의-반전inverson-of-control-ioc"><span>제어의 반전(Inverson of Control, IoC)</span></a></li><li><a href="#의존성-주입dependency-injection-di"><span>의존성 주입(Dependency Injection, DI)</span></a></li><li><a href="#관점-지향-프로그래밍aspect-oriented-programming-aop"><span>관점 지향 프로그래밍(Aspect-Oriented Programming, AOP)</span></a></li><li><a href="#교체가능한-서비스-추상화portable-service-abstraction-psa"><span>교체가능한 서비스 추상화(Portable Service Abstraction, PSA)</span></a></li></ul></li></ul>
+
+                    </div>
+                    <h1 id="스프링spring">스프링(Spring)</h1>
+
+<p><code class="language-plaintext highlighter-rouge">스프링(Spring)</code>은 자바 엔터프라이즈 개발을 위한 <strong>오픈소스 경량 애플리케이션 프레임워크</strong> 입니다. 파이썬에는 Django, 자바스크립트에는 Nodejs를 통해 웹서버를 개발한다면, 자바에서는 Spring을 사용하여 웹서비스를 만들 수 있습니다. 우리나라에서는 공공기관의 웹 서비스 개발 시 사용하는 전자정부 표준프레임워크의 기반 기술로 스프링을 사용하고 있습니다.</p>
+
+<p>스프링 이전에는 <code class="language-plaintext highlighter-rouge">엔터프라이즈 자바빈즈(Enterprise JavaBeans, EJB)</code>라는 엔터프라이즈 에디션(Java Enterprise Edition, Java EE)으로 애플리케이션을 개발했습니다. 하지만 EJB 기술의 복잡도가 증가함에 따라 EJB로 애플리케이션을 개발하는 것이 어려워졌고, 개발자들은 좀 더 쉽게 개발할 방법을 요구하게 됩니다. 이 시기를 개발자들은 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: blue">자바의 겨울</code>에 비유하였고, 스프링이 등장함으로써 겨울이 끝나고 봄이 찾아오게 될 것이라는 의미로 <code class="language-plaintext bgcolor yellow highlighter-rouge" style="color: orange">스프링</code> 이라는 이름이 지어졌다고 합니다.</p>
+
+<h2 id="spring-framework">Spring Framework</h2>
+
+<p>스프링은 Spring Framework, Spring Boot, Spring MVC, Spring Data 등 다양한 프로젝트로 구분되며, 기본이 되는 프로젝트는 <code class="language-plaintext highlighter-rouge">스프링 프레임워크(Spring Framework)</code> 입니다. 스프링 프레임워크은 약 20개의 모듈로 구성되어 있으며, 아키텍처는 다음과 같습니다.</p>
+
+<p align="center"><img src="/assets/images/spring/spring-img-01.png" alt="img01" /></p>
+
+<p>이 중에서도 핵심은 코어 모듈인 <code class="language-plaintext highlighter-rouge">Core Container</code>입니다. 코어 컨테이너에서 Beans 모듈은 IOC 패턴을 통해 객체의 구성부터 의존성 처리까지 맡고 있는 가장 핵심적인 모듈이라 할 수 있습니다.</p>
+
+<h2 id="spring-mvc">Spring MVC</h2>
+
+<p>스프링 MVC는 이전에 설명했던 MVC 패턴 기반의 웹 프레임워크 입니다. MVC2모델의 발전된 형태의 구조를 하고 있습니다.</p>
+
+<p><img src="/assets/images/mvc/mvc-img-06.png" alt="img02" /></p>
+
+<p>스프링 MVC는 Front Controller인 <code class="language-plaintext highlighter-rouge">DispatcherServlet</code>에서 모든 요청(Request)을 받아 각 컨트롤러로 요청을 위임하는 형태입니다.</p>
+
+<p>디스패처 서블릿은 다음과 같은 상속 구조를 가지고 있습니다.</p>
+
+<p><img src="/assets/images/spring/spring-img-02.png" alt="img03" /></p>
+
+<p>HTTP 프로토콜 서비스를 지원하는 <code class="language-plaintext highlighter-rouge">HttpServlet</code>을 상속받고 있는데 HttpServlet의 <code class="language-plaintext highlighter-rouge">service</code> 메소드를 통해 DispatcherServlet의 <code class="language-plaintext highlighter-rouge">doDispatch</code> 메소드가 호출됩니다.</p>
+
+<p>doDispatch는 사용자의 요청에 대하여 적절한 컨트롤러를 찾아 매핑해주며, View까지 찾아서 렌더링 해주는 핵심저긴 메소드입니다.</p>
+
+<p>아래 메소드를 보면 <code class="language-plaintext highlighter-rouge">HandlerAdapter</code>를 통해 핸들러를 실행시켜 ModelAndView 객체를 생성하고, processDispatchResult를 호출하는 것을 확인할 수 있습니다.</p>
+
+<h6 id="dispatherservlet-클래스의-dodispatch-메소드">dispatherServlet 클래스의 doDispatch 메소드</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protected</span> <span class="kt">void</span> <span class="nf">doDispatch</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="nc">HttpServletRequest</span> <span class="n">processedRequest</span> <span class="o">=</span> <span class="n">request</span><span class="o">;</span>
+    <span class="nc">HandlerExecutionChain</span> <span class="n">mappedHandler</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="kt">boolean</span> <span class="n">multipartRequestParsed</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+
+    <span class="nc">WebAsyncManager</span> <span class="n">asyncManager</span> <span class="o">=</span> <span class="nc">WebAsyncUtils</span><span class="o">.</span><span class="na">getAsyncManager</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="nc">ModelAndView</span> <span class="n">mv</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="nc">Exception</span> <span class="n">dispatchException</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">processedRequest</span> <span class="o">=</span> <span class="n">checkMultipart</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+            <span class="n">multipartRequestParsed</span> <span class="o">=</span> <span class="o">(</span><span class="n">processedRequest</span> <span class="o">!=</span> <span class="n">request</span><span class="o">);</span>
+
+            <span class="c1">// Determine handler for the current request.</span>
+            <span class="n">mappedHandler</span> <span class="o">=</span> <span class="n">getHandler</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">mappedHandler</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">noHandlerFound</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="c1">// Determine handler adapter for the current request.</span>
+            <span class="nc">HandlerAdapter</span> <span class="n">ha</span> <span class="o">=</span> <span class="n">getHandlerAdapter</span><span class="o">(</span><span class="n">mappedHandler</span><span class="o">.</span><span class="na">getHandler</span><span class="o">());</span>
+
+            <span class="c1">// Process last-modified header, if supported by the handler.</span>
+            <span class="nc">String</span> <span class="n">method</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getMethod</span><span class="o">();</span>
+            <span class="kt">boolean</span> <span class="n">isGet</span> <span class="o">=</span> <span class="nc">HttpMethod</span><span class="o">.</span><span class="na">GET</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="n">method</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">isGet</span> <span class="o">||</span> <span class="nc">HttpMethod</span><span class="o">.</span><span class="na">HEAD</span><span class="o">.</span><span class="na">matches</span><span class="o">(</span><span class="n">method</span><span class="o">))</span> <span class="o">{</span>
+                <span class="kt">long</span> <span class="n">lastModified</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="na">getLastModified</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">mappedHandler</span><span class="o">.</span><span class="na">getHandler</span><span class="o">());</span>
+                <span class="k">if</span> <span class="o">(</span><span class="k">new</span> <span class="nc">ServletWebRequest</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">).</span><span class="na">checkNotModified</span><span class="o">(</span><span class="n">lastModified</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">isGet</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">return</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+
+            <span class="k">if</span> <span class="o">(!</span><span class="n">mappedHandler</span><span class="o">.</span><span class="na">applyPreHandle</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">,</span> <span class="n">response</span><span class="o">))</span> <span class="o">{</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="c1">// Actually invoke the handler.</span>
+            <span class="n">mv</span> <span class="o">=</span> <span class="n">ha</span><span class="o">.</span><span class="na">handle</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">,</span> <span class="n">response</span><span class="o">,</span> <span class="n">mappedHandler</span><span class="o">.</span><span class="na">getHandler</span><span class="o">());</span>
+
+            <span class="k">if</span> <span class="o">(</span><span class="n">asyncManager</span><span class="o">.</span><span class="na">isConcurrentHandlingStarted</span><span class="o">())</span> <span class="o">{</span>
+                <span class="k">return</span><span class="o">;</span>
+            <span class="o">}</span>
+
+            <span class="n">applyDefaultViewName</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">,</span> <span class="n">mv</span><span class="o">);</span>
+            <span class="n">mappedHandler</span><span class="o">.</span><span class="na">applyPostHandle</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">,</span> <span class="n">response</span><span class="o">,</span> <span class="n">mv</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">dispatchException</span> <span class="o">=</span> <span class="n">ex</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">Throwable</span> <span class="n">err</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">// As of 4.3, we're processing Errors thrown from handler methods as well,</span>
+            <span class="c1">// making them available for @ExceptionHandler methods and other scenarios.</span>
+            <span class="n">dispatchException</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NestedServletException</span><span class="o">(</span><span class="s">"Handler dispatch failed"</span><span class="o">,</span> <span class="n">err</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">processDispatchResult</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">,</span> <span class="n">response</span><span class="o">,</span> <span class="n">mappedHandler</span><span class="o">,</span> <span class="n">mv</span><span class="o">,</span> <span class="n">dispatchException</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">triggerAfterCompletion</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">,</span> <span class="n">response</span><span class="o">,</span> <span class="n">mappedHandler</span><span class="o">,</span> <span class="n">ex</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">catch</span> <span class="o">(</span><span class="nc">Throwable</span> <span class="n">err</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">triggerAfterCompletion</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">,</span> <span class="n">response</span><span class="o">,</span> <span class="n">mappedHandler</span><span class="o">,</span>
+                <span class="k">new</span> <span class="nf">NestedServletException</span><span class="o">(</span><span class="s">"Handler processing failed"</span><span class="o">,</span> <span class="n">err</span><span class="o">));</span>
+    <span class="o">}</span>
+    <span class="k">finally</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">asyncManager</span><span class="o">.</span><span class="na">isConcurrentHandlingStarted</span><span class="o">())</span> <span class="o">{</span>
+            <span class="c1">// Instead of postHandle and afterCompletion</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">mappedHandler</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">mappedHandler</span><span class="o">.</span><span class="na">applyAfterConcurrentHandlingStarted</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">// Clean up any resources used by a multipart request.</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">multipartRequestParsed</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">cleanupMultipart</span><span class="o">(</span><span class="n">processedRequest</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="spring-boot">Spring Boot</h2>
+
+<p>스프링 부트는 스프링 프레임워크의 복잡한 환경설정을 최소화할 수 있도록 구성된 프로젝트 입니다. 스프링 프레임워크의 설정 부분을 자동화 하여 사용자가 편안하게 스프링을 활용할 수 있도록 돕습니다. 의존성으로 <code class="language-plaintext highlighter-rouge">spring-boot-starter</code>만 추가해주면 바로 API를 정의하고 내장된 톰켓을 통해 웹 어플리케이션 서버(Web Application Server, WAS)를 실행시킵니다.</p>
+
+<p>심지어 <a href="https://start.spring.io/" target="_blank">Spring Initializr</a>를 통해 곧바로 실행가능한 코드를 만들 수 있어서 실행환경이나 의존성 관리 등의 인프라스트럭쳐(infrastructure)를 고려하지 않고 코드 개발을 할 수 있습니다.</p>
+
+<h2 id="spring-data">Spring Data</h2>
+
+<p>스프링 데이터는 데이터의 영속성을 위해 사용할 수 있는 모듈의 집합입니다. JDBC, ORM, JPA와 관련된 모듈은 이 프로젝트에 포함되어 있으며, 관계형 데이터베이스, 비관계형 데이터베이스에 관계없이 데이터 접근에 대하여 일관된 방식을 제공합니다.</p>
+
+<h1 id="스프링의-핵심">스프링의 핵심</h1>
+
+<p>스프링은 자바 언어 기반의 프레임워크 입니다. 자바 언어의 가장 큰 특징은 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">객체 지향 언어</code>라는 것입니다.</p>
+
+<p>EJB는 컨테이너가 비즈니스 객체를 관리하여 필요할때마다 컨테이너로부터 객체를 받아쓰는 형식으로 비즈니스 로직의 복잡성 문제를 해결했지만, 문제는 비즈니스 로직이 EJB에 종속된다는 것이었습니다. 하나의 기능을 구현하기 위해 EJB에서 구현된 불필요한 객체들을 상속받아야 했으며, 이러한 이유로 실제 비즈니스 로직보다 EJB를 사용하기 위한 코드가 길어지고 복잡해졌을 뿐만 아니라 객체 지향의 핵심 가치인 상속과 다형성 등을 포기해야 했습니다.</p>
+
+<p>이러한 상황에서 특정 기술에 종속되어 작동하는 객체가 아닌 순수한 자바객체를 뜻하는 <code class="language-plaintext highlighter-rouge">POJO(Plain Old Java Object)</code>라는 단어가 만들어 졌습니다. POJO는 말 그대로 <code class="language-plaintext highlighter-rouge">오래된 방식의 간단한 자바 오브젝트</code> 입니다. 개발자들은 옛날 객체지향성이 컸던 시절로 돌아가자는 의미에서 POJO를 개발하게 되었습니다.</p>
+
+<h6 id="pojo">POJO</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="kt">long</span> <span class="n">seq</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSeq</span><span class="o">(</span><span class="kt">long</span> <span class="n">seq</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getSeq</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">seq</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTitle</span><span class="o">(</span><span class="nc">String</span> <span class="n">title</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getTitle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">title</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setContent</span><span class="o">(</span><span class="nc">String</span> <span class="n">content</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getContent</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">content</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위의 코드와 같이 기본적인 필드와 이에 해당하는 getter 및 setter로 구성된 객체를 POJO라고 합니다.</p>
+
+<p>스프링의 핵심 이념은 POJO를 통해 개발하면서 EJB에서 제공하는 엔터프라이즈 서비스를 그대로 사용하자는 것에 있습니다. 즉, 스프링은 특정 기술에 종속되지 않으면서 객체를 관리할 수 있는 컨테이너를 제공합니다. 이것을 가능하게 한 핵심 기술은 <code class="language-plaintext highlighter-rouge">IOC/DI</code>, <code class="language-plaintext highlighter-rouge">AOP</code>, <code class="language-plaintext highlighter-rouge">PSA</code> 입니다.</p>
+
+<p align="center"><img src="/assets/images/spring/spring-img-03.png" alt="img04" /></p>
+
+<h2 id="제어의-반전inverson-of-control-ioc">제어의 반전(Inverson of Control, IoC)</h2>
+
+<p>IoC는 코드의 흐름을 제어하는 주체가 바뀌는 패턴을 말합니다.</p>
+
+<p>프레임워크를 사용하지 않는 일반적인 프로그램의 경우 객체의 라이프사이클(생성, 초기화, 소멸, 호출 등)을 클라이언트가 직접 관리합니다.</p>
+
+<h6 id="cientjava">Cient.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">Board</span> <span class="n">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Board</span><span class="o">();</span>
+        <span class="o">...</span>
+        <span class="n">board</span><span class="o">.</span><span class="na">submit</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="boardjava">Board.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="kt">long</span> <span class="n">seq</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Board</span><span class="o">(</span><span class="kt">long</span> <span class="n">seq</span><span class="o">,</span> <span class="nc">String</span> <span class="n">title</span><span class="o">,</span> <span class="nc">String</span> <span class="n">content</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">seq</span> <span class="o">=</span> <span class="n">seq</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">submit</span><span class="o">()</span> <span class="o">{</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>보시는 것처럼 <code class="language-plaintext highlighter-rouge">new</code> 키워드를 통해 클라이언트가 직접 Board 객체를 생성하고 Board 객체의 로직을 구현하고 있습니다.</p>
+
+<p>반면 스프링 프레임워크를 사용하면 클라이언트가 객체를 직접 객체를 제어하지 않고 IoC 컨테이너에게 제어권을 양도합니다.</p>
+
+<h6 id="스프링-프레임워크를-통한-프로그래밍">스프링 프레임워크를 통한 프로그래밍</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardController</span> <span class="o">{</span>
+
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/Board"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getBoarView</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>보시는 것처럼 클라이언트는 BoardController 객체를 직접 생성하지 않고 @Controller 어노테이션을 선언하는 것 만으로도 구현한 로직을 작동시킬 수 있습니다.</p>
+
+<p>IOC를 구현하는 방법은 다양한데, 대표적으로 <code class="language-plaintext highlighter-rouge">템플릿 메소드 패턴(Template Method Pattern)</code>을 통해서 구현될 수 있습니다.</p>
+
+<p align="center"><img src="/assets/diagram/template_method.png" alt="img05" /></p>
+
+<p>템플릿 메소드 패턴은 알고리즘의 구조를 메소드에 정의하고, 하위 클래스에서 알고리즘 구조의 변경없이 알고리즘을 재정의 하는 패턴입니다. 객체지향 프로그래밍을 한다면 무의식적으로 사용하게 되는 패턴입니다.</p>
+
+<p>예제 코드를 하나 작성해 보겠습니다.</p>
+
+<h6 id="ramenjava">Ramen.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Ramen</span> <span class="o">{</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">make</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">boilWater</span><span class="o">();</span>
+        <span class="n">putNoodles</span><span class="o">();</span>
+        <span class="n">putIngredients</span><span class="o">();</span>
+        <span class="n">waiting</span><span class="o">();</span>
+        <span class="n">complete</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">boilWater</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"물을 끓입니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">putNoodles</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"면을 넣습니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">putIngredients</span><span class="o">();</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">waiting</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"3분을 기다립니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">complete</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="kimchiramenjava">KimchiRamen.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">KimchiRamen</span> <span class="kd">extends</span> <span class="nc">Ramen</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">complete</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"김치라면 완성!!"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">putIngredients</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"김치를 넣습니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="seafoodramenjava">SeafoodRamen.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SeafoodRamen</span> <span class="kd">extends</span> <span class="nc">Ramen</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">complete</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"해물라면 완성!!"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">putIngredients</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"해물을 넣습니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="cheeseramenjava">CheeseRamen.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CheeseRamen</span> <span class="kd">extends</span> <span class="nc">Ramen</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">complete</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"치즈라면 완성!!"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">putIngredients</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"치즈를 넣습니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>라면을 끓이는 로직입니다. 상위 클래스인 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">Ramen</code>은 추상 클래스이며, <code class="language-plaintext highlighter-rouge">make</code> 메소드에는 라면을 끓이는 순서를 정의해 두었습니다. 또한 공통 메소드를 구현하고 재료투입 로직인 <code class="language-plaintext highlighter-rouge">putIngredients</code> 메소드와 완성 로직인 <code class="language-plaintext highlighter-rouge">complete</code> 메소드는 abstract 키워드를 통해 추상메소드로 선언했습니다.</p>
+
+<p>Ramen을 상속받는 구현체인 KimchiRamen, SeafoodRamen CheeseRamen은 재료투입 로직과 완성 로직을 각각 구현했습니다.</p>
+
+<p>재료를 투입하고 완성시키는 로직은 하위 클래스에서 구현했지만 해당 메소드가 호출되는 시점은 상위 클래스의 make 로직에 의하여 결정됩니다. 즉, 제어의 역전이 일어났습니다.</p>
+
+<p>스프링은 IoC 컨테이너를 통해 객체의 흐름을 제어합니다. 개발자는 객체의 제어권을 IoC 컨테이너에 양도함으로써 프로그램의 흐름을 고려할 필요없이 구현로직에만 집중할 수 있게 됩니다.</p>
+
+<h2 id="의존성-주입dependency-injection-di">의존성 주입(Dependency Injection, DI)</h2>
+
+<p>DI는 IoC를 구현하는 패턴 중 하나입니다. IoC 컨테이너는 DI를 통해 IoC를 구현합니다. DI는 이름에서 알 수 있듯이 객체의 의존 관계를 외부에서 주입시켜주는 패턴입니다.</p>
+
+<p>위에서 작성한 Ramen 클래스를 사용하여 클라이언트가 라면을 끓여보겠습니다.</p>
+
+<h6 id="clientjava">Client.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Ramen</span> <span class="n">ramen</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SeafoodRamen</span><span class="o">();</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeRamen</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">ramen</span><span class="o">.</span><span class="na">make</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">Client</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Client</span><span class="o">();</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">makeRamen</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>정상적으로 해물라면이 만들어질 것입니다. 그런데 해물라면 로직에 변화가 생긴 경우를 가정해봅시다.</p>
+
+<h6 id="seafoodramenjava-1">SeafoodRamen.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SeafoodRamen</span> <span class="kd">extends</span> <span class="nc">Ramen</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">seafood</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">SeafoodRamen</span><span class="o">(</span><span class="nc">String</span> <span class="n">seafood</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">seafood</span> <span class="o">=</span> <span class="n">seafood</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">complete</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">seafood</span> <span class="o">+</span> <span class="s">"라면 완성!!"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">putIngredients</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">seafood</span> <span class="o">+</span> <span class="s">"을(를) 넣습니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>seafood라는 String 필드가 하나 만들어졌으며, 생성자는 seafood를 요구합니다. 하지만 클라이언트는 seafood를 매개변수로 주지 않았으므로 컴파일 에러가 발생할 것입니다. 즉, SeafoodRamen 클래스를 수정하면 Client 클래스도 함께 수정해야 프로그램이 정상작동합니다.</p>
+
+<p>이런 경우 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">Client는 SeafoodRamen에 의존한다.</code> 라고 표현합니다. Client 클래스 내부에 SeafoodRamen 객체를 생성하고 있기 때문에 의존관계가 고정되어 있습니다. 즉, 클라이언트는 해물라면에 강하게 의존하고 있습니다.</p>
+
+<p>코드를 다음과 같이 변경해 보겠습니다.</p>
+
+<h6 id="clientjava-1">Client.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Ramen</span> <span class="n">ramen</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Client</span><span class="o">(</span><span class="nc">Ramen</span> <span class="n">ramen</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ramen</span> <span class="o">=</span> <span class="n">ramen</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeRamen</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">ramen</span><span class="o">.</span><span class="na">make</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">Ramen</span> <span class="n">ramen</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SeafoodRamen</span><span class="o">(</span><span class="s">"새우"</span><span class="o">);</span>
+        <span class="nc">Client</span> <span class="n">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Client</span><span class="o">(</span><span class="n">ramen</span><span class="o">);</span>
+
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="n">client</span><span class="o">.</span><span class="na">makeRamen</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>여전히 Client는 Ramen에 의존하고 있지만 의존대상인 Ramen을 외부로부터 주입받았습니다. 정상적인 Ramen 객체를 주입받는다면 Client 클래스는 수정하지 않더라도 프로그램이 정상작동할 수 있게 됩니다. 또한 해물라면 뿐만 아니라 김치라면, 치즈라면 등 다양한 라면을 끓일 수 있습니다. 즉, 해물라면에 대한 의존관계를 약화시키고 다형성을 확보할 수 있게 되었습니다.</p>
+
+<p>DI를 하는 방법은 3가지가 있습니다.</p>
+
+<h3 class="no-toc">생성자 주입(Constructor Injection)</h3>
+
+<p>위에 예제에서 구현한 의존성 주입 방식으로, 생성자 주입은 스프링에서 권장하고 있는 방식입니다.</p>
+
+<h6 id="clientjava-2">Client.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Ramen</span> <span class="n">ramen</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Client</span><span class="o">(</span><span class="nc">Ramen</span> <span class="n">ramen</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ramen</span> <span class="o">=</span> <span class="n">ramen</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeRamen</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">ramen</span><span class="o">.</span><span class="na">make</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 class="no-toc">세터 주입(Setter Injection)</h3>
+
+<p>자바빈 패턴으로 세터를 통해 의존성을 주입받습니다.</p>
+
+<h6 id="clientjava-3">Client.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Ramen</span> <span class="n">ramen</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRamen</span><span class="o">(</span><span class="nc">Ramen</span> <span class="n">ramen</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ramen</span> <span class="o">=</span> <span class="n">ramen</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeRamen</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">ramen</span><span class="o">.</span><span class="na">make</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 class="no-toc">인터페이스 주입(Interface Injection)</h3>
+
+<p>인터페이스를 통해 의존성 주입을 담보받는 형식입니다. Ramen을 주입받는 Client는 해당 인터페이스의 구현체가 됩니다.</p>
+
+<h6 id="clientjava-4">Client.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="kd">implements</span> <span class="nc">RamenInject</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Ramen</span> <span class="n">ramen</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">injectRamen</span><span class="o">(</span><span class="nc">Ramen</span> <span class="n">ramen</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">ramen</span> <span class="o">=</span> <span class="n">ramen</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">makeRamen</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">ramen</span><span class="o">.</span><span class="na">make</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="rameninjectjava">RamenInject.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">RamenInject</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">injectRamen</span><span class="o">(</span><span class="nc">Ramen</span> <span class="n">ramen</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>이처럼 스프링은 DI를 통해 IOC를 구현하면서 객체 사이의 의존성을 약화시키고 다형성을 확보합니다. 스프링으로 컨트롤러를 만들어보겠습니다.</p>
+
+<h6 id="boardcontrollerjava">BoardController.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardController</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">BoardService</span> <span class="n">boardService</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">BoardController</span><span class="o">(</span><span class="nc">BoardService</span> <span class="n">service</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">boardService</span> <span class="o">=</span> <span class="n">service</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="o">...</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">BoardController</code> 는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">BoardService</code>에 의존하고 있다는 것을 확인할 수 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">@Controller</code> 어노테이션을 붙이면 스프링의 IoC 컨테이너에서 관리하는 객체인 <code class="language-plaintext highlighter-rouge">Bean</code>으로 등록되어 객체가 자동으로 생성됩니다. 이때 자동으로 의존성 주입이 일어나는데 <code class="language-plaintext highlighter-rouge">@Autowired</code> 어노테이션을 붙임으로써 의존성을 주입받습니다.</p>
+
+<p>그런데 위에 작성한 코드에는 <code class="language-plaintext highlighter-rouge">@Autowired</code> 어노테이션이 없습니다. 이것은 생성자가 1개인 경우 IoC 컨테이너가 자동으로 이를 인식하여 의존성을 주입해 주기때문입니다.</p>
+
+<p>스프링에서 DI를 하는 방식은 다음과 같습니다.</p>
+
+<h3 class="no-toc reset">필드 주입(Fild Injection)</h3>
+
+<p>필드 주입은 의존성을 주입할 필드에 <code class="language-plaintext highlighter-rouge">@Autowired</code> 어노테이션을 붙입니다.</p>
+
+<h6 id="boardcontrollerjava-1">BoardController.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardController</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">BoardService</span> <span class="n">boardService</span><span class="o">;</span>
+
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>필드 주입은 가장 간단하면서도 가장 추천되지 않는 방식입니다. 인텔리제이에서 필드 주입을 하면 경고를 나타내는 것을 확인할 수 있습니다.</p>
+
+<p align="center"><img src="/assets/images/spring/spring-img-04.png" alt="img05" /></p>
+
+<p>필드 주입의 경우 외부에서 접근이 불가능합니다. 이것은 다시 말해서 DI 프레임워크나 리플렉션 없이는 필드값을 주입해 줄 방법이 없다는 것을 의미합니다. 즉, 프레임워크에 강하게 종속적인 객체가 되어버립니다.</p>
+
+<p>또한 필드 주입은 순환참조 문제가 발생할 수 있습니다. 다음 코드를 확인해봅시다.</p>
+
+<h6 id="chickenjava">Chicken.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Chicken</span> <span class="o">{</span>
+    
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">Egg</span> <span class="n">egg</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">layEgg</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">egg</span><span class="o">.</span><span class="na">becomChicken</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="eggjava">Egg.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Egg</span> <span class="o">{</span>
+    
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">Chicken</span> <span class="n">chicken</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">becomChicken</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">chicken</span><span class="o">.</span><span class="na">becomEgg</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>닭은 알에 의존하고 알은 닭에 의존하고 있는 형태입니다. 닭은 알을 놓고, 알은 자라서 닭이 됩니다.</p>
+
+<p>이 코드는 컴파일 시점에서는 문제가 되지 않지만 런타임 시점에서 메소드를 호출하는 순간 스택오버플로우가 발생합니다.
+서로 메소드를 참조하여 무한하게 순환하기 때문입니다. 즉, 컴파일 시점에서 에러를 발견할 수 없다는 문제점이 있습니다.</p>
+
+<p>이러한 이유로 필드 주입은 지양해야합니다.</p>
+
+<h3 class="no-toc">세터 주입(Setter Injection)</h3>
+
+<p>세터 주입은 Setter에 <code class="language-plaintext highlighter-rouge">@Autowired</code> 어노테이션을 붙여 의존성을 주입합니다.</p>
+
+<h6 id="boardcontrollerjava-2">BoardController.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardController</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="nc">BoardService</span> <span class="n">boardService</span><span class="o">;</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBoardService</span><span class="o">(</span><span class="nc">BoardService</span> <span class="n">boardservice</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">boardService</span> <span class="o">=</span> <span class="n">boardservice</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>세터 주입 역시 순환참조 문제가 발생할 수 있습니다. 하지만 의존성을 수정할 수 있기 때문에 런타임에서 의존성 수정이 필요한 경우 사용합니다.</p>
+
+<h3 class="no-toc">생성자 주입(Constructor Injection)</h3>
+
+<p>생성자 주입은 스프링에서 공식적으로 추천하는 방식입니다.</p>
+
+<h6 id="boardcontrollerjava-3">BoardController.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardController</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">BoardService</span> <span class="n">boardService</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">BoardController</span><span class="o">(</span><span class="nc">BoardService</span> <span class="n">boardservice</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">boardService</span> <span class="o">=</span> <span class="n">boardservice</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>생성자 주입의 경우 최초 빈(Bean)의 생성시 1회 호출을 보장하며, 다른 방식과 달리 필드에 final 키워드를 사용가능합니다. 또한 컴파일 시점에서 순환참조를 체크하기 때문에 에러를 초기에 발견할 수 있습니다.</p>
+
+<p>위에서 설명했듯이 단일 생성자의 경우 어노테이션을 붙이지 않아도 되며, 생성자가 여러 개인 경우 매개변수가 가장 많은 생성자에 의존성을 주입합니다. <code class="language-plaintext highlighter-rouge">@Autowired</code> 어노테이션을 붙여 명시적으로 의존성 주입을 위한 생성자를 지정할 수도 있습니다.</p>
+
+<h2 id="관점-지향-프로그래밍aspect-oriented-programming-aop">관점 지향 프로그래밍(Aspect-Oriented Programming, AOP)</h2>
+
+<p>AOP는 관심사(기능)를 분리하여 개발의 복잡성을 낮추기 위한 프로그래밍 패러다임의 하나입니다.</p>
+
+<p align="center"><img src="/assets/images/spring/spring-img-05.png" alt="img06" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">객체 지향 프로그래밍(Object Oriented Programming, OOP)</code>에서는 주요 관심사에 따라 클래스를 분할하는데, 이 클래스들은 <code class="language-plaintext highlighter-rouge">단일 책임 원칙(Single Responsibility Principle, SRP)</code>에 따라 설계되어 있습니다. 하지만 클래스를 설계하다보면 로깅, 보안, 트랜잭션 등 공통적으로 사용하는 부가기능이 생길 수 있습니다. 이때 공통되지 않는 주요 비즈니스 로직을 <code class="language-plaintext highlighter-rouge">핵심 관심사(Core Concern)</code>라고 하며, 주요한 비즈니스 로직은 아니지만 반복적으로 사용되는 관심사를 <code class="language-plaintext highlighter-rouge">횡단 관심사(Cross Cutting Concern)</code>라고 합니다.</p>
+
+<p>AOP에서 <code class="language-plaintext highlighter-rouge">관점(Aspect)</code>이란 이러한 횡단 관심사를 하나로 모아 모듈화 시킨 것을 의미합니다. 즉, AOP는 흩어져 있는 횡단 관심사를 별도의 클래스로 모듈화하여 OOP에 도움을 주는 부가적인 기능이라 할 수 있습니다.</p>
+
+<p>스프링에서 AOP는 <code class="language-plaintext highlighter-rouge">프록시 패턴(Proxy Pattern)</code>을 통해 구현됩니다. 프록시 패턴은 다른 객체로의 접근을 통제하기 위해 그 객체의 대리자를 두는 패턴입니다.</p>
+
+<p align="center"><img src="/assets/diagram/proxy.png" alt="img07" /></p>
+
+<p>프록시는 인터페이스를 통해 실제 서비스와 동일한 이름의 메소드를 구현하여 실제 서비스에 대한 직접적인 접근을 제어할 수 있으며, 메소드 호출 전후에 별도의 로직을 수행하도록 할 수 있습니다.</p>
+
+<p>프록시 패턴의 예제 코드를 작성해 보겠습니다.</p>
+
+<h6 id="targetjava">Target.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Target</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">logic</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="targetimpljava">TargetImpl.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TargetImpl</span> <span class="kd">implements</span> <span class="nc">Target</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">logic</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"비즈니스 로직 수행"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="targetproxyjava">TargetProxy.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">TargetProxy</span> <span class="kd">implements</span> <span class="nc">Target</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Target</span> <span class="n">target</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">TargetProxy</span><span class="o">(</span><span class="nc">Target</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">target</span> <span class="o">=</span> <span class="n">target</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">before</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"비즈니스 로직 수행 전 실행"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">after</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"비즈니스 로직 수행 후 실행"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">logic</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">before</span><span class="o">();</span>
+        <span class="n">target</span><span class="o">.</span><span class="na">logic</span><span class="o">();</span>
+        <span class="n">after</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="clientjava-5">Client.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Client</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Target</span> <span class="n">target</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TargetImpl</span><span class="o">();</span>
+        <span class="nc">Target</span> <span class="n">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TargetProxy</span><span class="o">(</span><span class="n">target</span><span class="o">);</span>
+        <span class="n">proxy</span><span class="o">.</span><span class="na">logic</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위에 코드와 같이 프록시를 통해 비즈니스 로직을 수행하면 비즈니스 로직 전후로 부가적인 기능을 추가할 수 있게 됩니다. 스프링 AOP의 대표적인 예로 트랜잭션 처리를 위한 <code class="language-plaintext highlighter-rouge">@Transactional</code> 어노테이션이 있습니다. 해당 어노테이션이 붙은 메소드는 메소드의 실행 전 <code class="language-plaintext highlighter-rouge">autoCommit(false)</code> 처리를 하고, 메소드 실행 후 <code class="language-plaintext highlighter-rouge">commit()</code> 처리를 합니다. 또한 트랜잭션 오류가 발생하면 <code class="language-plaintext highlighter-rouge">rollback()</code>이 수행되도록 합니다.</p>
+
+<h2 id="교체가능한-서비스-추상화portable-service-abstraction-psa">교체가능한 서비스 추상화(Portable Service Abstraction, PSA)</h2>
+
+<p>PSA는 환경의 변화 및 세부기술의 변경과 상관없이 일관된 방식으로 기술에 접근할 수 있게 해주는 설계원칙을 말합니다.</p>
+
+<p>PSA는 POJO 원칙을 철저하게 따르는 스프링의 기능으로, 스프링에서 동작하는 라이브러리들은 POJO 원칙을 지키게끔 PSA 형태로 추상화 되어있습니다. 즉, 복잡한 기술은 내부에 숨기면서 개발자에게 편의성을 제공합니다.</p>
+
+<p>예를 들어 트랜잭션을 처리하는 경우, 놀랍게도 JDBC를 통해 DB에 접근하든 JPA를 통해 DB에 접근하든 <code class="language-plaintext highlighter-rouge">@Transactional</code> 어노테이션을 선언하는 것 만으로도 별도의 코드를 추가할 필요없이 트랜잭션 서비스를 사용할 수 있습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/java/">Java</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/jpa">JPA(Java Persistence API)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/design-pattern/creational/singleton-pattern">싱글톤 패턴(Singleton Pattern)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/design-pattern/intro">디자인 패턴(Design Pattern)</a></li>
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/java/">
+                                
+                                    See all 3 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/etc/plantuml">
+                <div class="post-card-image" style="background-image: url(/assets/images/plantUML.webp)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/etc/plantuml">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">VSCode로 UML 그리기</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>PlantUML
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">스프링 프레임워크(Spring Framework)</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%8A%A4%ED%94%84%EB%A7%81+%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%28Spring+Framework%29&amp;url=java/spring"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=java/spring"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

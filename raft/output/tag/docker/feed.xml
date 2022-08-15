@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="https://huimang2.github.io/tag/docker/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
+  <updated>2022-08-14T20:42:26+09:00</updated>
+  <id>https://huimang2.github.io/tag/docker/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Rubisco’s Programming Note | </title>
+  
+
+  
+    <subtitle>프로그래밍 노트</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">도커(Docker) 설치하기</title>
+      <link href="https://huimang2.github.io/etc/docker" rel="alternate" type="text/html" title="도커(Docker) 설치하기" />
+      <published>2022-07-15T20:18:00+09:00</published>
+      <updated>2022-07-15T20:18:00+09:00</updated>
+      <id>https://huimang2.github.io/etc/docker</id>
+      <content type="html" xml:base="https://huimang2.github.io/etc/docker">&lt;h1 id=&quot;도커란&quot;&gt;도커란?&lt;/h1&gt;
+
+&lt;p&gt;도커는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;컨테이너 기반 오픈소스 가상화 플랫폼&lt;/code&gt;입니다. 컨테이너란 격리된 공간에서 프로세스가 실행되도록 하는 기술입니다.&lt;/p&gt;
+
+&lt;p&gt;버추얼머신(VM)이라고 들어보셨을겁니다. 버추얼머신은 격리된 공간에서 OS가 실행되도록 하는 기술입니다. 윈도우에 격리된 리눅스를 설치한 것이라 보면 됩니다. 쉽게말해서 컴퓨터 안에 가상의 컴퓨터가 있는겁니다.&lt;/p&gt;
+
+&lt;p&gt;버추얼머신은 이미 설치되어 있는 OS위에 새로운 OS를 실행시키기때문에 조금 무겁습니다. 그에 비하여 도커는 기존 OS 위에 격리된 프로세스 공간을 만들어 실행시키때문에 가볍고 빠르게 동작합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/docker/docker-architecture.png&quot; alt=&quot;docker&quot; title=&quot;도커와 버추얼머신의 비교&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;도커를 사용하는 이유는 프로그램마다 운영환경이 다르기때문입니다. 예를 들어 A라는 프로그램은 파이썬3.8을 기반으로 작동하는데 OS에는 파이썬 3.5가 설치되어있다면 파이썬3.8을 추가적으로 설치해야합니다. &lt;strong&gt;‘그럼 그냥 파이썬 3.8을 설치하면 되지’&lt;/strong&gt;라고 생각하는 분도 있을겁니다.  하지만 프로그램은 무수히 많고 프로그램을 설치할때마다 환경을 따로 설정하는 것은 여간 번거로운 일이 아닙니다.&lt;/p&gt;
+
+&lt;p&gt;도커를 사용한다면 격리된 가상의 공간에 배포자가 작성한 운영환경에 필요한 라이브러리를 설치하여 프로세스를 실행시키게 됩니다. 즉 따로 프로그램에 맞춰 환경설정을 할 필요가 없다는 뜻입니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;도커-설치&quot;&gt;도커 설치&lt;/h1&gt;
+
+&lt;p&gt;오라클 클라우드를 통해 우분투 20.04 환경에서 도커를 설치해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(1) 우선 SSH를 통해 오라클 클라우드에 원격접속해주세요.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;USER]@[HOSTNAME] &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;PORT]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(2) 패키지를 최신상태로 업데이트 해주세요.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(3) 필수 패키지를 설치하세요.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;apt-transport-https ca-certificates curl gnupg lsb-release
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(4) 도커와 암호화 통신을 위한 GPG 키를 추가해주세요.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://download.docker.com/linux/ubuntu/gpg | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;gpg &lt;span class=&quot;nt&quot;&gt;--dearmor&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; /usr/share/keyrings/docker-archive-keyring.gpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(5) apt로 설치하기위해 stable repository를 등록합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;lsb_release &lt;span class=&quot;nt&quot;&gt;-cs&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; stable&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sudo tee&lt;/span&gt; /etc/apt/sources.list.d/docker.list &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; /dev/null
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(6) apt로 도커 엔진을 설치합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;docker-ce docker-ce-cli containerd.io
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(7) 버전을 확인해봅시다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(8) 권한을 지정하여 sudo 없이 도커를 사용할 수 있도록 합시다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;usermod &lt;span class=&quot;nt&quot;&gt;-aG&lt;/span&gt; docker &lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;포테이너portainer-설치&quot;&gt;포테이너(Portainer) 설치&lt;/h1&gt;
+
+&lt;p&gt;포테이너는 도커를 웹에서 GUI로 관리할 수 있는 도구입니다. 포테이너를 도커에 설치하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(1) 포테이너 데이터를 저장할 볼륨(공간)을 만듭니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker volume create portainer_data
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(2) 도커로 포테이너 컨테이너를 생성합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 9000:9000 &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; portainer &lt;span class=&quot;nt&quot;&gt;--restart&lt;/span&gt; always &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /var/run/docker.sock:/var/run/docker.sock &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; portainer_data:/data portainer/portainer-ce
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d&lt;/code&gt; : 백그라운드 모드(detached mode) 실행&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-p 9000:9000&lt;/code&gt; : 호스트 포트를 컨테이너 포트에 연결 (호스트:컨테이너)&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--name portainer&lt;/code&gt; : 컨테이너 이름 설정&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--restart aloways&lt;/code&gt; : 도커 실행시 컨테이너 실행 여부 설정&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-v portainer_data:/data&lt;/code&gt; : 호스트 볼륨을 컨테이너 볼륨에 연결&lt;br /&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;portainer/portainer-ce&lt;/code&gt; : 컨테이너 이미지 이름&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;포테이너가 9000번 포트에서 실행됩니다. 그러나 오라클 클라우드의 경우 22번 포트만 열려 있으므로 방화벽을 Open해야합니다. 아래 &lt;a href=&quot;#방화벽-오픈open&quot;&gt;방화벽 오픈(Open)&lt;/a&gt;를 참조하세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(3) 아이디와 암호를 입력하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Create user&lt;/code&gt;를 클릭하여 계정을 생성합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/docker/docker-img-06.png&quot; alt=&quot;img06&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(4) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Get Started&lt;/code&gt;를 클릭합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/docker/docker-img-07.png&quot; alt=&quot;img07&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(5) 설정이 완료되었습니다! 아래 사진과 같이 도커의 상태를 확인할 수 있습니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/docker/docker-img-08.png&quot; alt=&quot;img08&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;방화벽-오픈open&quot;&gt;방화벽 오픈(Open)&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;(1) 오라클 클라우드에 로그인 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;홈 -&amp;gt; 인스턴스&lt;/code&gt;를 선택합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/docker/docker-img-01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(2) 생성된 인스턴스를 클릭합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/docker/docker-img-02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(3) 보안 목록을 클릭합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/docker/docker-img-03.png&quot; alt=&quot;img03&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;22번 포트만 열려있는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(4) 수신 규칙 추가를 클릭합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/docker/docker-img-04.png&quot; alt=&quot;img04&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(5) 소스 CIDR에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0.0.0.0/0&lt;/code&gt;, 대상 포트 범위에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;9000&lt;/code&gt;을 입력하고 수신 규칙 추가를 클릭합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/docker/docker-img-05.png&quot; alt=&quot;img05&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;(6) OS 방화벽을 오픈합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;iptables은 재부팅할때마다 설정 내용이 초기화되므로 iptables을 날리고 ufw를 사용하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;우선 iptables 룰 정책을 저장하기 위한 패키지를 설치합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;iptables-persistent netfilter-persistent net-tools
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(7) 정책을 영구 저장합니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;netfilter-persistent save
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(8) ufw에서 9000번 포트를 허용해줍니다. SSH 접속을 유지하기위해 22번 포트도 추가해줍니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 9000
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 22
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;(9) ufw를 켭니다.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw &lt;span class=&quot;nb&quot;&gt;enable&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="docker" />
+      
+
+      
+        <summary type="html">도커란?</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
