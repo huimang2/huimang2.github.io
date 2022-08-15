@@ -731,7 +731,7 @@ into the {body} of the default.hbs template -->
     <span class="kd">private</span> <span class="nc">Egg</span> <span class="n">egg</span><span class="o">;</span>
 
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">layEgg</span><span class="o">()</span> <span class="o">{</span>
-        <span class="n">egg</span><span class="o">.</span><span class="na">becomChicken</span><span class="o">();</span>
+        <span class="n">egg</span><span class="o">.</span><span class="na">becomeChicken</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
@@ -743,13 +743,13 @@ into the {body} of the default.hbs template -->
     <span class="nd">@Autowired</span>
     <span class="kd">private</span> <span class="nc">Chicken</span> <span class="n">chicken</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">becomChicken</span><span class="o">()</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">becomeChicken</span><span class="o">()</span> <span class="o">{</span>
         <span class="n">chicken</span><span class="o">.</span><span class="na">layEgg</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
-<p>닭은 알에 의존하고 알은 닭에 의존하고 있는 형태입니다. 닭은 알을 놓고, 알은 자라서 닭이 됩니다.</p>
+<p>닭은 알에 의존하고 알은 닭에 의존하고 있는 형태입니다. 닭은 알을 놓고, 알은 닭이 됩니다.</p>
 
 <p>이 코드는 컴파일 시점에서는 문제가 되지 않지만 런타임 시점에서 메소드를 호출하는 순간 스택오버플로우가 발생합니다.
 서로 메소드를 참조하여 무한하게 순환하기 때문입니다. 즉, 컴파일 시점에서 에러를 발견할 수 없다는 문제점이 있습니다.</p>
