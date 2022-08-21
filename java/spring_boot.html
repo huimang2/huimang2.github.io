@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>스프링 부트로 게시판 만들기</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/java/spring_boot" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="스프링 부트로 게시판 만들기" />
+    <meta property="og:description" content="개발 환경 구축 우분투 20.04 LTS 환경을 기준으로 하여 VScode로 원격개발을 하도록 하겠습니다. 원격 코드 개발환경 구축를 참고하여 원격 Spring Boot 개발환경을 구축합니다. 저는 gradle을 통해 Spring Boot 2.7.2 / JDK 17 환경의 프로젝트를 생성했습니다. 의존성으로는 Spring Boot DevTools, Lombok, Spring Web, Spring Data JPA, MariaDB Driver, Thymeleaf를 추가했습니다. gradle을" />
+    <meta property="og:url" content="https://huimang2.github.io/java/spring_boot" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/spring_boot/spring_boot_img01.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2022-08-21T18:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-08-21T18:00:00+09:00" />
+    <meta property="article:tag" content="Java" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="스프링 부트로 게시판 만들기" />
+    <meta name="twitter:description" content="개발 환경 구축 우분투 20.04 LTS 환경을 기준으로 하여 VScode로 원격개발을 하도록 하겠습니다. 원격 코드 개발환경 구축를 참고하여 원격 Spring Boot 개발환경을 구축합니다. 저는 gradle을 통해 Spring Boot 2.7.2 / JDK 17 환경의 프로젝트를 생성했습니다. 의존성으로는 Spring Boot DevTools, Lombok, Spring Web, Spring Data JPA, MariaDB Driver, Thymeleaf를 추가했습니다. gradle을" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/spring_boot/spring_boot_img01.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Java" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/java/spring_boot",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/spring_boot/spring_boot_img01.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/java/spring_boot"
+    },
+    "description": "개발 환경 구축 우분투 20.04 LTS 환경을 기준으로 하여 VScode로 원격개발을 하도록 하겠습니다. 원격 코드 개발환경 구축를 참고하여 원격 Spring Boot 개발환경을 구축합니다. 저는 gradle을 통해 Spring Boot 2.7.2 / JDK 17 환경의 프로젝트를 생성했습니다. 의존성으로는 Spring Boot DevTools, Lombok, Spring Web, Spring Data JPA, MariaDB Driver, Thymeleaf를 추가했습니다. gradle을"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="스프링 부트로 게시판 만들기" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-java tag-spring post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="21 August 2022">21 August 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/java/'>#JAVA</a>,&nbsp;
+                                
+                            
+                        
+                            
+                                
+                                <a href='/tag/spring/'>#SPRING</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">스프링 부트로 게시판 만들기</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/spring_boot/spring_boot_img01.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#개발-환경-구축"><span>개발 환경 구축</span></a></li><li><a href="#entity-작성"><span>Entity 작성</span></a></li><li><a href="#repository-작성"><span>Repository 작성</span></a></li><li><a href="#service-작성"><span>Service 작성</span></a></li><li><a href="#단위-테스트"><span>단위 테스트</span></a></li><li><a href="#controller-작성"><span>Controller 작성</span></a></li></ul>
+
+                    </div>
+                    <h1 id="개발-환경-구축">개발 환경 구축</h1>
+
+<p>우분투 20.04 LTS 환경을 기준으로 하여 VScode로 원격개발을 하도록 하겠습니다.</p>
+
+<p><a href="/etc/ubuntu-dev-env#spring-boot-개발-환경" target="_blank">원격 코드 개발환경 구축</a>를 참고하여 원격 Spring Boot 개발환경을 구축합니다.</p>
+
+<p>저는 gradle을 통해 <code class="language-plaintext highlighter-rouge">Spring Boot 2.7.2 / JDK 17</code> 환경의 프로젝트를 생성했습니다.</p>
+
+<p>의존성으로는 <code class="language-plaintext highlighter-rouge">Spring Boot DevTools</code>, <code class="language-plaintext highlighter-rouge">Lombok</code>, <code class="language-plaintext highlighter-rouge">Spring Web</code>, <code class="language-plaintext highlighter-rouge">Spring Data JPA</code>, <code class="language-plaintext highlighter-rouge">MariaDB Driver</code>, <code class="language-plaintext highlighter-rouge">Thymeleaf</code>를 추가했습니다. gradle을 통해 단위 테스트 도구 <code class="language-plaintext highlighter-rouge">juint</code>도 추가했습니다.</p>
+
+<p>MariaDB가 아닌 다른 DB의 경우 DB에 맞는 드라이버를 의존성으로 추가해주세요.</p>
+
+<h6 id="buildgradle">build.gradle</h6>
+<div data-lang="GRADLE" class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plugins {
+    id 'org.springframework.boot' version '2.7.3'
+    id 'io.spring.dependency-management' version '1.0.13.RELEASE'
+    id 'java'
+}
+
+group = 'practice'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // 스프링 부트
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 롬복
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // mariaDB JDBC driver
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+    // 단위 테스트 도구
+    testImplementation 'junit:junit'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // 개발툴
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+</code></pre></div></div>
+
+<p>의존성 모듈의 프로퍼티를 설정합니다.</p>
+
+<h6 id="applicationproperties">application.properties</h6>
+<div data-lang="PROPERTIES" class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 타임리프 설정
+spring.thymeleaf.prefix = classpath:templates/
+spring.thymeleaf.suffix = .html
+spring.thymeleaf.cache = false
+
+# JPA 설정
+spring.jpa.hibernate.ddl-auto = update
+spring.jpa.hibernate.use-new-id-generator-mappings = false
+spring.jpa.generate-ddl = true
+spring.jpa.show-sql = true
+spring.jpa.database = default
+spring.jpa.database-platform = org.hibernate.dialect.MariaDB103Dialect
+spring.jpa.properties.hibernate.format_sql = true
+spring.jpa.properties.hibernate.use_sql_comments = false
+
+# 데이터베이스 설정
+spring.datasource.driver-class-name = org.mariadb.jdbc.Driver
+spring.datasource.url = [DB 주소]
+spring.datasource.username = [DB 아이디]
+spring.datasource.password: [DB 암호]
+
+# devtools 설정
+spring.devtools.livereload.enabled = true
+spring.devtools.remote.restart.enabled = true
+
+# 서버 설정
+server.port = 8080
+
+# 로그 설정
+logging.level.org.hibernate = info
+</code></pre></div></div>
+
+<p>다른 DB를 사용하는 경우 <code class="language-plaintext highlighter-rouge">spring.jpa.database</code>, <code class="language-plaintext highlighter-rouge">spring.jpa.database-platform</code>의 값과 <code class="language-plaintext highlighter-rouge">데이터베이스 설정값</code>을 바꿔주세요.</p>
+
+<h1 id="entity-작성">Entity 작성</h1>
+
+<p>애플리케이션을 개발하려면 요구사항을 분석해야 합니다. 저는 문서에 대한 CRUD와 댓글 기능을 구현하도록 하겠습니다.
+추가적으로 회원과 카테고리, 그룹 기능도 구현하겠습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">개체-관계 다이어그램(Entity Relationship Diagram, ERD)</code>을 통해 Entity와 테이블의 관계를 분석합니다.</p>
+
+<p align="center"><img src="/assets/images/spring_boot/spring_boot_img01.png" alt="img01" /></p>
+
+<p>연관관계에 대한 설명은 추후에 하도록 하고, ERD를 토대로 엔티티를 작성하겠습니다.</p>
+
+<p>우선 연관관계가 없는 column만 매핑하는데, column의 길이나 제약조건은 생각하지 않고 필드의 타입을 중점으로 매핑합니다.</p>
+
+<h6 id="boardjava">Board.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.persistence.Entity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.GeneratedValue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Id</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.*</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 게시판 도메인
+ *
+ * @since : 2022-08-20 오후 6:18
+ * @author : Rubisco
+ * @version : 1.0.0
+ */</span>
+
+<span class="nd">@Getter</span>
+<span class="nd">@Setter</span>
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span> <span class="o">{</span>
+    
+    <span class="nd">@Id</span> <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isNotice</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">likeCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">dislikeCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">readCount</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>가장 기본적인 형태의 Entity 입니다.</p>
+
+<p>ERD에서 테이블의 이름은 스네이크 표기법으로 되어있는데, Entity의 필드명을 카멜 표기법으로 정의하면 자동으로 스네이크 표기법으로 column 이름이 설정됩니다.</p>
+
+<p>예를 들어 documentId 라는 필드는 document_id 라는 column과 매핑됩니다.</p>
+
+<p>isNotice 필드는 ERD에서 String 타입이지만 boolean 타입으로 전환할 예정이므로 boolean 타입으로 선언합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">@Entity</code> 어노테이션을 통해 <code class="language-plaintext bgcolor yellow highlighter-rouge" style="color: darkgoldenrod">Board 클래스가 Entity임을 선언</code>하고, <code class="language-plaintext highlighter-rouge">@Id</code> 어노테이션으로 <code class="language-plaintext bgcolor yellow highlighter-rouge" style="color: darkgoldenrod">documentId가 기본키(Primary Key, PK)임을 선언</code>했으며, <code class="language-plaintext highlighter-rouge">@GeneratedValue</code> 어노테이션으로 기본키의 숫자가 자동으로 증가되도록 <code class="language-plaintext bgcolor yellow highlighter-rouge" style="color: darkgoldenrod">기본키 전략을 지정</code>해주었습니다.</p>
+
+<p>또한 코드를 줄이고 가시성을 높이기 위해 롬복의 <code class="language-plaintext highlighter-rouge">@Setter</code>와 <code class="language-plaintext highlighter-rouge">@Getter</code> 어노테이션을 통해 세터와 게터를 생성했습니다.</p>
+
+<p>그런데 Entity에 세터(Setter)가 있으면 중간에 데이터가 변형될 가능성이 있어서 <code class="language-plaintext bgcolor red highlighter-rouge" style="color: orangered">영속화된 Entity의 경우 DB의 일관성을 보장할 수 없게 됩니다</code>.</p>
+
+<p>물론 트랜잭션이 끝나면 detached 상태가 되어 일관성을 보장할 수 있지만, Entity에는 <code class="language-plaintext bgcolor red highlighter-rouge" style="color: orangered">전달하지 말아야 하는 데이터가 포함될 수도 있습니다</code>. 즉, 보안성에 문제가 생길 수도 있습니다.</p>
+
+<p>그러므로 DTO를 따로 만들어 Entity를 DTO로 전환하거나, 빌더(builder)를 통해 새로운 Board 객체를 만드는 것을 권장합니다.</p>
+
+<p>개인적인 의견으로는 관점에 따라 필요한 DTO를 만들어 주는 것이 맞겠으나, 지금은 소규모 프로젝트 인데다가 개인이 작업하고 있으므로 빌더를 통해 새로운 Board 객체를 생성할 수 있도록 만들겠습니다.</p>
+
+<h6 id="boardjava-1">Board.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.persistence.Entity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.GeneratedValue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Id</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.*</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 게시판 도메인
+ *
+ * @since : 2022-08-20 오후 6:18
+ * @author : Rubisco
+ * @version : 1.0.0
+ */</span>
+
+<span class="nd">@Getter</span>
+<span class="nd">@Entity</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span> <span class="o">{</span>
+    
+    <span class="nd">@Id</span> <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isNotice</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">likeCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">dislikeCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">readCount</span><span class="o">;</span>
+
+    <span class="kd">protected</span> <span class="nf">Board</span><span class="o">()</span> <span class="o">{}</span>
+
+    <span class="kd">public</span> <span class="nf">Board</span><span class="o">(</span>
+        <span class="nc">Long</span> <span class="n">documentId</span><span class="o">,</span> 
+        <span class="kt">boolean</span> <span class="n">isNotice</span><span class="o">,</span> 
+        <span class="nc">String</span> <span class="n">title</span><span class="o">,</span> 
+        <span class="nc">String</span> <span class="n">content</span>
+    <span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">documentId</span> <span class="o">=</span> <span class="n">documentId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">isNotice</span> <span class="o">=</span> <span class="n">isNotice</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="nc">Builder</span> <span class="nf">builder</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Builder</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Builder</span> <span class="o">{</span>
+
+        <span class="kd">private</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isNotice</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+
+        <span class="nc">Builder</span><span class="o">()</span> <span class="o">{}</span>
+
+        <span class="kd">public</span> <span class="nc">Builder</span> <span class="nf">documentSrl</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentSrl</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">documentSrl</span> <span class="o">=</span> <span class="n">documentSrl</span><span class="o">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="nc">Builder</span> <span class="nf">isNotice</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">isNotice</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">isNotice</span> <span class="o">=</span> <span class="n">isNotice</span><span class="o">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="nc">Builder</span> <span class="nf">title</span><span class="o">(</span><span class="nc">String</span> <span class="n">title</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="nc">Builder</span> <span class="nf">content</span><span class="o">(</span><span class="nc">String</span> <span class="n">content</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">;</span>
+            <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="nc">Board</span> <span class="nf">build</span><span class="o">()</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">Board</span><span class="o">(</span><span class="n">documentSrl</span><span class="o">,</span> <span class="n">isNotice</span><span class="o">,</span> <span class="n">title</span><span class="o">,</span> <span class="n">content</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>빌더 패턴은 추후에 설명하겠습니다. 빌더를 만들었더니 코드가 너무 복잡해졌습니다.</p>
+
+<p>우선 비어있는 Board의 생성자는 Entity의 프록시 역할을 합니다. 자세한 설명은 생략하겠으나 어찌되었든 Entity를 생성하기 위해서는 매개변수가 없는 생성자가 필요합니다.</p>
+
+<p>생성자가 없으면 자바에서 자동으로 매개변수가 없는 생성자를 만들어주지만, 빌더 패턴으로 생성자를 만들었으므로 매개변수가 없는 생성자도 같이 만들어 주어야 합니다.</p>
+
+<p>외부에서 접근하는 것을 막기위해 protected 접근자를 사용했습니다.</p>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protected</span> <span class="nf">Board</span><span class="o">()</span> <span class="o">{}</span>
+</code></pre></div></div>
+
+<p>짧은 코드지만 이 코드 또한 롬복의 <code class="language-plaintext highlighter-rouge">@NoArgsConstructor</code> 어노테이션을 통해 생성할 수 있습니다. 이때 access 매개변수를 통해 접근레벨을 설정할 수 있습니다.</p>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Getter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@NoArgsConstructor</span><span class="o">(</span><span class="n">access</span> <span class="o">=</span> <span class="nc">AccessLevel</span><span class="o">.</span><span class="na">PROTECTED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span> <span class="o">{</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>그 다음 코드는 필드를 주입하기 위한 생성자 입니다. 빌더만 있어도 새로운 Board 객체를 생성하는 것에는 문제가 없으나, Board 객체의 필드는 접근자가 private 이므로 필드를 주입해 줄 수 없습니다.</p>
+
+<p>컨트롤러에서 클라이언트의 요청(Request)을 받으면 Board 객체의 필드이름과 동일한 파라미터를 매핑하여 필드를 주입하는데, 세터도 없고 생성자도 없으면 필드를 주입할 수 없어서 Board 객체의 필드값은 모두 null이 됩니다.</p>
+
+<p>물론 Entity는 문제없이 생성되므로 DB에서 값을 조회하는 것은 문제가 없지만 DB에 값을 입력하는데 문제가 있습니다. 그러므로 생성자를 DI를 할 수 있는 환경을 만들어 줍시다.</p>
+
+<p>롬복의 <code class="language-plaintext highlighter-rouge">@AllArgsConstructor</code> 어노테이션을 통해 전체 필드에 대한 생성자를 만들 수도 있지만, 우리는 Entity를 만드는 Board 클래스를 DTO 대신 사용하는 것이므로 필요한 필드만 선택하여 생성자를 만들어 주도록 합시다.</p>
+
+<p>그 아래 코드는 빌더를 만드는 코드입니다. 빌더는 롬복의 <code class="language-plaintext highlighter-rouge">@Builder</code> 어노테이션을 통해 간단하게 생성할 수 있습니다. 클래스에 붙이면 전체 필드에 대한 빌더가 생성되지만 생성자에 붙이면 선택적인 빌드를 할 수 있는 빌더가 생성됩니다.</p>
+
+<p>어노테이션을 적용하여 다음과 같이 코드를 줄일 수 있습니다.</p>
+
+<h6 id="boardjava-2">Board.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.persistence.Entity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.GeneratedValue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Id</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicInsert</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicUpdate</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.util.Assert</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.*</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 게시판 도메인
+ *
+ * @since : 2022-08-20 오후 6:18
+ * @author : Rubisco
+ * @version : 1.0.0
+ */</span>
+
+<span class="nd">@Getter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@DynamicInsert</span>
+<span class="nd">@DynamicUpdate</span>
+<span class="nd">@NoArgsConstructor</span><span class="o">(</span><span class="n">access</span> <span class="o">=</span> <span class="nc">AccessLevel</span><span class="o">.</span><span class="na">PROTECTED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span> <span class="o">{</span>
+    
+    <span class="nd">@Id</span> <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isNotice</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">likeCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">dislikeCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">readCount</span><span class="o">;</span>
+
+    <span class="nd">@Builder</span>
+    <span class="kd">public</span> <span class="nf">Board</span><span class="o">(</span>
+        <span class="nc">Long</span> <span class="n">documentId</span><span class="o">,</span> 
+        <span class="kt">boolean</span> <span class="n">isNotice</span><span class="o">,</span> 
+        <span class="nc">String</span> <span class="n">title</span><span class="o">,</span> 
+        <span class="nc">String</span> <span class="n">content</span>
+    <span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">documentId</span> <span class="o">=</span> <span class="n">documentId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">isNotice</span> <span class="o">=</span> <span class="n">isNotice</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Board</span> <span class="nf">update</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">title</span><span class="o">,</span> <span class="s">"Title must not be null"</span><span class="o">);</span>
+        <span class="nc">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">content</span><span class="o">,</span> <span class="s">"Content must not be null"</span><span class="o">);</span>
+        <span class="nc">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">isNotice</span><span class="o">,</span> <span class="s">"IsNotice must not be null"</span><span class="o">);</span>
+
+        <span class="n">title</span> <span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="na">title</span><span class="o">;</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="na">content</span><span class="o">;</span>
+        <span class="n">isNotice</span> <span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="na">isNotice</span><span class="o">;</span>
+
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">@DynamicInsert</code> 어노테이션과 <code class="language-plaintext highlighter-rouge">@DynamicUpdate</code> 어노테이션에 대한 설명은 추후에 하도록 하고 마지막에 update 메소드 내부를 보면 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">Assert.notNull</code> 이라는 메소드를 호출합니다.</p>
+
+<p>이 메소드는 값이 null이면 예외를 발생시키는 메소드로써, 방어 코드로 입력했습니다. 테스트를 할 때 어디에서 문제가 발생했는지 쉽게 찾을 수 있기 때문에 이렇게 방어코드를 작성하는 것을 권장합니다.</p>
+
+<p>이렇게만 작성해도 문제가 없겠으나, ERD에 작성한대로 각 필드마다 column과 매칭시키도록 하겠습니다. column의 속성은 필드에 <code class="language-plaintext highlighter-rouge">@column</code> 어노테이션을 붙여서 설정할 수 있습니다.</p>
+
+<h6 id="boardjava-3">Board.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.persistence.Column</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Convert</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Entity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.GeneratedValue</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Id</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Lob</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.ColumnDefault</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicInsert</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicUpdate</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.util.Assert</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.BooleanToYNConverter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.*</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 게시판 도메인
+ *
+ * @since : 2022-08-20 오후 6:18
+ * @author : Rubisco
+ * @version : 1.0.0
+ */</span>
+
+<span class="nd">@Getter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@DynamicInsert</span>
+<span class="nd">@DynamicUpdate</span>
+<span class="nd">@NoArgsConstructor</span><span class="o">(</span><span class="n">access</span> <span class="o">=</span> <span class="nc">AccessLevel</span><span class="o">.</span><span class="na">PROTECTED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span> <span class="o">{</span>
+    
+    <span class="nd">@Id</span> <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+    <span class="nd">@ColumnDefault</span><span class="o">(</span><span class="s">"'N'"</span><span class="o">)</span>
+    <span class="nd">@Convert</span><span class="o">(</span><span class="n">converter</span> <span class="o">=</span> <span class="nc">BooleanToYNConverter</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isNotice</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span> <span class="o">=</span> <span class="mi">250</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+
+    <span class="nd">@Lob</span> <span class="nd">@Column</span><span class="o">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">updatable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nd">@ColumnDefault</span><span class="o">(</span><span class="s">"0"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">likeCount</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">updatable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nd">@ColumnDefault</span><span class="o">(</span><span class="s">"0"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">dislikeCount</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">updatable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nd">@ColumnDefault</span><span class="o">(</span><span class="s">"0"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">readedCount</span><span class="o">;</span>
+
+    <span class="nd">@Builder</span>
+    <span class="kd">public</span> <span class="nf">Board</span><span class="o">(</span>
+        <span class="nc">Long</span> <span class="n">documentId</span><span class="o">,</span> 
+        <span class="kt">boolean</span> <span class="n">isNotice</span><span class="o">,</span> 
+        <span class="nc">String</span> <span class="n">title</span><span class="o">,</span> 
+        <span class="nc">String</span> <span class="n">content</span>
+    <span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">documentId</span> <span class="o">=</span> <span class="n">documentId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">isNotice</span> <span class="o">=</span> <span class="n">isNotice</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">content</span> <span class="o">=</span> <span class="n">content</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Board</span> <span class="nf">update</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">title</span><span class="o">,</span> <span class="s">"Title must not be null"</span><span class="o">);</span>
+        <span class="nc">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">content</span><span class="o">,</span> <span class="s">"Content must not be null"</span><span class="o">);</span>
+        <span class="nc">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">isNotice</span><span class="o">,</span> <span class="s">"IsNotice must not be null"</span><span class="o">);</span>
+
+        <span class="n">title</span> <span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="na">title</span><span class="o">;</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="na">content</span><span class="o">;</span>
+        <span class="n">isNotice</span> <span class="o">=</span> <span class="n">board</span><span class="o">.</span><span class="na">isNotice</span><span class="o">;</span>
+
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">@Column</code> 어노테이션의 속성은 이전에 작성한 <a href="/java/jpa" target="_blank">JPA</a> 글을 참고하세요.</p>
+
+<p><code class="language-plaintext highlighter-rouge">@Convert</code> 어노테이션은 column 타입과 필드 타입을 달리 하고 싶을때 사용합니다. isNotice 필드는 boolean 타입인데, DB에 YN 형태로 저장하고 싶다면 컨버터를 통해 전환해야 합니다. 즉, 컨버터 클래스를 만들어야 합니다. 적당한 곳에 <code class="language-plaintext highlighter-rouge">BooleanToYNConverter.java</code> 클래스를 만들고 다음과 같이 작성하세요.</p>
+
+<h6 id="booleantoynconverterjava">BooleanToYNConverter.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.persistence.AttributeConverter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.Converter</span><span class="o">;</span>
+
+<span class="cm">/**
+ * Boolean 타입을 YN 문자열로 전환
+ *
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @since : 2022-08-21 오후 6:52
+ */</span>
+
+<span class="nd">@Converter</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BooleanToYNConverter</span> <span class="kd">implements</span> <span class="nc">AttributeConverter</span><span class="o">&lt;</span><span class="nc">Boolean</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">convertToDatabaseColumn</span><span class="o">(</span><span class="nc">Boolean</span> <span class="n">attribute</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="n">attribute</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">attribute</span><span class="o">)</span> <span class="o">?</span> <span class="s">"Y"</span> <span class="o">:</span> <span class="s">"N"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Boolean</span> <span class="nf">convertToEntityAttribute</span><span class="o">(</span><span class="nc">String</span> <span class="n">dbData</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Y"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">dbData</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">@Converter</code> 어노테이션을 통해 컨버터라는 것을 선언하고 AttributeConverter 인터페이스를 상속받아 <code class="language-plaintext highlighter-rouge">convertToDatabaseColumn</code>, <code class="language-plaintext highlighter-rouge">convertToEntityAttribute</code> 메소드를 구현합니다.</p>
+
+<p>메소드명에서 알 수 있듯이 convertToDatabaseColumn 메소드는 필드를 column으로 바꾸는 메소드이고, convertToEntityAttribute 메소드는 column을 필드로 바꾸는 메소드입니다.</p>
+
+<p>content 필드에서 <code class="language-plaintext highlighter-rouge">@Lob</code> 어노테이션은 대용량의 문자열이나 이진스트림을 저장할 때 사용합니다.</p>
+
+<p>likeCount, dislikeCount, readedCount 필드는 쿼리를 통해 값을 증가시킬 예정으로, update가 되지 않도록 설정합니다.</p>
+
+<p>이제 생성 시간과 업데이트 시간을 필드에 추가해야 한데, ERD를 보면 두 필드는 모든 테이블에서 반복되어 나타납니다. 그러므로 두 필드를 가진 객체를 부모클래스로 하여 상속받도록 하겠습니다.</p>
+
+<p>BaseTime 클래스를 다음과 같이 작성하세요.</p>
+
+<h6 id="basetimejava">BaseTime.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.time.LocalDateTime</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.persistence.EntityListeners</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.persistence.MappedSuperclass</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.data.annotation.CreatedDate</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.annotation.LastModifiedDate</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.domain.support.AuditingEntityListener</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 시간 도메인
+ * 
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @since : 2022-08-12 오후 12:09
+ */</span>
+
+<span class="nd">@Getter</span>
+<span class="nd">@MappedSuperclass</span>
+<span class="nd">@EntityListeners</span><span class="o">(</span><span class="nc">AuditingEntityListener</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseTime</span> <span class="o">{</span>
+
+    <span class="nd">@CreatedDate</span>
+    <span class="kd">private</span> <span class="nc">LocalDateTime</span> <span class="n">createDate</span><span class="o">;</span>
+
+    <span class="nd">@LastModifiedDate</span>
+    <span class="kd">private</span> <span class="nc">LocalDateTime</span> <span class="n">updateDate</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">@MappedSuperclass</code> 어노테이션은 이 클래스가 Entity 클래스의 부모클래스 라는 것을 선언합니다. 부모 클래스를 Entity로 선언하면 테이블이 별도로 생성되지만, MappedSuperclass를 선언하면 테이블이 생성되지 않고 상속할 수 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">@EntityListeners</code> 어노테이션은 상태를 관찰하는 리스너를 생성합니다. 이때 스프링이 실행되는 메인 클래스에 다음과 같이 <code class="language-plaintext highlighter-rouge">@EnableJpaAuditing</code> 어노테이션을 달아주어야 정상적으로 작동합니다.</p>
+
+<h6 id="hexapplicationjava">HexApplication.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.springframework.boot.SpringApplication</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.config.EnableJpaAuditing</span><span class="o">;</span>
+
+<span class="nd">@EnableJpaAuditing</span>
+<span class="nd">@SpringBootApplication</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HexApplication</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="nc">HexApplication</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>나머지는 예상하듯이 <code class="language-plaintext highlighter-rouge">@CreatedDate</code> 어노테이션은 INSERT 상태를, <code class="language-plaintext highlighter-rouge">@LastModifiedDate</code> 어노테이션은 UPDATE 상태를 관찰하여 시간을 자동으로 입력해줍니다.</p>
+
+<p>이제 Board 클래스에 BaseTime 클래스를 extends 해줍니다.</p>
+
+<h6 id="boardjava-4">Board.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Board</span> <span class="kd">extends</span> <span class="nc">BaseTime</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Member, Comments, Category, Group 테이블에 대한 Entity 클래스도 동일한 방식으로 작성해주세요.</p>
+
+<h6 id="commentsjava">Comments.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.persistence.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.ColumnDefault</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicInsert</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicUpdate</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.util.Assert</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.*</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 댓글 도메인
+ *
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @since : 2022-08-21 오후 9:18
+ **/</span>
+
+<span class="nd">@Getter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@DynamicInsert</span>
+<span class="nd">@DynamicUpdate</span>
+<span class="nd">@NoArgsConstructor</span><span class="o">(</span><span class="n">access</span> <span class="o">=</span> <span class="nc">AccessLevel</span><span class="o">.</span><span class="na">PROTECTED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Comments</span> <span class="kd">extends</span> <span class="nc">BaseTime</span> <span class="o">{</span>
+
+    <span class="nd">@Id</span> <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">commentId</span><span class="o">;</span>
+
+    <span class="nd">@Lob</span> <span class="nd">@Column</span><span class="o">(</span><span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">updatable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nd">@ColumnDefault</span><span class="o">(</span><span class="s">"0"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">likeCount</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">updatable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="nd">@ColumnDefault</span><span class="o">(</span><span class="s">"0"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">dislikeCount</span><span class="o">;</span>
+
+    <span class="nd">@Builder</span>
+    <span class="kd">public</span> <span class="nf">Comments</span><span class="o">(</span>
+            <span class="nc">Long</span> <span class="o">,</span>
+            <span class="nc">String</span> <span class="n">commentId</span>
+    <span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">commentId</span> <span class="o">=</span> <span class="n">commentId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">content</span> <span class="o">=</span> <span class="n">ccommentSrlontent</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Comments</span> <span class="nf">update</span><span class="o">(</span><span class="nc">Comments</span> <span class="n">comment</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Assert</span><span class="o">.</span><span class="na">notNull</span><span class="o">(</span><span class="n">content</span><span class="o">,</span> <span class="s">"content must not be null"</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">content</span> <span class="o">=</span> <span class="n">comment</span><span class="o">.</span><span class="na">content</span><span class="o">;</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="memberjava">Member.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.time.LocalDateTime</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.persistence.*</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicInsert</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicUpdate</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.*</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 회원 도메인
+ *
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @since : 2022-08-21 오후 9:52
+ */</span>
+
+<span class="nd">@Getter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@DynamicInsert</span>
+<span class="nd">@DynamicUpdate</span>
+<span class="nd">@NoArgsConstructor</span><span class="o">(</span><span class="n">access</span> <span class="o">=</span> <span class="nc">AccessLevel</span><span class="o">.</span><span class="na">PROTECTED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Member</span> <span class="kd">extends</span> <span class="nc">BaseTime</span> <span class="o">{</span>
+
+    <span class="nd">@Id</span> <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">memberId</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span> <span class="o">=</span> <span class="mi">80</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">updatable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">unique</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span> <span class="o">=</span> <span class="mi">60</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">unique</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span> <span class="o">=</span> <span class="mi">40</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span> <span class="o">=</span> <span class="mi">40</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">unique</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">nickName</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">name</span><span class="o">=</span><span class="s">"last_login"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">LocalDateTime</span> <span class="n">updateDate</span><span class="o">;</span>
+
+    <span class="nd">@Builder</span>
+    <span class="kd">public</span> <span class="nf">Member</span><span class="o">(</span>
+            <span class="nc">Long</span> <span class="n">memberId</span><span class="o">,</span>
+            <span class="nc">String</span> <span class="n">id</span><span class="o">,</span>
+            <span class="nc">String</span> <span class="n">password</span><span class="o">,</span>
+            <span class="nc">String</span> <span class="n">email</span><span class="o">,</span>
+            <span class="nc">String</span> <span class="n">name</span><span class="o">,</span>
+            <span class="nc">String</span> <span class="n">nickName</span>
+    <span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">memberId</span> <span class="o">=</span> <span class="n">memberId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">password</span> <span class="o">=</span> <span class="n">password</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">email</span> <span class="o">=</span> <span class="n">email</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">nickName</span> <span class="o">=</span> <span class="n">nickName</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="categoryjava">Category.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">lombok.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicInsert</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicUpdate</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.persistence.*</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 카테고리 도메인
+ * 
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @since : 2022-08-21 오후 10:19
+ */</span>
+
+<span class="nd">@Getter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@DynamicInsert</span>
+<span class="nd">@DynamicUpdate</span>
+<span class="nd">@NoArgsConstructor</span><span class="o">(</span><span class="n">access</span> <span class="o">=</span> <span class="nc">AccessLevel</span><span class="o">.</span><span class="na">PROTECTED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Category</span> <span class="kd">extends</span> <span class="nc">BaseTime</span> <span class="o">{</span>
+
+    <span class="nd">@Id</span> <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">categoryId</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span> <span class="o">=</span> <span class="mi">80</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">unique</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">category</span><span class="o">;</span>
+
+    <span class="nd">@Builder</span>
+    <span class="kd">public</span> <span class="nf">Category</span><span class="o">(</span><span class="nc">Long</span> <span class="n">categoryId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">category</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">categoryId</span> <span class="o">=</span> <span class="n">categoryId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">category</span> <span class="o">=</span> <span class="n">category</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="groupjava">Group.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">lombok.*</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicInsert</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.hibernate.annotations.DynamicUpdate</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.persistence.*</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 그룹 도메인
+ * 
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @since : 2022-08-21 오후 10:52
+ */</span>
+
+<span class="nd">@Getter</span>
+<span class="nd">@Entity</span>
+<span class="nd">@DynamicInsert</span>
+<span class="nd">@DynamicUpdate</span>
+<span class="nd">@NoArgsConstructor</span><span class="o">(</span><span class="n">access</span> <span class="o">=</span> <span class="nc">AccessLevel</span><span class="o">.</span><span class="na">PROTECTED</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Group</span> <span class="kd">extends</span> <span class="nc">BaseTime</span> <span class="o">{</span>
+
+    <span class="nd">@Id</span> <span class="nd">@GeneratedValue</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">groupId</span><span class="o">;</span>
+
+    <span class="nd">@Column</span><span class="o">(</span><span class="n">length</span> <span class="o">=</span> <span class="mi">80</span><span class="o">,</span> <span class="n">nullable</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">unique</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">group</span><span class="o">;</span>
+
+    <span class="nd">@Builder</span>
+    <span class="kd">public</span> <span class="nf">Group</span><span class="o">(</span><span class="nc">Long</span> <span class="n">groupId</span><span class="o">,</span> <span class="nc">String</span> <span class="n">group</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">groupId</span> <span class="o">=</span> <span class="n">groupId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">group</span> <span class="o">=</span> <span class="n">group</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이제 연관관계를 맺어야 하는데 여기서 설명하기에는 많은 내용이라 추후에 따로 설명하겠습니다.</p>
+
+<h1 id="repository-작성">Repository 작성</h1>
+
+<p>Entity를 작성했으니 이제 Repository를 작성하겠습니다. Repository로부터 Entity가 생성됩니다. Spring Data JPA를 사용하므로, 인터페이스를 상속받기만 하면 됩니다.</p>
+
+<h6 id="boardrepositoryjava">BoardRepository.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.hex.persistance</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Board</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 게시판 레포지토리
+ * 
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @date : 2022-08-21 오후 10:20
+ */</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BoardRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">Board</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span>  <span class="o">{}</span>
+</code></pre></div></div>
+
+<h6 id="commentrepositoryjava">CommentRepository.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.hex.persistance</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Comments</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 댓글 레포지토리
+ * 
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @date : 2022-08-21 오후 10:20
+ */</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CommentRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">Comments</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span>  <span class="o">{}</span>
+</code></pre></div></div>
+
+<h6 id="memberrepositoryjava">MemberRepository.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.hex.persistance</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Member</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 회원 레포지토리
+ * 
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @date : 2022-08-21 오후 10:20
+ */</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MemberRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span>  <span class="o">{}</span>
+</code></pre></div></div>
+
+<h6 id="memberrepositoryjava-1">MemberRepository.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.hex.persistance</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Member</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 회원 레포지토리
+ * 
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @date : 2022-08-21 오후 10:20
+ */</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MemberRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span>  <span class="o">{}</span>
+</code></pre></div></div>
+
+<h6 id="categoryrepositoryjava">CategoryRepository.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.hex.persistance</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Category</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 카테고리 레포지토리
+ * 
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @date : 2022-08-21 오후 10:20
+ */</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CategoryRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">Category</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span>  <span class="o">{}</span>
+</code></pre></div></div>
+
+<h6 id="grouprepositoryjava">GroupRepository.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.hex.persistance</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.data.jpa.repository.JpaRepository</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Group</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 그룹 레포지토리
+ * 
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @date : 2022-08-21 오후 10:20
+ */</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">GroupRepository</span> <span class="kd">extends</span> <span class="nc">JpaRepository</span><span class="o">&lt;</span><span class="nc">Group</span><span class="o">,</span> <span class="nc">Long</span><span class="o">&gt;</span>  <span class="o">{}</span>
+</code></pre></div></div>
+
+<h1 id="service-작성">Service 작성</h1>
+
+<p>이제 어플리케이션과 DB를 연결해주는 서비스를 작성해 보겠습니다. 게시판의 CRUD 서비스를 만들겠습니다.</p>
+
+<p>서비스는 <code class="language-plaintext highlighter-rouge">@Service</code> 어노테이션을 통해 선언할 수 있습니다. 우선 아래와 같이 CRUD 메소드를 정의한 인터페이스를 작성합니다.</p>
+
+<h6 id="boardservicejava">BoardService.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Board</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 게시판 서비스의 인터페이스
+ *
+ * @see Board 게시판 Entity
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @since : 2022-08-21 오후 11:04
+ */</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BoardService</span> <span class="o">{</span>
+
+    <span class="kt">void</span> <span class="nf">insertBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">);</span>
+
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Board</span><span class="o">&gt;</span> <span class="nf">getBoardList</span><span class="o">();</span>
+
+    <span class="nc">Board</span> <span class="nf">getBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">);</span>
+
+    <span class="kt">void</span> <span class="nf">updateBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">);</span>
+
+    <span class="kt">void</span> <span class="nf">deleteBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>인터페이스를 상속받은 구현체를 만드세요. 인텔리제이의 경우 구현체부터 만들면 인터페이스 추출이 가능합니다.</p>
+
+<h6 id="boardserviceimpljava">BoardServiceImpl.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.transaction.annotation.Transactional</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Board</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kr.kro.hex.persistance.BoardRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kr.kro.hex.service.BoardService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 게시판 서비스의 구현체
+ *
+ * @see Board 게시판 Entity
+ * @see BoardRepository 게시판 레포지토리
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @since : 2022-08-21 오후 11:04
+ */</span>
+
+<span class="nd">@Service</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@Transactional</span><span class="o">(</span><span class="n">readOnly</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardServiceImpl</span> <span class="kd">implements</span> <span class="nc">BoardService</span> <span class="o">{</span>
+    
+    <span class="cm">/** 게시판 레포지토리 */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">BoardRepository</span> <span class="n">boardRepo</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Board</span><span class="o">&gt;</span> <span class="nf">getBoardList</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Board</span> <span class="nf">getBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">board</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">@RequiredArgsConstructor</code> 어노테이션은 final 키워드가 있는 필드를 매개변수로 하는 생성자를 만들어 줍니다. 즉, 생성자 주입을 가능한 상태로 만듭니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">@Transactional</code> 어노테이션은 트랜잭션 처리를 할 수 있도록 하는데, 클래스에 붙으면 전체 메소드에 트랜잭션 처리 기능이 생깁니다 매개변수 readOnly는 조회만 가능하도록 합니다. flush를 자동으로 호출하지 않기 때문에 수동으로 flush 하지 않는 한 CUD 작업은 동작하지 않습니다. 그러므로 스냅샷을 생성하거나 dirty checking을 하지 않아서 성능이 향상된 효과를 볼 수 있습니다.</p>
+
+<p>CUD 작업이 필요한 메소드인 경우 메소드에 <code class="language-plaintext highlighter-rouge">@Transactional</code> 어노테이션을 붙이면 됩니다.</p>
+
+<p>이제 메소드 단위로 개발을 하시면 됩니다. 간단하게 CRUD 로직을 구현했습니다.</p>
+
+<h6 id="boardserviceimpljava-1">BoardServiceImpl.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.transaction.annotation.Transactional</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Board</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kr.kro.hex.persistance.BoardRepository</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kr.kro.hex.service.BoardService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 게시판 서비스의 구현체
+ *
+ * @see Board 게시판 Entity
+ * @see BoardRepository 게시판 레포지토리
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @since : 2022-08-21 오후 11:04
+ */</span>
+
+<span class="nd">@Service</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@Transactional</span><span class="o">(</span><span class="n">readOnly</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardServiceImpl</span> <span class="kd">implements</span> <span class="nc">BoardService</span> <span class="o">{</span>
+    
+    <span class="cm">/** 게시판 레포지토리 */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">BoardRepository</span> <span class="n">boardRepo</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">boardRepo</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Board</span><span class="o">&gt;</span> <span class="nf">getBoardList</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">boardRepo</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Board</span> <span class="nf">getBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">boardRepo</span><span class="o">.</span><span class="na">findById</span><span class="o">(</span><span class="n">board</span><span class="o">.</span><span class="na">getDocumentId</span><span class="o">()).</span><span class="na">get</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="nd">@Transactional</span><span class="o">(</span><span class="n">rollbackFor</span> <span class="o">=</span> <span class="nc">Exception</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">boardRepo</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">getBoard</span><span class="o">(</span><span class="n">board</span><span class="o">).</span><span class="na">update</span><span class="o">(</span><span class="n">board</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="nd">@Transactional</span><span class="o">(</span><span class="n">rollbackFor</span> <span class="o">=</span> <span class="nc">Exception</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">boardRepo</span><span class="o">.</span><span class="na">deleteById</span><span class="o">(</span><span class="n">board</span><span class="o">.</span><span class="na">getDocumentId</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="단위-테스트">단위 테스트</h1>
+
+<p>서비스가 잘 만들어 졌는지 단위테스트를 해보겠습니다. 단위테스트는 Spring에서도 권하는 사항이며, 뷰를 따로 만들 필요가 없기 때문에 메소드 단위로 개발을 했다면 단위테스트를 하시는 것을 추천합니다.</p>
+
+<p>VScode에서는 클래스 이름위에 오른쪽 마우스 클릭을 하여 <code class="language-plaintext highlighter-rouge">소스작업 -&gt; Generate test...</code> 를 클릭하면 테스트 클래스를 만들 수 있고, 인텔리제이의 경우 <code class="language-plaintext highlighter-rouge">Shift + Ctrl + T</code>를 눌러 간단하게 테스트 클래스를 생성할 수 있습니다.</p>
+
+<h6 id="boardserviceimpljava-2">BoardServiceImpl.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.junit.jupiter.api.Test</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardServiceImplTest</span> <span class="o">{</span>
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">testDeleteBoard</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">testGetBoard</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">testGetBoardList</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">testInsertBoard</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">testUpdateBoard</span><span class="o">()</span> <span class="o">{</span>
+
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>자동으로 import 되어 있는 org.junit.jupiter.api.Test는 <code class="language-plaintext highlighter-rouge">org.juit.Test</code>로 변경해줍시다. 또한 <code class="language-plaintext highlighter-rouge">@SpringBootTest</code> 어노테이션을 붙여서 스프링 부트를 테스트한다는 것을 선언하고, <code class="language-plaintext highlighter-rouge">@RunWith(SpringRunner.class)</code> 어노테이션을 붙여 스프링 러너를 함께 실행하도록 합니다.</p>
+
+<p>메소드는 public 접근자로 모두 바꾸고 <code class="language-plaintext highlighter-rouge">@Autowired</code> 어노테이션으로 BoardService를 주입해주세요.</p>
+
+<p>코드를 다음과 같이 작성하고 testInsertBoard -&gt; testGetBoardList -&gt; testUpdateBoard -&gt; testGetBoard -&gt; testDeleteBoard 순서로 실행시키면서 DB 내용을 확인해보세요. 정상적으로 작동하는 것을 볼 수 있습니다.</p>
+
+<h6 id="boardserviceimpltestjava">BoardServiceImplTest.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.junit.Test</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.junit.runner.RunWith</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.boot.test.context.SpringBootTest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.test.context.junit4.SpringRunner</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Board</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kr.kro.hex.service.BoardService</span><span class="o">;</span>
+
+
+<span class="nd">@RunWith</span><span class="o">(</span><span class="nc">SpringRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@SpringBootTest</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardServiceImplTest</span> <span class="o">{</span>
+
+    <span class="nd">@Autowired</span>
+    <span class="kd">private</span> <span class="nc">BoardService</span> <span class="n">boardservice</span><span class="o">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testDeleteBoard</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">boardservice</span><span class="o">.</span><span class="na">deleteBoard</span><span class="o">(</span>
+            <span class="n">boardservice</span><span class="o">.</span><span class="na">getBoard</span><span class="o">(</span>
+                <span class="nc">Board</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">documentId</span><span class="o">(</span><span class="mi">1L</span><span class="o">).</span><span class="na">build</span><span class="o">()</span>
+            <span class="o">)</span>
+        <span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testGetBoard</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span>
+            <span class="n">boardservice</span><span class="o">.</span><span class="na">getBoard</span><span class="o">(</span>
+                <span class="nc">Board</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">documentId</span><span class="o">(</span><span class="mi">1L</span><span class="o">).</span><span class="na">build</span><span class="o">()</span>
+            <span class="o">).</span><span class="na">getTitle</span><span class="o">()</span>
+        <span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testGetBoardList</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Board</span> <span class="n">board</span> <span class="o">:</span> <span class="n">boardservice</span><span class="o">.</span><span class="na">getBoardList</span><span class="o">())</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">board</span><span class="o">.</span><span class="na">getTitle</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testInsertBoard</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">boardservice</span><span class="o">.</span><span class="na">insertBoard</span><span class="o">(</span>
+            <span class="nc">Board</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">isNotice</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">title</span><span class="o">(</span><span class="s">"테스트 제목"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">content</span><span class="o">(</span><span class="s">"테스트 내용"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">()</span>
+        <span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testUpdateBoard</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">boardservice</span><span class="o">.</span><span class="na">updateBoard</span><span class="o">(</span>
+            <span class="nc">Board</span><span class="o">.</span><span class="na">builder</span><span class="o">()</span>
+                <span class="o">.</span><span class="na">documentId</span><span class="o">(</span><span class="mi">1L</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">title</span><span class="o">(</span><span class="s">"제목 수정"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">content</span><span class="o">(</span><span class="s">"내용 수정"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">()</span>
+        <span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="controller-작성">Controller 작성</h1>
+
+<p>컨트롤러는 <code class="language-plaintext highlighter-rouge">@Controller</code> 어노테이션을 통해 선언합니다. DispatcherServlet에서 클라이언트의 요청(Request)을 받으면 핸들러를 통해  컨트롤러의 메소드를 검색합니다. 이때 핸들러가 찾을 수 있도록 메소드에 어노테이션을 선언하는데 @RequestMapping, @GetMapping, @PostMapping, @PatchMapping, @DeleteMapping을 사용합니다.</p>
+
+<p>보통 Get 요청에는 Read, Post 요청에는 Create, Patch 요청에는 Update, Delete 요청에는 Delete 처리를 합니다. 또한 클래스에 @ReqpuestMapping 어노테이션을 붙여서 엔트리 포인트를 설정 할 수도 있습니다.</p>
+
+<p>저는 BoardController를 다음과 같이 작성했습니다.</p>
+
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.ui.Model</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.DeleteMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.PatchMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.PostMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.hex.domain.Board</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kr.kro.hex.service.BoardService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kr.kro.hex.service.CategoryService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+
+<span class="cm">/**
+ * 게시판 서비스 컨트롤러
+ *
+ * @see BoardService 게시판 서비스
+ * @see CategoryService 카테고리 서비스
+ *
+ * @author : Rubisco
+ * @version : 1.0.0
+ * @since : 2022-08-08 오후 6:24
+ */</span>
+
+<span class="nd">@Controller</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="n">path</span> <span class="o">=</span> <span class="s">"/board"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardController</span> <span class="o">{</span>
+    
+    <span class="cm">/** 게시판 서비스 */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">BoardService</span> <span class="n">boardService</span><span class="o">;</span>
+
+    <span class="cm">/** 카테고리 서비스 */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">CategoryService</span> <span class="n">categoryService</span><span class="o">;</span>
+
+    <span class="cm">/**
+     * 게시글 목록 뷰를 반환
+     *
+     * @author Rubisco
+     * @param model 모델
+     * @return getBoardList.html
+     */</span>
+    <span class="nd">@GetMapping</span><span class="o">()</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getBoardListView</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"boardList"</span><span class="o">,</span> <span class="n">boardService</span><span class="o">.</span><span class="na">getBoardList</span><span class="o">());</span>
+        <span class="k">return</span> <span class="s">"getBoardList"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 게시글 뷰를 반환
+     *
+     * @see Board
+     * @author Rubisco
+     * @param board 게시글
+     * @param model 모델
+     * @return getBoard.html
+     */</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/{documentSrl}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getBoardView</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"nl"</span><span class="o">,</span> <span class="nc">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">"line.separator"</span><span class="o">));</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"board"</span><span class="o">,</span> <span class="n">boardService</span><span class="o">.</span><span class="na">getBoard</span><span class="o">(</span><span class="n">board</span><span class="o">));</span>
+        <span class="k">return</span> <span class="s">"/board/getBoard"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 게시글 작성 페이지 뷰를 반환
+     *
+     * @author Rubisco
+     * @param model 모델
+     * @return insertBoard.html
+     */</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"act=write"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">insertBoardView</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"categoryList"</span><span class="o">,</span> <span class="n">categoryService</span><span class="o">.</span><span class="na">getCategoryList</span><span class="o">());</span>
+        <span class="k">return</span> <span class="s">"/board/insertBoard"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 게시글 수정 페이지 뷰를 반환
+     *
+     * @see Board
+     * @param board 게시글
+     * @param model 모델
+     * @return insertBoard.html
+     * @author Rubisco
+     */</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="o">{</span><span class="s">"documentSrl"</span><span class="o">,</span><span class="s">"act=update"</span><span class="o">})</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">updateBoardView</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"board"</span><span class="o">,</span> <span class="n">boardService</span><span class="o">.</span><span class="na">getBoard</span><span class="o">(</span><span class="n">board</span><span class="o">));</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"categoryList"</span><span class="o">,</span> <span class="n">categoryService</span><span class="o">.</span><span class="na">getCategoryList</span><span class="o">());</span>
+        <span class="k">return</span> <span class="s">"insertBoard"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 게시글 등록 요청을 처리
+     *
+     * @see Board
+     * @author Rubisco
+     * @param board 게시글
+     * @return redirect:/board
+     */</span>
+    <span class="nd">@PostMapping</span><span class="o">()</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">insertBoardController</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">boardService</span><span class="o">.</span><span class="na">insertBoard</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"redirect:/board"</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 게시글 수정 요청을 처리
+     *
+     * @see Board
+     * @param board 게시글
+     * @return redirect:/board/documentSrl
+     * @author Rubisco
+     */</span>
+    <span class="nd">@PatchMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"documentSrl"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">updateBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">boardService</span><span class="o">.</span><span class="na">updateBoard</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"redirect:/board/"</span><span class="o">+</span><span class="n">board</span><span class="o">.</span><span class="na">getDocumentId</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * 게시글 삭제 요청을 처리
+     *
+     * @author Rubisco
+     * @param board
+     * @return string
+     */</span>
+    <span class="nd">@DeleteMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"documentSrl"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">deleteBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">boardService</span><span class="o">.</span><span class="na">deleteBoard</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"redirect:/board"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이제 컨트롤러에서 반환하는 뷰의 이름에 맞는 템플릿을 작성하면 프로그램은 정상적으로 작동할 수 있게 됩니다.</p>
+
+<p>뷰는 타임리프 템플릿 엔진을 사용해서 작성할것인데 이또한 내용이 많으므로 추후에 따로 글을 올리겠습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/java/">Java</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring">스프링 프레임워크(Spring Framework)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/jpa">JPA(Java Persistence API)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/design-pattern/creational/singleton-pattern">싱글톤 패턴(Singleton Pattern)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/java/">
+                                
+                                    See all 4 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/java/spring">
+                <div class="post-card-image" style="background-image: url(/assets/images/spring/spring-img-01.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/java/spring">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">스프링 프레임워크(Spring Framework)</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>스프링(Spring)
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      11 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">스프링 부트로 게시판 만들기</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%8A%A4%ED%94%84%EB%A7%81+%EB%B6%80%ED%8A%B8%EB%A1%9C+%EA%B2%8C%EC%8B%9C%ED%8C%90+%EB%A7%8C%EB%93%A4%EA%B8%B0&amp;url=java/spring_boot"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=java/spring_boot"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
