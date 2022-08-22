@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="https://huimang2.github.io/tag/troubleshooting/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
+  <updated>2022-08-23T08:38:27+09:00</updated>
+  <id>https://huimang2.github.io/tag/troubleshooting/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Rubisco’s Programming Note | </title>
+  
+
+  
+    <subtitle>프로그래밍 노트</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">No.001 - 첵크박스 null값 전송 문제</title>
+      <link href="https://huimang2.github.io/trouble/trouble-01" rel="alternate" type="text/html" title="No.001 - 첵크박스 null값 전송 문제" />
+      <published>2022-08-22T20:00:00+09:00</published>
+      <updated>2022-08-22T20:00:00+09:00</updated>
+      <id>https://huimang2.github.io/trouble/trouble-01</id>
+      <content type="html" xml:base="https://huimang2.github.io/trouble/trouble-01">&lt;h1 id=&quot;문제-발생&quot;&gt;문제 발생&lt;/h1&gt;
+
+&lt;p&gt;insertBoard 뷰를 통해 /Board 로 POST 요청시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java.lang.IllegalArgumentException&lt;/code&gt; 발생했습니다&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/troubleshooting/001-001.png&quot; alt=&quot;img001&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;원인-파악&quot;&gt;원인 파악&lt;/h1&gt;
+
+&lt;p&gt;board 객체의 isNotice 필드가 null이기 때문에 발생한 오류로 판단했습니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;템플릿을 확인&lt;/h3&gt;
+
+&lt;p&gt;먼저 템플릿을 살펴보았습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;insertboardhtml&quot;&gt;insertBoard.html&lt;/h6&gt;
+&lt;div data-lang=&quot;HTML&quot; class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;label&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;row label is_notice&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:if=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${isBoardExist}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:field=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*{isNotice}&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;th:unless=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;${isBoardExist}&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;isNotice&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/label&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;일반적으로 첵크박스의 상태가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;checked&lt;/code&gt; 일때 “on”이라는 String 타입의 데이터를 전송하는데, 스프링에서 Boolean 타입으로 데이터를 받을 경우 컨버터에 의하여 자동으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;true&lt;/code&gt;를 반환합니다.&lt;/p&gt;
+
+&lt;p&gt;문제는 checked 상태가 아닐때 입니다. checked 상태가 아니면 클라이언트에서는 값 자체를 전송하지 않습니다. 즉, 서버에는 null값을 받게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;템플릿 작성때부터 인지하고 있던 사안인지라 타임리프의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;th:field&lt;/code&gt; 문법을 통해 해당 문제를 사전에 막았습니다. 템플릿에는 이상없어 보입니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;Board 객체 확인&lt;/h3&gt;
+
+&lt;p&gt;오류를 다시 확인해보니 ‘board’ 객체의 필드에 Binding을 하지 못하고 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/troubleshooting/001-002.png&quot; alt=&quot;img001&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그러므로 Board 클래스를 확인해보았습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardjava&quot;&gt;Board.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BaseTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@ColumnDefault&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;'N'&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Convert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BooleanToYNConverter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isNotice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;문제는 이곳에 있었습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;원인-확인&quot;&gt;원인 확인&lt;/h1&gt;
+
+&lt;p&gt;우선 템플릿의 경우 타임리프의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;th:field&lt;/code&gt; 문법을 사용했는데, 이 문법은 제가 전송한 isNotice의 값을 변환시키는 것이 아니라 hidden 필드를 추가하여 체크박스 존재 자체를 알리는 문법이었던 것입니다. 이 경우 다음과 같은 hidden 필드가 추가되어 서버로 전송됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;thfield-문법&quot;&gt;th:field 문법&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hidden&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_isNotice&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;on&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;즉, 히든 필드에 의하여 스프링 서버에 ‘isNotice’ 필드의 값이 체크박스 상태를 담고 있다는 사실을 알리고, checked 속성의 추가 여부를 확인하는 문법이었던 것입니다.&lt;/p&gt;
+
+&lt;p&gt;문제는 Board 클래스에 있었습니다. 위에 보시는 것처럼 boolean 타입으로 선언했습니다. 즉, 원시타입으로 선언했습니다. boolean 원시타입의 경우, true, false만 값으로 받을 수 있고, null은 값으로 받을 수 없습니다.&lt;/p&gt;
+
+&lt;p&gt;클라이언트에서 체크박스를 클릭하지 않아 isNotice 파라미터의 값은 null로 전송이 되고, 서버는 이 값을 Board 객체의 isNotice 필드에 할당하려 한 것입니다. 그러므로, 타입 캐스팅 오류였던 것입니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;해결&quot;&gt;해결&lt;/h1&gt;
+
+&lt;p&gt;isNotice 필드가 null값을 할당 받을 수 있도록 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boolean&lt;/code&gt; 타입의 래퍼 클래스 타입인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Boolean&lt;/code&gt; 타입으로 선언해주었습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;boardjava-1&quot;&gt;Board.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Board&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BaseTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Column&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@ColumnDefault&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;'N'&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@Convert&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BooleanToYNConverter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;isNotice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Boolean 타입은 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color: orangered&quot;&gt;참조타입&lt;/code&gt;이며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Serializable&lt;/code&gt; 인터페이스를 상속받고 있습니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Boolean&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Serializable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Comparable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;java&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;lang&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;constant&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Constable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;즉, true, false 뿐만 아니라 null값 또한 인식할 수 있습니다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="troubleshooting" />
+      
+
+      
+        <summary type="html">문제 발생</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
