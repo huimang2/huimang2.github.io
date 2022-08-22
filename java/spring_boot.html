@@ -1377,7 +1377,7 @@ logging.level.org.hibernate = info
      * @param model 모델
      * @return getBoard.html
      */</span>
-    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/{documentSrl}"</span><span class="o">)</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/{documentId}"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getBoardView</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"nl"</span><span class="o">,</span> <span class="nc">System</span><span class="o">.</span><span class="na">getProperty</span><span class="o">(</span><span class="s">"line.separator"</span><span class="o">));</span>
         <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"board"</span><span class="o">,</span> <span class="n">boardService</span><span class="o">.</span><span class="na">getBoard</span><span class="o">(</span><span class="n">board</span><span class="o">));</span>
@@ -1406,11 +1406,11 @@ logging.level.org.hibernate = info
      * @return insertBoard.html
      * @author Rubisco
      */</span>
-    <span class="nd">@GetMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="o">{</span><span class="s">"documentSrl"</span><span class="o">,</span><span class="s">"act=update"</span><span class="o">})</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="o">{</span><span class="s">"documentId"</span><span class="o">,</span><span class="s">"act=update"</span><span class="o">})</span>
     <span class="kd">public</span> <span class="nc">String</span> <span class="nf">updateBoardView</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"board"</span><span class="o">,</span> <span class="n">boardService</span><span class="o">.</span><span class="na">getBoard</span><span class="o">(</span><span class="n">board</span><span class="o">));</span>
         <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"categoryList"</span><span class="o">,</span> <span class="n">categoryService</span><span class="o">.</span><span class="na">getCategoryList</span><span class="o">());</span>
-        <span class="k">return</span> <span class="s">"insertBoard"</span><span class="o">;</span>
+        <span class="k">return</span> <span class="s">"/board/insertBoard"</span><span class="o">;</span>
     <span class="o">}</span>
 
     <span class="cm">/**
@@ -1432,10 +1432,10 @@ logging.level.org.hibernate = info
      *
      * @see Board
      * @param board 게시글
-     * @return redirect:/board/documentSrl
      * @author Rubisco
+     * @return redirect:/board/{documentId}
      */</span>
-    <span class="nd">@PatchMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"documentSrl"</span><span class="o">)</span>
+    <span class="nd">@PatchMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"documentId"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="nc">String</span> <span class="nf">updateBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">boardService</span><span class="o">.</span><span class="na">updateBoard</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
         <span class="k">return</span> <span class="s">"redirect:/board/"</span><span class="o">+</span><span class="n">board</span><span class="o">.</span><span class="na">getDocumentId</span><span class="o">();</span>
@@ -1446,9 +1446,9 @@ logging.level.org.hibernate = info
      *
      * @author Rubisco
      * @param board
-     * @return string
+     * @return redirect:/board
      */</span>
-    <span class="nd">@DeleteMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"documentSrl"</span><span class="o">)</span>
+    <span class="nd">@DeleteMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"documentId"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="nc">String</span> <span class="nf">deleteBoard</span><span class="o">(</span><span class="nc">Board</span> <span class="n">board</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">boardService</span><span class="o">.</span><span class="na">deleteBoard</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
         <span class="k">return</span> <span class="s">"redirect:/board"</span><span class="o">;</span>
