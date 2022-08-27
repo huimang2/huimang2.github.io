@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>GitHub로 프로젝트 관리하기</title>
+        
+          <description>&lt;p&gt;팀 프로젝트를 진행함에 있어 일정관리가 필요한데 GitHub를 사용하여 일정관리를 해보도록 하겠습니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 27 Aug 2022 16:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/github_issue</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/github_issue</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>No.001 - 첵크박스 null값 전송 문제</title>
         
           <description>&lt;h1 id=&quot;문제-발생&quot;&gt;문제 발생&lt;/h1&gt;
