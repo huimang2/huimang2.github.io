@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-08-28T07:38:18+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">GitHub로 프로젝트 관리하기</title><link href="https://huimang2.github.io/etc/github_issue" rel="alternate" type="text/html" title="GitHub로 프로젝트 관리하기" /><published>2022-08-27T16:00:00+09:00</published><updated>2022-08-27T16:00:00+09:00</updated><id>https://huimang2.github.io/etc/github_issue</id><content type="html" xml:base="https://huimang2.github.io/etc/github_issue">&lt;p&gt;팀 프로젝트를 진행함에 있어 일정관리가 필요한데 GitHub를 사용하여 일정관리를 해보도록 하겠습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-08-28T09:13:30+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">GitHub로 프로젝트 관리하기</title><link href="https://huimang2.github.io/etc/github_issue" rel="alternate" type="text/html" title="GitHub로 프로젝트 관리하기" /><published>2022-08-27T16:00:00+09:00</published><updated>2022-08-27T16:00:00+09:00</updated><id>https://huimang2.github.io/etc/github_issue</id><content type="html" xml:base="https://huimang2.github.io/etc/github_issue">&lt;p&gt;팀 프로젝트를 진행함에 있어 일정관리가 필요한데 GitHub를 사용하여 일정관리를 해보도록 하겠습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;프로젝트-만들기&quot;&gt;프로젝트 만들기&lt;/h1&gt;
 
@@ -106,7 +106,7 @@
 
 &lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/github/img018.png&quot; alt=&quot;img018&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;방금 등록한 이슈가 No Status에 있습니다. 해당 이슈를 마우스로 드래그하여 상태를 설정해줄 수 있습니다. 저는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;In progress&lt;/code&gt; 상태로 끌어넣었습니다.&lt;/p&gt;
+&lt;p&gt;Workflows를 설정하기 전에 등록해서 이슈가 No Status에 있습니다. 해당 이슈를 마우스로 드래그하여 상태를 설정해줄 수 있습니다. 저는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;In progress&lt;/code&gt; 상태로 끌어넣었습니다.&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/github/img019.png&quot; alt=&quot;img019&quot; /&gt;&lt;/p&gt;
 
