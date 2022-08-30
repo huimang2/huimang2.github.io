@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-08-31T03:56:26+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">GitHub로 프로젝트 관리하기</title><link href="https://huimang2.github.io/etc/github_issue" rel="alternate" type="text/html" title="GitHub로 프로젝트 관리하기" /><published>2022-08-27T16:00:00+09:00</published><updated>2022-08-27T16:00:00+09:00</updated><id>https://huimang2.github.io/etc/github_issue</id><content type="html" xml:base="https://huimang2.github.io/etc/github_issue">&lt;p&gt;팀 프로젝트를 진행함에 있어 일정관리가 필요한데 GitHub를 사용하여 일정관리를 해보도록 하겠습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-08-31T04:57:07+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">GitHub로 프로젝트 관리하기</title><link href="https://huimang2.github.io/etc/github_issue" rel="alternate" type="text/html" title="GitHub로 프로젝트 관리하기" /><published>2022-08-27T16:00:00+09:00</published><updated>2022-08-27T16:00:00+09:00</updated><id>https://huimang2.github.io/etc/github_issue</id><content type="html" xml:base="https://huimang2.github.io/etc/github_issue">&lt;p&gt;팀 프로젝트를 진행함에 있어 일정관리가 필요한데 GitHub를 사용하여 일정관리를 해보도록 하겠습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;프로젝트-만들기&quot;&gt;프로젝트 만들기&lt;/h1&gt;
 
@@ -2710,7 +2710,7 @@ logging.level.org.hibernate = info
 
 &lt;h2 id=&quot;버전-선택&quot;&gt;버전 선택&lt;/h2&gt;
 
-&lt;p&gt;설치된 노드이 버전은 NVM의 다음 명령어를 통해 확인 가능합니다.&lt;/p&gt;
+&lt;p&gt;설치된 노드의 버전은 NVM의 다음 명령어를 통해 확인 가능합니다.&lt;/p&gt;
 
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;

@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/linux/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-08-31T03:56:26+09:00</updated>
+  <updated>2022-08-31T04:57:07+09:00</updated>
   <id>https://huimang2.github.io/tag/linux/feed.xml</id>
 
   
@@ -418,7 +418,7 @@
 
 &lt;h2 id=&quot;버전-선택&quot;&gt;버전 선택&lt;/h2&gt;
 
-&lt;p&gt;설치된 노드이 버전은 NVM의 다음 명령어를 통해 확인 가능합니다.&lt;/p&gt;
+&lt;p&gt;설치된 노드의 버전은 NVM의 다음 명령어를 통해 확인 가능합니다.&lt;/p&gt;
 
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
