@@ -184,6 +184,15 @@ into the {body} of the default.hbs template -->
 <script>
     window.store = {
     
+    "etc-mosh": {
+        "title": "향상된 SSH 프로토콜 : Mosh",
+            "author": "rubisco",
+            "category": "",
+            "content": "Mosh란?Mosh는 Mobile Shell의 약자로, 모바일 환경에서 원격 터미널을 원활하게 사용할 수 있도록 해주는 프로토콜입니다. 기존 SSH의 상위 호환 프로토콜이라고 보시면 됩니다.SSH의 경우 TCP 프로토콜을 사용하기 때문에 세션으로 연결되어야만 통신이 가능합니다. 그렇기 때문에 모바일 환경과 같이 세션의 연결이 불안정한 네트워크의 경우 세션의 연결이 끊어지면 다시 세션을 연결하기 때문에 입출력의 지연이 발생하고, 시간내에 세션에 연결하지 못하면 기존에 구성해둔 작업환경을 다시 구성해야 할 수도 있습니다.반면에 Mosh는 UDP 프로토콜을 사용하여 세션의 연결상태를 지속할 필요가 없으며, 입출력을 따로 연결하고 세션의 상태를 보존하기때문에 명령에 대한 연결지연이 없습니다.하지만 UDP를 통해서 Mosh 서버에 직접적인 연결이 불가하여 SSH를 통해 간접적으로 접속해야 하며, 하나의 접속에 대하여 하나의 포트를 필요로 하기때문에 방화벽의 유지관리에 많은 비용이 들 수 있습니다.Mosh 설치Ubuntu 20.04 LTS 환경인 원격 서버에 Mosh를 설치하여 윈도우 환경에서 접속해보도록 하겠습니다.우선 원격서버에 접속하고 apt를 업데이트 하세요.$ sudo apt update &amp;&amp; sudo apt upgradeapt를 통해 mosh를 설치하세요.$ sudo apt install moshmosh는 60000 ~ 61000번의 UDP 포트를 사용합니다. 우선 os 방화벽에서 해당포트를 열어주세요.$ sudo ufw allow 60000:61000/udp원격서버에서도 포트를 열어야합니다. 이전에 작성한 도커(Docker) 설치하기을 참고하세요.윈도우에서 Mosh 프로토콜을 통해 통신하려면 Cygwin을 설치하거나 크롬 브라우저에 extention을 설치하여 통신할 수 있습니다.저는 크롬 브라우저에 extension을 설치하겠습니다.extionstion을 설치하면 Mosh app이 설치됩니다. 실행시키면 다음과 같은 화면이 뜹니다.os 유저이름과 ip주소, ssh 포트를 입력하고 Connect를 클릭하면 됩니다. 그전에 ssh key를 통해 접속하므로 비밀키를 입력해야합니다. 오른쪽에 Add ssh key를 클릭하고, 비밀키를 메모장으로 열어서 키값을 복사하여 입력하세요.Passphrase를 입력하라고 뜹니다.. 다음 명령어를 통해 Passphrase를 설정합니다. 그냥 엔터를 입력하면 Passphrase 없이 비밀키만으로 접속가능합니다.$ ssh-keygen -p -f [비밀키 경로] -m pem다시 비밀키를 복사하여 입력한후 Connect를 누르면 ssh를 통해 원격 서버에 접속되고 mosh 통신이 시작됩니다.",
+        "url": "/etc/mosh"
+    }
+    ,
+    
     "etc-github-issue": {
         "title": "GitHub로 프로젝트 관리하기",
             "author": "rubisco",

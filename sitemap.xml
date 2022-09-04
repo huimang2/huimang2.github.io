@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://huimang2.github.io/etc/mosh.html</loc>
+        
+        <lastmod>2022-09-03T05:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://huimang2.github.io/etc/github_issue.html</loc>
         
         <lastmod>2022-08-27T16:00:00+09:00</lastmod>

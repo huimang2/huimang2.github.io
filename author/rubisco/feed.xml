@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-08-31T04:57:07+09:00</updated>
+  <updated>2022-09-04T17:38:58+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -30,6 +30,90 @@
   
   
 
+  
+    <entry>
+      <title type="html">향상된 SSH 프로토콜 : Mosh</title>
+      <link href="https://huimang2.github.io/etc/mosh" rel="alternate" type="text/html" title="향상된 SSH 프로토콜 : Mosh" />
+      <published>2022-09-03T05:00:00+09:00</published>
+      <updated>2022-09-03T05:00:00+09:00</updated>
+      <id>https://huimang2.github.io/etc/mosh</id>
+      <content type="html" xml:base="https://huimang2.github.io/etc/mosh">&lt;h1 id=&quot;mosh란&quot;&gt;Mosh란?&lt;/h1&gt;
+
+&lt;p&gt;Mosh는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mobile Shell&lt;/code&gt;의 약자로, 모바일 환경에서 원격 터미널을 원활하게 사용할 수 있도록 해주는 프로토콜입니다. 기존 SSH의 상위 호환 프로토콜이라고 보시면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;SSH의 경우 TCP 프로토콜을 사용하기 때문에 세션으로 연결되어야만 통신이 가능합니다. 그렇기 때문에 모바일 환경과 같이 세션의 연결이 불안정한 네트워크의 경우 세션의 연결이 끊어지면 다시 세션을 연결하기 때문에 입출력의 지연이 발생하고, 시간내에 세션에 연결하지 못하면 기존에 구성해둔 작업환경을 다시 구성해야 할 수도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;반면에 Mosh는 UDP 프로토콜을 사용하여 세션의 연결상태를 지속할 필요가 없으며, 입출력을 따로 연결하고 세션의 상태를 보존하기때문에 명령에 대한 연결지연이 없습니다.&lt;/p&gt;
+
+&lt;p&gt;하지만 UDP를 통해서 Mosh 서버에 직접적인 연결이 불가하여 SSH를 통해 간접적으로 접속해야 하며, 하나의 접속에 대하여 하나의 포트를 필요로 하기때문에 방화벽의 유지관리에 많은 비용이 들 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;mosh-설치&quot;&gt;Mosh 설치&lt;/h1&gt;
+
+&lt;p&gt;Ubuntu 20.04 LTS 환경인 원격 서버에 Mosh를 설치하여 윈도우 환경에서 접속해보도록 하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;우선 원격서버에 접속하고 apt를 업데이트 하세요.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;apt를 통해 mosh를 설치하세요.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mosh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;mosh는 60000 ~ 61000번의 UDP 포트를 사용합니다. 우선 os 방화벽에서 해당포트를 열어주세요.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 60000:61000/udp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;원격서버에서도 포트를 열어야합니다. 이전에 작성한 &lt;a href=&quot;/etc/docker#방화벽-오픈open&quot; target=&quot;_blank&quot;&gt;도커(Docker) 설치하기&lt;/a&gt;을 참고하세요.&lt;/p&gt;
+
+&lt;p&gt;윈도우에서 Mosh 프로토콜을 통해 통신하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cygwin&lt;/code&gt;을 설치하거나 크롬 브라우저에 extention을 설치하여 통신할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;저는 크롬 브라우저에 &lt;a href=&quot;https://chrome.google.com/webstore/detail/mosh/ooiklbnjmhbcgemelgfhaeaocllobloj&quot; target=&quot;_blank&quot;&gt;extension&lt;/a&gt;을 설치하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;extionstion을 설치하면 Mosh app이 설치됩니다. 실행시키면 다음과 같은 화면이 뜹니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mosh/mosh-img-01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;os 유저이름과 ip주소, ssh 포트를 입력하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Connect&lt;/code&gt;를 클릭하면 됩니다. 그전에 ssh key를 통해 접속하므로 비밀키를 입력해야합니다. 오른쪽에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add ssh key&lt;/code&gt;를 클릭하고, 비밀키를 메모장으로 열어서 키값을 복사하여 입력하세요.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mosh/mosh-img-02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Passphrase를 입력하라고 뜹니다.. 다음 명령어를 통해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Passphrase&lt;/code&gt;를 설정합니다. 그냥 엔터를 입력하면 Passphrase 없이 비밀키만으로 접속가능합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;CMD&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh-keygen &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;비밀키 경로] &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pem
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다시 비밀키를 복사하여 입력한후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Connect&lt;/code&gt;를 누르면 ssh를 통해 원격 서버에 접속되고 mosh 통신이 시작됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mosh/mosh-img-03.png&quot; alt=&quot;img03&quot; /&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="etc" />
+      
+
+      
+        <summary type="html">Mosh란?</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">GitHub로 프로젝트 관리하기</title>
@@ -4843,175 +4927,6 @@ $$&lt;/p&gt;
 
       
         <summary type="html">조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함됩니다.</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">최대공약수와 최소공배수</title>
-      <link href="https://huimang2.github.io/algorithm/gcd_lcm" rel="alternate" type="text/html" title="최대공약수와 최소공배수" />
-      <published>2022-07-31T10:00:00+09:00</published>
-      <updated>2022-07-31T10:00:00+09:00</updated>
-      <id>https://huimang2.github.io/algorithm/gcd_lcm</id>
-      <content type="html" xml:base="https://huimang2.github.io/algorithm/gcd_lcm">&lt;h1 id=&quot;최대공약수와-최소공배수&quot;&gt;최대공약수와 최소공배수&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;최대공약수(GCD, Greateast Common Division)&lt;/code&gt;는 두 수에 대한 공약수의 최대값을 의미하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;최소공배수(LCM, Least Common Multiple)&lt;/code&gt;는 두 수에 대한 공배수의 최소값을 의미합니다.&lt;/p&gt;
-
-&lt;p&gt;최대공약수와 최소공배수는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;소인수분해(Integer factorization)&lt;/code&gt;를 통해 구할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;최대공약수는 소인수의 교집합을 모두 곱한 값이고, 최소공배수는 소인수의 합집합을 모두 곱한 값입니다. 예를 들어 a = 12, b = 20 인 경우, a와 b의 최대공약수와 최소공배수는 다음과 같이 구할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/algorithm/gcd_lcm/img01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;a = 12 = &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 * 2&lt;/code&gt; * 3&lt;br /&gt;
-b = 20 = &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;2 * 2&lt;/code&gt; * 5&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;a와 b의 소인수에 대한 교집합은 [2, 2]가 되고, 이를 모두 곱한 4가 최대공약수가 됩니다. 또한 a와 b의 소인수에 대한 합집합은 [2, 2, 3, 5]가 되고, 이를 모두 곱한 60이 최소공배수가 됩니다.&lt;/p&gt;
-
-&lt;p&gt;최대공약수를 G, 최소공배수를 L이라고 한다면, 다음과 같은 식이 성립합니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;a = 12 = G * A&lt;br /&gt;
-b = 20 = G * B&lt;/p&gt;
-
-  &lt;p&gt;A = a/G
-B = b/G&lt;/p&gt;
-
-  &lt;p&gt;L = G * A * B = G * (a/G) * (b/G) = a*b/G&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이때 A와 B는 서로소가 됩니다.&lt;/p&gt;
-
-&lt;p&gt;이를 자바스크립트 코드로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LCM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;유클리드-호제법euclidean-algorithm&quot;&gt;유클리드 호제법(Euclidean algorithm)&lt;/h1&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;두 양의 정수 a, b (a &amp;gt; b)에 대하여 a = bq + r (0 ≤ r &amp;lt; b)이라 하면, &lt;strong&gt;a, b의 최대공약수&lt;/strong&gt;는 &lt;strong&gt;b, r의 최대공약수&lt;/strong&gt;와 같다.&lt;/p&gt;
-
-  &lt;p&gt;즉, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcd(a, b) = gcd(b, r)&lt;/code&gt;이다.&lt;/p&gt;
-
-  &lt;p&gt;r = 0이라면, &lt;strong&gt;a, b의 최대공약수&lt;/strong&gt;는 &lt;strong&gt;b&lt;/strong&gt;가 된다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;유클리드 호제법(Euclidean algorithm)&lt;/code&gt;은 두 양의 정수, 혹은 두 다항식의 최대공약수를 구하는 방법입니다. 이 알고리즘은 유클리드의 원론에 적혀있는 내용으로, 인류 최초의 알고리즘이라 합니다.&lt;/p&gt;
-
-&lt;p&gt;소인수 분해를 통해 최대공약수를 구하면 시간 복잡도가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(N)&lt;/code&gt; 이지만, 유클리드 호제법으로 최대공약수를 구하면 시간 복잡도를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(logN)&lt;/code&gt;으로 줄일 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;증명&quot;&gt;증명&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcd(a, b) = G&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcd(b, r) = G'&lt;/code&gt; 라고 가정 한다면, &lt;strong style=&quot;color: orangered&quot;&gt;서로소인 두 정수 A, B&lt;/strong&gt;에 대하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a = GA&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b = GB&lt;/code&gt;가 성립합니다.&lt;/p&gt;
-
-&lt;p&gt;이를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a = bq + r&lt;/code&gt;에 대입하면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GA = GBq + r&lt;/code&gt; 이므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r = G(A - Bq)&lt;/code&gt;가 됩니다. 여기서 &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;G는 b와 r의 공약수&lt;/u&gt;&lt;/strong&gt;임을 확인할 수 있으며, 그러므로 &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;G는 G'의 약수&lt;/u&gt;&lt;/strong&gt;임을 알 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = mG&lt;/code&gt;라고 가정한다면, 서로소인 두 정수 k, l에 대하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b = GB = G'k = Gmk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r = G(A - Bq) = G'l = Gml&lt;/code&gt;이 성립하며, 양변을 G로 나누면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;B = mk&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A - Bq = ml&lt;/code&gt;이 됩니다.&lt;/p&gt;
-
-&lt;p&gt;두 연립 방정식에 의하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;A = ml + Bq = ml + mkq = m(l + kq)&lt;/code&gt; 가 되므로, &lt;strong&gt;&lt;u class=&quot;bgcolor blue&quot; style=&quot;color: royalblue&quot;&gt;m은 A와 B의 공약수&lt;/u&gt;&lt;/strong&gt;가 됨을 알 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;여기에서 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color: orangered&quot;&gt;A와 B는 서로소 관계&lt;/code&gt;에 있으므로, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m = 1&lt;/code&gt; 이 되며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = mG&lt;/code&gt;라고 가정했으므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;G' = G&lt;/code&gt; 가 됩니다.&lt;/p&gt;
-
-&lt;p&gt;즉, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcd(a, b) = gcd(b, r)&lt;/code&gt;입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r = 0&lt;/code&gt;인 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a = bq&lt;/code&gt; 이므로, b가 최대공약수가 됩니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;소스-코드&quot;&gt;소스 코드&lt;/h1&gt;
-
-&lt;h6 id=&quot;자바스크립트-코드&quot;&gt;자바스크립트 코드&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LCM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;자바-코드&quot;&gt;자바 코드&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Euclidean&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LCM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;파이썬-코드&quot;&gt;파이썬 코드&lt;/h6&gt;
-&lt;div data-lang=&quot;PYTHON&quot; class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LCM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;c-코드&quot;&gt;C 코드&lt;/h6&gt;
-&lt;div data-lang=&quot;C&quot; class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LCM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GCD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;관련-문제&quot;&gt;관련 문제&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;프로그래머스(Programmers)&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://school.programmers.co.kr/learn/courses/30/lessons/12940&quot; target=&quot;_blank&quot;&gt;[12969] 최대공약수와 최소공배수&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://school.programmers.co.kr/learn/courses/30/lessons/12953&quot; target=&quot;_blank&quot;&gt;[12953] N개의 최소공배수&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>huimang2</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="algorithm" />
-      
-
-      
-        <summary type="html">최대공약수와 최소공배수</summary>
       
 
       
