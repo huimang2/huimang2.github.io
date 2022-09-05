@@ -1,4 +1,199 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-09-04T17:38:58+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">향상된 SSH 프로토콜 : Mosh</title><link href="https://huimang2.github.io/etc/mosh" rel="alternate" type="text/html" title="향상된 SSH 프로토콜 : Mosh" /><published>2022-09-03T05:00:00+09:00</published><updated>2022-09-03T05:00:00+09:00</updated><id>https://huimang2.github.io/etc/mosh</id><content type="html" xml:base="https://huimang2.github.io/etc/mosh">&lt;h1 id=&quot;mosh란&quot;&gt;Mosh란?&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-09-05T10:09:25+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">Git를 통한 버전관리</title><link href="https://huimang2.github.io/etc/git" rel="alternate" type="text/html" title="Git를 통한 버전관리" /><published>2022-09-04T07:00:00+09:00</published><updated>2022-09-04T07:00:00+09:00</updated><id>https://huimang2.github.io/etc/git</id><content type="html" xml:base="https://huimang2.github.io/etc/git">&lt;h1 id=&quot;git와-github&quot;&gt;Git와 Github&lt;/h1&gt;
+
+&lt;h2 id=&quot;git&quot;&gt;Git&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Git&lt;/code&gt;는 컴퓨터 파일의 변경사항을 추적하고 여러 명의 사용자들 간에 해당 파일들의 작업을 조율하기 위한 분산 버전 관리 시스템입니다. 원래는 Linux 소스코드를 관리할 목적으로 개발 되었습니다.&lt;/p&gt;
+
+&lt;p&gt;Git를 통해 버전을 관리하면 소스 코드가 변경된 이력을 쉽게 확인할 수 있으며, 특정 시점의 버전과 비교하거나 그 시점의 버전으로 파일을 되돌릴 수 있습니다. 또한 협업을 하는 경우 충돌을 감지하여 사용자에게 경고를 주기도 합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;github&quot;&gt;Github&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;는 Git Repository를 위한 웹 기반 호스팅 서비스 입니다. 클라우드 서버를 통해 로컬에서 관리하는 소스코드를 업로드하고 공유할 수 있어서 공동작업이 가능하도록 합니다. Git의 기본적인 기능을 제공하여 한 프로젝트에 여러 사람이 공동으로 작업하여도 효율적으로 버전관리를 할 수 있도록 합니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;git-용어&quot;&gt;Git 용어&lt;/h1&gt;
+
+&lt;h2 id=&quot;저장소repository&quot;&gt;저장소(Repository)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;저장소(Repository)&lt;/code&gt;는 말그대로 파일이나 폴더를 저장해 두는 장소를 말합니다. &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;파일의 변경 이력을 관리&lt;/code&gt;하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;원격 저장소(Remote Repository)&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;로컬 저장소(Local Repository)&lt;/code&gt;로 구분됩니다.&lt;/p&gt;
+
+&lt;p&gt;원격 저장소는 Github와 같이 소스코드를 공유하고 공동작업을 하기위한 저장소이고, 로컬 저장소는 개인 전용 저장소입니다.&lt;/p&gt;
+
+&lt;p&gt;평소에는 로컬 저장소에서 작업을 하지만 공동작업이 필요하다면 원격 저장소에 저장하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clone&lt;/code&gt; 명령어를 통해 로컬 저장소로 코드를 가져올 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;커밋commit&quot;&gt;커밋(Commit)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt;은 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;파일의 변경 이력을 기록&lt;/code&gt;하는 명령어 입니다. 작업 트리(work tree)의 파일을 저장소(repository)에 스냅샷으로 기록하며, 시간순으로 저장되어 과거 변경 이력과 그 내용을 알 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;커밋끼리는 서로 체인구조를 형성하고 있어서 과거 커밋 내용이 훼손되면 그 이후의 커밋도 훼손되어 버립니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 그래프에서 각 노드는 커밋 시점을 나타냅니다. 보는 바와 같이 커밋 시점은 순차적으로 연결되어 있습니다.&lt;/p&gt;
+
+&lt;p&gt;각 커밋은 영문과 숫자로 구성된 40자리의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;커밋 해시(commit hash)&lt;/code&gt;를 통해 구분되며, 커밋을 하기 위해서는 커밋 메시지의 작성이 필요합니다. 커밋 메시지를 작성하지 않으면 커밋이 이루어지지 않습니다.&lt;/p&gt;
+
+&lt;p&gt;커밋은 코드에 이력을 남기는 중요한 작업이므로 커밋 메시지에는 코드의 변경 내용과 변경 사유 등을 간략히 기록해 두는것이 권장됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;작업-트리work-tree--인덱스index&quot;&gt;작업 트리(Work Tree) / 인덱스(Index)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;작업 트리(work tree)&lt;/code&gt;는 소스코드를 편집하는 작업 공간(workspace) 그 자체를 말하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;인덱스(index)&lt;/code&gt;는 커밋을 하기 전에 작업 트리와 저장소 사이에 존재하는 공간을 말합니다.&lt;/p&gt;
+
+&lt;p&gt;커밋 작업은 작업 트리의 변경 이력을 바로 기록하지 않고 인덱스에 저장되어 있는 파일의 상태를 우선적으로 기록하게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;인덱스에 파일 상태를 기록하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;추적(stage)&lt;/code&gt;이라고 하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add&lt;/code&gt; 명령어를 통해 추적 상태로 만들 수 있습니다. 커밋은 인덱스에 추적상태로 있는 파일의 이력만 저장소에 저장하게 됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;풀pull--푸시push&quot;&gt;풀(pull) / 푸시(push)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;풀(pull)&lt;/code&gt;은 원격 저장소에 저장된 파일을 로컬 저장소로 가져오는 것을 말하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;푸시(push)&lt;/code&gt;는 로컬 저장소에 저장된 파일을 원격 저장소에 반영하는 것을 말합니다. 각각 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pull&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push&lt;/code&gt; 명령어를 통해 작업할 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;튜토리얼&quot;&gt;튜토리얼&lt;/h1&gt;
+
+&lt;p&gt;기본적인 용어를 알아보았으니 실제로 커밋과 풀, 푸시를 해보도록 하겠습니다. IDE를 통해 쉽게 작업할 수 있지만 터미널상에서 명령어를 통해 커밋을 하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;우선은 원격 컴퓨터에 로그인하고 git를 설치합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;커밋에 정보를 남기기 위해 config에 name과 mail을 입력합니다. email은 github에 입력된 email을 입력해야 잔디가 심어집니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.name &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;userName]
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.email &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;userEmail]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;우선 로컬 저장소를 생성해보도록 하겠습니다. 우선 작업 트리를 생성하고 이동합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; ~/git/example &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/git/example
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;로컬 저장소는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init&lt;/code&gt; 명령어를 통해 생성할 수 있습니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;로컬 저장소가 생성되면 .git 폴더가 생성됩니다. 이제 임의의 파일을 하나 생성하고 임의의 내용을 작성합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;test.txt &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nvim test.txt
+
+...
+
+임의의 내용 작성 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;커밋을 하기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add&lt;/code&gt; 명령어를 통해 인덱스에 파일을 등록해야 합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add test.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;인덱스에 등록된 파일을 확인하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;status&lt;/code&gt; 명령어를 사용합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-03.png&quot; alt=&quot;img03&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt; 명령어를 통해 변경 상태를 기록합니다. 이때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-m&lt;/code&gt; 옵션을 통해 커밋 메시지를 작성해야만 합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;test.txt 파일 생성&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;커밋 상태를 확인하고 싶다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;log&lt;/code&gt; 명령어를 입력해보세요.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-04.png&quot; alt=&quot;img04&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번에는 방금 생성한 로컬 저장소를 원격 저장소에 push 해보겠습니다. 그전에 ssh 인증키를 만들어서 github에 등록합시다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh-keygen &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; ed25519 &lt;span class=&quot;nt&quot;&gt;-C&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;이메일 주소&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;passphrase를 입력하라고 뜨면 암호를 입력해주거나 그냥 엔터를 눌러주시면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;인증키가 생생되면 다음 명령어로 개인키를 확인합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; ~/.ssh/id_ed25519.pub
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;터미널에 뜬 개인키를 복사하고 github에서 &lt;a href=&quot;https://github.com/settings/ssh/new&quot; target=&quot;_blank&quot;&gt;Settings &amp;gt; SSH and GPG keys &amp;gt; New SSH Key&lt;/a&gt;로 이동하여 개인키를 등록해줍니다.&lt;/p&gt;
+
+&lt;p&gt;이제 &lt;a href=&quot;https://github.com/new&quot; target=&quot;_blank&quot;&gt;github&lt;/a&gt;에 접속하여 원격 저장소를 하나 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;저장소 주소를 복사한 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remote add&lt;/code&gt;명령어를 통해 원격 저장소를 추가해줄 수 있습니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git remote add origin git@github.com:[userName]/[repository].git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;원격 저장소가 추가되었는지 확인하기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remote&lt;/code&gt; 명령어에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-v&lt;/code&gt; 옵션을 주면 됩니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git remote &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 push 명령어를 통해 로컬 저장소의 변경 내역을 원격 저장소에 반영하도록 하겠습니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;github의 원격 저장소에 접속하면 test.txt 파일이 저장된 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;이번에는 원격 저장소를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clone&lt;/code&gt;을 통해 복사하여 example2 작업 트리에 로컬 저장소를 만들어보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;우선 example2 작업 트리를 만들고 해당 폴더로 이동합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; ~/git/example2 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/git/example2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clone&lt;/code&gt; 명령어를 통해 원격 저장소를 복사합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git clone git@github.com:[userName]/[repository].git &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;test.txt 파일을 수정해봅시다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-05.png&quot; alt=&quot;img05&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;test.txt 파일을 스테이징 하여 커밋하고 원격 저장소에 푸시해줍시다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;내용 추가&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;example 작업트리로 이동하여 test.txt 파일의 내용을 확인합시다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/git/example &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;test.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;아직 원격 저장소와 동기화되지 않았습니다. pull 명령어로 원격 저장소의 커밋 내역을 로컬 저장소에 합치고 test.txt 내용을 확인하면 동기화가 된 것을 알 수 있습니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git pull origin main &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;test.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;브랜치branch&quot;&gt;브랜치(Branch)&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;브랜치(Branch)&lt;/code&gt;는 독립적인 작업을 진행할 수 있도록 해주는 기능입니다. 각각의 브랜치는 다른 브랜치의 영향을 받지않아서 여러 작업을 동시에 진행할 수 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-06.png&quot; alt=&quot;img06&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;로컬 저장소를 생성하면 기본적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;메인(main)&lt;/code&gt; 브랜치에서 작업을 수행하게 되고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;체크아웃(checkout)&lt;/code&gt; 하기 전까지 모든 작업은 메인 브랜치에서 이루어집니다.&lt;/p&gt;
+
+&lt;p&gt;그러므로 공동작업을 할때에는 우선 로컬 저장소의 메인 브랜치를 pull을 통해 원격 저장소의 메인 브랜치와 동기화 시킨 후, 작업전용 브랜치를 만들어 독립적인 작업을 하게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;브랜치는 작업에 따라 자유롭게 만들 수 있지만, 이를 효율적으로 관리하기 위해서는 사전에 팀원들과 어떤 방식으로 브랜치를 만들고 통합할 것인지 미리 정해두는 것이 좋습니다. 즉, 브랜치 전략이 있어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;가정 널리 사용되는 브랜치 전략으로는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Git-Flow&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Github-Flow&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gitlab-Flow&lt;/code&gt;가 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;git-flow&quot;&gt;Git-Flow&lt;/h2&gt;
+
+&lt;p&gt;gitflow는 메인(main) 브랜치와 개발(devlop) 브랜치를 중점으로 운영하는 브랜치 전략입니다.&lt;/p&gt;
+
+&lt;p&gt;이 전략에는 다음과 같이 5개의 브랜치가 존재합니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;main : 정식 배포되는 ㅇ&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="github" /><summary type="html">Git와 Github</summary></entry><entry><title type="html">향상된 SSH 프로토콜 : Mosh</title><link href="https://huimang2.github.io/etc/mosh" rel="alternate" type="text/html" title="향상된 SSH 프로토콜 : Mosh" /><published>2022-09-03T05:00:00+09:00</published><updated>2022-09-03T05:00:00+09:00</updated><id>https://huimang2.github.io/etc/mosh</id><content type="html" xml:base="https://huimang2.github.io/etc/mosh">&lt;h1 id=&quot;mosh란&quot;&gt;Mosh란?&lt;/h1&gt;
 
 &lt;p&gt;Mosh는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mobile Shell&lt;/code&gt;의 약자로, 모바일 환경에서 원격 터미널을 원활하게 사용할 수 있도록 해주는 프로토콜입니다. 기존 SSH의 상위 호환 프로토콜이라고 보시면 됩니다.&lt;/p&gt;
 
@@ -4361,195 +4556,4 @@ Hibernate:
 
 &lt;p&gt;FrontController인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DispatcherServlet&lt;/code&gt;이 클라이언트의 요청을 받고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HandlerMapping&lt;/code&gt;을 통해 Controller와 매핑되어 해당 컨트롤러를 실행합니다.&lt;/p&gt;
 
-&lt;p&gt;컨트롤러는 Model과 View가 Wrapping된 객체를 반환하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewResolver&lt;/code&gt;를 통해 View 객체를 처리한 후 클라이언트에게 해당 객체를 반환합니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="design-pattern" /><category term="design-pattern" /><summary type="html">MVC 패턴이란?</summary></entry><entry><title type="html">조합과 순열</title><link href="https://huimang2.github.io/algorithm/combination_permutation" rel="alternate" type="text/html" title="조합과 순열" /><published>2022-08-01T22:00:00+09:00</published><updated>2022-08-01T22:00:00+09:00</updated><id>https://huimang2.github.io/algorithm/combination_permutation</id><content type="html" xml:base="https://huimang2.github.io/algorithm/combination_permutation">&lt;p&gt;조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함됩니다.&lt;/p&gt;
-
-&lt;p&gt;조합은 서로 다른 n개의 원소를 가지는 집합에서 r개의 원소를 순서에 상관없이 선택하는 것을 의미하며, 순열은 서로 다른 n개의 원소를 가지는 집합에서 r개의 원소를 순서대로 선택하는 것을 의미합니다.&lt;/p&gt;
-
-&lt;p&gt;이번 글에서는 조합과 순열에 대해 자세히 알아보고, 예제를 통해 코드를 작성해보도록 하겠습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;팩토리얼factorial&quot;&gt;팩토리얼(Factorial)&lt;/h1&gt;
-
-&lt;p&gt;서로 다른 n개를 나열하는 경우의 수를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;팩토리얼&lt;/code&gt;이라고 하며. 기호로는 !로 나타냅니다.&lt;/p&gt;
-
-&lt;p&gt;$$
-n! = n(n-1)(n-2) \cdots 1
-$$&lt;/p&gt;
-
-&lt;h6 id=&quot;자바스크립트-코드&quot;&gt;자바스크립트 코드&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;조합combination&quot;&gt;조합(Combination)&lt;/h1&gt;
-
-&lt;p&gt;&lt;u&gt;서로 다른&lt;/u&gt; n개의 원소를 가지는 어떤 집합에서 r개의 원소를 &lt;u&gt;순서에 상관없이&lt;/u&gt; 선택하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;조합&lt;/code&gt;이라고 하며, 기호로는 $ _{n}\mathrm{C}_{r} $로 나타냅니다.&lt;/p&gt;
-
-&lt;p&gt;$$
-_{n}\mathrm{C}_{r} = {n! \over (n-r)!n!}
-$$&lt;/p&gt;
-
-&lt;h2 id=&quot;중복조합&quot;&gt;중복조합&lt;/h2&gt;
-
-&lt;p&gt;&lt;u&gt;중복 가능한&lt;/u&gt; n개의 원소 중 r개의 원소를 &lt;u&gt;순서에 상관없이&lt;/u&gt; 선택하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;조합&lt;/code&gt;이라고 하며, 기호로는 $ _{n}\mathrm{H}_{r} $로 나타냅니다.&lt;/p&gt;
-
-&lt;p&gt;$$
-_{n}\mathrm{H}_{r} = _{n+r-1}\mathrm{C}_{r}
-$$&lt;/p&gt;
-
-&lt;h6 id=&quot;문제&quot;&gt;문제&lt;/h6&gt;
-
-&lt;blockquote style=&quot;margin-top:1.5rem&quot;&gt;
-  &lt;p&gt;음이 아닌 정수 xx, yy, zz에 대해, $ x+y+z \le 3 $를 만족시키는 순서쌍 (x,y,z)의 수는?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h6 class=&quot;sol opacity-0&quot; onclick=&quot;this.classList.toggle('opacity-0')&quot; id=&quot;풀이&quot;&gt;풀이&lt;/h6&gt;
-
-&lt;blockquote style=&quot;margin-top:1.5rem&quot;&gt;
-  &lt;p&gt;주어진 식은 $ x + y + z = 3 - n (0 \le n \le 3) $ 으로 나타낼 수 있으며, 정수 x, y, z, n 에 대하여 $ x+y+z+n=3 $을 만족해야 합니다.&lt;/p&gt;
-
-  &lt;p&gt;즉, 0 ~ 3 중 3개를 순서에 상관 없이 선택하는 중복조합에 해당합니다.&lt;/p&gt;
-
-  &lt;p&gt;그러므로 $ _4\mathrm{H}_3 = _6\mathrm{C}_3 = {6! \over 3!3!} = 20$ 이 됩니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h1 id=&quot;순열permutation&quot;&gt;순열(Permutation)&lt;/h1&gt;
-
-&lt;p&gt;&lt;u&gt;서로 다른&lt;/u&gt; n개의 원소를 가지는 어떤 집합에서 r개의 원소를 &lt;u&gt;순서대로&lt;/u&gt; 선택하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;순열&lt;/code&gt;이라고 하며, 기호로는 $ _{n}\mathrm{P}_{r} $로 나타냅니다.&lt;/p&gt;
-
-&lt;p&gt;$$
-_{n}\mathrm{P}_{r} = {n! \over (n-r)!}
-$$&lt;/p&gt;
-
-&lt;h2 id=&quot;중복순열&quot;&gt;중복순열&lt;/h2&gt;
-
-&lt;p&gt;&lt;u&gt;중복 가능한&lt;/u&gt; n개의 원소 중 r개의 원소를 &lt;u&gt;순서대로&lt;/u&gt; 선택하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;중복순열&lt;/code&gt;이라고 하며, 기호로는 $ _{n}\mathrm{\Pi}_{r} $로 나타냅니다.&lt;/p&gt;
-
-&lt;p&gt;$$
-_{n}\mathrm{\Pi}_{r} = n^r
-$$&lt;/p&gt;
-
-&lt;h1 id=&quot;소스-코드&quot;&gt;소스 코드&lt;/h1&gt;
-
-&lt;p&gt;조합과 순열은 백트래킹을 통해 구현할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;swap을-통한-백트래킹&quot;&gt;swap을 통한 백트래킹&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/perm_combi/perm-combi-img01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;배열의 첫번째 값을 순차적으로 바꿔 전체적으로 한번씩 swap 된 형태로 순열을 출력합니다. depth를 기준으로 인덱스가 depth보다 작으면 고정시키고, depth보다 크면 다시 swap을 진행합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;자바스크립트-코드-1&quot;&gt;자바스크립트 코드&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;permutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;swap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;permutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;swap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;swap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;temp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;permutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]));&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// ------- 출력 --------&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 0: (3) ['A', 'B', 'C']&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 1: (3) ['A', 'C', 'B']&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 2: (3) ['B', 'A', 'C']&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 3: (3) ['B', 'C', 'A']&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 4: (3) ['C', 'B', 'A']&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 5: (3) ['C', 'A', 'B']&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;swap을 한 후 함수를 depth가 r이 될때까지 재귀호출을 합니다. 값이 돌아오면 다시 swap을 하여 배열을 원래상태로 되돌립니다.&lt;/p&gt;
-
-&lt;p&gt;이 방법은 별도의 공간을 필요로 하지 않기 때문에 공간복잡도는 작지만 순열의 순서를 보장하지는 않습니다. 위에 출력된 코드를 보면 4번째 출력은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C -&amp;gt; A -&amp;gt; B&lt;/code&gt; 가 출력되어야 하지만, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C -&amp;gt; B -&amp;gt; A&lt;/code&gt; 가 먼저 출력됨을 볼 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;visited-배열을-통한-백트래킹&quot;&gt;visited 배열을 통한 백트래킹&lt;/h2&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/perm_combi/perm-combi-img02.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이 방법은 깊이우선탐색(DFS)를 통해 모든 인덱스를 방문합니다. 이때 visited 배열을 통해 중복값이 다시 들어가지 않도록 하면서 output 배열을 채워나갑니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;자바스크립트-코드-2&quot;&gt;자바스크립트 코드&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;permutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;visited&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;permutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;visited&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;  
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;depth&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;permutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]));&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// ------- 출력 --------&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 0: (3) ['A', 'B', 'C']&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 1: (3) ['A', 'C', 'B']&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 2: (3) ['B', 'A', 'C']&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 3: (3) ['B', 'C', 'A']&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 4: (3) ['C', 'A', 'B']&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// 5: (3) ['C', 'B', 'A']&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;추가적인 공간을 필요로 하기에 공간 복잡도가 증가하지만 순열의 순서를 보장합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;비트셋을-통한-조합&quot;&gt;비트셋을 통한 조합&lt;/h2&gt;
-
-&lt;p&gt;아이템의 존재 유무는 1 또는 0으로 표현할 수 있으므로, n개의 비트를 통해 n개의 아이템에 대한 하나의 상태를 표현할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;자바스크립트-코드-3&quot;&gt;자바스크립트 코드&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;위에 작성한 아이템 배열의 경우, A = 1 « 0, B = 1 « 1, C = 1 « 2 로 나타낼 수 있습니다. 이는 각각 $ 2^0, 2^1, 2^2 $을 나타냅니다. 즉, $ 2^n $까지 순회하여 비트셋을 해석하면 r에 대한 모든 조합을 얻을 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;combination&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    
-    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;관련-문제&quot;&gt;관련 문제&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;프로그래머스(Programmers)&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;https://school.programmers.co.kr/learn/courses/30/lessons/12936&quot; target=&quot;_blank&quot;&gt;[12936] 줄 서는 방법&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://school.programmers.co.kr/learn/courses/30/lessons/49993&quot; target=&quot;_blank&quot;&gt;[49993] 스킬트리&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;https://school.programmers.co.kr/learn/courses/30/lessons/49993&quot; target=&quot;_blank&quot;&gt;[84512] 모음사전&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>huimang2</name></author><category term="algorithm" /><category term="algorithm" /><summary type="html">조합과 순열은 알고리즘 문제를 풀다보면 자주 만나는 문제 유형 입니다. 백트래킹, 분할정복 등 많은 알고리즘에 조합과 순열이 포함됩니다.</summary></entry></feed>
+&lt;p&gt;컨트롤러는 Model과 View가 Wrapping된 객체를 반환하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewResolver&lt;/code&gt;를 통해 View 객체를 처리한 후 클라이언트에게 해당 객체를 반환합니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="design-pattern" /><category term="design-pattern" /><summary type="html">MVC 패턴이란?</summary></entry></feed>
