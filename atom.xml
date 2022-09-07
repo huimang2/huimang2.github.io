@@ -8,9 +8,24 @@
     
       
       <item>
-        <title>Git를 통한 버전관리</title>
+        <title>Git 튜토리얼</title>
         
-          <description>&lt;h1 id=&quot;git와-github&quot;&gt;Git와 Github&lt;/h1&gt;
+          <description>&lt;h1 id=&quot;git-설치&quot;&gt;git 설치&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Tue, 06 Sep 2022 07:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/git-tutorial</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/git-tutorial</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Git 길라잡이</title>
+        
+          <description>&lt;h1 id=&quot;git와-github-차이&quot;&gt;Git와 Github 차이&lt;/h1&gt;
 
 </description>
         

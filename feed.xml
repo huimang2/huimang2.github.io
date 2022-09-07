@@ -1,54 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-09-05T10:09:25+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">Git를 통한 버전관리</title><link href="https://huimang2.github.io/etc/git" rel="alternate" type="text/html" title="Git를 통한 버전관리" /><published>2022-09-04T07:00:00+09:00</published><updated>2022-09-04T07:00:00+09:00</updated><id>https://huimang2.github.io/etc/git</id><content type="html" xml:base="https://huimang2.github.io/etc/git">&lt;h1 id=&quot;git와-github&quot;&gt;Git와 Github&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-09-07T17:26:01+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">Git 튜토리얼</title><link href="https://huimang2.github.io/etc/git-tutorial" rel="alternate" type="text/html" title="Git 튜토리얼" /><published>2022-09-06T07:00:00+09:00</published><updated>2022-09-06T07:00:00+09:00</updated><id>https://huimang2.github.io/etc/git-tutorial</id><content type="html" xml:base="https://huimang2.github.io/etc/git-tutorial">&lt;h1 id=&quot;git-설치&quot;&gt;git 설치&lt;/h1&gt;
 
-&lt;h2 id=&quot;git&quot;&gt;Git&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Git&lt;/code&gt;는 컴퓨터 파일의 변경사항을 추적하고 여러 명의 사용자들 간에 해당 파일들의 작업을 조율하기 위한 분산 버전 관리 시스템입니다. 원래는 Linux 소스코드를 관리할 목적으로 개발 되었습니다.&lt;/p&gt;
-
-&lt;p&gt;Git를 통해 버전을 관리하면 소스 코드가 변경된 이력을 쉽게 확인할 수 있으며, 특정 시점의 버전과 비교하거나 그 시점의 버전으로 파일을 되돌릴 수 있습니다. 또한 협업을 하는 경우 충돌을 감지하여 사용자에게 경고를 주기도 합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;github&quot;&gt;Github&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;는 Git Repository를 위한 웹 기반 호스팅 서비스 입니다. 클라우드 서버를 통해 로컬에서 관리하는 소스코드를 업로드하고 공유할 수 있어서 공동작업이 가능하도록 합니다. Git의 기본적인 기능을 제공하여 한 프로젝트에 여러 사람이 공동으로 작업하여도 효율적으로 버전관리를 할 수 있도록 합니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;git-용어&quot;&gt;Git 용어&lt;/h1&gt;
-
-&lt;h2 id=&quot;저장소repository&quot;&gt;저장소(Repository)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;저장소(Repository)&lt;/code&gt;는 말그대로 파일이나 폴더를 저장해 두는 장소를 말합니다. &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;파일의 변경 이력을 관리&lt;/code&gt;하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;원격 저장소(Remote Repository)&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;로컬 저장소(Local Repository)&lt;/code&gt;로 구분됩니다.&lt;/p&gt;
-
-&lt;p&gt;원격 저장소는 Github와 같이 소스코드를 공유하고 공동작업을 하기위한 저장소이고, 로컬 저장소는 개인 전용 저장소입니다.&lt;/p&gt;
-
-&lt;p&gt;평소에는 로컬 저장소에서 작업을 하지만 공동작업이 필요하다면 원격 저장소에 저장하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clone&lt;/code&gt; 명령어를 통해 로컬 저장소로 코드를 가져올 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;커밋commit&quot;&gt;커밋(Commit)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt;은 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;파일의 변경 이력을 기록&lt;/code&gt;하는 명령어 입니다. 작업 트리(work tree)의 파일을 저장소(repository)에 스냅샷으로 기록하며, 시간순으로 저장되어 과거 변경 이력과 그 내용을 알 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;커밋끼리는 서로 체인구조를 형성하고 있어서 과거 커밋 내용이 훼손되면 그 이후의 커밋도 훼손되어 버립니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위 그래프에서 각 노드는 커밋 시점을 나타냅니다. 보는 바와 같이 커밋 시점은 순차적으로 연결되어 있습니다.&lt;/p&gt;
-
-&lt;p&gt;각 커밋은 영문과 숫자로 구성된 40자리의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;커밋 해시(commit hash)&lt;/code&gt;를 통해 구분되며, 커밋을 하기 위해서는 커밋 메시지의 작성이 필요합니다. 커밋 메시지를 작성하지 않으면 커밋이 이루어지지 않습니다.&lt;/p&gt;
-
-&lt;p&gt;커밋은 코드에 이력을 남기는 중요한 작업이므로 커밋 메시지에는 코드의 변경 내용과 변경 사유 등을 간략히 기록해 두는것이 권장됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;작업-트리work-tree--인덱스index&quot;&gt;작업 트리(Work Tree) / 인덱스(Index)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;작업 트리(work tree)&lt;/code&gt;는 소스코드를 편집하는 작업 공간(workspace) 그 자체를 말하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;인덱스(index)&lt;/code&gt;는 커밋을 하기 전에 작업 트리와 저장소 사이에 존재하는 공간을 말합니다.&lt;/p&gt;
-
-&lt;p&gt;커밋 작업은 작업 트리의 변경 이력을 바로 기록하지 않고 인덱스에 저장되어 있는 파일의 상태를 우선적으로 기록하게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;인덱스에 파일 상태를 기록하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;추적(stage)&lt;/code&gt;이라고 하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add&lt;/code&gt; 명령어를 통해 추적 상태로 만들 수 있습니다. 커밋은 인덱스에 추적상태로 있는 파일의 이력만 저장소에 저장하게 됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;풀pull--푸시push&quot;&gt;풀(pull) / 푸시(push)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;풀(pull)&lt;/code&gt;은 원격 저장소에 저장된 파일을 로컬 저장소로 가져오는 것을 말하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;푸시(push)&lt;/code&gt;는 로컬 저장소에 저장된 파일을 원격 저장소에 반영하는 것을 말합니다. 각각 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pull&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push&lt;/code&gt; 명령어를 통해 작업할 수 있습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;튜토리얼&quot;&gt;튜토리얼&lt;/h1&gt;
-
-&lt;p&gt;기본적인 용어를 알아보았으니 실제로 커밋과 풀, 푸시를 해보도록 하겠습니다. IDE를 통해 쉽게 작업할 수 있지만 터미널상에서 명령어를 통해 커밋을 하겠습니다.&lt;/p&gt;
+&lt;p&gt;기본적인 용어를 알아보았으니 실제로 명령어를 통해 커밋과 풀, 푸시를 해보도록 하겠습니다. IDE를 통해 쉽게 작업할 수 있지만 터미널상에서 명령어를 통해 커밋을 하겠습니다.&lt;/p&gt;
 
 &lt;p&gt;우선은 원격 컴퓨터에 로그인하고 git를 설치합니다.&lt;/p&gt;
 
@@ -61,6 +13,8 @@
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.email &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;userEmail]
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h1 id=&quot;커밋commit&quot;&gt;커밋(commit)&lt;/h1&gt;
+
 &lt;p&gt;우선 로컬 저장소를 생성해보도록 하겠습니다. 우선 작업 트리를 생성하고 이동합니다.&lt;/p&gt;
 
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; ~/git/example &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/git/example
@@ -68,27 +22,26 @@
 
 &lt;p&gt;로컬 저장소는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init&lt;/code&gt; 명령어를 통해 생성할 수 있습니다.&lt;/p&gt;
 
+&lt;h6 id=&quot;init-명령어&quot;&gt;init 명령어&lt;/h6&gt;
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git init
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;로컬 저장소가 생성되면 .git 폴더가 생성됩니다. 이제 임의의 파일을 하나 생성하고 임의의 내용을 작성합니다.&lt;/p&gt;
 
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;test.txt &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; nvim test.txt
-
-...
-
-임의의 내용 작성 1
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;test.txt &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;임의의 내용 작성 1&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; test.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;커밋을 하기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add&lt;/code&gt; 명령어를 통해 인덱스에 파일을 등록해야 합니다.&lt;/p&gt;
 
+&lt;h6 id=&quot;add-명령어&quot;&gt;add 명령어&lt;/h6&gt;
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add test.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;인덱스에 등록된 파일을 확인하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;status&lt;/code&gt; 명령어를 사용합니다.&lt;/p&gt;
 
+&lt;h6 id=&quot;status-명령어&quot;&gt;status 명령어&lt;/h6&gt;
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git status
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -96,12 +49,25 @@
 
 &lt;p&gt;이제 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt; 명령어를 통해 변경 상태를 기록합니다. 이때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-m&lt;/code&gt; 옵션을 통해 커밋 메시지를 작성해야만 합니다.&lt;/p&gt;
 
+&lt;h6 id=&quot;-m-옵션&quot;&gt;-m 옵션&lt;/h6&gt;
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;test.txt 파일 생성&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;커밋 상태를 확인하고 싶다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;log&lt;/code&gt; 명령어를 입력해보세요.&lt;/p&gt;
+&lt;p&gt;커밋 로그를 확인하고 싶다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;log&lt;/code&gt; 명령어를 입력해보세요.&lt;/p&gt;
+
+&lt;h6 id=&quot;log-명령어&quot;&gt;log 명령어&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-04.png&quot; alt=&quot;img04&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;스테이징과 커밋을 한번에 해결하려면 commit 명령어에 -am 옵션을 주면 됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;-am-옵션&quot;&gt;-am 옵션&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;test.txt 파일 생성&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;푸시push와-풀pull&quot;&gt;푸시(push)와 풀(pull)&lt;/h1&gt;
 
 &lt;p&gt;이번에는 방금 생성한 로컬 저장소를 원격 저장소에 push 해보겠습니다. 그전에 ssh 인증키를 만들어서 github에 등록합시다.&lt;/p&gt;
 
@@ -129,7 +95,7 @@
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git remote &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;이제 push 명령어를 통해 로컬 저장소의 변경 내역을 원격 저장소에 반영하도록 하겠습니다.&lt;/p&gt;
+&lt;p&gt;이제 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push&lt;/code&gt; 명령어를 통해 로컬 저장소의 변경 내역을 원격 저장소에 반영하도록 하겠습니다.&lt;/p&gt;
 
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin main
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -150,12 +116,14 @@
 
 &lt;p&gt;test.txt 파일을 수정해봅시다.&lt;/p&gt;
 
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;내용 추가&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; test.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-05.png&quot; alt=&quot;img05&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;test.txt 파일을 스테이징 하여 커밋하고 원격 저장소에 푸시해줍시다.&lt;/p&gt;
 
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;내용 추가&quot;&lt;/span&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;내용 추가&quot;&lt;/span&gt;
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin main
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -164,36 +132,610 @@
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/git/example &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;test.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;아직 원격 저장소와 동기화되지 않았습니다. pull 명령어로 원격 저장소의 커밋 내역을 로컬 저장소에 합치고 test.txt 내용을 확인하면 동기화가 된 것을 알 수 있습니다.&lt;/p&gt;
+&lt;p class=&quot;no-toc&quot;&gt;아직 원격 저장소와 동기화되지 않았습니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pull&lt;/code&gt; 명령어로 원격 저장소의 커밋 내역을 로컬 저장소에 합치고 test.txt 내용을 확인하면 동기화가 된 것을 알 수 있습니다.&lt;/p&gt;
 
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git pull origin main &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;test.txt
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h1 id=&quot;브랜치branch&quot;&gt;브랜치(Branch)&lt;/h1&gt;
+&lt;h1 id=&quot;브랜치branch&quot;&gt;브랜치(branch)&lt;/h1&gt;
+
+&lt;p&gt;이제 브랜치를 만들어 보겠습니다. 브랜치는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;branch&lt;/code&gt; 명령어를 통해서 추가할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;브랜치-추가&quot;&gt;브랜치 추가&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;브랜치가 성생되었는지 확인하려면 다음 명령어를 입력하세요.&lt;/p&gt;
+
+&lt;h6 id=&quot;브랜치-생성-확인&quot;&gt;브랜치 생성 확인&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git branch
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-21.png&quot; alt=&quot;img21&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;브랜치를 이동하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;checkout&lt;/code&gt; 명령어를 사용합니다. git 2.23 부터는 checkout의 기능이 분리되어 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;switch&lt;/code&gt; 명령어를 통해서도 브랜치의 이동이 가능합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;브랜치를 생성하고 바로 이동하려면 다음과 같이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-b&lt;/code&gt; 옵션 / &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-c&lt;/code&gt; 옵션을 붙이면 됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;checkout의-경우&quot;&gt;checkout의 경우&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;switch의-경우&quot;&gt;switch의 경우&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;브랜치의 삭제는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d&lt;/code&gt; 옵션을 사용합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;브랜치-삭제&quot;&gt;브랜치 삭제&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git brandch &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;병합merge&quot;&gt;병합(merge)&lt;/h1&gt;
+
+&lt;p&gt;이번에는 병합을 해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext bgcolor blue highlighter-rouge&quot; style=&quot;color: royalblue&quot;&gt;issue1&lt;/code&gt; 브랜치로 이동하여 test.txt 파일을 임의로 수정하고 스테이징 후 커밋을 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-22.png&quot; alt=&quot;img22&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;VSCode의 extension인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Git Graph&lt;/code&gt;를 통하여 커밋 로그를 그래프로 확인하면 브랜치가 하나로 이어져있는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-23.png&quot; alt=&quot;img23&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이것은 현재 issue1 브랜치를 기준으로 main 브랜치는 fast-forward 상태에 있기 때문입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-24.png&quot; alt=&quot;img24&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; 브랜치로 이동하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;merge&lt;/code&gt; 명령어로 하면 main 브랜치는 fast-forward merge가 됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;fast-forward-merge&quot;&gt;fast-forward merge&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch main
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-25.png&quot; alt=&quot;img25&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번에는 non fast-forward merge를 해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext bgcolor blue highlighter-rouge&quot; style=&quot;color: royalblue&quot;&gt;issue1&lt;/code&gt; 브랜치로 이동하여 test.txt 파일을 수정한 후 커밋합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;issue1-커밋&quot;&gt;issue1 커밋&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch issue1
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;issue1 내용 추가&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; test.txt
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;test.txt issue1 내용 추가&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;메인 브랜치로 이동 후 issue2 브랜치를 생성하여 이동 후, test.txt 파일을 수정한 후 커밋합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;issue2-커밋&quot;&gt;issue2 커밋&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch main
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; issue2
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;issue2 내용 추가&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; test.txt
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;test.txt issue2 내용 추가&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;메인 브랜치로 이동하면 다음과 같이 fast-forward 상태가 됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-26.png&quot; alt=&quot;img26&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;우선 &lt;code class=&quot;language-plaintext bgcolor blue highlighter-rouge&quot; style=&quot;color: royalblue&quot;&gt;issue1&lt;/code&gt; 브랜치를 fast-forward merge 합니다.&lt;/p&gt;
+
+&lt;p&gt;메인 브랜치가 fast-forward 상태이기때문에 그냥 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;merge&lt;/code&gt; 명령어만 사용하도 fast-forward merge가 되지만, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--ff&lt;/code&gt; 옵션을 주어 명시적으로 fast-forward merge를 하겠습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;ff-옵션을-통한-fast-forward-merge&quot;&gt;–ff 옵션을 통한 fast-forward merge&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch main
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge &lt;span class=&quot;nt&quot;&gt;--ff&lt;/span&gt; issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-27.png&quot; alt=&quot;img27&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;메인 브랜치의 참조 커밋이 변경되면서 non fast-forward 상태가 되었습니다. 이 상태에서는 자동으로 non fast-forward merge가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;하지만 issue1과 issue2 양쪽에서 같은 파일을 수정했기 때문에 병합충돌이 발생합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;non-fast-forward-merge&quot;&gt;non fast-forward merge&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge issue2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-28.png&quot; alt=&quot;img28&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;test.txt 파일을 열어봅니다. 메인 브랜치인 HEAD의 변경 부분과 issue2 브랜치 변경부분을 다음과 같이 구분하여 파일이 수정되어 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-29.png&quot; alt=&quot;img29&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;head메인-브랜치의-변경부분&quot;&gt;HEAD(메인 브랜치)의 변경부분&lt;/h6&gt;
+&lt;div data-lang=&quot;TXT&quot; class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD
+브랜치 병합 테스트
+issue1 내용 추가
+=======
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;issue2-브랜치의-변경부분&quot;&gt;issue2 브랜치의 변경부분&lt;/h6&gt;
+&lt;div data-lang=&quot;TXT&quot; class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;=======
+issue2 내용 추가
+&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; issue2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;코드를 수정하고 스테이징 후 다시 커밋을 보내면 커밋이 생성되면서 merge가 됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;testtxt&quot;&gt;test.txt&lt;/h6&gt;
+&lt;div data-lang=&quot;TXT&quot; class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;임의의 내용 작성 1
+내용 추가
+브랜치 병합 테스트
+issue1 내용 추가
+issue2 내용 추가
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;병합충돌-해결&quot;&gt;병합충돌 해결&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;병합충돌 해결&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-30.png&quot; alt=&quot;img30&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--no-ff&lt;/code&gt; 옵션을 사용하면 fast-forward 상태일지라도 non fast-forward merge를 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;issue1 브랜치로 변경하여 메인 브랜치와 fast-forward merge를 하고, test.txt를 수정한 후 스테이징 및 커밋합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;issue1-새로운-커밋&quot;&gt;issue1 새로운 커밋&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch issue1
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge main
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;issue1 새로운 커밋&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; test.txt
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;issue1 새로운 커밋&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;메인 브랜치로 이동하여 –no-ff 옵션을 통해 issue1을 non fast-forward merge 해봅시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;no-ff-옵션&quot;&gt;–no-ff 옵션&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch main
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge &lt;span class=&quot;nt&quot;&gt;--no-ff&lt;/span&gt; issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음과 같이 커밋 메시지를 적기위한 에디터가 뜹니다. vim과 같은 명령어를 사용합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-31.png&quot; alt=&quot;img31&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:wq&lt;/code&gt;를 입력하면 병합이 완료됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-32.png&quot; alt=&quot;img32&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;또다른 병합 옵션으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--squash&lt;/code&gt;가 있는데 이는 rebase를 알아야합니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;리베이스rebase&quot;&gt;리베이스(rebase)&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;리베이스(rebase)&lt;/code&gt;는 이름 그대로 커밋이 분기되는 base를 수정하는 작업입니다. 공통된 커밋으로부터 수정하려는 base 커밋까지의 차이점을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;패치(patch)&lt;/code&gt;라는 공간에 임시로 저장하고 참조 커밋을 수정한 후 패치(patch)를 순차적으로 적용합니다.&lt;/p&gt;
+
+&lt;p&gt;방금 병합한 작업을 다음 상태로 되돌려 베이스가 수정되는 과정을 보겠습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-27.png&quot; alt=&quot;img27&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;커밋-되돌리기&quot;&gt;커밋 되돌리기&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD~2
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch issue1
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD~2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;우선 issue2 브랜치로 이동하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rebase&lt;/code&gt; 명령어로 메인 브랜치를 base로 만듭니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;리베이스&quot;&gt;리베이스&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch issue2
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git rebase main
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;아까 상황과 마찬가지로 issue1과 issue2에서 동시에 같은 파일을 수정했기 때문에 패치를 만드는 과정에서 병합충돌이 발생했습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-33.png&quot; alt=&quot;img33&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;아까와 동일하게 test.txt 파일을 수정합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;testtxt-1&quot;&gt;test.txt&lt;/h6&gt;
+&lt;div data-lang=&quot;TXT&quot; class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;임의의 내용 작성 1
+내용 추가
+브랜치 병합 테스트
+issue1 내용 추가
+issue2 내용 추가
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;스테이징 한 후 병합과는 달리 커밋을 하지 않고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rebase&lt;/code&gt; 명령어에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--continue&lt;/code&gt; 옵션을 주어 리베이스를 계속 진행하도록 합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;리베이스-진행&quot;&gt;리베이스 진행&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add test.txt
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git rebase &lt;span class=&quot;nt&quot;&gt;--continue&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;그러면 커밋 메시지를 입력하는 에디터가 뜹니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:wq&lt;/code&gt;를 입력하여 커밋을 생성합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-34.png&quot; alt=&quot;img34&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이제 메인 브랜치로 이동하여 fast-forward merge를 합니다. 병합과 비교해보면 issue2 브랜치에 있던 커밋이 main 브랜치로 베이스가 옮겨졌음을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;리베이스의-경우&quot;&gt;리베이스의 경우&lt;/h6&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-35.png&quot; alt=&quot;img35&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;병합의-경우&quot;&gt;병합의 경우&lt;/h6&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-30.png&quot; alt=&quot;img30&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;중간에 리베이스를 취소하려면 –continue 옵션 대신에 –abort 옵션을 넣습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;리베이스-취소&quot;&gt;리베이스 취소&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git rebase &lt;span class=&quot;nt&quot;&gt;--abort&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;리베이스를 사용하면 커밋 히스토리가 한줄로 깔끔해지지만 이미 공개된 저장소에 push한 커밋을 리베이스하면 히스토리가 꼬일 수 있으므로 주의해야합니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;체리픽cherry-pick&quot;&gt;체리픽(cherry-pick)&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;체리픽(cherry-pick)&lt;/code&gt;은 리베이스와 유사하게 베이스를 변경하는 작업인데, 원하는 커밋만 pick해서 브랜치에 적용시키는 작업입니다.&lt;/p&gt;
+
+&lt;p&gt;issue1 브랜치로 이동하여 커밋을 2번 합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;issue1-브랜치에서-2번의-커밋-작업&quot;&gt;issue1 브랜치에서 2번의 커밋 작업&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch issue1
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge main
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;issue1 체리픽1&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; test.txt
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;issue1 체리픽1&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;issue1 체리픽2&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; test.txt
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;issue1 체리픽2&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;로그를 통해 체리픽1 커밋의 해시를 확인합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;커밋-해시-확인&quot;&gt;커밋 해시 확인&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git log &lt;span class=&quot;nt&quot;&gt;--oneline&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-37.png&quot; alt=&quot;img37&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;메인 브랜치로 이동하여 cherry-pick 명령어를 통해 체리픽 작업을 합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;cherry-pick&quot;&gt;cherry-pick&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch main
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cherry-pick &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;커밋 해시]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;마찬가지로 패치(patch) 과정에서 충돌이 발생합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;패치patch-충돌&quot;&gt;패치(patch) 충돌&lt;/h6&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-36.png&quot; alt=&quot;img36&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;test.txt 파일을 충돌나지 않도록 수정합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;testtxt-2&quot;&gt;test.txt&lt;/h6&gt;
+&lt;div data-lang=&quot;TXT&quot; class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;임의의 내용 작성 1
+내용 추가
+브랜치 병합 테스트
+issue1 내용 추가
+issue2 내용 추가
+issue1 체리픽1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;저장하고 스테이징 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--continue&lt;/code&gt; 옵션으로 체리픽을 계속 진행해주세요.&lt;/p&gt;
+
+&lt;h6 id=&quot;체리픽-진행&quot;&gt;체리픽 진행&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git add &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cherry-pick &lt;span class=&quot;nt&quot;&gt;--continue&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;다음과 같이 원하는 커밋만 브랜치에 가져왔습니다. 커밋을 새로 생성했기 때문에 커밋 해시가 다르다는 것을 볼 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;체리픽-결과&quot;&gt;체리픽 결과&lt;/h6&gt;
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-38.png&quot; alt=&quot;img38&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;중간에 체리픽을 취소하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--continue&lt;/code&gt; 옵션 대신에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--abort&lt;/code&gt; 옵션을 넣으면 됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;체리픽-취소&quot;&gt;체리픽 취소&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cherry-pick &lt;span class=&quot;nt&quot;&gt;--abort&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;스쿼시-병합squash-merge&quot;&gt;스쿼시 병합(squash merge)&lt;/h1&gt;
+
+&lt;p&gt;체리픽과 유사한 작업이 병합의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--squash&lt;/code&gt; 옵션입니다. 스쿼시 옵션은 리베이스처럼 브랜치 베이스의 참조를 변경하지만, 리베이스가 베이스 이후로 브랜치 전체 커밋을 반영하는 것과 달리 스쿼시 병합은 브랜치의 커밋을 하나로 합쳐 체리픽처럼 새로운 하나의 커밋을 생성합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;체리픽-작업-이전으로-되돌리기&quot;&gt;체리픽 작업 이전으로 되돌리기&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD~
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;스쿼시-병합&quot;&gt;스쿼시 병합&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git merge &lt;span class=&quot;nt&quot;&gt;--squash&lt;/span&gt; issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;testtxt-패치patch-충돌-해결&quot;&gt;test.txt 패치(patch) 충돌 해결&lt;/h6&gt;
+&lt;div data-lang=&quot;TXT&quot; class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;임의의 내용 작성 1
+내용 추가
+브랜치 병합 테스트
+issue1 내용 추가
+issue2 내용 추가
+issue1 체리픽1
+issue1 체리픽2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;스쿼시-병합-진행&quot;&gt;스쿼시 병합 진행&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git commit &lt;span class=&quot;nt&quot;&gt;-am&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;스쿼시 병합&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;reset과-revert&quot;&gt;reset과 revert&lt;/h1&gt;
+
+&lt;p&gt;커밋 상태를 과거로 되돌리는 명령어에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reset&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revert&lt;/code&gt;가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reset&lt;/code&gt;은 헤드 자체를 과거로 옮겨 특정 커밋으로 되돌리는 작업을 하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revert&lt;/code&gt;는 과거로 되돌린다는 이력을 남기고서 특정 커밋을 없던 것으로 하는 작업을 합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;reset&quot;&gt;reset&lt;/h2&gt;
+
+&lt;p&gt;reset의 옵션에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--soft&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mixed&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--hard&lt;/code&gt;가 있습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;–soft&lt;/strong&gt; : 커밋을 하기 전단계인 스테이징 상태로 돌려놓습니다.
+&lt;strong&gt;–mixed&lt;/strong&gt; : 기본값으로 적용되며, 파일을 스테이징 전단계로 돌려놓습니다.(파일이 작업 트리에 존재)
+&lt;strong&gt;–hard&lt;/strong&gt; : 추적 상태인 파일을 작업 트리에서 제거합니다. 즉, 파일을 수정하기 전으로 돌려놓습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;명령어의 형태는 다음과 같습니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;옵션&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;선택&lt;span class=&quot;o&quot;&gt;)]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;커밋 해시]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;커밋 해시 대신에 헤드의 상대적인 수치로도 reset을 수행할 수 있습니다. 틸트(~숫자)의 경우 틸트로부터 숫자만큼 reset을 수행하며, 캐럿(^)의 경우 헤드로부터 한단계 아래 커밋으로 reset을 수행합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 아래 코드의 경우 2칸 이전의 커밋을 파일 수정 이전으로 되돌립니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;reset-1&quot;&gt;reset&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD~2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;revert는 하나의 커밋 상태로 되돌리며, 상태를 되돌릴때마다 revert 상태를 남기는 커밋을 생성합니다. 다음과 같이 여러 커밋에 대하여 revert 작업이 가능합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;revert&quot;&gt;revert&lt;/h2&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git revert HEAD^ HEAD^^
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;스태쉬stash&quot;&gt;스태쉬(stash)&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스태쉬(stash)&lt;/code&gt;는 추적 상태에 있거나 스테이징 상태에 있는 파일을 임시로 저장하는 작업입니다. 추적 상태에 있거나 스테이징 상태인 파일이 있다면 다른 브랜치로 이동하지 못합니다. 이때 스태쉬를 통해 파일을 저장하고 다른 브랜치로 이동할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;다음 명령어를 통해 새로운 스태쉬를 생성할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;스태쉬-생성&quot;&gt;스태쉬 생성&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git stash
+
+또는
+
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git stash save
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;스태쉬 스택의 확인은 다음 명령어를 통해 확인할 수 있습니다. 리스트에서 스태쉬 이름을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;ex) stash@{0}: ….&lt;/p&gt;
+
+&lt;h6 id=&quot;스태쉬-목록&quot;&gt;스태쉬 목록&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git stash list
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;스태쉬의 적용은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apply&lt;/code&gt; 명령어를 통해 적용할 수 있습니다. 스태쉬를 생성한 브랜치 뿐만 아니라 다른 브랜치에도 적용가능합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;스태쉬-목록-1&quot;&gt;스태쉬 목록&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch issue2
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git stash apply stash@&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;옵션 없이 적용하면 스테이징 상태에 있던 파일도 추적 상태로 적용되지만, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--index&lt;/code&gt; 옵션을 준다면 스테이징 상태에 있던 파일은 스테이징 상태 그대로 적용됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;drop&lt;/code&gt; 명령을 사용하면 스태쉬를 스택에서 삭제하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pop&lt;/code&gt; 명령을 사용하면 스태쉬를 적용하고 스택에서 삭제합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;스태쉬-삭제&quot;&gt;스태쉬 삭제&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git stash drop stash@&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;-m –keep-index&lt;/p&gt;
+
+&lt;h1 id=&quot;원격-브랜치의-생성과-삭제&quot;&gt;원격 브랜치의 생성과 삭제&lt;/h1&gt;
+
+&lt;p&gt;원격 브랜치를 생성하려면 로컬 브랜치가 존재해야하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push&lt;/code&gt; 명령어를 사용하여 생성할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;originissue1-원격-브랜치-생성&quot;&gt;origin/issue1 원격 브랜치 생성&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push origin issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;원격 브랜치를 가져오려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;switch&lt;/code&gt; 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;checkout&lt;/code&gt; 명령어에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--track&lt;/code&gt; 옵션을 붙입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;originissue1-원격-브랜치-가져오기&quot;&gt;origin/issue1 원격 브랜치 가져오기&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git switch origin/issue1
+
+또는 
+
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout origin/issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;원격 브랜치를 삭제하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push&lt;/code&gt; 명령어에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--delete&lt;/code&gt; 옵션을 붙입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;originissue1-원격-브랜치-삭제&quot;&gt;origin/issue1 원격 브랜치 삭제&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git push &lt;span class=&quot;nt&quot;&gt;--delete&lt;/span&gt; origin issue1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;원격-저장소-동기화&quot;&gt;원격 저장소 동기화&lt;/h1&gt;
+
+&lt;p&gt;원격 저장소를 동기화 하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fetch&lt;/code&gt; 명령어를 사용합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;origin-원격-저장소-동기화&quot;&gt;origin 원격 저장소 동기화&lt;/h6&gt;
+&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git fetch origin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;pull 명령어의 경우, fetch 작업과 merge 작업을 수행합니다. fetch를 하면 원격 저장소로부터 최신이력을 가져와 이름없는 브랜치에 반영합니다. 이 브랜치는 FETCH_HEAD라는 이름으로 참조할 수 있습니다. 메인 브랜치를 병합하고 싶다면 브랜치를 merge하거나 pull을 수행하면 됩니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="github" /><summary type="html">git 설치</summary></entry><entry><title type="html">Git 길라잡이</title><link href="https://huimang2.github.io/etc/git" rel="alternate" type="text/html" title="Git 길라잡이" /><published>2022-09-04T07:00:00+09:00</published><updated>2022-09-04T07:00:00+09:00</updated><id>https://huimang2.github.io/etc/git</id><content type="html" xml:base="https://huimang2.github.io/etc/git">&lt;h1 id=&quot;git와-github-차이&quot;&gt;Git와 Github 차이&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Git&lt;/code&gt;는 컴퓨터 파일의 변경사항을 추적하고 여러 명의 사용자들 간에 해당 파일들의 작업을 조율하기 위한 분산 버전 관리 시스템입니다. 원래는 Linux 소스코드를 관리할 목적으로 개발 되었습니다.&lt;/p&gt;
+
+&lt;p&gt;Git를 통해 버전을 관리하면 소스 코드가 변경된 이력을 쉽게 확인할 수 있으며, 특정 시점의 버전과 비교하거나 그 시점의 버전으로 파일을 되돌릴 수 있습니다. 또한 협업을 하는 경우 충돌을 감지하여 사용자에게 경고를 주기도 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GitHub&lt;/code&gt;는 Git Repository를 위한 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color: orangered&quot;&gt;웹 기반 호스팅 서비스&lt;/code&gt; 입니다. 클라우드 서버를 통해 로컬에서 관리하는 소스코드를 업로드하고 공유할 수 있어서 공동작업이 가능하도록 합니다. Git의 기본적인 기능을 제공하여 한 프로젝트에 여러 사람이 공동으로 작업하여도 효율적으로 버전관리를 할 수 있도록 합니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;git-용어&quot;&gt;Git 용어&lt;/h1&gt;
+
+&lt;h2 id=&quot;저장소repository&quot;&gt;저장소(Repository)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;저장소(Repository)&lt;/code&gt;는 말그대로 파일이나 폴더를 저장해 두는 장소를 말합니다. &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;파일의 변경 이력을 관리&lt;/code&gt;하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;원격 저장소(Remote Repository)&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;로컬 저장소(Local Repository)&lt;/code&gt;로 구분됩니다.&lt;/p&gt;
+
+&lt;p&gt;원격 저장소는 Github와 같이 소스코드를 공유하고 공동작업을 하기위한 저장소이고, 로컬 저장소는 개인 전용 저장소입니다.&lt;/p&gt;
+
+&lt;p&gt;평소에는 로컬 저장소에서 작업을 하지만 공동작업이 필요하다면 원격 저장소에 저장하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clone&lt;/code&gt; 명령어를 통해 로컬 저장소로 코드를 가져올 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;작업-트리work-tree--인덱스index&quot;&gt;작업 트리(Work Tree) / 인덱스(Index)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;작업 트리(work tree)&lt;/code&gt;는 소스코드를 편집하는 작업 공간(workspace) 그 자체를 말하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;인덱스(index)&lt;/code&gt;는 커밋을 하기 전에 작업 트리와 저장소 사이에 존재하는 공간을 말합니다.&lt;/p&gt;
+
+&lt;p&gt;커밋 작업은 작업 트리의 변경 이력을 바로 기록하지 않고 인덱스에 저장되어 있는 파일의 상태를 우선적으로 기록하게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;인덱스에 파일 상태를 기록하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;추적(stage)&lt;/code&gt;이라고 하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add&lt;/code&gt; 명령어를 통해 추적 상태로 만들 수 있습니다. 커밋은 인덱스에 추적상태로 있는 파일의 이력만 저장소에 저장하게 됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;풀pull--푸시push&quot;&gt;풀(pull) / 푸시(push)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;풀(pull)&lt;/code&gt;은 원격 저장소에 저장된 파일을 로컬 저장소로 가져오는 것을 말하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;푸시(push)&lt;/code&gt;는 로컬 저장소에 저장된 파일을 원격 저장소에 반영하는 것을 말합니다. 각각 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pull&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push&lt;/code&gt; 명령어를 통해 작업할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;커밋commit&quot;&gt;커밋(Commit)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt;은 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;파일의 변경 이력을 기록&lt;/code&gt;하는 명령어 입니다. 작업 트리(work tree)의 파일을 저장소(repository)에 스냅샷으로 기록하며, 시간순으로 저장되어 과거 변경 이력과 그 내용을 알 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;커밋들은 서로 체인구조를 형성하여 참조하고 있기 때문에 과거 커밋 내용이 훼손되면 그 이후의 커밋도 훼손되어 버립니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위 그래프에서 각 노드는 커밋 시점을 나타냅니다. 보는 바와 같이 커밋 시점은 순차적으로 연결되어 있습니다.&lt;/p&gt;
+
+&lt;p&gt;각 커밋은 영문과 숫자로 구성된 40자리의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;커밋 해시(commit hash)&lt;/code&gt;를 통해 구분되며, 커밋을 하기 위해서는 커밋 메시지의 작성이 필요합니다. 커밋 메시지를 작성하지 않으면 커밋이 이루어지지 않습니다.&lt;/p&gt;
+
+&lt;p&gt;커밋은 코드에 이력을 남기는 중요한 작업이므로 커밋 메시지에는 코드의 변경 내용과 변경 사유 등을 간략히 기록해 두는것이 권장됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;브랜치branch&quot;&gt;브랜치(Branch)&lt;/h2&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;브랜치(Branch)&lt;/code&gt;는 독립적인 작업을 진행할 수 있도록 해주는 기능입니다. 각각의 브랜치는 다른 브랜치의 영향을 받지않아서 여러 작업을 동시에 진행할 수 있습니다.&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-06.png&quot; alt=&quot;img06&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;로컬 저장소를 생성하면 기본적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;메인(main)&lt;/code&gt; 브랜치에서 작업을 수행하게 되고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;체크아웃(checkout)&lt;/code&gt; 하기 전까지 모든 작업은 메인 브랜치에서 이루어집니다.&lt;/p&gt;
+&lt;p&gt;로컬 저장소를 생성하면 기본적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;메인(main)&lt;/code&gt; 브랜치에서 작업을 수행하게 되고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;체크아웃(checkout)&lt;/code&gt; 하기 전까지 모든 작업은 메인 브랜치에서 이루어집니다. 여기에서 체크아웃이란 브랜치를 옮기는 작업을 말합니다.&lt;/p&gt;
 
-&lt;p&gt;그러므로 공동작업을 할때에는 우선 로컬 저장소의 메인 브랜치를 pull을 통해 원격 저장소의 메인 브랜치와 동기화 시킨 후, 작업전용 브랜치를 만들어 독립적인 작업을 하게 됩니다.&lt;/p&gt;
+&lt;p&gt;공동작업을 할때에는 우선 로컬 저장소의 메인 브랜치를 pull을 통해 원격 저장소의 메인 브랜치와 동기화 시킨 후, 작업전용 브랜치를 만들어 독립적인 작업을 하게 됩니다. 이때 브랜치가 생성되는데, 브랜치는 항상 최신 커밋을 참조하고 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-11.png&quot; alt=&quot;img11&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;브랜치는 작업에 따라 자유롭게 만들 수 있지만, 이를 효율적으로 관리하기 위해서는 사전에 팀원들과 어떤 방식으로 브랜치를 만들고 통합할 것인지 미리 정해두는 것이 좋습니다. 즉, 브랜치 전략이 있어야 합니다.&lt;/p&gt;
 
 &lt;p&gt;가정 널리 사용되는 브랜치 전략으로는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Git-Flow&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Github-Flow&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gitlab-Flow&lt;/code&gt;가 있습니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;git-flow&quot;&gt;Git-Flow&lt;/h2&gt;
+&lt;h3 class=&quot;no-toc&quot;&gt;Git-Flow&lt;/h3&gt;
 
-&lt;p&gt;gitflow는 메인(main) 브랜치와 개발(devlop) 브랜치를 중점으로 운영하는 브랜치 전략입니다.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git flow&lt;/code&gt;는 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color: orangered&quot;&gt;메인(main)&lt;/code&gt; 브랜치(기존 master 브랜치)와 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color: orangered&quot;&gt;개발(devlop)&lt;/code&gt; 브랜치를 중점으로 운영하는 브랜치 전략입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-07.png&quot; alt=&quot;img07&quot; title=&quot;Vincent Driessen&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;이 전략에는 다음과 같이 5개의 브랜치가 존재합니다.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;ol&gt;
-    &lt;li&gt;main : 정식 배포되는 ㅇ&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;main&lt;/strong&gt; : 정식 배포되는 브랜치 입니다.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;develop&lt;/strong&gt; : 개발 브랜치로, 이 브랜치를 기준으로 하여 각자 작업한 기능등을 병합합니다.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;feature&lt;/strong&gt; : 단위 기능을 개발하는 브랜치 입니다. 개발이 완료되면 develop 브랜치에 병합됩니다.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;release&lt;/strong&gt; : main 브랜치에 보내기 전에 품질검사를 하기 위한 브랜치 입니다.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;hotpix&lt;/strong&gt; : main 브랜치에 배포한 이후 버그가 생겼을 때 긴급 패치를 위한 브랜치 입니다.&lt;/li&gt;
   &lt;/ol&gt;
-&lt;/blockquote&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="github" /><summary type="html">Git와 Github</summary></entry><entry><title type="html">향상된 SSH 프로토콜 : Mosh</title><link href="https://huimang2.github.io/etc/mosh" rel="alternate" type="text/html" title="향상된 SSH 프로토콜 : Mosh" /><published>2022-09-03T05:00:00+09:00</published><updated>2022-09-03T05:00:00+09:00</updated><id>https://huimang2.github.io/etc/mosh</id><content type="html" xml:base="https://huimang2.github.io/etc/mosh">&lt;h1 id=&quot;mosh란&quot;&gt;Mosh란?&lt;/h1&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이 전략의 운영과정은 다음과 같습니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;main 브랜치에서 develop 브랜치를 분기하고, 개발자들은 develop 브랜치에 커밋을 합니다.&lt;/li&gt;
+  &lt;li&gt;기능 구현이 있는 경우 develop 브랜치에서 feature-* 브랜치를 분기합니다.&lt;/li&gt;
+  &lt;li&gt;배포를 준비하기위해 develop 브랜치에서 release-* 브랜치를 분기합니다.&lt;/li&gt;
+  &lt;li&gt;테스트를 진행하면서 발생하는 버그 수정은 release-* 브랜치에 직접 반영합니다.&lt;/li&gt;
+  &lt;li&gt;테스트가 완료되면 release 브랜치를 main과 develop 브랜치에 병합합니다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;Github-Flow&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;github flow&lt;/code&gt;는 git flow가 Github에서 사용하기에는 너무 복잡하여 나온 브랜치 전략입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-08.png&quot; alt=&quot;img08&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;hotfix 브랜치와 feature 브랜치를 따로 구분하지 않으며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pull Request&lt;/code&gt;를 사용하는 것을 권장합니다.&lt;/p&gt;
+
+&lt;p&gt;브랜치는 항상 메인 브랜치를 통해 분기하며, 브랜치 이름과 커밋 메시지는 목적에 맞도록 명확하게 작성하는 것이 좋습니다. 또한 원격 브랜치로 수시로 push하고 자신이 하고 있는 작업을 다른사람이 확인할 수 있도록 합니다.&lt;/p&gt;
+
+&lt;p&gt;피드백이나 도움요청, 또는 병합 준비가 되었을 때는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pull request&lt;/code&gt;를 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;현재 우리팀에서는 이 전략을 통해 버전을 관리하고 있으며, 이슈를 기반으로 하여 브랜치를 생성합니다. 다음 글을 참고하세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/etc/github_issue&quot; target=&quot;_blank&quot;&gt;GitHub로 프로젝트 관리하기&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;Gitlab-Flow&lt;/h3&gt;
+
+&lt;p&gt;gitlab flow는 복잡하지 않고 효율성을 높이기 위해 생긴 브랜치 전략으로, master, feature, production 브랜치가 존재합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-09.png&quot; alt=&quot;img09&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기능 구현은 feature 브랜치를 통해서 이루어지며, master 브랜치는 production 브랜치로 병합됩니다. production 브랜치는 오직 배포만을 담당합니다.&lt;/p&gt;
+
+&lt;p&gt;Gitlab을 사용해 본적이 없어서 자세한 내용은 생략하겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;헤드head&quot;&gt;헤드(HEAD)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;헤드(HEAD)&lt;/code&gt;는 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color: orangered&quot;&gt;현재 체크아웃된 브랜치의 커밋에 대한 참조 포인터&lt;/code&gt;입니다. 평소에는 브랜치를 통해 간접적으로 최신 커밋을 참조하고 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-12.png&quot; alt=&quot;img12&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;브랜치를 설명할때 체크아웃을 브랜치를 옮기는 작업이라고 했지만, 정확하게는 헤드의 참조를 변경하는 작업입니다. 위에 그림처럼 헤드가 브랜치를 통해 간접적으로 커밋을 참조하는 상태를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Attached HEAD State&lt;/code&gt;라고 하며, 직접적으로 커밋을 참조하는 상태를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Detached HEAD State&lt;/code&gt;라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-13.png&quot; alt=&quot;img13&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;체크아웃을 통해 헤드를 옮김으로써 이전 커밋 지점으로 되돌아가는 것이 가능합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;원격-브랜치remote-branch&quot;&gt;원격 브랜치(Remote Branch)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;원격 브랜치(remote branch)&lt;/code&gt;는 원격 저장소의 브랜치를 트래킹(Tracking)하는 브랜치 입니다. 로컬에 존재하면서 원격 저장소와 통신하며 자동으로 업데이트 됩니다.&lt;/p&gt;
+
+&lt;p&gt;원격 저장소를 clone하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;origin&lt;/code&gt;이라는 이름의 원격 브랜치가 생성되고, 로컬 브랜치를 원격 브랜치와 동기화시킵니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-14.png&quot; alt=&quot;img14&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;원격 브랜치와 로컬 브랜치는 독립적으로 존재하기 때문에 로컬 브랜치에서 커밋하더라도 원격 브랜치에 바로 반영되지는 않습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-15.png&quot; alt=&quot;img15&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;병합merge&quot;&gt;병합(merge)&lt;/h2&gt;
+
+&lt;p&gt;병합은 브랜치로 분기되어 있는 커밋을 하나의 브랜치로 합치는 작업을 말합니다. 병합 방식에 따라 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fast-forward merge&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3-way merge&lt;/code&gt;로 나눌 수 있습니다.&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;fast-forward merge&lt;/h3&gt;
+
+&lt;p&gt;다음과 같이 브랜치가 분기점으로부터 변화가 없는 상태를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;빨리감기(fast-forward) 상태&lt;/code&gt;라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-16.png&quot; alt=&quot;img16&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt; 브랜치는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;issue1&lt;/code&gt; 브랜치가 분기한 이후로 변화가 없는 상태이며, 이 경우 merge를 하면 커밋 지점을 따로 만들지 않고 브랜치의 참조만 변경하게 됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-17.png&quot; alt=&quot;img17&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 class=&quot;no-toc&quot;&gt;non fast-forward merge&lt;/h3&gt;
+
+&lt;p&gt;다음과 같이 빨리감기 상태가 아니라면 참조변수를 옮기는 것 만으로 병합을 할 수 없습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-18.png&quot; alt=&quot;img18&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 경우 새로운 커밋을 만들어서 병합을 수행하게 됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-19.png&quot; alt=&quot;img19&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이때 main 브랜치에서 수정한 파일을 issue1 브랜치에서도 수정했다면 병합충돌이 발생할 수 있습니다.
+튜토리얼을 참고해주세요.&lt;/p&gt;
+
+&lt;h2 id=&quot;패치fetch&quot;&gt;패치(fetch)&lt;/h2&gt;
+
+&lt;p&gt;pull은 패치와 병합 2가지 작업으로 구성되어 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;패치(fetch)&lt;/code&gt;는 원격 브랜치만 원격 저장소와 동기화시키며, 병합은 위에서 설명한 것과 같이 로컬 저장소를 원격 저장소와 동기화 시킵니다.&lt;/p&gt;
+
+&lt;p&gt;패치작업의 경우 바로 로컬 저장소에 변경 내용이 반영되지 않기 때문에 헤드만 이동하여 원격 저장소의 커밋을 확인할 수 있어서 병합충돌의 위험을 줄일 수 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-20.png&quot; alt=&quot;img23&quot; /&gt;&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="github" /><summary type="html">Git와 Github 차이</summary></entry><entry><title type="html">향상된 SSH 프로토콜 : Mosh</title><link href="https://huimang2.github.io/etc/mosh" rel="alternate" type="text/html" title="향상된 SSH 프로토콜 : Mosh" /><published>2022-09-03T05:00:00+09:00</published><updated>2022-09-03T05:00:00+09:00</updated><id>https://huimang2.github.io/etc/mosh</id><content type="html" xml:base="https://huimang2.github.io/etc/mosh">&lt;h1 id=&quot;mosh란&quot;&gt;Mosh란?&lt;/h1&gt;
 
 &lt;p&gt;Mosh는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mobile Shell&lt;/code&gt;의 약자로, 모바일 환경에서 원격 터미널을 원활하게 사용할 수 있도록 해주는 프로토콜입니다. 기존 SSH의 상위 호환 프로토콜이라고 보시면 됩니다.&lt;/p&gt;
 
@@ -4358,202 +4900,4 @@ Hibernate:
 
 &lt;p&gt;반면 Spring Data JPA로 CRUD를 만들때는 EntityManager가 등장하지 않았습니다. EntityManager는 Repository에 포함되어있어 직접 작성하지 않아도 내부에서 자동적으로 호출되는 모양새 입니다.&lt;/p&gt;
 
-&lt;p&gt;아직 완전히 이해하진 못했지만 Spring Data JPA를 사용하면 효율적인 개발이 될 것임은 확실해 보입니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="java" /><category term="java" /><category term="spring" /><category term="jpa" /><summary type="html">JPA란?</summary></entry><entry><title type="html">MVC 패턴</title><link href="https://huimang2.github.io/design-pattern/mvc-pattern" rel="alternate" type="text/html" title="MVC 패턴" /><published>2022-08-03T19:00:00+09:00</published><updated>2022-08-03T19:00:00+09:00</updated><id>https://huimang2.github.io/design-pattern/mvc-pattern</id><content type="html" xml:base="https://huimang2.github.io/design-pattern/mvc-pattern">&lt;h1 id=&quot;mvc-패턴이란&quot;&gt;MVC 패턴이란?&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MVC 패턴(Model-View-Controller Pattern)&lt;/code&gt;은 어플리케이션을 개발함에 있어서 컴포넌트를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;모델(Model)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;뷰(View)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;컨트롤러(Controller)&lt;/code&gt;로 역할을 나누어 개발하는 디자인 패턴 즉, 설계 방식을 말합니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mvc/mvc-img-01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;클라이언트(Client)가 뷰를 통해 컨트롤러에게 요청(Request)를 보내면 해당 요청을 컨트롤러가 받고, 컨트롤러는 모델을 통해 데이터를 가져와서 뷰를 제어합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;모델model&quot;&gt;모델(Model)&lt;/h2&gt;
-
-&lt;p&gt;모델은 애플리케이션의 데이터를 책임지는 컴포넌트 입니다. 내부 비즈니스 로직을 처리하는 역할을 하며, 다음과 같은 규칙을 가집니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;사용자(Client)가 편집하길 원하는 모든 데이터를 가지고 있어야한다.&lt;/h3&gt;
-
-&lt;p&gt;사용자가 게시판의 글을 수정하길 원한다면 모델은 제목, 내용, 작성자 등을 포함한 게시글에 대한 모든 데이터를 가지고 있어야 합니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;뷰나 컨트롤러에 대한 어떤 정보도 알지 못한다.&lt;/h3&gt;
-
-&lt;p&gt;모델은 자기 자신이 수행하는 일에 대한 정보만 알고 있어야 하며, 이를 넘어서는 작업을 해서는 안됩니다. 예를 들어 게시글 내용을 변경하는 역할을 하는 모델이 뷰의 정보를 가지고 게시글 색상을 변경하는 등의 작업을 해서는 안됩니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;변경이 일어나면 통지에 대한 처리방법을 구현해야 한다.&lt;/h3&gt;
-
-&lt;p&gt;모델의 데이터가 변경된다면 이를 컨트롤러에게 알리기 위한 처리 방법을 구현해야 하며, 재사용이 가능해야 합니다. 그렇기 때문에 MCV 패턴은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;옵저버(Observer) 패턴&lt;/code&gt;과 많은 연관점이 있습니다. 하나의 모델에 대하여 다수의 뷰가 모델을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;구독(Subscribe)&lt;/code&gt;하는 형태입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;뷰view&quot;&gt;뷰(View)&lt;/h2&gt;
-
-&lt;p&gt;뷰는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;사용자 인터페이스(User Interface, UI)&lt;/code&gt;를 책임지는 컴포넌트 입니다. 모델이 가지고 있는 데이터를 기반으로 사용자에게 화면을 출력해주는 역할을 하며, 다음과 같은 규칙을 가집니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;모델이 가지고 있는 정보를 저장해서는 안된다.&lt;/h3&gt;
-
-&lt;p&gt;데이터 출력을 위해서는 필연적으로 모델의 정보를 전달받게 되는데, 이때 알게 된 모델의 정보를 따로 저장해서는 안됩니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;모델이나 컨트롤러에 대한 어떤 정보도 알지 못한다.&lt;/h3&gt;
-
-&lt;p&gt;모델과 마찬가지로 뷰 역시 자기 자신이 수행하는 일에 대한 정보만 알고 있어야 하며, 이를 넘어서는 작업을 해서는 안됩니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;변경이 일어나면 통지에 대한 처리방법을 구현해야 한다.&lt;/h3&gt;
-
-&lt;p&gt;모델과 같이 뷰에 변경이 있으면 통지할 수단이 필요합니다. 모델에서 설명했듯이 이는 보통 옵저버 패턴을 통해 구현됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;컨트롤러controller&quot;&gt;컨트롤러(Controller)&lt;/h2&gt;
-
-&lt;p&gt;컨트롤러는 뷰와 모델을 연결하여 실질적으로 사용자의 요청을 처리하는 컴포넌트 입니다. 사용자의 요청에 대하여 모델에게 데이터를 처리할 방법을 알려주며, 모델이 작업을 완료하면 그 결과를 뷰에 전달합니다. 컨트롤러는 다음과 같은 규칙을 가집니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;모델이나 뷰의 정보를 알고 있어야 한다.&lt;/h3&gt;
-
-&lt;p&gt;모델과 뷰는 서로 알지 못하기 때문에 컨트롤러를 통해 변경을 중재받습니다. 컨트롤러가 모델과 뷰를 중재하려면 모델과 뷰에 대한 정보를 가지고 있어야만 합니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;모델이나 뷰의 변경을 모니터링 해야 한다.&lt;/h3&gt;
-
-&lt;p&gt;위의 규칙과 마찬가지로 모델과 뷰는 서로 알지 못하기에 컨트롤러가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;중재자(Mediator)&lt;/code&gt;가 되어 서로의 변경을 통지해야 합니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;옵저버-패턴observer-pattern&quot;&gt;옵저버 패턴(Observer Pattern)&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;옵저버 패턴(Observer Pattern)&lt;/code&gt;은 객체의 상태를 관찰하는 옵저버를 통해 객체의 상태가 변하면 종속된 객체들에게 통지를 보내는 패턴입니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mvc/mvc-img-02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
-
-&lt;p style=&quot;margin-top: 1.5em&quot;&gt;MVC 패턴은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;옵저버 패턴(Observer Pattern)&lt;/code&gt;과 많은 연관점이 있습니다. 하나의 모델에 대하여 다수의 뷰가 옵저버를 통해 모델을 구독하는 형태를 가지고 있으며, 이는 컨트롤러의 중재를 받습니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mvc/mvc-img-03.png&quot; alt=&quot;img03&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;소스-코드&quot;&gt;소스 코드&lt;/h2&gt;
-
-&lt;p&gt;모델의 상태를 관찰하기 위한 옵저버 인터페이스 입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update&lt;/code&gt; 메소드를 통해 뷰가 변경됩니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;observerjava&quot;&gt;Observer.java&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;옵저버 인터페이스를 구현한 뷰 클래스 입니다. 아래 코드에서는 콘솔창을 통해 새로운 글의 등록을 알리도록 인터페이스를 구현했습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;viewjava&quot;&gt;View.java&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot; &amp;gt; 새로운 글이 등록되었습니다 : &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;모델에 대한 인터페이스 입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;notifyObservers&lt;/code&gt; 메소드를 통해 알림을 발행하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;registerObserver&lt;/code&gt; 메소드를 통해 뷰가 모델을 구독할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;observablejava&quot;&gt;Observable.java&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Observable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;registerObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;removeObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;notifyObservers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;모델 클래스 입니다. Observable 인터페이스를 구현했으며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;notifyObservers&lt;/code&gt; 메소드를 통해 모델을 구독하고 있는 뷰의 update 메소드를 호출합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;modeljava&quot;&gt;Model.java&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;java.util.List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Model&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Observable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;notifyObservers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;registerObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;removeObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;observers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;observer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;컨트롤러 클래스 입니다. 뷰와 모델은 컨트롤러에 의하여 통제됩니다. 아래 코드에서는 하드코딩을 통해 모델과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;게시판1&lt;/code&gt; 이라는 뷰 객체를 생성하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1번째 글&lt;/code&gt;이라는 클라이언트의 요청을 모델에 전달했습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;controllerjava&quot;&gt;Controller.java&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Controller&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        
-        &lt;span class=&quot;nc&quot;&gt;Observable&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Observer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;view&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;게시판1&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-        &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;registerObserver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;notifyObservers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1번째 글&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;디버깅해보면 아래와 같은 로그를 볼 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;게시판1 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; 새로운 글이 등록되었습니다 : 1번째 글
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;java-mvc-모델&quot;&gt;JAVA MVC 모델&lt;/h1&gt;
-
-&lt;p&gt;자바의 MVC 패턴에는 MVC1과 MVC2가 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;mvc1-모델&quot;&gt;MVC1 모델&lt;/h2&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mvc/mvc-img-04.png&quot; alt=&quot;img04&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;MVC1 모델은 JSP 페이지가 뷰(View)와 컨트롤러(Controller) 부분을 담당하고 Java Bean이 모델(Model)과 컨트롤러(Controller)를 담당하는 구조입니다.&lt;/p&gt;
-
-&lt;p&gt;페이지의 흐름이 단순하기 때문에 개발이 간편하고 개발 속도가 빠릅니다.&lt;/p&gt;
-
-&lt;p&gt;반면 모델(비즈니스 로직)과 뷰(프레젠테이션 로직) 사이의 구분이 모호하여 디자이너와의 협업이 힘들며, 어플리케이션이 복잡해질수록 유지보수가 힘듭니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;mvc2-모델&quot;&gt;MVC2 모델&lt;/h2&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mvc/mvc-img-05.png&quot; alt=&quot;img05&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;MVC2 모델은 JSP 페이지가 뷰를 담당하고 Servlet은 컨트롤러, Java Bean은 모델을 담당하는 구조입니다.&lt;/p&gt;
-
-&lt;p&gt;뷰와 모델의 구분이 명확하고, JSP 페이지의 코드가 간결해져 유지보수가 용이하고 디자이너와이 협업이 쉬워집니다.&lt;/p&gt;
-
-&lt;p&gt;반면 로직이 복잡해져 구조 설계를 위한 시간이 많이 소모되어 개발 기간이 증가합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;spring-mvc&quot;&gt;Spring MVC&lt;/h2&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mvc/mvc-img-06.png&quot; alt=&quot;img06&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Spring MVC는 MVC2 모델의 발전된 형태의 구조입니다.&lt;/p&gt;
-
-&lt;p&gt;FrontController인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DispatcherServlet&lt;/code&gt;이 클라이언트의 요청을 받고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HandlerMapping&lt;/code&gt;을 통해 Controller와 매핑되어 해당 컨트롤러를 실행합니다.&lt;/p&gt;
-
-&lt;p&gt;컨트롤러는 Model과 View가 Wrapping된 객체를 반환하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ViewResolver&lt;/code&gt;를 통해 View 객체를 처리한 후 클라이언트에게 해당 객체를 반환합니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="design-pattern" /><category term="design-pattern" /><summary type="html">MVC 패턴이란?</summary></entry></feed>
+&lt;p&gt;아직 완전히 이해하진 못했지만 Spring Data JPA를 사용하면 효율적인 개발이 될 것임은 확실해 보입니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="java" /><category term="java" /><category term="spring" /><category term="jpa" /><summary type="html">JPA란?</summary></entry></feed>
