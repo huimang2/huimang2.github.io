@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-09-07T17:26:01+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">Git 튜토리얼</title><link href="https://huimang2.github.io/etc/git-tutorial" rel="alternate" type="text/html" title="Git 튜토리얼" /><published>2022-09-06T07:00:00+09:00</published><updated>2022-09-06T07:00:00+09:00</updated><id>https://huimang2.github.io/etc/git-tutorial</id><content type="html" xml:base="https://huimang2.github.io/etc/git-tutorial">&lt;h1 id=&quot;git-설치&quot;&gt;git 설치&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-09-07T19:16:24+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">Git 튜토리얼</title><link href="https://huimang2.github.io/etc/git-tutorial" rel="alternate" type="text/html" title="Git 튜토리얼" /><published>2022-09-06T07:00:00+09:00</published><updated>2022-09-06T07:00:00+09:00</updated><id>https://huimang2.github.io/etc/git-tutorial</id><content type="html" xml:base="https://huimang2.github.io/etc/git-tutorial">&lt;h1 id=&quot;git-설치&quot;&gt;git 설치&lt;/h1&gt;
 
 &lt;p&gt;기본적인 용어를 알아보았으니 실제로 명령어를 통해 커밋과 풀, 푸시를 해보도록 하겠습니다. IDE를 통해 쉽게 작업할 수 있지만 터미널상에서 명령어를 통해 커밋을 하겠습니다.&lt;/p&gt;
 
@@ -468,7 +468,7 @@ issue1 체리픽2
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;strong&gt;–soft&lt;/strong&gt; : 커밋을 하기 전단계인 스테이징 상태로 돌려놓습니다.
-&lt;strong&gt;–mixed&lt;/strong&gt; : 기본값으로 적용되며, 파일을 스테이징 전단계로 돌려놓습니다.(파일이 작업 트리에 존재)
+&lt;strong&gt;–mixed&lt;/strong&gt; : 기본값으로 적용되며, 파일을 스테이징 이전단계로 돌려놓습니다.(파일이 작업 트리에 존재)
 &lt;strong&gt;–hard&lt;/strong&gt; : 추적 상태인 파일을 작업 트리에서 제거합니다. 즉, 파일을 수정하기 전으로 돌려놓습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -586,7 +586,7 @@ issue1 체리픽2
 
 &lt;p&gt;커밋 작업은 작업 트리의 변경 이력을 바로 기록하지 않고 인덱스에 저장되어 있는 파일의 상태를 우선적으로 기록하게 됩니다.&lt;/p&gt;
 
-&lt;p&gt;인덱스에 파일 상태를 기록하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;추적(stage)&lt;/code&gt;이라고 하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add&lt;/code&gt; 명령어를 통해 추적 상태로 만들 수 있습니다. 커밋은 인덱스에 추적상태로 있는 파일의 이력만 저장소에 저장하게 됩니다.&lt;/p&gt;
+&lt;p&gt;인덱스에 파일 상태를 기록하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스테이징(staging)&lt;/code&gt;이라고 하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add&lt;/code&gt; 명령어를 통해 스테이징 상태로 만들 수 있습니다. 커밋은 인덱스에 스테이징 상태로 있는 파일의 이력만 저장소에 저장하게 됩니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;풀pull--푸시push&quot;&gt;풀(pull) / 푸시(push)&lt;/h2&gt;
 
