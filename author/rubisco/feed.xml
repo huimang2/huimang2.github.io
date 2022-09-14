@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-09-14T15:49:04+09:00</updated>
+  <updated>2022-09-14T15:58:50+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -506,9 +506,9 @@ issue1 체리픽2
 &lt;p&gt;reset의 옵션에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--soft&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mixed&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--hard&lt;/code&gt;가 있습니다.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;–soft&lt;/strong&gt; : 커밋을 하기 전단계인 스테이징 상태로 돌려놓습니다.
-&lt;strong&gt;–mixed&lt;/strong&gt; : 기본값으로 적용되며, 파일을 스테이징 이전단계로 돌려놓습니다.(파일이 작업 트리에 존재)
-&lt;strong&gt;–hard&lt;/strong&gt; : 추적 상태인 파일을 작업 트리에서 제거합니다. 즉, 파일을 수정하기 전으로 돌려놓습니다.&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;--soft&lt;/strong&gt; : 커밋을 하기 전단계인 스테이징 상태로 돌려놓습니다.&lt;br /&gt;
+&lt;strong&gt;--mixed&lt;/strong&gt; : 기본값으로 적용되며, 파일을 스테이징 이전단계로 돌려놓습니다.(파일이 작업 트리에 존재)&lt;br /&gt;
+&lt;strong&gt;--hard&lt;/strong&gt; : 추적 상태인 파일을 작업 트리에서 제거합니다. 즉, 파일을 수정하기 전으로 돌려놓습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;명령어의 형태는 다음과 같습니다.&lt;/p&gt;
@@ -524,9 +524,11 @@ issue1 체리픽2
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset &lt;span class=&quot;nt&quot;&gt;--hard&lt;/span&gt; HEAD~2
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h2 id=&quot;revert&quot;&gt;revert&lt;/h2&gt;
+
 &lt;p&gt;revert는 하나의 커밋 상태로 되돌리며, 상태를 되돌릴때마다 revert 상태를 남기는 커밋을 생성합니다. 다음과 같이 여러 커밋에 대하여 revert 작업이 가능합니다.&lt;/p&gt;
 
-&lt;h6 id=&quot;revert&quot;&gt;revert&lt;/h6&gt;
+&lt;h6 id=&quot;revert-1&quot;&gt;revert&lt;/h6&gt;
 &lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git revert HEAD^ HEAD^^
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
