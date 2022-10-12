@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://huimang2.github.io/programmers/programmers-131128.html</loc>
+        
+        <lastmod>2022-10-12T19:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://huimang2.github.io/etc/git-tutorial.html</loc>
         
         <lastmod>2022-09-06T07:00:00+09:00</lastmod>

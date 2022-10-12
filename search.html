@@ -184,6 +184,15 @@ into the {body} of the default.hbs template -->
 <script>
     window.store = {
     
+    "programmers-programmers-131128": {
+        "title": "[1단계][131128] 숫자짝꿍 풀이",
+            "author": "rubisco",
+            "category": "",
+            "content": "문제for문을 돌려 풀면  풀릴듯하게 보이는 문제이지만 길이가 300만자리까지 될 수 있으므로 for문으로 매칭시면 최대 O(300만*300만) 이라는 시간복잡도를 가질 수 있어서 시간초과가 될 수 있습니다.풀이관점을 다르게 보면 됩니다. X와 Y를 기준으로 매칭을 할 것이 아니라 숫자 0 ~ 9를 매칭시키는 것입니다.X와 Y는 0 ~ 9까지의 숫자로 이루어져 있습니다. 그러므로 문자열을 split하여 각각의 원소를 해쉬코드로 사용하여 count값을 구함으로써 X, Y 각각 10개의 해쉬테이블을 생성할 수 있습니다.예를 들어 X = “3403”, Y = “13203” 이면  X_table = [1, 0, 0, 2, 1, 0, 0, 0, 0, 0]  Y_table = [1, 1, 1, 2, 0, 0, 0, 0, 0, 0]가 됩니다.여기에서 하나의 index를 기준으로 두 원소 중 count값이 적은 수만큼 index를 반복한 문자열의 배열인 matchTable을 생성할 수 있습니다.  matchTable = [“0”, “”, “”, “33”, “”, “”, “”, “”, “”, “”]matchTable을 역순으로 합치게 되면 정답에 해당하는 “330”이 됩니다.이것을 자바스크립트 코드로 나타내면 다음과 같습니다.function solution(X, Y) {        const yArr = Y.split('')        .sort((a,b)=&gt;b-a)        .reduce((arr, cur) =&gt; ++arr[+cur] &amp;&amp; arr, Array(10).fill(0));    const xArr = X.split('')        .sort((a,b)=&gt;b-a)        .reduce((arr, cur) =&gt; ++arr[+cur] &amp;&amp; arr, Array(10).fill(0));        return ( result = Array.from({length:10}, (_,i) =&gt; (9-i).toString().repeat(Math.min(yArr[9-i], xArr[9-i]))).join('') )             ? result*1 ? result : \"0\" : \"-1\";}",
+        "url": "/programmers/programmers-131128"
+    }
+    ,
+    
     "etc-git-tutorial": {
         "title": "Git 튜토리얼",
             "author": "rubisco",
