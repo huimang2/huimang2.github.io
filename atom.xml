@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>스프링 레거시(Spring legacy) -설정</title>
+        
+          <description>&lt;p&gt;지난번 스프링 부트를 통해 게시판을 만들어 보았는데 이번에는 스프링 레거시를 사용해서 게시판을 만들어보겠습니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 19 Oct 2022 22:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/java/spring-legacy-setting</link>
+        <guid isPermaLink="true">https://huimang2.github.io/java/spring-legacy-setting</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>[1단계][131128] 숫자짝꿍 풀이</title>
         
           <description>&lt;h1 id=&quot;문제&quot;&gt;문제&lt;/h1&gt;

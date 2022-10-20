@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-10-12T19:47:24+09:00</updated>
+  <updated>2022-10-20T18:11:31+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -30,6 +30,292 @@
   
   
 
+  
+    <entry>
+      <title type="html">스프링 레거시(Spring legacy) -설정</title>
+      <link href="https://huimang2.github.io/java/spring-legacy-setting" rel="alternate" type="text/html" title="스프링 레거시(Spring legacy) -설정" />
+      <published>2022-10-19T22:00:00+09:00</published>
+      <updated>2022-10-19T22:00:00+09:00</updated>
+      <id>https://huimang2.github.io/java/spring-legacy-setting</id>
+      <content type="html" xml:base="https://huimang2.github.io/java/spring-legacy-setting">&lt;p&gt;지난번 스프링 부트를 통해 게시판을 만들어 보았는데 이번에는 스프링 레거시를 사용해서 게시판을 만들어보겠습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;sts3--jdk-11--tomcat9-설치&quot;&gt;STS3 / JDK 11 / Tomcat9 설치&lt;/h1&gt;
+
+&lt;p&gt;우선은 &lt;a href=&quot;https://github.com/spring-attic/toolsuite-distribution/wiki/Spring-Tool-Suite-3&quot; target=&quot;_blank&quot;&gt;Spring Tool Suite 3&lt;/a&gt;을 다운받습니다. 3버전은 스프링 레거시를 지원합니다.&lt;/p&gt;
+
+&lt;p&gt;JDK는 11 버전 이상이여야 사용할 수 있습니다. 이전에 open JDK 17을 다운받았는데, &lt;a href=&quot;https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html&quot; target=&quot;_blank&quot;&gt;oracle JDK 11&lt;/a&gt;을 새로 설치하겠습니다. 오라클에 로그인 하셔야 다운가능합니다.&lt;/p&gt;
+
+&lt;p&gt;스프링 부트와 달리 내장 톰캣이 없어서 톰캣을 다운받아야 합니다. &lt;a href=&quot;https://tomcat.apache.org/download-90.cgi&quot; target=&quot;_blank&quot;&gt;Tomcat 9&lt;/a&gt; 버전을 다운받습니다.&lt;/p&gt;
+
+&lt;p&gt;STS3 압축을 풀어 sts-bundle 폴더 안에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ws&lt;/code&gt;폴더를 만들고, 톰캣의 압축을 풉니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sts-3.9.18.RELEASE&lt;/code&gt; 폴더에 들어가서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STS&lt;/code&gt;를 실행시킵시다.&lt;/p&gt;
+
+&lt;p&gt;방금 생성한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ws&lt;/code&gt; 폴더를 작업폴더로 지정하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Launch&lt;/code&gt;를 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;인코딩-설정&quot;&gt;인코딩 설정&lt;/h1&gt;
+
+&lt;p&gt;상단에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Window &amp;gt; Preferences&lt;/code&gt;를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img08.png&quot; alt=&quot;img08&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;General &amp;gt; Content Types&lt;/code&gt;에 들어가서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Text&lt;/code&gt;를 선택하고 하단에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Default encoding&lt;/code&gt;에 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;utf-8&lt;/code&gt;을 입력후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Update&lt;/code&gt; 버튼을 누르세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img09.png&quot; alt=&quot;img09&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;General &amp;gt; Workspace&lt;/code&gt;에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Text file encoding&lt;/code&gt; 또한 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;UTF-8&lt;/code&gt;로 번경 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apply&lt;/code&gt; 버튼을 누르세요&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img10.png&quot; alt=&quot;img10&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Web &amp;gt; CSS Files&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Web &amp;gt; HTML Files&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Web &amp;gt; JSP Files&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XML &amp;gt; XML Files&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JSON &amp;gt; JSON Files&lt;/code&gt; 또한 Encoding을 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;UTF-8&lt;/code&gt;로 변경후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apply&lt;/code&gt; 버튼을 누르세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img11.png&quot; alt=&quot;img11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기존 JDK 버전을 17로 사용하고 있어서 환경변수가 17 버전으로 되어 있습니다. 환경변수를 변경해도 되지만 에디터를 통해 설정하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JAVA &amp;gt; Compiler&lt;/code&gt;에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JDK Compiler compliance level&lt;/code&gt;을 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;11&lt;/code&gt;로 변경하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JAVA &amp;gt; Installed JREs&lt;/code&gt;에서 JDK 11버전 경로를 추가한 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apply&lt;/code&gt;를 클릭하세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img12.png&quot; alt=&quot;img12&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img13.png&quot; alt=&quot;img13&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;톰캣-서버-생성&quot;&gt;톰캣 서버 생성&lt;/h1&gt;
+
+&lt;p&gt;왼쪽 Package Explorer 창에 있는 기본 서버 프로젝트를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delete&lt;/code&gt;삭제합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Delete project contents on disk (cannot be undone)&lt;/code&gt;을 체크하여 완전시 삭제합시다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img03.png&quot; alt=&quot;img03&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;왼쪽 하단에 톰켓 서버도 삭제합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img04.png&quot; alt=&quot;img04&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;왼쪽 하단에 링크를 클릭하여 서버를 추가합시다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img05.png&quot; alt=&quot;img05&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tomcat v9.0 Server&lt;/code&gt;를 선택후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Next&lt;/code&gt; 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img06.png&quot; alt=&quot;img06&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Browse...&lt;/code&gt; 버튼을 클릭하여 아까 설치한 톰캣 폴더를 디렉토리로 지정한후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Finish&lt;/code&gt;를 클릭하세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img07.png&quot; alt=&quot;img07&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;프로젝트-서버-생성&quot;&gt;프로젝트 서버 생성&lt;/h1&gt;
+
+&lt;p&gt;스프링 레거시 프로젝트를 생성하겠습니다. 왼쪽 Package Explorer 창에 오른쪽 마우스 클릭을 한 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;New &amp;gt; Spring Legacy Project&lt;/code&gt;를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img14.png&quot; alt=&quot;img14&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring MVC Project&lt;/code&gt;를 선택후 프로젝트 이름을 적고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Next&lt;/code&gt;를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img15.png&quot; alt=&quot;img15&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;패키지 및 아티팩트 이름을 적고 Finish를 클릭하면 레거시 프로젝트의 의존성이 자동으로 설치되면서 프로젝트가 추가됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img16.png&quot; alt=&quot;img16&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;톰캣 서버에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add and Remove...&lt;/code&gt;를 선택하여 프로젝트를 추가해줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img17.png&quot; alt=&quot;img17&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img18.png&quot; alt=&quot;img18&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + Alt + R&lt;/code&gt;을 누르면 톰캣 서버가 시작됩니다. 기본 포트는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8080&lt;/code&gt; 입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:8080/board&lt;/code&gt;로 접속해보세요. (board는 아티팩트 이름입니다.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img19.png&quot; alt=&quot;img19&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;한글이 깨지는데 뷰 페이지를 작성할때 encoding 메타정보를 utf-8로 입력하야합니다. 뷰 페이지 작성을 참고하세요.&lt;/p&gt;
+
+&lt;h1 id=&quot;의존성-추가&quot;&gt;의존성 추가&lt;/h1&gt;
+
+&lt;p&gt;레거시 프로젝트의 경우 빌드툴로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;메이븐(maven)&lt;/code&gt;을 사용하기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pom.xml&lt;/code&gt;을 통해 의존성을 추가할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;저는 롬복을 통해 간단하게 getter, setter 설정 및 의존성의 생성자 주입을 하므로 &lt;a href=&quot;https://projectlombok.org/download&quot; target=&quot;_blank&quot;&gt;롬복&lt;/a&gt;을 설치하겠습니다.
+또한 DB는 스프링 부트 게시판을 만들때 사용했던 오라클 클라우드를 사용하도록 하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;롬복을 설치하면 IDE를 찾을 수 없다고 뜨는데, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Specify loaction...&lt;/code&gt;을 클릭하여 STS3의 위치를 지정해주고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Install / Update&lt;/code&gt;를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img20.png&quot; alt=&quot;img20&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pom.xml&lt;/code&gt; 파일에 롬복 의존성을 추가합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Lombok --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.projectlombok&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;lombok&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.18.24&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;provided&lt;span class=&quot;nt&quot;&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mvnrepository.com/&quot; target=&quot;_blank&quot;&gt;mvnrepository&lt;/a&gt;를 참고하여 의존성을 설정해줍니다.&lt;/p&gt;
+
+&lt;p&gt;자바 버전은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1.8&lt;/code&gt;로 변경하고, 스프링 프레임워크 버전도 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5.1.5.RELEASE&lt;/code&gt;로 설정합시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml-1&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;java-version&amp;gt;&lt;/span&gt;1.8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/java-version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;org.springframework-version&amp;gt;&lt;/span&gt;5.1.5.RELEASE&lt;span class=&quot;nt&quot;&gt;&amp;lt;/org.springframework-version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;org.aspectj-version&amp;gt;&lt;/span&gt;1.6.10&lt;span class=&quot;nt&quot;&gt;&amp;lt;/org.aspectj-version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;org.slf4j-version&amp;gt;&lt;/span&gt;1.6.6&lt;span class=&quot;nt&quot;&gt;&amp;lt;/org.slf4j-version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;junit은 현재 4.12 버전의 사용률이 높으므로 4.12버전으로 변경합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml-2&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Test --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;junit&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;junit&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;4.12&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;test&lt;span class=&quot;nt&quot;&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ORM으로 JPA 대신 이번에는 mybatis를 사용하도록 하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;DB 연결을 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring JDBC&lt;/code&gt;를 의존성으로 추가하고, 메이븐 레포지토리를 참고하여 ORM으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis-spring&lt;/code&gt;을 의존성 추가합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml-3&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Spring JDBC --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-jdbc&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${org.springframework-version}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+		
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.mybatis&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;mybatis&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;3.4.6&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+		
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.mybatis&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;mybatis-spring&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.3.2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;DB는 오라클 클라우드를 사용할 예정이므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OJDBC&lt;/code&gt; 의존성을 추가합니다. 클라우드 연결에는 인증키를 통한 인증 과정이 필요하므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Osdt&lt;/code&gt;도 OJDBC 버전에 맞추어 의존성으로 추가합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml-4&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.database.jdbc&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;ojdbc8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;21.1.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_cert --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.database.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;osdt_cert&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;21.1.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+		
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_core --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.database.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;osdt_core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;21.1.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+		
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/com.oracle.database.security/oraclepki --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.database.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;oraclepki&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;21.1.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;프로퍼티-설정&quot;&gt;프로퍼티 설정&lt;/h1&gt;
+
+&lt;p&gt;스프링 부트에서는 Gradle 빌드툴을 사용하여 빈(Bean)이 자동으로 등록되고, 빈에 대한 설정은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application.properties&lt;/code&gt; 파일에 작성했지만, 레거시에서는 빈을 직접 등록합니다. 레거시 앱의 빈 등록은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/main/webapp/WEB-INF/spring/appServlet/root-context.xml&lt;/code&gt; 파일에 작성합니다.&lt;/p&gt;
+
+&lt;p&gt;mybatis를 통해 오라클 DB에 접근하기 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dataSource&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sqlSessionFactory&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sqlSession&lt;/code&gt;을 빈으로 등록하고 property에 다음과 같이 설정값을 입력합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml-5&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dataSource&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;oracle.jdbc.driver.OracleDriver&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;driverClassName&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;[DB 주소]&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;[DB 아이디]&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;[DB 암호]&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+	 	
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sqlSessionFactory&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; 
+	 	&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dataSource&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dataSource&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;configLocation&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;classpath:/mybatis-config.xml&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mapperLocations&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;classpath:mappers/**/*Mapper.xml&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/property&amp;gt;&lt;/span&gt;			
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sqlSession&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.mybatis.spring.SqlSessionTemplate&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;destroy-method=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clearCache&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;constructor-arg&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sqlSessionFactory&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sqlSessionFactory&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/constructor-arg&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sqlSession&lt;/code&gt;은 SQL을 실행하고 트랜잭션을 제어하는 객체입니다. mybatis에서는 sqlSession 객체를 통해 mapper의 쿼리문을 실행합니다. sqlSessionFactory를 의존성 주입받으며, sqlSessionFactory은 dataSource를 참조하여 sqlSession 객체를 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img21.png&quot; alt=&quot;img21&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;sqlSessionFactory에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis-config.xml&lt;/code&gt; 파일과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mappers.xml&lt;/code&gt;의 위치를 지정해주고, dataSource에는 DB 정보를 입력해줍니다.&lt;/p&gt;
+
+&lt;p&gt;해당 위치에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis-config.xml&lt;/code&gt; 파일을 만들고 다음과 같이 작성해둡니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;mybatis-configxml&quot;&gt;mybatis-config.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE configuration 
+PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; 
+&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;typeAliases&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;package&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kro.rubisco.dto&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/typeAliases&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeAliases&lt;/code&gt; 태그 아래 package 태그의 name 속성은 패키지의 별칭을 나타냅니다. 나중에 매퍼를 작성함에 있어서 DTO를 연결할 때 패키지명을 모두 적어야하지만, 이렇게 별칭을 지정해두면 작성된 패키지 부분을 생략하고 DTO 클래스명만 적어도 연결이 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mappers&lt;/code&gt;라는 패키지 폴더도 하나 만들어둡시다. 나중에 매퍼를 작성할 폴더입니다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="java" />
+      
+        <category term="spring" />
+      
+
+      
+        <summary type="html">지난번 스프링 부트를 통해 게시판을 만들어 보았는데 이번에는 스프링 레거시를 사용해서 게시판을 만들어보겠습니다.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">[1단계][131128] 숫자짝꿍 풀이</title>
@@ -3497,435 +3783,6 @@ logging.level.org.hibernate = info
 
       
         <summary type="html">PlantUML</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">원격 코드 개발환경 구축</title>
-      <link href="https://huimang2.github.io/etc/ubuntu-dev-env" rel="alternate" type="text/html" title="원격 코드 개발환경 구축" />
-      <published>2022-08-06T18:00:00+09:00</published>
-      <updated>2022-08-06T18:00:00+09:00</updated>
-      <id>https://huimang2.github.io/etc/ubuntu-dev-env</id>
-      <content type="html" xml:base="https://huimang2.github.io/etc/ubuntu-dev-env">&lt;p&gt;우분투 20.04 LTS 환경인 원격 컴퓨터에 코딩환경을 구축하고, VSCode를 통해 원격 환경에서 코드 개발을 해보도록 하겠습니다.&lt;/p&gt;
-
-&lt;h1 style=&quot;margin-top:1.5rem&quot; id=&quot;원격-접속&quot;&gt;원격 접속&lt;/h1&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;Remote Development 설치&lt;/h3&gt;
-
-&lt;p&gt;우선 vscode extentions에서 Remote Development를 설치합니다.&lt;/p&gt;
-
-&lt;p&gt;Remote - WSL, Remote - SSH, Remote - Containers 등이 함께 설치됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;원격 접속&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;F1&lt;/code&gt;을 누르고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Remote-SSH: Connect to Host...&lt;/code&gt;를 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img03.png&quot; alt=&quot;img03&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+ Add New SSH Host...&lt;/code&gt;를 클릭합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img04.png&quot; alt=&quot;img04&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ssh 원격접속을 위한 명령어를 입력합니다. 터미널에서 ssh 연결하는 명령어와 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img05.png&quot; alt=&quot;img05&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;Remote Development 설치&lt;/h3&gt;
-
-&lt;p&gt;원격환경에 접속하면 필요한 extenstions를 설치해줍니다.&lt;/p&gt;
-
-&lt;p&gt;extension이 로컬에 설치되어 있지만 원격환경에는 설치되어 있지 않다면 다음과 같이 extenstion 아래에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Install in SSH: server...&lt;/code&gt; 라고 뜹니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;java-환경-설정&quot;&gt;JAVA 환경 설정&lt;/h1&gt;
-
-&lt;h2 id=&quot;jdk-설치&quot;&gt;JDK 설치&lt;/h2&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;apt 업데이트&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;win + R `&lt;/code&gt;을 눌러 터미널을 열고 ssh로 원격 접속 후 apt를 업데이트 해주세요.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt upgrade &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;jdk 설치&lt;/h3&gt;
-
-&lt;p&gt;원하는 자바 버전을 설치합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;11버전&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;17버전&lt;/code&gt;을 설치하도록 하겠습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;openjdk-11-jdk
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;openjdk-17-jdk
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;경로(path) 설정&lt;/h3&gt;
-
-&lt;p&gt;bashrc를 nano 에디터로 열고 맨 아래에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JAVA_HOME&lt;/code&gt; 경로를 추가해줍시다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano ~/.bashrc
-
-...
-
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;JAVA_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;readlink&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; /usr/bin/java | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;s:bin/java::&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/bin/java&lt;/code&gt; 는 자바 설치시 추가되는 심볼릭 링크이며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/alternatives/java&lt;/code&gt;를 가리키고 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/alternatives/java&lt;/code&gt;는 설치된 자바 버전 중 하나를 가리키고 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img07.png&quot; alt=&quot;img07&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sed &quot;s:bin/java::&quot;&lt;/code&gt; 부분은 경로의 마지막 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bin/java&lt;/code&gt;를 제거하는 명령어입니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;변경 사항 적용&lt;/h3&gt;
-
-&lt;p&gt;bashrc의 변경 사항을 적용하기 위해 다음 명령어를 통해 bashrc를 실행해주세요.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;버전-변경&quot;&gt;버전 변경&lt;/h2&gt;
-
-&lt;p&gt;우분투에서 어플리케이션의 버전은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update-alternatives&lt;/code&gt;를 통해 관리됩니다.&lt;/p&gt;
-
-&lt;p&gt;아래 그림처럼 java와 javac의 버전을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;update-alternatives&lt;/code&gt; 명령어를 통해 변경합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img06.png&quot; alt=&quot;img06&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;해당 명령어는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/alternatives/java&lt;/code&gt;가 가리키는 경로를 변경함으로써 버전을 동적으로 변경할 수 있도록 해줍니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;현재-jdk-버전-확인&quot;&gt;현재 JDK 버전 확인&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;update-alternatives &lt;span class=&quot;nt&quot;&gt;--list&lt;/span&gt; java
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;설치된-jdk-버전-확인&quot;&gt;설치된 JDK 버전 확인&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;update-alternatives &lt;span class=&quot;nt&quot;&gt;--list&lt;/span&gt; java
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;버전-변경-1&quot;&gt;버전 변경&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;update-alternatives &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; java
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;update-alternatives &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; javac
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;spring-boot-개발-환경&quot;&gt;Spring Boot 개발 환경&lt;/h2&gt;
-
-&lt;p&gt;VSCode에서 Spring Boot 개발환경을 구축해보겠습니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;Extension 설치&lt;/h3&gt;
-
-&lt;p&gt;VSCode에서 다음 Extension을 설치합니다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack&quot; target=&quot;_blank&quot;&gt;Extension Pack for Java&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack&quot; target=&quot;_blank&quot;&gt;Spring Boot Extension Pack&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-lombok&quot; target=&quot;_blank&quot;&gt;Lombok Annotations Support for VS Code&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-gradle&quot; target=&quot;_blank&quot;&gt;Gradle for Java&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;프로젝트 생성&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + Shift + P&lt;/code&gt;를 눌러 커맨드 팔레트(Command palette)를 열고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring initalizr&lt;/code&gt;을 입력후 선택합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gradle&lt;/code&gt; 또는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Maven&lt;/code&gt; 프로젝트를 선택할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;그 후 순서대로 스프링 부트 버전, 프로젝트 언어, 그룹 ID, 아티팩트 ID, 패키징 타입, 자바 버전, 의존성 패키지, 루트 경로를 지정합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;프로젝트-선택&quot;&gt;프로젝트 선택&lt;/h6&gt;
-&lt;p style=&quot;margin-top:0&quot;&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img08.png&quot; alt=&quot;img08&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;스프링-부트-버전-선택&quot;&gt;스프링 부트 버전 선택&lt;/h6&gt;
-&lt;p style=&quot;margin-top:0&quot;&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img09.png&quot; alt=&quot;img09&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;프로젝트-언어-선택&quot;&gt;프로젝트 언어 선택&lt;/h6&gt;
-&lt;p style=&quot;margin-top:0&quot;&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img10.png&quot; alt=&quot;img10&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;그룹-id-설정&quot;&gt;그룹 ID 설정&lt;/h6&gt;
-&lt;p style=&quot;margin-top:0&quot;&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img11.png&quot; alt=&quot;img11&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;아티팩트-id-설정&quot;&gt;아티팩트 ID 설정&lt;/h6&gt;
-&lt;p style=&quot;margin-top:0&quot;&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img12.png&quot; alt=&quot;img12&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;패키징-타입-선택&quot;&gt;패키징 타입 선택&lt;/h6&gt;
-&lt;p style=&quot;margin-top:0&quot;&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img13.png&quot; alt=&quot;img13&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;자바-버전-선택&quot;&gt;자바 버전 선택&lt;/h6&gt;
-&lt;p style=&quot;margin-top:0&quot;&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img14.png&quot; alt=&quot;img14&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;의존성-패키지-선택&quot;&gt;의존성 패키지 선택&lt;/h6&gt;
-&lt;p style=&quot;margin-top:0&quot;&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img15.png&quot; alt=&quot;img15&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;루트-경로-설정&quot;&gt;루트 경로 설정&lt;/h6&gt;
-&lt;p style=&quot;margin-top:0&quot;&gt;&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img16.png&quot; alt=&quot;img16&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;디버깅&lt;/h3&gt;
-
-&lt;p&gt;디버깅 환경에서 원격 포트로 연결하기 위해서는 포트를 설정해주어야 합니다. 터미널창 상단의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PORTS&lt;/code&gt; 탭을 클릭하세요.
-&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img17.png&quot; alt=&quot;img17&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add&lt;/code&gt;를 눌러 포트를 추가하면 로컬에서 원격 포트로 접근이 가능해집니다.
-&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img18.png&quot; alt=&quot;img18&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;DevTools 사용&lt;/h3&gt;
-
-&lt;p&gt;디버깅 환경에서 뷰를 동적으로 확인하기 위해서는 DevTools 패키지를 설치해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;Gradle 의존성에 다음 패키지를 추가하세요.&lt;/p&gt;
-
-&lt;div data-lang=&quot;GRADLE&quot; class=&quot;language-gradle highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;compileOnly&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'org.springframework.boot:spring-boot-devtools'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;다음으로 터미널에서 LiveReloadServer 포트를 확인하고 Port에 추가하여 해당 포트를 로컬에서 접근가능하도록 해주세요.
-&lt;img src=&quot;/assets/images/ubuntu_dev_env/ubuntu_dev_env_img17.png&quot; alt=&quot;img17&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;크롬에서 Extension인 &lt;a href=&quot;https://chrome.google.com/webstore/detail/remotelivereload/jlppknnillhjgiengoigajegdpieppei&quot; target=&quot;_blank&quot;&gt;RemoteLiveReload&lt;/a&gt;를 설치해주세요.&lt;/p&gt;
-
-&lt;p&gt;이제 톰캣 포트로 접속하여 html 파일을 수정하면 실시간으로 내용이 반영되는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;phython-환경-설정&quot;&gt;Phython 환경 설정&lt;/h1&gt;
-
-&lt;h2 id=&quot;아나콘다anaconda-설치&quot;&gt;아나콘다(Anaconda) 설치&lt;/h2&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;아나콘다 설치&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://repo.anaconda.com/archive/&quot; target=&quot;_blank&quot;&gt;아나콘다 아카이브&lt;/a&gt; 또는 &lt;a href=&quot;https://www.anaconda.com/products/distribution#Downloads&quot; target=&quot;_blank&quot;&gt;아나콘다 다운로드 페이지&lt;/a&gt;에 접속하여 OS 환경에 맞는 버전의 설치 경로를 확인합니다.&lt;/p&gt;
-
-&lt;p&gt;저는 원격 인스턴스가 ARM 64비트 이므로 리눅스 arm64 버전을 설치하도록 하겠습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;아나콘다-인스톨러-다운로드&quot;&gt;아나콘다 인스톨러 다운로드&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-aarch64.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;다운받은 파일을 실행하여 아나콘다를 설치합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;아나콘다-설치&quot;&gt;아나콘다 설치&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bash Anaconda3-2022.05-Linux-aarch64.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;라이센스 동의 문구가 나오는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enter&lt;/code&gt;를 계속 눌러 쭉 내려간 다음 마지막에 동의여부를 물으면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yes&lt;/code&gt;를 입력하세요.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;환경변수 등록&lt;/h3&gt;
-
-&lt;p&gt;설치가 완료되면 환경변수를 할 것인지 묻는 문구가 나오는데 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;yes&lt;/code&gt;를 입력하여 환경변수를 등록해주세요.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;no&lt;/code&gt;를 입력했다면 bashrc에 환경변수를 직접 등록해야합니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano ~/.bashrc
-
-...
-
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$HOME&lt;/span&gt;/anaconda3/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;콘다 환경 비활성화&lt;/h3&gt;
-
-&lt;p&gt;환경변수를 설정하면 쉘에 접속할때마다 콘다의 기본환경이 활성화됩니다. 이를 해제하기 위해 다음 명령어를 입력합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda config &lt;span class=&quot;nt&quot;&gt;--set&lt;/span&gt; auto_activate_base &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;변경 사항 적용&lt;/h3&gt;
-
-&lt;p&gt;bashrc의 변경 사항을 적용하기 위해 다음 명령어를 통해 bashrc를 실행해주세요.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;인스톨러 제거&lt;/h3&gt;
-
-&lt;p&gt;다음 명령어를 통해 다운받은 인스톨러를 제거해 주세요.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rm &lt;/span&gt;Anaconda3&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;가상환경-설정&quot;&gt;가상환경 설정&lt;/h2&gt;
-
-&lt;p&gt;가상환경(virtualenv)은 여러 파이썬 프로젝트가 하나의 컴퓨터에서 충돌을 일으키지 않고 존재할 수 있도록 해주는 독립된 환경을 말합니다.&lt;/p&gt;
-
-&lt;p&gt;각 프로그램별로 완전히 독립적인 가상의 환경을 만들어서 프로그램별로 라이브러리 모듈 등의 버전을 별도로 지정할 수 있습니다.&lt;/p&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;가상환경 생성&lt;/h3&gt;
-
-&lt;p&gt;가상환경은 다음 명령어를 통해 생성할 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda create &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &amp;lt;가상환경 이름&amp;gt; &lt;span class=&quot;nv&quot;&gt;python&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;파이썬 버전&amp;gt; &amp;lt;의존성 패키지 목록&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;가상환경-생성-예제&quot;&gt;가상환경 생성 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda create &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; ml &lt;span class=&quot;nv&quot;&gt;python&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3.9 anaconda
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;가상환경 활성화&lt;/h3&gt;
-
-&lt;p&gt;가상환경은 다음 명령어를 통해 활성화 할 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda activate &amp;lt;가상환경 이름&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;가상환경-생성-예제-1&quot;&gt;가상환경 생성 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda activate ml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;가상환경 목록 확인&lt;/h3&gt;
-
-&lt;p&gt;가상환경의 목록은 다음 명령어를 통해 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;env &lt;/span&gt;list
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;가상환경 생성&lt;/h3&gt;
-
-&lt;p&gt;가상환경은 다음 명령어를 통해 생성할 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;env &lt;/span&gt;remove &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &amp;lt;가상환경 이름&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;가상환경-생성-예제-2&quot;&gt;가상환경 생성 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;env &lt;/span&gt;remove &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; ml &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;패키지-설정&quot;&gt;패키지 설정&lt;/h2&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;패키지 설치&lt;/h3&gt;
-
-&lt;p&gt;패키지는 다음 명령어를 통해 설치할 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &amp;lt;패키지 이름&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;패키지-설치-예제&quot;&gt;패키지 설치 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;tensorflow
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;패키지 제거&lt;/h3&gt;
-
-&lt;p&gt;패키지는 다음 명령어를 통해 제거할 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda remove &amp;lt;패키지 이름&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;패키지-제거-예제&quot;&gt;패키지 제거 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda remove tensorflow
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;패키지 업데이트&lt;/h3&gt;
-
-&lt;p&gt;패키지는 다음 명령어를 통해 업데이트할 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda update &amp;lt;패키지 이름&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;패키지-업데이트-예제&quot;&gt;패키지 업데이트 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda update tensorflow
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;전체 패키지의 업데이트는 다음과 같습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda update &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 class=&quot;no-toc&quot;&gt;패키지 정리&lt;/h3&gt;
-
-&lt;p&gt;다양한 conda 환경을 생성하고 패키지를 설치 / 삭제하다 보면 불필요한 캐시가 쌓여 용량에 문제가 발생할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;이때 다음 명령어를 통해 캐시를 제거할 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;conda clean &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;아나콘다-제거&quot;&gt;아나콘다 제거&lt;/h2&gt;
-
-&lt;p&gt;아나콘다의 제거는 설치 디렉토리를 제거해주면 됩니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; ~/anaconda3
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그런다음 bashrc를 열고 아나콘다 환경변수를 지웁니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano ~/.bashrc
-
-...
-
-&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;환경변수 제거&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;마지막으로 숨겨진 파일을 제거합니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rf&lt;/span&gt; ~/.condarc ~/.conda ~/.continuum
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h1 id=&quot;nodejs-환경-설정&quot;&gt;NodeJS 환경 설정&lt;/h1&gt;
-
-&lt;h2 id=&quot;nvm-설치&quot;&gt;NVM 설치&lt;/h2&gt;
-
-&lt;p&gt;NodeJS는 apt를 통해 설치할 수도 있지만 다양한 버전을 관리하기 위해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NVM(Node Version Manager)&lt;/code&gt;을 통해 설치하도록 하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/nvm-sh/nvm&quot; target=&quot;_blank&quot;&gt;NVM Github&lt;/a&gt;로 이동하여 버전을 확인하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt;이나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wget&lt;/code&gt;을 통해 인스톨러를 설치합니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-o-&lt;/span&gt; https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget &lt;span class=&quot;nt&quot;&gt;-qO-&lt;/span&gt; https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;설치가 완료되면 bashrc의 변경 사항을 적용하기 위해 다음 명령어를 통해 bashrc를 실행해주세요.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; ~/.bashrc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;nodejs-설치&quot;&gt;Node.js 설치&lt;/h2&gt;
-
-&lt;p&gt;NodeJS의 설치는 NVM의 다음 명령어를 통해 설치할 수 있습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &amp;lt;노드 버전&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;각종-버전-설치-방법&quot;&gt;각종 버전 설치 방법&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;node  &lt;span class=&quot;c&quot;&gt;# 최신 버전 설치&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--lts&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 최신 LTS 버전 설치&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;16.14.0  &lt;span class=&quot;c&quot;&gt;# 특정 버전 설치&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;16  &lt;span class=&quot;c&quot;&gt;# 특정 버전 16의 최신 릴리즈 설치&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;버전-선택&quot;&gt;버전 선택&lt;/h2&gt;
-
-&lt;p&gt;설치된 노드의 버전은 NVM의 다음 명령어를 통해 확인 가능합니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;기본 노드 버전의 선택은 다음과 같습니다.&lt;/p&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm &lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;default &amp;lt;노드 버전&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;일시적인 버전의 선택은 다음과 같습니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;nvm use &amp;lt;노드 버전&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이 경우 터미널이 종료되면 다시 기본 버전으로 돌아갑니다.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>huimang2</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="linux" />
-      
-
-      
-        <summary type="html">우분투 20.04 LTS 환경인 원격 컴퓨터에 코딩환경을 구축하고, VSCode를 통해 원격 환경에서 코드 개발을 해보도록 하겠습니다.</summary>
       
 
       

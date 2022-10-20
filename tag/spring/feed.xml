@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/spring/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-10-12T19:47:24+09:00</updated>
+  <updated>2022-10-20T18:11:31+09:00</updated>
   <id>https://huimang2.github.io/tag/spring/feed.xml</id>
 
   
@@ -30,6 +30,292 @@
   
   
 
+  
+    <entry>
+      <title type="html">스프링 레거시(Spring legacy) -설정</title>
+      <link href="https://huimang2.github.io/java/spring-legacy-setting" rel="alternate" type="text/html" title="스프링 레거시(Spring legacy) -설정" />
+      <published>2022-10-19T22:00:00+09:00</published>
+      <updated>2022-10-19T22:00:00+09:00</updated>
+      <id>https://huimang2.github.io/java/spring-legacy-setting</id>
+      <content type="html" xml:base="https://huimang2.github.io/java/spring-legacy-setting">&lt;p&gt;지난번 스프링 부트를 통해 게시판을 만들어 보았는데 이번에는 스프링 레거시를 사용해서 게시판을 만들어보겠습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;sts3--jdk-11--tomcat9-설치&quot;&gt;STS3 / JDK 11 / Tomcat9 설치&lt;/h1&gt;
+
+&lt;p&gt;우선은 &lt;a href=&quot;https://github.com/spring-attic/toolsuite-distribution/wiki/Spring-Tool-Suite-3&quot; target=&quot;_blank&quot;&gt;Spring Tool Suite 3&lt;/a&gt;을 다운받습니다. 3버전은 스프링 레거시를 지원합니다.&lt;/p&gt;
+
+&lt;p&gt;JDK는 11 버전 이상이여야 사용할 수 있습니다. 이전에 open JDK 17을 다운받았는데, &lt;a href=&quot;https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html&quot; target=&quot;_blank&quot;&gt;oracle JDK 11&lt;/a&gt;을 새로 설치하겠습니다. 오라클에 로그인 하셔야 다운가능합니다.&lt;/p&gt;
+
+&lt;p&gt;스프링 부트와 달리 내장 톰캣이 없어서 톰캣을 다운받아야 합니다. &lt;a href=&quot;https://tomcat.apache.org/download-90.cgi&quot; target=&quot;_blank&quot;&gt;Tomcat 9&lt;/a&gt; 버전을 다운받습니다.&lt;/p&gt;
+
+&lt;p&gt;STS3 압축을 풀어 sts-bundle 폴더 안에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ws&lt;/code&gt;폴더를 만들고, 톰캣의 압축을 풉니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sts-3.9.18.RELEASE&lt;/code&gt; 폴더에 들어가서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STS&lt;/code&gt;를 실행시킵시다.&lt;/p&gt;
+
+&lt;p&gt;방금 생성한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ws&lt;/code&gt; 폴더를 작업폴더로 지정하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Launch&lt;/code&gt;를 누릅니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;인코딩-설정&quot;&gt;인코딩 설정&lt;/h1&gt;
+
+&lt;p&gt;상단에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Window &amp;gt; Preferences&lt;/code&gt;를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img08.png&quot; alt=&quot;img08&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;General &amp;gt; Content Types&lt;/code&gt;에 들어가서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Text&lt;/code&gt;를 선택하고 하단에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Default encoding&lt;/code&gt;에 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;utf-8&lt;/code&gt;을 입력후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Update&lt;/code&gt; 버튼을 누르세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img09.png&quot; alt=&quot;img09&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;General &amp;gt; Workspace&lt;/code&gt;에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Text file encoding&lt;/code&gt; 또한 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;UTF-8&lt;/code&gt;로 번경 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apply&lt;/code&gt; 버튼을 누르세요&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img10.png&quot; alt=&quot;img10&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Web &amp;gt; CSS Files&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Web &amp;gt; HTML Files&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Web &amp;gt; JSP Files&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XML &amp;gt; XML Files&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JSON &amp;gt; JSON Files&lt;/code&gt; 또한 Encoding을 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;UTF-8&lt;/code&gt;로 변경후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apply&lt;/code&gt; 버튼을 누르세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img11.png&quot; alt=&quot;img11&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기존 JDK 버전을 17로 사용하고 있어서 환경변수가 17 버전으로 되어 있습니다. 환경변수를 변경해도 되지만 에디터를 통해 설정하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JAVA &amp;gt; Compiler&lt;/code&gt;에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JDK Compiler compliance level&lt;/code&gt;을 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;11&lt;/code&gt;로 변경하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JAVA &amp;gt; Installed JREs&lt;/code&gt;에서 JDK 11버전 경로를 추가한 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Apply&lt;/code&gt;를 클릭하세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img12.png&quot; alt=&quot;img12&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img13.png&quot; alt=&quot;img13&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;톰캣-서버-생성&quot;&gt;톰캣 서버 생성&lt;/h1&gt;
+
+&lt;p&gt;왼쪽 Package Explorer 창에 있는 기본 서버 프로젝트를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delete&lt;/code&gt;삭제합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Delete project contents on disk (cannot be undone)&lt;/code&gt;을 체크하여 완전시 삭제합시다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img03.png&quot; alt=&quot;img03&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;왼쪽 하단에 톰켓 서버도 삭제합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img04.png&quot; alt=&quot;img04&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;왼쪽 하단에 링크를 클릭하여 서버를 추가합시다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img05.png&quot; alt=&quot;img05&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tomcat v9.0 Server&lt;/code&gt;를 선택후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Next&lt;/code&gt; 버튼을 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img06.png&quot; alt=&quot;img06&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Browse...&lt;/code&gt; 버튼을 클릭하여 아까 설치한 톰캣 폴더를 디렉토리로 지정한후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Finish&lt;/code&gt;를 클릭하세요.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img07.png&quot; alt=&quot;img07&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;프로젝트-서버-생성&quot;&gt;프로젝트 서버 생성&lt;/h1&gt;
+
+&lt;p&gt;스프링 레거시 프로젝트를 생성하겠습니다. 왼쪽 Package Explorer 창에 오른쪽 마우스 클릭을 한 후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;New &amp;gt; Spring Legacy Project&lt;/code&gt;를 선택합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img14.png&quot; alt=&quot;img14&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring MVC Project&lt;/code&gt;를 선택후 프로젝트 이름을 적고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Next&lt;/code&gt;를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img15.png&quot; alt=&quot;img15&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;패키지 및 아티팩트 이름을 적고 Finish를 클릭하면 레거시 프로젝트의 의존성이 자동으로 설치되면서 프로젝트가 추가됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img16.png&quot; alt=&quot;img16&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;톰캣 서버에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add and Remove...&lt;/code&gt;를 선택하여 프로젝트를 추가해줍니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img17.png&quot; alt=&quot;img17&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img18.png&quot; alt=&quot;img18&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Ctrl + Alt + R&lt;/code&gt;을 누르면 톰캣 서버가 시작됩니다. 기본 포트는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;8080&lt;/code&gt; 입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:8080/board&lt;/code&gt;로 접속해보세요. (board는 아티팩트 이름입니다.)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img19.png&quot; alt=&quot;img19&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;한글이 깨지는데 뷰 페이지를 작성할때 encoding 메타정보를 utf-8로 입력하야합니다. 뷰 페이지 작성을 참고하세요.&lt;/p&gt;
+
+&lt;h1 id=&quot;의존성-추가&quot;&gt;의존성 추가&lt;/h1&gt;
+
+&lt;p&gt;레거시 프로젝트의 경우 빌드툴로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;메이븐(maven)&lt;/code&gt;을 사용하기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pom.xml&lt;/code&gt;을 통해 의존성을 추가할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;저는 롬복을 통해 간단하게 getter, setter 설정 및 의존성의 생성자 주입을 하므로 &lt;a href=&quot;https://projectlombok.org/download&quot; target=&quot;_blank&quot;&gt;롬복&lt;/a&gt;을 설치하겠습니다.
+또한 DB는 스프링 부트 게시판을 만들때 사용했던 오라클 클라우드를 사용하도록 하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;롬복을 설치하면 IDE를 찾을 수 없다고 뜨는데, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Specify loaction...&lt;/code&gt;을 클릭하여 STS3의 위치를 지정해주고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Install / Update&lt;/code&gt;를 클릭합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img20.png&quot; alt=&quot;img20&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pom.xml&lt;/code&gt; 파일에 롬복 의존성을 추가합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Lombok --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.projectlombok&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;lombok&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.18.24&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;provided&lt;span class=&quot;nt&quot;&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mvnrepository.com/&quot; target=&quot;_blank&quot;&gt;mvnrepository&lt;/a&gt;를 참고하여 의존성을 설정해줍니다.&lt;/p&gt;
+
+&lt;p&gt;자바 버전은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1.8&lt;/code&gt;로 변경하고, 스프링 프레임워크 버전도 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5.1.5.RELEASE&lt;/code&gt;로 설정합시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml-1&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nt&quot;&gt;&amp;lt;properties&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;java-version&amp;gt;&lt;/span&gt;1.8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/java-version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;org.springframework-version&amp;gt;&lt;/span&gt;5.1.5.RELEASE&lt;span class=&quot;nt&quot;&gt;&amp;lt;/org.springframework-version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;org.aspectj-version&amp;gt;&lt;/span&gt;1.6.10&lt;span class=&quot;nt&quot;&gt;&amp;lt;/org.aspectj-version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;org.slf4j-version&amp;gt;&lt;/span&gt;1.6.6&lt;span class=&quot;nt&quot;&gt;&amp;lt;/org.slf4j-version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/properties&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;junit은 현재 4.12 버전의 사용률이 높으므로 4.12버전으로 변경합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml-2&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Test --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;junit&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;junit&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;4.12&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;scope&amp;gt;&lt;/span&gt;test&lt;span class=&quot;nt&quot;&gt;&amp;lt;/scope&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ORM으로 JPA 대신 이번에는 mybatis를 사용하도록 하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;DB 연결을 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring JDBC&lt;/code&gt;를 의존성으로 추가하고, 메이븐 레포지토리를 참고하여 ORM으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis-spring&lt;/code&gt;을 의존성 추가합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml-3&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Spring JDBC --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.springframework&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;spring-jdbc&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+			&lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${org.springframework-version}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+		
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.mybatis&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;mybatis&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;3.4.6&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+		
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.mybatis&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;mybatis-spring&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;1.3.2&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;DB는 오라클 클라우드를 사용할 예정이므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OJDBC&lt;/code&gt; 의존성을 추가합니다. 클라우드 연결에는 인증키를 통한 인증 과정이 필요하므로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Osdt&lt;/code&gt;도 OJDBC 버전에 맞추어 의존성으로 추가합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml-4&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.database.jdbc&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;ojdbc8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;21.1.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_cert --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.database.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;osdt_cert&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;21.1.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+		
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_core --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.database.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;osdt_core&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;21.1.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+		
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- https://mvnrepository.com/artifact/com.oracle.database.security/oraclepki --&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;com.oracle.database.security&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;oraclepki&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+		    &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;21.1.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;프로퍼티-설정&quot;&gt;프로퍼티 설정&lt;/h1&gt;
+
+&lt;p&gt;스프링 부트에서는 Gradle 빌드툴을 사용하여 빈(Bean)이 자동으로 등록되고, 빈에 대한 설정은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;application.properties&lt;/code&gt; 파일에 작성했지만, 레거시에서는 빈을 직접 등록합니다. 레거시 앱의 빈 등록은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;src/main/webapp/WEB-INF/spring/appServlet/root-context.xml&lt;/code&gt; 파일에 작성합니다.&lt;/p&gt;
+
+&lt;p&gt;mybatis를 통해 오라클 DB에 접근하기 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dataSource&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sqlSessionFactory&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sqlSession&lt;/code&gt;을 빈으로 등록하고 property에 다음과 같이 설정값을 입력합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pomxml-5&quot;&gt;pom.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dataSource&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;oracle.jdbc.driver.OracleDriver&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;driverClassName&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;[DB 주소]&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;[DB 아이디]&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;username&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	  	&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;[DB 암호]&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;password&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+	 	
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sqlSessionFactory&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; 
+	 	&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dataSource&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dataSource&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;configLocation&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;classpath:/mybatis-config.xml&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/property&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;property&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mapperLocations&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;classpath:mappers/**/*Mapper.xml&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/property&amp;gt;&lt;/span&gt;			
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;bean&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sqlSession&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;org.mybatis.spring.SqlSessionTemplate&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;destroy-method=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;clearCache&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;constructor-arg&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sqlSessionFactory&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sqlSessionFactory&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/constructor-arg&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/bean&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sqlSession&lt;/code&gt;은 SQL을 실행하고 트랜잭션을 제어하는 객체입니다. mybatis에서는 sqlSession 객체를 통해 mapper의 쿼리문을 실행합니다. sqlSessionFactory를 의존성 주입받으며, sqlSessionFactory은 dataSource를 참조하여 sqlSession 객체를 생성합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img21.png&quot; alt=&quot;img21&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;sqlSessionFactory에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis-config.xml&lt;/code&gt; 파일과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mappers.xml&lt;/code&gt;의 위치를 지정해주고, dataSource에는 DB 정보를 입력해줍니다.&lt;/p&gt;
+
+&lt;p&gt;해당 위치에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis-config.xml&lt;/code&gt; 파일을 만들고 다음과 같이 작성해둡니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;mybatis-configxml&quot;&gt;mybatis-config.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE configuration 
+PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; 
+&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;typeAliases&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;package&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kro.rubisco.dto&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/typeAliases&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeAliases&lt;/code&gt; 태그 아래 package 태그의 name 속성은 패키지의 별칭을 나타냅니다. 나중에 매퍼를 작성함에 있어서 DTO를 연결할 때 패키지명을 모두 적어야하지만, 이렇게 별칭을 지정해두면 작성된 패키지 부분을 생략하고 DTO 클래스명만 적어도 연결이 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mappers&lt;/code&gt;라는 패키지 폴더도 하나 만들어둡시다. 나중에 매퍼를 작성할 폴더입니다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="java" />
+      
+        <category term="spring" />
+      
+
+      
+        <summary type="html">지난번 스프링 부트를 통해 게시판을 만들어 보았는데 이번에는 스프링 레거시를 사용해서 게시판을 만들어보겠습니다.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">스프링 부트로 게시판 만들기</title>
