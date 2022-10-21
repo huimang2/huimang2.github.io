@@ -58,7 +58,7 @@
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="스프링 레거시(Spring legacy) - 매퍼 작성" />
-    <meta property="og:description" content="매퍼(mapper) 작성 매퍼(mapper)는 sqlSession을 통해서 repository에 해당하는 DAO에 SQL 쿼리문을 연결하여 실행합니다. 우선 매퍼를 작성하기 전에 테이블을 생성하겠습니다. 레거시에서는 DDL을 자동으로 작성해주지 않아서 수동으로 테이블을 만들어야합니다. DBeaver를 통해서 스키마를 생성해주세요. 테이블은 이전에 작성한 ER모델과 참고하여 작성하겠습니다. 게시글을 저장하는 board, 댓글을 저장하는 comments, 게시글을 분류하는 category, 인증을 위한 member, 인가권한을 확인하기" />
+    <meta property="og:description" content="매퍼(mapper) 작성 매퍼(mapper)는 sqlSession을 통해서 repository에 해당하는 DAO에 SQL 쿼리문을 연결하여 실행합니다. 우선 매퍼를 작성하기 전에 테이블을 생성하겠습니다. 레거시에서는 DDL을 자동으로 작성해주지 않아서 수동으로 테이블을 만들어야합니다. DBeaver를 통해서 스키마를 생성해주세요. 테이블은 이전에 작성한 ER모델을 참고하여 작성하겠습니다. 게시글을 저장하는 board, 댓글을 저장하는 comments, 게시글을 분류하는 category, 인증을 위한 member, 인가권한을 확인하기" />
     <meta property="og:url" content="https://huimang2.github.io/java/spring-legacy-mapper" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/spring-legacy/logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -68,7 +68,7 @@
     <meta property="article:tag" content="Java" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="스프링 레거시(Spring legacy) - 매퍼 작성" />
-    <meta name="twitter:description" content="매퍼(mapper) 작성 매퍼(mapper)는 sqlSession을 통해서 repository에 해당하는 DAO에 SQL 쿼리문을 연결하여 실행합니다. 우선 매퍼를 작성하기 전에 테이블을 생성하겠습니다. 레거시에서는 DDL을 자동으로 작성해주지 않아서 수동으로 테이블을 만들어야합니다. DBeaver를 통해서 스키마를 생성해주세요. 테이블은 이전에 작성한 ER모델과 참고하여 작성하겠습니다. 게시글을 저장하는 board, 댓글을 저장하는 comments, 게시글을 분류하는 category, 인증을 위한 member, 인가권한을 확인하기" />
+    <meta name="twitter:description" content="매퍼(mapper) 작성 매퍼(mapper)는 sqlSession을 통해서 repository에 해당하는 DAO에 SQL 쿼리문을 연결하여 실행합니다. 우선 매퍼를 작성하기 전에 테이블을 생성하겠습니다. 레거시에서는 DDL을 자동으로 작성해주지 않아서 수동으로 테이블을 만들어야합니다. DBeaver를 통해서 스키마를 생성해주세요. 테이블은 이전에 작성한 ER모델을 참고하여 작성하겠습니다. 게시글을 저장하는 board, 댓글을 저장하는 comments, 게시글을 분류하는 category, 인증을 위한 member, 인가권한을 확인하기" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/spring-legacy/logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -100,7 +100,7 @@
         "@type": "WebPage",
         "@id": "https://huimang2.github.io/java/spring-legacy-mapper"
     },
-    "description": "매퍼(mapper) 작성 매퍼(mapper)는 sqlSession을 통해서 repository에 해당하는 DAO에 SQL 쿼리문을 연결하여 실행합니다. 우선 매퍼를 작성하기 전에 테이블을 생성하겠습니다. 레거시에서는 DDL을 자동으로 작성해주지 않아서 수동으로 테이블을 만들어야합니다. DBeaver를 통해서 스키마를 생성해주세요. 테이블은 이전에 작성한 ER모델과 참고하여 작성하겠습니다. 게시글을 저장하는 board, 댓글을 저장하는 comments, 게시글을 분류하는 category, 인증을 위한 member, 인가권한을 확인하기"
+    "description": "매퍼(mapper) 작성 매퍼(mapper)는 sqlSession을 통해서 repository에 해당하는 DAO에 SQL 쿼리문을 연결하여 실행합니다. 우선 매퍼를 작성하기 전에 테이블을 생성하겠습니다. 레거시에서는 DDL을 자동으로 작성해주지 않아서 수동으로 테이블을 만들어야합니다. DBeaver를 통해서 스키마를 생성해주세요. 테이블은 이전에 작성한 ER모델을 참고하여 작성하겠습니다. 게시글을 저장하는 board, 댓글을 저장하는 comments, 게시글을 분류하는 category, 인증을 위한 member, 인가권한을 확인하기"
 }
     </script>
 
@@ -213,7 +213,7 @@ into the {body} of the default.hbs template -->
 
 <p>우선 매퍼를 작성하기 전에 테이블을 생성하겠습니다. 레거시에서는 DDL을 자동으로 작성해주지 않아서 수동으로 테이블을 만들어야합니다. DBeaver를 통해서 스키마를 생성해주세요.</p>
 
-<p>테이블은 이전에 작성한 ER모델과 참고하여 작성하겠습니다.</p>
+<p>테이블은 이전에 작성한 ER모델을 참고하여 작성하겠습니다.</p>
 
 <p><img src="/assets/images/spring_boot/spring_boot_img01.png" alt="img01" /></p>
 
