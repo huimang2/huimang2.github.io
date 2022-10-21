@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/spring/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-10-20T18:11:31+09:00</updated>
+  <updated>2022-10-22T00:09:16+09:00</updated>
   <id>https://huimang2.github.io/tag/spring/feed.xml</id>
 
   
@@ -32,8 +32,420 @@
 
   
     <entry>
-      <title type="html">스프링 레거시(Spring legacy) -설정</title>
-      <link href="https://huimang2.github.io/java/spring-legacy-setting" rel="alternate" type="text/html" title="스프링 레거시(Spring legacy) -설정" />
+      <title type="html">스프링 레거시(Spring legacy) - 매퍼 작성</title>
+      <link href="https://huimang2.github.io/java/spring-legacy-mapper" rel="alternate" type="text/html" title="스프링 레거시(Spring legacy) - 매퍼 작성" />
+      <published>2022-10-21T11:00:00+09:00</published>
+      <updated>2022-10-21T11:00:00+09:00</updated>
+      <id>https://huimang2.github.io/java/spring-legacy-mapper</id>
+      <content type="html" xml:base="https://huimang2.github.io/java/spring-legacy-mapper">&lt;h1 id=&quot;매퍼mapper-작성&quot;&gt;매퍼(mapper) 작성&lt;/h1&gt;
+
+&lt;p&gt;매퍼(mapper)는 sqlSession을 통해서 repository에 해당하는 DAO에 SQL 쿼리문을 연결하여 실행합니다.&lt;/p&gt;
+
+&lt;p&gt;우선 매퍼를 작성하기 전에 테이블을 생성하겠습니다. 레거시에서는 DDL을 자동으로 작성해주지 않아서 수동으로 테이블을 만들어야합니다. DBeaver를 통해서 스키마를 생성해주세요.&lt;/p&gt;
+
+&lt;p&gt;테이블은 이전에 작성한 ER모델과 참고하여 작성하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/spring_boot/spring_boot_img01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;게시글을 저장하는 board, 댓글을 저장하는 comments, 게시글을 분류하는 category, 인증을 위한 member, 인가권한을 확인하기 위한
+member_group로 구성합니다.&lt;/p&gt;
+
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CREATE TABLE board (
+	document_id		INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	category_id		INT NOT NULL,
+	is_notice		CHAR(1) DEFAULT 'N',
+	title			VARCHAR(250) NOT NULL,
+	content			CLOB NOT NULL,
+	like_count		INT DEFAULT 0,
+	dislike_count	INT DEFAULT 0,
+	read_count		INT DEFAULT 0,
+	member_id		INT NOT NULL,
+	create_date		DATE DEFAULT SYSDATE,
+	update_date		DATE DEFAULT SYSDATE
+);
+
+CREATE TABLE comments (
+	comment_id		INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	document_id		INT NOT NULL,
+	content			CLOB,
+	like_count		INT DEFAULT 0,
+	dislike_count	INT DEFAULT 0,
+	member_id		INT NOT NULL,
+	create_date		DATE DEFAULT SYSDATE,
+	update_date		DATE DEFAULT SYSDATE
+);
+
+CREATE TABLE category (
+	category_id		INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	category		VARCHAR(80) UNIQUE NOT NULL,
+	create_date		DATE DEFAULT SYSDATE,
+	update_date		DATE DEFAULT SYSDATE
+);
+
+CREATE TABLE MEMBER (
+	member_id		INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	password		VARCHAR(60) NOT NULL,
+	email			VARCHAR(250) UNIQUE,
+	name			VARCHAR(40) NOT NULL,
+	nick_name		VARCHAR(40) UNIQUE NOT NULL,
+	group_id		INT NOT NULL,
+	create_date		DATE DEFAULT SYSDATE,
+	last_login		DATE DEFAULT SYSDATE
+);
+
+CREATE TABLE member_group (
+	group_id		INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+	group_name		VARCHAR(80) UNIQUE NOT NULL,
+	create_date		DATE DEFAULT SYSDATE,
+	update_date		DATE DEFAULT SYSDATE
+);
+
+ALTER TABLE board ADD CONSTRAINT fk_category_id FOREIGN KEY(category_id) REFERENCES category(category_id);
+ALTER TABLE board ADD CONSTRAINT fk_member_id FOREIGN KEY(member_id) REFERENCES member(member_id);
+
+ALTER TABLE comments ADD CONSTRAINT fk_document_id FOREIGN KEY(document_id) REFERENCES board(document_id);
+ALTER TABLE comments ADD CONSTRAINT fk_member_id_2 FOREIGN KEY(member_id) REFERENCES member(member_id);
+
+ALTER TABLE member ADD CONSTRAINT fk_group_id_2 FOREIGN KEY(group_id) REFERENCES member_group(group_id);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 매퍼를 작성하겠습니다.&lt;/p&gt;
+
+&lt;p&gt;매퍼를 작성하기 전에 DBeaver를 통해 미리 쿼리를 작성해보도록 하겠습니다. 외래키를 통해 제약조건을 설정했기때문에 우선 그룹을 생성합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;admin-그룹-생성&quot;&gt;Admin 그룹 생성&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;INSERT INTO member_group (group_name) VALUES ('Admin');
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;쿼리문을 토대로 groupMapper를 생성합니다. 저번 글에서 생성한 mappers 패키지 아래 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;groupMapper.xml&lt;/code&gt; 파일을 만들고 다음과 같이 CRUD 쿼리를 작성하세요.&lt;/p&gt;
+
+&lt;h6 id=&quot;groupmapperxml&quot;&gt;groupMapper.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE mapper
+PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;namespace=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kro.rubisco.dao.GroupDao&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;insert&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;create&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+insert into member_group (group_name) values (#{groupName})
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/insert&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;read&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GroupDto&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select * from member_group where group_id = #{groupId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;update&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;update&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+update member_group set group_name=#{groupName}, update_date=SYSDATE 
+where group_id = #{groupId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/update&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;delete&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;delete&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; delete from member_group where group_id = #{groupId} &lt;span class=&quot;nt&quot;&gt;&amp;lt;/delete&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;listAll&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GroupDto&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;![CDATA[ select * from member_group where group_id &amp;gt; 0 order by group_id desc ]]&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/mapper&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;JPA에서는 레포지토리를 통해 SQL문 없이도 DB연결이 쉬웠지만, Mybatis는 SQL문을 직접 적어야합니다.&lt;/p&gt;
+
+&lt;p&gt;우선 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapper&lt;/code&gt; 태그에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;namespace&lt;/code&gt; 속성을 통해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DAO&lt;/code&gt;에 연결해줍니다. DAO는 Data Access Object의 약자로, 데이터베이스와 연결되는 객체입니다. JPA에서 Repository와 같은 역할을 합니다. DAO가 mapper에 연결되면서 SQL문을 실행시키고, select문의 경우 Entity를 생성합니다. mapper 태그 하위 태그에는 DML이 들어가며, id 속성값은 DAO의 메소드명이 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resultType&lt;/code&gt; 속성은 Entity를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DTO&lt;/code&gt;에 연결해줍니다. DTO는 Data Transfer Object의 약자로, 데이터를 전송해주는 객체입니다. JPA를 사용할때는 DTO를 작성하지 않고 Entity 클래스를 DTO 대신 사용 했습니다.&lt;/p&gt;
+
+&lt;p&gt;DTO 객체의 멤버변수는 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;#{멤버변수}&lt;/code&gt;로 표시합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;listAll&lt;/code&gt; 메소드에서 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;&amp;lt;![CDATA[...]]&amp;gt;&lt;/code&gt;라고 표시한 것은 꺽쇠 표시(&amp;gt;) 때문입니다. 해당 태그로 감싸지 않으면 꺽쇠가 태그를 내타내는 기호인지 부등호를 나타내는 기호인지 알 수 없기때문에 오류를 나타냅니다.&lt;/p&gt;
+
+&lt;p&gt;자바에서는 관례적으로 변수명을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;낙타표기법(Camel Case)&lt;/code&gt;으로 나타냅니다. table과 column을 스네이크 표기법(Snake Case)으로 만들었기 때문에 DTO 변수의 매핑을 위해 이를 변환할 필요가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis-config.xml&lt;/code&gt; 파일의 configuration 태그 아래에 다음과 같이 settings 태그를 추가합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;mybatis-configxml&quot;&gt;mybatis-config.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE configuration 
+PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot; 
+&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;settings&amp;gt;&lt;/span&gt;
+
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 카멜 케이스 매핑 설정 --&amp;gt;&lt;/span&gt; 
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;setting&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;mapUnderscoreToCamelCase&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 쿼리 결과 필드가 null인 경우, 누락되지 않도록 설정 --&amp;gt;&lt;/span&gt; 
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;setting&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;callSettersOnNulls&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 쿼리에 보내는 파라미터가 null인 경우, 오류가 발생하는 것을 방지 --&amp;gt;&lt;/span&gt; 
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;setting&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;jdbcTypeForNull&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;NULL&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/settings&amp;gt;&lt;/span&gt;
+
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;typeAliases&amp;gt;&lt;/span&gt;
+		&lt;span class=&quot;nt&quot;&gt;&amp;lt;package&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kro.rubisco.dto&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/typeAliases&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 나머지 매퍼도 만들어줍니다. memberMapper부터 만들겠습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;membermapperxml&quot;&gt;memberMapper.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE mapper
+PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;namespace=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kro.rubisco.dao.MemberDAO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;resultMap&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getMember&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MemberDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;association&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group_id&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;javaType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GroupDTO&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;select=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getGroup&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/resultMap&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;insert&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;create&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+insert into member (password, email, name, nick_name, group_id)
+values (#{password}, #{email}, #{name}, #{nickName}, #{groupId})
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/insert&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;read&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultMap=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getMember&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select m.* from member m join member_group g on m.group_id = g.group_id where member_id = #{memberId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getGroup&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GroupDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select * from member_group where group_id=#{groupId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;update&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;update&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+update member 
+set password=#{password},
+	email=#{email}, 
+	name=#{name}, 
+	nick_name= #{nickName},
+where member_id = #{memberId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/update&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;delete&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;delete&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; delete from member where member_id = #{memberId} &lt;span class=&quot;nt&quot;&gt;&amp;lt;/delete&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;listAll&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultMap=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getMember&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;![CDATA[ 
+	select m.* from member m 
+	join member_group g on m.group_id = g.group_id 
+	where m.member_id &amp;gt;&lt;/span&gt; 0 order by m.member_id desc 
+]]&amp;gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/mapper&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resultMap&lt;/code&gt; 이라는 태그가 추가되었습니다. select문의 경우 검색된 entity를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resultType&lt;/code&gt;에 지정된 타입의 객체에 담게 되는데, colmun은 원시값을 가지기 때문에 객체에 참조변수가 있다면 매핑하지 않습니다. 그러므로 연관관계를 통해 entity 자체를 객체에 담기 위해서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resultMap&lt;/code&gt;을 설정하여 매핑정보를 입력해주면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;resultMap 태그에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id&lt;/code&gt;를 설정하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type&lt;/code&gt; 속성에 매핑되는 객체 타입을 입력합니다. 하위 태그인 association은 1:N 연관관계를 설정할 수 있습니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;property&lt;/code&gt; 속성에는 resultMap의 type에서 연관관계를 맺을 매개변수명을 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;아래 코드로 예를 들어보겠습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;resultmap-설정&quot;&gt;resultMap 설정&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;resultMap&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getMember&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MemberDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;association&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group_id&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;javaType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GroupDTO&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;select=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getGroup&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/resultMap&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;read&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultMap=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getMember&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select m.* from member m join member_group g on m.group_id = g.group_id where member_id = #{memberId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getGroup&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GroupDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select * from member_group where group_id=#{groupId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;id가 read인 select 태그에 resultType 속성 대신에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resultMap&lt;/code&gt; 속성을 추가합니다. 해당 select문을 실행시켜 출력된 entity는 resultMap의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;type&lt;/code&gt;속성에 입력한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MemberDTO&lt;/code&gt; 타입에 매핑됩니다. 이때 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;association&lt;/code&gt; 태그의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;select&lt;/code&gt; 속성에 입력된 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getGroup&lt;/code&gt; select문을 함께 실행시켜 검색된 결과는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javaType&lt;/code&gt; 속성에 입력된 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GroupDTO&lt;/code&gt; 타입에 매핑되고, 해당 객체는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;property&lt;/code&gt;에 입력된 
+group 매개변수가 참조합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;column&lt;/code&gt; 속성에는 getGroup select문을 실행시킬 때 매개변수가 되는 column을 입력합니다.&lt;/p&gt;
+
+&lt;p&gt;동일한 방식으로 각각의 mapper를 만들어줍시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;categorymapperxml&quot;&gt;categoryMapper.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE mapper
+PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;namespace=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kro.rubisco.dao.CategoryDao&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;insert&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;create&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+insert into category (category) values (#{category})
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/insert&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;read&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CategoryDto&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select * from category where category_id = #{categoryId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;update&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;update&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+update category set category=#{category}, update_date=SYSDATE 
+where category_id = #{categoryId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/update&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;delete&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;delete&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; delete from category where category_id = #{categoryId} &lt;span class=&quot;nt&quot;&gt;&amp;lt;/delete&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;listAll&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CategoryDto&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;![CDATA[ select * from category where category_id &amp;gt; 0 order by category_id desc ]]&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/mapper&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;boardmapperxml&quot;&gt;boardMapper.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE mapper
+PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;namespace=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kro.rubisco.dao.BoardDAO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;resultMap&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getBoard&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BoardDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;association&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;category&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;category_id&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;javaType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CategoryDTO&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;select=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getCategory&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;association&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;member&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;member_id&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;javaType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MemberDTO&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;select=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getMember&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;association&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;group_id&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;javaType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GroupDTO&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;select=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getGroup&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;collection&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;commentList&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document_id&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;javaType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;java.lang.ArrayList&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ofType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CommentDTO&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;select=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getComments&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/resultMap&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getCategory&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CategoryDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select * from category where category_id=#{categoryId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getMember&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MemberDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select * from member where member_id=#{memberId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getGroup&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;GroupDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select * from member_group where group_id=#{groupId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getComments&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CommentDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select * from comments where document_id=#{documentId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;insert&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;create&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+insert into board (category_id, is_notice, title, content, member_id)
+values (#{categoryId}, #{isNotice}, #{title}, #{content}, #{memberId})
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/insert&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;read&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultMap=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getBoard&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; 
+select b.* from board b
+join category c on b.category_id = c.category_id 
+join member m on b.member_id = m.member_id
+left outer join comments cmt on b.document_id = cmt.document_id
+where b.document_id = #{documentId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;update&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;update&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+update board 
+set category_id=#{categoryId}, 
+	is_notice=#{isNotice}, 
+	title=#{title}, 
+	content=#{content},  
+	update_date=SYSDATE
+where document_id = #{documentId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/update&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;delete&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;delete&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; delete from board where document_id = #{documentId} &lt;span class=&quot;nt&quot;&gt;&amp;lt;/delete&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;listAll&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultMap=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getBoard&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;![CDATA[ 
+	select b.* from board b
+	join category c on b.category_id = c.category_id 
+	join member m on b.member_id = m.member_id
+	left outer join comments cmt on b.document_id = cmt.document_id
+	where b.document_id &amp;gt;&lt;/span&gt; 0 order by b.document_id desc
+]]&amp;gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/mapper&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h6 id=&quot;commentmapperxml&quot;&gt;commentMapper.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE mapper
+PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;mapper&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;namespace=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;kro.rubisco.dao.CommentDao&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;resultMap&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getComment&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CommentDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;association&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;board&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document_id&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;javaType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BoardDTO&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;select=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getBoard&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+	&lt;span class=&quot;nt&quot;&gt;&amp;lt;association&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;property=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;member&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;column=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;member_id&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;javaType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MemberDTO&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;select=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getMember&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/resultMap&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getBoard&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;BoardDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select * from board where document_id=#{documentId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getMember&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MemberDTO&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select * from member where member_id=#{memberId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;insert&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;create&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+insert into comments (document_id, content, member_id) 
+values (#{documentId}, #{content}, #{memberId})
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/insert&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;read&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultMap=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getComment&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+select cmt.* from comments cmt
+join board b on cmt.document_id = b.document_id 
+join member m on cmt.member_id = m.member_id
+where cmt.comment_id = #{commentId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;update&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;update&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+update comments 
+set document_id=#{documentId}, 
+	content=#{content}, 
+	update_date=SYSDATE
+where comment_id = #{commentId}
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/update&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;delete&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;delete&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt; delete from comments where comment_id = #{commentId} &lt;span class=&quot;nt&quot;&gt;&amp;lt;/delete&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;listAll&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultMap=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getComment&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;![CDATA[ 
+	select cmt.* from comments cmt
+	join board b on cmt.document_id = b.document_id 
+	join member m on cmt.member_id = m.member_id
+	where comment_id &amp;gt;&lt;/span&gt; 0 order by comment_id desc
+]]&amp;gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/mapper&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="java" />
+      
+        <category term="spring" />
+      
+
+      
+        <summary type="html">매퍼(mapper) 작성</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">스프링 레거시(Spring legacy) - 설정</title>
+      <link href="https://huimang2.github.io/java/spring-legacy-setting" rel="alternate" type="text/html" title="스프링 레거시(Spring legacy) - 설정" />
       <published>2022-10-19T22:00:00+09:00</published>
       <updated>2022-10-19T22:00:00+09:00</updated>
       <id>https://huimang2.github.io/java/spring-legacy-setting</id>
@@ -83,7 +495,7 @@
 
 &lt;h1 id=&quot;톰캣-서버-생성&quot;&gt;톰캣 서버 생성&lt;/h1&gt;
 
-&lt;p&gt;왼쪽 Package Explorer 창에 있는 기본 서버 프로젝트를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;delete&lt;/code&gt;삭제합니다.&lt;/p&gt;
+&lt;p&gt;왼쪽 Package Explorer 창에 있는 기본 서버 프로젝트를 삭제합니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/spring-legacy/img02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
 
@@ -181,9 +593,9 @@
 		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;ORM으로 JPA 대신 이번에는 mybatis를 사용하도록 하겠습니다.&lt;/p&gt;
+&lt;p&gt;JPA 대신 이번에는 mybatis를 사용하여 sql문을 실행하겠습니다.&lt;/p&gt;
 
-&lt;p&gt;DB 연결을 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring JDBC&lt;/code&gt;를 의존성으로 추가하고, 메이븐 레포지토리를 참고하여 ORM으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis-spring&lt;/code&gt;을 의존성 추가합니다.&lt;/p&gt;
+&lt;p&gt;DB 연결을 위해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Spring JDBC&lt;/code&gt;를 의존성으로 추가하고, 메이븐 레포지토리를 참고하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mybatis-spring&lt;/code&gt;을 의존성 추가합니다.&lt;/p&gt;
 
 &lt;h6 id=&quot;pomxml-3&quot;&gt;pom.xml&lt;/h6&gt;
 &lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Spring JDBC --&amp;gt;&lt;/span&gt;
