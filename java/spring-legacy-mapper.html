@@ -295,13 +295,13 @@ ALTER TABLE member ADD CONSTRAINT fk_group_id_2 FOREIGN KEY(group_id) REFERENCES
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
 
-<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.GroupDao"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.GroupDAO"</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">"create"</span><span class="nt">&gt;</span>
 insert into member_group (group_name) values (#{groupName})
 <span class="nt">&lt;/insert&gt;</span>
 
-<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"read"</span> <span class="na">resultType=</span><span class="s">"GroupDto"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"read"</span> <span class="na">resultType=</span><span class="s">"GroupDTO"</span><span class="nt">&gt;</span>
 select * from member_group where group_id = #{groupId}
 <span class="nt">&lt;/select&gt;</span>
 
@@ -312,7 +312,7 @@ where group_id = #{groupId}
 
 <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">"delete"</span><span class="nt">&gt;</span> delete from member_group where group_id = #{groupId} <span class="nt">&lt;/delete&gt;</span>
 
-<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultType=</span><span class="s">"GroupDto"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultType=</span><span class="s">"GroupDTO"</span><span class="nt">&gt;</span>
 <span class="cp">&lt;![CDATA[ select * from member_group where group_id &gt; 0 order by group_id desc ]]&gt;</span>
 <span class="nt">&lt;/select&gt;</span>
 
@@ -437,13 +437,13 @@ group 매개변수가 참조합니다. <code class="language-plaintext highlight
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
 
-<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.CategoryDao"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.CategoryDAO"</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">"create"</span><span class="nt">&gt;</span>
 insert into category (category) values (#{category})
 <span class="nt">&lt;/insert&gt;</span>
 
-<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"read"</span> <span class="na">resultType=</span><span class="s">"CategoryDto"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"read"</span> <span class="na">resultType=</span><span class="s">"CategoryDTO"</span><span class="nt">&gt;</span>
 select * from category where category_id = #{categoryId}
 <span class="nt">&lt;/select&gt;</span>
 
@@ -454,7 +454,7 @@ where category_id = #{categoryId}
 
 <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">"delete"</span><span class="nt">&gt;</span> delete from category where category_id = #{categoryId} <span class="nt">&lt;/delete&gt;</span>
 
-<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultType=</span><span class="s">"CategoryDto"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultType=</span><span class="s">"CategoryDTO"</span><span class="nt">&gt;</span>
 <span class="cp">&lt;![CDATA[ select * from category where category_id &gt; 0 order by category_id desc ]]&gt;</span>
 <span class="nt">&lt;/select&gt;</span>
 
@@ -536,7 +536,7 @@ where document_id = #{documentId}
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
 
-<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.CommentDao"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.CommentDAO"</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getComment"</span> <span class="na">type=</span><span class="s">"CommentDTO"</span><span class="nt">&gt;</span>
 	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"board"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">javaType=</span><span class="s">"BoardDTO"</span> <span class="na">select=</span><span class="s">"getBoard"</span> <span class="nt">/&gt;</span>
