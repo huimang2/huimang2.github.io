@@ -412,11 +412,11 @@ into the {body} of the default.hbs template -->
 
 <h1 id="프로퍼티-설정">프로퍼티 설정</h1>
 
-<p>스프링 부트에서는 Gradle 빌드툴을 사용하여 빈(Bean)이 자동으로 등록되고, 빈에 대한 설정은 <code class="language-plaintext highlighter-rouge">application.properties</code> 파일에 작성했지만, 레거시에서는 빈을 직접 등록합니다. 레거시 앱의 빈 등록은 <code class="language-plaintext highlighter-rouge">src/main/webapp/WEB-INF/spring/appServlet/root-context.xml</code> 파일에 작성합니다.</p>
+<p>스프링 부트에서는 Gradle 빌드툴을 사용하여 빈(Bean)이 자동으로 등록되고, 빈에 대한 설정은 <code class="language-plaintext highlighter-rouge">application.properties</code> 파일에 작성했지만, 레거시에서는 빈을 직접 등록합니다. 레거시 앱의 빈 등록은 <code class="language-plaintext highlighter-rouge">/src/main/webapp/WEB-INF/spring/appServlet/root-context.xml</code> 파일에 작성합니다.</p>
 
 <p>mybatis를 통해 오라클 DB에 접근하기 위해 <code class="language-plaintext highlighter-rouge">dataSource</code>와 <code class="language-plaintext highlighter-rouge">sqlSessionFactory</code>, <code class="language-plaintext highlighter-rouge">sqlSession</code>을 빈으로 등록하고 property에 다음과 같이 설정값을 입력합니다.</p>
 
-<h6 id="pomxml-5">pom.xml</h6>
+<h6 id="srcmainwebappweb-infspringroot-contextxml">src/main/webapp/WEB-INF/spring/root-context.xml</h6>
 <div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	<span class="nt">&lt;bean</span> <span class="na">class=</span><span class="s">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span> <span class="na">name=</span><span class="s">"dataSource"</span><span class="nt">&gt;</span>
 	  	<span class="nt">&lt;property</span> <span class="na">value=</span><span class="s">"oracle.jdbc.driver.OracleDriver"</span> <span class="na">name=</span><span class="s">"driverClassName"</span><span class="nt">/&gt;</span>
 	  	<span class="nt">&lt;property</span> <span class="na">value=</span><span class="s">"[DB 주소]"</span> <span class="na">name=</span><span class="s">"url"</span><span class="nt">/&gt;</span>
@@ -542,6 +542,15 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
                                     
                                         
                                         
+                                            <li><a href="/java/spring-legacy-service-and-controller">스프링 레거시(Spring legacy) - Service, Controller 작성</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
                                             <li><a href="/java/spring-legacy-dto-and-dao">스프링 레거시(Spring legacy) - DTO, DAO 작성</a></li>
                                         
                                     
@@ -575,8 +584,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
                                   
                                     
                                         
-                                        
-                                            <li><a href="/java/spring_boot">스프링 부트로 게시판 만들기</a></li>
                                         
                                     
                                   
@@ -636,7 +643,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
                         <footer class="read-next-card-footer">
                             <a href="/tag/java/">
                                 
-                                    See all 7 posts  →
+                                    See all 8 posts  →
                                 
                             </a>
                         </footer>

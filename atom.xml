@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>스프링 레거시(Spring legacy) - Service, Controller 작성</title>
+        
+          <description>&lt;h1 id=&quot;서비스service-작성&quot;&gt;서비스(Service) 작성&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Sun, 23 Oct 2022 06:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/java/spring-legacy-service-and-controller</link>
+        <guid isPermaLink="true">https://huimang2.github.io/java/spring-legacy-service-and-controller</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>스프링 레거시(Spring legacy) - DTO, DAO 작성</title>
         
           <description>&lt;h1 id=&quot;dto-작성&quot;&gt;DTO 작성&lt;/h1&gt;
