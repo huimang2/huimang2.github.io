@@ -368,7 +368,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.MemberDAO"</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getMember"</span> <span class="na">type=</span><span class="s">"MemberDTO"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">javaType=</span><span class="s">"GroupDTO"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/resultMap&gt;</span>
 
 <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">"create"</span><span class="nt">&gt;</span>
@@ -377,7 +377,7 @@ values (#{password}, #{email}, #{name}, #{nickName}, #{groupId})
 <span class="nt">&lt;/insert&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"read"</span> <span class="na">resultMap=</span><span class="s">"getMember"</span><span class="nt">&gt;</span>
-select m.* from member m join member_group g on m.group_id = g.group_id where member_id = #{memberId}
+select * from member where member_id = #{memberId}
 <span class="nt">&lt;/select&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getGroup"</span> <span class="na">resultType=</span><span class="s">"GroupDTO"</span><span class="nt">&gt;</span>
@@ -396,19 +396,15 @@ where member_id = #{memberId}
 <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">"delete"</span><span class="nt">&gt;</span> delete from member where member_id = #{memberId} <span class="nt">&lt;/delete&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultMap=</span><span class="s">"getMember"</span><span class="nt">&gt;</span>
-<span class="cp">&lt;![CDATA[ 
-	select m.* from member m 
-	join member_group g on m.group_id = g.group_id 
-	where m.member_id &gt;</span> 0 order by m.member_id desc 
-]]&gt;
+<span class="cp">&lt;![CDATA[ select * from member where m.member_id &gt; 0 order by m.member_id desc ]]&gt;</span>
 <span class="nt">&lt;/select&gt;</span>
 
 <span class="nt">&lt;/mapper&gt;</span>
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">resultMap</code> 이라는 태그가 추가되었습니다. select문의 경우 검색된 entity를 <code class="language-plaintext highlighter-rouge">resultType</code>에 지정된 타입의 객체에 담게 되는데, colmun은 원시값을 가지기 때문에 객체에 참조변수가 있다면 매핑하지 않습니다. 그러므로 연관관계를 통해 entity 자체를 객체에 담기 위해서는 <code class="language-plaintext highlighter-rouge">resultMap</code>을 설정하여 매핑정보를 입력해주면 됩니다.</p>
+<p><code class="language-plaintext highlighter-rouge">resultMap</code> 이라는 태그가 추가되었습니다. select문의 경우 검색된 entity를 <code class="language-plaintext highlighter-rouge">resultType</code>에 지정된 타입의 객체에 담게 되는데, colmun은 원시값을 가지기 때문에 속성값이 참조값을 가진다면 매핑하지 못합니다. 그러므로 연관관계를 통해 entity 자체를 객체의 속성에 담기 위해서는 <code class="language-plaintext highlighter-rouge">resultMap</code>을 설정하여 매핑정보를 입력해주면 됩니다.</p>
 
-<p>resultMap 태그에 <code class="language-plaintext highlighter-rouge">id</code>를 설정하고 <code class="language-plaintext highlighter-rouge">type</code> 속성에 매핑되는 객체 타입을 입력합니다. 하위 태그인 association은 1:N 연관관계를 설정할 수 있습니다. <code class="language-plaintext highlighter-rouge">property</code> 속성에는 resultMap의 type에서 연관관계를 맺을 매개변수명을 입력합니다.</p>
+<p>resultMap 태그에 <code class="language-plaintext highlighter-rouge">id</code>를 설정하고 <code class="language-plaintext highlighter-rouge">type</code> 속성에 매핑되는 객체 타입을 입력합니다. 하위 태그인 association은 1:N 연관관계를 설정할 수 있습니다. <code class="language-plaintext highlighter-rouge">property</code> 속성에는 resultMap의 type에서 연관관계를 맺을 매개변수명을 입력합니다. join 쿼리를 통해 매핑해주거나 select 속성을 사용하여 매핑해줄 수 있는데 저는 후자의 방법으로 매핑했습니다.</p>
 
 <p>아래 코드로 예를 들어보겠습니다.</p>
 
@@ -418,7 +414,7 @@ where member_id = #{memberId}
 <span class="nt">&lt;/resultMap&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"read"</span> <span class="na">resultMap=</span><span class="s">"getMember"</span><span class="nt">&gt;</span>
-select m.* from member m join member_group g on m.group_id = g.group_id where member_id = #{memberId}
+select * from member where member_id = #{memberId}
 <span class="nt">&lt;/select&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getGroup"</span> <span class="na">resultType=</span><span class="s">"GroupDTO"</span><span class="nt">&gt;</span>
@@ -426,8 +422,7 @@ select * from member_group where group_id=#{groupId}
 <span class="nt">&lt;/select&gt;</span>
 </code></pre></div></div>
 
-<p>id가 read인 select 태그에 resultType 속성 대신에 <code class="language-plaintext highlighter-rouge">resultMap</code> 속성을 추가합니다. 해당 select문을 실행시켜 출력된 entity는 resultMap의 <code class="language-plaintext highlighter-rouge">type</code>속성에 입력한 <code class="language-plaintext highlighter-rouge">MemberDTO</code> 타입에 매핑됩니다. 이때 <code class="language-plaintext highlighter-rouge">association</code> 태그의 <code class="language-plaintext highlighter-rouge">select</code> 속성에 입력된 <code class="language-plaintext highlighter-rouge">getGroup</code> select문을 함께 실행시켜 검색된 결과는 <code class="language-plaintext highlighter-rouge">javaType</code> 속성에 입력된 <code class="language-plaintext highlighter-rouge">GroupDTO</code> 타입에 매핑되고, 해당 객체는 <code class="language-plaintext highlighter-rouge">property</code>에 입력된 
-group 매개변수가 참조합니다. <code class="language-plaintext highlighter-rouge">column</code> 속성에는 getGroup select문을 실행시킬 때 매개변수가 되는 column을 입력합니다.</p>
+<p>id가 read인 select 태그에 resultType 속성 대신에 <code class="language-plaintext highlighter-rouge">resultMap</code> 속성을 추가합니다. 해당 select문을 실행시켜 출력된 entity는 resultMap의 <code class="language-plaintext highlighter-rouge">type</code>속성에 입력한 <code class="language-plaintext highlighter-rouge">MemberDTO</code> 타입에 매핑됩니다. 이때 <code class="language-plaintext highlighter-rouge">association</code> 태그의 <code class="language-plaintext highlighter-rouge">select</code> 속성에 입력된 <code class="language-plaintext highlighter-rouge">getGroup</code>이라는 id를 가진 select문을 함께 실행시켜 <code class="language-plaintext highlighter-rouge">property</code>에 입력된 <code class="language-plaintext highlighter-rouge">group</code>이라는 매개변수의 타입인 <code class="language-plaintext highlighter-rouge">groupDTO</code>에 매핑됩니다. <code class="language-plaintext highlighter-rouge">column</code>에 입력된 값은 getGroup select문의 매개변수로 전달됩니다.</p>
 
 <p>동일한 방식으로 각각의 mapper를 만들어줍시다.</p>
 
@@ -471,10 +466,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getBoard"</span> <span class="na">type=</span><span class="s">"BoardDTO"</span><span class="nt">&gt;</span>
 	<span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">"documentId"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"category"</span> <span class="na">column=</span><span class="s">"category_id"</span> <span class="na">javaType=</span><span class="s">"CategoryDTO"</span> <span class="na">select=</span><span class="s">"getCategory"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">javaType=</span><span class="s">"MemberDTO"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">javaType=</span><span class="s">"GroupDTO"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;collection</span> <span class="na">property=</span><span class="s">"commentList"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">javaType=</span><span class="s">"java.lang.ArrayList"</span> <span class="na">ofType=</span><span class="s">"CommentDTO"</span> <span class="na">select=</span><span class="s">"getComments"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"isNotice"</span> <span class="na">column=</span><span class="s">"is_notice"</span> <span class="na">typeHandler=</span><span class="s">"kro.rubisco.config.YNTypeHandler"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"category"</span> <span class="na">column=</span><span class="s">"category_id"</span> <span class="na">select=</span><span class="s">"getCategory"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;collection</span> <span class="na">property=</span><span class="s">"commentList"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">select=</span><span class="s">"getComments"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/resultMap&gt;</span>
+
+<span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getBoardList"</span> <span class="na">type=</span><span class="s">"BoardDTO"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">"documentId"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"isNotice"</span> <span class="na">column=</span><span class="s">"is_notice"</span> <span class="na">typeHandler=</span><span class="s">"kro.rubisco.config.YNTypeHandler"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"category"</span> <span class="na">column=</span><span class="s">"category_id"</span> <span class="na">select=</span><span class="s">"getCategory"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/resultMap&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getCategory"</span> <span class="na">resultType=</span><span class="s">"CategoryDTO"</span><span class="nt">&gt;</span>
@@ -495,21 +499,20 @@ select * from comments where document_id=#{documentId}
 
 <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">"create"</span><span class="nt">&gt;</span>
 insert into board (category_id, is_notice, title, content, member_id)
-values (#{categoryId}, #{isNotice}, #{title}, #{content}, #{memberId})
+values (#{categoryId}, #{isNotice, typeHandler=kro.rubisco.config.YNTypeHandler}, #{title}, #{content}, #{memberId})
+<span class="nt">&lt;selectKey</span> <span class="na">keyProperty=</span><span class="s">"documentId"</span> <span class="na">order=</span><span class="s">"AFTER"</span><span class="nt">&gt;</span>
+select max(document_id) as document_id from board
+<span class="nt">&lt;/selectKey&gt;</span>
 <span class="nt">&lt;/insert&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"read"</span> <span class="na">resultMap=</span><span class="s">"getBoard"</span><span class="nt">&gt;</span> 
-select b.* from board b
-join category c on b.category_id = c.category_id 
-join member m on b.member_id = m.member_id
-left outer join comments cmt on b.document_id = cmt.document_id
-where b.document_id = #{documentId}
+select * from board where document_id = #{documentId}
 <span class="nt">&lt;/select&gt;</span>
 
 <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"update"</span><span class="nt">&gt;</span>
 update board 
 set category_id=#{categoryId}, 
-	is_notice=#{isNotice}, 
+	is_notice=#{isNotice, typeHandler=kro.rubisco.config.YNTypeHandler}, 
 	title=#{title}, 
 	content=#{content},  
 	update_date=SYSDATE
@@ -518,14 +521,8 @@ where document_id = #{documentId}
 
 <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">"delete"</span><span class="nt">&gt;</span> delete from board where document_id = #{documentId} <span class="nt">&lt;/delete&gt;</span>
 
-<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultMap=</span><span class="s">"getBoard"</span><span class="nt">&gt;</span>
-<span class="cp">&lt;![CDATA[ 
-	select b.* from board b
-	join category c on b.category_id = c.category_id 
-	join member m on b.member_id = m.member_id
-	left outer join comments cmt on b.document_id = cmt.document_id
-	where b.document_id &gt;</span> 0 order by b.document_id desc
-]]&gt;
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultMap=</span><span class="s">"getBoardList"</span><span class="nt">&gt;</span>
+<span class="cp">&lt;![CDATA[ select * from board b where b.document_id &gt; 0 order by b.document_id desc ]]&gt;</span>
 <span class="nt">&lt;/select&gt;</span>
 
 <span class="nt">&lt;/mapper&gt;</span>
@@ -540,8 +537,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.CommentDAO"</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getComment"</span> <span class="na">type=</span><span class="s">"CommentDTO"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"board"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">javaType=</span><span class="s">"BoardDTO"</span> <span class="na">select=</span><span class="s">"getBoard"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">javaType=</span><span class="s">"MemberDTO"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"board"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">select=</span><span class="s">"getBoard"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/resultMap&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getBoard"</span> <span class="na">resultType=</span><span class="s">"BoardDTO"</span><span class="nt">&gt;</span>
@@ -558,10 +555,7 @@ values (#{documentId}, #{content}, #{memberId})
 <span class="nt">&lt;/insert&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"read"</span> <span class="na">resultMap=</span><span class="s">"getComment"</span><span class="nt">&gt;</span>
-select cmt.* from comments cmt
-join board b on cmt.document_id = b.document_id 
-join member m on cmt.member_id = m.member_id
-where cmt.comment_id = #{commentId}
+select * from comments where cmt.comment_id = #{commentId}
 <span class="nt">&lt;/select&gt;</span>
 
 <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"update"</span><span class="nt">&gt;</span>
@@ -575,12 +569,7 @@ where comment_id = #{commentId}
 <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">"delete"</span><span class="nt">&gt;</span> delete from comments where comment_id = #{commentId} <span class="nt">&lt;/delete&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultMap=</span><span class="s">"getComment"</span><span class="nt">&gt;</span>
-<span class="cp">&lt;![CDATA[ 
-	select cmt.* from comments cmt
-	join board b on cmt.document_id = b.document_id 
-	join member m on cmt.member_id = m.member_id
-	where comment_id &gt;</span> 0 order by comment_id desc
-]]&gt;
+<span class="cp">&lt;![CDATA[ select * from comments where comment_id &gt; 0 order by comment_id desc ]]&gt;</span>
 <span class="nt">&lt;/select&gt;</span>
 
 <span class="nt">&lt;/mapper&gt;</span>
