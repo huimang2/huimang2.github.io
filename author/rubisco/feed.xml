@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-10-26T03:57:46+09:00</updated>
+  <updated>2022-10-26T05:13:21+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -501,7 +501,7 @@ select count(*) from board where document_id &amp;gt; 0
 &lt;h1 id=&quot;소스코드&quot;&gt;소스코드&lt;/h1&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/file/legacy/ex.zip&quot; target=&quot;_blank&quot;&gt;mapper.zip&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/file/legacy/ex_paging.zip&quot; target=&quot;_blank&quot;&gt;ex_paging.zip&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</content>
 
       
