@@ -522,7 +522,7 @@ where document_id = #{documentId}
 <span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">"delete"</span><span class="nt">&gt;</span> delete from board where document_id = #{documentId} <span class="nt">&lt;/delete&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultMap=</span><span class="s">"getBoardList"</span><span class="nt">&gt;</span>
-<span class="cp">&lt;![CDATA[ select * from board b where b.document_id &gt; 0 order by b.document_id desc ]]&gt;</span>
+<span class="cp">&lt;![CDATA[ select * from board where document_id &gt; 0 order by document_id desc ]]&gt;</span>
 <span class="nt">&lt;/select&gt;</span>
 
 <span class="nt">&lt;/mapper&gt;</span>
@@ -664,6 +664,15 @@ where comment_id = #{commentId}
                                     
                                         
                                         
+                                            <li><a href="/java/spring-legacy-paging">스프링 레거시(Spring legacy) - 페이징</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
                                             <li><a href="/java/spring-legacy-service-and-controller">스프링 레거시(Spring legacy) - Service, Controller 작성</a></li>
                                         
                                     
@@ -685,8 +694,6 @@ where comment_id = #{commentId}
                                   
                                     
                                         
-                                        
-                                            <li><a href="/java/spring-legacy-setting">스프링 레거시(Spring legacy) - 설정</a></li>
                                         
                                     
                                   
@@ -765,7 +772,7 @@ where comment_id = #{commentId}
                         <footer class="read-next-card-footer">
                             <a href="/tag/java/">
                                 
-                                    See all 8 posts  →
+                                    See all 9 posts  →
                                 
                             </a>
                         </footer>

@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>스프링 레거시(Spring legacy) - 페이징</title>
+        
+          <description>&lt;p&gt;저번 글에 이어서 board 모듈에 페이징 기능을 넣어보겠습니다. 스프링 부트에서는 JPA의 Pageable 인터페이스를 통해 쉽게 구현할 수 있지만 레거시에서는 객체를 만들어야합니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 25 Oct 2022 06:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/java/spring-legacy-paging</link>
+        <guid isPermaLink="true">https://huimang2.github.io/java/spring-legacy-paging</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>스프링 레거시(Spring legacy) - Service, Controller 작성</title>
         
           <description>&lt;h1 id=&quot;서비스service-작성&quot;&gt;서비스(Service) 작성&lt;/h1&gt;
