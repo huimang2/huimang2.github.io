@@ -307,10 +307,15 @@ into the {body} of the default.hbs template -->
 <span class="cp">&lt;![CDATA[
 select * 
 from (
-	select rownum as num, b.*
-	from (select * from board order by document_id desc) b
+	select rownum num, b.*
+	from (
+		select * from board 
+		where document_id &gt;</span> 0
+		order by document_id desc
+	) b
+	WHERE rownum <span class="err">&lt;</span>= #{last}
 )
-where document_id &gt;</span> 0 and num between #{first} and #{last}
+where num &gt;= #{first}
 ]]&gt;
 <span class="nt">&lt;/select&gt;</span>
 ...
