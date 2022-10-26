@@ -397,44 +397,6 @@ where num &gt;</span>= #{board.first}
 
 <p>조건문에 따라 검색되는 튜플의 수가 달라지므로, 페이지를 올바르게 나타내기 위해서 <code class="language-plaintext highlighter-rouge">getCount</code> select 쿼리도 다음과 같이 수정합니다.</p>
 
-<h6 id="boardmapperxml-1">boardMapper.xml</h6>
-<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
-<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getCount"</span> <span class="na">resultType=</span><span class="s">"long"</span><span class="nt">&gt;</span>
-<span class="cp">&lt;![CDATA[
-select count(*) from board b
-inner join member m on b.member_id = m.member_id
-]]&gt;</span>
-<span class="nt">&lt;if</span> <span class="na">test=</span><span class="s">"target neq null and keyword neq null"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;where&gt;</span>
-		<span class="nt">&lt;choose&gt;</span>
-			<span class="nt">&lt;when</span> <span class="na">test=</span><span class="s">"target.toString() eq 'title'"</span><span class="nt">&gt;</span>
-				<span class="cp">&lt;![CDATA[ 
-					and b.title like '%'||#{keyword}||'%'
-				]]&gt;</span>
-			<span class="nt">&lt;/when&gt;</span>
-			<span class="nt">&lt;when</span> <span class="na">test=</span><span class="s">"target.toString() eq 'content'"</span><span class="nt">&gt;</span>
-				<span class="cp">&lt;![CDATA[ 
-					and b.content like '%'||#{keyword}||'%'
-				]]&gt;</span>
-			<span class="nt">&lt;/when&gt;</span>
-			<span class="nt">&lt;when</span> <span class="na">test=</span><span class="s">"target.toString() eq 'titleAndContent'"</span><span class="nt">&gt;</span>
-				<span class="cp">&lt;![CDATA[ 
-					and b.title like '%'||#{keyword}||'%'
-					or b.content like '%'||#{keyword}||'%'
-				]]&gt;</span>
-			<span class="nt">&lt;/when&gt;</span>
-			<span class="nt">&lt;when</span> <span class="na">test=</span><span class="s">"target.toString() eq 'nickName'"</span><span class="nt">&gt;</span>
-				<span class="cp">&lt;![CDATA[ 
-					and m.nick_name like '%'||#{keyword}||'%'
-				]]&gt;</span>
-			<span class="nt">&lt;/when&gt;</span>
-		<span class="nt">&lt;/choose&gt;</span>
-	<span class="nt">&lt;/where&gt;</span>
-<span class="nt">&lt;/if&gt;</span>
-<span class="nt">&lt;/select&gt;</span>
-...
-</code></pre></div></div>
-
 <h1 id="컨트롤러-수정">컨트롤러 수정</h1>
 
 <p>클라이언트가 검색기능을 요청하면 해당 서비스를 호출하도록 BoardController의 <code class="language-plaintext highlighter-rouge">getBoardListView</code> 메소드를 수정해주세요.</p>

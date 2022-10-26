@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/java/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-10-26T22:47:59+09:00</updated>
+  <updated>2022-10-26T22:49:20+09:00</updated>
   <id>https://huimang2.github.io/tag/java/feed.xml</id>
 
   
@@ -226,44 +226,6 @@ where num &amp;gt;&lt;/span&gt;= #{board.first}
 &lt;p&gt;member 테이블의 nick_name 컬럼도 검색의 대상이 되므로 join문을 통해 쿼리를 작성합니다. like 뒤에 문자열을 더하는 방법은 DB마다 차이가 있는데, 오라클 DB의 경우 &lt;code class=&quot;language-plaintext bgcolor yellow highlighter-rouge&quot; style=&quot;color: orange&quot;&gt;'%'||#{search}||'%'&lt;/code&gt; 형태로 작성하여 문자열을 더할 수 있습니다.&lt;/p&gt;
 
 &lt;p&gt;조건문에 따라 검색되는 튜플의 수가 달라지므로, 페이지를 올바르게 나타내기 위해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getCount&lt;/code&gt; select 쿼리도 다음과 같이 수정합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;boardmapperxml-1&quot;&gt;boardMapper.xml&lt;/h6&gt;
-&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;select&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;getCount&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resultType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;long&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;cp&quot;&gt;&amp;lt;![CDATA[
-select count(*) from board b
-inner join member m on b.member_id = m.member_id
-]]&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;if&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;test=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;target neq null and keyword neq null&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;where&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;choose&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;when&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;test=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;target.toString() eq 'title'&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-				&lt;span class=&quot;cp&quot;&gt;&amp;lt;![CDATA[ 
-					and b.title like '%'||#{keyword}||'%'
-				]]&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;/when&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;when&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;test=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;target.toString() eq 'content'&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-				&lt;span class=&quot;cp&quot;&gt;&amp;lt;![CDATA[ 
-					and b.content like '%'||#{keyword}||'%'
-				]]&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;/when&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;when&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;test=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;target.toString() eq 'titleAndContent'&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-				&lt;span class=&quot;cp&quot;&gt;&amp;lt;![CDATA[ 
-					and b.title like '%'||#{keyword}||'%'
-					or b.content like '%'||#{keyword}||'%'
-				]]&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;/when&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;when&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;test=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;target.toString() eq 'nickName'&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-				&lt;span class=&quot;cp&quot;&gt;&amp;lt;![CDATA[ 
-					and m.nick_name like '%'||#{keyword}||'%'
-				]]&amp;gt;&lt;/span&gt;
-			&lt;span class=&quot;nt&quot;&gt;&amp;lt;/when&amp;gt;&lt;/span&gt;
-		&lt;span class=&quot;nt&quot;&gt;&amp;lt;/choose&amp;gt;&lt;/span&gt;
-	&lt;span class=&quot;nt&quot;&gt;&amp;lt;/where&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/if&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/select&amp;gt;&lt;/span&gt;
-...
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h1 id=&quot;컨트롤러-수정&quot;&gt;컨트롤러 수정&lt;/h1&gt;
 
