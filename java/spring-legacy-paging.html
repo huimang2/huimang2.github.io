@@ -313,7 +313,7 @@ from (
 		where document_id &gt;</span> 0
 		order by document_id desc
 	) b
-	WHERE rownum <span class="err">&lt;</span>= #{last}
+	where rownum <span class="err">&lt;</span>= #{last}
 )
 where num &gt;= #{first}
 ]]&gt;

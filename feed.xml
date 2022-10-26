@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-10-26T13:54:13+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">스프링 레거시(Spring legacy) - 페이징</title><link href="https://huimang2.github.io/java/spring-legacy-paging" rel="alternate" type="text/html" title="스프링 레거시(Spring legacy) - 페이징" /><published>2022-10-25T06:00:00+09:00</published><updated>2022-10-25T06:00:00+09:00</updated><id>https://huimang2.github.io/java/spring-legacy-paging</id><content type="html" xml:base="https://huimang2.github.io/java/spring-legacy-paging">&lt;p&gt;저번 글에 이어서 board 모듈에 페이징 기능을 넣어보겠습니다. 스프링 부트에서는 JPA의 Pageable 인터페이스를 통해 쉽게 구현할 수 있지만 레거시에서는 객체를 만들어야합니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-10-26T13:56:44+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">스프링 레거시(Spring legacy) - 페이징</title><link href="https://huimang2.github.io/java/spring-legacy-paging" rel="alternate" type="text/html" title="스프링 레거시(Spring legacy) - 페이징" /><published>2022-10-25T06:00:00+09:00</published><updated>2022-10-25T06:00:00+09:00</updated><id>https://huimang2.github.io/java/spring-legacy-paging</id><content type="html" xml:base="https://huimang2.github.io/java/spring-legacy-paging">&lt;p&gt;저번 글에 이어서 board 모듈에 페이징 기능을 넣어보겠습니다. 스프링 부트에서는 JPA의 Pageable 인터페이스를 통해 쉽게 구현할 수 있지만 레거시에서는 객체를 만들어야합니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;dto-작성&quot;&gt;DTO 작성&lt;/h1&gt;
 
@@ -104,7 +104,7 @@ from (
 		where document_id &amp;gt;&lt;/span&gt; 0
 		order by document_id desc
 	) b
-	WHERE rownum &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;= #{last}
+	where rownum &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;= #{last}
 )
 where num &amp;gt;= #{first}
 ]]&amp;gt;

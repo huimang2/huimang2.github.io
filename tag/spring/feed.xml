@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/spring/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-10-26T13:54:13+09:00</updated>
+  <updated>2022-10-26T13:56:44+09:00</updated>
   <id>https://huimang2.github.io/tag/spring/feed.xml</id>
 
   
@@ -143,7 +143,7 @@ from (
 		where document_id &amp;gt;&lt;/span&gt; 0
 		order by document_id desc
 	) b
-	WHERE rownum &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;= #{last}
+	where rownum &lt;span class=&quot;err&quot;&gt;&amp;lt;&lt;/span&gt;= #{last}
 )
 where num &amp;gt;= #{first}
 ]]&amp;gt;
