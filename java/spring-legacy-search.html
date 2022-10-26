@@ -447,7 +447,6 @@ inner join member m on b.member_id = m.member_id
         <span class="nc">SearchDTO</span> <span class="n">search</span><span class="o">,</span>
         <span class="nc">Model</span> <span class="n">model</span>
 	<span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-	    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">search</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
 		<span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"pageInfo"</span><span class="o">,</span> <span class="n">boardService</span><span class="o">.</span><span class="na">listAll</span><span class="o">(</span><span class="n">boardPage</span><span class="o">,</span> <span class="n">search</span><span class="o">));</span>
 	    <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"boardList"</span><span class="o">,</span> <span class="n">boardPage</span><span class="o">.</span><span class="na">getContentList</span><span class="o">());</span>
 		<span class="k">return</span> <span class="s">"board/getBoardList"</span><span class="o">;</span>
