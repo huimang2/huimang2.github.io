@@ -434,13 +434,18 @@ where document_id = #{documentId}
 
 <p><code class="language-plaintext highlighter-rouge">DAO</code>는 Data Access Object의 약자로, Repository 객체에 해당하는 데이터 접근 객체입니다. 인터페이스를 작성해서 mapper에 매핑하면 DAO 객체를 생성하여 sqlSession을 통해 sql문을 실행할 수 있습니다.</p>
 
+<p>mapper에 의하여 매핑되는 Mapper 객체라는 것을 선언하기위해 <code class="language-plaintext highlighter-rouge">@Mapper</code> 어노테이션을 붙여줍시다.</p>
+
 <h6 id="krorubiscodaoboarddaojava">/kro/rubisco/dao/BoardDAO.java</h6>
 <div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.dao</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.annotations.Mapper</span><span class="o">;</span>
+
 <span class="kn">import</span> <span class="nn">kro.rubisco.dto.BoardDTO</span><span class="o">;</span>
 
+<span class="nd">@Mapper</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BoardDAO</span> <span class="o">{</span>
 	
 	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
@@ -460,8 +465,11 @@ where document_id = #{documentId}
 
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.annotations.Mapper</span><span class="o">;</span>
+
 <span class="kn">import</span> <span class="nn">kro.rubisco.dto.CategoryDTO</span><span class="o">;</span>
 
+<span class="nd">@Mapper</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CategoryDAO</span> <span class="o">{</span>
 
 	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">CategoryDTO</span> <span class="n">category</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
@@ -481,8 +489,11 @@ where document_id = #{documentId}
 
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.annotations.Mapper</span><span class="o">;</span>
+
 <span class="kn">import</span> <span class="nn">kro.rubisco.dto.CommentDTO</span><span class="o">;</span>
 
+<span class="nd">@Mapper</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CommentDAO</span> <span class="o">{</span>
 
 	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">CommentDTO</span> <span class="n">comment</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
@@ -502,8 +513,11 @@ where document_id = #{documentId}
 
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.annotations.Mapper</span><span class="o">;</span>
+
 <span class="kn">import</span> <span class="nn">kro.rubisco.dto.GroupDTO</span><span class="o">;</span>
 
+<span class="nd">@Mapper</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">GroupDAO</span> <span class="o">{</span>
 	
 	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">GroupDTO</span> <span class="n">group</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
@@ -523,8 +537,11 @@ where document_id = #{documentId}
 
 <span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
 
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.annotations.Mapper</span><span class="o">;</span>
+
 <span class="kn">import</span> <span class="nn">kro.rubisco.dto.MemberDTO</span><span class="o">;</span>
 
+<span class="nd">@Mapper</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MemberDAO</span> <span class="o">{</span>
 
 	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
