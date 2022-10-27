@@ -1,4 +1,213 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-10-26T23:11:17+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">스프링 레거시(Spring legacy) - 검색기능</title><link href="https://huimang2.github.io/java/spring-legacy-search" rel="alternate" type="text/html" title="스프링 레거시(Spring legacy) - 검색기능" /><published>2022-10-26T06:00:00+09:00</published><updated>2022-10-26T06:00:00+09:00</updated><id>https://huimang2.github.io/java/spring-legacy-search</id><content type="html" xml:base="https://huimang2.github.io/java/spring-legacy-search">&lt;p&gt;이번에는 게시글에 검색기능을 넣어보도록 하겠습니다. 스프링 부트에서는 QueryDSL을 통해 동적으로 쿼리문을 생성할 수 있었는데 레거시에서는 매퍼에서 다양한 태그를 통해 쿼리를 동적으로 작성할 수 있습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-10-27T21:00:17+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">스프링 레거시(Spring legacy) - 예외처리</title><link href="https://huimang2.github.io/java/spring-legacy-exception" rel="alternate" type="text/html" title="스프링 레거시(Spring legacy) - 예외처리" /><published>2022-10-27T06:00:00+09:00</published><updated>2022-10-27T06:00:00+09:00</updated><id>https://huimang2.github.io/java/spring-legacy-exception</id><content type="html" xml:base="https://huimang2.github.io/java/spring-legacy-exception">&lt;p&gt;이번 글에서는 클라이언트 요청에 대한 예외 처리를 해보겠습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;예외처리&quot;&gt;예외처리&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;예외(exception)&lt;/code&gt;은 크게 서블릿 컨테이너에서 발생하는 예외와 스프링 컨테이너에서 발생하는 예외로 나눌 수 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/spring-legacy/img28.png&quot; alt=&quot;img28&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;스프링MCV에서 예외의 대부분은 스프링 컨테이너 내부에서 발생합니다. 스프링 컨테이너에서 발생하는 예외는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HandlerExceptionResolver&lt;/code&gt;를 통해 처리되며 다양한 방식으로 접근할 수 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/spring-legacy/img29.png&quot; alt=&quot;img29&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;웹-어플리케이션-레벨-예외-처리&quot;&gt;웹 어플리케이션 레벨 예외 처리&lt;/h1&gt;
+
+&lt;p&gt;클라이언트의 요청을 DispatcherServlet에서 처리하기 전에 예외가 발생하면 HandlerExceptionResolver가 예외처리를 하지 못합니다. 이 경우 Web Application 레벨에서 예외를 처리해야합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;필터를-통한-예외-처리&quot;&gt;필터를 통한 예외 처리&lt;/h2&gt;
+
+&lt;p&gt;우선 필터를 통해서 예외처리를 할 수 있습니다. HandlerExceptionResolver를 주입받아 필터에서 발생하는 예외를 HandlerExceptionResolver로 보내서 처리하면 됩니다. 스프링 시큐리티에서 예외처리를 하는 방법입니다. 필터에 대하여 알아야하기 때문에 생략하겠습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;webxml-에서-에러페이지-설정&quot;&gt;web.xml 에서 에러페이지 설정&lt;/h2&gt;
+
+&lt;p&gt;다음으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;web.xml&lt;/code&gt;에 에러페이지를 설정하여 예외처리를 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;우선 에러페이지 템플릿을 작성하도록 합시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;srcmainwebappweb-infviewserrorerrorjsp&quot;&gt;/src/main/webapp/WEB-INF/views/error/error.jsp&lt;/h6&gt;
+&lt;div data-lang=&quot;JSP&quot; class=&quot;language-jsp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;%@ page &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;language=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;java&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt; contentType=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/html; charset=UTF-8&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;%@ taglib &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;uri=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://java.sun.com/jsp/jstl/core&quot;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt; prefix=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;c&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;%&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;meta&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;charset=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;UTF-8&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;오류발생&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;오류 발생&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이제 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;web.xml&lt;/code&gt; 파일에 에러페이지를 설정해주면 됩니다. 예외타입 또는 HTTP Status 코드별로 에러페이지를 설정할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;먼저 HTTP Status 코드에 따른 에러페이지를 설정해보겠습니다. 아래 코드와 같이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;error-page&lt;/code&gt; 태그를 추가합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;srcmainwebappweb-infwebxml&quot;&gt;src/main/webapp/WEB-INF/web.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;web-app&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;2.5&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://java.sun.com/xml/ns/javaee&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xmlns:xsi=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;xsi:schemaLocation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- The definition of the Root Spring Container shared by all Servlets and Filters --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;context-param&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;param-name&amp;gt;&lt;/span&gt;contextConfigLocation&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param-name&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;param-value&amp;gt;&lt;/span&gt;/WEB-INF/spring/root-context.xml&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param-value&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/context-param&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Creates the Spring Container shared by all Servlets and Filters --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;listener&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;listener-class&amp;gt;&lt;/span&gt;org.springframework.web.context.ContextLoaderListener&lt;span class=&quot;nt&quot;&gt;&amp;lt;/listener-class&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/listener&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Processes application requests --&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;appServlet&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-class&amp;gt;&lt;/span&gt;org.springframework.web.servlet.DispatcherServlet&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-class&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;init-param&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;param-name&amp;gt;&lt;/span&gt;contextConfigLocation&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param-name&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;param-value&amp;gt;&lt;/span&gt;/WEB-INF/spring/appServlet/servlet-context.xml&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param-value&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/init-param&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;load-on-startup&amp;gt;&lt;/span&gt;1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/load-on-startup&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet&amp;gt;&lt;/span&gt;
+        
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-mapping&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;servlet-name&amp;gt;&lt;/span&gt;appServlet&lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-name&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/&lt;span class=&quot;nt&quot;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/servlet-mapping&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-name&amp;gt;&lt;/span&gt;encodingFilter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-name&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-class&amp;gt;&lt;/span&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-class&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;init-param&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;param-name&amp;gt;&lt;/span&gt;encoding&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param-name&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;param-value&amp;gt;&lt;/span&gt;UTF-8&lt;span class=&quot;nt&quot;&gt;&amp;lt;/param-value&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/init-param&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-name&amp;gt;&lt;/span&gt;httpMethodFilter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-name&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-class&amp;gt;&lt;/span&gt;org.springframework.web.filter.HiddenHttpMethodFilter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-class&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-mapping&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-name&amp;gt;&lt;/span&gt;encodingFilter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-name&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/*&lt;span class=&quot;nt&quot;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-mapping&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-mapping&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;filter-name&amp;gt;&lt;/span&gt;httpMethodFilter&lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-name&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;url-pattern&amp;gt;&lt;/span&gt;/*&lt;span class=&quot;nt&quot;&gt;&amp;lt;/url-pattern&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/filter-mapping&amp;gt;&lt;/span&gt;
+    
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;error-page&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;error-code&amp;gt;&lt;/span&gt;404&lt;span class=&quot;nt&quot;&gt;&amp;lt;/error-code&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;location&amp;gt;&lt;/span&gt;/WEB-INF/views/error/error.jsp&lt;span class=&quot;nt&quot;&gt;&amp;lt;/location&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/error-page&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/web-app&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;매핑되지 않는 주소(localhost:8080/abcd)로 접속하면 404 에러가 발생하므로, 위에서 설정한 에러 페이지를 출력하게 됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/spring-legacy/img30.png&quot; alt=&quot;img30&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번에는 예외타입을 통해 에러 페이지를 설정해보겠습니다. 위에 error-page 하위 태그인 error-code를 exception-type 으로 변경하세요.&lt;/p&gt;
+
+&lt;h6 id=&quot;srcmainwebappweb-infwebxml-1&quot;&gt;src/main/webapp/WEB-INF/web.xml&lt;/h6&gt;
+&lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;...
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;error-page&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;exception-type&amp;gt;&lt;/span&gt;kro.rubisco.config.TestException&lt;span class=&quot;nt&quot;&gt;&amp;lt;/exception-type&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;location&amp;gt;&lt;/span&gt;/WEB-INF/views/error/error.jsp&lt;span class=&quot;nt&quot;&gt;&amp;lt;/location&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/error-page&amp;gt;&lt;/span&gt;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;TestException이 던져지면 설정한 에러 페이지를 출력하게 됩니다. 위에 작성한 예외 타입은 임시로 작성한 예외타입입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;krorubiscoconfigtestexceptionjava&quot;&gt;/kro/rubisco/config/TestException.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;kro.rubisco.config&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;lombok.NoArgsConstructor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@NoArgsConstructor&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TestException&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;BoardController의 getBoardListView 메소드를 아래와 같이 수정하고 localhost:8080/board 로 접속하면 동일한 에러 페이지가 출력됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;krorubiscocontrollerboardcontrollerjava&quot;&gt;/kro/rubisco/controller/BoardController.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@GetMapping&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Model&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getBoardListView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;PageDTO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;BoardDTO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;boardPage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; 
+        &lt;span class=&quot;nc&quot;&gt;SearchDTO&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;search&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;Model&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;TestException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;dispatcherservlet의-예외-처리&quot;&gt;DispatcherServlet의 예외 처리&lt;/h1&gt;
+
+&lt;p&gt;처음 설명한 것과 같이 스프링 컨테이너의 경우 DispatcherServlet에서 발생하는 예외는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HandlerExceptionResolver&lt;/code&gt;가 처리합니다.&lt;/p&gt;
+
+&lt;p&gt;스프링에서 기본적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ExceptionHandlerExceptionResolver&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ResponseStatusExceptionResolver&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DefaultHandlerExceptionResolver&lt;/code&gt;를 제공하고 있으며, 순서대로 우선순위를 가집니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;exceptionhandlerexceptionresolver&quot;&gt;ExceptionHandlerExceptionResolver&lt;/h2&gt;
+
+&lt;p&gt;해당 resolver는 컨트롤러 레벨에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@ExceptionHandler&lt;/code&gt; 어노테이션이 붙은 메소드를 호출하여 예외처리를 합니다.&lt;/p&gt;
+
+&lt;p&gt;위에서 web.xml에 작성한 error-page 태그를 지우고 BoardController에 다음 메소드를 작성해보세요.&lt;/p&gt;
+
+&lt;h6 id=&quot;krorubiscocontrollerboardcontrollerjava-1&quot;&gt;/kro/rubisco/controller/BoardController.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@ExceptionHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;TestException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ModelAndView&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;testExceptionHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;ModelAndView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ModelAndView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HttpStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;BAD_REQUEST&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setViewName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/error/error&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;BoardController에 매핑되는 request에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TestException&lt;/code&gt; 타입의 예외가 발생하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;testExceptionHandler&lt;/code&gt; 메소드가 호출됩니다. 해당 메소드는 상태코드를 400으로 설정하여 위에서 작성한 에러 페이지를 response 합니다.&lt;/p&gt;
+
+&lt;p&gt;만약 컨트롤러 레벨이 아니라 전역 레벨에서 예외처리를 하고자 한다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@ControllerAdvice&lt;/code&gt; 어노테이션이 붙은 클래스를 작성하면 됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;krorubiscocontrollerexceptionhandlingcontrollerjava&quot;&gt;/kro/rubisco/controller/ExceptionHandlingController.java&lt;/h6&gt;
+&lt;div data-lang=&quot;JAVA&quot; class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;kro.rubisco.controller&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;javax.servlet.http.HttpServletRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.http.HttpStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.bind.annotation.ControllerAdvice&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.bind.annotation.ExceptionHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.bind.annotation.ResponseStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;org.springframework.web.servlet.ModelAndView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;@ControllerAdvice&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ExceptionHandlingController&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@ResponseStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HttpStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;BAD_REQUEST&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@ExceptionHandler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ModelAndView&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;handleBadRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HttpServletRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;ModelAndView&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mv&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ModelAndView&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addObject&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;exception&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;mv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setViewName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;error/error&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;responsestatusexceptionresolver&quot;&gt;ResponseStatusExceptionResolver&lt;/h2&gt;
+
+&lt;p&gt;해당 resolver는 예외에 따라 HTTP State Code를 지정해줍니다. 위에서 작성한 ExceptionHandlingController의 handleBadRequest 메소드에 보면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@ResponseStatus&lt;/code&gt; 어노테이션을 통해 상태코드를 설정해 주었습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;defaulthandlerexceptionresolver&quot;&gt;DefaultHandlerExceptionResolver&lt;/h2&gt;
+
+&lt;p&gt;해당 resolver는 스프링 컨테이너 내부에서 발생되는 기본적인 예외들을 처리합니다. 즉, 예외처리를 따로 해주지 않아도 제공되는 해당 resolver에 의하여 예외처리가 됩니다. 예를 들어 파라미터 타입이 일치하지 않은 경우 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TypeMismatchException&lt;/code&gt;이 발생하는데, DispatcherServlet에서 발생한 오류이므로 상태코드는 500이 됩니다. 하지만 DefaultHandlerExceptionResolver가 상태코드를 400으로 설정하여 에러페이지를 response 하므로 클라이언트에서는 400 코드를 받게 됩니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="java" /><category term="java" /><category term="spring" /><summary type="html">이번 글에서는 클라이언트 요청에 대한 예외 처리를 해보겠습니다.</summary></entry><entry><title type="html">스프링 레거시(Spring legacy) - 검색기능</title><link href="https://huimang2.github.io/java/spring-legacy-search" rel="alternate" type="text/html" title="스프링 레거시(Spring legacy) - 검색기능" /><published>2022-10-26T06:00:00+09:00</published><updated>2022-10-26T06:00:00+09:00</updated><id>https://huimang2.github.io/java/spring-legacy-search</id><content type="html" xml:base="https://huimang2.github.io/java/spring-legacy-search">&lt;p&gt;이번에는 게시글에 검색기능을 넣어보도록 하겠습니다. 스프링 부트에서는 QueryDSL을 통해 동적으로 쿼리문을 생성할 수 있었는데 레거시에서는 매퍼에서 다양한 태그를 통해 쿼리를 동적으로 작성할 수 있습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;dto-작성&quot;&gt;DTO 작성&lt;/h1&gt;
 
@@ -3209,54 +3418,4 @@ issue1 체리픽2
 
 &lt;p&gt;패치작업의 경우 바로 로컬 저장소에 변경 내용이 반영되지 않기 때문에 헤드만 이동하여 원격 저장소의 커밋을 확인할 수 있어서 병합충돌의 위험을 줄일 수 있습니다.&lt;/p&gt;
 
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-20.png&quot; alt=&quot;img23&quot; /&gt;&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="github" /><summary type="html">Git와 Github 차이</summary></entry><entry><title type="html">향상된 SSH 프로토콜 : Mosh</title><link href="https://huimang2.github.io/etc/mosh" rel="alternate" type="text/html" title="향상된 SSH 프로토콜 : Mosh" /><published>2022-09-03T05:00:00+09:00</published><updated>2022-09-03T05:00:00+09:00</updated><id>https://huimang2.github.io/etc/mosh</id><content type="html" xml:base="https://huimang2.github.io/etc/mosh">&lt;h1 id=&quot;mosh란&quot;&gt;Mosh란?&lt;/h1&gt;
-
-&lt;p&gt;Mosh는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Mobile Shell&lt;/code&gt;의 약자로, 모바일 환경에서 원격 터미널을 원활하게 사용할 수 있도록 해주는 프로토콜입니다. 기존 SSH의 상위 호환 프로토콜이라고 보시면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;SSH의 경우 TCP 프로토콜을 사용하기 때문에 세션으로 연결되어야만 통신이 가능합니다. 그렇기 때문에 모바일 환경과 같이 세션의 연결이 불안정한 네트워크의 경우 세션의 연결이 끊어지면 다시 세션을 연결하기 때문에 입출력의 지연이 발생하고, 시간내에 세션에 연결하지 못하면 기존에 구성해둔 작업환경을 다시 구성해야 할 수도 있습니다.&lt;/p&gt;
-
-&lt;p&gt;반면에 Mosh는 UDP 프로토콜을 사용하여 세션의 연결상태를 지속할 필요가 없으며, 입출력을 따로 연결하고 세션의 상태를 보존하기때문에 명령에 대한 연결지연이 없습니다.&lt;/p&gt;
-
-&lt;p&gt;하지만 UDP를 통해서 Mosh 서버에 직접적인 연결이 불가하여 SSH를 통해 간접적으로 접속해야 하며, 하나의 접속에 대하여 하나의 포트를 필요로 하기때문에 방화벽의 유지관리에 많은 비용이 들 수 있습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;mosh-설치&quot;&gt;Mosh 설치&lt;/h1&gt;
-
-&lt;p&gt;Ubuntu 20.04 LTS 환경인 원격 서버에 Mosh를 설치하여 윈도우 환경에서 접속해보도록 하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;우선 원격서버에 접속하고 apt를 업데이트 하세요.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt upgrade
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;apt를 통해 mosh를 설치하세요.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mosh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;mosh는 60000 ~ 61000번의 UDP 포트를 사용합니다. 우선 os 방화벽에서 해당포트를 열어주세요.&lt;/p&gt;
-
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 60000:61000/udp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;원격서버에서도 포트를 열어야합니다. 이전에 작성한 &lt;a href=&quot;/etc/docker#방화벽-오픈open&quot; target=&quot;_blank&quot;&gt;도커(Docker) 설치하기&lt;/a&gt;을 참고하세요.&lt;/p&gt;
-
-&lt;p&gt;윈도우에서 Mosh 프로토콜을 통해 통신하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Cygwin&lt;/code&gt;을 설치하거나 크롬 브라우저에 extention을 설치하여 통신할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;저는 크롬 브라우저에 &lt;a href=&quot;https://chrome.google.com/webstore/detail/mosh/ooiklbnjmhbcgemelgfhaeaocllobloj&quot; target=&quot;_blank&quot;&gt;extension&lt;/a&gt;을 설치하겠습니다.&lt;/p&gt;
-
-&lt;p&gt;extionstion을 설치하면 Mosh app이 설치됩니다. 실행시키면 다음과 같은 화면이 뜹니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mosh/mosh-img-01.png&quot; alt=&quot;img01&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;os 유저이름과 ip주소, ssh 포트를 입력하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Connect&lt;/code&gt;를 클릭하면 됩니다. 그전에 ssh key를 통해 접속하므로 비밀키를 입력해야합니다. 오른쪽에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Add ssh key&lt;/code&gt;를 클릭하고, 비밀키를 메모장으로 열어서 키값을 복사하여 입력하세요.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mosh/mosh-img-02.png&quot; alt=&quot;img02&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Passphrase를 입력하라고 뜹니다.. 다음 명령어를 통해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Passphrase&lt;/code&gt;를 설정합니다. 그냥 엔터를 입력하면 Passphrase 없이 비밀키만으로 접속가능합니다.&lt;/p&gt;
-
-&lt;div data-lang=&quot;CMD&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ssh-keygen &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;비밀키 경로] &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; pem
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;다시 비밀키를 복사하여 입력한후 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Connect&lt;/code&gt;를 누르면 ssh를 통해 원격 서버에 접속되고 mosh 통신이 시작됩니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/mosh/mosh-img-03.png&quot; alt=&quot;img03&quot; /&gt;&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="etc" /><summary type="html">Mosh란?</summary></entry></feed>
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/git/git-img-20.png&quot; alt=&quot;img23&quot; /&gt;&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="github" /><summary type="html">Git와 Github 차이</summary></entry></feed>
