@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>스프링 레거시(Spring legacy) - 유효성 검사</title>
+        
+          <description>&lt;p&gt;이번 글에서는 예외처리에 대한 보충설명과 유효성 검사에 대하여 알아보겠습니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 30 Oct 2022 06:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/java/spring-legacy-validation</link>
+        <guid isPermaLink="true">https://huimang2.github.io/java/spring-legacy-validation</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>스프링 레거시(Spring legacy) - 예외처리</title>
         
           <description>&lt;p&gt;이번 글에서는 클라이언트 요청에 대한 예외 처리를 해보겠습니다.&lt;/p&gt;
