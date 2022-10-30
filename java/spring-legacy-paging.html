@@ -307,13 +307,13 @@ into the {body} of the default.hbs template -->
 <span class="cp">&lt;![CDATA[
 select * 
 from (
-	select rownum num, b.*
-	from (
-		select * from board 
-		where document_id &gt;</span> 0
-		order by document_id desc
-	) b
-	where rownum <span class="err">&lt;</span>= #{last}
+    select rownum num, b.*
+    from (
+        select * from board 
+        where document_id &gt;</span> 0
+        order by document_id desc
+    ) b
+    where rownum <span class="err">&lt;</span>= #{last}
 )
 where num &gt;= #{first}
 ]]&gt;
@@ -350,18 +350,18 @@ select count(*) from board where document_id &gt; 0
 <span class="kn">import</span> <span class="nn">kro.rubisco.dto.PageDTO</span><span class="o">;</span>
 
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BoardDAO</span> <span class="o">{</span>
-	
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-	
-	<span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">(</span><span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="n">boardPage</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-	
-	<span class="kd">public</span> <span class="kt">long</span> <span class="nf">getCount</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">(</span><span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="n">boardPage</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getCount</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -379,15 +379,15 @@ select count(*) from board where document_id &gt; 0
 
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BoardService</span> <span class="o">{</span>
 
-	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">regist</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">regist</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	  <span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+      <span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">modify</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">modify</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-	  
-	  <span class="kd">public</span> <span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">(</span><span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="n">boardPage</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+      
+      <span class="kd">public</span> <span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">(</span><span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="n">boardPage</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -412,41 +412,41 @@ select count(*) from board where document_id &gt; 0
 <span class="nd">@Transactional</span><span class="o">(</span><span class="n">readOnly</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardServiceImpl</span> <span class="kd">implements</span> <span class="nc">BoardService</span> <span class="o">{</span>
     
-	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">BoardDAO</span> <span class="n">boardDAO</span><span class="o">;</span>
-	
-	<span class="nd">@Autowired</span>
-	
-	<span class="kd">public</span> <span class="nf">BoardServiceImpl</span><span class="o">(</span><span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">)</span> <span class="o">{</span>
-	    
-		<span class="k">this</span><span class="o">.</span><span class="na">boardDAO</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="nc">BoardDAO</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-	<span class="o">}</span>
-	
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">regist</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="n">boardDAO</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
-	<span class="o">}</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">BoardDAO</span> <span class="n">boardDAO</span><span class="o">;</span>
+    
+    <span class="nd">@Autowired</span>
+    
+    <span class="kd">public</span> <span class="nf">BoardServiceImpl</span><span class="o">(</span><span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">)</span> <span class="o">{</span>
+        
+        <span class="k">this</span><span class="o">.</span><span class="na">boardDAO</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="nc">BoardDAO</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">regist</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">boardDAO</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+    <span class="o">}</span>
 
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="n">boardDAO</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">documentId</span><span class="o">);</span>
-	<span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">boardDAO</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">documentId</span><span class="o">);</span>
+    <span class="o">}</span>
 
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">modify</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="n">boardDAO</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
-	<span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">modify</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">boardDAO</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+    <span class="o">}</span>
 
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="n">boardDAO</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">documentId</span><span class="o">);</span>
-	<span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">boardDAO</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">documentId</span><span class="o">);</span>
+    <span class="o">}</span>
 
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">(</span><span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="n">boardPage</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-	    <span class="n">boardPage</span><span class="o">.</span><span class="na">setContentList</span><span class="o">(</span><span class="n">boardDAO</span><span class="o">.</span><span class="na">listAll</span><span class="o">(</span><span class="n">boardPage</span><span class="o">));</span>
-	    <span class="n">boardPage</span><span class="o">.</span><span class="na">setTotalSize</span><span class="o">(</span><span class="n">boardDAO</span><span class="o">.</span><span class="na">getCount</span><span class="o">());</span>
-		<span class="k">return</span> <span class="n">boardPage</span><span class="o">;</span>
-	<span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">(</span><span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="n">boardPage</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">boardPage</span><span class="o">.</span><span class="na">setContentList</span><span class="o">(</span><span class="n">boardDAO</span><span class="o">.</span><span class="na">listAll</span><span class="o">(</span><span class="n">boardPage</span><span class="o">));</span>
+        <span class="n">boardPage</span><span class="o">.</span><span class="na">setTotalSize</span><span class="o">(</span><span class="n">boardDAO</span><span class="o">.</span><span class="na">getCount</span><span class="o">());</span>
+        <span class="k">return</span> <span class="n">boardPage</span><span class="o">;</span>
+    <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
@@ -481,50 +481,50 @@ select count(*) from board where document_id &gt; 0
 <span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/board"</span><span class="o">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardController</span> <span class="o">{</span>
 
-	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">BoardService</span> <span class="n">boardService</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">CategoryService</span> <span class="n">categoryService</span><span class="o">;</span>
-	
-	<span class="nd">@GetMapping</span><span class="o">()</span>
-	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getBoardListView</span><span class="o">(</span><span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="n">boardPage</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"pageInfo"</span><span class="o">,</span> <span class="n">boardService</span><span class="o">.</span><span class="na">listAll</span><span class="o">(</span><span class="n">boardPage</span><span class="o">));</span>
-	    <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"boardList"</span><span class="o">,</span> <span class="n">boardPage</span><span class="o">.</span><span class="na">getContentList</span><span class="o">());</span>
-		<span class="k">return</span> <span class="s">"board/getBoardList"</span><span class="o">;</span>
-	<span class="o">}</span>
-	
-	<span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/{documentId}"</span><span class="o">)</span>
-	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getBoardView</span><span class="o">(</span>
-		<span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"documentId"</span><span class="o">)</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">,</span> 
-		<span class="nc">Model</span> <span class="n">model</span>
-	<span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"board"</span><span class="o">,</span> <span class="n">boardService</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">documentId</span><span class="o">));</span>
-		<span class="k">return</span> <span class="s">"board/getBoard"</span><span class="o">;</span>
-	<span class="o">}</span>
-	
-	<span class="nd">@GetMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"act=write"</span><span class="o">)</span>
-	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getInsertBoardView</span><span class="o">(</span>
-		<span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"documentId"</span><span class="o">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">false</span><span class="o">)</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">,</span>
-		<span class="nc">Model</span> <span class="n">model</span>
-	<span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"board"</span><span class="o">,</span> <span class="n">documentId</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="k">new</span> <span class="nc">BoardDTO</span><span class="o">()</span> <span class="o">:</span> <span class="n">boardService</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">documentId</span><span class="o">));</span>
-		<span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"categoryList"</span><span class="o">,</span> <span class="n">categoryService</span><span class="o">.</span><span class="na">listAll</span><span class="o">());</span>
-		<span class="k">return</span> <span class="s">"board/insertBoard"</span><span class="o">;</span>
-	<span class="o">}</span>
-	
-	<span class="nd">@PostMapping</span><span class="o">()</span>
-	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">insertBoard</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
-		<span class="n">boardService</span><span class="o">.</span><span class="na">regist</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
-		<span class="k">return</span> <span class="s">"redirect:/board/"</span> <span class="o">+</span> <span class="n">board</span><span class="o">.</span><span class="na">getDocumentId</span><span class="o">();</span>
-	<span class="o">}</span>
-	
-	<span class="nd">@PatchMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"documentId"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">BoardService</span> <span class="n">boardService</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">CategoryService</span> <span class="n">categoryService</span><span class="o">;</span>
+    
+    <span class="nd">@GetMapping</span><span class="o">()</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getBoardListView</span><span class="o">(</span><span class="nc">PageDTO</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="n">boardPage</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"pageInfo"</span><span class="o">,</span> <span class="n">boardService</span><span class="o">.</span><span class="na">listAll</span><span class="o">(</span><span class="n">boardPage</span><span class="o">));</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"boardList"</span><span class="o">,</span> <span class="n">boardPage</span><span class="o">.</span><span class="na">getContentList</span><span class="o">());</span>
+        <span class="k">return</span> <span class="s">"board/getBoardList"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/{documentId}"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getBoardView</span><span class="o">(</span>
+        <span class="nd">@PathVariable</span><span class="o">(</span><span class="s">"documentId"</span><span class="o">)</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">,</span> 
+        <span class="nc">Model</span> <span class="n">model</span>
+    <span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"board"</span><span class="o">,</span> <span class="n">boardService</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">documentId</span><span class="o">));</span>
+        <span class="k">return</span> <span class="s">"board/getBoard"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"act=write"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getInsertBoardView</span><span class="o">(</span>
+        <span class="nd">@RequestParam</span><span class="o">(</span><span class="n">value</span><span class="o">=</span><span class="s">"documentId"</span><span class="o">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">false</span><span class="o">)</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">,</span>
+        <span class="nc">Model</span> <span class="n">model</span>
+    <span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"board"</span><span class="o">,</span> <span class="n">documentId</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="k">new</span> <span class="nc">BoardDTO</span><span class="o">()</span> <span class="o">:</span> <span class="n">boardService</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">documentId</span><span class="o">));</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"categoryList"</span><span class="o">,</span> <span class="n">categoryService</span><span class="o">.</span><span class="na">listAll</span><span class="o">());</span>
+        <span class="k">return</span> <span class="s">"board/insertBoard"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@PostMapping</span><span class="o">()</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">insertBoard</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">boardService</span><span class="o">.</span><span class="na">regist</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"redirect:/board/"</span> <span class="o">+</span> <span class="n">board</span><span class="o">.</span><span class="na">getDocumentId</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@PatchMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"documentId"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="nc">String</span> <span class="nf">updateBoard</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
         <span class="n">boardService</span><span class="o">.</span><span class="na">modify</span><span class="o">(</span><span class="n">board</span><span class="o">);</span>
         <span class="k">return</span> <span class="s">"redirect:/board/"</span> <span class="o">+</span> <span class="n">board</span><span class="o">.</span><span class="na">getDocumentId</span><span class="o">();</span>
     <span class="o">}</span>
-	
-	<span class="nd">@DeleteMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"documentId"</span><span class="o">)</span>
+    
+    <span class="nd">@DeleteMapping</span><span class="o">(</span><span class="n">params</span> <span class="o">=</span> <span class="s">"documentId"</span><span class="o">)</span>
     <span class="kd">public</span> <span class="nc">String</span> <span class="nf">deleteBoard</span><span class="o">(</span>
-    	<span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"documentId"</span><span class="o">)</span> <span class="nc">Long</span> <span class="n">documentId</span>
+        <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"documentId"</span><span class="o">)</span> <span class="nc">Long</span> <span class="n">documentId</span>
     <span class="o">)</span><span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
         <span class="n">boardService</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">documentId</span><span class="o">);</span>
         <span class="k">return</span> <span class="s">"redirect:/board"</span><span class="o">;</span>
@@ -550,45 +550,45 @@ select count(*) from board where document_id &gt; 0
 <span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
-	<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"</span><span class="nt">&gt;&lt;/script&gt;</span>
-	<span class="nt">&lt;%@ include </span><span class="na">file=</span><span class="s">"./include/tailwindcss.jsp"</span> <span class="nt">%&gt;</span>
-	<span class="nt">&lt;title&gt;</span>게시글 목록<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;%@ include </span><span class="na">file=</span><span class="s">"./include/tailwindcss.jsp"</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;title&gt;</span>게시글 목록<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
 <span class="nt">&lt;main&gt;</span>
-	<span class="nt">&lt;h1&gt;</span>게시글 목록<span class="nt">&lt;/h1&gt;</span>
-	<span class="nt">&lt;article&gt;</span>
-		<span class="nt">&lt;table&gt;</span>
-			<span class="nt">&lt;thead&gt;</span>
-				<span class="nt">&lt;tr&gt;</span>
-					<span class="nt">&lt;th&gt;&lt;/th&gt;</span>
-		            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>카테고리<span class="nt">&lt;/th&gt;</span>
-		            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span> <span class="na">class=</span><span class="s">"w-full"</span><span class="nt">&gt;</span>제목<span class="nt">&lt;/th&gt;</span>
-		            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>작성자<span class="nt">&lt;/th&gt;</span>
-		            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>등록일<span class="nt">&lt;/th&gt;</span>
-		            <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>조회수<span class="nt">&lt;/th&gt;</span>
-				<span class="nt">&lt;/tr&gt;</span>
-	        <span class="nt">&lt;/thead&gt;</span>
-	        <span class="nt">&lt;tbody&gt;</span>
-	        <span class="nt">&lt;c:forEach </span><span class="na">items=</span><span class="s">"</span><span class="si">${</span><span class="n">boardList</span><span class="si">}</span><span class="s">"</span><span class="na"> var=</span><span class="s">"board"</span><span class="na"> step=</span><span class="s">"1"</span><span class="na"> varStatus=</span><span class="s">"status"</span><span class="nt">&gt;</span>
-				<span class="nt">&lt;tr&gt;</span>
-					<span class="nt">&lt;td&gt;</span>${pageInfo.totalSize - pageInfo.first - status.index + 1}<span class="nt">&lt;/td&gt;</span>
-					<span class="nt">&lt;td&gt;</span>${board.category.category}<span class="nt">&lt;/td&gt;</span>
-					<span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/board/${board.documentId}"</span><span class="nt">&gt;</span>${board.title}<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
-					<span class="nt">&lt;td&gt;</span>${board.member.nickName}<span class="nt">&lt;/td&gt;</span>
-					<span class="nt">&lt;td&gt;&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">board</span><span class="o">.</span><span class="na">createDate</span><span class="si">}</span><span class="s">"</span><span class="na"> pattern=</span><span class="s">"yyyy-MM-dd"</span><span class="nt">/&gt;&lt;/td&gt;</span>
-					<span class="nt">&lt;td&gt;</span>${board.readCount}<span class="nt">&lt;/td&gt;</span>
-				<span class="nt">&lt;/tr&gt;</span>
-			<span class="nt">&lt;/c:forEach&gt;</span>
-			<span class="nt">&lt;/tbody&gt;</span>
-		<span class="nt">&lt;/table&gt;</span>
-	<span class="nt">&lt;/article&gt;</span>
-	<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex mt-2 sm:mt-4 lg:w-2/3 w-full mx-auto"</span><span class="nt">&gt;</span>
-		<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"write"</span> <span class="na">onClick=</span><span class="s">"window.location='/board?act=write'"</span><span class="nt">&gt;</span>쓰기<span class="nt">&lt;/button&gt;</span>
-	<span class="nt">&lt;/div&gt;</span>
-	<span class="nt">&lt;%@ include </span><span class="na">file=</span><span class="s">"./include/pageNav.jsp"</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>게시글 목록<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;article&gt;</span>
+        <span class="nt">&lt;table&gt;</span>
+            <span class="nt">&lt;thead&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+                    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>카테고리<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span> <span class="na">class=</span><span class="s">"w-full"</span><span class="nt">&gt;</span>제목<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>작성자<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>등록일<span class="nt">&lt;/th&gt;</span>
+                    <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>조회수<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;/thead&gt;</span>
+            <span class="nt">&lt;tbody&gt;</span>
+            <span class="nt">&lt;c:forEach </span><span class="na">items=</span><span class="s">"</span><span class="si">${</span><span class="n">boardList</span><span class="si">}</span><span class="s">"</span><span class="na"> var=</span><span class="s">"board"</span><span class="na"> step=</span><span class="s">"1"</span><span class="na"> varStatus=</span><span class="s">"status"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;tr&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>${pageInfo.totalSize - pageInfo.first - status.index + 1}<span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>${board.category.category}<span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/board/${board.documentId}"</span><span class="nt">&gt;</span>${board.title}<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>${board.member.nickName}<span class="nt">&lt;/td&gt;</span>
+                    <span class="nt">&lt;td&gt;&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">board</span><span class="o">.</span><span class="na">createDate</span><span class="si">}</span><span class="s">"</span><span class="na"> pattern=</span><span class="s">"yyyy-MM-dd"</span><span class="nt">/&gt;&lt;/td&gt;</span>
+                    <span class="nt">&lt;td&gt;</span>${board.readCount}<span class="nt">&lt;/td&gt;</span>
+                <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;/c:forEach&gt;</span>
+            <span class="nt">&lt;/tbody&gt;</span>
+        <span class="nt">&lt;/table&gt;</span>
+    <span class="nt">&lt;/article&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex mt-2 sm:mt-4 lg:w-2/3 w-full mx-auto"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"write"</span> <span class="na">onClick=</span><span class="s">"window.location='/board?act=write'"</span><span class="nt">&gt;</span>쓰기<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;%@ include </span><span class="na">file=</span><span class="s">"./include/pageNav.jsp"</span> <span class="nt">%&gt;</span>
 <span class="nt">&lt;/main&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
@@ -603,27 +603,27 @@ select count(*) from board where document_id &gt; 0
 <span class="nt">&lt;%@ taglib </span><span class="na">uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span><span class="na"> prefix=</span><span class="s">"c"</span> <span class="nt">%&gt;</span>
 
 <span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/tailwindcss"</span><span class="nt">&gt;</span>
-	<span class="nt">main</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">text-gray-600</span> <span class="err">container</span> <span class="err">px-5</span> <span class="err">py-16</span> <span class="err">mx-auto</span><span class="p">}</span>
-	<span class="nt">main</span> <span class="o">&gt;</span> <span class="nt">h1</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">flex</span> <span class="err">flex-col</span> <span class="err">text-center</span> <span class="err">w-full</span> <span class="py">sm</span><span class="p">:</span><span class="n">text-4xl</span> <span class="n">text-2xl</span> <span class="n">font-medium</span> <span class="n">mb-5</span> <span class="n">text-gray-900</span><span class="p">}</span>
-	<span class="nt">article</span> <span class="p">{</span><span class="err">@apply</span> <span class="py">lg</span><span class="p">:</span><span class="n">w-2</span><span class="p">/</span><span class="m">3</span> <span class="n">w-full</span> <span class="n">mx-auto</span> <span class="n">overflow-auto</span><span class="p">}</span>
-	<span class="nt">table</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">table-auto</span> <span class="err">w-full</span> <span class="err">text-xs</span> <span class="py">sm</span><span class="p">:</span><span class="n">text-sm</span><span class="p">}</span>
-	<span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">px-2</span> <span class="err">py-2</span> <span class="py">sm</span><span class="p">:</span><span class="n">px-4</span> <span class="n">sm</span><span class="p">:</span><span class="n">py-3</span> <span class="n">tracking-wider</span> <span class="n">font-medium</span> <span class="n">text-gray-900</span> <span class="n">bg-gray-100</span> <span class="n">text-center</span> <span class="n">whitespace-nowrap</span> <span class="n">align-middle</span><span class="p">}</span>
-	<span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span><span class="nd">:first-of-type</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">rounded-tl</span> <span class="err">rounded-bl</span><span class="p">}</span>
-	<span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span><span class="nd">:nth-of-type</span><span class="o">(</span><span class="err">3</span><span class="o">)</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">text-left</span><span class="p">}</span>
-	<span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span><span class="nd">:last-of-type</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">rounded-tr</span> <span class="err">rounded-br</span><span class="p">}</span>
-	<span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="p">{</span><span class="err">@apply</span> <span class="py">hover</span><span class="p">:</span><span class="n">bg-slate-100</span><span class="p">}</span>
-	<span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">px-2</span> <span class="err">py-2</span> <span class="py">sm</span><span class="p">:</span><span class="n">px-4</span> <span class="n">sm</span><span class="p">:</span><span class="n">py-3</span> <span class="n">text-center</span> <span class="n">whitespace-nowrap</span> <span class="n">align-middle</span><span class="p">}</span>
-	<span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span><span class="nd">:nth-of-type</span><span class="o">(</span><span class="err">3</span><span class="o">)</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">p-0</span> <span class="err">text-left</span><span class="p">}</span>
-	<span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span> <span class="o">&gt;</span> <span class="nt">a</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">block</span><span class="p">}</span>
-	<span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span><span class="nd">:nth-of-type</span><span class="o">(</span><span class="err">3</span><span class="o">)</span> <span class="o">&gt;</span> <span class="nt">a</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">px-2</span> <span class="err">py-2</span> <span class="py">sm</span><span class="p">:</span><span class="n">px-4</span> <span class="n">sm</span><span class="p">:</span><span class="n">py-3</span><span class="p">}</span>
-	<span class="nt">button</span><span class="nc">.write</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">flex</span> <span class="err">ml-auto</span> <span class="err">text-white</span> <span class="err">text-sm</span> <span class="py">sm</span><span class="p">:</span><span class="n">text-base</span> <span class="n">bg-indigo-500</span> <span class="n">border-0</span> <span class="n">py-1</span> <span class="n">px-3</span> <span class="n">sm</span><span class="p">:</span><span class="n">py-2</span> <span class="n">sm</span><span class="p">:</span><span class="n">px-6</span> <span class="n">focus</span><span class="p">:</span><span class="n">outline-none</span> <span class="n">hover</span><span class="p">:</span><span class="n">bg-indigo-600</span> <span class="n">rounded</span><span class="p">}</span>
-	<span class="nt">nav</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">isolate</span> <span class="err">flex</span> <span class="err">-space-x-px</span> <span class="err">rounded-md</span> <span class="err">mt-2</span> <span class="py">sm</span><span class="p">:</span><span class="n">mt-4</span> <span class="n">lg</span><span class="p">:</span><span class="n">w-2</span><span class="p">/</span><span class="m">3</span> <span class="n">w-full</span> <span class="n">mx-auto</span> <span class="n">justify-center</span><span class="p">}</span>
-	<span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">relative</span> <span class="err">inline-flex</span> <span class="err">items-center</span> <span class="err">border</span> <span class="err">border-gray-300</span> <span class="err">bg-white</span> <span class="err">px-4</span> <span class="err">py-2</span> <span class="err">text-sm</span> <span class="err">font-medium</span> <span class="err">text-gray-500</span> <span class="py">focus</span><span class="p">:</span><span class="n">z-20</span><span class="p">}</span>
-	<span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nd">:not</span><span class="o">(</span><span class="nc">.active</span><span class="o">)</span> <span class="p">{</span><span class="err">@apply</span> <span class="py">hover</span><span class="p">:</span><span class="n">bg-gray-50</span><span class="p">}</span>
-	<span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nc">.active</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">pointer-events-none</span> <span class="err">border-indigo-500</span> <span class="err">bg-indigo-50</span> <span class="err">text-indigo-600</span> <span class="err">z-10</span><span class="p">}</span>
-	<span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nd">:first-of-type</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">px-2</span> <span class="err">rounded-l-md</span><span class="p">}</span>
-	<span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nd">:last-of-type</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">px-2</span> <span class="err">rounded-r-md</span><span class="p">}</span>
-	<span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nc">.disabled</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">pointer-events-none</span> <span class="err">bg-slate-200</span> <span class="err">text-slate-400</span> <span class="err">border-slate-400</span><span class="p">}</span>
+    <span class="nt">main</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">text-gray-600</span> <span class="err">container</span> <span class="err">px-5</span> <span class="err">py-16</span> <span class="err">mx-auto</span><span class="p">}</span>
+    <span class="nt">main</span> <span class="o">&gt;</span> <span class="nt">h1</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">flex</span> <span class="err">flex-col</span> <span class="err">text-center</span> <span class="err">w-full</span> <span class="py">sm</span><span class="p">:</span><span class="n">text-4xl</span> <span class="n">text-2xl</span> <span class="n">font-medium</span> <span class="n">mb-5</span> <span class="n">text-gray-900</span><span class="p">}</span>
+    <span class="nt">article</span> <span class="p">{</span><span class="err">@apply</span> <span class="py">lg</span><span class="p">:</span><span class="n">w-2</span><span class="p">/</span><span class="m">3</span> <span class="n">w-full</span> <span class="n">mx-auto</span> <span class="n">overflow-auto</span><span class="p">}</span>
+    <span class="nt">table</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">table-auto</span> <span class="err">w-full</span> <span class="err">text-xs</span> <span class="py">sm</span><span class="p">:</span><span class="n">text-sm</span><span class="p">}</span>
+    <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">px-2</span> <span class="err">py-2</span> <span class="py">sm</span><span class="p">:</span><span class="n">px-4</span> <span class="n">sm</span><span class="p">:</span><span class="n">py-3</span> <span class="n">tracking-wider</span> <span class="n">font-medium</span> <span class="n">text-gray-900</span> <span class="n">bg-gray-100</span> <span class="n">text-center</span> <span class="n">whitespace-nowrap</span> <span class="n">align-middle</span><span class="p">}</span>
+    <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span><span class="nd">:first-of-type</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">rounded-tl</span> <span class="err">rounded-bl</span><span class="p">}</span>
+    <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span><span class="nd">:nth-of-type</span><span class="o">(</span><span class="err">3</span><span class="o">)</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">text-left</span><span class="p">}</span>
+    <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">thead</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">th</span><span class="nd">:last-of-type</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">rounded-tr</span> <span class="err">rounded-br</span><span class="p">}</span>
+    <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="p">{</span><span class="err">@apply</span> <span class="py">hover</span><span class="p">:</span><span class="n">bg-slate-100</span><span class="p">}</span>
+    <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">px-2</span> <span class="err">py-2</span> <span class="py">sm</span><span class="p">:</span><span class="n">px-4</span> <span class="n">sm</span><span class="p">:</span><span class="n">py-3</span> <span class="n">text-center</span> <span class="n">whitespace-nowrap</span> <span class="n">align-middle</span><span class="p">}</span>
+    <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span><span class="nd">:nth-of-type</span><span class="o">(</span><span class="err">3</span><span class="o">)</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">p-0</span> <span class="err">text-left</span><span class="p">}</span>
+    <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span> <span class="o">&gt;</span> <span class="nt">a</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">block</span><span class="p">}</span>
+    <span class="nt">table</span> <span class="o">&gt;</span> <span class="nt">tbody</span> <span class="o">&gt;</span> <span class="nt">tr</span> <span class="o">&gt;</span> <span class="nt">td</span><span class="nd">:nth-of-type</span><span class="o">(</span><span class="err">3</span><span class="o">)</span> <span class="o">&gt;</span> <span class="nt">a</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">px-2</span> <span class="err">py-2</span> <span class="py">sm</span><span class="p">:</span><span class="n">px-4</span> <span class="n">sm</span><span class="p">:</span><span class="n">py-3</span><span class="p">}</span>
+    <span class="nt">button</span><span class="nc">.write</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">flex</span> <span class="err">ml-auto</span> <span class="err">text-white</span> <span class="err">text-sm</span> <span class="py">sm</span><span class="p">:</span><span class="n">text-base</span> <span class="n">bg-indigo-500</span> <span class="n">border-0</span> <span class="n">py-1</span> <span class="n">px-3</span> <span class="n">sm</span><span class="p">:</span><span class="n">py-2</span> <span class="n">sm</span><span class="p">:</span><span class="n">px-6</span> <span class="n">focus</span><span class="p">:</span><span class="n">outline-none</span> <span class="n">hover</span><span class="p">:</span><span class="n">bg-indigo-600</span> <span class="n">rounded</span><span class="p">}</span>
+    <span class="nt">nav</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">isolate</span> <span class="err">flex</span> <span class="err">-space-x-px</span> <span class="err">rounded-md</span> <span class="err">mt-2</span> <span class="py">sm</span><span class="p">:</span><span class="n">mt-4</span> <span class="n">lg</span><span class="p">:</span><span class="n">w-2</span><span class="p">/</span><span class="m">3</span> <span class="n">w-full</span> <span class="n">mx-auto</span> <span class="n">justify-center</span><span class="p">}</span>
+    <span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">relative</span> <span class="err">inline-flex</span> <span class="err">items-center</span> <span class="err">border</span> <span class="err">border-gray-300</span> <span class="err">bg-white</span> <span class="err">px-4</span> <span class="err">py-2</span> <span class="err">text-sm</span> <span class="err">font-medium</span> <span class="err">text-gray-500</span> <span class="py">focus</span><span class="p">:</span><span class="n">z-20</span><span class="p">}</span>
+    <span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nd">:not</span><span class="o">(</span><span class="nc">.active</span><span class="o">)</span> <span class="p">{</span><span class="err">@apply</span> <span class="py">hover</span><span class="p">:</span><span class="n">bg-gray-50</span><span class="p">}</span>
+    <span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nc">.active</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">pointer-events-none</span> <span class="err">border-indigo-500</span> <span class="err">bg-indigo-50</span> <span class="err">text-indigo-600</span> <span class="err">z-10</span><span class="p">}</span>
+    <span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nd">:first-of-type</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">px-2</span> <span class="err">rounded-l-md</span><span class="p">}</span>
+    <span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nd">:last-of-type</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">px-2</span> <span class="err">rounded-r-md</span><span class="p">}</span>
+    <span class="nt">nav</span> <span class="o">&gt;</span> <span class="nt">a</span><span class="nc">.disabled</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">pointer-events-none</span> <span class="err">bg-slate-200</span> <span class="err">text-slate-400</span> <span class="err">border-slate-400</span><span class="p">}</span>
 <span class="nt">&lt;/style&gt;</span>
 </code></pre></div></div>
 
@@ -632,29 +632,29 @@ select count(*) from board where document_id &gt; 0
 <span class="nt">&lt;%@ taglib </span><span class="na">uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span><span class="na"> prefix=</span><span class="s">"c"</span> <span class="nt">%&gt;</span>
 
 <span class="nt">&lt;nav</span> <span class="na">aria-label=</span><span class="s">"Pagination"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;c:choose&gt;</span>
-		<span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">hasPrev</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;&lt;c:set </span><span class="na">var=</span><span class="s">"url"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">getUrl</span><span class="o">(</span><span class="l">'/board'</span><span class="o">,</span> <span class="n">pageInfo</span><span class="o">.</span><span class="na">page</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span><span class="si">}</span><span class="s">"</span> <span class="nt">/&gt;&lt;/c:when&gt;</span>
-		<span class="nt">&lt;c:otherwise&gt;&lt;c:set </span><span class="na">var=</span><span class="s">"url"</span><span class="na"> value=</span><span class="s">"#"</span> <span class="nt">/&gt;&lt;/c:otherwise&gt;</span>
-	<span class="nt">&lt;/c:choose&gt;</span>
-	<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"${url}"</span><span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="o">!</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">hasPrev</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span> <span class="na">class=</span><span class="s">"disabled"</span><span class="nt">&lt;/c:if&gt;&gt;</span>
-		<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/span&gt;</span>
-		<span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"h-5 w-5"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/svg"</span> <span class="na">viewBox=</span><span class="s">"0 0 20 20"</span> <span class="na">fill=</span><span class="s">"currentColor"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;path</span> <span class="na">fill-rule=</span><span class="s">"evenodd"</span> <span class="na">d=</span><span class="s">"M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"</span> <span class="na">clip-rule=</span><span class="s">"evenodd"</span> <span class="nt">/&gt;</span>
-		<span class="nt">&lt;/svg&gt;</span>
-	<span class="nt">&lt;/a&gt;</span>
-	<span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"i"</span><span class="na"> begin=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">firstPage</span><span class="si">}</span><span class="s">"</span><span class="na"> end=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">lastPage</span><span class="si">}</span><span class="s">"</span><span class="na"> step=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"${pageInfo.getUrl('/board', i)}"</span><span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">page</span> <span class="n">eq</span> <span class="n">i</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span><span class="na">aria-current=</span><span class="s">"page"</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&lt;/c:if&gt;&gt;</span>${i}<span class="nt">&lt;/a&gt;</span>
-	<span class="nt">&lt;/c:forEach&gt;</span>
-	<span class="nt">&lt;c:choose&gt;</span>
-		<span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">hasNext</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;&lt;c:set </span><span class="na">var=</span><span class="s">"url"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">getUrl</span><span class="o">(</span><span class="l">'/board'</span><span class="o">,</span> <span class="n">pageInfo</span><span class="o">.</span><span class="na">page</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span><span class="si">}</span><span class="s">"</span> <span class="nt">/&gt;&lt;/c:when&gt;</span>
-		<span class="nt">&lt;c:otherwise&gt;&lt;c:set </span><span class="na">var=</span><span class="s">"url"</span><span class="na"> value=</span><span class="s">"#"</span> <span class="nt">/&gt;&lt;/c:otherwise&gt;</span>
-	<span class="nt">&lt;/c:choose&gt;</span>
-	<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"${url}"</span><span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="o">!</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">hasNext</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span> <span class="na">class=</span><span class="s">"disabled"</span><span class="nt">&lt;/c:if&gt;&gt;</span>
-		<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/span&gt;</span>
-		<span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"h-5 w-5"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/svg"</span> <span class="na">viewBox=</span><span class="s">"0 0 20 20"</span> <span class="na">fill=</span><span class="s">"currentColor"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
-			<span class="nt">&lt;path</span> <span class="na">fill-rule=</span><span class="s">"evenodd"</span> <span class="na">d=</span><span class="s">"M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"</span> <span class="na">clip-rule=</span><span class="s">"evenodd"</span> <span class="nt">/&gt;</span>
-		<span class="nt">&lt;/svg&gt;</span>
-	<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;c:choose&gt;</span>
+        <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">hasPrev</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;&lt;c:set </span><span class="na">var=</span><span class="s">"url"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">getUrl</span><span class="o">(</span><span class="l">'/board'</span><span class="o">,</span> <span class="n">pageInfo</span><span class="o">.</span><span class="na">page</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span><span class="si">}</span><span class="s">"</span> <span class="nt">/&gt;&lt;/c:when&gt;</span>
+        <span class="nt">&lt;c:otherwise&gt;&lt;c:set </span><span class="na">var=</span><span class="s">"url"</span><span class="na"> value=</span><span class="s">"#"</span> <span class="nt">/&gt;&lt;/c:otherwise&gt;</span>
+    <span class="nt">&lt;/c:choose&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"${url}"</span><span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="o">!</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">hasPrev</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span> <span class="na">class=</span><span class="s">"disabled"</span><span class="nt">&lt;/c:if&gt;&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Previous<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"h-5 w-5"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/svg"</span> <span class="na">viewBox=</span><span class="s">"0 0 20 20"</span> <span class="na">fill=</span><span class="s">"currentColor"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;path</span> <span class="na">fill-rule=</span><span class="s">"evenodd"</span> <span class="na">d=</span><span class="s">"M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"</span> <span class="na">clip-rule=</span><span class="s">"evenodd"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/svg&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;c:forEach </span><span class="na">var=</span><span class="s">"i"</span><span class="na"> begin=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">firstPage</span><span class="si">}</span><span class="s">"</span><span class="na"> end=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">lastPage</span><span class="si">}</span><span class="s">"</span><span class="na"> step=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"${pageInfo.getUrl('/board', i)}"</span><span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">page</span> <span class="n">eq</span> <span class="n">i</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span><span class="na">aria-current=</span><span class="s">"page"</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&lt;/c:if&gt;&gt;</span>${i}<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/c:forEach&gt;</span>
+    <span class="nt">&lt;c:choose&gt;</span>
+        <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">hasNext</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;&lt;c:set </span><span class="na">var=</span><span class="s">"url"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">getUrl</span><span class="o">(</span><span class="l">'/board'</span><span class="o">,</span> <span class="n">pageInfo</span><span class="o">.</span><span class="na">page</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span><span class="si">}</span><span class="s">"</span> <span class="nt">/&gt;&lt;/c:when&gt;</span>
+        <span class="nt">&lt;c:otherwise&gt;&lt;c:set </span><span class="na">var=</span><span class="s">"url"</span><span class="na"> value=</span><span class="s">"#"</span> <span class="nt">/&gt;&lt;/c:otherwise&gt;</span>
+    <span class="nt">&lt;/c:choose&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"${url}"</span><span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="o">!</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">hasNext</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span> <span class="na">class=</span><span class="s">"disabled"</span><span class="nt">&lt;/c:if&gt;&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Next<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;svg</span> <span class="na">class=</span><span class="s">"h-5 w-5"</span> <span class="na">xmlns=</span><span class="s">"http://www.w3.org/2000/svg"</span> <span class="na">viewBox=</span><span class="s">"0 0 20 20"</span> <span class="na">fill=</span><span class="s">"currentColor"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;path</span> <span class="na">fill-rule=</span><span class="s">"evenodd"</span> <span class="na">d=</span><span class="s">"M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"</span> <span class="na">clip-rule=</span><span class="s">"evenodd"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;/svg&gt;</span>
+    <span class="nt">&lt;/a&gt;</span>
 <span class="nt">&lt;/nav&gt;</span>
 </code></pre></div></div>
 
@@ -662,10 +662,10 @@ select count(*) from board where document_id &gt; 0
 
 <h6 id="테스트-데이터-입력">테스트 데이터 입력</h6>
 <div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">BEGIN</span>
-	<span class="k">FOR</span> <span class="n">i</span> <span class="k">IN</span> <span class="mi">1</span><span class="p">..</span><span class="mi">1000</span> <span class="n">LOOP</span>
-		<span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">BOARD</span> <span class="p">(</span><span class="n">MEMBER_ID</span><span class="p">,</span> <span class="n">CATEGORY_ID</span><span class="p">,</span> <span class="n">TITLE</span><span class="p">,</span> <span class="n">CONTENT</span><span class="p">)</span> 
-		<span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'테스트'</span><span class="o">||</span><span class="n">i</span><span class="p">,</span> <span class="s1">'테스트'</span><span class="o">||</span><span class="n">i</span><span class="p">);</span>
-	<span class="k">END</span> <span class="n">LOOP</span><span class="p">;</span>
+    <span class="k">FOR</span> <span class="n">i</span> <span class="k">IN</span> <span class="mi">1</span><span class="p">..</span><span class="mi">1000</span> <span class="n">LOOP</span>
+        <span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">BOARD</span> <span class="p">(</span><span class="n">MEMBER_ID</span><span class="p">,</span> <span class="n">CATEGORY_ID</span><span class="p">,</span> <span class="n">TITLE</span><span class="p">,</span> <span class="n">CONTENT</span><span class="p">)</span> 
+        <span class="k">VALUES</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">'테스트'</span><span class="o">||</span><span class="n">i</span><span class="p">,</span> <span class="s1">'테스트'</span><span class="o">||</span><span class="n">i</span><span class="p">);</span>
+    <span class="k">END</span> <span class="n">LOOP</span><span class="p">;</span>
 <span class="k">END</span><span class="p">;</span>
 </code></pre></div></div>
 

@@ -221,53 +221,53 @@ into the {body} of the default.hbs template -->
 member_group로 구성합니다.</p>
 
 <div data-lang="SQL" class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CREATE TABLE board (
-	document_id		INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	category_id		INT NOT NULL,
-	is_notice		CHAR(1) DEFAULT 'N',
-	title			VARCHAR(250) NOT NULL,
-	content			CLOB NOT NULL,
-	like_count		INT DEFAULT 0,
-	dislike_count	INT DEFAULT 0,
-	read_count		INT DEFAULT 0,
-	member_id		INT NOT NULL,
-	create_date		DATE DEFAULT SYSDATE,
-	update_date		DATE DEFAULT SYSDATE
+    document_id        INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    category_id        INT NOT NULL,
+    is_notice        CHAR(1) DEFAULT 'N',
+    title            VARCHAR(250) NOT NULL,
+    content            CLOB NOT NULL,
+    like_count        INT DEFAULT 0,
+    dislike_count    INT DEFAULT 0,
+    read_count        INT DEFAULT 0,
+    member_id        INT NOT NULL,
+    create_date        DATE DEFAULT SYSDATE,
+    update_date        DATE DEFAULT SYSDATE
 );
 
 CREATE TABLE comments (
-	comment_id		INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	document_id		INT NOT NULL,
-	content			CLOB,
-	like_count		INT DEFAULT 0,
-	dislike_count	INT DEFAULT 0,
-	member_id		INT NOT NULL,
-	create_date		DATE DEFAULT SYSDATE,
-	update_date		DATE DEFAULT SYSDATE
+    comment_id        INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    document_id        INT NOT NULL,
+    content            CLOB,
+    like_count        INT DEFAULT 0,
+    dislike_count    INT DEFAULT 0,
+    member_id        INT NOT NULL,
+    create_date        DATE DEFAULT SYSDATE,
+    update_date        DATE DEFAULT SYSDATE
 );
 
 CREATE TABLE category (
-	category_id		INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	category		VARCHAR(80) UNIQUE NOT NULL,
-	create_date		DATE DEFAULT SYSDATE,
-	update_date		DATE DEFAULT SYSDATE
+    category_id        INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    category        VARCHAR(80) UNIQUE NOT NULL,
+    create_date        DATE DEFAULT SYSDATE,
+    update_date        DATE DEFAULT SYSDATE
 );
 
 CREATE TABLE MEMBER (
-	member_id		INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	password		VARCHAR(60) NOT NULL,
-	email			VARCHAR(250) UNIQUE,
-	name			VARCHAR(40) NOT NULL,
-	nick_name		VARCHAR(40) UNIQUE NOT NULL,
-	group_id		INT NOT NULL,
-	create_date		DATE DEFAULT SYSDATE,
-	last_login		DATE DEFAULT SYSDATE
+    member_id        INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    password        VARCHAR(60) NOT NULL,
+    email            VARCHAR(250) UNIQUE,
+    name            VARCHAR(40) NOT NULL,
+    nick_name        VARCHAR(40) UNIQUE NOT NULL,
+    group_id        INT NOT NULL,
+    create_date        DATE DEFAULT SYSDATE,
+    last_login        DATE DEFAULT SYSDATE
 );
 
 CREATE TABLE member_group (
-	group_id		INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	group_name		VARCHAR(80) UNIQUE NOT NULL,
-	create_date		DATE DEFAULT SYSDATE,
-	update_date		DATE DEFAULT SYSDATE
+    group_id        INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    group_name        VARCHAR(80) UNIQUE NOT NULL,
+    create_date        DATE DEFAULT SYSDATE,
+    update_date        DATE DEFAULT SYSDATE
 );
 
 ALTER TABLE board ADD CONSTRAINT fk_category_id FOREIGN KEY(category_id) REFERENCES category(category_id);
@@ -338,22 +338,22 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span>
 <span class="nt">&lt;configuration&gt;</span>
 
-	<span class="nt">&lt;settings&gt;</span>
+    <span class="nt">&lt;settings&gt;</span>
 
-		<span class="c">&lt;!-- 카멜 케이스 매핑 설정 --&gt;</span> 
-		<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"mapUnderscoreToCamelCase"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 카멜 케이스 매핑 설정 --&gt;</span> 
+        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"mapUnderscoreToCamelCase"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
 
-		<span class="c">&lt;!-- 쿼리 결과 필드가 null인 경우, 누락되지 않도록 설정 --&gt;</span> 
-		<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"callSettersOnNulls"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 쿼리 결과 필드가 null인 경우, 누락되지 않도록 설정 --&gt;</span> 
+        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"callSettersOnNulls"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
 
-		<span class="c">&lt;!-- 쿼리에 보내는 파라미터가 null인 경우, 오류가 발생하는 것을 방지 --&gt;</span> 
-		<span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"jdbcTypeForNull"</span> <span class="na">value=</span><span class="s">"NULL"</span><span class="nt">/&gt;</span>
+        <span class="c">&lt;!-- 쿼리에 보내는 파라미터가 null인 경우, 오류가 발생하는 것을 방지 --&gt;</span> 
+        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"jdbcTypeForNull"</span> <span class="na">value=</span><span class="s">"NULL"</span><span class="nt">/&gt;</span>
 
-	<span class="nt">&lt;/settings&gt;</span>
+    <span class="nt">&lt;/settings&gt;</span>
 
-	<span class="nt">&lt;typeAliases&gt;</span>
-		<span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">"kro.rubisco.dto"</span><span class="nt">/&gt;</span>
-	<span class="nt">&lt;/typeAliases&gt;</span>
+    <span class="nt">&lt;typeAliases&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">"kro.rubisco.dto"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/typeAliases&gt;</span>
 <span class="nt">&lt;/configuration&gt;</span>
 </code></pre></div></div>
 
@@ -368,7 +368,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.MemberDAO"</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getMember"</span> <span class="na">type=</span><span class="s">"MemberDTO"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/resultMap&gt;</span>
 
 <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">"create"</span><span class="nt">&gt;</span>
@@ -387,9 +387,9 @@ select * from member_group where group_id=#{groupId}
 <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"update"</span><span class="nt">&gt;</span>
 update member 
 set password=#{password},
-	email=#{email}, 
-	name=#{name}, 
-	nick_name= #{nickName},
+    email=#{email}, 
+    name=#{name}, 
+    nick_name= #{nickName},
 where member_id = #{memberId}
 <span class="nt">&lt;/update&gt;</span>
 
@@ -410,7 +410,7 @@ where member_id = #{memberId}
 
 <h6 id="resultmap-설정">resultMap 설정</h6>
 <div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getMember"</span> <span class="na">type=</span><span class="s">"MemberDTO"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">javaType=</span><span class="s">"GroupDTO"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">javaType=</span><span class="s">"GroupDTO"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/resultMap&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"read"</span> <span class="na">resultMap=</span><span class="s">"getMember"</span><span class="nt">&gt;</span>
@@ -465,20 +465,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.BoardDAO"</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getBoard"</span> <span class="na">type=</span><span class="s">"BoardDTO"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">"documentId"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"isNotice"</span> <span class="na">column=</span><span class="s">"is_notice"</span> <span class="na">typeHandler=</span><span class="s">"kro.rubisco.config.YNTypeHandler"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"category"</span> <span class="na">column=</span><span class="s">"category_id"</span> <span class="na">select=</span><span class="s">"getCategory"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;collection</span> <span class="na">property=</span><span class="s">"commentList"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">select=</span><span class="s">"getComments"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">"documentId"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"isNotice"</span> <span class="na">column=</span><span class="s">"is_notice"</span> <span class="na">typeHandler=</span><span class="s">"kro.rubisco.config.YNTypeHandler"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"category"</span> <span class="na">column=</span><span class="s">"category_id"</span> <span class="na">select=</span><span class="s">"getCategory"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;collection</span> <span class="na">property=</span><span class="s">"commentList"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">select=</span><span class="s">"getComments"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/resultMap&gt;</span>
 
 <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getBoardList"</span> <span class="na">type=</span><span class="s">"BoardDTO"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">"documentId"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"isNotice"</span> <span class="na">column=</span><span class="s">"is_notice"</span> <span class="na">typeHandler=</span><span class="s">"kro.rubisco.config.YNTypeHandler"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"category"</span> <span class="na">column=</span><span class="s">"category_id"</span> <span class="na">select=</span><span class="s">"getCategory"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">"documentId"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"isNotice"</span> <span class="na">column=</span><span class="s">"is_notice"</span> <span class="na">typeHandler=</span><span class="s">"kro.rubisco.config.YNTypeHandler"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"category"</span> <span class="na">column=</span><span class="s">"category_id"</span> <span class="na">select=</span><span class="s">"getCategory"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/resultMap&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getCategory"</span> <span class="na">resultType=</span><span class="s">"CategoryDTO"</span><span class="nt">&gt;</span>
@@ -512,10 +512,10 @@ select * from board where document_id = #{documentId}
 <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"update"</span><span class="nt">&gt;</span>
 update board 
 set category_id=#{categoryId}, 
-	is_notice=#{isNotice, typeHandler=kro.rubisco.config.YNTypeHandler}, 
-	title=#{title}, 
-	content=#{content},  
-	update_date=SYSDATE
+    is_notice=#{isNotice, typeHandler=kro.rubisco.config.YNTypeHandler}, 
+    title=#{title}, 
+    content=#{content},  
+    update_date=SYSDATE
 where document_id = #{documentId}
 <span class="nt">&lt;/update&gt;</span>
 
@@ -537,8 +537,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.CommentDAO"</span><span class="nt">&gt;</span>
 
 <span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getComment"</span> <span class="na">type=</span><span class="s">"CommentDTO"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"board"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">select=</span><span class="s">"getBoard"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"board"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">select=</span><span class="s">"getBoard"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/resultMap&gt;</span>
 
 <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getBoard"</span> <span class="na">resultType=</span><span class="s">"BoardDTO"</span><span class="nt">&gt;</span>
@@ -561,8 +561,8 @@ select * from comments where cmt.comment_id = #{commentId}
 <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"update"</span><span class="nt">&gt;</span>
 update comments 
 set document_id=#{documentId}, 
-	content=#{content}, 
-	update_date=SYSDATE
+    content=#{content}, 
+    update_date=SYSDATE
 where comment_id = #{commentId}
 <span class="nt">&lt;/update&gt;</span>
 

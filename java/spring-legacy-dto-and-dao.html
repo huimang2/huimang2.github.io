@@ -232,8 +232,8 @@ into the {body} of the default.hbs template -->
 <span class="nd">@Getter</span>
 <span class="nd">@Setter</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BaseTime</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="nc">Date</span> <span class="n">createDate</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Date</span> <span class="n">updateDate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Date</span> <span class="n">createDate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Date</span> <span class="n">updateDate</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -250,8 +250,8 @@ into the {body} of the default.hbs template -->
 <span class="nd">@Getter</span>
 <span class="nd">@Setter</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">GroupDTO</span> <span class="kd">extends</span> <span class="nc">BaseTime</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">groupId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">String</span> <span class="n">groupName</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">groupId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">groupName</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -270,15 +270,15 @@ into the {body} of the default.hbs template -->
 <span class="nd">@Getter</span>
 <span class="nd">@Setter</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberDTO</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">memberId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">String</span> <span class="n">nickName</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">groupId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">GroupDTO</span> <span class="n">group</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Date</span> <span class="n">createDate</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Date</span> <span class="n">lastLogin</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">memberId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">nickName</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">groupId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">GroupDTO</span> <span class="n">group</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Date</span> <span class="n">createDate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Date</span> <span class="n">lastLogin</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -295,8 +295,8 @@ into the {body} of the default.hbs template -->
 <span class="nd">@Getter</span>
 <span class="nd">@Setter</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CategoryDTO</span> <span class="kd">extends</span> <span class="nc">BaseTime</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">categoryId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">String</span> <span class="n">category</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">categoryId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">category</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -315,20 +315,20 @@ into the {body} of the default.hbs template -->
 <span class="nd">@Getter</span>
 <span class="nd">@Setter</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">BoardDTO</span> <span class="kd">extends</span> <span class="nc">BaseTime</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">categoryId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Boolean</span> <span class="n">isNotice</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">likeCount</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">dislikeCount</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">readCount</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">memberId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">groupId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">CommentDTO</span><span class="o">&gt;</span> <span class="n">commentList</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">CategoryDTO</span> <span class="n">category</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">GroupDTO</span> <span class="n">group</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">categoryId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Boolean</span> <span class="n">isNotice</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">likeCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">dislikeCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">readCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">memberId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">groupId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">CommentDTO</span><span class="o">&gt;</span> <span class="n">commentList</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">CategoryDTO</span> <span class="n">category</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">GroupDTO</span> <span class="n">group</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -345,14 +345,14 @@ into the {body} of the default.hbs template -->
 <span class="nd">@Getter</span>
 <span class="nd">@Setter</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">CommentDTO</span> <span class="kd">extends</span> <span class="nc">BaseTime</span> <span class="o">{</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">commentId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">likeCount</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">dislikeCount</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">memberId</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">;</span>
-	<span class="kd">private</span> <span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">commentId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">documentId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">likeCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">dislikeCount</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">memberId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -375,25 +375,25 @@ into the {body} of the default.hbs template -->
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">YNTypeHandler</span> <span class="kd">implements</span> <span class="nc">TypeHandler</span><span class="o">&lt;</span><span class="nc">Boolean</span><span class="o">&gt;</span> <span class="o">{</span>
 
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setParameter</span><span class="o">(</span><span class="nc">PreparedStatement</span> <span class="n">ps</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">parameter</span><span class="o">,</span> <span class="nc">JdbcType</span> <span class="n">jdbcType</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
-		<span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">parameter</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">parameter</span> <span class="o">?</span> <span class="s">"Y"</span> <span class="o">:</span> <span class="s">"N"</span> <span class="o">);</span>
-	<span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setParameter</span><span class="o">(</span><span class="nc">PreparedStatement</span> <span class="n">ps</span><span class="o">,</span> <span class="kt">int</span> <span class="n">i</span><span class="o">,</span> <span class="nc">Boolean</span> <span class="n">parameter</span><span class="o">,</span> <span class="nc">JdbcType</span> <span class="n">jdbcType</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="n">ps</span><span class="o">.</span><span class="na">setString</span><span class="o">(</span><span class="n">i</span><span class="o">,</span> <span class="n">parameter</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">parameter</span> <span class="o">?</span> <span class="s">"Y"</span> <span class="o">:</span> <span class="s">"N"</span> <span class="o">);</span>
+    <span class="o">}</span>
 
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="nc">Boolean</span> <span class="nf">getResult</span><span class="o">(</span><span class="nc">ResultSet</span> <span class="n">rs</span><span class="o">,</span> <span class="nc">String</span> <span class="n">columnName</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="s">"Y"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">columnName</span><span class="o">));</span>
-	<span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Boolean</span> <span class="nf">getResult</span><span class="o">(</span><span class="nc">ResultSet</span> <span class="n">rs</span><span class="o">,</span> <span class="nc">String</span> <span class="n">columnName</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Y"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">columnName</span><span class="o">));</span>
+    <span class="o">}</span>
 
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="nc">Boolean</span> <span class="nf">getResult</span><span class="o">(</span><span class="nc">ResultSet</span> <span class="n">rs</span><span class="o">,</span> <span class="kt">int</span> <span class="n">columnIndex</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="s">"Y"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">columnIndex</span><span class="o">));</span>
-	<span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Boolean</span> <span class="nf">getResult</span><span class="o">(</span><span class="nc">ResultSet</span> <span class="n">rs</span><span class="o">,</span> <span class="kt">int</span> <span class="n">columnIndex</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Y"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">rs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">columnIndex</span><span class="o">));</span>
+    <span class="o">}</span>
 
-	<span class="nd">@Override</span>
-	<span class="kd">public</span> <span class="nc">Boolean</span> <span class="nf">getResult</span><span class="o">(</span><span class="nc">CallableStatement</span> <span class="n">cs</span><span class="o">,</span> <span class="kt">int</span> <span class="n">columnIndex</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
-		<span class="k">return</span> <span class="s">"Y"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">cs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">columnIndex</span><span class="o">));</span>
-	<span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">Boolean</span> <span class="nf">getResult</span><span class="o">(</span><span class="nc">CallableStatement</span> <span class="n">cs</span><span class="o">,</span> <span class="kt">int</span> <span class="n">columnIndex</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">SQLException</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"Y"</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">cs</span><span class="o">.</span><span class="na">getString</span><span class="o">(</span><span class="n">columnIndex</span><span class="o">));</span>
+    <span class="o">}</span>
 
 <span class="o">}</span>
 </code></pre></div></div>
@@ -402,12 +402,12 @@ into the {body} of the default.hbs template -->
 
 <h6 id="srcmainresourcesmappersboardmapperxml">/src/main/resources/mappers/boardMapper.xml</h6>
 <div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getBoard"</span> <span class="na">type=</span><span class="s">"BoardDTO"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">"documentId"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"isNotice"</span> <span class="na">column=</span><span class="s">"is_notice"</span> <span class="na">typeHandler=</span><span class="s">"kro.rubisco.config.YNTypeHandler"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"category"</span> <span class="na">column=</span><span class="s">"category_id"</span> <span class="na">javaType=</span><span class="s">"CategoryDTO"</span> <span class="na">select=</span><span class="s">"getCategory"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">javaType=</span><span class="s">"MemberDTO"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">javaType=</span><span class="s">"GroupDTO"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
-	<span class="nt">&lt;collection</span> <span class="na">property=</span><span class="s">"commentList"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">javaType=</span><span class="s">"java.util.List"</span> <span class="na">ofType=</span><span class="s">"CommentDTO"</span> <span class="na">select=</span><span class="s">"getComments"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">"documentId"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">"isNotice"</span> <span class="na">column=</span><span class="s">"is_notice"</span> <span class="na">typeHandler=</span><span class="s">"kro.rubisco.config.YNTypeHandler"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"category"</span> <span class="na">column=</span><span class="s">"category_id"</span> <span class="na">javaType=</span><span class="s">"CategoryDTO"</span> <span class="na">select=</span><span class="s">"getCategory"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"member"</span> <span class="na">column=</span><span class="s">"member_id"</span> <span class="na">javaType=</span><span class="s">"MemberDTO"</span> <span class="na">select=</span><span class="s">"getMember"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">javaType=</span><span class="s">"GroupDTO"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;collection</span> <span class="na">property=</span><span class="s">"commentList"</span> <span class="na">column=</span><span class="s">"document_id"</span> <span class="na">javaType=</span><span class="s">"java.util.List"</span> <span class="na">ofType=</span><span class="s">"CommentDTO"</span> <span class="na">select=</span><span class="s">"getComments"</span> <span class="nt">/&gt;</span>
 <span class="nt">&lt;/resultMap&gt;</span>
 
 ...
@@ -422,10 +422,10 @@ values (#{categoryId}, #{isNotice, typeHandler=kro.rubisco.config.YNTypeHandler}
 <span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"update"</span><span class="nt">&gt;</span>
 update board 
 set category_id=#{categoryId}, 
-	is_notice=#{isNotice, typeHandler=kro.rubisco.config.YNTypeHandler}, 
-	title=#{title}, 
-	content=#{content},  
-	update_date=SYSDATE
+    is_notice=#{isNotice, typeHandler=kro.rubisco.config.YNTypeHandler}, 
+    title=#{title}, 
+    content=#{content},  
+    update_date=SYSDATE
 where document_id = #{documentId}
 <span class="nt">&lt;/update&gt;</span>
 </code></pre></div></div>
@@ -447,16 +447,16 @@ where document_id = #{documentId}
 
 <span class="nd">@Mapper</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BoardDAO</span> <span class="o">{</span>
-	
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-	
-	<span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">BoardDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">BoardDTO</span> <span class="n">board</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">documentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">BoardDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -472,15 +472,15 @@ where document_id = #{documentId}
 <span class="nd">@Mapper</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CategoryDAO</span> <span class="o">{</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">CategoryDTO</span> <span class="n">category</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-	
-	<span class="kd">public</span> <span class="nc">CategoryDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">categoryId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">CategoryDTO</span> <span class="n">category</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">CategoryDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">categoryId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">CategoryDTO</span> <span class="n">category</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">CategoryDTO</span> <span class="n">category</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">categoryId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">categoryId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">CategoryDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">CategoryDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -496,15 +496,15 @@ where document_id = #{documentId}
 <span class="nd">@Mapper</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">CommentDAO</span> <span class="o">{</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">CommentDTO</span> <span class="n">comment</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-	
-	<span class="kd">public</span> <span class="nc">CommentDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">commentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">CommentDTO</span> <span class="n">comment</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">CommentDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">commentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">CommentDTO</span> <span class="n">comment</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">CommentDTO</span> <span class="n">comment</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">commentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">commentId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">CommentDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">CommentDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -519,16 +519,16 @@ where document_id = #{documentId}
 
 <span class="nd">@Mapper</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">GroupDAO</span> <span class="o">{</span>
-	
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">GroupDTO</span> <span class="n">group</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-	
-	<span class="kd">public</span> <span class="nc">GroupDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">groupId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">GroupDTO</span> <span class="n">group</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">GroupDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">groupId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">GroupDTO</span> <span class="n">group</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">GroupDTO</span> <span class="n">group</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">groupId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">groupId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">GroupDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">GroupDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -544,15 +544,15 @@ where document_id = #{documentId}
 <span class="nd">@Mapper</span>
 <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MemberDAO</span> <span class="o">{</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
-	
-	<span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 
-	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
 <span class="o">}</span>
 </code></pre></div></div>
 

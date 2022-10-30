@@ -353,9 +353,9 @@ implementation <span class="s1">'com.oracle.database.security:osdt_cert'</span>
 
 <h6 id="buildgradle">build.gradle</h6>
 <div data-lang="GRADLE" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plugins <span class="o">{</span>
-	<span class="nb">id</span> <span class="s1">'org.springframework.boot'</span> version <span class="s1">'2.7.2'</span>
-	<span class="nb">id</span> <span class="s1">'io.spring.dependency-management'</span> version <span class="s1">'1.0.12.RELEASE'</span>
-	<span class="nb">id</span> <span class="s1">'java'</span>
+    <span class="nb">id</span> <span class="s1">'org.springframework.boot'</span> version <span class="s1">'2.7.2'</span>
+    <span class="nb">id</span> <span class="s1">'io.spring.dependency-management'</span> version <span class="s1">'1.0.12.RELEASE'</span>
+    <span class="nb">id</span> <span class="s1">'java'</span>
 <span class="o">}</span>
 
 group <span class="o">=</span> <span class="s1">'com.example'</span>
@@ -363,33 +363,33 @@ version <span class="o">=</span> <span class="s1">'0.0.1-SNAPSHOT'</span>
 sourceCompatibility <span class="o">=</span> <span class="s1">'17'</span>
 
 configurations <span class="o">{</span>
-	compileOnly <span class="o">{</span>
-		extendsFrom annotationProcessor
-	<span class="o">}</span>
+    compileOnly <span class="o">{</span>
+        extendsFrom annotationProcessor
+    <span class="o">}</span>
 <span class="o">}</span>
 
 repositories <span class="o">{</span>
-	mavenCentral<span class="o">()</span>
+    mavenCentral<span class="o">()</span>
 <span class="o">}</span>
 
 dependencies <span class="o">{</span>
 
-	implementation <span class="s1">'org.springframework.boot:spring-boot-starter'</span>
-	testImplementation <span class="s1">'org.springframework.boot:spring-boot-starter-test'</span>
+    implementation <span class="s1">'org.springframework.boot:spring-boot-starter'</span>
+    testImplementation <span class="s1">'org.springframework.boot:spring-boot-starter-test'</span>
 
-	compileOnly <span class="s1">'org.projectlombok:lombok'</span>
-	annotationProcessor <span class="s1">'org.projectlombok:lombok'</span>
+    compileOnly <span class="s1">'org.projectlombok:lombok'</span>
+    annotationProcessor <span class="s1">'org.projectlombok:lombok'</span>
 
-	implementation <span class="s1">'org.hibernate:hibernate-entitymanager'</span>
+    implementation <span class="s1">'org.hibernate:hibernate-entitymanager'</span>
 
-	runtimeOnly <span class="s1">'com.oracle.database.jdbc:ojdbc8'</span>
-	implementation <span class="s1">'com.oracle.database.security:oraclepki'</span>
-	implementation <span class="s1">'com.oracle.database.security:osdt_core'</span>
-	implementation <span class="s1">'com.oracle.database.security:osdt_cert'</span>
+    runtimeOnly <span class="s1">'com.oracle.database.jdbc:ojdbc8'</span>
+    implementation <span class="s1">'com.oracle.database.security:oraclepki'</span>
+    implementation <span class="s1">'com.oracle.database.security:osdt_core'</span>
+    implementation <span class="s1">'com.oracle.database.security:osdt_cert'</span>
 <span class="o">}</span>
 
 tasks.named<span class="o">(</span><span class="s1">'test'</span><span class="o">)</span> <span class="o">{</span>
-	useJUnitPlatform<span class="o">()</span>
+    useJUnitPlatform<span class="o">()</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -1173,9 +1173,9 @@ tasks.named<span class="o">(</span><span class="s1">'test'</span><span class="o"
 
 <h6 id="buildgradle-1">build.gradle</h6>
 <div data-lang="GRADLE" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>plugins <span class="o">{</span>
-	<span class="nb">id</span> <span class="s1">'org.springframework.boot'</span> version <span class="s1">'2.7.2'</span>
-	<span class="nb">id</span> <span class="s1">'io.spring.dependency-management'</span> version <span class="s1">'1.0.12.RELEASE'</span>
-	<span class="nb">id</span> <span class="s1">'java'</span>
+    <span class="nb">id</span> <span class="s1">'org.springframework.boot'</span> version <span class="s1">'2.7.2'</span>
+    <span class="nb">id</span> <span class="s1">'io.spring.dependency-management'</span> version <span class="s1">'1.0.12.RELEASE'</span>
+    <span class="nb">id</span> <span class="s1">'java'</span>
 <span class="o">}</span>
 
 group <span class="o">=</span> <span class="s1">'com.example'</span>
@@ -1183,35 +1183,35 @@ version <span class="o">=</span> <span class="s1">'0.0.1-SNAPSHOT'</span>
 sourceCompatibility <span class="o">=</span> <span class="s1">'17'</span>
 
 configurations <span class="o">{</span>
-	compileOnly <span class="o">{</span>
-		extendsFrom annotationProcessor
-	<span class="o">}</span>
+    compileOnly <span class="o">{</span>
+        extendsFrom annotationProcessor
+    <span class="o">}</span>
 <span class="o">}</span>
 
 repositories <span class="o">{</span>
-	mavenCentral<span class="o">()</span>
+    mavenCentral<span class="o">()</span>
 <span class="o">}</span>
 
 dependencies <span class="o">{</span>
 
-	implementation <span class="s1">'org.springframework.boot:spring-boot-starter'</span>
-	implementation <span class="s1">'org.springframework.boot:spring-boot-starter-data-jpa'</span>
-	testImplementation <span class="s1">'org.springframework.boot:spring-boot-starter-test'</span>
-	testImplementation <span class="s1">'junit:junit'</span>
+    implementation <span class="s1">'org.springframework.boot:spring-boot-starter'</span>
+    implementation <span class="s1">'org.springframework.boot:spring-boot-starter-data-jpa'</span>
+    testImplementation <span class="s1">'org.springframework.boot:spring-boot-starter-test'</span>
+    testImplementation <span class="s1">'junit:junit'</span>
 
-	compileOnly <span class="s1">'org.projectlombok:lombok'</span>
-	annotationProcessor <span class="s1">'org.projectlombok:lombok'</span>
+    compileOnly <span class="s1">'org.projectlombok:lombok'</span>
+    annotationProcessor <span class="s1">'org.projectlombok:lombok'</span>
 
-	// 오라클DB 접근
-	runtimeOnly <span class="s1">'com.oracle.database.jdbc:ojdbc8'</span>
-	implementation <span class="s1">'com.oracle.database.security:oraclepki'</span>
-	implementation <span class="s1">'com.oracle.database.security:osdt_core'</span>
-	implementation <span class="s1">'com.oracle.database.security:osdt_cert'</span>
-	
+    // 오라클DB 접근
+    runtimeOnly <span class="s1">'com.oracle.database.jdbc:ojdbc8'</span>
+    implementation <span class="s1">'com.oracle.database.security:oraclepki'</span>
+    implementation <span class="s1">'com.oracle.database.security:osdt_core'</span>
+    implementation <span class="s1">'com.oracle.database.security:osdt_cert'</span>
+    
 <span class="o">}</span>
 
 tasks.named<span class="o">(</span><span class="s1">'test'</span><span class="o">)</span> <span class="o">{</span>
-	useJUnitPlatform<span class="o">()</span>
+    useJUnitPlatform<span class="o">()</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -1286,9 +1286,9 @@ logging.level.org.hibernate<span class="o">=</span>info
     <span class="kd">private</span> <span class="nc">Long</span> <span class="n">cnt</span><span class="o">;</span>
 
     <span class="nd">@PrePersist</span>
-	<span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
-		<span class="n">createDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">();</span>
-	<span class="o">}</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">createDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">();</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
@@ -1303,12 +1303,12 @@ logging.level.org.hibernate<span class="o">=</span>info
 <span class="nd">@SpringBootApplication</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpringDataJpaApplication</span> <span class="o">{</span>
 
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-		<span class="nc">SpringApplication</span> <span class="n">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SpringApplication</span><span class="o">(</span><span class="nc">SpringDataJpaApplication</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-		<span class="n">application</span><span class="o">.</span><span class="na">setWebApplicationType</span><span class="o">(</span><span class="nc">WebApplicationType</span><span class="o">.</span><span class="na">NONE</span><span class="o">);</span>
-		<span class="n">application</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">SpringApplication</span> <span class="n">application</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SpringApplication</span><span class="o">(</span><span class="nc">SpringDataJpaApplication</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">application</span><span class="o">.</span><span class="na">setWebApplicationType</span><span class="o">(</span><span class="nc">WebApplicationType</span><span class="o">.</span><span class="na">NONE</span><span class="o">);</span>
+        <span class="n">application</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
 
-	<span class="o">}</span>
+    <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
 
