@@ -203,21 +203,6 @@
     
       
       <item>
-        <title>No.002 - 댓글이 등록되지 않는 문제</title>
-        
-          <description>&lt;h1 id=&quot;문제-발생&quot;&gt;문제 발생&lt;/h1&gt;
-
-</description>
-        
-        <pubDate>Wed, 24 Aug 2022 05:00:00 +0900</pubDate>
-        <link>
-        https://huimang2.github.io/trouble/trouble-02</link>
-        <guid isPermaLink="true">https://huimang2.github.io/trouble/trouble-02</guid>
-      </item>
-      
-    
-      
-      <item>
         <title>No.001 - 첵크박스 null값 전송 문제</title>
         
           <description>&lt;h1 id=&quot;문제-발생&quot;&gt;문제 발생&lt;/h1&gt;
@@ -408,21 +393,6 @@
         <link>
         https://huimang2.github.io/typescript/typescript</link>
         <guid isPermaLink="true">https://huimang2.github.io/typescript/typescript</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>데이터베이스(DataBase, DB)</title>
-        
-          <description>&lt;h1 id=&quot;데이터베이스란&quot;&gt;데이터베이스란?&lt;/h1&gt;
-
-</description>
-        
-        <pubDate>Tue, 26 Jul 2022 07:00:00 +0900</pubDate>
-        <link>
-        https://huimang2.github.io/etc/database</link>
-        <guid isPermaLink="true">https://huimang2.github.io/etc/database</guid>
       </item>
       
     
