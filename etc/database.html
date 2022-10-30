@@ -11,7 +11,7 @@
 
 
 
-    <title>디자인 패턴(Design Pattern)</title>
+    <title>데이터베이스(DataBase, DB)</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -25,7 +25,7 @@
 
     <!-- custom.css -->
     <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/design_pattern.css" />
+    
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -51,30 +51,40 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/design-pattern/intro" />
+    <link rel="canonical" href="https://huimang2.github.io/etc/database" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="디자인 패턴(Design Pattern)" />
-    <meta property="og:description" content="GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임" />
-    <meta property="og:url" content="https://huimang2.github.io/design-pattern/intro" />
-    <meta property="og:image" content="https://huimang2.github.io/assets/images/gof-logo.png" />
+    <meta property="og:title" content="데이터베이스(DataBase, DB)" />
+    <meta property="og:description" content="데이터베이스란?
+
+데이터베이스(Database, DB)는 여러 사람이 공유하고 사용할 목적으로 통합하여 관리되는 데이터의 집합체를 의미합니다.
+
+데이터베이스는 중복된 데이터를 없애고, 자료를 구조화하여 효율적인 처리를 할 수 있도록 관리되며,
+" />
+    <meta property="og:url" content="https://huimang2.github.io/etc/database" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/M31_starspike.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-07-11T22:18:00+09:00" />
-    <meta property="article:modified_time" content="2022-07-11T22:18:00+09:00" />
-    <meta property="article:tag" content="Java" />
+    <meta property="article:published_time" content="2022-07-26T07:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-07-26T07:00:00+09:00" />
+    <meta property="article:tag" content="Exam" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="디자인 패턴(Design Pattern)" />
-    <meta name="twitter:description" content="GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임" />
+    <meta name="twitter:title" content="데이터베이스(DataBase, DB)" />
+    <meta name="twitter:description" content="데이터베이스란?
+
+데이터베이스(Database, DB)는 여러 사람이 공유하고 사용할 목적으로 통합하여 관리되는 데이터의 집합체를 의미합니다.
+
+데이터베이스는 중복된 데이터를 없애고, 자료를 구조화하여 효율적인 처리를 할 수 있도록 관리되며,
+" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
-    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/gof-logo.png" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/M31_starspike.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Rubisco's Programming Note" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Java" />
+    <meta name="twitter:data2" content="Exam" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -89,18 +99,23 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/design-pattern/intro",
+    "url": "https://huimang2.github.io/etc/database",
     "image": {
         "@type": "ImageObject",
-        "url": "https://huimang2.github.io/assets/images/gof-logo.png",
+        "url": "https://huimang2.github.io/assets/images/M31_starspike.jpg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/design-pattern/intro"
+        "@id": "https://huimang2.github.io/etc/database"
     },
-    "description": "GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트 패턴(Composit Pattern) 데코레이터 패턴(Decorator Pattern) 퍼사드 패턴(Facade Pattern) 플라이웨이트 패턴(Flyweight Pattern) 프록시 패턴(Proxy Pattern) 행위 패턴 책임"
+    "description": "데이터베이스란?
+
+데이터베이스(Database, DB)는 여러 사람이 공유하고 사용할 목적으로 통합하여 관리되는 데이터의 집합체를 의미합니다.
+
+데이터베이스는 중복된 데이터를 없애고, 자료를 구조화하여 효율적인 처리를 할 수 있도록 관리되며,
+"
 }
     </script>
 
@@ -113,7 +128,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="디자인 패턴(Design Pattern)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="데이터베이스(DataBase, DB)" href="/feed.xml" />
 
 
     <!-- MathJax -->
@@ -171,223 +186,44 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-java tag-design-pattern post ">
+        <article class="post-full  tag-exam tag-db post no-image">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="11 July 2022">11 July 2022</time>
+                    <time class="post-full-meta-date" datetime="26 July 2022">26 July 2022</time>
                     
                         <span class="date-divider">/</span>
                         
                             
                                 
-                                <a href='/tag/java/'>#JAVA</a>,&nbsp;
+                                <a href='/tag/exam/'>#정보처리기사</a>,&nbsp;
                                 
                             
                         
                             
                                 
-                                <a href='/tag/design-pattern/'>#디자인패턴</a>
+                                <a href='/tag/db/'>#데이터베이스</a>
                                 
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">디자인 패턴(Design Pattern)</h1>
+                <h1 class="post-full-title">데이터베이스(DataBase, DB)</h1>
             </header>
 
-            <!-- 
-            <figure class="post-full-image" style="background-image: url(/assets/images/gof-logo.png)">
-            </figure>
-             -->
+            <!--  -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#디자인-패턴"><span>디자인 패턴</span></a></li><li><a href="#디자인-패턴의-종류"><span>디자인 패턴의 종류</span></a></li></ul>
+                        <ul><li><a href="#데이터베이스란"><span>데이터베이스란?</span></a></li></ul>
 
                     </div>
-                    <div class="table-of-contents-list">GOF 디자인 패턴</div>
-<ul class="table-of-contents-list design_pattern">
-    
-    <li>
-        <span>생성 패턴</span>
-        <ul class="table-of-contents-list">
-            
-            <li>
-                
-                    <a href="/design-pattern/creational/singleton-pattern">싱글톤 패턴(Singleton Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">팩토리 메서드 패턴(Factory Method Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">추상 팩토리 패턴(Abstract Factory Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">빌더 패턴(Builder Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">프로토타입 패턴(Prototype Pattern)</a>
-                
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li>
-        <span>구조 패턴</span>
-        <ul class="table-of-contents-list">
-            
-            <li class="none">
-                
-                    <a href="#">어댑터 패턴(Adapter Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">브리지 패턴(Bridge Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">컴포지트 패턴(Composit Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">데코레이터 패턴(Decorator Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">퍼사드 패턴(Facade Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">플라이웨이트 패턴(Flyweight Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">프록시 패턴(Proxy Pattern)</a>
-                
-            </li>
-            
-        </ul>
-    </li>
-    
-    <li>
-        <span>행위 패턴</span>
-        <ul class="table-of-contents-list">
-            
-            <li class="none">
-                
-                    <a href="#">책임 연쇄 패턴(Chain of Responsibility Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">커맨드 패턴(Command Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">이터레이터 패턴(Iterator Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">메디에이터 패턴(Mediator Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">메멘토 패턴(Memento Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">옵저버 패턴(Observer Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">상태 패턴(State Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">전략 패턴(Strategy Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">템플릿 메소드 패턴(Template Method Pattern)</a>
-                
-            </li>
-            
-            <li class="none">
-                
-                    <a href="#">비지터 패턴(Visitor Pattern)</a>
-                
-            </li>
-            
-        </ul>
-    </li>
-    
-</ul>
+                    <h1 id="데이터베이스란">데이터베이스란?</h1>
 
-<h1 id="디자인-패턴">디자인 패턴</h1>
+<p><code class="language-plaintext highlighter-rouge">데이터베이스(Database, DB)</code>는 여러 사람이 공유하고 사용할 목적으로 통합하여 관리되는 <code class="language-plaintext highlighter-rouge">데이터의 집합체</code>를 의미합니다.<br /></p>
 
-<p><code class="language-plaintext highlighter-rouge">디자인 패턴(Design Pattern)</code>은 객체지향 프로그래밍을 할때 자주 접할 수 있는 문제를 해결하고자 만든 일종의 코드 패턴에 대한 템플릿(template)입니다.<br />
-<br />
-1990년대 초반 에리히 감마(Erich Gamma)에 의해 첫 소개된 이후 1995년에 이분야의 GoF(Gang of Four)라 불리는 에리히 감마(Erich Gamma), 리처드 헬름(Richard Helm), 랄프 존슨(Ralph Johnson), 존 블리시데스(John Vlissides)에 의해 집대성 되었고, 이것이 <code class="language-plaintext highlighter-rouge">GoF의 디자인 패턴(Design Pattern)</code>으로 널리 알려졌습니다.<br />
-<br />
-디자인 패턴은 객체지향 모델링의 장점인 재사용성과 모듈성을 극대화 시켜서 이를 적용하면 시스템 개발은 물론 유지보수에도 큰 효과를 얻을 수 있습니다. 반면 객체지향 모델에 사용되므로 초기 개발시간이 길어져 소규모 프로젝트에는 적합하지 않을 수도 있습니다.</p>
-
-<h1 id="디자인-패턴의-종류">디자인 패턴의 종류</h1>
-
-<p>디자인 패턴은 크게 생성 패턴(Creational Pattern)과 구조 패턴(Structural Patterns), 행위 패턴(Behavioral Patterns)으로 나눠집니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">생성 패턴(Creational Pattern)</code>은 <u>객체(Object)의 인스턴스(Instance) 생성을 위한 패턴</u>입니다. 클라이언트와 객체 인스턴스 사이의 연결을 끊어줍니다.</p>
-
-<p>생성 패턴에는 싱글톤 패턴(Singleton Pattern), 빌더 패턴(Builder Pattern), 팩토리 메서드 패턴(Factory Method Pattern), 추상 팩토리 패턴(Abstract Factory Pattern), 프로토타입 패턴(Prototype Pattern)이 있습니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">구조 패턴(Structural Patterns</code>은 <u>객체(Object)의 합성에 관한 패턴</u>입니다. 객체의 조직화에 대한 패턴을 제공합니다.</p>
-
-<p>구조 패턴에는 어댑터 패턴(Adapter Pattern), 브리지 패턴(Bridge Pattern), 컴포지트 패턴(Composit Pattern), 데코레이터 패턴(Decorator Pattern), 퍼사드 패턴(Facade Pattern), 플라이웨이트 패턴(Flyweight Pattern), 프록시 패턴(Proxy Pattern)이 있습니다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">행위 패턴(Behavioral Patterns)</code>은 <u>객체(Object)의 상호작용과 책임 분산에 대한 패턴</u>을 제공합니다.</p>
-
-<p>행위 패턴에는 책임 연쇄 패턴(Chain of Responsibility Pattern), 커맨드 패턴(Command Pattern), 인터프리터 패턴(Interpreter Pattern), 이터레이터 패턴(Iterator Pattern), 메디에이터 패턴(Mediator Pattern), 메멘토 패턴(Memento Pattern), 옵저버 패턴(Observer Pattern), 상태 패턴(State Pattern), 전략 패턴(Strategy Pattern), 템플릿 메소드 패턴(Template Method Pattern), 비지터 패턴(Visitor Pattern)이 있습니다.</p>
+<p>데이터베이스는 중복된 데이터를 없애고, 자료를 구조화하여 효율적인 처리를 할 수 있도록 관리되며,</p>
 
                 </div>
             </section>
@@ -459,7 +295,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/java/">Java</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/exam/">Exam</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
@@ -469,65 +305,19 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
-                                    
-                                        
-                                        
-                                            <li><a href="/java/spring-legacy-validation">스프링 레거시(Spring legacy) - 유효성 검사</a></li>
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                            <li><a href="/java/spring-legacy-exception">스프링 레거시(Spring legacy) - 예외처리</a></li>
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                            <li><a href="/java/spring-legacy-search">스프링 레거시(Spring legacy) - 검색기능</a></li>
-                                        
-                                    
+                                
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
                                   
                                 
                                   
@@ -545,28 +335,7 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
-                                  
-                                    
-                                        
-                                        
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                    
                                   
                                 
                                   
@@ -591,21 +360,29 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
+                                  
+                                
+                                  
+                                    
                                         
+                                        
+                                            <li><a href="/etc/iso-standard-7498">OSI 7계층(ISO Standard 7498)</a></li>
                                         
                                     
                                   
                                 
                                   
-                                    
+                                
+                                  
+                                
                                   
                                 
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/java/">
+                            <a href="/tag/exam/">
                                 
-                                    See all 12 posts  →
+                                    See all 1 posts  →
                                 
                             </a>
                         </footer>
@@ -619,12 +396,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/design-pattern/creational/singleton-pattern">
-                <div class="post-card-image" style="background-image: url(/assets/diagram/Singleton.png)"></div>
+            <a class="post-card-image-link" href="/typescript/typescript">
+                <div class="post-card-image" style="background-image: url(/assets/images/typescript-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/design-pattern/creational/singleton-pattern">
+            <a class="post-card-content-link" href="/typescript/typescript">
                 <header class="post-card-header">
                     
                         <div class="post-card-tags-container">
@@ -632,11 +409,13 @@ into the {body} of the default.hbs template -->
                         </div>
                     
 
-                    <h2 class="post-card-title">싱글톤 패턴(Singleton Pattern)</h2>
+                    <h2 class="post-card-title">타입스크립트(TypeScript)란?</h2>
                 </header>
                 <!-- <section class="post-card-excerpt">
                     
-                        <p>GOF 디자인 패턴 생성 패턴 싱글톤 패턴(Singleton Pattern) 팩토리 메서드 패턴(Factory Method Pattern) 추상 팩토리 패턴(Abstract Factory Pattern) 빌더 패턴(Builder Pattern) 프로토타입 패턴(Prototype Pattern) 구조 패턴 어댑터 패턴(Adapter Pattern) 브리지 패턴(Bridge Pattern) 컴포지트</p>
+                        <p>자바스크립트(JavaScript)
+
+</p>
                     
                 </section> -->
             </a>
@@ -658,6 +437,48 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/etc/iso-standard-7498">
+                <div class="post-card-image" style="background-image: url(/assets/images/osi7/osi_img_01.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/etc/iso-standard-7498">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">OSI 7계층(ISO Standard 7498)</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>OSI 7계층
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      3 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
 
         </div>
     </div>
@@ -672,18 +493,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">디자인 패턴(Design Pattern)</div>
+    <div class="floating-header-title">데이터베이스(DataBase, DB)</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EB%94%94%EC%9E%90%EC%9D%B8+%ED%8C%A8%ED%84%B4%28Design+Pattern%29&amp;url=design-pattern/intro"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4%28DataBase%2C+DB%29&amp;url=etc/database"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=design-pattern/intro"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=etc/database"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

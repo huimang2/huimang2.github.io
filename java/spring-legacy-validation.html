@@ -797,11 +797,60 @@ range.product.price = 제품의 가격은 {0}원 이상 {1}원 이하로 입력�
 
 <p><code class="language-plaintext highlighter-rouge">ObjectError</code>의 생성자는 4개의 매개변수가 필요합니다. 첫번째 매개변수는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">객체이름</code>, 두번째 매개변수는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">에러코드</code>, 세번째 매개변수는 DataSource로 전달될 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">인수의 배열</code>, 네번째 매개변수는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">오류메시지 기본값</code> 입니다.</p>
 
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">BindExceptionWithViewName</code> 클래스에 글로벌 오류에 대한 메시지를 받을 <code class="language-plaintext highlighter-rouge">getGlobalMessage</code> 메소드를 추가합니다.</p>
+
+<h6 id="krorubiscoconfigbindexceptionwithviewnamejava-2">/kro/rubisco/config/BindExceptionWithViewName.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.config</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Locale</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.context.MessageSource</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.validation.BindException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.validation.BindingResult</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BindExceptionWithViewName</span> <span class="kd">extends</span> <span class="nc">BindException</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">viewName</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MessageSource</span> <span class="n">messageSource</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Locale</span> <span class="n">locale</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">BindExceptionWithViewName</span><span class="o">(</span>
+        <span class="nc">BindingResult</span> <span class="n">bindingResult</span><span class="o">,</span> 
+        <span class="nc">String</span> <span class="n">viewName</span><span class="o">,</span> 
+        <span class="nc">MessageSource</span> <span class="n">messageSource</span><span class="o">,</span>
+        <span class="nc">Locale</span> <span class="n">locale</span>
+    <span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">bindingResult</span><span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">viewName</span> <span class="o">=</span> <span class="n">viewName</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">messageSource</span> <span class="o">=</span> <span class="n">messageSource</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">locale</span> <span class="o">=</span> <span class="n">locale</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getViewName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">viewName</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMessage</span><span class="o">(</span><span class="nc">String</span> <span class="n">field</span><span class="o">)</span> <span class="o">{</span>
+       <span class="k">return</span> <span class="n">messageSource</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(</span><span class="n">getFieldError</span><span class="o">(</span><span class="n">field</span><span class="o">),</span> <span class="n">locale</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getGlobalMessage</span><span class="o">()</span> <span class="o">{</span>
+       <span class="k">return</span> <span class="n">messageSource</span><span class="o">.</span><span class="na">getMessage</span><span class="o">(</span><span class="n">getGlobalError</span><span class="o">(),</span> <span class="n">locale</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>메시지도 다음과 같이 추가해줍니다.</p>
+
 <h6 id="srcmainwebappweb-infmessageerrorproperties-1">/src/main/webapp/WEB-INF/message/error.properties</h6>
 <div data-lang="PROPERTIES" class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>range.product.count = 제품의 수량은 {0}개 이상 {1}개 이하로 입력할 수 있습니다. 
 range.product.price = 제품의 가격은 {0}원 이상 {1}원 이하로 입력할 수 있습니다.
 totalPriceMax = 최대 예산은 {0}원 입니다. (현재 총액: {1}원)
 </code></pre></div></div>
+
+<p>뷰 템플릿을 다음과 같이 수정합니다.</p>
 
 <h6 id="srcmainwebappweb-infviewstestjsp-2">/src/main/webapp/WEB-INF/views/test.jsp</h6>
 <div data-lang="JSP" class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na"> pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
@@ -1063,11 +1112,6 @@ totalPriceMax = 최대 예산은 {0}원 입니다. (현재 총액: {1}원)
                                   
                                 
                                   
-                                    
-                                        
-                                        
-                                    
-                                  
                                 
                                   
                                     
@@ -1077,6 +1121,13 @@ totalPriceMax = 최대 예산은 {0}원 입니다. (현재 총액: {1}원)
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
                                 
                                   
                                 
@@ -1085,6 +1136,8 @@ totalPriceMax = 최대 예산은 {0}원 입니다. (현재 총액: {1}원)
                                         
                                         
                                     
+                                  
+                                
                                   
                                 
                                   
