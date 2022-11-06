@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>스프링 레거시(Spring legacy) - 회원가입</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/java/spring-legacy-sign-up" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="스프링 레거시(Spring legacy) - 회원가입" />
+    <meta property="og:description" content="이번 글에서는 bean validation을 통해 회원가입을 구현하겠습니다. 회원가입폼 작성 우선 회원가입폼을 작성하겠습니다. /src/main/webapp/WEB-INF/views/member/include/signUpFormCSS.jsp &lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%&gt; &lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %&gt; &lt;style type="text/tailwindcss"&gt; main {@apply text-gray-600 container px-5 py-16 mx-auto} article {@apply lg:w-2/3 w-full mx-auto overflow-auto} form {@apply flex flex-col max-w-2xl mx-auto pb-2 gap-3 xl:gap-6 before:text-lg before:xl:text-2xl" />
+    <meta property="og:url" content="https://huimang2.github.io/java/spring-legacy-sign-up" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/spring-legacy/logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2022-11-07T01:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-11-07T01:00:00+09:00" />
+    <meta property="article:tag" content="Java" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="스프링 레거시(Spring legacy) - 회원가입" />
+    <meta name="twitter:description" content="이번 글에서는 bean validation을 통해 회원가입을 구현하겠습니다. 회원가입폼 작성 우선 회원가입폼을 작성하겠습니다. /src/main/webapp/WEB-INF/views/member/include/signUpFormCSS.jsp &lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%&gt; &lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %&gt; &lt;style type="text/tailwindcss"&gt; main {@apply text-gray-600 container px-5 py-16 mx-auto} article {@apply lg:w-2/3 w-full mx-auto overflow-auto} form {@apply flex flex-col max-w-2xl mx-auto pb-2 gap-3 xl:gap-6 before:text-lg before:xl:text-2xl" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/spring-legacy/logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Java" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/java/spring-legacy-sign-up",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/spring-legacy/logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/java/spring-legacy-sign-up"
+    },
+    "description": "이번 글에서는 bean validation을 통해 회원가입을 구현하겠습니다. 회원가입폼 작성 우선 회원가입폼을 작성하겠습니다. /src/main/webapp/WEB-INF/views/member/include/signUpFormCSS.jsp &lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%&gt; &lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %&gt; &lt;style type="text/tailwindcss"&gt; main {@apply text-gray-600 container px-5 py-16 mx-auto} article {@apply lg:w-2/3 w-full mx-auto overflow-auto} form {@apply flex flex-col max-w-2xl mx-auto pb-2 gap-3 xl:gap-6 before:text-lg before:xl:text-2xl"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="스프링 레거시(Spring legacy) - 회원가입" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-java tag-spring post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 7 November 2022"> 7 November 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/java/'>#JAVA</a>,&nbsp;
+                                
+                            
+                        
+                            
+                                
+                                <a href='/tag/spring/'>#SPRING</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">스프링 레거시(Spring legacy) - 회원가입</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/spring-legacy/logo.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#회원가입폼-작성"><span>회원가입폼 작성</span></a></li><li><a href="#mapper-dao-service-수정"><span>Mapper, DAO, Service 수정</span></a></li><li><a href="#dto-controller-수정"><span>DTO, Controller 수정</span></a></li></ul>
+
+                    </div>
+                    <p>이번 글에서는 bean validation을 통해 회원가입을 구현하겠습니다.</p>
+
+<h1 id="회원가입폼-작성">회원가입폼 작성</h1>
+
+<p>우선 회원가입폼을 작성하겠습니다.</p>
+
+<h6 id="srcmainwebappweb-infviewsmemberincludesignupformcssjsp">/src/main/webapp/WEB-INF/views/member/include/signUpFormCSS.jsp</h6>
+<div data-lang="JSP" class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na"> pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ taglib </span><span class="na">uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span><span class="na"> prefix=</span><span class="s">"c"</span> <span class="nt">%&gt;</span>
+
+<span class="nt">&lt;style </span><span class="na">type=</span><span class="s">"text/tailwindcss"</span><span class="nt">&gt;</span>
+    <span class="nt">main</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">text-gray-600</span> <span class="err">container</span> <span class="err">px-5</span> <span class="err">py-16</span> <span class="err">mx-auto</span><span class="p">}</span>
+    <span class="nt">article</span> <span class="p">{</span><span class="err">@apply</span> <span class="py">lg</span><span class="p">:</span><span class="n">w-2</span><span class="p">/</span><span class="m">3</span> <span class="n">w-full</span> <span class="n">mx-auto</span> <span class="n">overflow-auto</span><span class="p">}</span>
+    <span class="nt">form</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">flex</span> <span class="err">flex-col</span> <span class="err">max-w-2xl</span> <span class="err">mx-auto</span> <span class="err">pb-2</span> <span class="err">gap-3</span> <span class="py">xl</span><span class="p">:</span><span class="n">gap-6</span> <span class="n">before</span><span class="p">:</span><span class="n">text-lg</span> <span class="n">before</span><span class="p">:</span><span class="n">xl</span><span class="p">:</span><span class="n">text-2xl</span> <span class="n">before</span><span class="p">:</span><span class="n">font-bold</span> <span class="n">before</span><span class="p">:</span><span class="n">text-gray-600</span> <span class="n">before</span><span class="p">:</span><span class="n">text-center</span><span class="p">}</span>
+    <span class="nt">form</span> <span class="o">&gt;</span> <span class="nt">label</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">flex</span> <span class="err">flex-col</span> <span class="err">w-full</span> <span class="err">text-sm</span> <span class="py">sm</span><span class="p">:</span><span class="n">text-base</span><span class="p">}</span>
+    <span class="nt">form</span> <span class="o">&gt;</span> <span class="nt">label</span> <span class="o">&gt;</span> <span class="nt">font</span> <span class="p">{</span><span class="err">@apply</span> <span class="py">before</span><span class="p">:</span><span class="n">font-medium</span> <span class="n">before</span><span class="p">:</span><span class="n">text-gray-600</span> <span class="n">before</span><span class="p">:</span><span class="n">mr-4</span><span class="p">}</span>
+    <span class="nt">form</span> <span class="o">&gt;</span> <span class="nt">button</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">submit</span><span class="o">]</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">relative</span> <span class="err">flex</span> <span class="err">justify-center</span> <span class="err">rounded-md</span> <span class="err">border</span> <span class="err">border-transparent</span> <span class="err">bg-slate-600</span> <span class="err">py-2</span> <span class="err">px-4</span> <span class="err">mt-4</span> <span class="err">text-sm</span> <span class="err">font-medium</span> <span class="err">text-white</span> 
+        <span class="py">hover</span><span class="p">:</span><span class="n">bg-slate-700</span> <span class="n">focus</span><span class="p">:</span><span class="n">outline-none</span> <span class="n">focus</span><span class="p">:</span><span class="n">ring-2</span> <span class="n">focus</span><span class="p">:</span><span class="n">ring-slate-500</span> <span class="n">focus</span><span class="p">:</span><span class="n">ring-offset-2</span><span class="p">}</span>
+    <span class="nt">form</span> <span class="nt">input</span> <span class="p">{</span><span class="err">@apply</span> <span class="err">mt-1</span> <span class="err">w-full</span> <span class="err">px-3</span> <span class="err">py-2</span> <span class="err">bg-white</span> <span class="err">border</span> <span class="err">border-violet-300</span> <span class="err">rounded-md</span> <span class="err">text-sm</span> <span class="err">shadow-sm</span> <span class="err">placeholder-slate-400</span>
+        <span class="py">focus</span><span class="p">:</span><span class="n">outline-none</span> <span class="n">focus</span><span class="p">:</span><span class="n">border-violet-500</span> <span class="n">focus</span><span class="p">:</span><span class="n">ring-1</span> <span class="n">focus</span><span class="p">:</span><span class="n">ring-violet-500</span> <span class="n">disabled</span><span class="p">:</span><span class="n">bg-slate-50</span> <span class="n">disabled</span><span class="p">:</span><span class="n">text-slate-500</span> 
+        <span class="n">disabled</span><span class="p">:</span><span class="n">border-slate-200</span> <span class="n">disabled</span><span class="p">:</span><span class="n">shadow-none</span><span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<h6 id="srcmainwebappweb-infviewsmembersignupformjsp">/src/main/webapp/WEB-INF/views/member/signUpForm.jsp</h6>
+<div data-lang="JSP" class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na"> pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ taglib </span><span class="na">uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span><span class="na"> prefix=</span><span class="s">"c"</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"fmt"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/fmt"</span> <span class="nt">%&gt;</span>
+
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;%@ include </span><span class="na">file=</span><span class="s">"./include/signUpFormCSS.jsp"</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;title&gt;</span>게시글 목록<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;article&gt;</span>
+        <span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"before:content-['회원가입']"</span> <span class="na">action=</span><span class="s">"/member"</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">onsubmit=</span><span class="s">"return false"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"act"</span> <span class="na">value=</span><span class="s">"signUp"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;label&gt;</span>
+                <span class="nt">&lt;font</span> <span class="na">class=</span><span class="s">"before:content-['이메일']"</span> <span class="na">color=</span><span class="s">"red"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">errors</span><span class="o">.</span><span class="na">hasFieldErrors</span><span class="o">(</span><span class="l">'email'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>* ${errors.getMessage('email')}<span class="nt">&lt;/c:if&gt;</span>
+                <span class="nt">&lt;/font&gt;</span>
+                <span class="nt">&lt;c:choose&gt;</span>
+                    <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="o">!</span><span class="n">errors</span><span class="o">.</span><span class="na">hasFieldErrors</span><span class="o">(</span><span class="l">'email'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"value"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">errors</span><span class="o">.</span><span class="na">getFieldValue</span><span class="o">(</span><span class="l">'email'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/c:when&gt;</span>
+                    <span class="nt">&lt;c:otherwise&gt;&lt;c:remove </span><span class="na">var=</span><span class="s">"value"</span> <span class="nt">/&gt;&lt;/c:otherwise&gt;</span>
+                <span class="nt">&lt;/c:choose&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"email"</span> <span class="na">required</span> <span class="na">placeholder=</span><span class="s">"Email"</span> <span class="na">value=</span><span class="s">"${value}"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;label&gt;</span>
+                <span class="nt">&lt;font</span> <span class="na">class=</span><span class="s">"before:content-['비밀번호']"</span> <span class="na">color=</span><span class="s">"red"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">errors</span><span class="o">.</span><span class="na">hasFieldErrors</span><span class="o">(</span><span class="l">'password'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>* ${errors.getMessage('password')}<span class="nt">&lt;/c:if&gt;</span>
+                <span class="nt">&lt;/font&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"password"</span> <span class="na">minlength=</span><span class="s">"8"</span> <span class="na">maxlength=</span><span class="s">"20"</span> <span class="na">required</span> <span class="na">placeholder=</span><span class="s">"Password"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;label&gt;</span>
+                <span class="nt">&lt;font</span> <span class="na">class=</span><span class="s">"before:content-['비밀번호_확인']"</span> <span class="na">color=</span><span class="s">"red"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">errors</span><span class="o">.</span><span class="na">hasFieldErrors</span><span class="o">(</span><span class="l">'rePassword'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>* ${errors.getMessage('rePassword')}<span class="nt">&lt;/c:if&gt;</span>
+                <span class="nt">&lt;/font&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">"rePassword"</span> <span class="na">minlength=</span><span class="s">"8"</span> <span class="na">maxlength=</span><span class="s">"20"</span> <span class="na">required</span> <span class="na">placeholder=</span><span class="s">"Password"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;label&gt;</span>
+                <span class="nt">&lt;font</span> <span class="na">class=</span><span class="s">"before:content-['이름']"</span> <span class="na">color=</span><span class="s">"red"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">errors</span><span class="o">.</span><span class="na">hasFieldErrors</span><span class="o">(</span><span class="l">'name'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>* ${errors.getMessage('name')}<span class="nt">&lt;/c:if&gt;</span>
+                <span class="nt">&lt;/font&gt;</span>
+                <span class="nt">&lt;c:choose&gt;</span>
+                    <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="o">!</span><span class="n">errors</span><span class="o">.</span><span class="na">hasFieldErrors</span><span class="o">(</span><span class="l">'name'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"value"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">errors</span><span class="o">.</span><span class="na">getFieldValue</span><span class="o">(</span><span class="l">'name'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/c:when&gt;</span>
+                    <span class="nt">&lt;c:otherwise&gt;&lt;c:remove </span><span class="na">var=</span><span class="s">"value"</span> <span class="nt">/&gt;&lt;/c:otherwise&gt;</span>
+                <span class="nt">&lt;/c:choose&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">required</span> <span class="na">placeholder=</span><span class="s">"Name"</span> <span class="na">value=</span><span class="s">"${value}"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;label&gt;</span>
+                <span class="nt">&lt;font</span> <span class="na">class=</span><span class="s">"before:content-['닉네임']"</span> <span class="na">color=</span><span class="s">"red"</span><span class="nt">&gt;</span>
+                    <span class="nt">&lt;c:if </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="n">errors</span><span class="o">.</span><span class="na">hasFieldErrors</span><span class="o">(</span><span class="l">'nickName'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>* ${errors.getMessage('nickName')}<span class="nt">&lt;/c:if&gt;</span>
+                <span class="nt">&lt;/font&gt;</span>
+                <span class="nt">&lt;c:choose&gt;</span>
+                    <span class="nt">&lt;c:when </span><span class="na">test=</span><span class="s">"</span><span class="si">${</span><span class="o">!</span><span class="n">errors</span><span class="o">.</span><span class="na">hasFieldErrors</span><span class="o">(</span><span class="l">'nickName'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span><span class="nt">&gt;</span>
+                        <span class="nt">&lt;c:set </span><span class="na">var=</span><span class="s">"value"</span><span class="na"> value=</span><span class="s">"</span><span class="si">${</span><span class="n">errors</span><span class="o">.</span><span class="na">getFieldValue</span><span class="o">(</span><span class="l">'nickName'</span><span class="o">)</span><span class="si">}</span><span class="s">"</span> <span class="nt">/&gt;</span>
+                    <span class="nt">&lt;/c:when&gt;</span>
+                    <span class="nt">&lt;c:otherwise&gt;&lt;c:remove </span><span class="na">var=</span><span class="s">"value"</span> <span class="nt">/&gt;&lt;/c:otherwise&gt;</span>
+                <span class="nt">&lt;/c:choose&gt;</span>
+                <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">"nickName"</span> <span class="na">required</span> <span class="na">placeholder=</span><span class="s">"Nickname"</span> <span class="na">value=</span><span class="s">"${value}"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/label&gt;</span>
+            <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"before:content-['회원가입']"</span><span class="nt">&gt;&lt;/button&gt;</span>
+        <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;/article&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">button[type=submit]</span><span class="dl">'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[name=password]</span><span class="dl">'</span><span class="p">).</span><span class="nx">value</span> <span class="o">!=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[name=rePassword]</span><span class="dl">'</span><span class="p">).</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[name=rePassword]</span><span class="dl">'</span><span class="p">).</span><span class="nx">setCustomValidity</span><span class="p">(</span><span class="dl">"</span><span class="s2">패스워드가 일치하지 않습니다.</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">form</span><span class="dl">'</span><span class="p">).</span><span class="nx">submit</span><span class="p">();</span>
+<span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>tailwindcss를 통해 클래스로 스타일을 작성했으며, HTML5의 폼검증 API를 통해 클라이언트에서 1차적으로 검증을 하도록 작성했습니다.</p>
+
+<h1 id="mapper-dao-service-수정">Mapper, DAO, Service 수정</h1>
+
+<p>이메일이 중복되었는지 확인하기 위해 MemberDAO에 <code class="language-plaintext highlighter-rouge">getMemberByEmail</code> 메소드를 추가합니다.</p>
+
+<h6 id="krorubiscodaomemberdaojava">/kro/rubisco/dao/MemberDAO.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.dao</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.annotations.Mapper</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kro.rubisco.dto.MemberDTO</span><span class="o">;</span>
+
+<span class="nd">@Mapper</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MemberDAO</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">getMemberByEmail</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>memberMapper.xml 파일에 <code class="language-plaintext highlighter-rouge">getMemberByEmail</code>라는 id를 가지는 select 쿼리문을 작성하여 MemberDAO의 getMemberByEmail 메소드에 매핑하도록 하겠습니다.</p>
+
+<h6 id="membermapperxml">memberMapper.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
+
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kro.rubisco.dao.MemberDAO"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;resultMap</span> <span class="na">id=</span><span class="s">"getMember"</span> <span class="na">type=</span><span class="s">"MemberDTO"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;association</span> <span class="na">property=</span><span class="s">"group"</span> <span class="na">column=</span><span class="s">"group_id"</span> <span class="na">select=</span><span class="s">"getGroup"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/resultMap&gt;</span>
+
+<span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">"create"</span><span class="nt">&gt;</span>
+insert into member (password, email, name, nick_name, group_id)
+values (#{password}, #{email}, #{name}, #{nickName}, #{groupId})
+<span class="nt">&lt;/insert&gt;</span>
+
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"read"</span> <span class="na">resultMap=</span><span class="s">"getMember"</span><span class="nt">&gt;</span>
+select * from member where member_id = #{memberId}
+<span class="nt">&lt;/select&gt;</span>
+
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getMemberByEmail"</span> <span class="na">resultMap=</span><span class="s">"getMember"</span><span class="nt">&gt;</span>
+select * from member where email = #{email}
+<span class="nt">&lt;/select&gt;</span>
+
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"getGroup"</span> <span class="na">resultType=</span><span class="s">"GroupDTO"</span><span class="nt">&gt;</span>
+select * from member_group where group_id=#{groupId}
+<span class="nt">&lt;/select&gt;</span>
+
+<span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"update"</span><span class="nt">&gt;</span>
+update member 
+set password=#{password},
+    email=#{email}, 
+    name=#{name}, 
+    nick_name= #{nickName},
+where member_id = #{memberId}
+<span class="nt">&lt;/update&gt;</span>
+
+<span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">"delete"</span><span class="nt">&gt;</span> delete from member where member_id = #{memberId} <span class="nt">&lt;/delete&gt;</span>
+
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultMap=</span><span class="s">"getMember"</span><span class="nt">&gt;</span>
+<span class="cp">&lt;![CDATA[ select * from member where m.member_id &gt; 0 order by m.member_id desc ]]&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+
+<span class="nt">&lt;/mapper&gt;</span>
+</code></pre></div></div>
+
+<p>MemberService 인터페이스에 email을 매개변수로 받는 read 메소드를 오버로드하여 작성합니다.</p>
+
+<h6 id="krorubiscoservicememberservicejava">/kro/rubisco/service/MemberService.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kro.rubisco.dto.MemberDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MemberService</span> <span class="o">{</span>
+    
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">regist</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+
+      <span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+      
+      <span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">modify</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+
+      <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>해당 인터페이스의 구현체를 작성합니다.</p>
+
+<h6 id="krorubiscoserviceimplmemberserviceimpljava">/kro/rubisco/service/impl/MemberServiceImpl.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.service.impl</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.session.SqlSession</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.transaction.annotation.Transactional</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kro.rubisco.dao.MemberDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kro.rubisco.dto.MemberDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kro.rubisco.service.MemberService</span><span class="o">;</span>
+
+<span class="nd">@Service</span>
+<span class="nd">@Transactional</span><span class="o">(</span><span class="n">readOnly</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberServiceImpl</span> <span class="kd">implements</span> <span class="nc">MemberService</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MemberDAO</span> <span class="n">memberDAO</span><span class="o">;</span>
+    
+    <span class="nd">@Autowired</span>
+    <span class="kd">public</span> <span class="nf">MemberServiceImpl</span><span class="o">(</span><span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">memberDAO</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="nc">MemberDAO</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">regist</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">memberDAO</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">memberDAO</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">memberDAO</span><span class="o">.</span><span class="na">getMemberByEmail</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">modify</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">memberDAO</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">memberDAO</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">memberDAO</span><span class="o">.</span><span class="na">listAll</span><span class="o">();</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="dto-controller-수정">DTO, Controller 수정</h1>
+
+<p>1차적으로 스크립트를 통해 클라이언트에서 유효성 검사를 하게 되지만, 클라이언트에서는 스크립트 수정을 통해 서버로 부정적인 접근을 할 수 있습니다. 그렇기때문에 컨트롤러에서 2차인 유효성검사를 하게 됩니다.</p>
+
+<p>bean validation을 위해 MemberDTO에 다음과 같이 어노테이션을 붙여줍니다.</p>
+
+<h6 id="krorubiscodtomemberdtojava">/kro/rubisco/dto/MemberDTO.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.dto</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.validation.constraints.NotBlank</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.validation.constraints.Size</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+
+<span class="nd">@Getter</span>
+<span class="nd">@Setter</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberDTO</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">memberId</span><span class="o">;</span>
+    
+    <span class="nd">@NotBlank</span><span class="o">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">"패스워드를 입력하세요."</span><span class="o">)</span>
+    <span class="nd">@Size</span><span class="o">(</span><span class="n">min</span> <span class="o">=</span> <span class="mi">8</span><span class="o">,</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">20</span><span class="o">,</span> <span class="n">message</span> <span class="o">=</span> <span class="s">"패스워드는 8글자 이상 20글자 이하로 입력하세요."</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
+    
+    <span class="nd">@NotBlank</span><span class="o">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">"이메일을 입력하세요."</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
+    
+    <span class="nd">@NotBlank</span><span class="o">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">"이름을 입력하세요."</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+    
+    <span class="nd">@NotBlank</span><span class="o">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">"닉네임을 입력하세요."</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">nickName</span><span class="o">;</span>
+    
+    <span class="kd">private</span> <span class="nc">Long</span> <span class="n">groupId</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">GroupDTO</span> <span class="n">group</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Date</span> <span class="n">createDate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Date</span> <span class="n">lastLogin</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>마지막으로 MemberController의 insertMember 메소드를 수정해주세요.</p>
+
+<h6 id="krorubiscocontrollermembercontrollerjava">/kro/rubisco/controller/MemberController.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Locale</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.context.MessageSource</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.validation.BindingResult</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.validation.FieldError</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.validation.annotation.Validated</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.DeleteMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.ModelAttribute</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.PatchMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.PostMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestParam</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kro.rubisco.config.BindExceptionWithViewName</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kro.rubisco.dto.MemberDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kro.rubisco.service.MemberService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+
+<span class="nd">@Controller</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/member"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberController</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MessageSource</span> <span class="n">messageSource</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MemberService</span> <span class="n">memberService</span><span class="o">;</span>
+    
+    <span class="nd">@GetMapping</span><span class="o">()</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getMemberInfo</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"member/getMemberInfo"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="n">params</span><span class="o">=</span><span class="s">"act=signUp"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getSignUpView</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"member/signUpForm"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@PostMapping</span><span class="o">()</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">insertMember</span><span class="o">(</span>
+        <span class="nd">@Validated</span> <span class="nd">@ModelAttribute</span><span class="o">(</span><span class="s">"member"</span><span class="o">)</span> <span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">,</span> 
+        <span class="nc">BindingResult</span> <span class="n">bindingResult</span><span class="o">,</span> 
+        <span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"rePassword"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">rePassword</span><span class="o">,</span>
+        <span class="nc">Locale</span> <span class="n">locale</span>
+    <span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        
+        <span class="k">if</span><span class="o">(!</span><span class="n">member</span><span class="o">.</span><span class="na">getPassword</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">rePassword</span><span class="o">))</span> <span class="o">{</span>
+            <span class="n">bindingResult</span><span class="o">.</span><span class="na">addError</span><span class="o">(</span><span class="k">new</span> <span class="nc">FieldError</span><span class="o">(</span><span class="s">"java.lang.String"</span><span class="o">,</span> <span class="s">"rePassword"</span><span class="o">,</span> <span class="s">"패스워드가 일치하지 않습니다."</span><span class="o">));</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span><span class="o">(</span><span class="n">memberService</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getEmail</span><span class="o">())</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">bindingResult</span><span class="o">.</span><span class="na">rejectValue</span><span class="o">(</span><span class="s">"email"</span><span class="o">,</span> <span class="s">"overlap.email"</span><span class="o">,</span> <span class="s">"동일한 이메일이 존재합니다."</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="k">if</span><span class="o">(</span><span class="n">bindingResult</span><span class="o">.</span><span class="na">hasErrors</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">BindExceptionWithViewName</span><span class="o">(</span><span class="n">bindingResult</span><span class="o">,</span> <span class="s">"member/signUpForm"</span><span class="o">,</span> <span class="n">messageSource</span><span class="o">,</span> <span class="n">locale</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="n">member</span><span class="o">.</span><span class="na">setGroupId</span><span class="o">(</span><span class="mi">1L</span><span class="o">);</span>
+        <span class="n">memberService</span><span class="o">.</span><span class="na">regist</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+        
+        <span class="k">return</span> <span class="s">"redirect:/"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@PatchMapping</span><span class="o">()</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">updateMember</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">memberService</span><span class="o">.</span><span class="na">modify</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"redirect:/member"</span><span class="o">;</span>
+    <span class="o">}</span>
+    
+    <span class="nd">@DeleteMapping</span><span class="o">()</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">deleteMember</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"redirect:/"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>검증기를 따로 작성하지 않고 메소드 자체에 패스워드와 이메일 중복 검증 로직을 작성했습니다. 아직 그룹을 생성하는 폼이 없으므로, 이전에 DB에 입력한 Admin 그룹의 groupId인 1L을 주입하여 회원가입이 되도록 했습니다.</p>
+
+<p>아래 화면은 이메일을 중복하여 가입했을 경우 나타나는 화면입니다.</p>
+
+<p align="center"><img src="/assets/images/spring-legacy/img34.png" alt="img34" /></p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/java/">Java</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-bean-validation">스프링 레거시(Spring legacy) - Bean Validation</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-validation">스프링 레거시(Spring legacy) - 유효성 검사</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-exception">스프링 레거시(Spring legacy) - 예외처리</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/java/">
+                                
+                                    See all 14 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/java/spring-legacy-bean-validation">
+                <div class="post-card-image" style="background-image: url(/assets/images/spring-legacy/logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/java/spring-legacy-bean-validation">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">스프링 레거시(Spring legacy) - Bean Validation</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>Validator
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      6 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">스프링 레거시(Spring legacy) - 회원가입</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%8A%A4%ED%94%84%EB%A7%81+%EB%A0%88%EA%B1%B0%EC%8B%9C%28Spring+legacy%29+-+%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85&amp;url=java/spring-legacy-sign-up"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=java/spring-legacy-sign-up"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
