@@ -492,6 +492,7 @@ where member_id = #{memberId}
 
 <span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
 
+<span class="kn">import</span> <span class="nn">javax.validation.constraints.Email</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.validation.constraints.NotBlank</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">javax.validation.constraints.Size</span><span class="o">;</span>
 
@@ -509,6 +510,7 @@ where member_id = #{memberId}
     <span class="kd">private</span> <span class="nc">String</span> <span class="n">password</span><span class="o">;</span>
     
     <span class="nd">@NotBlank</span><span class="o">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">"이메일을 입력하세요."</span><span class="o">)</span>
+    <span class="nd">@Email</span>
     <span class="kd">private</span> <span class="nc">String</span> <span class="n">email</span><span class="o">;</span>
     
     <span class="nd">@NotBlank</span><span class="o">(</span><span class="n">message</span> <span class="o">=</span> <span class="s">"이름을 입력하세요."</span><span class="o">)</span>
