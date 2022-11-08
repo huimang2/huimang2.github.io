@@ -846,7 +846,7 @@ select * from member where email = #{email} and password = #{password}
 
 <h2 id="세션의-생성과-조회">세션의 생성과 조회</h2>
 
-<p><code class="language-plaintext highlighter-rouge">LoginController의</code> <code class="language-plaintext highlighter-rouge">login</code> 메소드를 수정하겠습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">LoginController</code>의 <code class="language-plaintext highlighter-rouge">login</code> 메소드를 수정하겠습니다.</p>
 
 <h6 id="krorubiscocontrollerlogincontrollerjava-3">/kro/rubisco/controller/LoginController.java</h6>
 <div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.controller</span><span class="o">;</span>
@@ -938,7 +938,7 @@ select * from member where email = #{email} and password = #{password}
 <span class="kn">import</span> <span class="nn">kro.rubisco.dto.MemberDTO</span><span class="o">;</span>
 
 <span class="nd">@Controller</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomeControlle</span>     <span class="n">r</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HomeController</span> <span class="o">{</span>
 
     <span class="nd">@RequestMapping</span><span class="o">()</span>
     <span class="kd">public</span> <span class="nc">String</span> <span class="nf">home</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
