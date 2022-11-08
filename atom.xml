@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>스프링 레거시(Spring legacy) - 쿠키와 세션</title>
+        
+          <description>&lt;p&gt;이번 글에서는 로그인 기능을 구현하기에 앞서 쿠키와 세션에 대하여 알아보겠습니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 08 Nov 2022 01:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/java/spring-legacy-cookie-and-session</link>
+        <guid isPermaLink="true">https://huimang2.github.io/java/spring-legacy-cookie-and-session</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>스프링 레거시(Spring legacy) - 회원가입</title>
         
           <description>&lt;p&gt;이번 글에서는 bean validation을 통해 회원가입을 구현하겠습니다.&lt;/p&gt;
