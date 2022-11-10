@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>스프링 레거시(Spring legacy) - 필터와 인터셉터</title>
+        
+          <description>&lt;h1 id=&quot;공통관심사cross-cutting-concerns&quot;&gt;공통관심사(Cross-cutting Concerns)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Wed, 09 Nov 2022 01:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/java/spring-legacy-filter-and-interceptor</link>
+        <guid isPermaLink="true">https://huimang2.github.io/java/spring-legacy-filter-and-interceptor</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>[1단계][133499] 옹알이(2)</title>
         
           <description>&lt;h1 id=&quot;문제&quot;&gt;문제&lt;/h1&gt;

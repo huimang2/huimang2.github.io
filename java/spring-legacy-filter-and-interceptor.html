@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>스프링 레거시(Spring legacy) - 필터와 인터셉터</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/java/spring-legacy-filter-and-interceptor" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="스프링 레거시(Spring legacy) - 필터와 인터셉터" />
+    <meta property="og:description" content="공통관심사(Cross-cutting Concerns) 이전에 스프링의 특징으로 AOP에 대해서 설명한 적이 있습니다. 객체 지향 프로그래밍(Object Oriented Programming, OOP)을 하다보면 단일 책임 원칙(Single Responsibility Principle, SRP)에 따라 클래스를 분리하게 되지만, 클래스를 설계하다보면 공통적인 부분이 존재하게 됩니다. 예를 로그인 기능을 구현한다면 컨트롤러마다 로그인 기능을 작성하게 됩니다. 이렇게 중복되는 코드를 공통 관심사(Cross-cutting Concerns)라고 합니다. 스프링에는" />
+    <meta property="og:url" content="https://huimang2.github.io/java/spring-legacy-filter-and-interceptor" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/spring-legacy/logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2022-11-09T01:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-11-09T01:00:00+09:00" />
+    <meta property="article:tag" content="Java" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="스프링 레거시(Spring legacy) - 필터와 인터셉터" />
+    <meta name="twitter:description" content="공통관심사(Cross-cutting Concerns) 이전에 스프링의 특징으로 AOP에 대해서 설명한 적이 있습니다. 객체 지향 프로그래밍(Object Oriented Programming, OOP)을 하다보면 단일 책임 원칙(Single Responsibility Principle, SRP)에 따라 클래스를 분리하게 되지만, 클래스를 설계하다보면 공통적인 부분이 존재하게 됩니다. 예를 로그인 기능을 구현한다면 컨트롤러마다 로그인 기능을 작성하게 됩니다. 이렇게 중복되는 코드를 공통 관심사(Cross-cutting Concerns)라고 합니다. 스프링에는" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/spring-legacy/logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Java" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/java/spring-legacy-filter-and-interceptor",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/spring-legacy/logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/java/spring-legacy-filter-and-interceptor"
+    },
+    "description": "공통관심사(Cross-cutting Concerns) 이전에 스프링의 특징으로 AOP에 대해서 설명한 적이 있습니다. 객체 지향 프로그래밍(Object Oriented Programming, OOP)을 하다보면 단일 책임 원칙(Single Responsibility Principle, SRP)에 따라 클래스를 분리하게 되지만, 클래스를 설계하다보면 공통적인 부분이 존재하게 됩니다. 예를 로그인 기능을 구현한다면 컨트롤러마다 로그인 기능을 작성하게 됩니다. 이렇게 중복되는 코드를 공통 관심사(Cross-cutting Concerns)라고 합니다. 스프링에는"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="스프링 레거시(Spring legacy) - 필터와 인터셉터" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-java tag-spring post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 9 November 2022"> 9 November 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/java/'>#JAVA</a>,&nbsp;
+                                
+                            
+                        
+                            
+                                
+                                <a href='/tag/spring/'>#SPRING</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">스프링 레거시(Spring legacy) - 필터와 인터셉터</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/spring-legacy/logo.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#공통관심사cross-cutting-concerns"><span>공통관심사(Cross-cutting Concerns)</span></a></li><li><a href="#서블릿-필터servlet-filter"><span>서블릿 필터(Servlet Filter)</span></a></li><li><a href="#스프링-인터셉터spring-interceptor"><span>스프링 인터셉터(Spring Interceptor)</span></a></li></ul>
+
+                    </div>
+                    <h1 id="공통관심사cross-cutting-concerns">공통관심사(Cross-cutting Concerns)</h1>
+
+<p>이전에 스프링의 특징으로 <code class="language-plaintext highlighter-rouge">AOP</code>에 대해서 설명한 적이 있습니다. <code class="language-plaintext highlighter-rouge">객체 지향 프로그래밍(Object Oriented Programming, OOP)</code>을 하다보면 <code class="language-plaintext highlighter-rouge">단일 책임 원칙(Single Responsibility Principle, SRP)</code>에 따라 클래스를 분리하게 되지만, 클래스를 설계하다보면 공통적인 부분이 존재하게 됩니다. 예를 로그인 기능을 구현한다면 컨트롤러마다 로그인 기능을 작성하게 됩니다. 이렇게 중복되는 코드를 <code class="language-plaintext highlighter-rouge">공통 관심사(Cross-cutting Concerns)</code>라고 합니다.</p>
+
+<p>스프링에는 이러한 공통 관심사를 처리하기 위한 <code class="language-plaintext highlighter-rouge">AOP</code>를 제공하지만, 웹어플리케이션의 경우 AOP 보다는 <code class="language-plaintext highlighter-rouge">Filter</code> 또는 <code class="language-plaintext highlighter-rouge">Interceptor</code>에서 공통 관심사를 처리합니다.</p>
+
+<p align="center"><img src="/assets/images/spring-legacy/img36.png" alt="img36" /></p>
+
+<p>3개의 인터페이스는 공통관심사를 처리한다는 점에서 같은 역할을 하지만, 약간의 차이점이 존재합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Filter</code>는 <code class="language-plaintext bgcolor yellow highlighter-rouge" style="color: orange">Servlet Container</code> 에 존재하며 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">DispatcherServlet</code>의 호출 전후로 실행됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Interceptor</code>는 <code class="language-plaintext bgcolor yellow highlighter-rouge" style="color: orange">Spring Container</code>에 존재하며, <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">Controller</code>의 호출 전후로 실행됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">AOP</code>는 Interceptor와 마찬가지로 <code class="language-plaintext bgcolor yellow highlighter-rouge" style="color: orange">Spring Container</code>에서 실행되지만 <code class="language-plaintext highlighter-rouge">Servlet</code>에서 실행되는 Filter, Interceptor와 달리 AOP는 <code class="language-plaintext highlighter-rouge">Proxy</code>를 통해 실행됩니다.</p>
+
+<p>정리하면 클라이언트 요청이 들어오면 <code class="language-plaintext highlighter-rouge">Filter -&gt; Interceptor -&gt; AOP -&gt; Interceptor -&gt; Filter</code> 순서로 실행됩니다.</p>
+
+<h1 id="서블릿-필터servlet-filter">서블릿 필터(Servlet Filter)</h1>
+
+<p>필터는 <code class="language-plaintext highlighter-rouge">Filter</code> 인터페이스를 상속받아 구현하고 <code class="language-plaintext highlighter-rouge">web.xml</code> 파일에 등록하여 적용할 수 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Filter</code> 인터페이스는 다음과 같습니다.</p>
+
+<h6 id="javaxservletfilter">javax.servlet.Filter</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Filter</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="nc">FilterConfig</span> <span class="n">filterConfig</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doFilter</span> <span class="o">(</span> <span class="nc">ServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">ServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="nc">FilterChain</span> <span class="n">chain</span> <span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">,</span> <span class="nc">ServletException</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">destroy</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">init</code>는 필터를 초기화하는 메소드 입니다. 서블릿 컨테이너가 생성될 때 호출됩니다. <code class="language-plaintext highlighter-rouge">FilterConfig</code> 객체를 통해 초기 파라미터를 설정할 수 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">doFilter</code>는 클라이언트의 요청마다 호출됩니다. ServletRequest와 ServletResponse를 매개변수로 받으며, HTTP 요청에 처리가 필요하다면 <code class="language-plaintext highlighter-rouge">HttpServletRequest</code>와 <code class="language-plaintext highlighter-rouge">HttpServletResponse</code>로 캐스팅하여 처리하면 됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">destroy</code>는 서블릿 컨테이너가 종료될 때 호출됩니다.</p>
+
+<p>로그인 필터를 다음과 같이 구현해보겠습니다.</p>
+
+<h6 id="krorubiscofilterlogincheckfilterjava">/kro/rubisco/filter/LoginCheckFilter.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.filter</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.Filter</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.FilterChain</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.FilterConfig</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpSession</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginCheckFilter</span> <span class="kd">implements</span> <span class="nc">Filter</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="nc">FilterConfig</span> <span class="n">filterConfig</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span> <span class="o">{}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">doFilter</span><span class="o">(</span><span class="nc">ServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">ServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="nc">FilterChain</span> <span class="n">chain</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="nc">IOException</span><span class="o">,</span> <span class="nc">ServletException</span> <span class="o">{</span>
+        
+        <span class="nc">HttpServletRequest</span> <span class="n">httpRequest</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpServletRequest</span><span class="o">)</span> <span class="n">request</span><span class="o">;</span>
+        <span class="nc">HttpServletResponse</span> <span class="n">httpResponse</span> <span class="o">=</span> <span class="o">(</span><span class="nc">HttpServletResponse</span><span class="o">)</span> <span class="n">response</span><span class="o">;</span>
+        
+        <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">httpRequest</span><span class="o">.</span><span class="na">getSession</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        
+        <span class="k">if</span><span class="o">(</span><span class="n">session</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"member"</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">httpResponse</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"/login"</span><span class="o">);</span>
+            <span class="k">return</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="n">chain</span><span class="o">.</span><span class="na">doFilter</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">response</span><span class="o">);</span>
+        
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">destroy</span><span class="o">()</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>클라이언트 요청(request)에서 세션을 조회하여 member 객체가 있는지 확인하고 없다면 <code class="language-plaintext highlighter-rouge">HttpServletResponse</code> 객체의  <code class="language-plaintext highlighter-rouge">sendRedirect</code> 메소드를 통해 <code class="language-plaintext highlighter-rouge">/login</code> 경로로 리다이렉트 하도록 응답(response)을 보냅니다. 인증된 상태라면 세션에 member 객체가 있어서 필터를 통과하게 될 것이고, <code class="language-plaintext highlighter-rouge">FilterChain</code> 객체의 doFilter 메소드를 통해 다음 필터를 실행할 수 있도록 합니다.</p>
+
+<p>구현한 로그인 필터를 <code class="language-plaintext highlighter-rouge">web.xml</code> 파일에 등록하도록 하겠습니다. 이전에 컨트롤러를 작성할 때, 인코딩과 관련하여 필터를 등록한 적이 있습니다.</p>
+
+<h6 id="srcmainwebappweb-infwebxml">src/main/webapp/WEB-INF/web.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;web-app</span> <span class="na">version=</span><span class="s">"2.5"</span> <span class="na">xmlns=</span><span class="s">"http://java.sun.com/xml/ns/javaee"</span>
+	<span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+	<span class="na">xsi:schemaLocation=</span><span class="s">"http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"</span><span class="nt">&gt;</span>
+
+	<span class="c">&lt;!-- The definition of the Root Spring Container shared by all Servlets and Filters --&gt;</span>
+	<span class="nt">&lt;context-param&gt;</span>
+		<span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+		<span class="nt">&lt;param-value&gt;</span>/WEB-INF/spring/root-context.xml<span class="nt">&lt;/param-value&gt;</span>
+	<span class="nt">&lt;/context-param&gt;</span>
+	
+	<span class="c">&lt;!-- Creates the Spring Container shared by all Servlets and Filters --&gt;</span>
+	<span class="nt">&lt;listener&gt;</span>
+		<span class="nt">&lt;listener-class&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="nt">&lt;/listener-class&gt;</span>
+	<span class="nt">&lt;/listener&gt;</span>
+
+	<span class="c">&lt;!-- Processes application requests --&gt;</span>
+	<span class="nt">&lt;servlet&gt;</span>
+		<span class="nt">&lt;servlet-name&gt;</span>appServlet<span class="nt">&lt;/servlet-name&gt;</span>
+		<span class="nt">&lt;servlet-class&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="nt">&lt;/servlet-class&gt;</span>
+		<span class="nt">&lt;init-param&gt;</span>
+			<span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+			<span class="nt">&lt;param-value&gt;</span>/WEB-INF/spring/appServlet/servlet-context.xml<span class="nt">&lt;/param-value&gt;</span>
+		<span class="nt">&lt;/init-param&gt;</span>
+		<span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+	<span class="nt">&lt;/servlet&gt;</span>
+		
+	<span class="nt">&lt;servlet-mapping&gt;</span>
+		<span class="nt">&lt;servlet-name&gt;</span>appServlet<span class="nt">&lt;/servlet-name&gt;</span>
+		<span class="nt">&lt;url-pattern&gt;</span>/<span class="nt">&lt;/url-pattern&gt;</span>
+	<span class="nt">&lt;/servlet-mapping&gt;</span>
+	
+	<span class="nt">&lt;filter&gt;</span>
+		<span class="nt">&lt;filter-name&gt;</span>encodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+		<span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="nt">&lt;/filter-class&gt;</span>
+		<span class="nt">&lt;init-param&gt;</span>
+			<span class="nt">&lt;param-name&gt;</span>encoding<span class="nt">&lt;/param-name&gt;</span>
+			<span class="nt">&lt;param-value&gt;</span>UTF-8<span class="nt">&lt;/param-value&gt;</span>
+		<span class="nt">&lt;/init-param&gt;</span>
+	<span class="nt">&lt;/filter&gt;</span>
+	<span class="nt">&lt;filter&gt;</span>
+		<span class="nt">&lt;filter-name&gt;</span>httpMethodFilter<span class="nt">&lt;/filter-name&gt;</span>
+		<span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.HiddenHttpMethodFilter<span class="nt">&lt;/filter-class&gt;</span>
+	<span class="nt">&lt;/filter&gt;</span>
+	<span class="nt">&lt;filter&gt;</span>
+		<span class="nt">&lt;filter-name&gt;</span>loginCheckFilter<span class="nt">&lt;/filter-name&gt;</span>
+		<span class="nt">&lt;filter-class&gt;</span>kro.rubisco.filter.LoginCheckFilter<span class="nt">&lt;/filter-class&gt;</span>
+	<span class="nt">&lt;/filter&gt;</span>
+	<span class="nt">&lt;filter-mapping&gt;</span>
+		<span class="nt">&lt;filter-name&gt;</span>encodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+		<span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+	<span class="nt">&lt;/filter-mapping&gt;</span>
+	<span class="nt">&lt;filter-mapping&gt;</span>
+		<span class="nt">&lt;filter-name&gt;</span>httpMethodFilter<span class="nt">&lt;/filter-name&gt;</span>
+		<span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+	<span class="nt">&lt;/filter-mapping&gt;</span>
+	<span class="nt">&lt;filter-mapping&gt;</span>
+		<span class="nt">&lt;filter-name&gt;</span>loginCheckFilter<span class="nt">&lt;/filter-name&gt;</span>
+		<span class="nt">&lt;url-pattern&gt;</span>/board/*<span class="nt">&lt;/url-pattern&gt;</span>
+	<span class="nt">&lt;/filter-mapping&gt;</span>
+<span class="nt">&lt;/web-app&gt;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">loginCheckFilter</code>를 추가하고 <code class="language-plaintext highlighter-rouge">/board/*</code> 패턴에 매핑했습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">localhost:8080/board</code>에 접속하면 필터를 통해 로그인 페이지로 이동하는 것을 확인할 수 있습니다. 로그인을 한 후 다시 /board에 접속하면 정상적으로 게시판이 출력됩니다.</p>
+
+<h1 id="스프링-인터셉터spring-interceptor">스프링 인터셉터(Spring Interceptor)</h1>
+
+<p>이번에는 인터셉터를 통해 로그인 인증을 해보겠습니다. <code class="language-plaintext highlighter-rouge">web.xml</code>에 등록한 필터를 지워서 원래 상태로 되돌려주세요.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Interceptor</code> 인터페이스는 다음과 같습니다.</p>
+
+<h6 id="orgspringframeworkwebservlethandlerinterceptor">org.springframework.web.servlet.HandlerInterceptor</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">HandlerInterceptor</span> <span class="o">{</span>
+    <span class="k">default</span> <span class="kt">boolean</span> <span class="nf">preHandle</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">handler</span><span class="o">)</span>
+			<span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+
+		<span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+	<span class="o">}</span>
+
+    <span class="k">default</span> <span class="kt">void</span> <span class="nf">postHandle</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">handler</span><span class="o">,</span>
+			<span class="nd">@Nullable</span> <span class="nc">ModelAndView</span> <span class="n">modelAndView</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+	<span class="o">}</span>
+
+    <span class="k">default</span> <span class="kt">void</span> <span class="nf">afterCompletion</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> <span class="nc">Object</span> <span class="n">handler</span><span class="o">,</span>
+			<span class="nd">@Nullable</span> <span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>서블릿 필터와 달리 스프링 인터셉터는 호출시점이 3개로 분리되어 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">preHandle</code> 메소드는 컨트롤러 호출전에 호출되고, <code class="language-plaintext highlighter-rouge">postHandle</code> 메소드는 컨트롤러 호출후에 호출됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">afterCompletion</code> 메소드는 뷰가 렌더링 된 이후에 호출됩니다.</p>
+
+<hr />
+
+<p>이제 <code class="language-plaintext highlighter-rouge">HandlerInterceptor</code> 인터페이스를 상속받은 <code class="language-plaintext highlighter-rouge">LoginInterceptor</code>를 구현해 보겠습니다.</p>
+
+<h6 id="krorubiscointerceptorlogininterceptorjava">/kro/rubisco/interceptor/LoginInterceptor.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.interceptor</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpSession</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Component</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.servlet.HandlerInterceptor</span><span class="o">;</span>
+
+<span class="nd">@Component</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginInterceptor</span> <span class="kd">implements</span> <span class="nc">HandlerInterceptor</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">preHandle</span><span class="o">(</span>
+        <span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">,</span> 
+        <span class="nc">HttpServletResponse</span> <span class="n">response</span><span class="o">,</span> 
+        <span class="nc">Object</span> <span class="n">handler</span>
+    <span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        
+        <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        
+        <span class="k">if</span><span class="o">(</span><span class="n">session</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">session</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">"member"</span><span class="o">)</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">response</span><span class="o">.</span><span class="na">sendRedirect</span><span class="o">(</span><span class="s">"/login"</span><span class="o">);</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">@Component</code> 어노테이션을 통해 빈으로 등록될 수 있도록 하고, <code class="language-plaintext highlighter-rouge">preHandle</code> 메소드를 Override하여 로그인 인증을 구현합니다. 필터와 동일하게 클라이언트의 요청으로부터 세션을 조회하여 member 객체가 있는지 확인한 후 없다면 <code class="language-plaintext highlighter-rouge">HttpServletResponse</code> 객체의  <code class="language-plaintext highlighter-rouge">sendRedirect</code> 메소드를 통해 <code class="language-plaintext highlighter-rouge">/login</code> 경로로 리다이렉트 하도록 응답(response)을 작성합니다. 또한 <code class="language-plaintext highlighter-rouge">false</code>를 리턴하여 컨트롤러를 호출하지 않고 클라이언트로 응답을 보내어 <code class="language-plaintext highlighter-rouge">/login</code> 경로로 리다이렉트되도록 합니다.</p>
+
+<p>이제 <code class="language-plaintext highlighter-rouge">servlet-context.xml</code> 파일에 interceptor 패키지를 스캔할 수 있도록 등록하고, <code class="language-plaintext highlighter-rouge">@Component</code> 어노테이션을 통해 등록된 <code class="language-plaintext bgcolor yellow highlighter-rouge" style="color: orange">loginInterceptor</code> 객체를 <code class="language-plaintext highlighter-rouge">/board/**</code> 경로에 매핑해주도록 합니다.</p>
+
+<h6 id="srcmainwebappweb-infspringappservletservlet-contextxml">/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/mvc"</span>
+	<span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+	<span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+	<span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span>
+	<span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"</span><span class="nt">&gt;</span>
+
+	<span class="c">&lt;!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure --&gt;</span>
+	
+	<span class="c">&lt;!-- Enables the Spring MVC @Controller programming model --&gt;</span>
+	<span class="nt">&lt;annotation-driven</span> <span class="nt">/&gt;</span>
+
+	<span class="c">&lt;!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory --&gt;</span>
+	<span class="nt">&lt;resources</span> <span class="na">mapping=</span><span class="s">"/resources/**"</span> <span class="na">location=</span><span class="s">"/resources/"</span> <span class="nt">/&gt;</span>
+
+	<span class="c">&lt;!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory --&gt;</span>
+	<span class="nt">&lt;beans:bean</span> <span class="na">class=</span><span class="s">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"prefix"</span> <span class="na">value=</span><span class="s">"/WEB-INF/views/"</span> <span class="nt">/&gt;</span>
+		<span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"suffix"</span> <span class="na">value=</span><span class="s">".jsp"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;/beans:bean&gt;</span>
+	
+	<span class="nt">&lt;beans:bean</span> <span class="na">class=</span><span class="s">"org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"</span><span class="nt">&gt;</span>
+		<span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"exceptionMappings"</span><span class="nt">&gt;</span>
+			<span class="nt">&lt;beans:props&gt;</span>
+				<span class="nt">&lt;beans:prop</span> <span class="na">key=</span><span class="s">"TestException"</span><span class="nt">&gt;</span>error/testException<span class="nt">&lt;/beans:prop&gt;</span>
+			<span class="nt">&lt;/beans:props&gt;</span>
+		<span class="nt">&lt;/beans:property&gt;</span>
+		<span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"defaultErrorView"</span> <span class="na">value=</span><span class="s">"error/error"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;/beans:bean&gt;</span>
+
+	<span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"kro.rubisco.controller"</span> <span class="nt">/&gt;</span>
+	<span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"kro.rubisco.interceptor"</span> <span class="nt">/&gt;</span>
+	
+	<span class="nt">&lt;interceptors&gt;</span>
+		<span class="nt">&lt;interceptor&gt;</span>
+			<span class="nt">&lt;mapping</span> <span class="na">path=</span><span class="s">"/board/**"</span> <span class="nt">/&gt;</span>
+			<span class="nt">&lt;beans:ref</span> <span class="na">bean=</span><span class="s">"loginInterceptor"</span> <span class="nt">/&gt;</span>
+		<span class="nt">&lt;/interceptor&gt;</span>
+	<span class="nt">&lt;/interceptors&gt;</span>
+	
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">localhost:8080/board</code>에 접속하면 인터셉터를 통해 로그인 페이지로 이동하는 것을 확인할 수 있습니다. 로그인을 한 후 다시 /board에 접속하면 정상적으로 게시판이 출력됩니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/java/">Java</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-cookie-and-session">스프링 레거시(Spring legacy) - 쿠키와 세션</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-sign-up">스프링 레거시(Spring legacy) - 회원가입</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-bean-validation">스프링 레거시(Spring legacy) - Bean Validation</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/java/">
+                                
+                                    See all 16 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/programmers/programmers-133499">
+                <div class="post-card-image" style="background-image: url(/assets/images/programmers-logo.jpg)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/programmers/programmers-133499">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">[1단계][133499] 옹알이(2)</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>문제
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">스프링 레거시(Spring legacy) - 필터와 인터셉터</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%8A%A4%ED%94%84%EB%A7%81+%EB%A0%88%EA%B1%B0%EC%8B%9C%28Spring+legacy%29+-+%ED%95%84%ED%84%B0%EC%99%80+%EC%9D%B8%ED%84%B0%EC%85%89%ED%84%B0&amp;url=java/spring-legacy-filter-and-interceptor"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=java/spring-legacy-filter-and-interceptor"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
