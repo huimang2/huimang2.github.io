@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/spring/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-11-13T01:12:13+09:00</updated>
+  <updated>2022-11-13T01:17:58+09:00</updated>
   <id>https://huimang2.github.io/tag/spring/feed.xml</id>
 
   
@@ -741,10 +741,9 @@
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;authentication-manager&amp;gt;&lt;/span&gt;
         &lt;span class=&quot;nt&quot;&gt;&amp;lt;authentication-provider&amp;gt;&lt;/span&gt;
             &lt;span class=&quot;nt&quot;&gt;&amp;lt;jdbc-user-service&lt;/span&gt; 
-            &lt;span class=&quot;na&quot;&gt;data-source-ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dataSource&quot;&lt;/span&gt; 
-            &lt;span class=&quot;na&quot;&gt;users-by-username-query=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;select email, password, 1 enabled from member where email=?&quot;&lt;/span&gt;
-            &lt;span class=&quot;na&quot;&gt;authorities-by-username-query=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;select m.email, g.group_name from member m join member_group g on m.group_id = g.group_id where m.email=?&quot;&lt;/span&gt; 
-            &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;data-source-ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dataSource&quot;&lt;/span&gt; 
+                &lt;span class=&quot;na&quot;&gt;users-by-username-query=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;select email, password, 1 enabled from member where email=?&quot;&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;authorities-by-username-query=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;select m.email, g.group_name from member m join member_group g on m.group_id = g.group_id where m.email=?&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
             &lt;span class=&quot;nt&quot;&gt;&amp;lt;password-encoder&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bcryptPasswordEncoder&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
         &lt;span class=&quot;nt&quot;&gt;&amp;lt;/authentication-provider&amp;gt;&lt;/span&gt;
     &lt;span class=&quot;nt&quot;&gt;&amp;lt;/authentication-manager&amp;gt;&lt;/span&gt;

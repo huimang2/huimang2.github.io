@@ -911,10 +911,9 @@ into the {body} of the default.hbs template -->
     <span class="nt">&lt;authentication-manager&gt;</span>
         <span class="nt">&lt;authentication-provider&gt;</span>
             <span class="nt">&lt;jdbc-user-service</span> 
-            <span class="na">data-source-ref=</span><span class="s">"dataSource"</span> 
-            <span class="na">users-by-username-query=</span><span class="s">"select email, password, 1 enabled from member where email=?"</span>
-            <span class="na">authorities-by-username-query=</span><span class="s">"select m.email, g.group_name from member m join member_group g on m.group_id = g.group_id where m.email=?"</span> 
-            <span class="nt">/&gt;</span>
+                <span class="na">data-source-ref=</span><span class="s">"dataSource"</span> 
+                <span class="na">users-by-username-query=</span><span class="s">"select email, password, 1 enabled from member where email=?"</span>
+                <span class="na">authorities-by-username-query=</span><span class="s">"select m.email, g.group_name from member m join member_group g on m.group_id = g.group_id where m.email=?"</span> <span class="nt">/&gt;</span>
             <span class="nt">&lt;password-encoder</span> <span class="na">ref=</span><span class="s">"bcryptPasswordEncoder"</span><span class="nt">/&gt;</span>
         <span class="nt">&lt;/authentication-provider&gt;</span>
     <span class="nt">&lt;/authentication-manager&gt;</span>
