@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/java/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-11-12T21:19:31+09:00</updated>
+  <updated>2022-11-13T00:14:52+09:00</updated>
   <id>https://huimang2.github.io/tag/java/feed.xml</id>
 
   
@@ -203,7 +203,7 @@
   &lt;li&gt;클라이언트의 요청(Request)이 오면 AuthenticationFilter를 거칩니다.&lt;/li&gt;
   &lt;li&gt;유저자격을 기반으로 인증토큰(AuthenticationToken) 객체를 생성합니다.&lt;/li&gt;
   &lt;li&gt;인증 필터를 통해 AuthenticationToken 객체를 AuthenticationManager 인터페이스에 위임합니다. ProviderManager는 AuthenticationManager의 구현체입니다.&lt;/li&gt;
-  &lt;li&gt;AuthenticatioProvider를 통해 인증을 시도합니다.&lt;/li&gt;
+  &lt;li&gt;AuthenticationProvider를 통해 인증을 시도합니다.&lt;/li&gt;
   &lt;li&gt;UserDetailsService를 통해 username을 기반으로 userDetails를 검색합니다.&lt;/li&gt;
   &lt;li&gt;UserDetails를 통해 User 객체를 검색합니다.&lt;/li&gt;
   &lt;li&gt;UserDetails가 User 객체를 UserDetailsService에 전달합니다.&lt;/li&gt;

@@ -373,7 +373,7 @@ into the {body} of the default.hbs template -->
   <li>클라이언트의 요청(Request)이 오면 AuthenticationFilter를 거칩니다.</li>
   <li>유저자격을 기반으로 인증토큰(AuthenticationToken) 객체를 생성합니다.</li>
   <li>인증 필터를 통해 AuthenticationToken 객체를 AuthenticationManager 인터페이스에 위임합니다. ProviderManager는 AuthenticationManager의 구현체입니다.</li>
-  <li>AuthenticatioProvider를 통해 인증을 시도합니다.</li>
+  <li>AuthenticationProvider를 통해 인증을 시도합니다.</li>
   <li>UserDetailsService를 통해 username을 기반으로 userDetails를 검색합니다.</li>
   <li>UserDetails를 통해 User 객체를 검색합니다.</li>
   <li>UserDetails가 User 객체를 UserDetailsService에 전달합니다.</li>
