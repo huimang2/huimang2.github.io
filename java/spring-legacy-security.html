@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>스프링 레거시(Spring legacy) - 시큐리티 적용</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/java/spring-legacy-security" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="스프링 레거시(Spring legacy) - 시큐리티 적용" />
+    <meta property="og:description" content="스프링 시큐리티(Spring Security) 지난번 글에서 작성한 것처럼 로그인 인증(Authentication)과 권한 인가(Authorization) 로직은 서블릿 필터나 스프링 인터셉터를 통해서 구현할 수 있습니다. 스프링은 인증과 인가 등의 애플리케이션 보안과 관련된 기능들을 모은 스프링 시큐리티(Spring Security) 프로젝트를 제공합니다. 스프링 시큐리티의 기본 아키텍처는 다음과 같습니다. 스프링 시큐리티는 서블릿 필터를 기반으로 합니다. 서블릿 필터는 스프링 컨테이너에서" />
+    <meta property="og:url" content="https://huimang2.github.io/java/spring-legacy-security" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/spring-legacy/logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2022-11-11T01:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-11-11T01:00:00+09:00" />
+    <meta property="article:tag" content="Java" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="스프링 레거시(Spring legacy) - 시큐리티 적용" />
+    <meta name="twitter:description" content="스프링 시큐리티(Spring Security) 지난번 글에서 작성한 것처럼 로그인 인증(Authentication)과 권한 인가(Authorization) 로직은 서블릿 필터나 스프링 인터셉터를 통해서 구현할 수 있습니다. 스프링은 인증과 인가 등의 애플리케이션 보안과 관련된 기능들을 모은 스프링 시큐리티(Spring Security) 프로젝트를 제공합니다. 스프링 시큐리티의 기본 아키텍처는 다음과 같습니다. 스프링 시큐리티는 서블릿 필터를 기반으로 합니다. 서블릿 필터는 스프링 컨테이너에서" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/spring-legacy/logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Java" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/java/spring-legacy-security",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/spring-legacy/logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/java/spring-legacy-security"
+    },
+    "description": "스프링 시큐리티(Spring Security) 지난번 글에서 작성한 것처럼 로그인 인증(Authentication)과 권한 인가(Authorization) 로직은 서블릿 필터나 스프링 인터셉터를 통해서 구현할 수 있습니다. 스프링은 인증과 인가 등의 애플리케이션 보안과 관련된 기능들을 모은 스프링 시큐리티(Spring Security) 프로젝트를 제공합니다. 스프링 시큐리티의 기본 아키텍처는 다음과 같습니다. 스프링 시큐리티는 서블릿 필터를 기반으로 합니다. 서블릿 필터는 스프링 컨테이너에서"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="스프링 레거시(Spring legacy) - 시큐리티 적용" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-java tag-spring post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="11 November 2022">11 November 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/java/'>#JAVA</a>,&nbsp;
+                                
+                            
+                        
+                            
+                                
+                                <a href='/tag/spring/'>#SPRING</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">스프링 레거시(Spring legacy) - 시큐리티 적용</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/spring-legacy/logo.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#스프링-시큐리티spring-security"><span>스프링 시큐리티(Spring Security)</span></a></li><li><a href="#의존성-추가"><span>의존성 추가</span></a></li><li><a href="#필터-추가"><span>필터 추가</span></a><ul><li><a href="#시큐리티-필터"><span>시큐리티 필터</span></a></li></ul></li><li><a href="#시큐리티-컨텍스트"><span>시큐리티 컨텍스트</span></a><ul><li><a href="#아키텍처"><span>아키텍처</span></a></li><li><a href="#설정파일-작성"><span>설정파일 작성</span></a></li><li><a href="#권한-설정"><span>권한 설정</span></a></li><li><a href="#인증-설정"><span>인증 설정</span></a></li><li><a href="#로그인-페이지"><span>로그인 페이지</span></a></li><li><a href="#로그아웃-설정"><span>로그아웃 설정</span></a></li><li><a href="#db-연결"><span>DB 연결</span></a></li><li><a href="#시큐리티-컨텍스트-사용"><span>시큐리티 컨텍스트 사용</span></a></li><li><a href="#userdetailsservice-인터페이스-구현"><span>UserDetailsService 인터페이스 구현</span></a></li><li><a href="#remember-me-구현"><span>remember-me 구현</span></a></li></ul></li></ul>
+
+                    </div>
+                    <h1 id="스프링-시큐리티spring-security">스프링 시큐리티(Spring Security)</h1>
+
+<p>지난번 글에서 작성한 것처럼 로그인 인증(Authentication)과 권한 인가(Authorization) 로직은 서블릿 필터나 스프링 인터셉터를 통해서 구현할 수 있습니다.</p>
+
+<p>스프링은 인증과 인가 등의 애플리케이션 보안과 관련된 기능들을 모은 <code class="language-plaintext highlighter-rouge">스프링 시큐리티(Spring Security)</code> 프로젝트를 제공합니다.</p>
+
+<p>스프링 시큐리티의 기본 아키텍처는 다음과 같습니다.</p>
+
+<p align="center"><img src="/assets/images/spring-legacy/img37.png" alt="img37" /></p>
+
+<p>스프링 시큐리티는 서블릿 필터를 기반으로 합니다. 서블릿 필터는 스프링 컨테이너에서 생성된 빈이 아니기 때문에 스프링 빈을 주입받을 수 없습니다. 그렇기때문에 스프링 시큐리티에서는 서블릿 필터에 프록시를 등록하고, 해당 프록시를 통해 스프링 컨테이너에서 서블릿을 처리할 수 있도록 해줍니다.</p>
+
+<p>이번 글에서는 스프링 시큐리티를 통해 인증 및 인가 기능을 구현해보도록 하겠습니다.</p>
+
+<h1 id="의존성-추가">의존성 추가</h1>
+
+<p>우선 메이븐 레포지토리를 참고하여 <code class="language-plaintext highlighter-rouge">spring-security-web</code>와 <code class="language-plaintext highlighter-rouge">spring-security-config</code>를 의존성 추가합니다. 글 작성 기준으로 가장 사용률이 높은 <code class="language-plaintext highlighter-rouge">5.7.3</code>버전을 추가하겠습니다.</p>
+
+<h6 id="pomxml">pom.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework.security<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-security-web<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>5.7.3<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework.security<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-security-config<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>5.7.3<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+...
+</code></pre></div></div>
+
+<h1 id="필터-추가">필터 추가</h1>
+
+<p>다음으로 서블릿 필터를 추가하도록 하겠습니다. 스프링 시큐리티에서 제공하는 서블릿 필터는 <code class="language-plaintext highlighter-rouge">DelegatingFilterProxy</code> 입니다. 지난번에 등록한 <code class="language-plaintext highlighter-rouge">loginCheckFilter</code>를 제거하고 해당 필터를 필터체인에 등록합니다.</p>
+
+<h6 id="srcmainwebappweb-infwebxml">/src/main/webapp/WEB-INF/web.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+    <span class="c">&lt;!-- The definition of the Root Spring Container shared by all Servlets and Filters --&gt;</span>
+    <span class="nt">&lt;context-param&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-value&gt;</span>
+            /WEB-INF/spring/root-context.xml
+            /WEB-INF/spring/security-context.xml
+        <span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/context-param&gt;</span>
+...
+    <span class="nt">&lt;filter&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>springSecurityFilterChain<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.DelegatingFilterProxy<span class="nt">&lt;/filter-class&gt;</span>
+    <span class="nt">&lt;/filter&gt;</span>
+...
+    <span class="nt">&lt;filter-mapping&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>springSecurityFilterChain<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+    <span class="nt">&lt;/filter-mapping&gt;</span>
+...
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">springSecurityFilterChain</code>이라는 이름으로 <code class="language-plaintext highlighter-rouge">org.springframework.web.filter.DelegatingFilterProxy</code> 클래스를 필터로 등록하고, 전체 경로에 매핑해줍니다. 이 경우 클라이언트의 모든 요청이 해당 필터를 거치게 됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">DelegatingFilterProxy</code>는 서블릿 필터이므로 스프링 컨테이너의 제어를 받지 않습니다. 대신에 스프링에서 지원하는 특수 필터인 <code class="language-plaintext highlighter-rouge">FilterChainProxy</code>를 감싸고 있어서 해당 필터가 하는 일을 대신하게 됩니다. <code class="language-plaintext highlighter-rouge">FilterChainProxy</code>는 스프링 빈이므로, 스프링 컨테이너의 제어를 받아서 의존성 빈을 주입할 수 있습니다. 시큐리티에서는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">springSecurityFilterChain</code>이라는 이름의 객체가 <code class="language-plaintext highlighter-rouge">FilterChainProxy</code>를 구현하여 스프링 빈으로 등록되어 있으며, <code class="language-plaintext highlighter-rouge">DelegatingFilterProxy</code>가 해당 빈을 대리자로 등록하기 위해서는 필터이름을 빈의 이름과 동일하게 설정하면 됩니다. 이러한 이유로 <code class="language-plaintext highlighter-rouge">filter-name</code>을 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">springSecurityFilterChain</code>로 등록합니다.</p>
+
+<h2 id="시큐리티-필터">시큐리티 필터</h2>
+
+<p><code class="language-plaintext highlighter-rouge">springSecurityFilterChain</code>은 많은 필터 리스트로 구성되어 체인을 형성하며, 순서대로 실행됩니다. 일부 필터의 기능은 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>필터</th>
+      <th>기능</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>WebAsyncManagerIntegrationFilter</td>
+      <td>비동기 기능을 사용할때 시큐리티 컨텍스트를 사용할 수 있도록 해주는 필터</td>
+    </tr>
+    <tr>
+      <td>SecurityContextPersistenceFilter</td>
+      <td>Authentication 객체를 보관하는 시큐리티 컨텍스트를 생성하는 필터</td>
+    </tr>
+    <tr>
+      <td>HeaderWriterFilter</td>
+      <td>응답(Response)에 시큐리티와 관련된 헤더를 설정하는 필터</td>
+    </tr>
+    <tr>
+      <td>CorsFilter</td>
+      <td>허가된 사이트나 클라이언트의 요청인지 검사하는 필터</td>
+    </tr>
+    <tr>
+      <td>CsrfFilter</td>
+      <td>CSRF 공격을 방어하는 필터</td>
+    </tr>
+    <tr>
+      <td>LogoutFilter</td>
+      <td>로그아웃 요청을 처리하는 필터</td>
+    </tr>
+    <tr>
+      <td>UsernamePasswordAuthenticationFilter</td>
+      <td>username, password를 사용하는 form 기반 인증을 처리하는 필터</td>
+    </tr>
+    <tr>
+      <td>ConcurrentSessionFilter</td>
+      <td>동시세션을 제어하는 필터</td>
+    </tr>
+    <tr>
+      <td>BearerTokenAuthenticationFilter</td>
+      <td>JWT 인증 필터</td>
+    </tr>
+    <tr>
+      <td>BasicAuthenticationFilter</td>
+      <td>Basic 인증 필터</td>
+    </tr>
+    <tr>
+      <td>RequestCacheAwareFilter</td>
+      <td>캐시요청을 처리하는 필터</td>
+    </tr>
+    <tr>
+      <td>SecurityContextHolderAwareRequestFilter</td>
+      <td>보안 관련 Servlet 3 스펙을 지원하기 위한 필터</td>
+    </tr>
+    <tr>
+      <td>RememberMeAuthenticationFilter</td>
+      <td>RememberMe 쿠키를 검사하여 인증하는 필터</td>
+    </tr>
+    <tr>
+      <td>AnonymousAuthenticationFilter</td>
+      <td>익명사용자의 요청을 처리하는 필터</td>
+    </tr>
+    <tr>
+      <td>SessionManagementFilter</td>
+      <td>세션을 제어하는 필터</td>
+    </tr>
+    <tr>
+      <td>ExcpetionTranslationFilter</td>
+      <td>예외 처리 필터</td>
+    </tr>
+    <tr>
+      <td>FilterSecurityInterceptor</td>
+      <td>인가를 결정하는 필터</td>
+    </tr>
+  </tbody>
+</table>
+
+<h1 id="시큐리티-컨텍스트">시큐리티 컨텍스트</h1>
+
+<p>시큐리티 컨텍스트는 단독으로 설정되어야 하므로 root-context.xml과는 별도의 xml 파일을 작성해야합니다. <code class="language-plaintext highlighter-rouge">security-context.xml</code> 파일을 새로 만들고 시큐리티 컨텍스트를 설정하겠습니다. 해당 파일을 스프링 컨테이너의 설정파일로 등록해야 하므로 위에서 작성한 <code class="language-plaintext highlighter-rouge">web.xml</code> 파일에는 <code class="language-plaintext highlighter-rouge">contextConfigLocation</code>의 파라미터 값으로 <code class="language-plaintext highlighter-rouge">/WEB-INF/spring/security-context.xml</code>을 추가했습니다.</p>
+
+<p>이제 각종 필터들을 통해 체인을 설정해야하는데 필터의 종류가 많고 복잡하기때문에 기회가 되면 시큐리티에 대해서 글을 따로 작성해보도록 하겠습니다. 이 글에서는 인증에 사용되는 필터체인을 구성해보겠습니다.</p>
+
+<h2 id="아키텍처">아키텍처</h2>
+
+<p>인증의 아키텍처는 다음과 같습니다.</p>
+
+<p align="center"><img src="/assets/images/spring-legacy/img42.png" alt="img42" /></p>
+
+<ol>
+  <li>클라이언트의 요청(Request)이 오면 AuthenticationFilter를 거칩니다.</li>
+  <li>유저자격을 기반으로 인증토큰(AuthenticationToken) 객체를 생성합니다.</li>
+  <li>인증 필터를 통해 AuthenticationToken 객체를 AuthenticationManager 인터페이스에 위임합니다. ProviderManager는 AuthenticationManager의 구현체입니다.</li>
+  <li>AuthenticatioProvider를 통해 인증을 시도합니다.</li>
+  <li>UserDetailsService를 통해 username을 기반으로 userDetails를 검색합니다.</li>
+  <li>UserDetails를 통해 User 객체를 검색합니다.</li>
+  <li>UserDetails가 User 객체를 UserDetailsService에 전달합니다.</li>
+  <li>인증에 성공하면 인증정보를 리턴하고, 실패하면 AuthenticationException을 던집니다.</li>
+  <li>AuthenticationManager는 완전한 인증 객체를 AuthenticationFilter에 반환합니다.</li>
+  <li>SecuriryContext에 인증 객체를 저장합니다.</li>
+</ol>
+
+<h2 id="설정파일-작성">설정파일 작성</h2>
+
+<p>아래와 같이 시큐리티 컨텍스트의 설정파일을 작성합니다.</p>
+
+<h6 id="srcmainwebappweb-infspringsecurity-contextxml">/src/main/webapp/WEB-INF/spring/security-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/security"</span>
+    <span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;http</span> <span class="na">auto-config=</span><span class="s">"true"</span> <span class="na">use-expressions=</span><span class="s">"false"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;intercept-url</span> <span class="na">pattern=</span><span class="s">"/board/**"</span> <span class="na">access=</span><span class="s">"ROLE_USER"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/http&gt;</span>
+
+    <span class="nt">&lt;authentication-manager&gt;</span>
+        <span class="nt">&lt;authentication-provider&gt;</span>
+            <span class="nt">&lt;user-service&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"admin"</span> <span class="na">password=</span><span class="s">"{noop}admin"</span> <span class="na">authorities=</span><span class="s">"ROLE_ADMIN"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"user"</span> <span class="na">password=</span><span class="s">"{noop}user"</span> <span class="na">authorities=</span><span class="s">"ROLE_USER"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/user-service&gt;</span>
+        <span class="nt">&lt;/authentication-provider&gt;</span>
+    <span class="nt">&lt;/authentication-manager&gt;</span>
+
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<p>네임스페이스를 security로 설정하여 security 스키마를 기본 태그로 사용합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">http</code> 태그는 경로를 매핑하여 필터체인의 실행여부를 설정합니다. <code class="language-plaintext highlighter-rouge">auto-config</code> 속성을 <code class="language-plaintext highlighter-rouge">true</code>로 설정하면 필터체인의 default 값이 설정됩니다. <code class="language-plaintext highlighter-rouge">use-expressions</code> 속성은 spEL 문법의 사용여부를 설정하는데 지금은 필요없으므로 false로 설정합니다.</p>
+
+<p>하위 태그로 <code class="language-plaintext highlighter-rouge">intercept-url</code>을 입력했는데, 예상하듯이 <code class="language-plaintext highlighter-rouge">pattern</code>에 해당하는 경로에 대한 인터셉터 역할을 합니다. <code class="language-plaintext highlighter-rouge">access</code> 속성은 인가권한을 나타냅니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">authentication-manager</code> 태그는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">AuthenticationManager</code>를 설정합니다. 하위태그인 <code class="language-plaintext highlighter-rouge">authentication-provider</code>는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">AuthenticationProvider</code>를 설정합니다. <code class="language-plaintext highlighter-rouge">UsernamePasswordAuthenticationFilter</code>에서는 기본 프로바이더로 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">DaoAuthenticationProvider</code>를 사용합니다. <code class="language-plaintext highlighter-rouge">ref</code> 속성을 통해 커스텀 프로바이더를 설정할 수도 있습니다.</p>
+
+<p>다음으로 <code class="language-plaintext highlighter-rouge">UserDetailsService</code>를 설정해야하는데, 위와 같이 <code class="language-plaintext highlighter-rouge">user-service</code> 태그를 설정하여 인메모리 방식으로 UserDetails를 가져올 수 있습니다. 나중에는 DB를 통해 인증을 할 예정이지만, 지금은 간단하게 테스트하기 위해 인메모리 방식으로 <code class="language-plaintext highlighter-rouge">admin</code>과 <code class="language-plaintext highlighter-rouge">user</code>라는 아이디를 통해 인증을 하도록 하겠습니다.</p>
+
+<p>스프링 시큐리티 4버전 이후로는 비밀번호를 암호화해야합니다. 하지만 <code class="language-plaintext highlighter-rouge">user</code> 태그의 <code class="language-plaintext highlighter-rouge">password</code> 속성에서 앞에 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">{noop}</code>를 추가하면 암호화 과정을 생략하고 로그인을 테스트할 수 있습니다.</p>
+
+<hr />
+
+<p>저장후 톰캣을 재시작하고 <code class="language-plaintext highlighter-rouge">localhost:8080/board</code>에 접속하면 다음과 같이 스프링 시큐리티에서 제공하는 기본 로그인화면이 출력되는 것을 확인할 수 있습니다.</p>
+
+<p align="center"><img src="/assets/images/spring-legacy/img38.png" alt="img38" /></p>
+
+<p>admin 계정으로 로그인하면 403 에러가 발생하는 것을 확인할 수 있습니다.</p>
+
+<p align="center"><img src="/assets/images/spring-legacy/img39.png" alt="img39" /></p>
+
+<p>이유는 /board/** 경로에 대한 access 권한을 <code class="language-plaintext highlighter-rouge">ROLE_USER</code>로 설정했기 때문에 ROLE_ADMIN 권한을 가진 admin 계정은 해당 경로에 대한 인가를 받지 못했기 때문입니다.</p>
+
+<p>user 계정으로 접속하면 정상적으로 게시판이 출력되는 것을 확인할 수 있습니다. 로그아웃을 하려면 <code class="language-plaintext highlighter-rouge">localhost:8080/logout</code>에 접속하면 됩니다.</p>
+
+<p align="center"><img src="/assets/images/spring-legacy/img40.png" alt="img40" /></p>
+
+<h2 id="권한-설정">권한 설정</h2>
+
+<p>access 권한은 spEL 문법을 사용하여 설정할 수도 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>spEL</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>hasRole(‘ROLE_USER’)</td>
+      <td>ROLE_USER 권한을 가진 유저만 접근 가능</td>
+    </tr>
+    <tr>
+      <td>hasAnyRole(‘ROLE_USER’, ‘ROLE_ADMIN’)</td>
+      <td>ROLE_USER 또는 ROLE_ADMIN 권한을 가진 유저만 접근 가능</td>
+    </tr>
+    <tr>
+      <td>permitAll</td>
+      <td>모두 접근 가능</td>
+    </tr>
+    <tr>
+      <td>denyAll</td>
+      <td>모두 접근 불가</td>
+    </tr>
+    <tr>
+      <td>isAnonymous()</td>
+      <td>인증하지 않은 유저만 접근 가능</td>
+    </tr>
+    <tr>
+      <td>isRememberMe()</td>
+      <td>자동로그인 기능을 사용한 유저만 접근 가능</td>
+    </tr>
+    <tr>
+      <td>isAuthenticated()</td>
+      <td>인증한 유저만 접근 가능</td>
+    </tr>
+    <tr>
+      <td>isFullyAuthenticated()</td>
+      <td>인증을 하고, 자동 로그인 기능을 사용하지 않은 유저만 접근 가능</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>아래 코드와 같이 <code class="language-plaintext highlighter-rouge">use-expressions</code> 속성을 true로 설정하고 /board/** 경로에 대한 access를 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">isAuthenticated()</code>로 설정하세요.</p>
+
+<h6 id="srcmainwebappweb-infspringsecurity-contextxml-1">/src/main/webapp/WEB-INF/spring/security-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/security"</span>
+    <span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;http</span> <span class="na">auto-config=</span><span class="s">"true"</span> <span class="na">use-expressions=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;intercept-url</span> <span class="na">pattern=</span><span class="s">"/board/**"</span> <span class="na">access=</span><span class="s">"isAuthenticated()"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/http&gt;</span>
+
+    <span class="nt">&lt;authentication-manager&gt;</span>
+        <span class="nt">&lt;authentication-provider&gt;</span>
+            <span class="nt">&lt;user-service&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"admin"</span> <span class="na">password=</span><span class="s">"{noop}admin"</span> <span class="na">authorities=</span><span class="s">"ROLE_ADMIN"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"user"</span> <span class="na">password=</span><span class="s">"{noop}user"</span> <span class="na">authorities=</span><span class="s">"ROLE_USER"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/user-service&gt;</span>
+        <span class="nt">&lt;/authentication-provider&gt;</span>
+    <span class="nt">&lt;/authentication-manager&gt;</span>
+
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<h2 id="인증-설정">인증 설정</h2>
+
+<p>다음과 같이 <code class="language-plaintext highlighter-rouge">http</code> 태그의 <code class="language-plaintext highlighter-rouge">security</code> 속성에 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">none</code> 값을 설정하여 인증 예외 경로를 설정함으로써 인증을 하지 않을 수도 있습니다.</p>
+
+<p>이때 체인은 위에서 아래로 진행되기 때문에 인증 예외 경로를 제외한 나머지 경로는 가장 아래 필터가 적용됩니다.</p>
+
+<h6 id="srcmainwebappweb-infspringsecurity-contextxml-2">/src/main/webapp/WEB-INF/spring/security-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/security"</span>
+    <span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/login"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/resources/**"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">auto-config=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;intercept-url</span> <span class="na">pattern=</span><span class="s">"/*/**"</span> <span class="na">access=</span><span class="s">"isAuthenticated()"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/http&gt;</span>
+    
+    <span class="nt">&lt;authentication-manager&gt;</span>
+        <span class="nt">&lt;authentication-provider&gt;</span>
+            <span class="nt">&lt;user-service&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"admin"</span> <span class="na">password=</span><span class="s">"{noop}admin"</span> <span class="na">authorities=</span><span class="s">"ROLE_ADMIN"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"user"</span> <span class="na">password=</span><span class="s">"{noop}user"</span> <span class="na">authorities=</span><span class="s">"ROLE_USER"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/user-service&gt;</span>
+        <span class="nt">&lt;/authentication-provider&gt;</span>
+    <span class="nt">&lt;/authentication-manager&gt;</span>
+
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<p>basic authentication을 사용하려면 <code class="language-plaintext highlighter-rouge">&lt;http-basic /&gt;</code> 태그를 추가하면 됩니다.</p>
+
+<h6 id="srcmainwebappweb-infspringsecurity-contextxml-3">/src/main/webapp/WEB-INF/spring/security-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/security"</span>
+    <span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/login"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/resources/**"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">auto-config=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;intercept-url</span> <span class="na">pattern=</span><span class="s">"/*/**"</span> <span class="na">access=</span><span class="s">"isAuthenticated()"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;http-basic</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/http&gt;</span>
+    
+    <span class="nt">&lt;authentication-manager&gt;</span>
+        <span class="nt">&lt;authentication-provider&gt;</span>
+            <span class="nt">&lt;user-service&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"admin"</span> <span class="na">password=</span><span class="s">"{noop}admin"</span> <span class="na">authorities=</span><span class="s">"ROLE_ADMIN"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"user"</span> <span class="na">password=</span><span class="s">"{noop}user"</span> <span class="na">authorities=</span><span class="s">"ROLE_USER"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/user-service&gt;</span>
+        <span class="nt">&lt;/authentication-provider&gt;</span>
+    <span class="nt">&lt;/authentication-manager&gt;</span>
+
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<h2 id="로그인-페이지">로그인 페이지</h2>
+
+<p>시큐리티에서 제공하는 기본 로그인 페이지가 아니라 사용자가 구현한 로그인 페이지를 사용하려면 <code class="language-plaintext highlighter-rouge">form-login</code> 태그를 추가하면 됩니다. 해당 태그에도 다양한 속성이 존재합니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>username-parameter</td>
+      <td>username에 대한 파라미터명 설정 (기본값: username)</td>
+    </tr>
+    <tr>
+      <td>password-parameter</td>
+      <td>password에 대한 파라미터명 설정 (기본값: password)</td>
+    </tr>
+    <tr>
+      <td>login-page</td>
+      <td>로그인 페이지 url 설정</td>
+    </tr>
+    <tr>
+      <td>login-processing-url</td>
+      <td>로그인 처리 url 설정 (기본값: /login)</td>
+    </tr>
+    <tr>
+      <td>default-target-url</td>
+      <td>로그인 성공시 이동할 url 설정</td>
+    </tr>
+    <tr>
+      <td>authentication-failure-url</td>
+      <td>로그인 실패시 이동할 url 설정 (기본값: /login?error=1)</td>
+    </tr>
+    <tr>
+      <td>authentication-success-handler-ref</td>
+      <td>로그인 성공시 호출할 핸들러 이름 설정</td>
+    </tr>
+    <tr>
+      <td>authentication-failure-handler-ref</td>
+      <td>로그인 실패시 호출할 핸들러 이름 설정</td>
+    </tr>
+    <tr>
+      <td>always-use-default-target</td>
+      <td>로그인 성공시 항상 default-target-url로 이동할지 설정</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>표를 참고하여 로그인폼을 설정하겠습니다.</p>
+
+<h6 id="srcmainwebappweb-infspringsecurity-contextxml-4">/src/main/webapp/WEB-INF/spring/security-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/security"</span>
+    <span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/resources/**"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">auto-config=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;intercept-url</span> <span class="na">pattern=</span><span class="s">"/board/**"</span> <span class="na">access=</span><span class="s">"isAuthenticated()"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;form-login</span>
+            <span class="na">login-page=</span><span class="s">"/login"</span>
+            <span class="na">login-processing-url=</span><span class="s">"/login"</span>
+            <span class="na">username-parameter=</span><span class="s">"email"</span>
+            <span class="na">password-parameter=</span><span class="s">"password"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/http&gt;</span>
+    
+    <span class="nt">&lt;authentication-manager&gt;</span>
+        <span class="nt">&lt;authentication-provider&gt;</span>
+            <span class="nt">&lt;user-service&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"admin@test.com"</span> <span class="na">password=</span><span class="s">"{noop}admin"</span> <span class="na">authorities=</span><span class="s">"ROLE_ADMIN"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"user@test.com"</span> <span class="na">password=</span><span class="s">"{noop}user"</span> <span class="na">authorities=</span><span class="s">"ROLE_USER"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/user-service&gt;</span>
+        <span class="nt">&lt;/authentication-provider&gt;</span>
+    <span class="nt">&lt;/authentication-manager&gt;</span>
+
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<p>지난번에 추가한 로그인폼을 사용하겠습니다. username이 이메일 형식이므로 user 태그의 name을 이메일형식으로 변경했습니다.</p>
+
+<p>LoginController를 수정해줍시다.</p>
+
+<h6 id="krorubiscocontrollerlogincontrollerjava">/kro/rubisco/controller/LoginController.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpSession</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">lombok.RequiredArgsConstructor</span><span class="o">;</span>
+
+<span class="nd">@Controller</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginController</span> <span class="o">{</span>
+    
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/login"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLoginView</span><span class="o">()</span> <span class="o">{}</span>
+    
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/logout"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">logout</span><span class="o">(</span><span class="nc">HttpServletRequest</span> <span class="n">request</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">HttpSession</span> <span class="n">session</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getSession</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">session</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">session</span><span class="o">.</span><span class="na">invalidate</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="s">"redirect:/"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>스프링에서 제공하는 로그인 로직을 사용하므로 /login 경로로 PostMapping되던 login 메소드를 제거했습니다.</p>
+
+<p>로그인 뷰에 csrf 토큰도 설정해야합니다. 폼태그 아래 다음 input 태그를 넣어주세요.</p>
+
+<h6 id="srcmainwebappweb-infviewsloginjsp">/src/main/webapp/WEB-INF/views/login.jsp</h6>
+<div data-lang="JSP" class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"${_csrf.parameterName}"</span> <span class="na">value=</span><span class="s">"${_csrf.token}"</span> <span class="nt">/&gt;</span>
+...
+</code></pre></div></div>
+
+<h2 id="로그아웃-설정">로그아웃 설정</h2>
+
+<p>시큐리티에서는 로그인 뿐만 아니라 로그아웃 기능 역시 제공합니다. 설정을 위해서는 logout 태그를 추가하며, 다음과 같은 속성을 설정할 수 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>logout-url</td>
+      <td>로그아웃 페이지 url 설정</td>
+    </tr>
+    <tr>
+      <td>logout-success-url</td>
+      <td>로그아웃 성공시 이동할 url 설정 (기본값: /login?logout)</td>
+    </tr>
+    <tr>
+      <td>invalidate-session</td>
+      <td>로그아웃 성공시 세션의 연결을 끊을지 설정 (기본값: true)</td>
+    </tr>
+    <tr>
+      <td>delete-cookie</td>
+      <td>로그아웃 성공시 삭제할 쿠키 이름 설정</td>
+    </tr>
+    <tr>
+      <td>success-handler-ref</td>
+      <td>로그아웃 성공시 호출할 핸들러 이름 설정</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>표를 참고하여 로그아웃폼도 설정합니다.</p>
+
+<h6 id="srcmainwebappweb-infspringsecurity-contextxml-5">/src/main/webapp/WEB-INF/spring/security-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/security"</span>
+    <span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/resources/**"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">auto-config=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;intercept-url</span> <span class="na">pattern=</span><span class="s">"/board/**"</span> <span class="na">access=</span><span class="s">"isAuthenticated()"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;form-login</span>
+            <span class="na">login-page=</span><span class="s">"/login"</span>
+            <span class="na">login-processing-url=</span><span class="s">"/login"</span>
+            <span class="na">username-parameter=</span><span class="s">"email"</span>
+            <span class="na">password-parameter=</span><span class="s">"password"</span> <span class="nt">/&gt;</span>
+            
+        <span class="nt">&lt;logout</span>
+            <span class="na">logout-url=</span><span class="s">"/logout"</span>
+            <span class="na">logout-success-url=</span><span class="s">"/"</span>
+            <span class="na">delete-cookies=</span><span class="s">"JSESSIONID"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/http&gt;</span>
+    
+    <span class="nt">&lt;authentication-manager&gt;</span>
+        <span class="nt">&lt;authentication-provider&gt;</span>
+            <span class="nt">&lt;user-service&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"admin@test.com"</span> <span class="na">password=</span><span class="s">"{noop}admin"</span> <span class="na">authorities=</span><span class="s">"ROLE_ADMIN"</span> <span class="nt">/&gt;</span>
+                <span class="nt">&lt;user</span> <span class="na">name=</span><span class="s">"user@test.com"</span> <span class="na">password=</span><span class="s">"{noop}user"</span> <span class="na">authorities=</span><span class="s">"ROLE_USER"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/user-service&gt;</span>
+        <span class="nt">&lt;/authentication-provider&gt;</span>
+    <span class="nt">&lt;/authentication-manager&gt;</span>
+
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<p>컨트롤러에서 logout 메소드를 지워주세요.</p>
+
+<h6 id="krorubiscocontrollerlogincontrollerjava-1">/kro/rubisco/controller/LoginController.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="o">;</span>
+
+<span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LoginController</span> <span class="o">{</span>
+    
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/login"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getLoginView</span><span class="o">()</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>csrf의 disabled 기본값이 false 이므로 로그아웃 요청도 post로 해야하고 csrf 토큰도 설정해야합니다. getBoardList.jsp에 로그아웃 폼을 추가해주세요.</p>
+
+<h6 id="srcmainwebappweb-infviewsboardgetboardlistjsp">/src/main/webapp/WEB-INF/views/board/getBoardList.jsp</h6>
+<div data-lang="JSP" class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na"> pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ taglib </span><span class="na">uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span><span class="na"> prefix=</span><span class="s">"c"</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"fmt"</span><span class="na"> uri=</span><span class="s">"http://java.sun.com/jsp/jstl/fmt"</span> <span class="nt">%&gt;</span>
+
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"</span><span class="nt">&gt;&lt;/script&gt;</span>
+    <span class="nt">&lt;%@ include </span><span class="na">file=</span><span class="s">"./include/tailwindcss.jsp"</span> <span class="nt">%&gt;</span>
+    <span class="nt">&lt;title&gt;</span>게시글 목록<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;main&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>게시글 목록<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">method=</span><span class="s">"post"</span> <span class="na">action=</span><span class="s">"/logout"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"${_csrf.parameterName}"</span> <span class="na">value=</span><span class="s">"${_csrf.token}"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"flex mr-auto mb-3 text-white text-sm sm:text-base bg-rose-500 border-0 py-1 px-3 
+        sm:py-2 sm:px-6 focus:outline-none hover:bg-rose-600 rounded cursor-pointer"</span>
+         <span class="na">type=</span><span class="s">"submit"</span> <span class="na">value=</span><span class="s">"로그아웃"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+    <span class="nt">&lt;article&gt;</span>
+    <span class="nt">&lt;table&gt;</span>
+        <span class="nt">&lt;thead&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;th&gt;&lt;/th&gt;</span>
+                <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>카테고리<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span> <span class="na">class=</span><span class="s">"w-full"</span><span class="nt">&gt;</span>제목<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>작성자<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>등록일<span class="nt">&lt;/th&gt;</span>
+                <span class="nt">&lt;th</span> <span class="na">scope=</span><span class="s">"col"</span><span class="nt">&gt;</span>조회수<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+            <span class="nt">&lt;/thead&gt;</span>
+            <span class="nt">&lt;tbody&gt;</span>
+            <span class="nt">&lt;c:forEach </span><span class="na">items=</span><span class="s">"</span><span class="si">${</span><span class="n">pageInfo</span><span class="o">.</span><span class="na">contentList</span><span class="si">}</span><span class="s">"</span><span class="na"> var=</span><span class="s">"board"</span><span class="na"> step=</span><span class="s">"1"</span><span class="na"> varStatus=</span><span class="s">"status"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;tr&gt;</span>
+            <span class="nt">&lt;td&gt;</span>${pageInfo.totalSize - pageInfo.first - status.index + 1}<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>${board.category.category}<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;&lt;a</span> <span class="na">href=</span><span class="s">"/board/${board.documentId}"</span><span class="nt">&gt;</span>${board.title}<span class="nt">&lt;/a&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>${board.member.nickName}<span class="nt">&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;&lt;fmt:formatDate </span><span class="na">value=</span><span class="s">"</span><span class="si">${</span><span class="n">board</span><span class="o">.</span><span class="na">createDate</span><span class="si">}</span><span class="s">"</span><span class="na"> pattern=</span><span class="s">"yyyy-MM-dd"</span><span class="nt">/&gt;&lt;/td&gt;</span>
+            <span class="nt">&lt;td&gt;</span>${board.readCount}<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;/tr&gt;</span>
+        <span class="nt">&lt;/c:forEach&gt;</span>
+        <span class="nt">&lt;/tbody&gt;</span>
+    <span class="nt">&lt;/table&gt;</span>
+    <span class="nt">&lt;/article&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex mt-2 sm:mt-4 lg:w-2/3 w-full mx-auto"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"write"</span> <span class="na">onClick=</span><span class="s">"window.location='/board?act=write'"</span><span class="nt">&gt;</span>쓰기<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;%@ include </span><span class="na">file=</span><span class="s">"./include/pageNav.jsp"</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;/main&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>로그인후 상단에 로그아웃을 클릭하면 로그아웃 처리가 되고 메인페이지로 이동하는 것을 확인할 수 있습니다.</p>
+
+<h2 id="db-연결">DB 연결</h2>
+
+<p>이번에는 인메모리 방식의 로그인이 아니라 DB를 조회하여 로그인 처리를 해보겠습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">authentication-provider</code> 태그 아래 <code class="language-plaintext highlighter-rouge">jdbc-user-service</code> 태그를 추가합니다. 해당태그에서 <code class="language-plaintext highlighter-rouge">data-source-ref</code>, <code class="language-plaintext highlighter-rouge">users-by-username-query</code>, <code class="language-plaintext highlighter-rouge">authorities-by-username-query</code> 속성을 설정해야합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">data-source-ref</code> 속성은 DB의 데이터소스의 id를 입력합니다. 데이터소스는 root-context.xml 파일에 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">dataSource</code>라는 id로 빈을 생성했습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">users-by-username-query</code> 속성은 유저의 정보를 가져오는 쿼리를 설정합니다. username, password, enabled를 하나의 튜플로 하여 유저정보를 가져옵니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">authorities-by-username-query</code> 속성은 유저의 권한을 가져오는 쿼리를 설정합니다. username, authority를 하나의 튜플로 하여 권한정보를 가져옵니다.</p>
+
+<p>password를 암호화하는 인코더를 추가할 필요도 있습니다. 스프링에서 제공하는 <code class="language-plaintext highlighter-rouge">BCryptPasswordEncoder</code>를 빈으로 추가하고 <code class="language-plaintext highlighter-rouge">authentication-provider</code> 태그 아래 <code class="language-plaintext highlighter-rouge">password-encoder</code> 태그를 추가합니다. 해당 태그의 <code class="language-plaintext highlighter-rouge">ref</code> 속성값으로 인코더 이름을 입력합니다.</p>
+
+<h6 id="srcmainwebappweb-infspringsecurity-contextxml-6">/src/main/webapp/WEB-INF/spring/security-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/security"</span>
+    <span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;beans:bean</span> <span class="na">id =</span><span class="s">"bcryptPasswordEncoder"</span> <span class="na">class=</span><span class="s">"org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"</span><span class="nt">/&gt;</span>
+    
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/resources/**"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">auto-config=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;intercept-url</span> <span class="na">pattern=</span><span class="s">"/board/**"</span> <span class="na">access=</span><span class="s">"isAuthenticated()"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;form-login</span>
+        <span class="na">login-page=</span><span class="s">"/login"</span>
+        <span class="na">login-processing-url=</span><span class="s">"/login"</span>
+        <span class="na">username-parameter=</span><span class="s">"email"</span>
+        <span class="na">password-parameter=</span><span class="s">"password"</span> <span class="nt">/&gt;</span>
+        
+    <span class="nt">&lt;logout</span>
+        <span class="na">logout-url=</span><span class="s">"/logout"</span>
+        <span class="na">logout-success-url=</span><span class="s">"/"</span>
+        <span class="na">delete-cookies=</span><span class="s">"JSESSIONID"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/http&gt;</span>
+    
+    <span class="nt">&lt;authentication-manager&gt;</span>
+        <span class="nt">&lt;authentication-provider&gt;</span>
+            <span class="nt">&lt;jdbc-user-service</span> 
+            <span class="na">data-source-ref=</span><span class="s">"dataSource"</span> 
+            <span class="na">users-by-username-query=</span><span class="s">"select email, password, 1 enabled from member where email=?"</span>
+            <span class="na">authorities-by-username-query=</span><span class="s">"select m.email, g.group_name from member m join member_group g on m.group_id = g.group_id where m.email=?"</span> 
+            <span class="nt">/&gt;</span>
+            <span class="nt">&lt;password-encoder</span> <span class="na">ref=</span><span class="s">"bcryptPasswordEncoder"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/authentication-provider&gt;</span>
+    <span class="nt">&lt;/authentication-manager&gt;</span>
+
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<p>암호화된 비밀번호를 비교하기때문에 현재 DB에 저장되어 있는 계정으로는 로그인할 수 없습니다. 새로운 계정을 만들도록 하겠습니다. 그전에 우선 <code class="language-plaintext highlighter-rouge">MemberServiceImpl</code> 객체에서 <code class="language-plaintext highlighter-rouge">regist</code> 메소드를 수정하도록 하겠습니다.</p>
+
+<h6 id="krorubiscoserviceimplmemberserviceimpljava">/kro/rubisco/service/impl/MemberServiceImpl.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.service.impl</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.session.SqlSession</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.security.crypto.password.PasswordEncoder</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.transaction.annotation.Transactional</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kro.rubisco.dao.MemberDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kro.rubisco.dto.LoginDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kro.rubisco.dto.MemberDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kro.rubisco.service.MemberService</span><span class="o">;</span>
+
+<span class="nd">@Service</span>
+<span class="nd">@Transactional</span><span class="o">(</span><span class="n">readOnly</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberServiceImpl</span> <span class="kd">implements</span> <span class="nc">MemberService</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MemberDAO</span> <span class="n">memberDAO</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">PasswordEncoder</span> <span class="n">bcryptPasswordEncoder</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">MemberServiceImpl</span><span class="o">(</span><span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">,</span> <span class="nc">PasswordEncoder</span> <span class="n">bcryptPasswordEncoder</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">memberDAO</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="nc">MemberDAO</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">bcryptPasswordEncoder</span> <span class="o">=</span> <span class="n">bcryptPasswordEncoder</span><span class="o">;</span>
+    
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">regist</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">member</span><span class="o">.</span><span class="na">setPassword</span><span class="o">(</span><span class="n">bcryptPasswordEncoder</span><span class="o">.</span><span class="na">encode</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getPassword</span><span class="o">()));</span>
+    <span class="n">memberDAO</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+    
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">memberDAO</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+    
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">read</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">memberDAO</span><span class="o">.</span><span class="na">getMemberByEmail</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">modify</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="n">memberDAO</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+    
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="n">memberDAO</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+    
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MemberDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">memberDAO</span><span class="o">.</span><span class="na">listAll</span><span class="o">();</span>
+    
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">MemberDTO</span> <span class="nf">login</span><span class="o">(</span><span class="nc">LoginDTO</span> <span class="n">loginForm</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">memberDAO</span><span class="o">.</span><span class="na">login</span><span class="o">(</span><span class="n">loginForm</span><span class="o">);</span>
+    <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">bcryptPasswordEncoder</code>를 생성자 주입하고 계정을 등록할 때 password를 암호화하여 등록하도록 수정했습니다.</p>
+
+<p>회원가입폼에 scrf 토큰도 입력해주고 톰캣을 재부팅합니다.</p>
+
+<h6 id="srcmainwebappweb-infviewsmembersignupformjsp">/src/main/webapp/WEB-INF/views/member/signUpForm.jsp</h6>
+<div data-lang="JSP" class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">"${_csrf.parameterName}"</span> <span class="na">value=</span><span class="s">"${_csrf.token}"</span> <span class="nt">/&gt;</span>
+...
+</code></pre></div></div>
+
+<p>이제 새로 계정을 만들어 로그인하면 됩니다.</p>
+
+<h2 id="시큐리티-컨텍스트-사용">시큐리티 컨텍스트 사용</h2>
+
+<p>스프링 시큐리티를 통해 로그인하면 JSP에서 security taglib을 사용하여 로그인 인증을 확인하거나 세션 정보를 활용할 수 있습니다.</p>
+
+<p>우선 <code class="language-plaintext highlighter-rouge">spring-security-taglibs</code>를 의존성 추가합니다.</p>
+
+<h6 id="pomxml-1">pom.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+    <span class="c">&lt;!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs --&gt;</span>
+    <span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>org.springframework.security<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>spring-security-taglibs<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>5.7.3<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;/dependency&gt;</span>
+...
+</code></pre></div></div>
+
+<p>jsp 파일에 다음 태그립을 추가함하면 해당 시큐리티 태그를 사용할 수 있습니다. 메인페이지에 인증을 확인하고 세션에서 사용자 정보를 가져와보겠습니다. 그전에 security-context.xml 파일에서 메인페이지 경로에서 시큐리티를 사용하도록 해당 코드를 제거합니다.</p>
+
+<h6 id="srcmainwebappweb-infspringsecurity-contextxml-7">/src/main/webapp/WEB-INF/spring/security-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+</code></pre></div></div>
+
+<p>메인 페이지 뷰를 다음과 같이 수정합니다.</p>
+
+<h6 id="srcmainwebappweb-infviewsboardgetboardlistjsp-1">/src/main/webapp/WEB-INF/views/board/getBoardList.jsp</h6>
+<div data-lang="JSP" class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na"> pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ taglib </span><span class="na">uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span><span class="na"> prefix=</span><span class="s">"c"</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"sec"</span><span class="na"> uri=</span><span class="s">"http://www.springframework.org/security/tags"</span> <span class="nt">%&gt;</span>
+
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Home<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>
+    Hello world!  
+<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;sec:authorize </span><span class="na">access=</span><span class="s">"isAuthenticated()"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;sec:authentication </span><span class="na">property=</span><span class="s">"principal"</span><span class="na"> var=</span><span class="s">"principal"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;P&gt;</span>${principal}<span class="nt">&lt;/P&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"</span><span class="nt">&lt;c:url </span><span class="na">value=</span><span class="s">'/logout' </span><span class="nt">/&gt;</span><span class="s">"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;sec:csrfInput/&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>로그아웃<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/sec:authorize&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>헤더에 시큐리티 taglib을 추가하면 <code class="language-plaintext highlighter-rouge">authorize</code> 태그를 통해 인증여부를 확인할 수 있습니다. <code class="language-plaintext highlighter-rouge">access</code> 속성은 spEL 문법을 사용하며, 위에서 설명한 내용과 같습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">authentication</code> 태그를 통해서는 유저정보를 담은 <code class="language-plaintext highlighter-rouge">principal</code> 객체를 가져올 수 있습니다.</p>
+
+<p align="center"><img src="/assets/images/spring-legacy/img41.png" alt="img41" /></p>
+
+<p>해당 principal 객체는 시큐리티에서 제공하는 UserDetails 인터페이스의 구현체입니다. 시큐리티에서 기본적으로 제공하는 principal 객체로는 제한적인 정보만 가져올 수 있습니다. 아이디, 패스워드, 권한 이외에 다른 정보를 가져오고 싶다면 <code class="language-plaintext highlighter-rouge">UserDetailsServices</code> 인터페이스를 구현하여 참조하는 방식을 사용하면 됩니다.</p>
+
+<h2 id="userdetailsservice-인터페이스-구현">UserDetailsService 인터페이스 구현</h2>
+
+<p>우선 <code class="language-plaintext highlighter-rouge">UserDetails</code> 인터페이스를 구현해야합니다. 모든 기능을 구현하지 않고 시큐리티에서 구현한 <code class="language-plaintext highlighter-rouge">User</code> 객체를 상속받고 <code class="language-plaintext highlighter-rouge">MemberDTO</code>를 멤버변수로 추가하겠습니다.</p>
+
+<h6 id="krorubiscoauthcustomuserjava">/kro/rubisco/auth/CustomUser.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.auth</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.security.core.GrantedAuthority</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.security.core.authority.SimpleGrantedAuthority</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.security.core.userdetails.User</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kro.rubisco.dto.MemberDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Getter</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomUser</span> <span class="kd">extends</span> <span class="nc">User</span> <span class="o">{</span>
+    
+    <span class="nd">@Getter</span>
+    <span class="kd">private</span> <span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">CustomUser</span><span class="o">(</span><span class="nc">MemberDTO</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span>
+            <span class="n">member</span><span class="o">.</span><span class="na">getEmail</span><span class="o">(),</span> 
+            <span class="n">member</span><span class="o">.</span><span class="na">getPassword</span><span class="o">(),</span> 
+            <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">GrantedAuthority</span><span class="o">&gt;(</span>
+                <span class="nc">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span>
+                    <span class="k">new</span> <span class="nf">SimpleGrantedAuthority</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getGroup</span><span class="o">().</span><span class="na">getGroupName</span><span class="o">())</span>
+                <span class="o">)</span>
+            <span class="o">)</span>
+        <span class="o">);</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">member</span> <span class="o">=</span> <span class="n">member</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>다음으로 <code class="language-plaintext highlighter-rouge">UserDetailsService</code> 인터페이스를 구현합니다. username을 매개변수로 받는 <code class="language-plaintext highlighter-rouge">loadUserByUsername</code> 메소드를 구현하면 됩니다. 해당 메소드는 UserDetails 객체를 반환합니다. 그러므로 username을 통해 DB에서 유저정보를 가져오고, 해당 정보를 CustomUser에 주입하여 으로써 시큐리티 컨텍스트로 member 객체를 전달할 수 있습니다.</p>
+
+<h6 id="krorubiscoauthcustomuserdetailsservicejava">/kro/rubisco/auth/CustomUserDetailsService.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kro.rubisco.auth</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.beans.factory.annotation.Autowired</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.security.core.userdetails.UserDetails</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.security.core.userdetails.UserDetailsService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.security.core.userdetails.UsernameNotFoundException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kro.rubisco.dto.MemberDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kro.rubisco.service.MemberService</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">lombok.Setter</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CustomUserDetailsService</span> <span class="kd">implements</span> <span class="nc">UserDetailsService</span> <span class="o">{</span>
+
+    <span class="nd">@Setter</span><span class="o">(</span><span class="n">onMethod_</span> <span class="o">=</span> <span class="nd">@Autowired</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">MemberService</span> <span class="n">memberService</span><span class="o">;</span>
+    
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">UserDetails</span> <span class="nf">loadUserByUsername</span><span class="o">(</span><span class="nc">String</span> <span class="n">email</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">UsernameNotFoundException</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">MemberDTO</span> <span class="n">member</span> <span class="o">=</span> <span class="n">memberService</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">email</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">member</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">?</span> <span class="kc">null</span> <span class="o">:</span> <span class="k">new</span> <span class="nc">CustomUser</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="o">}</span> 
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">@Setter</code>를 통해 memberService의 setter를 생성하고 해당 setter가 <code class="language-plaintext highlighter-rouge">@Autowired</code>를 통해 memberService를 setter주입하도록 선언합니다. 주입받은 memberService를 통해 member 객체를 가져올 수 있으며, 해당 객체를 주입하여 CustomUser 객체를 생성할 수 있습니다. 이 객체는 UserDetails 인터페이스의 구현체이므로 자동으로 캐스팅되어 리턴이 가능합니다.</p>
+
+<p>이제 시큐리티 컨텍스트를 수정해주겠습니다.</p>
+
+<h6 id="srcmainwebappweb-infspringsecurity-contextxml-8">/src/main/webapp/WEB-INF/spring/security-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/security"</span>
+    <span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;beans:bean</span> <span class="na">id =</span><span class="s">"bcryptPasswordEncoder"</span> <span class="na">class=</span><span class="s">"org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;beans:bean</span> <span class="na">id=</span><span class="s">"customUserDetailsService"</span> <span class="na">class=</span><span class="s">"kro.rubisco.auth.CustomUserDetailsService"</span> <span class="nt">/&gt;</span>
+    
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/resources/**"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">auto-config=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;intercept-url</span> <span class="na">pattern=</span><span class="s">"/board/**"</span> <span class="na">access=</span><span class="s">"isAuthenticated()"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;form-login</span>
+            <span class="na">login-page=</span><span class="s">"/login"</span>
+            <span class="na">login-processing-url=</span><span class="s">"/login"</span>
+            <span class="na">username-parameter=</span><span class="s">"email"</span>
+            <span class="na">password-parameter=</span><span class="s">"password"</span> <span class="nt">/&gt;</span>
+            
+        <span class="nt">&lt;logout</span>
+            <span class="na">logout-url=</span><span class="s">"/logout"</span>
+            <span class="na">logout-success-url=</span><span class="s">"/"</span>
+            <span class="na">delete-cookies=</span><span class="s">"JSESSIONID"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/http&gt;</span>
+    
+    <span class="nt">&lt;authentication-manager&gt;</span>
+        <span class="nt">&lt;authentication-provider</span> <span class="na">user-service-ref=</span><span class="s">"customUserDetailsService"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;password-encoder</span> <span class="na">ref=</span><span class="s">"bcryptPasswordEncoder"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/authentication-provider&gt;</span>
+    <span class="nt">&lt;/authentication-manager&gt;</span>
+
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">customUserDetailsService</code>라는 이름으로 빈을 설정하여 <code class="language-plaintext highlighter-rouge">authentication-provider</code>의 <code class="language-plaintext highlighter-rouge">user-service-ref</code> 속성값으로 입력해줍니다.</p>
+
+<p>JSP에서 member 객체에 접근하려면 principal.member로 접근하면 됩니다.</p>
+
+<h6 id="srcmainwebappweb-infviewshomejsp">/src/main/webapp/WEB-INF/views/home.jsp</h6>
+<div data-lang="JSP" class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na"> pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ taglib </span><span class="na">uri=</span><span class="s">"http://java.sun.com/jsp/jstl/core"</span><span class="na"> prefix=</span><span class="s">"c"</span> <span class="nt">%&gt;</span>
+<span class="nt">&lt;%@ taglib </span><span class="na">prefix=</span><span class="s">"sec"</span><span class="na"> uri=</span><span class="s">"http://www.springframework.org/security/tags"</span> <span class="nt">%&gt;</span>
+
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Home<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h1&gt;</span>
+    Hello world!  
+<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;sec:authorize </span><span class="na">access=</span><span class="s">"isAuthenticated()"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;sec:authentication </span><span class="na">property=</span><span class="s">"principal.member"</span><span class="na"> var=</span><span class="s">"member"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;P&gt;</span>${member.nickName}님, 환영합니다.<span class="nt">&lt;/P&gt;</span>
+    <span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">"</span><span class="nt">&lt;c:url </span><span class="na">value=</span><span class="s">'/logout' </span><span class="nt">/&gt;</span><span class="s">"</span> <span class="na">method=</span><span class="s">"post"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;sec:csrfInput/&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>로그아웃<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/form&gt;</span>
+<span class="nt">&lt;/sec:authorize&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h2 id="remember-me-구현">remember-me 구현</h2>
+
+<p>마지막으로 로그인상태를 유지하는 remember-me 기능을 구현해보겠습니다.</p>
+
+<p>remember-me는 토큰을 생성하여 DB에 저장하고, 클라이언트의 쿠키를 통해 이를 검증하는 방식으로 진행됩니다.</p>
+
+<p>기능구현을 위해서는 RememberMeAuthenticationFilter, TokenBasedRememberMeServices, RememberMeAuthenticationProvider의 구현이 필요하며, 시큐리티는 해당 구현체를 기본적으로 제공하고 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">RememberMeAuthenticationFilter</code>는 클라이언트 요청에서 remember-me 쿠키가 있는지 확인하고, <code class="language-plaintext highlighter-rouge">TokenBasedRememberMeServices</code>는 <code class="language-plaintext highlighter-rouge">PersistentTokenRepository</code>를 통해 토큰을 조회하여 <code class="language-plaintext highlighter-rouge">RememberMeAuthenticationProvider</code>를 통해 인증을 수행합니다.</p>
+
+<hr />
+
+<p>기능구현을 위해서는 우선 DBeaver를 통해 테이블 생성이 필요합니다.</p>
+
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">persistent_logins</span> <span class="p">(</span>
+    <span class="n">username</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">series</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">token</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="n">last_used</span> <span class="nb">timestamp</span> <span class="k">not</span> <span class="k">null</span><span class="p">,</span>
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">series</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div></div>
+
+<p>해당 테이블에서 PersistentTokenRepository를 통해 토큰을 조회합니다.</p>
+
+<p>이제 시큐리티 컨텍스트에서 <code class="language-plaintext highlighter-rouge">remember-me</code> 태그를 통해 RememberMeAuthenticationFilter를 설정하면 됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">remember-me-cookie</code> 속성으로 쿠키이름을 설정할 수 있고, <code class="language-plaintext highlighter-rouge">remember-me-parameter</code> 속성으로 파라미터명을 설정할 수 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">token-repository-ref</code> 속성은 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">PersistentTokenRepository</code> 구현체를, <code class="language-plaintext highlighter-rouge">services-ref</code> 속성은 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">RememberMeServices</code> 구현체를 설정합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">token-validity-seconds</code>는 쿠키가 지속되는 시간을, <code class="language-plaintext highlighter-rouge">data-source-ref</code>는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color: royalblue">DataSource</code>를 설정합니다.</p>
+
+<h6 id="srcmainwebappweb-infspringsecurity-contextxml-9">/src/main/webapp/WEB-INF/spring/security-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/security"</span>
+    <span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;beans:bean</span> <span class="na">id =</span><span class="s">"bcryptPasswordEncoder"</span> <span class="na">class=</span><span class="s">"org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;beans:bean</span> <span class="na">id=</span><span class="s">"customUserDetailsService"</span> <span class="na">class=</span><span class="s">"kro.rubisco.auth.CustomUserDetailsService"</span> <span class="nt">/&gt;</span>
+    
+    <span class="nt">&lt;http</span> <span class="na">pattern=</span><span class="s">"/resources/**"</span> <span class="na">security=</span><span class="s">"none"</span><span class="nt">&gt;&lt;/http&gt;</span>
+    <span class="nt">&lt;http</span> <span class="na">auto-config=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;intercept-url</span> <span class="na">pattern=</span><span class="s">"/board/**"</span> <span class="na">access=</span><span class="s">"isAuthenticated()"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;form-login</span>
+            <span class="na">login-page=</span><span class="s">"/login"</span>
+            <span class="na">login-processing-url=</span><span class="s">"/login"</span>
+            <span class="na">username-parameter=</span><span class="s">"email"</span>
+            <span class="na">password-parameter=</span><span class="s">"password"</span> <span class="nt">/&gt;</span>
+            
+        <span class="nt">&lt;logout</span>
+            <span class="na">logout-url=</span><span class="s">"/logout"</span>
+            <span class="na">logout-success-url=</span><span class="s">"/"</span>
+            <span class="na">delete-cookies=</span><span class="s">"JSESSIONID, remember-me"</span> <span class="nt">/&gt;</span>
+            
+        <span class="nt">&lt;remember-me</span> 
+            <span class="na">token-validity-seconds=</span><span class="s">"604800"</span> 
+            <span class="na">data-source-ref=</span><span class="s">"dataSource"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/http&gt;</span>
+    
+    <span class="nt">&lt;authentication-manager&gt;</span>
+        <span class="nt">&lt;authentication-provider</span> <span class="na">user-service-ref=</span><span class="s">"customUserDetailsService"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;password-encoder</span> <span class="na">ref=</span><span class="s">"bcryptPasswordEncoder"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/authentication-provider&gt;</span>
+    <span class="nt">&lt;/authentication-manager&gt;</span>
+
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<p>이제 로그인시 remember-me를 체크하여 로그인하면 브라우저를 껏다가 다시 켜도 로그인 상태를 유지하는 것을 확인할 수 있습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/java/">Java</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-filter-and-interceptor">스프링 레거시(Spring legacy) - 필터와 인터셉터</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-cookie-and-session">스프링 레거시(Spring legacy) - 쿠키와 세션</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-sign-up">스프링 레거시(Spring legacy) - 회원가입</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/java/">
+                                
+                                    See all 17 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/java/spring-legacy-filter-and-interceptor">
+                <div class="post-card-image" style="background-image: url(/assets/images/spring-legacy/logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/java/spring-legacy-filter-and-interceptor">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">스프링 레거시(Spring legacy) - 필터와 인터셉터</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>공통관심사(Cross-cutting Concerns)
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      4 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">스프링 레거시(Spring legacy) - 시큐리티 적용</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%8A%A4%ED%94%84%EB%A7%81+%EB%A0%88%EA%B1%B0%EC%8B%9C%28Spring+legacy%29+-+%EC%8B%9C%ED%81%90%EB%A6%AC%ED%8B%B0+%EC%A0%81%EC%9A%A9&amp;url=java/spring-legacy-security"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=java/spring-legacy-security"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>스프링 레거시(Spring legacy) - 시큐리티 적용</title>
+        
+          <description>&lt;h1 id=&quot;스프링-시큐리티spring-security&quot;&gt;스프링 시큐리티(Spring Security)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Fri, 11 Nov 2022 01:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/java/spring-legacy-security</link>
+        <guid isPermaLink="true">https://huimang2.github.io/java/spring-legacy-security</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>스프링 레거시(Spring legacy) - 필터와 인터셉터</title>
         
           <description>&lt;h1 id=&quot;공통관심사cross-cutting-concerns&quot;&gt;공통관심사(Cross-cutting Concerns)&lt;/h1&gt;
