@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>이클립스 메이븐 프로젝트</title>
+        
+          <description>&lt;p&gt;학원에서 열심히 스프링 부트를 중심으로 JPA를 연마했건만 현업에서는 부트가 쓰이지 않는다고 합니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 18 Nov 2022 19:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/java/maven-project</link>
+        <guid isPermaLink="true">https://huimang2.github.io/java/maven-project</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>스프링 레거시(Spring legacy) - 시큐리티 적용</title>
         
           <description>&lt;h1 id=&quot;스프링-시큐리티spring-security&quot;&gt;스프링 시큐리티(Spring Security)&lt;/h1&gt;

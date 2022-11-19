@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>이클립스 메이븐 프로젝트</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/java/maven-project" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="이클립스 메이븐 프로젝트" />
+    <meta property="og:description" content="학원에서 열심히 스프링 부트를 중심으로 JPA를 연마했건만 현업에서는 부트가 쓰이지 않는다고 합니다. 심지어 에디터 조차도 대부분 이클립스를 사용한다고 하는데, 최근까지 지원하던 STS3을 더이상 지원하지 않아 이클립스 최신버전에서는 레거시 프로젝트조차 만들수 없는 상황이 왔습니다. 이번 글에서는 연습삼아서 이클립스를 통해 메이븐 프로젝트를 생성하고, 스프링 mvc를 구성해보도록 하겠습니다. 이클립스 / JDK 11 /" />
+    <meta property="og:url" content="https://huimang2.github.io/java/maven-project" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/eclipse/logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2022-11-18T19:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-11-18T19:00:00+09:00" />
+    <meta property="article:tag" content="Java" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="이클립스 메이븐 프로젝트" />
+    <meta name="twitter:description" content="학원에서 열심히 스프링 부트를 중심으로 JPA를 연마했건만 현업에서는 부트가 쓰이지 않는다고 합니다. 심지어 에디터 조차도 대부분 이클립스를 사용한다고 하는데, 최근까지 지원하던 STS3을 더이상 지원하지 않아 이클립스 최신버전에서는 레거시 프로젝트조차 만들수 없는 상황이 왔습니다. 이번 글에서는 연습삼아서 이클립스를 통해 메이븐 프로젝트를 생성하고, 스프링 mvc를 구성해보도록 하겠습니다. 이클립스 / JDK 11 /" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/eclipse/logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Java" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/java/maven-project",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/eclipse/logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/java/maven-project"
+    },
+    "description": "학원에서 열심히 스프링 부트를 중심으로 JPA를 연마했건만 현업에서는 부트가 쓰이지 않는다고 합니다. 심지어 에디터 조차도 대부분 이클립스를 사용한다고 하는데, 최근까지 지원하던 STS3을 더이상 지원하지 않아 이클립스 최신버전에서는 레거시 프로젝트조차 만들수 없는 상황이 왔습니다. 이번 글에서는 연습삼아서 이클립스를 통해 메이븐 프로젝트를 생성하고, 스프링 mvc를 구성해보도록 하겠습니다. 이클립스 / JDK 11 /"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="이클립스 메이븐 프로젝트" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-java tag-eclipse tag-maven post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="18 November 2022">18 November 2022</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/java/'>#JAVA</a>,&nbsp;
+                                
+                            
+                        
+                            
+                                
+                                <a href='/tag/eclipse/'>#이클립스</a>,&nbsp;
+                                
+                            
+                        
+                            
+                                
+                                <a href='/tag/maven/'>#메이븐</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">이클립스 메이븐 프로젝트</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/eclipse/logo.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#이클립스--jdk-11--tomcat9-다운로드"><span>이클립스 / JDK 11 / Tomcat9 다운로드</span></a></li><li><a href="#환경설정-설정"><span>환경설정 설정</span></a><ul><li><a href="#톰캣-서버-생성"><span>톰캣 서버 생성</span></a></li><li><a href="#메이븐-프로젝트-생성"><span>메이븐 프로젝트 생성</span></a></li><li><a href="#스프링-프레임워크-의존성-추가"><span>스프링 프레임워크 의존성 추가</span></a></li></ul></li><li><a href="#웹어플리케이션-설정"><span>웹어플리케이션 설정</span></a><ul><li><a href="#webxml-설정"><span>web.xml 설정</span></a></li><li><a href="#root-contextxml-설정"><span>root-context.xml 설정</span></a></li><li><a href="#root-contextxml-설정-1"><span>root-context.xml 설정</span></a></li></ul></li><li><a href="#controller-작성"><span>Controller 작성</span></a></li><li><a href="#오라클-db"><span>오라클 DB</span></a><ul><li><a href="#설치"><span>설치</span></a></li><li><a href="#권한설정"><span>권한설정</span></a></li><li><a href="#db-연결"><span>DB 연결</span></a></li></ul></li><li><a href="#mybatis-연동"><span>Mybatis 연동</span></a></li></ul>
+
+                    </div>
+                    <p>학원에서 열심히 스프링 부트를 중심으로 JPA를 연마했건만 현업에서는 부트가 쓰이지 않는다고 합니다.</p>
+
+<p>심지어 에디터 조차도 대부분 이클립스를 사용한다고 하는데, 최근까지 지원하던 STS3을 더이상 지원하지 않아 이클립스 최신버전에서는 레거시 프로젝트조차 만들수 없는 상황이 왔습니다.</p>
+
+<p>이번 글에서는 연습삼아서 이클립스를 통해 메이븐 프로젝트를 생성하고, 스프링 mvc를 구성해보도록 하겠습니다.</p>
+
+<h1 id="이클립스--jdk-11--tomcat9-다운로드">이클립스 / JDK 11 / Tomcat9 다운로드</h1>
+
+<p>우선 이클립스를 다운받도록 하겠습니다.</p>
+
+<p><a href="https://www.eclipse.org/downloads/packages/" target="_blank">https://www.eclipse.org/downloads/packages/</a>로 들어갑니다.</p>
+
+<p>인스톨러를 다운받아도 되지만 패키지 파일을 받도록 하겠습니다. 웹어플리케이션을 개발할 것이니 <code class="language-plaintext highlighter-rouge">Eclipse IDE for Enterprise Java and Web Developers</code>를 다운로드 합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-001.png" alt="img001" /></p>
+
+<p>JDK와 톰캣은 레거시 프로젝트때 다운받은 것을 사용하겠습니다.</p>
+
+<blockquote>
+  <p><a href="https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html" target="_blank">oracle JDK 11</a></p>
+
+  <p><a href="https://tomcat.apache.org/download-90.cgi" target="_blank">Tomcat 9</a></p>
+</blockquote>
+
+<hr />
+
+<p>이클립스 패키지를 적당한곳에 압축을 풀고 작업공간을 만들어줍시다. 저는 <code class="language-plaintext highlighter-rouge">eclipse-ws</code>라고 만들었습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">eclipse</code> 폴더에 들어가서 <code class="language-plaintext highlighter-rouge">eclipse.exe</code>를 실행합니다. 작업공간을 지정해주고 <code class="language-plaintext highlighter-rouge">Launch</code>를 클릭하면 이클립스가 실행됩니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-002.png" alt="img002" /></p>
+
+<h1 id="환경설정-설정">환경설정 설정</h1>
+
+<p>STS3이 이클립스 기반이기 때문에 환경설정의 경우 STS3과 동일하게 설정하면 됩니다.</p>
+
+<p>상단에 <code class="language-plaintext highlighter-rouge">Window &gt; Preferences</code>를 클릭합니다.</p>
+
+<p><img src="/assets/images/spring-legacy/img08.png" alt="img08" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">General &gt; Content Types</code>에 들어가서 <code class="language-plaintext highlighter-rouge">Text</code>를 선택하고 하단에 <code class="language-plaintext highlighter-rouge">Default encoding</code>에 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">utf-8</code>을 입력후 <code class="language-plaintext highlighter-rouge">Update</code> 버튼을 누르세요.</p>
+
+<p><img src="/assets/images/spring-legacy/img09.png" alt="img09" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">General &gt; Workspace</code>에서 <code class="language-plaintext highlighter-rouge">Text file encoding</code> 또한 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">UTF-8</code>로 번경 후 <code class="language-plaintext highlighter-rouge">Apply</code> 버튼을 누르세요</p>
+
+<p><img src="/assets/images/spring-legacy/img10.png" alt="img10" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Web &gt; CSS Files</code>, <code class="language-plaintext highlighter-rouge">Web &gt; HTML Files</code>, <code class="language-plaintext highlighter-rouge">Web &gt; JSP Files</code>, <code class="language-plaintext highlighter-rouge">XML &gt; XML Files</code>, <code class="language-plaintext highlighter-rouge">JSON &gt; JSON Files</code> 또한 Encoding을 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">UTF-8</code>로 변경후 <code class="language-plaintext highlighter-rouge">Apply</code> 버튼을 누르세요.</p>
+
+<p><img src="/assets/images/spring-legacy/img11.png" alt="img11" /></p>
+
+<p>이클립스 역시 기존 JDK 버전을 17로 사용하고 있어서 환경변수가 17 버전으로 되어 있습니다. <code class="language-plaintext highlighter-rouge">JAVA &gt; Compiler</code>에서 <code class="language-plaintext highlighter-rouge">JDK Compiler compliance level</code>을 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">11</code>로 변경하고, <code class="language-plaintext highlighter-rouge">JAVA &gt; Installed JREs</code>에서 JDK 11버전 경로를 추가한 후 <code class="language-plaintext highlighter-rouge">Apply</code>를 클릭하세요.</p>
+
+<p><img src="/assets/images/spring-legacy/img12.png" alt="img12" /></p>
+
+<p><img src="/assets/images/spring-legacy/img13.png" alt="img13" /></p>
+
+<h2 id="톰캣-서버-생성">톰캣 서버 생성</h2>
+
+<p>STS와 동일합니다.</p>
+
+<p>상단에 <code class="language-plaintext highlighter-rouge">window &gt; Show View &gt; Servers</code>를 클릭하여 서버창을 엽니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-003.png" alt="img003" /></p>
+
+<p>왼쪽 하단에 링크를 클릭하여 서버를 추가합시다.</p>
+
+<p><img src="/assets/images/spring-legacy/img05.png" alt="img05" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Tomcat v9.0 Server</code>를 선택후 <code class="language-plaintext highlighter-rouge">Next</code> 버튼을 클릭합니다.</p>
+
+<p><img src="/assets/images/spring-legacy/img06.png" alt="img06" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Browse...</code> 버튼을 클릭하여 설치한 톰캣 폴더를 디렉토리로 지정한후 <code class="language-plaintext highlighter-rouge">Finish</code>를 클릭하세요.</p>
+
+<p><img src="/assets/images/spring-legacy/img07.png" alt="img07" /></p>
+
+<h2 id="메이븐-프로젝트-생성">메이븐 프로젝트 생성</h2>
+
+<p><code class="language-plaintext highlighter-rouge">메이븐(Maven)</code>은 빌드도구로, <code class="language-plaintext highlighter-rouge">pom.xml</code> 파일을 통해 프로젝트 의존성을 관리해줍니다. pom은 <code class="language-plaintext highlighter-rouge">Project Object Model</code>의 약자입니다. 스프링 레거시 프로젝트를 만들때 기본 빌드도구로 메이븐을 사용했었습니다. 참고로 스프링 부트 프로젝트의 경우 gradle을 기본 빌드도구로 사용합니다.</p>
+
+<p>우선 상단메뉴에서 <code class="language-plaintext highlighter-rouge">File &gt; New &gt; Maven Project</code>를 클릭합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-004.png" alt="img004" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Next</code>를 클릭합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-005.png" alt="img005" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">maven-archetype-webapp</code> 아티팩트(Artifact)를 검색하여 그룹id가 <code class="language-plaintext highlighter-rouge">org.apache.maven.archetype</code>인 아티팩트를 선택하고 <code class="language-plaintext highlighter-rouge">Next</code>를 클릭합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-006.png" alt="img006" /></p>
+
+<p>그룹id와 아티팩트id를 입력하고 <code class="language-plaintext highlighter-rouge">Finish</code>를 눌러 프로젝트를 생성합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-007.png" alt="img007" /></p>
+
+<p>하단 콘솔창에 프로젝트를 생성할 것인지 확인하는 문구가 뜹니다. <code class="language-plaintext highlighter-rouge">y</code>를 입력하고 엔터를 눌러 프로젝트를 생성합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-008.png" alt="img008" /></p>
+
+<p>프로젝트가 생성되는데 오류마커가 뜹니다. 마커창을 확인하면 우선 JRE 버전이 달라서 문제가 발생했습니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-009.png" alt="img009" /></p>
+
+<p>좌측에 프로젝트 폴더를 선택후 상단메뉴의 <code class="language-plaintext highlighter-rouge">Project &gt; Properties</code>를 클릭합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-010.png" alt="img010" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">Project Facets</code>에서 Java 버전을 <code class="language-plaintext highlighter-rouge">11</code>로 설정후<code class="language-plaintext highlighter-rouge"> Apply and Close</code>를 눌러 자바버전을 변경합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-011.png" alt="img011" /></p>
+
+<p>JSP 관련 오류도 발생했는데 이것은 의존성이 없기때문입니다. 메이븐 레포지토리를 참고하여 <code class="language-plaintext highlighter-rouge">javax.servlet-api</code>, <code class="language-plaintext highlighter-rouge">javax.servlet.jsp-api</code>를 의존성으로 추가합니다. <code class="language-plaintext highlighter-rouge">jstl</code>도 같이 추가해줍시다.</p>
+
+<h6 id="pomxml">pom.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>javax.servlet<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>javax.servlet-api<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>3.1.0<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>javax.servlet.jsp<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>javax.servlet.jsp-api<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>2.3.3<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/javax.servlet/jstl --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>javax.servlet<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>jstl<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.2<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+...
+</code></pre></div></div>
+
+<p>index.jsp에 다음 헤더를 입력하고 저장하면 모든 오류가 제거됩니다.</p>
+<h6 id="srcmainwebappindexjsp">/src/main/webapp/index.jsp</h6>
+<div data-lang="JSP" class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na"> pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+<span class="nt">&lt;h2&gt;</span>Hello World!<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p>아직 web.xml 파일을 설정하지 않아서 루트경로는 <code class="language-plaintext highlighter-rouge">/src/main/webapp</code>입니다. 톰캣에 프로젝트를 추가하여 실행시켜보겠습니다.</p>
+
+<p>톰캣서버에 마우스 오른쪽 클릭하고 <code class="language-plaintext highlighter-rouge">Add and Remove...</code>를 클릭합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-012.png" alt="img012" /></p>
+
+<p>왼쪽에 있는 프로젝트를 선택후 <code class="language-plaintext highlighter-rouge">Add &gt;</code>를 클릭하여 오른쪽으로 이동시킨 후 <code class="language-plaintext highlighter-rouge">Finish</code>를 눌러 프로젝트를 톰캣서버에 설정합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-013.png" alt="img013" /></p>
+
+<p>톰캣서버를 클릭후 단축키 <code class="language-plaintext highlighter-rouge">Ctrl + Alt + R</code>을 누르면 톰캣서버가 실행됩니다. default 경로는 프로젝트 이름이고, default 포트는 8080입니다.</p>
+
+<p><a href="http://localhost:8080/work" target="_blank">http://localhost:8080/work</a>로 이동하면 톰캣서버가 잘 작동한다는 사실을 알 수 있습니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-014.png" alt="img014" /></p>
+
+<h2 id="스프링-프레임워크-의존성-추가">스프링 프레임워크 의존성 추가</h2>
+
+<p>이제 스프링 프레임워크를 의존성 추가해주세요.</p>
+
+<p>프로퍼티로 자바 버전을 설정하고 <code class="language-plaintext highlighter-rouge">spring-core</code>와 <code class="language-plaintext highlighter-rouge">spring-webmvc</code>를 추가하겠습니다.</p>
+
+<h6 id="pomxml-1">pom.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+    <span class="nt">&lt;properties&gt;</span>
+        ...
+        <span class="nt">&lt;org.springframework-version&gt;</span>5.3.23<span class="nt">&lt;/org.springframework-version&gt;</span>
+    <span class="nt">&lt;/properties&gt;</span>
+...
+        <span class="c">&lt;!-- 스프링 프레임워크 --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-core<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>${org.springframework-version}<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-webmvc<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>${org.springframework-version}<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+...
+</code></pre></div></div>
+
+<h1 id="웹어플리케이션-설정">웹어플리케이션 설정</h1>
+
+<h2 id="webxml-설정">web.xml 설정</h2>
+
+<p>web.xml 파일은 클라이언트의 요청 경로와 요청을 처리하는 서블릿 사이의 매핑을 정의합니다.</p>
+
+<p>요청 경로와 서블릿을 매핑하기 <code class="language-plaintext highlighter-rouge">sevlet</code> 태그로 서블릿을 선언하고 <code class="language-plaintext highlighter-rouge">servlet-mapping</code> 태그에 매핑할 경로를 정의합니다.
+예제로 다음과 같이 작성해보겠습니다.</p>
+
+<h6 id="srcmainwebappweb-infwebxml">/src/main/webapp/WEB-INF/web.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" &gt;</span>
+
+<span class="nt">&lt;web-app&gt;</span>
+    <span class="nt">&lt;display-name&gt;</span>Mission Web Application<span class="nt">&lt;/display-name&gt;</span>
+  
+    <span class="nt">&lt;servlet&gt;</span>
+        <span class="nt">&lt;servlet-name&gt;</span>hello<span class="nt">&lt;/servlet-name&gt;</span>
+        <span class="nt">&lt;servlet-class&gt;</span>kr.kro.rubisco.work.TestServlet<span class="nt">&lt;/servlet-class&gt;</span>
+    <span class="nt">&lt;/servlet&gt;</span>
+    
+    <span class="nt">&lt;servlet-mapping&gt;</span>
+        <span class="nt">&lt;servlet-name&gt;</span>hello<span class="nt">&lt;/servlet-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/hello<span class="nt">&lt;/url-pattern&gt;</span>
+    <span class="nt">&lt;/servlet-mapping&gt;</span>
+<span class="nt">&lt;/web-app&gt;</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">hello</code>라는 이름의 서블릿을 정의하는데, 해당 서블릿의 타입(클래스)는 <code class="language-plaintext highlighter-rouge">kr.kro.rubisco.work.TestServlet</code> 입니다. hello 서블릿은 <code class="language-plaintext highlighter-rouge">/hello</code>라는 클라이언트의 요청에 매핑됩니다.</p>
+
+<p>이제 <code class="language-plaintext highlighter-rouge">kr.kro.rubisco.work</code> 패키지에 <code class="language-plaintext highlighter-rouge">TestServlet</code> 이라는 서블릿 클래스를 작성하면 됩니다.</p>
+
+<p>처음에는 소스 경로가 없는데, /src/main 폴더에 java 폴더를 생성하면 소스경로가 생깁니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-015.png" alt="img015" /></p>
+
+<p align="center"><img src="/assets/images/eclipse/img-016.png" alt="img016" /></p>
+
+<p align="center"><img src="/assets/images/eclipse/img-017.png" alt="img017" /></p>
+
+<p>해당 소스경로에 오른쪽 클릭을 하여 패키지를 생성합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-018.png" alt="img018" /></p>
+
+<p align="center"><img src="/assets/images/eclipse/img-019.png" alt="img019" /></p>
+
+<p>해당 패키지에 TestServlet 클래스를 생성하여 다음과 같이 작성합니다.</p>
+
+<h6 id="krkrorubiscotestservletjava">/kr.kro.rubisco.TestServlet.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.rubisco.work</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletConfig</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletRequest</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.ServletResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.servlet.http.HttpServlet</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestServlet</span> <span class="kd">extends</span> <span class="nc">HttpServlet</span> <span class="o">{</span>
+    
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">long</span> <span class="n">serialVersionUID</span> <span class="o">=</span> <span class="mi">1L</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="o">(</span><span class="nc">ServletConfig</span> <span class="n">config</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"init() 실행됨!"</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">service</span><span class="o">(</span><span class="nc">ServletRequest</span> <span class="n">arg0</span><span class="o">,</span> <span class="nc">ServletResponse</span> <span class="n">arg1</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ServletException</span><span class="o">,</span> <span class="nc">IOException</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"service() 실행됨!"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<p>서블릿이기때문에 웹요청에 대한 서블릿인 <code class="language-plaintext highlighter-rouge">HttpServlet</code>을 상속받아 구현합니다.</p>
+
+<p><a href="http://localhost:8080/work/hello" target="_blank">http://localhost:8080/work/hello</a> 경로로 이동하면 hello 서블릿으로 매핑되어 서비스 처리를 하는 것을 볼 수 있습니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-020.png" alt="img020" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">init</code> 메소드는 톰캣서버가 실행될 때 최초 한번 실행되는 초기화 메소드이며, <code class="language-plaintext highlighter-rouge">service</code> 메소드는 클라이언트 요청이 있을때마다 호출되는 메소드입니다.</p>
+
+<p>HttpServlet에 다양한 메소드가 있는데 일단 생략하겠습니다.</p>
+
+<hr />
+
+<p>스프링 프레임워크의 <code class="language-plaintext highlighter-rouge">DispatcherServlet</code> 역시 HttpServlet을 상속받은 서블릿입니다. 즉, 모든 요청에 대하여 DispatcherServlet에 매핑되도록 하면 스프링 컨테이너를 통해 클라이언트 요청을 제어할 수 있게 됩니다.</p>
+
+<p>다음과 같이 web.xml을 작성해주세요.</p>
+
+<h6 id="srcmainwebappweb-infwebxml-1">/src/main/webapp/WEB-INF/web.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" &gt;</span>
+
+<span class="nt">&lt;web-app&gt;</span>
+
+    <span class="nt">&lt;display-name&gt;</span>Mission Web Application<span class="nt">&lt;/display-name&gt;</span>
+
+    <span class="c">&lt;!-- The definition of the Root Spring Container shared by all Servlets and Filters --&gt;</span>
+    <span class="nt">&lt;context-param&gt;</span>
+        <span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+        <span class="nt">&lt;param-value&gt;</span>/WEB-INF/spring/root-context.xml<span class="nt">&lt;/param-value&gt;</span>
+    <span class="nt">&lt;/context-param&gt;</span>
+    
+    <span class="nt">&lt;filter&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>encodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.CharacterEncodingFilter<span class="nt">&lt;/filter-class&gt;</span>
+        <span class="nt">&lt;init-param&gt;</span>
+            <span class="nt">&lt;param-name&gt;</span>encoding<span class="nt">&lt;/param-name&gt;</span>
+            <span class="nt">&lt;param-value&gt;</span>UTF-8<span class="nt">&lt;/param-value&gt;</span>
+        <span class="nt">&lt;/init-param&gt;</span>
+    <span class="nt">&lt;/filter&gt;</span>
+    
+    <span class="nt">&lt;filter&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>httpMethodFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;filter-class&gt;</span>org.springframework.web.filter.HiddenHttpMethodFilter<span class="nt">&lt;/filter-class&gt;</span>
+    <span class="nt">&lt;/filter&gt;</span>
+    
+    <span class="nt">&lt;filter-mapping&gt;</span>
+        <span class="nt">&lt;filter-name&gt;</span>encodingFilter<span class="nt">&lt;/filter-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/*<span class="nt">&lt;/url-pattern&gt;</span>
+    <span class="nt">&lt;/filter-mapping&gt;</span>
+    
+    <span class="c">&lt;!-- Creates the Spring Container shared by all Servlets and Filters --&gt;</span>
+    <span class="nt">&lt;listener&gt;</span>
+        <span class="nt">&lt;listener-class&gt;</span>org.springframework.web.context.ContextLoaderListener<span class="nt">&lt;/listener-class&gt;</span>
+    <span class="nt">&lt;/listener&gt;</span>
+    
+    <span class="c">&lt;!-- Processes application requests --&gt;</span>
+    <span class="nt">&lt;servlet&gt;</span>
+        <span class="nt">&lt;servlet-name&gt;</span>appServlet<span class="nt">&lt;/servlet-name&gt;</span>
+        <span class="nt">&lt;servlet-class&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="nt">&lt;/servlet-class&gt;</span>
+        <span class="nt">&lt;init-param&gt;</span>
+            <span class="nt">&lt;param-name&gt;</span>contextConfigLocation<span class="nt">&lt;/param-name&gt;</span>
+            <span class="nt">&lt;param-value&gt;</span>/WEB-INF/spring/appServlet/servlet-context.xml<span class="nt">&lt;/param-value&gt;</span>
+        <span class="nt">&lt;/init-param&gt;</span>
+        <span class="nt">&lt;load-on-startup&gt;</span>1<span class="nt">&lt;/load-on-startup&gt;</span>
+    <span class="nt">&lt;/servlet&gt;</span>
+    
+    <span class="nt">&lt;servlet-mapping&gt;</span>
+        <span class="nt">&lt;servlet-name&gt;</span>appServlet<span class="nt">&lt;/servlet-name&gt;</span>
+        <span class="nt">&lt;url-pattern&gt;</span>/<span class="nt">&lt;/url-pattern&gt;</span>
+    <span class="nt">&lt;/servlet-mapping&gt;</span>
+    
+<span class="nt">&lt;/web-app&gt;</span>
+</code></pre></div></div>
+
+<p>레거시 프로젝트에서 그대로 가져왔습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">display-name</code> 태그는 어플리케이션의 이름을 나타냅니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">context-param</code>은 전역변수에 해당하는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">Root WebApplicationContext</code>를 설정합니다. 컨텍스트는 쉽게 말하자면 빈(bean)이 담겨있는 컨테이너라고 보시면 됩니다. <code class="language-plaintext highlighter-rouge">ServletContext</code>는 크게 2가지로 형태로 존재하는데, 그 중 하나가 전역변수에 해당하는 <code class="language-plaintext highlighter-rouge">Root WebApplicationContext</code> 입니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-021.png" alt="img021" /></p>
+
+<p>서블릿이 로드될 때 아래에서 설명할 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">ContextLoaderListener</code>에 의하여 <code class="language-plaintext highlighter-rouge">Root WebApplicationContext</code>가 생성되는데, 이때 ContextLoaderListener는 context-param의 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">contextConfigLocation</code> 파라미터에 지정된 설정파일에 따라 빈을 로드하여 컨텍스트를 생성하고 ServletContext에 저장합니다. <code class="language-plaintext highlighter-rouge">contextConfigLocation</code>이 설정되지 않으면 기본값으로 <code class="language-plaintext highlighter-rouge">/WEB-INF/applicationContext.xml</code> 경로파일을 찾으며, 해당 컨텍스트 파일에는 보통 Service나 DAO 객체가 정의됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">fliter</code>는 지난번 글에서 자세히 설명했으므로 생략합니다. 인코딩 필터와 히든 메소드 필터를 추가합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">listener</code>는 특정 이벤트에 대하여 호출되어 처리하는 객체입니다. <code class="language-plaintext highlighter-rouge">ContextLoaderListener</code>의 경우 웹서비스가 시작되거나 종료될 때 호출되며, 이때 전역변수에 해당하는 Root WebApplicationContext를 생성하거나 제거하는 역할을 합니다. 위에서 말한것과 같이 리스너에 의해 생성된 Root WebApplicationContext는 ServletContext에 저장됩니다.</p>
+
+<p>servlet 태그 아래 <code class="language-plaintext highlighter-rouge">init-param</code> 태그는 지역변수에 해당하는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">Child WebApplicationContext</code>를 설정합니다. 서블릿에 의해 생성되며, 루트 컨텍스트와 마찬가지로 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">contextConfigLocation</code> 파라미터에 지정된 설정파일에 따라 빈을 로드하여 컨텍스트를 생성하고 ServletContext에 저장합니다. <code class="language-plaintext highlighter-rouge">contextConfigLocation</code>이 설정되지 않으면 기본값으로 <code class="language-plaintext highlighter-rouge">/WEB-INF/[서블릿 이름]-servlet.xml</code> 경로파일을 찾으며, 해당 컨텍스트 파일에는 보통 Controller나 ViewResorver 객체가 정의됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Child WebApplicationContext</code>에서는 ContextLoaderListener에 의해 생성된 <code class="language-plaintext highlighter-rouge">Root WebApplicationContext</code>에 접근이 가능합니다. 하지만 그 반대는 불가합니다. 즉, Controller 또는 ViewResolver에서는 Service나 DAO를 참조할 수 있지만, Service에서 Controller는 참조하지 못합니다. SevletContext에 저장된 빈들은 <code class="language-plaintext highlighter-rouge">ServletConfig</code>의  <code class="language-plaintext highlighter-rouge">getinitParameter</code> 메소드를 통해 불러올 수 있습니다. 위에서 작성한 TestServlet의 init 메소드를 참고하세요.</p>
+
+<p>마지막으로 <code class="language-plaintext highlighter-rouge">load-on-startup</code> 태그는 톰캣서버가 실행될 때 DispatcherServlet의 초기화 여부와 순서를 나타냅니다. 서블릿은 최초 클라이언트의 요청에 대하여 한번 초기화되는데, 그렇기때문에 최초 요청에 대하여 처리속도가 느릴 수 있습니다. 이때 해당 태그를 양수로 입력하면 클라이언트의 최초 요청이 아니라 톰캣서버가 실행되는 시점에서 서블릿이 초기화되며, 숫자는 초기화되는 우선순위를 나타냅니다.</p>
+
+<h2 id="root-contextxml-설정">root-context.xml 설정</h2>
+
+<p>root-context.xml 파일은 <code class="language-plaintext highlighter-rouge">context-param</code>에서 정의되는 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">Root WebApplicationContext</code>의 설정파일입니다. 위에서 말했듯이 해당 컨텍스트는 전역변수와 같아서 모든 ServletContext에서 참조가능합니다.</p>
+
+<h6 id="srcmainwebappweb-infspringroot-contextxml">/src/main/webapp/WEB-INF/spring/root-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-4.3.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"kr.kro.rubisco.work.service"</span><span class="nt">&gt;&lt;/context:component-scan&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></div>
+
+<p>DAO나 Service 등 모든 서블릿에서 접근가능한 빈이 등록되는데 DB연결은 나중에 하도록 하고 우선 context 네임스페이스의 <code class="language-plaintext highlighter-rouge">component-scan</code>을 설정합니다. 속성으로 <code class="language-plaintext highlighter-rouge">base-package</code>를 입력하는데, 해당 값에 등록된 패키지를 스캔하여 <code class="language-plaintext highlighter-rouge">@Component</code> 어노테이션이 붙은 클래스를 자동으로 빈(bean)으로 등록하는 역할을 합니다. <code class="language-plaintext highlighter-rouge">kr.kro.rubisco.work.service</code> 패키지에 서비스를 작성할 예정이므로 미리 해당 패키지를 생성해둡시다.</p>
+
+<h2 id="root-contextxml-설정-1">root-context.xml 설정</h2>
+
+<p>root-context.xml 파일은 servlet의 <code class="language-plaintext highlighter-rouge">init-param</code>에서 정의되는 <code class="language-plaintext highlighter-rouge">Child WebApplicationContext</code>의 설정파일입니다. 위에서 말했듯이 해당 컨텍스트는 지역변수와 같아서 해당 ServletContext에서만 참조가능합니다.</p>
+
+<h6 id="srcmainwebappweb-infspringappservletservlet-contextxml">/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans:beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/mvc"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xmlns:beans=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure --&gt;</span>
+    
+    <span class="c">&lt;!-- Enables the Spring MVC @Controller programming model --&gt;</span>
+    <span class="nt">&lt;annotation-driven</span> <span class="nt">/&gt;</span>
+
+    <span class="c">&lt;!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory --&gt;</span>
+    <span class="nt">&lt;resources</span> <span class="na">mapping=</span><span class="s">"/resources/**"</span> <span class="na">location=</span><span class="s">"/resources/"</span> <span class="nt">/&gt;</span>
+
+    <span class="c">&lt;!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory --&gt;</span>
+    <span class="nt">&lt;beans:bean</span> <span class="na">class=</span><span class="s">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"prefix"</span> <span class="na">value=</span><span class="s">"/WEB-INF/views/"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;beans:property</span> <span class="na">name=</span><span class="s">"suffix"</span> <span class="na">value=</span><span class="s">".jsp"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/beans:bean&gt;</span>
+
+    <span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"kr.kro.rubisco.work.controller"</span> <span class="nt">/&gt;</span>
+    
+<span class="nt">&lt;/beans:beans&gt;</span>
+</code></pre></div></div>
+
+<p>네임스페이스로 <code class="language-plaintext highlighter-rouge">mvc</code>, <code class="language-plaintext highlighter-rouge">context</code>, <code class="language-plaintext highlighter-rouge">beans</code>를 설정하고, 빈으로 <code class="language-plaintext highlighter-rouge">InternalResourceViewResolver</code>을 등록했습니다. 해당 resolver는 DispatcherServlet의 기본 뷰 리졸버로, JSP를 뷰로 사용할 때 쓰입니다. 프로퍼티로 <code class="language-plaintext highlighter-rouge">prefix</code>와 <code class="language-plaintext highlighter-rouge">suffix</code>를 가지며, 클라이언트의 요청으로부터 접두어(prefix)와 접미어(suffix)를 붙여 실제 리소스 경로를 찾을수 있도록 돕습니다. 즉, <code class="language-plaintext highlighter-rouge">/hello</code> 라는 ViewName을 통해 <code class="language-plaintext highlighter-rouge">/WEB-INF/views/hello.jsp</code> 파일을 찾게 됩니다. prefix를 변경했기때문에 기존에 생성되어있던 index.jsp 파일을 <code class="language-plaintext highlighter-rouge">/WEB-INF/views</code> 경로로 이동시켜주세요.</p>
+
+<p>서비스와 마찬가지로 context 네임스페이스의 <code class="language-plaintext highlighter-rouge">component-scan</code>을 설정하여 <code class="language-plaintext highlighter-rouge">kr.kro.rubisco.work.controller</code> 패키지를 스캔하도록 합니다. 해당 패키지에는 컨트롤러를 작성할 예정이므로 미리 패키지를 생성해둡시다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">annotation-driven</code> 태그는 어노테이션을 통해 Controller 호출이나 bean 객체 등록 등의 매핑작업을 편리하게 할 수 있도록 해줍니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">resources</code> 태그는 정적 자원의 경로를 설정합니다. 클라이언트가 <code class="language-plaintext highlighter-rouge">/resources/**</code> 경로로 요청하면 <code class="language-plaintext highlighter-rouge">/resources/</code> 경로에서 정적 자원을 가져옵니다.</p>
+
+<h1 id="controller-작성">Controller 작성</h1>
+
+<p>스프링 MVC의 설정은 끝이며, 여기서부터는 기존 레거시 프로젝트와 동일하게 진행하면 됩니다. 톰캣서버에서 루트 경로를 <code class="language-plaintext highlighter-rouge">/</code>으로 변경하고 다음 컨트롤러와 뷰를 작성 후 <a href="http://localhost:8080" target="_blank">http://localhost:8080/hello</a>으로 이동해보세요.</p>
+
+<h6 id="krkrorubiscocontrollerworkcontrollerjava">/kr/kro/rubisco/controller/WorkController.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.rubisco.work</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="o">;</span>
+
+<span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">WorkController</span> <span class="o">{</span>
+
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"/hello"</span><span class="o">)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">getHelloView</span><span class="o">()</span> <span class="o">{}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="srcmainwebappweb-infviewshellojsp">/src/main/webapp/WEB-INF/views/hello.jsp</h6>
+<div data-lang="JSP" class="language-jsp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;%@ page </span><span class="na">language=</span><span class="s">"java"</span><span class="na"> contentType=</span><span class="s">"text/html; charset=UTF-8"</span><span class="na">
+    pageEncoding=</span><span class="s">"UTF-8"</span><span class="nt">%&gt;</span>
+<span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+<span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"UTF-8"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;title&gt;</span>안녕하세요?<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>이클립스를 통한 스프링 MVC 설정<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<p align="center"><img src="/assets/images/eclipse/img-022.png" alt="img022" /></p>
+
+<h1 id="오라클-db">오라클 DB</h1>
+
+<p>이번 프로젝트에서는 오라클 클라우드가 아닌 오라클DB를 직접 설치하고 연결해보도록 하겠습니다. 11버전을 다운받겠습니다.</p>
+
+<h2 id="설치">설치</h2>
+
+<p>우선 아래 링크로 들어가서 오라클을 다운로드 합니다.</p>
+<blockquote>
+  <p>: <a href="https://www.oracle.com/database/technologies/xe-prior-release-downloads.html" target="_blank">https://www.oracle.com/database/technologies/xe-prior-release-downloads.html</a></p>
+</blockquote>
+
+<p align="center"><img src="/assets/images/eclipse/img-023.png" alt="img023" /></p>
+
+<p>라이센스 동의에 체크한 후 다운로드 버튼을 클릭합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-024.png" alt="img024" /></p>
+
+<p>압축파일을 풀고 setup.exe를 실행시켜 오라클을 설치할 수 있습니다.</p>
+
+<h2 id="권한설정">권한설정</h2>
+
+<p>이제 오라클DB를 사용하기위한 계정을 만들고 권한을 부여해보겠습니다. 먼저 단축키 <code class="language-plaintext highlighter-rouge">Ctrl + R</code>을 눌러 실행창을 열고 <code class="language-plaintext highlighter-rouge">powershell</code> 또는 <code class="language-plaintext highlighter-rouge">cmd</code>를 입력후 터미널을 실행시켜줍니다.</p>
+
+<p>명령프롬프트에서 <code class="language-plaintext highlighter-rouge">sqlplus</code> 라고 입력하면 DB에 접속됩니다. 유저네임과 패스워드를 입력하라고 뜨는데, 시스템 계정으로 접속합니다. 유저네임은 <code class="language-plaintext highlighter-rouge">system</code>, 패스워드는 <code class="language-plaintext highlighter-rouge">오라클을 설치할때 입력한 암호</code>입니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-025.png" alt="img025" /></p>
+
+<p>다음 쿼리문을 통해 계정을 생성합니다.</p>
+
+<h6 id="계정-생성-쿼리문">계정 생성 쿼리문</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">create</span> <span class="k">user</span> <span class="p">[</span><span class="err">아이디</span><span class="p">]</span> <span class="n">identified</span> <span class="k">by</span> <span class="p">[</span><span class="err">비밀번호</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>생성된 계정에 권한을 부여하겠습니다.</p>
+
+<h6 id="권한-부여-쿼리문">권한 부여 쿼리문</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">grant</span> <span class="k">connect</span><span class="p">,</span> <span class="n">resource</span> <span class="k">to</span> <span class="p">[</span><span class="err">아이디</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">connect</code>는 DB에 접속하기 위한 기본적인 시스템 권한을, <code class="language-plaintext highlighter-rouge">resource</code>는 객체(테이블, 뷰, 인덱스) 생성에 필요한 시스템 권한을 설정합니다. <code class="language-plaintext highlighter-rouge">DBA</code>는 DB 관리자 권한을 부여하여 모든 권한을 가지게 됩니다.</p>
+
+<h2 id="db-연결">DB 연결</h2>
+
+<p>이제 DB에 연결해보겠습니다. 오라클DB의 연결 정보는 보통 <code class="language-plaintext highlighter-rouge">tnsnames.ora</code> 파일에 저장되어 있습니다. 만약 해당 파일이 있다면 IP 주소나 SID 또는 Service Name을 직접 입력하지 않아도 바로 DB와 연결할 수 있습니다.</p>
+
+<p>오라클을 설치하면 해당 파일이 하나 생성됩니다. 해당 파일은 <code class="language-plaintext highlighter-rouge">$ORACLE_HOME/network/admin/</code>에 위치하며, 위에 과정을 따라왔다면 <code class="language-plaintext highlighter-rouge">C:/oraclexe/app/oracle/product/11.2.0/server/network/ADMIN</code> 경로에 존재합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-026.png" alt="img026" /></p>
+
+<p>맨 앞에 <code class="language-plaintext highlighter-rouge">XE</code>는 별칭(alias)입니다. 요한 부분은 <b><font color="red">HOST</font></b>, <b><font color="blue">PORT</font></b>, <b><font color="green">SERVICE_NAME</font></b> 입니다.</p>
+
+<p>3개의 정보를 가지고 DB 연결 주소를 직접 작성할 수도 있습니다.</p>
+
+<blockquote>
+  <p>jdbc:oracle:thin@<font color="red">localhost</font>:<font color="blue">1521</font>:<font color="green">XE</font></p>
+</blockquote>
+
+<p>하지만 tnsnames.ora 파일이 있다면 연결정보를 직접 작성하지 않아도 됩니다. DBever를 통해 연결해보겠습니다. DBever를 열고 상단메뉴에 <code class="language-plaintext highlighter-rouge">새 데이터베이스 연결</code>을 클릭합니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-027.png" alt="img027" /></p>
+
+<p>오라클을 선택 후 <code class="language-plaintext highlighter-rouge">Connection Type</code>에서 <code class="language-plaintext highlighter-rouge">TNS</code> 탭을 클릭하여 alias와 tnsnames.ora 파일이 있는 경로를 설정해줍니다. 유저네임과 패스워드를 입력후 Client를 선택하는데 오라클을 설치할 때 XE라는 이름으로 하나 생성되어 있습니다. 완료를 누르면 오라클DB에 바로 연결됩니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-028.png" alt="img028" /></p>
+
+<h1 id="mybatis-연동">Mybatis 연동</h1>
+
+<p>이제 웹어플리케이션에 DB를 연결해보겠습니다. DB에 연결하기 위해서는 JDBC가 필요하며, Mybatis를 통해 쿼리를 매핑할 것입니다. 의존성으로 <code class="language-plaintext highlighter-rouge">spring-jdbc</code>, <code class="language-plaintext highlighter-rouge">mybatis</code>, <code class="language-plaintext highlighter-rouge">mybatis-spring</code>, <code class="language-plaintext highlighter-rouge">ojdbc</code>를 추가합니다. 오라클 11.2의 경우 <code class="language-plaintext highlighter-rouge">ojdbc6</code>를 사용합니다.</p>
+
+<h6 id="pomxml-2">pom.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+        <span class="c">&lt;!-- Spring JDBC --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.springframework<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>spring-jdbc<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>${org.springframework-version}<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.mybatis<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>mybatis<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>3.4.6<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.mybatis<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>mybatis-spring<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.3.2<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+        
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc6 --&gt;</span>
+        <span class="nt">&lt;dependency&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>com.oracle.database.jdbc<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>ojdbc6<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>11.2.0.4<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/dependency&gt;</span>
+...
+</code></pre></div></div>
+
+<p>다음으로 db 연결정보를 가지는 <code class="language-plaintext highlighter-rouge">dataSource</code>와 쿼리를 만들어내는 <code class="language-plaintext highlighter-rouge">sqlSessionFactory</code>, 쿼리를 담고있는 <code class="language-plaintext highlighter-rouge">sqlSession</code>을 빈으로 추가해야합니다. DAO에 해당하므로 <code class="language-plaintext highlighter-rouge">Root WebApplicationContext</code>에 추가합니다.</p>
+
+<h6 id="srcmainwebappweb-infspringroot-contextxml-1">/src/main/webapp/WEB-INF/spring/root-context.xml</h6>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;beans</span> <span class="na">xmlns=</span><span class="s">"http://www.springframework.org/schema/beans"</span>
+    <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="na">xmlns:context=</span><span class="s">"http://www.springframework.org/schema/context"</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.springframework.org/schema/beans 
+    https://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-4.3.xsd"</span><span class="nt">&gt;</span>
+    
+    <span class="c">&lt;!-- Root Context: defines shared resources visible to all other web components --&gt;</span>
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"dataSource"</span> <span class="na">class=</span><span class="s">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;property</span> <span class="na">value=</span><span class="s">"oracle.jdbc.driver.OracleDriver"</span> <span class="na">name=</span><span class="s">"driverClassName"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;property</span> <span class="na">value=</span><span class="s">"[연결경로]"</span> <span class="na">name=</span><span class="s">"url"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;property</span> <span class="na">value=</span><span class="s">"[아이디]"</span> <span class="na">name=</span><span class="s">"username"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;property</span> <span class="na">value=</span><span class="s">"[패스워드]"</span> <span class="na">name=</span><span class="s">"password"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+         
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sqlSessionFactory"</span> <span class="na">class=</span><span class="s">"org.mybatis.spring.SqlSessionFactoryBean"</span><span class="nt">&gt;</span> 
+         <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"dataSource"</span> <span class="na">ref=</span><span class="s">"dataSource"</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"configLocation"</span> <span class="na">value=</span><span class="s">"classpath:/mybatis-config.xml"</span><span class="nt">&gt;&lt;/property&gt;</span>
+        <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"mapperLocations"</span> <span class="na">value=</span><span class="s">"classpath:mappers/**/*Mapper.xml"</span><span class="nt">&gt;&lt;/property&gt;</span>            
+    <span class="nt">&lt;/bean&gt;</span>
+
+    <span class="nt">&lt;bean</span> <span class="na">id=</span><span class="s">"sqlSession"</span> <span class="na">class=</span><span class="s">"org.mybatis.spring.SqlSessionTemplate"</span> <span class="na">destroy-method=</span><span class="s">"clearCache"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;constructor-arg</span> <span class="na">name=</span><span class="s">"sqlSessionFactory"</span> <span class="na">ref=</span><span class="s">"sqlSessionFactory"</span><span class="nt">&gt;&lt;/constructor-arg&gt;</span>
+    <span class="nt">&lt;/bean&gt;</span>
+
+    <span class="nt">&lt;context:component-scan</span> <span class="na">base-package=</span><span class="s">"kr.kro.rubisco.work.service"</span><span class="nt">&gt;&lt;/context:component-scan&gt;</span>
+<span class="nt">&lt;/beans&gt;</span>
+</code></pre></div></div>
+
+<p>dataSource에서 연결 경로는 위해서 설명했듯이 jdbc:oracle:thin@<font color="red">HOST</font>:<font color="blue">PORT</font>:<font color="green">SERVICE_NAME</font> 형태로 작성합니다.</p>
+
+<p>mybatis의 설정파일은 classpath에 존재합니다. 레거시와 동일하게 <code class="language-plaintext highlighter-rouge">/src/main</code> 경로 아래에 <code class="language-plaintext highlighter-rouge">resources</code> 폴더를 만들고 해당 폴더를 classpath로 설정해주겠습니다. 폴더를 생성한 후 오른쪽 클릭하여 <code class="language-plaintext highlighter-rouge">Build Path &gt; Use as Source Folder</code>를 클릭하면 classpath로 설정됩니다.</p>
+
+<p align="center"><img src="/assets/images/eclipse/img-029.png" alt="img029" /></p>
+
+<p>resources 폴더 아래에 mybatis의 설정파일을 작성합니다.</p>
+
+<h6 id="srcmainresourcesmybatis-configxml">/src/main/resources/mybatis-config.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span>
+<span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;settings&gt;</span>
+        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"mapUnderscoreToCamelCase"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"callSettersOnNulls"</span> <span class="na">value=</span><span class="s">"true"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;setting</span> <span class="na">name=</span><span class="s">"jdbcTypeForNull"</span> <span class="na">value=</span><span class="s">"NULL"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/settings&gt;</span>
+    
+    <span class="nt">&lt;typeAliases&gt;</span>
+        <span class="nt">&lt;package</span> <span class="na">name=</span><span class="s">"kr.kro.rubisco.work.dto"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/typeAliases&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div>
+
+<p>레거시에서 설명했기에 생략합니다. dto의 alias가 패키지에 해당하므로 해당 패키지 폴더를 생성해주세요. 또한 resources 폴더 아래 매퍼를 작성하기 위한 <code class="language-plaintext highlighter-rouge">mappers</code> 패키지 폴더를 만들어주세요.</p>
+
+<p>DBever를 통해 테이블을 먼저 만들겠습니다.</p>
+
+<h6 id="테이블-생성-쿼리">테이블 생성 쿼리</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">mission</span> <span class="p">(</span>
+    <span class="n">idx</span>         <span class="n">NUMBER</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="n">id</span>          <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">UNIQUE</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">name</span>        <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">gender</span>      <span class="nb">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">nation</span>      <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">city</span>        <span class="n">VARCHAR2</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="n">create_date</span> <span class="nb">DATE</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+
+<span class="k">CREATE</span>  <span class="n">SEQUENCE</span> <span class="n">mission_idx_seq</span>
+        <span class="k">INCREMENT</span> <span class="k">BY</span> <span class="mi">1</span>
+        <span class="k">START</span> <span class="k">WITH</span> <span class="mi">1</span>
+        <span class="k">MINVALUE</span> <span class="mi">1</span>
+        <span class="k">MAXVALUE</span> <span class="mi">9999999999</span>
+        <span class="n">NOCYCLE</span>
+        <span class="n">NOCACHE</span>
+        <span class="n">NOORDER</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>해당 테이블을 기준으로 DTO를 작성하겠습니다.</p>
+
+<h6 id="krkrorubiscoworkdtomissiondtojava">/kr/kro/rubisco/work/dto/MissionDTO.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.rubisco.work.dto</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.Date</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MissionDTO</span> <span class="o">{</span>
+	
+	<span class="kd">private</span> <span class="nc">Long</span> <span class="n">idx</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">id</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">gender</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">nation</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">String</span> <span class="n">city</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="nc">Date</span> <span class="n">date</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nc">Long</span> <span class="nf">getIdx</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">idx</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setIdx</span><span class="o">(</span><span class="nc">Long</span> <span class="n">idx</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getId</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">id</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setId</span><span class="o">(</span><span class="nc">String</span> <span class="n">id</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">id</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getGender</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">gender</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setGender</span><span class="o">(</span><span class="nc">String</span> <span class="n">gender</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">gender</span> <span class="o">=</span> <span class="n">gender</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getNation</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">nation</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNation</span><span class="o">(</span><span class="nc">String</span> <span class="n">nation</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">nation</span> <span class="o">=</span> <span class="n">nation</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">getCity</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">city</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setCity</span><span class="o">(</span><span class="nc">String</span> <span class="n">city</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">city</span> <span class="o">=</span> <span class="n">city</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="kd">public</span> <span class="nc">Date</span> <span class="nf">getDate</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">date</span><span class="o">;</span>
+	<span class="o">}</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDate</span><span class="o">(</span><span class="nc">Date</span> <span class="n">date</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">date</span> <span class="o">=</span> <span class="n">date</span><span class="o">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>롬복을 사용하지 않았습니다. 멤버변수만 정의하고 단축키 <code class="language-plaintext highlighter-rouge">Alt + S, R</code>을 누르면 제네레이터창이 뜹니다. 해당 제네레이터를 통해 getter와 setter를 만들었습니다.</p>
+
+<p>다음으로 DAO 인터페이스를 작성하겠습니다. DAO는 Mapper에 의하여 구현됩니다.</p>
+
+<h6 id="krkrorubiscoworkdaomissiondaojava">/kr/kro/rubisco/work/dao/MissionDAO.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.rubisco.work.dao</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.annotations.Mapper</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.rubisco.work.dto.MissionDTO</span><span class="o">;</span>
+
+<span class="nd">@Mapper</span>
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MissionDAO</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">create</span><span class="o">(</span><span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MissionDTO</span><span class="o">&gt;</span> <span class="nf">listAll</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">delete</span><span class="o">(</span><span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이제 mapper를 작성합니다.</p>
+
+<h6 id="srcmainresourcesmappersmissionmapperxml">/src/main/resources/mappers/missionMapper.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="cp">&lt;!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span>
+
+<span class="nt">&lt;mapper</span> <span class="na">namespace=</span><span class="s">"kr.kro.rubisco.work.dao.MissionDAO"</span><span class="nt">&gt;</span>
+
+<span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">"create"</span><span class="nt">&gt;</span>
+insert into mission (idx, id, name, gender, nation, city, create_date)
+values (mission_idx_seq.NEXTVAL, #{id}, #{name}, #{gender}, #{nation}, #{city}, #{date})
+<span class="nt">&lt;/insert&gt;</span>
+
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">"listAll"</span> <span class="na">resultType=</span><span class="s">"MissionDTO"</span><span class="nt">&gt;</span>
+select * from mission
+<span class="nt">&lt;/select&gt;</span>
+
+<span class="nt">&lt;update</span> <span class="na">id=</span><span class="s">"update"</span><span class="nt">&gt;</span>
+update mission
+set id=#{id},
+	name=#{name},
+	gender=#{gender},
+	nation=#{nation},
+	city=#{city}
+where idx = #{idx}
+<span class="nt">&lt;/update&gt;</span>
+
+<span class="nt">&lt;delete</span> <span class="na">id=</span><span class="s">"delete"</span><span class="nt">&gt;</span>
+delete from mission where idx = #{idx}
+<span class="nt">&lt;/delete&gt;</span>
+
+<span class="nt">&lt;/mapper&gt;</span>
+</code></pre></div></div>
+
+<p>서비스를 만드세요.</p>
+
+<h6 id="krkrorubiscoworkservicemissionservicejava">/kr/kro/rubisco/work/service/MissionService.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.rubisco.work.service</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.rubisco.work.dto.MissionDTO</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">MissionService</span> <span class="o">{</span>
+
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertMission</span><span class="o">(</span><span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MissionDTO</span><span class="o">&gt;</span> <span class="nf">getMissionList</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateMission</span><span class="o">(</span><span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteMission</span><span class="o">(</span><span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h6 id="krkrorubiscoworkserviceimplmissionserviceimpljava">/kr/kro/rubisco/work/service/impl/MissionServiceImpl.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.rubisco.work.service.impl</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.ibatis.session.SqlSession</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Service</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.transaction.annotation.Transactional</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.rubisco.work.dao.MissionDAO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kr.kro.rubisco.work.dto.MissionDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kr.kro.rubisco.work.service.MissionService</span><span class="o">;</span>
+
+<span class="nd">@Service</span>
+<span class="nd">@Transactional</span><span class="o">(</span><span class="n">readOnly</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MissionServiceImpl</span> <span class="kd">implements</span> <span class="nc">MissionService</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">MissionDAO</span> <span class="n">missionDAO</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nf">MissionServiceImpl</span><span class="o">(</span><span class="nc">SqlSession</span> <span class="n">sqlSession</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">missionDAO</span> <span class="o">=</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">getMapper</span><span class="o">(</span><span class="nc">MissionDAO</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertMission</span><span class="o">(</span><span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">missionDAO</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="n">mission</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">MissionDTO</span><span class="o">&gt;</span> <span class="nf">getMissionList</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="n">missionDAO</span><span class="o">.</span><span class="na">listAll</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateMission</span><span class="o">(</span><span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">missionDAO</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">mission</span><span class="o">);</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteMission</span><span class="o">(</span><span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">missionDAO</span><span class="o">.</span><span class="na">delete</span><span class="o">(</span><span class="n">mission</span><span class="o">);</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>기본적인 CRUD만 구현했습니다. 이제 컨트롤러를 작성합니다.</p>
+
+<h6 id="krkrorubiscoworkcontrollermissionrestcontrollerjava">/kr/kro/rubisco/work/controller/MissionRestController.java</h6>
+<div data-lang="JAVA" class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">kr.kro.rubisco.work.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.http.ResponseEntity</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.DeleteMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.PostMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.PutMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestBody</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RequestMapping</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.ResponseBody</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.RestController</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">kr.kro.rubisco.work.dto.MissionDTO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">kr.kro.rubisco.work.service.MissionService</span><span class="o">;</span>
+
+<span class="nd">@RestController</span>
+<span class="nd">@RequestMapping</span><span class="o">(</span><span class="s">"/mission"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MissionRestController</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="kd">final</span> <span class="nc">MissionService</span> <span class="n">missionService</span><span class="o">;</span>
+	
+	<span class="kd">public</span> <span class="nf">MissionRestController</span><span class="o">(</span><span class="nc">MissionService</span> <span class="n">missionService</span><span class="o">)</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">missionService</span> <span class="o">=</span> <span class="n">missionService</span><span class="o">;</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@GetMapping</span><span class="o">()</span>
+	<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">MissionDTO</span><span class="o">&gt;&gt;</span> <span class="nf">getMissionList</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="k">return</span> <span class="nc">ResponseEntity</span><span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="n">missionService</span><span class="o">.</span><span class="na">getMissionList</span><span class="o">());</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@PostMapping</span><span class="o">()</span>
+	<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">MissionDTO</span><span class="o">&gt;</span> <span class="nf">insertMission</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">missionService</span><span class="o">.</span><span class="na">insertMission</span><span class="o">(</span><span class="n">mission</span><span class="o">);</span>
+		<span class="k">return</span> <span class="nc">ResponseEntity</span><span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="n">mission</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@PutMapping</span><span class="o">()</span>
+	<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">MissionDTO</span><span class="o">&gt;</span> <span class="nf">updateMission</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span><span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">missionService</span><span class="o">.</span><span class="na">updateMission</span><span class="o">(</span><span class="n">mission</span><span class="o">);</span>
+		<span class="k">return</span> <span class="nc">ResponseEntity</span><span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="n">mission</span><span class="o">);</span>
+	<span class="o">}</span>
+	
+	<span class="nd">@DeleteMapping</span><span class="o">()</span>
+	<span class="kd">public</span> <span class="nc">ResponseEntity</span><span class="o">&lt;</span><span class="nc">MissionDTO</span><span class="o">&gt;</span> <span class="nf">deleteMission</span><span class="o">(</span><span class="nd">@RequestBody</span> <span class="nc">MissionDTO</span> <span class="n">mission</span><span class="o">)</span><span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+		<span class="n">missionService</span><span class="o">.</span><span class="na">deleteMission</span><span class="o">(</span><span class="n">mission</span><span class="o">);</span>
+		<span class="k">return</span> <span class="nc">ResponseEntity</span><span class="o">.</span><span class="na">ok</span><span class="o">(</span><span class="n">mission</span><span class="o">);</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>빠른 확인을 위해 RestController를 작성했습니다. json 객체를 binding 하기 위해서는 <code class="language-plaintext highlighter-rouge">jackson-databind</code>를 의존성 추가해야합니다.</p>
+
+<h6 id="pomxml-3">pom.xml</h6>
+<div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+        <span class="c">&lt;!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind --&gt;</span>
+		<span class="nt">&lt;dependency&gt;</span>
+		    <span class="nt">&lt;groupId&gt;</span>com.fasterxml.jackson.core<span class="nt">&lt;/groupId&gt;</span>
+		    <span class="nt">&lt;artifactId&gt;</span>jackson-databind<span class="nt">&lt;/artifactId&gt;</span>
+		    <span class="nt">&lt;version&gt;</span>2.13.3<span class="nt">&lt;/version&gt;</span>
+		<span class="nt">&lt;/dependency&gt;</span>
+...
+</code></pre></div></div>
+
+<p>localhost:8080으로 이동하여 크롬 개발자도구를 열고 fetch를 통해 비동기 요청으로 insert를 해보세요.</p>
+
+<h6 id="post-요청">POST 요청</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/mission</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">Content-type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">},</span>
+    <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+        <span class="na">id</span><span class="p">:</span><span class="dl">"</span><span class="s2">id1</span><span class="dl">"</span><span class="p">,</span> 
+        <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">루비스코</span><span class="dl">"</span><span class="p">,</span> 
+        <span class="na">gender</span><span class="p">:</span> <span class="dl">"</span><span class="s2">M</span><span class="dl">"</span><span class="p">,</span> 
+        <span class="na">nation</span><span class="p">:</span> <span class="dl">"</span><span class="s2">한국</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">city</span><span class="p">:</span> <span class="dl">"</span><span class="s2">천안</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">date</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2022-11-19</span><span class="dl">"</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="o">=&gt;</span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="o">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>get요청을 보내면 리스트가 출력됩니다.</p>
+
+<h6 id="get-요청">GET 요청</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/mission</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="o">=&gt;</span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="o">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>insert가 잘 되어있습니다. 이번에는 PUT 요청으로 업데이트를 합니다.</p>
+
+<h6 id="put-요청">PUT 요청</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/mission</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PUT</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">Content-type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">},</span>
+    <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+        <span class="na">idx</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="na">id</span><span class="p">:</span><span class="dl">"</span><span class="s2">id2</span><span class="dl">"</span><span class="p">,</span> 
+        <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">루비스코</span><span class="dl">"</span><span class="p">,</span> 
+        <span class="na">gender</span><span class="p">:</span> <span class="dl">"</span><span class="s2">M</span><span class="dl">"</span><span class="p">,</span> 
+        <span class="na">nation</span><span class="p">:</span> <span class="dl">"</span><span class="s2">한국</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">city</span><span class="p">:</span> <span class="dl">"</span><span class="s2">천안</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">date</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2022-11-19</span><span class="dl">"</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="o">=&gt;</span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="o">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>id를 변경했습니다. get요청으로 다시 확인하면 id가 바뀐것을 확인할 수 있습니다.</p>
+
+<p>마지막으로 delete 요청을 하고 get요청으로 확인하면 삭제가 된 것을 확인할 수 있습니다.</p>
+
+<h6 id="delete-요청">DELETE 요청</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">fetch</span><span class="p">(</span><span class="dl">"</span><span class="s2">/mission</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DELETE</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span><span class="dl">"</span><span class="s2">Content-type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">},</span>
+    <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="na">idx</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span><span class="o">=&gt;</span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span><span class="o">=&gt;</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">));</span>
+</code></pre></div></div>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/java/">Java</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-security">스프링 레거시(Spring legacy) - 시큐리티 적용</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-filter-and-interceptor">스프링 레거시(Spring legacy) - 필터와 인터셉터</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/java/spring-legacy-cookie-and-session">스프링 레거시(Spring legacy) - 쿠키와 세션</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/java/">
+                                
+                                    See all 18 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/java/spring-legacy-security">
+                <div class="post-card-image" style="background-image: url(/assets/images/spring-legacy/logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/java/spring-legacy-security">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">스프링 레거시(Spring legacy) - 시큐리티 적용</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>스프링 시큐리티(Spring Security)
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      12 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">이클립스 메이븐 프로젝트</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%9D%B4%ED%81%B4%EB%A6%BD%EC%8A%A4+%EB%A9%94%EC%9D%B4%EB%B8%90+%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8&amp;url=java/maven-project"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=java/maven-project"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2022</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
