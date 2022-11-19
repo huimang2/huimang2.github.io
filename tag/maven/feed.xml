@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/maven/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2022-11-19T23:49:07+09:00</updated>
+  <updated>2022-11-19T23:53:45+09:00</updated>
   <id>https://huimang2.github.io/tag/maven/feed.xml</id>
 
   
@@ -423,9 +423,9 @@
 
 &lt;p&gt;DAO나 Service 등 모든 서블릿에서 접근가능한 빈이 등록되는데 DB연결은 나중에 하도록 하고 우선 context 네임스페이스의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;component-scan&lt;/code&gt;을 설정합니다. 속성으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;base-package&lt;/code&gt;를 입력하는데, 해당 값에 등록된 패키지를 스캔하여 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Component&lt;/code&gt; 어노테이션이 붙은 클래스를 자동으로 빈(bean)으로 등록하는 역할을 합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kr.kro.rubisco.work.service&lt;/code&gt; 패키지에 서비스를 작성할 예정이므로 미리 해당 패키지를 생성해둡시다.&lt;/p&gt;
 
-&lt;h2 id=&quot;root-contextxml-설정-1&quot;&gt;root-context.xml 설정&lt;/h2&gt;
+&lt;h2 id=&quot;servlet-contextxml-설정&quot;&gt;servlet-context.xml 설정&lt;/h2&gt;
 
-&lt;p&gt;root-context.xml 파일은 servlet의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init-param&lt;/code&gt;에서 정의되는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Child WebApplicationContext&lt;/code&gt;의 설정파일입니다. 위에서 말했듯이 해당 컨텍스트는 지역변수와 같아서 해당 ServletContext에서만 참조가능합니다.&lt;/p&gt;
+&lt;p&gt;servlet-context.xml 파일은 servlet의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;init-param&lt;/code&gt;에서 정의되는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Child WebApplicationContext&lt;/code&gt;의 설정파일입니다. 위에서 말했듯이 해당 컨텍스트는 지역변수와 같아서 해당 ServletContext에서만 참조가능합니다.&lt;/p&gt;
 
 &lt;h6 id=&quot;srcmainwebappweb-infspringappservletservlet-contextxml&quot;&gt;/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml&lt;/h6&gt;
 &lt;div data-lang=&quot;XML&quot; class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;

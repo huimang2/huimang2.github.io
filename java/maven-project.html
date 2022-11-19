@@ -210,7 +210,7 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#이클립스--jdk-11--tomcat9-다운로드"><span>이클립스 / JDK 11 / Tomcat9 다운로드</span></a></li><li><a href="#환경설정-설정"><span>환경설정 설정</span></a><ul><li><a href="#톰캣-서버-생성"><span>톰캣 서버 생성</span></a></li><li><a href="#메이븐-프로젝트-생성"><span>메이븐 프로젝트 생성</span></a></li><li><a href="#스프링-프레임워크-의존성-추가"><span>스프링 프레임워크 의존성 추가</span></a></li></ul></li><li><a href="#웹어플리케이션-설정"><span>웹어플리케이션 설정</span></a><ul><li><a href="#webxml-설정"><span>web.xml 설정</span></a></li><li><a href="#root-contextxml-설정"><span>root-context.xml 설정</span></a></li><li><a href="#root-contextxml-설정-1"><span>root-context.xml 설정</span></a></li></ul></li><li><a href="#controller-작성"><span>Controller 작성</span></a></li><li><a href="#오라클-db"><span>오라클 DB</span></a><ul><li><a href="#설치"><span>설치</span></a></li><li><a href="#권한설정"><span>권한설정</span></a></li><li><a href="#db-연결"><span>DB 연결</span></a></li></ul></li><li><a href="#mybatis-연동"><span>Mybatis 연동</span></a></li></ul>
+                        <ul><li><a href="#이클립스--jdk-11--tomcat9-다운로드"><span>이클립스 / JDK 11 / Tomcat9 다운로드</span></a></li><li><a href="#환경설정-설정"><span>환경설정 설정</span></a><ul><li><a href="#톰캣-서버-생성"><span>톰캣 서버 생성</span></a></li><li><a href="#메이븐-프로젝트-생성"><span>메이븐 프로젝트 생성</span></a></li><li><a href="#스프링-프레임워크-의존성-추가"><span>스프링 프레임워크 의존성 추가</span></a></li></ul></li><li><a href="#웹어플리케이션-설정"><span>웹어플리케이션 설정</span></a><ul><li><a href="#webxml-설정"><span>web.xml 설정</span></a></li><li><a href="#root-contextxml-설정"><span>root-context.xml 설정</span></a></li><li><a href="#servlet-contextxml-설정"><span>servlet-context.xml 설정</span></a></li></ul></li><li><a href="#controller-작성"><span>Controller 작성</span></a></li><li><a href="#오라클-db"><span>오라클 DB</span></a><ul><li><a href="#설치"><span>설치</span></a></li><li><a href="#권한설정"><span>권한설정</span></a></li><li><a href="#db-연결"><span>DB 연결</span></a></li></ul></li><li><a href="#mybatis-연동"><span>Mybatis 연동</span></a></li></ul>
 
                     </div>
                     <p>학원에서 열심히 스프링 부트를 중심으로 JPA를 연마했건만 현업에서는 부트가 쓰이지 않는다고 합니다.</p>
@@ -599,9 +599,9 @@ into the {body} of the default.hbs template -->
 
 <p>DAO나 Service 등 모든 서블릿에서 접근가능한 빈이 등록되는데 DB연결은 나중에 하도록 하고 우선 context 네임스페이스의 <code class="language-plaintext highlighter-rouge">component-scan</code>을 설정합니다. 속성으로 <code class="language-plaintext highlighter-rouge">base-package</code>를 입력하는데, 해당 값에 등록된 패키지를 스캔하여 <code class="language-plaintext highlighter-rouge">@Component</code> 어노테이션이 붙은 클래스를 자동으로 빈(bean)으로 등록하는 역할을 합니다. <code class="language-plaintext highlighter-rouge">kr.kro.rubisco.work.service</code> 패키지에 서비스를 작성할 예정이므로 미리 해당 패키지를 생성해둡시다.</p>
 
-<h2 id="root-contextxml-설정-1">root-context.xml 설정</h2>
+<h2 id="servlet-contextxml-설정">servlet-context.xml 설정</h2>
 
-<p>root-context.xml 파일은 servlet의 <code class="language-plaintext highlighter-rouge">init-param</code>에서 정의되는 <code class="language-plaintext highlighter-rouge">Child WebApplicationContext</code>의 설정파일입니다. 위에서 말했듯이 해당 컨텍스트는 지역변수와 같아서 해당 ServletContext에서만 참조가능합니다.</p>
+<p>servlet-context.xml 파일은 servlet의 <code class="language-plaintext highlighter-rouge">init-param</code>에서 정의되는 <code class="language-plaintext highlighter-rouge">Child WebApplicationContext</code>의 설정파일입니다. 위에서 말했듯이 해당 컨텍스트는 지역변수와 같아서 해당 ServletContext에서만 참조가능합니다.</p>
 
 <h6 id="srcmainwebappweb-infspringappservletservlet-contextxml">/src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</h6>
 <div data-lang="XML" class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
