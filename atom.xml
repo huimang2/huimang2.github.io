@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Vue.js: Instance 생성</title>
+        
+          <description>&lt;h1 id=&quot;vue란&quot;&gt;Vue란?&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Sun, 11 Dec 2022 08:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/vue/vue-instance</link>
+        <guid isPermaLink="true">https://huimang2.github.io/vue/vue-instance</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>이클립스 메이븐 프로젝트</title>
         
           <description>&lt;p&gt;학원에서 열심히 스프링 부트를 중심으로 JPA를 연마했건만 현업에서는 부트가 쓰이지 않는다고 합니다.&lt;/p&gt;
