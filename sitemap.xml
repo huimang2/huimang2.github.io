@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://huimang2.github.io/vue/vue-default-directive-1.html</loc>
+        
+        <lastmod>2022-12-14T20:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://huimang2.github.io/vue/vue-instance.html</loc>
         
         <lastmod>2022-12-11T08:00:00+09:00</lastmod>
