@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Vue.js: directive (2)</title>
+        
+          <description>&lt;h1 id=&quot;v-pre&quot;&gt;v-pre&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Tue, 20 Dec 2022 20:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/vue/vue-default-directive-2</link>
+        <guid isPermaLink="true">https://huimang2.github.io/vue/vue-default-directive-2</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Vue.js: directive (1)</title>
         
           <description>&lt;h1 id=&quot;디렉티브derectives&quot;&gt;디렉티브(Derectives)&lt;/h1&gt;
