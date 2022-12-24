@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Vue.js: option</title>
+        
+          <description>&lt;p&gt;이번 글에서는 Vue 인스턴스의 옵션에 대해 알아보겠습니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 24 Dec 2022 19:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/vue/vue-option</link>
+        <guid isPermaLink="true">https://huimang2.github.io/vue/vue-option</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Vue.js: directive (2)</title>
         
           <description>&lt;h1 id=&quot;v-pre&quot;&gt;v-pre&lt;/h1&gt;
