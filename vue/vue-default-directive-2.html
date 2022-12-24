@@ -347,7 +347,7 @@ into the {body} of the default.hbs template -->
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">v-show=</span><span class="s">"isNotice"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">v-show=</span><span class="s">"isNotice"</span><span class="nt">&gt;</span>{{ notice }}<span class="nt">&lt;/span&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
@@ -385,7 +385,7 @@ into the {body} of the default.hbs template -->
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>{{ num }}<span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">v-on:click=</span><span class="s">"increase"</span><span class="nt">&gt;</span>증가<span class="nt">&lt;/button&gt;</span>
     <span class="nt">&lt;button</span> <span class="na">v-on:click=</span><span class="s">"decrease"</span><span class="nt">&gt;</span>감소<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
@@ -426,7 +426,7 @@ into the {body} of the default.hbs template -->
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;</span>{{ num }}<span class="nt">&lt;/div&gt;</span>
     <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"increase"</span><span class="nt">&gt;</span>증가<span class="nt">&lt;/button&gt;</span>
     <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"decrease"</span><span class="nt">&gt;</span>감소<span class="nt">&lt;/button&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
@@ -667,7 +667,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      4 min read
+                      5 min read
                     
                 </span>
             </footer>
