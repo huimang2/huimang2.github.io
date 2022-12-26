@@ -11,7 +11,7 @@
 
 
 
-    <title>Vue.js: directive (1)</title>
+    <title>Vue.js: component</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,24 +51,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/vue/vue-default-directive-1" />
+    <link rel="canonical" href="https://huimang2.github.io/vue/vue-component" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Vue.js: directive (1)" />
-    <meta property="og:description" content="디렉티브(Derectives) 디렉티브(Directives)는 번역하자면 지시문이라고 할 수 있습니다. 지난번 텍스트 보간에 사용한 v-text 디렉티브처럼 Vue의 디렉티브에는 v- 라는 접두사가 붙습니다. 디렉티브를 HTML 템플릿 구문의 속성으로 작성하면 해당 지시문이 DOM에 적용됩니다. 디렉티브는 Vue에서 제공하는 내장 디렉티브(Built-in Directives)와 사용자가 만들어서 사용하는 커스텀 디렉티브(Custom Directives)가 있습니다. 이번 글에서는 Vue에서 기본적으로 제공하는 내장 디렉티브에 대해서" />
-    <meta property="og:url" content="https://huimang2.github.io/vue/vue-default-directive-1" />
+    <meta property="og:title" content="Vue.js: component" />
+    <meta property="og:description" content="컴포넌트(Components) 컴포넌트(components)는 Vue의 매우 중요한 요소 중 하나로, 하나의 어플리케이션을 작은 요소로 분해하여 은닉성과 재사용성을 가지게 해줍니다. 컴포넌트를 활용하면 화면을 빠르게 구조화하여 일괄적인 패턴으로 빠르게 게발할 수 있습니다. 컴포넌트 구성 전역 컴포넌트(Global Components) 전역 컴포넌트는 여러 Vue 인스턴스에서 공통으로 사용할 수 있는 컴포넌트 입니다. 전역 컴포넌트를 등록하기 위해서는 Vue 라이브러리의" />
+    <meta property="og:url" content="https://huimang2.github.io/vue/vue-component" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/vue-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-12-14T20:00:00+09:00" />
-    <meta property="article:modified_time" content="2022-12-14T20:00:00+09:00" />
+    <meta property="article:published_time" content="2022-12-26T19:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-12-26T19:00:00+09:00" />
     <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Vue.js: directive (1)" />
-    <meta name="twitter:description" content="디렉티브(Derectives) 디렉티브(Directives)는 번역하자면 지시문이라고 할 수 있습니다. 지난번 텍스트 보간에 사용한 v-text 디렉티브처럼 Vue의 디렉티브에는 v- 라는 접두사가 붙습니다. 디렉티브를 HTML 템플릿 구문의 속성으로 작성하면 해당 지시문이 DOM에 적용됩니다. 디렉티브는 Vue에서 제공하는 내장 디렉티브(Built-in Directives)와 사용자가 만들어서 사용하는 커스텀 디렉티브(Custom Directives)가 있습니다. 이번 글에서는 Vue에서 기본적으로 제공하는 내장 디렉티브에 대해서" />
+    <meta name="twitter:title" content="Vue.js: component" />
+    <meta name="twitter:description" content="컴포넌트(Components) 컴포넌트(components)는 Vue의 매우 중요한 요소 중 하나로, 하나의 어플리케이션을 작은 요소로 분해하여 은닉성과 재사용성을 가지게 해줍니다. 컴포넌트를 활용하면 화면을 빠르게 구조화하여 일괄적인 패턴으로 빠르게 게발할 수 있습니다. 컴포넌트 구성 전역 컴포넌트(Global Components) 전역 컴포넌트는 여러 Vue 인스턴스에서 공통으로 사용할 수 있는 컴포넌트 입니다. 전역 컴포넌트를 등록하기 위해서는 Vue 라이브러리의" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/vue-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -89,7 +89,7 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/vue/vue-default-directive-1",
+    "url": "https://huimang2.github.io/vue/vue-component",
     "image": {
         "@type": "ImageObject",
         "url": "https://huimang2.github.io/assets/images/vue-logo.png",
@@ -98,9 +98,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/vue/vue-default-directive-1"
+        "@id": "https://huimang2.github.io/vue/vue-component"
     },
-    "description": "디렉티브(Derectives) 디렉티브(Directives)는 번역하자면 지시문이라고 할 수 있습니다. 지난번 텍스트 보간에 사용한 v-text 디렉티브처럼 Vue의 디렉티브에는 v- 라는 접두사가 붙습니다. 디렉티브를 HTML 템플릿 구문의 속성으로 작성하면 해당 지시문이 DOM에 적용됩니다. 디렉티브는 Vue에서 제공하는 내장 디렉티브(Built-in Directives)와 사용자가 만들어서 사용하는 커스텀 디렉티브(Custom Directives)가 있습니다. 이번 글에서는 Vue에서 기본적으로 제공하는 내장 디렉티브에 대해서"
+    "description": "컴포넌트(Components) 컴포넌트(components)는 Vue의 매우 중요한 요소 중 하나로, 하나의 어플리케이션을 작은 요소로 분해하여 은닉성과 재사용성을 가지게 해줍니다. 컴포넌트를 활용하면 화면을 빠르게 구조화하여 일괄적인 패턴으로 빠르게 게발할 수 있습니다. 컴포넌트 구성 전역 컴포넌트(Global Components) 전역 컴포넌트는 여러 Vue 인스턴스에서 공통으로 사용할 수 있는 컴포넌트 입니다. 전역 컴포넌트를 등록하기 위해서는 Vue 라이브러리의"
 }
     </script>
 
@@ -113,7 +113,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Vue.js: directive (1)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Vue.js: component" href="/feed.xml" />
 
 
     <!-- MathJax -->
@@ -175,7 +175,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="14 December 2022">14 December 2022</time>
+                    <time class="post-full-meta-date" datetime="26 December 2022">26 December 2022</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -193,7 +193,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">Vue.js: directive (1)</h1>
+                <h1 class="post-full-title">Vue.js: component</h1>
             </header>
 
             <!-- 
@@ -204,20 +204,36 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#디렉티브derectives"><span>디렉티브(Derectives)</span></a><ul><li><a href="#v-html"><span>v-html</span></a></li><li><a href="#v-bind"><span>v-bind</span></a></li><li><a href="#v-if--v-else-if--v-else"><span>v-if / v-else-if / v-else</span></a></li><li><a href="#v-for"><span>v-for</span></a></li></ul></li></ul>
+                        <ul><li><a href="#컴포넌트components"><span>컴포넌트(Components)</span></a></li><li><a href="#전역-컴포넌트global-components"><span>전역 컴포넌트(Global Components)</span></a></li><li><a href="#지역-컴포넌트local-components"><span>지역 컴포넌트(Local Components)</span></a></li><li><a href="#컴포넌트간-통신"><span>컴포넌트간 통신</span></a><ul><li><a href="#props를-통한-데이터-전달"><span>props를 통한 데이터 전달</span></a></li><li><a href="#이벤트를-통한-데이터-전달"><span>이벤트를 통한 데이터 전달</span></a></li><li><a href="#컴포넌트-사이의-데이터-전달-1"><span>컴포넌트 사이의 데이터 전달</span></a></li></ul></li></ul>
 
                     </div>
-                    <h1 id="디렉티브derectives">디렉티브(Derectives)</h1>
+                    <h1 id="컴포넌트components">컴포넌트(Components)</h1>
 
-<p><code class="language-plaintext highlighter-rouge">디렉티브(Directives)</code>는 번역하자면 지시문이라고 할 수 있습니다. 지난번 텍스트 보간에 사용한 v-text 디렉티브처럼 Vue의 디렉티브에는 <code class="language-plaintext highlighter-rouge">v-</code> 라는 접두사가 붙습니다. 디렉티브를 HTML 템플릿 구문의 속성으로 작성하면 해당 지시문이 DOM에 적용됩니다.</p>
+<p><code class="language-plaintext highlighter-rouge">컴포넌트(components)</code>는 Vue의 매우 중요한 요소 중 하나로, 하나의 어플리케이션을 작은 요소로 분해하여 은닉성과 재사용성을 가지게 해줍니다. 컴포넌트를 활용하면 화면을 빠르게 구조화하여 일괄적인 패턴으로 빠르게 게발할 수 있습니다.</p>
 
-<p>디렉티브는 Vue에서 제공하는 <code class="language-plaintext highlighter-rouge">내장 디렉티브(Built-in Directives)</code>와 사용자가 만들어서 사용하는 <code class="language-plaintext highlighter-rouge">커스텀 디렉티브(Custom Directives)</code>가 있습니다.</p>
+<h6 id="컴포넌트-구성">컴포넌트 구성</h6>
+<p><img src="/assets/images/vue/img034.png" alt="img34" style="margin-top:-1.5em" /></p>
 
-<p>이번 글에서는 Vue에서 기본적으로 제공하는 내장 디렉티브에 대해서 알아보겠습니다.</p>
+<h1 id="전역-컴포넌트global-components">전역 컴포넌트(Global Components)</h1>
 
-<h2 id="v-html">v-html</h2>
+<p>전역 컴포넌트는 여러 Vue 인스턴스에서 공통으로 사용할 수 있는 컴포넌트 입니다.</p>
 
-<p>지난번에 텍스트 보간에 v-text를 사용했습니다. 만약 v-text를 사용하여 html 태그를 작성한다면 DOM이 생성되는 것이 아니라 텍스트 자체가 출력됩니다.</p>
+<p>전역 컴포넌트를 등록하기 위해서는 Vue 라이브러리의 <code class="language-plaintext highlighter-rouge">component</code> 함수를 호출하며, 매개변수로는 컴포넌트 이름과 Vue 인스턴스의 옵션을 넣어줍니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">template</code> 옵션을 통해 템플릿을 설정할 수 있으며, data 옵션의 경우 Object 타입으로 설정하면 해당 컴포넌트를 사용하는 모든 인스턴스에서 동일한 데이터를 공유하게 되므로 함수 형태로 설정하여 데이터를 독립적으로 사용하도록 합니다.</p>
+
+<h6 id="컴포넌트-등록">컴포넌트 등록</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="dl">'</span><span class="s1">global-component</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;template&gt;{{ message }}&lt;/template&gt;`</span><span class="p">,</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">전역 컴포넌트</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>컴포넌트 이름은 위의 코드와 같이 <code class="language-plaintext highlighter-rouge">케밥 케이스(kebab case)</code>로 설정하며, 2단어 이상으로 구성되도록 합니다. Vue 인스턴스에 컴포넌트 이름의 태그를 넣어주면 컴포넌트가 출력됩니다.</p>
 
 <h6 id="indexhtml">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -228,23 +244,30 @@ into the {body} of the default.hbs template -->
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">v-text=</span><span class="s">"html"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="nt">/&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
 <h6 id="mainjs">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">html</span><span class="p">:</span> <span class="s2">`&lt;font color="red"&gt;Red Color&lt;/font&gt;`</span>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="dl">'</span><span class="s1">global-component</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;template&gt;{{ message }}&lt;/template&gt;`</span><span class="p">,</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">전역 컴포넌트</span><span class="dl">'</span>
+    <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">().</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h6 id="출력-결과">출력 결과</h6>
-<p><img src="/assets/images/vue/img009.png" alt="img009" style="margin-top:-1.5em" /></p>
+<p><img src="/assets/images/vue/img036.png" alt="img36" style="margin-top:-1.5em" /></p>
 
-<p>하지만 v-html 디렉티브를 사용하면 html 템플릿을 통해 DOM을 생성합니다.</p>
+<p>컴포넌트는 다음과 같이 재사용이 가능합니다.</p>
 
 <h6 id="indexhtml-1">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -255,21 +278,19 @@ into the {body} of the default.hbs template -->
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">v-html=</span><span class="s">"html"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="nt">/&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="nt">/&gt;&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="nt">/&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
 <h6 id="출력-결과-1">출력 결과</h6>
-<p><img src="/assets/images/vue/img010.png" alt="img010" style="margin-top:-1.5em" /></p>
+<p><img src="/assets/images/vue/img037.png" alt="img37" style="margin-top:-1.5em" /></p>
 
-<p>동적으로 html을 렌더링 하는 것은 XSS 공격을 받을 가능성이 있기때문에 해당 디렉티브는 입력할 내용을 신뢰할 수 있을 경우에만 사용할 것을 권장합니다.</p>
-
-<h2 id="v-bind">v-bind</h2>
-
-<p>v-bind는 태그 속성에 모델 데이터를 바인딩하거나 자식 컴포넌트에 프로퍼티를 전달할 때 사용합니다. 컴포넌트는 다음에 알아보도록 하고 우선 속성을 바인딩 하겠습니다.</p>
-
-<p>속성 바인딩은 <code class="language-plaintext highlighter-rouge">v-bind:[key] = "value"</code> 형태로 작성합니다. 예를 들어 id 속성에 id 데이터를 바인딩 하려면 다음과 같이 작성합니다.</p>
+<p>전역 컴포넌트 이므로 모든 Vue 인스턴스에서 사용가능합니다.</p>
 
 <h6 id="indexhtml-2">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -280,25 +301,34 @@ into the {body} of the default.hbs template -->
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">v-bind:id=</span><span class="s">"id"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="nt">/&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="nt">/&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
 <h6 id="mainjs-1">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bindingTest</span><span class="dl">'</span>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="dl">'</span><span class="s1">global-component</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;template&gt;{{ message }}&lt;/template&gt;`</span><span class="p">,</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">전역 컴포넌트</span><span class="dl">'</span>
+    <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">().</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app1</span><span class="dl">'</span><span class="p">)</span>
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">().</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app2</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>DevTools를 통해 DOM 태그를 확인하면 id가 모델에 입력된 id값 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">bindingTest</code>가 되었음을 확인할 수 있습니다.</p>
-
 <h6 id="출력-결과-2">출력 결과</h6>
-<p><img src="/assets/images/vue/img011.png" alt="img011" style="margin-top:-1.5em" /></p>
+<p><img src="/assets/images/vue/img038.png" alt="img38" style="margin-top:-1.5em" /></p>
 
-<p>해당 디렉티브는 <code class="language-plaintext highlighter-rouge">:[key] = "value"</code> 형태로 줄일 수 있습니다.</p>
+<p>컴포넌트의 이름은 케밥 케이스로 작성하지만 다음과 같이 <code class="language-plaintext highlighter-rouge">파스칼 케이스(pascal case)</code> 또는 <code class="language-plaintext highlighter-rouge">카멜 케이스(camel case)</code>로 작성해도 자동으로 케밥 케이스로 변경되어 컴파일됩니다.</p>
 
 <h6 id="indexhtml-3">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -309,12 +339,32 @@ into the {body} of the default.hbs template -->
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">:id=</span><span class="s">"id"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="nt">/&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<p>class 속성의 경우 Object 타입으로 다중 속성을 바인딩할 수 있습니다.</p>
+<h6 id="mainjs-2">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="dl">'</span><span class="s1">GlobalComponent</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;template&gt;{{ message }}&lt;/template&gt;`</span><span class="p">,</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">전역 컴포넌트</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">().</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="출력-결과-3">출력 결과</h6>
+<p><img src="/assets/images/vue/img036.png" alt="img36" style="margin-top:-1.5em" /></p>
+
+<h1 id="지역-컴포넌트local-components">지역 컴포넌트(Local Components)</h1>
+
+<p>지역 컴포넌트는 Vue 인스턴스의 <code class="language-plaintext highlighter-rouge">components</code> 옵션에 등록하며, 해당 컴포넌트가 등록된 인스턴스에서만 사용가능합니다. 컴포넌트 이름과 옵션을 key-value 쌍으로 입력하여 등록합니다.</p>
 
 <h6 id="indexhtml-4">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
@@ -325,296 +375,342 @@ into the {body} of the default.hbs template -->
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">:class=</span><span class="s">"{a: true, b: true, c: false}"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="nt">/&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<h6 id="mainjs-2">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">().</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+<h6 id="mainjs-3">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">global-component</span><span class="dl">'</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;template&gt;{{ message }}&lt;/template&gt;`</span><span class="p">,</span>
+      <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">지역 컴포넌트</span><span class="dl">'</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h6 id="출력-결과-3">출력 결과</h6>
-<p><img src="/assets/images/vue/img012.png" alt="img012" style="margin-top:-1.5em" /></p>
+<h6 id="출력-결과-4">출력 결과</h6>
+<p><img src="/assets/images/vue/img039.png" alt="img39" style="margin-top:-1.5em" /></p>
 
-<p>다음과 같이 속성을 각각 바인딩 할 수도 있습니다.</p>
+<p>전역 컴포넌트처럼 키값을 파스칼 케이스 또는 카멜 케이스로 선언해도 됩니다.</p>
+
+<h6 id="mainjs-4">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">GlobalComponent</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;template&gt;{{ message }}&lt;/template&gt;`</span><span class="p">,</span>
+      <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+          <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">지역 컴포넌트</span><span class="dl">'</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>재사용성을 위해 컴포넌트 옵션을 변수로 선언할 수 있으며, Object를 참조하는 변수는 키값이 될 수 있으므로 다음과 같이 작성할 수 있습니다.</p>
+
+<h6 id="mainjs-5">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">GlobalComponent</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;template&gt;{{ message }}&lt;/template&gt;`</span><span class="p">,</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">지역 컴포넌트</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">GlobalComponent</span> <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>컴포넌트를 모듈 형태로 작성하여 import 한다면 유지보수가 쉬워집니다.</p>
 
 <h6 id="indexhtml-5">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">:class=</span><span class="s">"{a, b, c}"</span><span class="nt">&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="nt">/&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<h6 id="mainjs-3">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">a</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="na">b</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-    <span class="na">c</span><span class="p">:</span> <span class="kc">false</span>
-  <span class="p">}</span>
+<h6 id="mainjs-6">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">GlobalComponent</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./GlobalComponent.js</span><span class="dl">"</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">GlobalComponent</span> <span class="p">}</span>
 <span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>한번에 Object 타입을 바인딩할 수도 있습니다.</p>
+<h6 id="globalcomponentjs">GlobalComponent.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;div&gt;{{ message }}&lt;/div&gt;`</span><span class="p">,</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">지역 컴포넌트</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h1 id="컴포넌트간-통신">컴포넌트간 통신</h1>
+
+<p>컴포넌트간 데이터의 전달은 단방향으로만 이동할 수 있습니다.</p>
+
+<h6 id="컴포넌트-사이의-데이터-전달">컴포넌트 사이의 데이터 전달</h6>
+<p><img src="/assets/images/vue/img035.png" alt="img35" style="margin-top:-1.5em" /></p>
+
+<p>부모 컴포넌트에서 자식 컴포넌트로는 <code class="language-plaintext highlighter-rouge">props</code>를 통해 데이터를 전달하며, 자식 컴포넌트에서 부모 컴포넌트로는 <code class="language-plaintext highlighter-rouge">event</code>를 통해 데이터를 전달할 수 있습니다.</p>
+
+<h2 id="props를-통한-데이터-전달">props를 통한 데이터 전달</h2>
+
+<p>부모 컴포넌트에서 자식 컴포넌트로 데이터를 전달하기 위해서는 자식 컴포넌트에 <code class="language-plaintext highlighter-rouge">props</code> 옵션을 등록합니다. 부모 컴포넌트에서는 <code class="language-plaintext highlighter-rouge">속성(attribute)</code>을 통해 props를 전달할 수 있습니다.</p>
 
 <h6 id="indexhtml-6">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">:class=</span><span class="s">"classObj"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<h6 id="mainjs-4">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">classObj</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">a</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="na">b</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-      <span class="na">c</span><span class="p">:</span> <span class="kc">false</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>배열로 바인딩할 수도 있습니다.</p>
-
-<h6 id="indexhtml-7">index.html</h6>
-<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">:class=</span><span class="s">"['a', 'b']"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<h6 id="mainjs-5">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">().</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>Object를 배열로 바인딩하여 클래스 속성을 합칠 수도 있습니다.</p>
-
-<h6 id="indexhtml-8">index.html</h6>
-<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">:class=</span><span class="s">"[{a: true}, {b: true}, {c: false}]"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<p>style 속성 또한 class 속성과 유사합니다.</p>
-
-<h6 id="indexhtml-9">index.html</h6>
-<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">:style=</span><span class="s">"styleObj"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<h6 id="mainjs-6">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">styleObj</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">fontSize</span><span class="p">:</span> <span class="dl">'</span><span class="s1">20px</span><span class="dl">'</span><span class="p">,</span>
-      <span class="dl">'</span><span class="s1">font-weight</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">bold</span><span class="dl">'</span><span class="p">,</span>
-      <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span>
-    <span class="p">},</span>
-    <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hello, world!</span><span class="dl">'</span>
-  <span class="p">}</span>
-<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<h6 id="출력-결과-4">출력 결과</h6>
-<p><img src="/assets/images/vue/img013.png" alt="img013" style="margin-top:-1.5em" /></p>
-
-<p>키값을 카멜 케이스(Camel Case)로 선언하면 스타일 속성이 케밥 케이스(Kebab Case)로 변경됩니다.</p>
-
-<p>styleObj에 선언한 <code class="language-plaintext highlighter-rouge">fontSize</code>가 자동으로 <code class="language-plaintext highlighter-rouge">font-size</code> 속성으로 변경된 것을 확인할 수 있습니다.</p>
-
-<h2 id="v-if--v-else-if--v-else">v-if / v-else-if / v-else</h2>
-
-<p>조건에 따라 DOM을 렌더링하고 싶다면 <code class="language-plaintext highlighter-rouge">v-if</code> 디렉티브를 사용합니다.</p>
-
-<h6 id="indexhtml-10">index.html</h6>
-<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">v-if=</span><span class="s">"isNotice"</span><span class="nt">&gt;&lt;/span&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="na">title=</span><span class="s">"타이틀1"</span> <span class="nt">/&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
 <h6 id="mainjs-7">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">notice</span><span class="p">:</span> <span class="dl">'</span><span class="s1">notice</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">isNotice</span><span class="p">:</span> <span class="kc">true</span>
-  <span class="p">}</span>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">GlobalComponent</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./GlobalComponent.js</span><span class="dl">"</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">GlobalComponent</span> <span class="p">}</span>
 <span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>isNotice가 true이므로 조건식을 만족하여 해당 DOM은 렌더링되어 나타납니다.</p>
+<h6 id="globalcomponentjs-1">GlobalComponent.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;div&gt;{{ title }}&lt;/div&gt;`</span><span class="p">,</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <h6 id="출력-결과-5">출력 결과</h6>
-<p><img src="/assets/images/vue/img014.png" alt="img014" style="margin-top:-1.5em" /></p>
+<p><img src="/assets/images/vue/img040.png" alt="img40" style="margin-top:-1.5em" /></p>
 
-<p>콘솔창을 통해 isNotice를 false로 변경한다면 조건식을 만족하지 못하여 해당 DOM은 사라집니다.</p>
+<p><code class="language-plaintext highlighter-rouge">v-bind 디렉티브</code>를 통한 props 전달도 가능합니다.</p>
 
-<h6 id="출력-결과-6">출력 결과</h6>
-<p><img src="/assets/images/vue/img015.gif" alt="img015" style="margin-top:-1.5em" /></p>
-
-<p>처음 조건을 만족하지 못했을때 다른 조건문을 만족하는지 확인하고 싶다면 <code class="language-plaintext highlighter-rouge">v-else-if</code> 디렉티브를, 조건문을 만족하지 못했을 경우에 출력하고 싶다면 <code class="language-plaintext highlighter-rouge">v-else</code> 디렉티브를 사용합니다.</p>
-
-<h6 id="indexhtml-11">index.html</h6>
+<h6 id="indexhtml-7">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;font</span> <span class="na">v-if=</span><span class="s">"color === 'red'"</span> <span class="na">color=</span><span class="s">"red"</span><span class="nt">&gt;</span>red<span class="nt">&lt;/font&gt;</span>
-    <span class="nt">&lt;font</span> <span class="na">v-else-if=</span><span class="s">"color === 'blue'"</span> <span class="na">color=</span><span class="s">"blue"</span><span class="nt">&gt;</span>blue<span class="nt">&lt;/font&gt;</span>
-    <span class="nt">&lt;font</span> <span class="na">v-else</span><span class="nt">&gt;</span>default<span class="nt">&lt;/font&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;global-component</span> <span class="na">:title=</span><span class="s">"message"</span> <span class="nt">/&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
 <h6 id="mainjs-8">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">GlobalComponent</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./GlobalComponent.js</span><span class="dl">"</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">GlobalComponent</span> <span class="p">},</span>
   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">데이터 전달</span><span class="dl">'</span>
   <span class="p">}</span>
 <span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h6 id="출력-결과-7">출력 결과</h6>
-<p><img src="/assets/images/vue/img016.gif" alt="img016" style="margin-top:-1.5em" /></p>
+<h6 id="globalcomponentjs-2">GlobalComponent.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;div&gt;{{ title }}&lt;/div&gt;`</span><span class="p">,</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">title</span><span class="dl">'</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<p>여러 태그를 한꺼번에 묶어서 조건문을 처리하고 싶다면 <code class="language-plaintext highlighter-rouge">template</code> 태그에 v-if 디렉티브를 입력하면 됩니다.</p>
+<h6 id="출력-결과-6">출력 결과</h6>
+<p><img src="/assets/images/vue/img041.png" alt="img41" style="margin-top:-1.5em" /></p>
 
-<h6 id="indexhtml-12">index.html</h6>
+<h2 id="이벤트를-통한-데이터-전달">이벤트를 통한 데이터 전달</h2>
+
+<p>자식 컴포넌트에서 부모 컴포넌트로 데이터를 전달하기 위해서는 부모 컴포넌트에서 <code class="language-plaintext highlighter-rouge">v-on</code> 디렉티브로 이벤트를 등록합니다. 자식 컴포넌트에서는 <code class="language-plaintext highlighter-rouge">$emit</code> 메소드를 통해 이벤트를 호출할 수 있습니다.</p>
+
+<h6 id="indexhtml-8">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;template</span> <span class="na">v-if=</span><span class="s">"isNotice"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div&gt;</span>1<span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div&gt;</span>2<span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div&gt;</span>3<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/template&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;custom-button</span> <span class="err">@</span><span class="na">print=</span><span class="s">"printText"</span> <span class="nt">/&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
 <h6 id="mainjs-9">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">isNotice</span><span class="p">:</span> <span class="kc">true</span>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">CustomButton</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./CustomButton.js</span><span class="dl">"</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">CustomButton</span> <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">printText</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Print Text!!</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>이 경우 template 태그는 렌더링 되지 않게 됩니다.</p>
-
-<h6 id="출력-결과-8">출력 결과</h6>
-<p><img src="/assets/images/vue/img017.png" alt="img017" style="margin-top:-1.5em" /></p>
-
-<h2 id="v-for">v-for</h2>
-
-<p>반복문의 경우 <code class="language-plaintext highlighter-rouge">v-for</code> 디렉티브를 입력하면 됩니다. 배열, map, set 등 iterable 객체 및 Object 타입에 대한 반복문 작성이 가능합니다.</p>
-
-<h6 id="v-for-디렉티브-선언">v-for 디렉티브 선언</h6>
-<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">v-for=</span><span class="s">"(item, index) in items"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">v-for=</span><span class="s">"(value, key) in object"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">v-for=</span><span class="s">"(value, key, index) in object"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<h6 id="custombuttonjs">CustomButton.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;button @click="clickBtn"&gt;버튼클릭&lt;/button&gt;`</span><span class="p">,</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">clickBtn</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">print</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<p>예제는 아래와 같습니다.</p>
+<p>부모 컴포넌트에서 자식 태그에 <code class="language-plaintext highlighter-rouge">print</code> 이벤트를 등록하고, 해당 이벤트가 호출되면 <code class="language-plaintext highlighter-rouge">printText</code> 메소드를 호출합니다. 자식 컴포넌트에서는 클릭시 <code class="language-plaintext highlighter-rouge">clickBtn</code> 메소드를 호출하고, 해당 메소드에서는 <code class="language-plaintext highlighter-rouge">print</code> 이벤트를 호출하여 콘솔 로그가 출력됩니다.</p>
 
-<h6 id="indexhtml-13">index.html</h6>
+<h6 id="출력-결과-7">출력 결과</h6>
+<p><img src="/assets/images/vue/img042.gif" alt="img42" style="margin-top:-1.5em" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">$emit</code> 메소드의 2번째 파라미터에 전달할 데이터를 줄수도 있습니다.</p>
+
+<h6 id="indexhtml-9">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div</span> <span class="na">v-for=</span><span class="s">"(member, idx) in members"</span> <span class="na">:key=</span><span class="s">"member.id"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;div&gt;</span>index: <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div&gt;</span>id: <span class="nt">&lt;/div&gt;</span>
-      <span class="nt">&lt;div&gt;</span>name: <span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;custom-button</span> <span class="err">@</span><span class="na">print=</span><span class="s">"printText"</span> <span class="nt">/&gt;&lt;/div&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
 <h6 id="mainjs-10">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">members</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rubisco</span><span class="dl">'</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">루비스코</span><span class="dl">'</span> <span class="p">},</span>
-      <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">spot</span><span class="dl">'</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">스팟</span><span class="dl">'</span><span class="p">}</span>
-    <span class="p">]</span>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">CustomButton</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./CustomButton.js</span><span class="dl">"</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">CustomButton</span> <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">printText</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+    <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>중요한 부분은 <code class="language-plaintext highlighter-rouge">key</code> 속성을 바인딩 했다는 것입니다. key는 primary key를 바인딩하여 각각의 요소들에 대한 순서에 대하여 힌트를 줄 수 있도록 합니다.</p>
+<h6 id="custombuttonjs-1">CustomButton.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;button @click="clickBtn"&gt;버튼클릭&lt;/button&gt;`</span><span class="p">,</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">clickBtn</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">print</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">메시지 전달</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h6 id="출력-결과-8">출력 결과</h6>
+<p><img src="/assets/images/vue/img043.gif" alt="img43" style="margin-top:-1.5em" /></p>
+
+<h2 id="컴포넌트-사이의-데이터-전달-1">컴포넌트 사이의 데이터 전달</h2>
+
+<p>컴포넌트 사이에서는 이벤트버스를 통해 데이터를 서로 교환할 수 있습니다.</p>
+
+<h6 id="indexhtml-10">index.html</h6>
+<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;&lt;custom-button</span> <span class="err">@</span><span class="na">print=</span><span class="s">"printText"</span> <span class="nt">/&gt;&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h6 id="mainjs-11">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">CustomButton</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./CustomButton.js</span><span class="dl">"</span>
+<span class="k">import</span> <span class="nx">EventBus</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./EventBus.js</span><span class="dl">"</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">CustomButton</span> <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">printText</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">EventBus</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="dl">'</span><span class="s1">print</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">printText</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="eventbusjs">EventBus.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h6 id="custombuttonjs-2">CustomButton.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">EventBus</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./EventBus.js</span><span class="dl">"</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;button @click="clickBtn"&gt;버튼클릭&lt;/button&gt;`</span><span class="p">,</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">clickBtn</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">EventBus</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="dl">'</span><span class="s1">print</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">이벤트 버스로 데이터 전달</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이벤트를 주고 받기위한 EventBus라는 Vue 인스턴스를 하나 생성합니다. 해당 인스턴스에서 <code class="language-plaintext highlighter-rouge">$on</code> 메소드를 통해 이벤트를 등록할 수 있고, <code class="language-plaintext highlighter-rouge">$emit</code> 메소드를 통해 이벤트를 호출할 수 있습니다.</p>
+
+<p>app 컴포넌트가 생성될 때 EventBus에 print 이벤트를 등록하고, custom-button 컴포넌트를 클릭하면 EventBus에서 print 이벤트를 호출합니다.</p>
 
 <h6 id="출력-결과-9">출력 결과</h6>
-<p><img src="/assets/images/vue/img018.png" alt="img018" style="margin-top:-1.5em" /></p>
+<p><img src="/assets/images/vue/img044.gif" alt="img44" style="margin-top:-1.5em" /></p>
 
                 </div>
             </section>
@@ -697,11 +793,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/vue/vue-component">Vue.js: component</a></li>
-                                        
-                                    
                                   
                                 
                                   
@@ -723,6 +814,11 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                            <li><a href="/vue/vue-default-directive-1">Vue.js: directive (1)</a></li>
+                                        
                                     
                                   
                                 
@@ -822,48 +918,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/vue/vue-default-directive-2">
-                <div class="post-card-image" style="background-image: url(/assets/images/vue-logo.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/vue/vue-default-directive-2">
-                <header class="post-card-header">
-                    
-                        <div class="post-card-tags-container">
-                            
-                        </div>
-                    
-
-                    <h2 class="post-card-title">Vue.js: directive (2)</h2>
-                </header>
-                <!-- <section class="post-card-excerpt">
-                    
-                        <p>v-pre
-
-</p>
-                    
-                </section> -->
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      2 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -871,12 +925,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/vue/vue-instance">
+            <a class="post-card-image-link" href="/vue/vue-option">
                 <div class="post-card-image" style="background-image: url(/assets/images/vue-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/vue/vue-instance">
+            <a class="post-card-content-link" href="/vue/vue-option">
                 <header class="post-card-header">
                     
                         <div class="post-card-tags-container">
@@ -884,11 +938,11 @@ into the {body} of the default.hbs template -->
                         </div>
                     
 
-                    <h2 class="post-card-title">Vue.js: Instance 생성</h2>
+                    <h2 class="post-card-title">Vue.js: option</h2>
                 </header>
                 <!-- <section class="post-card-excerpt">
                     
-                        <p>Vue란?
+                        <p>이번 글에서는 Vue 인스턴스의 옵션에 대해 알아보겠습니다.
 
 </p>
                     
@@ -901,7 +955,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      3 min read
+                      4 min read
                     
                 </span>
             </footer>
@@ -923,18 +977,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Vue.js: directive (1)</div>
+    <div class="floating-header-title">Vue.js: component</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Vue.js%3A+directive+%281%29&amp;url=vue/vue-default-directive-1"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Vue.js%3A+component&amp;url=vue/vue-component"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=vue/vue-default-directive-1"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=vue/vue-component"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
