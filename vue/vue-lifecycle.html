@@ -11,7 +11,7 @@
 
 
 
-    <title>Vue.js: directive (2)</title>
+    <title>Vue.js: lifecycle</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,24 +51,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/vue/vue-default-directive-2" />
+    <link rel="canonical" href="https://huimang2.github.io/vue/vue-lifecycle" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Vue.js: directive (2)" />
-    <meta property="og:description" content="v-pre v-pre 디렉티브를 선언하면 해당 태그는 컴파일되지 않고 그대로 출력됩니다. index.html &lt;!DOCTYPE html&gt; &lt;html lang="ko"&gt; &lt;head&gt; &lt;script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"&gt;&lt;/script&gt; &lt;script defer src="./main.js"&gt;&lt;/script&gt; &lt;title&gt;Vue 연습&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div id="app" v-pre&gt;{{ message }}&lt;/div&gt; &lt;/body&gt; &lt;/html&gt; main.js const mv = new Vue({ data: { message: 'hello, world!' } }).$mount('#app') 출력 결과 v-pre 디렉티브가 없다면" />
-    <meta property="og:url" content="https://huimang2.github.io/vue/vue-default-directive-2" />
+    <meta property="og:title" content="Vue.js: lifecycle" />
+    <meta property="og:description" content="라이프사이클(Lifecycle) Vue 인스턴스의 라이프사이클은 다음과 같습니다. 크기 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다. 생성(Creation) 단계 Vue 인스턴스가 생성될 때 제일 먼저 실행되는 단계입니다. 컴포넌트가 DOM에 바인딩 되기 전에 수행하며, 서버 렌더링 중에도 실행됩니다. 아직 컴포넌트가 DOM에 바인딩 되지 않았기" />
+    <meta property="og:url" content="https://huimang2.github.io/vue/vue-lifecycle" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/vue-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-12-20T20:00:00+09:00" />
-    <meta property="article:modified_time" content="2022-12-20T20:00:00+09:00" />
+    <meta property="article:published_time" content="2022-12-30T13:00:00+09:00" />
+    <meta property="article:modified_time" content="2022-12-30T13:00:00+09:00" />
     <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Vue.js: directive (2)" />
-    <meta name="twitter:description" content="v-pre v-pre 디렉티브를 선언하면 해당 태그는 컴파일되지 않고 그대로 출력됩니다. index.html &lt;!DOCTYPE html&gt; &lt;html lang="ko"&gt; &lt;head&gt; &lt;script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"&gt;&lt;/script&gt; &lt;script defer src="./main.js"&gt;&lt;/script&gt; &lt;title&gt;Vue 연습&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div id="app" v-pre&gt;{{ message }}&lt;/div&gt; &lt;/body&gt; &lt;/html&gt; main.js const mv = new Vue({ data: { message: 'hello, world!' } }).$mount('#app') 출력 결과 v-pre 디렉티브가 없다면" />
+    <meta name="twitter:title" content="Vue.js: lifecycle" />
+    <meta name="twitter:description" content="라이프사이클(Lifecycle) Vue 인스턴스의 라이프사이클은 다음과 같습니다. 크기 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다. 생성(Creation) 단계 Vue 인스턴스가 생성될 때 제일 먼저 실행되는 단계입니다. 컴포넌트가 DOM에 바인딩 되기 전에 수행하며, 서버 렌더링 중에도 실행됩니다. 아직 컴포넌트가 DOM에 바인딩 되지 않았기" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/vue-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -89,7 +89,7 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/vue/vue-default-directive-2",
+    "url": "https://huimang2.github.io/vue/vue-lifecycle",
     "image": {
         "@type": "ImageObject",
         "url": "https://huimang2.github.io/assets/images/vue-logo.png",
@@ -98,9 +98,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/vue/vue-default-directive-2"
+        "@id": "https://huimang2.github.io/vue/vue-lifecycle"
     },
-    "description": "v-pre v-pre 디렉티브를 선언하면 해당 태그는 컴파일되지 않고 그대로 출력됩니다. index.html &lt;!DOCTYPE html&gt; &lt;html lang="ko"&gt; &lt;head&gt; &lt;script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"&gt;&lt;/script&gt; &lt;script defer src="./main.js"&gt;&lt;/script&gt; &lt;title&gt;Vue 연습&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div id="app" v-pre&gt;{{ message }}&lt;/div&gt; &lt;/body&gt; &lt;/html&gt; main.js const mv = new Vue({ data: { message: 'hello, world!' } }).$mount('#app') 출력 결과 v-pre 디렉티브가 없다면"
+    "description": "라이프사이클(Lifecycle) Vue 인스턴스의 라이프사이클은 다음과 같습니다. 크기 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다. 생성(Creation) 단계 Vue 인스턴스가 생성될 때 제일 먼저 실행되는 단계입니다. 컴포넌트가 DOM에 바인딩 되기 전에 수행하며, 서버 렌더링 중에도 실행됩니다. 아직 컴포넌트가 DOM에 바인딩 되지 않았기"
 }
     </script>
 
@@ -113,7 +113,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Vue.js: directive (2)" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="Vue.js: lifecycle" href="/feed.xml" />
 
 
     <!-- MathJax -->
@@ -175,7 +175,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="20 December 2022">20 December 2022</time>
+                    <time class="post-full-meta-date" datetime="30 December 2022">30 December 2022</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -193,7 +193,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">Vue.js: directive (2)</h1>
+                <h1 class="post-full-title">Vue.js: lifecycle</h1>
             </header>
 
             <!-- 
@@ -204,235 +204,241 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#v-pre"><span>v-pre</span></a></li><li><a href="#v-once"><span>v-once</span></a></li><li><a href="#v-cloak"><span>v-cloak</span></a></li><li><a href="#v-show"><span>v-show</span></a></li><li><a href="#v-on"><span>v-on</span></a></li></ul>
+                        <ul><li><a href="#라이프사이클lifecycle"><span>라이프사이클(Lifecycle)</span></a><ul><li><a href="#생성creation-단계"><span>생성(Creation) 단계</span></a><ul><li><a href="#beforecreate"><span>beforeCreate</span></a></li><li><a href="#create"><span>create</span></a></li></ul></li><li><a href="#마운트mounting-단계"><span>마운트(Mounting) 단계</span></a><ul><li><a href="#beforemount"><span>beforeMount</span></a></li><li><a href="#mounted"><span>mounted</span></a></li></ul></li><li><a href="#업데이트undating-단계"><span>업데이트(Undating) 단계</span></a><ul><li><a href="#beforeupdate"><span>beforeUpdate</span></a></li><li><a href="#updated"><span>updated</span></a></li></ul></li><li><a href="#소멸destruction-단계"><span>소멸(Destruction) 단계</span></a><ul><li><a href="#beforedestroy"><span>beforeDestroy</span></a></li><li><a href="#destroyed"><span>destroyed</span></a></li></ul></li></ul></li></ul>
 
                     </div>
-                    <h1 id="v-pre">v-pre</h1>
+                    <h1 id="라이프사이클lifecycle">라이프사이클(Lifecycle)</h1>
 
-<p><code class="language-plaintext highlighter-rouge">v-pre</code> 디렉티브를 선언하면 해당 태그는 컴파일되지 않고 그대로 출력됩니다.</p>
+<p>Vue 인스턴스의 라이프사이클은 다음과 같습니다.</p>
+
+<p><img src="/assets/images/vue/img045.png" alt="img45" style="margin-top:-1.5em" /></p>
+
+<p>크기 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다.</p>
+
+<h2 id="생성creation-단계">생성(Creation) 단계</h2>
+
+<p>Vue 인스턴스가 생성될 때 제일 먼저 실행되는 단계입니다. 컴포넌트가 DOM에 바인딩 되기 전에 수행하며, 서버 렌더링 중에도 실행됩니다.</p>
+
+<p>아직 컴포넌트가 DOM에 바인딩 되지 않았기 때문에 $el 프로퍼티를 통해 DOM에 접근하거나 참조할 수 없습니다.</p>
+
+<h3 id="beforecreate">beforeCreate</h3>
+
+<p>제일 먼저 실행되는 훅으로 Vue 인스턴스가 초기화 된 직후 실행됩니다. DOM에 접근할 수 없을 뿐만 아니라 데이터나 이벤트가 활성화되지 않아 접근할 수 없습니다.</p>
 
 <h6 id="indexhtml">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">v-pre</span><span class="nt">&gt;</span>{{ message }}<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
 <h6 id="mainjs">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hello, world!</span><span class="dl">'</span>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">msg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hello, world!</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">beforeCreate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">beforeCredate Hook</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">msg: </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p>해당 코드를 작성후 콘솔창을 확인하면 msg 데이터가 <code class="language-plaintext highlighter-rouge">undefined</code>로 출력됩니다.</p>
+
 <h6 id="출력-결과">출력 결과</h6>
-<p><img src="/assets/images/vue/img019.png" alt="img019" style="margin-top:-1.5em" /></p>
+<p><img src="/assets/images/vue/img046.png" alt="img46" style="margin-top:-1.5em" /></p>
 
-<p>v-pre 디렉티브가 없다면 텍스트 보간에 의하여 <code class="language-plaintext highlighter-rouge">hello, world!</code>가 출력되어야 하지만, 출력 결과를 확인하면 컴파일 되지않고 <code class="language-plaintext highlighter-rouge">{{ message }}</code>가 텍스트 그대로 출력됩니다.</p>
+<h3 id="create">create</h3>
 
-<h1 id="v-once">v-once</h1>
+<p>Vue 인스턴스가 DOM에 바인딩되거나 View가 렌더링 되기 전에 실행되는 훅입니다. 데이터와 이벤트가 활성화되었기 때문에 해당 인스턴스의 프로퍼티를 통해 data에 접근할 수 있습니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">v-once</code> 디렉티브는 일회성 디렉티브 입니다.</p>
+<h6 id="mainjs-1">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">msg</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hello, world!</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">created Hook</span><span class="dl">'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">msg: </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">$el: </span><span class="dl">'</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>해당 코드를 작성후 콘솔창을 확인하면 데이터 모델에는 접근할수 있지만 DOM에는 접근할 수 없습니다.</p>
+
+<h6 id="출력-결과-1">출력 결과</h6>
+<p><img src="/assets/images/vue/img047.png" alt="img47" style="margin-top:-1.5em" /></p>
+
+<p>데이터를 설정하거나 이벤트 리스너를 선언해야 한다면 이 단계에서 하는 것이 적절합니다.</p>
+
+<h2 id="마운트mounting-단계">마운트(Mounting) 단계</h2>
+
+<p>Vue 인스턴스가 DOM에 바인딩되는 단계입니다. 훅이 가장 많이 사용되는 단계이며, View의 렌더링 전후로 컴포넌트에 접근할 수 있습니다.</p>
+
+<p>생성 단계와 달리 서버 렌더링 중에는 훅이 실행되지 않습니다.</p>
+
+<h3 id="beforemount">beforeMount</h3>
+
+<p>템플릿이 컴파일되고 View가 렌더링 되기 전에 실행되는 훅입니다. 템플릿이 컴파일되어 가상 DOM은 생성되었지만 실제 DOM에는 바인딩 되지 않은 상태입니다.</p>
+
+<h3 id="mounted">mounted</h3>
+
+<p>View가 렌더링되고 Vue 인스턴스가 DOM에 바인딩 된 이후 실행되는 훅입니다.</p>
+
+<p>일반적으로 부모와 자식 컴포넌트 사이에 훅의 실행순서는 다음과 같습니다.</p>
+
+<h6 id="부모--자식-컴포넌트-사이의-훅-실행순서">부모 / 자식 컴포넌트 사이의 훅 실행순서</h6>
+<p><img src="/assets/images/vue/img048.png" alt="img48" style="margin-top:-1.5em" /></p>
+
+<p>부모 컴포넌트의 템플릿이 렌더링된 이후 실제 DOM에 바인딩 하기 전에 자식 컴포넌트가 생성됩니다. 즉, <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">부모 컴포넌트의 beforeMounte</code> -&gt; <code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">자식 컴포넌트의 beforeMounte</code> -&gt; <code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">자식 컴포넌트의 mounted</code> -&gt; <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">부모 컴포넌트의 mounted</code> 순서로 훅이 실행됩니다.</p>
 
 <h6 id="indexhtml-1">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">v-once</span><span class="nt">&gt;</span>{{ message }}<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;child-component</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<h6 id="mainjs-1">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hello, world!</span><span class="dl">'</span>
+<h6 id="mainjs-2">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">ChildComponent</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./ChildComponent.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">ChildComponent</span> <span class="p">},</span>
+  <span class="nx">beforeMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">parent component beforeMount hook</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">parent component mounted hook</span><span class="dl">'</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>출력 결과를 확인하면 아래와 같이 텍스트 보간에 의하여 <code class="language-plaintext highlighter-rouge">hello, world!</code>라는 텍스트가 출력됩니다.</p>
-
-<h6 id="출력-결과-1">출력 결과</h6>
-<p><img src="/assets/images/vue/img020.png" alt="img20" style="margin-top:-1.5em" /></p>
-
-<p>message를 변경하면 바인딩된 텍스트 메시지도 변경되어야 하지만, v-once 디렉티브의 경우 처음 컴파일된 메시지 상태가 그대로 남습니다.</p>
+<h6 id="childcomponentjs">ChildComponent.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;div&gt;child component&lt;/div&gt;`</span><span class="p">,</span>
+  <span class="nx">beforeMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">child component beforeMount hook</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">child component mounted hook</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <h6 id="출력-결과-2">출력 결과</h6>
-<p><img src="/assets/images/vue/img021.gif" alt="img21" style="margin-top:-1.5em" /></p>
+<p><img src="/assets/images/vue/img049.png" alt="img49" style="margin-top:-1.5em" /></p>
 
-<h1 id="v-cloak">v-cloak</h1>
+<h2 id="업데이트undating-단계">업데이트(Undating) 단계</h2>
 
-<p><code class="language-plaintext highlighter-rouge">v-cloak</code> 디렉티브는 컴파일 되기전 Mustache 태그를 감추기 위해 사용됩니다.</p>
+<p>DOM이 리렌더링되는 단계입니다. Vue 인스턴스의 데이터 모델이 변경되거나 View가 리렌더링 될 때 훅이 실행됩니다.</p>
 
-<p>아래와 같이 setTimeout 메소드를 통해 3초후 vue 객체를 생성하고 텍스트 보간을 하겠습니다.</p>
+<p>디버깅이나 프로파일링시 리렌더링 시기를 확인할 경우 사용하며, Vue 인스턴스의 데이터 변경을 확인할 때는 보통 computed나 watch 옵션을 사용합니다.</p>
+
+<h3 id="beforeupdate">beforeUpdate</h3>
+
+<p>컴포넌트의 데이터가 변경되어 가상 DOM이 패치되고 View가 렌더링 되기전에 실행되는 훅입니다.</p>
+
+<p>컴포넌트가 리렌더링 되기 전에 반응형 데이터의 신규 상태를 확인할 경우 사용합니다.</p>
+
+<h3 id="updated">updated</h3>
+
+<p>View가 렌더링된 이후 실행되는 훅입니다.</p>
+
+<p>mounted와 마찬가지로 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">부모 컴포넌트의 beforeUpdate</code> -&gt; <code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">자식 컴포넌트의 beforeUpdate</code> -&gt; <code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">자식 컴포넌트의 updated</code> -&gt; <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">부모 컴포넌트의 updated</code> 순서로 훅이 실행됩니다.</p>
 
 <h6 id="indexhtml-2">index.html</h6>
 <div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
 <span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
 <span class="nt">&lt;head&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>{{ message }}<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<h6 id="mainjs-2">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-      <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hello, world!</span><span class="dl">'</span>
-    <span class="p">}</span>
-  <span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
-<span class="p">},</span> <span class="mi">3000</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>아래와 같이 출력 결과를 확인하면 vue 객체가 생성되어 컴파일 되기 전까지 Mustache 태그가 그대로 표시됩니다.</p>
-
-<h6 id="출력-결과-3">출력 결과</h6>
-<p><img src="/assets/images/vue/img022.gif" alt="img22" style="margin-top:-1.5em" /></p>
-
-<p>v-cloak 디렉티브는 vue 객체가 컴파일 된 이후 자동으로 제거되기 때문에 v-cloak 속성을 선택자로 하여 <code class="language-plaintext highlighter-rouge">display: none;</code> 스타일 속성을 추가하면 됩니다.</p>
-
-<h6 id="indexhtml-3">index.html</h6>
-<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;style&gt;</span>
-    <span class="o">[</span><span class="nt">v-cloak</span><span class="o">]</span> <span class="p">{</span> <span class="nl">display</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span> <span class="p">}</span>
-  <span class="nt">&lt;/style&gt;</span>
-  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span> <span class="na">v-cloak</span><span class="nt">&gt;</span>{{ message }}<span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<h6 id="출력-결과-4">출력 결과</h6>
-<p><img src="/assets/images/vue/img023.gif" alt="img23" style="margin-top:-1.5em" /></p>
-
-<h1 id="v-show">v-show</h1>
-
-<p><code class="language-plaintext highlighter-rouge">v-show</code> 디렉티브는 v-if 디렉티브와 유사하게 조건문에 대하여 DOM 렌더링 여부를 결정합니다.</p>
-
-<p>하지만 태그 자체를 생성하거나 제거하는 v-if와 달리 v-show는 display 스타일 속성을 통해 렌더링을 결정합니다.</p>
-
-<h6 id="indexhtml-4">index.html</h6>
-<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
 <span class="nt">&lt;/head&gt;</span>
 <span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;span</span> <span class="na">v-show=</span><span class="s">"isNotice"</span><span class="nt">&gt;</span>{{ notice }}<span class="nt">&lt;/span&gt;</span>
+    <span class="nt">&lt;child-component</span> <span class="na">:num=</span><span class="s">"num"</span> <span class="err">@</span><span class="na">click=</span><span class="s">"num++"</span> <span class="nt">/&gt;</span>
   <span class="nt">&lt;/div&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
 <h6 id="mainjs-3">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">notice</span><span class="p">:</span> <span class="dl">'</span><span class="s1">notice</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">isNotice</span><span class="p">:</span> <span class="kc">true</span>
-  <span class="p">}</span>
-<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
-</code></pre></div></div>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">ChildComponent</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./ChildComponent.js</span><span class="dl">"</span><span class="p">;</span>
 
-<p><code class="language-plaintext highlighter-rouge">isNotice</code>를 false로 변경하면 태그 자체가 사라지는 것이 아니라 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">display: none;</code> 스타일 속성이 추가되는 것을 확인할 수 있습니다.</p>
-
-<h6 id="출력-결과-5">출력 결과</h6>
-<p><img src="/assets/images/vue/img024.gif" alt="img24" style="margin-top:-1.5em" /></p>
-
-<p>태그 자체를 추가하거나 제거하는 것이 아니기 때문에 조건이 자주 변경된다면 v-if 디렉티브보다 v-show 디렉티브를 사용하는 것이 효율적입니다.</p>
-
-<h1 id="v-on">v-on</h1>
-
-<p><code class="language-plaintext highlighter-rouge">v-on</code> 디렉티브는 이벤트를 연결합니다. 아직 컴포넌트에 대해서 설명하지 않았지만 하위 컴포넌트에서 상위 컴포넌트로의 데이터 전달은 이벤트를 통해 가능합니다.</p>
-
-<p>이벤트는 <code class="language-plaintext highlighter-rouge">v-on:[이벤트 이름]="메소드명"</code> 형태로 연결합니다. 클릭이벤트를 연결해보겠습니다.</p>
-
-<h6 id="indexhtml-5">index.html</h6>
-<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div&gt;</span>{{ num }}<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">v-on:click=</span><span class="s">"increase"</span><span class="nt">&gt;</span>증가<span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;button</span> <span class="na">v-on:click=</span><span class="s">"decrease"</span><span class="nt">&gt;</span>감소<span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-</code></pre></div></div>
-
-<h6 id="mainjs-4">main.js</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">num</span><span class="p">:</span> <span class="mi">0</span>
-  <span class="p">},</span>
-  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nx">increase</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">num</span><span class="o">++</span>
-    <span class="p">},</span>
-    <span class="nx">decrease</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">num</span><span class="o">--</span>
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">ChildComponent</span> <span class="p">},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">num</span><span class="p">:</span> <span class="mi">0</span>
     <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">beforeUpdate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">parent component beforeUpdate hook</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="nx">updated</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">parent component updated hook</span><span class="dl">'</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>각각의 버튼에 대한 클릭 이벤트에 <code class="language-plaintext highlighter-rouge">num</code> 데이터를 1 증가시키는 메소드와 1 감소시키는 메소드를 연결했습니다.</p>
-
-<h6 id="출력-결과-6">출력 결과</h6>
-<p><img src="/assets/images/vue/img025.gif" alt="img25" style="margin-top:-1.5em" /></p>
-
-<p>v-on 디렉티브는 v-bind 디렉티브를 <code class="language-plaintext highlighter-rouge">:</code> 기호를 통해 선언하는 것처럼 <code class="language-plaintext highlighter-rouge">@</code> 기호를 통해 선언할 수도 있습니다.</p>
-
-<h6 id="indexhtml-6">index.html</h6>
-<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
-<span class="nt">&lt;head&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
-  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
-<span class="nt">&lt;/head&gt;</span>
-<span class="nt">&lt;body&gt;</span>
-  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;div&gt;</span>{{ num }}<span class="nt">&lt;/div&gt;</span>
-    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"increase"</span><span class="nt">&gt;</span>증가<span class="nt">&lt;/button&gt;</span>
-    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"decrease"</span><span class="nt">&gt;</span>감소<span class="nt">&lt;/button&gt;</span>
-  <span class="nt">&lt;/div&gt;</span>
-<span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
+<h6 id="childcomponentjs-1">ChildComponent.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`
+    &lt;div&gt;
+      &lt;button @click="$emit('click')"&gt;클릭&lt;/button&gt;
+      &lt;span&gt;{{ num }}&lt;/span&gt;
+    &lt;/div&gt;
+  `</span><span class="p">,</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">num</span><span class="dl">'</span><span class="p">],</span>
+  <span class="nx">beforeUpdate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">child component beforeUpdate hook</span><span class="dl">'</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="nx">updated</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">child component updated hook</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
+
+<p>자식 컴포넌트의 버튼을 클릭하면 부모 컴포넌트로 이벤트가 전달되고, 해당 이벤트는 num 데이터를 1 증가시킵니다. 자식 컴포넌트는 num 데이터를 props로 전달받아 템플릿에 바인딩합니다.</p>
+
+<p>클릭 버튼을 누르면 다음과 같은 순서로 훅이 실행되는 것을 확인할 수 있습니다.</p>
+
+<h6 id="출력-결과-3">출력 결과</h6>
+<p><img src="/assets/images/vue/img050.png" alt="img50" style="margin-top:-1.5em" /></p>
+
+<h2 id="소멸destruction-단계">소멸(Destruction) 단계</h2>
+
+<p>Vue 인스턴스가 DOM에서 해제되는 단계입니다. DOM으로부터 이벤트 리스너 또는 구독 상태를 제거하기위해 사용합니다.</p>
+
+<h3 id="beforedestroy">beforeDestroy</h3>
+
+<p>Vue 인스턴스가 DOM으로부터 바인딩이 해제되기 직전에 실행되는 훅입니다. Vue 인스턴스가 동작하고 있기 때문에 모든 속성에 접근할 수 있습니다.</p>
+
+<h3 id="destroyed">destroyed</h3>
+
+<p>Vue 인스턴스의 바인딩이 해제된 직후에 실행되는 훅입니다. 바인딩이 해제되었기 때문에 해당 인스턴스 속성으로 접근할 수 없습니다. 또한 하위 Vue 인스턴스 역시 해제됩니다.</p>
 
                 </div>
             </section>
@@ -515,11 +521,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/vue/vue-lifecycle">Vue.js: lifecycle</a></li>
-                                        
-                                    
                                   
                                 
                                   
@@ -541,6 +542,11 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                            <li><a href="/vue/vue-default-directive-2">Vue.js: directive (2)</a></li>
+                                        
                                     
                                   
                                 
@@ -647,16 +653,19 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
                 
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/vue/vue-option">
+            <a class="post-card-image-link" href="/vue/vue-component">
                 <div class="post-card-image" style="background-image: url(/assets/images/vue-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/vue/vue-option">
+            <a class="post-card-content-link" href="/vue/vue-component">
                 <header class="post-card-header">
                     
                         <div class="post-card-tags-container">
@@ -664,11 +673,11 @@ into the {body} of the default.hbs template -->
                         </div>
                     
 
-                    <h2 class="post-card-title">Vue.js: option</h2>
+                    <h2 class="post-card-title">Vue.js: component</h2>
                 </header>
                 <!-- <section class="post-card-excerpt">
                     
-                        <p>이번 글에서는 Vue 인스턴스의 옵션에 대해 알아보겠습니다.
+                        <p>컴포넌트(Components)
 
 </p>
                     
@@ -690,51 +699,6 @@ into the {body} of the default.hbs template -->
 
             
 
-            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
-            
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/vue/vue-default-directive-1">
-                <div class="post-card-image" style="background-image: url(/assets/images/vue-logo.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/vue/vue-default-directive-1">
-                <header class="post-card-header">
-                    
-                        <div class="post-card-tags-container">
-                            
-                        </div>
-                    
-
-                    <h2 class="post-card-title">Vue.js: directive (1)</h2>
-                </header>
-                <!-- <section class="post-card-excerpt">
-                    
-                        <p>디렉티브(Derectives)
-
-</p>
-                    
-                </section> -->
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      4 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
-
         </div>
     </div>
 </aside>
@@ -748,18 +712,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Vue.js: directive (2)</div>
+    <div class="floating-header-title">Vue.js: lifecycle</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Vue.js%3A+directive+%282%29&amp;url=vue/vue-default-directive-2"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Vue.js%3A+lifecycle&amp;url=vue/vue-lifecycle"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=vue/vue-default-directive-2"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=vue/vue-lifecycle"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
