@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-12-30T19:39:43+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">Vue.js: lifecycle</title><link href="https://huimang2.github.io/vue/vue-lifecycle" rel="alternate" type="text/html" title="Vue.js: lifecycle" /><published>2022-12-30T13:00:00+09:00</published><updated>2022-12-30T13:00:00+09:00</updated><id>https://huimang2.github.io/vue/vue-lifecycle</id><content type="html" xml:base="https://huimang2.github.io/vue/vue-lifecycle">&lt;h1 id=&quot;라이프사이클lifecycle&quot;&gt;라이프사이클(Lifecycle)&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2022-12-30T20:01:30+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">Vue.js: lifecycle</title><link href="https://huimang2.github.io/vue/vue-lifecycle" rel="alternate" type="text/html" title="Vue.js: lifecycle" /><published>2022-12-30T13:00:00+09:00</published><updated>2022-12-30T13:00:00+09:00</updated><id>https://huimang2.github.io/vue/vue-lifecycle</id><content type="html" xml:base="https://huimang2.github.io/vue/vue-lifecycle">&lt;h1 id=&quot;라이프사이클lifecycle&quot;&gt;라이프사이클(Lifecycle)&lt;/h1&gt;
 
 &lt;p&gt;Vue 인스턴스의 라이프사이클은 다음과 같습니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/vue/img045.png&quot; alt=&quot;img45&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;크기 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다.&lt;/p&gt;
+&lt;p&gt;크게 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다.&lt;/p&gt;
 
 &lt;h2 id=&quot;생성creation-단계&quot;&gt;생성(Creation) 단계&lt;/h2&gt;
 

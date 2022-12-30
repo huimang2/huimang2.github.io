@@ -58,7 +58,7 @@
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Vue.js: lifecycle" />
-    <meta property="og:description" content="라이프사이클(Lifecycle) Vue 인스턴스의 라이프사이클은 다음과 같습니다. 크기 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다. 생성(Creation) 단계 Vue 인스턴스가 생성될 때 제일 먼저 실행되는 단계입니다. 컴포넌트가 DOM에 바인딩 되기 전에 수행하며, 서버 렌더링 중에도 실행됩니다. 아직 컴포넌트가 DOM에 바인딩 되지 않았기" />
+    <meta property="og:description" content="라이프사이클(Lifecycle) Vue 인스턴스의 라이프사이클은 다음과 같습니다. 크게 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다. 생성(Creation) 단계 Vue 인스턴스가 생성될 때 제일 먼저 실행되는 단계입니다. 컴포넌트가 DOM에 바인딩 되기 전에 수행하며, 서버 렌더링 중에도 실행됩니다. 아직 컴포넌트가 DOM에 바인딩 되지 않았기" />
     <meta property="og:url" content="https://huimang2.github.io/vue/vue-lifecycle" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/vue-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -68,7 +68,7 @@
     <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Vue.js: lifecycle" />
-    <meta name="twitter:description" content="라이프사이클(Lifecycle) Vue 인스턴스의 라이프사이클은 다음과 같습니다. 크기 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다. 생성(Creation) 단계 Vue 인스턴스가 생성될 때 제일 먼저 실행되는 단계입니다. 컴포넌트가 DOM에 바인딩 되기 전에 수행하며, 서버 렌더링 중에도 실행됩니다. 아직 컴포넌트가 DOM에 바인딩 되지 않았기" />
+    <meta name="twitter:description" content="라이프사이클(Lifecycle) Vue 인스턴스의 라이프사이클은 다음과 같습니다. 크게 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다. 생성(Creation) 단계 Vue 인스턴스가 생성될 때 제일 먼저 실행되는 단계입니다. 컴포넌트가 DOM에 바인딩 되기 전에 수행하며, 서버 렌더링 중에도 실행됩니다. 아직 컴포넌트가 DOM에 바인딩 되지 않았기" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/vue-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -100,7 +100,7 @@
         "@type": "WebPage",
         "@id": "https://huimang2.github.io/vue/vue-lifecycle"
     },
-    "description": "라이프사이클(Lifecycle) Vue 인스턴스의 라이프사이클은 다음과 같습니다. 크기 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다. 생성(Creation) 단계 Vue 인스턴스가 생성될 때 제일 먼저 실행되는 단계입니다. 컴포넌트가 DOM에 바인딩 되기 전에 수행하며, 서버 렌더링 중에도 실행됩니다. 아직 컴포넌트가 DOM에 바인딩 되지 않았기"
+    "description": "라이프사이클(Lifecycle) Vue 인스턴스의 라이프사이클은 다음과 같습니다. 크게 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다. 생성(Creation) 단계 Vue 인스턴스가 생성될 때 제일 먼저 실행되는 단계입니다. 컴포넌트가 DOM에 바인딩 되기 전에 수행하며, 서버 렌더링 중에도 실행됩니다. 아직 컴포넌트가 DOM에 바인딩 되지 않았기"
 }
     </script>
 
@@ -213,7 +213,7 @@ into the {body} of the default.hbs template -->
 
 <p><img src="/assets/images/vue/img045.png" alt="img45" style="margin-top:-1.5em" /></p>
 
-<p>크기 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다.</p>
+<p>크게 생성(Creation), 마운트(Mounting), 업데이트(Updating), 소멸(Destruction) 4가지 단계를 거치게 되며, Vue 인스턴스는 각각의 단계에서 훅(Hook)을 위한 API를 제공하고 있습니다.</p>
 
 <h2 id="생성creation-단계">생성(Creation) 단계</h2>
 
