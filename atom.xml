@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>Oh My Zsh</title>
+        
+          <description>&lt;p&gt;이번 글에서는 우분투에 zsh Configuration 프레임워크인 Oh My Zsh를 설치해보도록 하겠습니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 07 Jan 2023 18:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/oh-my-zsh</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/oh-my-zsh</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Vue.js: lifecycle</title>
         
           <description>&lt;h1 id=&quot;라이프사이클lifecycle&quot;&gt;라이프사이클(Lifecycle)&lt;/h1&gt;
