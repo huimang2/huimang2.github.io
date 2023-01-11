@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>Vue.js: Vuex</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/vue/vuex" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Vue.js: Vuex" />
+    <meta property="og:description" content="Vuex란? Vuex는 Vue로 작성된 어플리케이션의 상태를 통합적으로 관리할 수 있도록 도와주는 라이브러리입니다. 어플리케이션의 규모가 커지면 컴포넌트가 많아지고, 각 컴포넌트의 상태는 분산됩니다. 컴포넌트가 많아질 수록 각각의 상태에 대한 상호작용이 어려워지는데, Vuex는 분산된 상태를 하나의 저장소에 모아 복잡한 상호작용을 단순화 할 수 있습니다. Flux 패턴 Flux는 기존의 MVC 패턴의 문제점을 해결하기 위해" />
+    <meta property="og:url" content="https://huimang2.github.io/vue/vuex" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/vue-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2023-01-11T20:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-01-11T20:00:00+09:00" />
+    <meta property="article:tag" content="Javascript" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vue.js: Vuex" />
+    <meta name="twitter:description" content="Vuex란? Vuex는 Vue로 작성된 어플리케이션의 상태를 통합적으로 관리할 수 있도록 도와주는 라이브러리입니다. 어플리케이션의 규모가 커지면 컴포넌트가 많아지고, 각 컴포넌트의 상태는 분산됩니다. 컴포넌트가 많아질 수록 각각의 상태에 대한 상호작용이 어려워지는데, Vuex는 분산된 상태를 하나의 저장소에 모아 복잡한 상호작용을 단순화 할 수 있습니다. Flux 패턴 Flux는 기존의 MVC 패턴의 문제점을 해결하기 위해" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/vue-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Javascript" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/vue/vuex",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/vue-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/vue/vuex"
+    },
+    "description": "Vuex란? Vuex는 Vue로 작성된 어플리케이션의 상태를 통합적으로 관리할 수 있도록 도와주는 라이브러리입니다. 어플리케이션의 규모가 커지면 컴포넌트가 많아지고, 각 컴포넌트의 상태는 분산됩니다. 컴포넌트가 많아질 수록 각각의 상태에 대한 상호작용이 어려워지는데, Vuex는 분산된 상태를 하나의 저장소에 모아 복잡한 상호작용을 단순화 할 수 있습니다. Flux 패턴 Flux는 기존의 MVC 패턴의 문제점을 해결하기 위해"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="Vue.js: Vuex" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-javascript tag-vue post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="11 January 2023">11 January 2023</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/javascript/'>#JAVASCRIPT</a>,&nbsp;
+                                
+                            
+                        
+                            
+                                
+                                <a href='/tag/vue/'>#VUE.JS</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">Vue.js: Vuex</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/vue-logo.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#vuex란"><span>Vuex란?</span></a></li><li><a href="#flux-패턴"><span>Flux 패턴</span></a><ul><li><a href="#액션action"><span>액션(Action)</span></a></li><li><a href="#디스패처dispatcher"><span>디스패처(Dispatcher)</span></a></li><li><a href="#스토어store"><span>스토어(Store)</span></a></li><li><a href="#뷰view"><span>뷰(View)</span></a></li></ul></li><li><a href="#vuex"><span>Vuex</span></a><ul><li><a href="#상태state"><span>상태(State)</span></a></li><li><a href="#게터getters"><span>게터(Getters)</span></a></li><li><a href="#변이mutation"><span>변이(Mutation)</span></a></li><li><a href="#액션actions"><span>액션(Actions)</span></a></li></ul></li></ul>
+
+                    </div>
+                    <h1 id="vuex란">Vuex란?</h1>
+
+<p>Vuex는 Vue로 작성된 어플리케이션의 상태를 통합적으로 관리할 수 있도록 도와주는 라이브러리입니다.</p>
+
+<p>어플리케이션의 규모가 커지면 컴포넌트가 많아지고, 각 컴포넌트의 상태는 분산됩니다. 컴포넌트가 많아질 수록 각각의 상태에 대한 상호작용이 어려워지는데, Vuex는 분산된 상태를 하나의 저장소에 모아 복잡한 상호작용을 단순화 할 수 있습니다.</p>
+
+<h1 id="flux-패턴">Flux 패턴</h1>
+
+<p><code class="language-plaintext highlighter-rouge">Flux</code>는 기존의 MVC 패턴의 문제점을 해결하기 위해 페이스북에서 고안한 아키텍처입니다.</p>
+
+<p>MVC 패턴의 <code class="language-plaintext highlighter-rouge">컨트롤러(Controller)</code>는 모델(Model)의 데이터를 조회하거나 업데이트하는 역할을 하며, <code class="language-plaintext highlighter-rouge">모델(Model)</code>의 변화는 뷰(View)에 반영됩니다. 또한 사용자가 <code class="language-plaintext highlighter-rouge">뷰(View)</code>를 통해 데이터를 입력하면, 모델(Model)에 영향을 주면서 데이터를 관리합니다.</p>
+
+<h6 id="mvc-패턴의-데이터-흐름">MVC 패턴의 데이터 흐름</h6>
+<p><img src="/assets/images/vue/img051.png" alt="img51" style="margin-top:-1.5em" /></p>
+
+<p>MVC 패턴을 사용함으로써 개발자들은 조금 더 확장이 유연하고 유지 보수하기에 용이한 어플리케이션을 작성할 수 있습니다.</p>
+
+<p>그러나 MVC 패턴의 문제 중 하나는 하나의 컨트롤러가 여러 개의 모델이나 뷰를 컨트롤러를 제어할 수 있다는 점입니다. 페이스북과 같은 대규모 어플리케이션들이 등장하게 되면서 어플리케이션의 내부 구조가 복잡하게 되었습니다.</p>
+
+<h6 id="mvc-패턴의-복잡성">MVC 패턴의 복잡성</h6>
+<p><img src="/assets/images/vue/img052.png" alt="img52" style="margin-top:-1.5em" /></p>
+
+<p>이를 해결하고자 페이스북 개발팀은 Flux 아키텍처를 개발했습니다. Flux 패턴의 경우 MVC 패턴과 달리 데이터 흐름이 양방향이 아닌 단방향으로 흐릅니다.</p>
+
+<h6 id="flux-패턴의-데이터-흐름">Flux 패턴의 데이터 흐름</h6>
+<p><img src="/assets/images/vue/img053.png" alt="img53" style="margin-top:-1.5em" /></p>
+
+<p>Flux 패턴에서 데이터는 언제나 <code class="language-plaintext highlighter-rouge">액션 -&gt; 디스패처 -&gt; 스토어 -&gt; 뷰</code>의 순서로 흐르기 때문에 뷰에서 사용자 액션에 의하여 데이터가 업데이트 된다면 액션부터 다시 시작하여 디스패처를 통해 스토어에 있는 데이터를 업데이트한 후 뷰에 반영합니다.</p>
+
+<p>이러한 단방향 데이터의 흐름은 데이터의 상태를 예측하기 쉽게 만들어 디버깅을 용이하게 함으로써 유지보수를 용이하게 합니다.</p>
+
+<h2 id="액션action">액션(Action)</h2>
+
+<p>스토어(Store)를 변경하기 위해서는 디스패처(Dispatcher)를 통한 업데이트가 이루어져야 하는데, 이때 디스패처를 실행시키는 인수 객체가 <code class="language-plaintext highlighter-rouge">액션(Action)</code>입니다.</p>
+
+<p>액션은 <code class="language-plaintext highlighter-rouge">타입(type)</code>과 <code class="language-plaintext highlighter-rouge">페이로드(payload)</code>로 이루어진 단순한 객체입니다.</p>
+
+<h6 id="액션action-1">액션(Action)</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="nl">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">INCREASE_NUM</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">payload</span><span class="p">:</span> <span class="p">{</span> <span class="nl">num</span><span class="p">:</span> <span class="mi">1</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>액션의 타입은 개발자가 직정 정의한 상수입니다. 이러한 액션은 액션 생성자(Action Creator)를 통해 생성됩니다.</p>
+
+<h2 id="디스패처dispatcher">디스패처(Dispatcher)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">디스패처(Dispatcher)</code>는 Flux의 모든 데이터 흐름을 관리하는 역할을 합니다. 액션에 대한 콜백 함수를 제공하며, 액션이 발생하면 디스패처의 콜백 함수를 통해 액션의 메시지를 전달받습니다.</p>
+
+<h2 id="스토어store">스토어(Store)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">스토어(Store)</code>는 어플리케이션의 모든 상태와 로직을 담고 있으며, MVC 패턴의 모델(Model)과 같은 역할을 합니다.</p>
+
+<p>스토어의 상태를 변경하기 위해서는 반드시 액션을 생성한 후 디스패처를 통해 스토어 상태 변경을 요청해야 합니다.</p>
+
+<p>콜백 함수를 통해 스토어 상태가 변경되면 이벤트를 통해 뷰(View)에 새로운 상태를 전달하여 뷰가 스스로 업데이트 하도록 합니다.</p>
+
+<h2 id="뷰view">뷰(View)</h2>
+
+<p>Flux 패턴의 <code class="language-plaintext highlighter-rouge">뷰(View)</code>는 MVC 패턴의 뷰와는 다르게 단순히 화면을 렌더링하는 것 이외에도 컨트롤러(Controller) 역할을 하기도 합니다.</p>
+
+<p>최상위 뷰는 스토어의 상태를 가져와 자식 뷰에 분배하는 역할을 하기 때문에 <code class="language-plaintext highlighter-rouge">컨트롤러-뷰(Controller-View)</code>라고도 부릅니다.</p>
+
+<p>자식 뷰는 직접 스토어의 데이터를 받아오는 대신 부모 뷰로부터 Props를 통해 데이터를 전달받습니다.</p>
+
+<h1 id="vuex">Vuex</h1>
+
+<p><code class="language-plaintext highlighter-rouge">Vuex</code>는 Flux 아키텍처에 영감을 받아 제작된 상태관리 라이브러리입니다. 많은 부분에서 Flux 아키텍처의 메커니즘을 차용하고 있습니다.</p>
+
+<h6 id="vuex의-데이터-흐름">Vuex의 데이터 흐름</h6>
+<p><img src="/assets/images/vue/img054.png" alt="img54" style="margin-top:-1.5em" /></p>
+
+<p>Vue에서 Vuex를 사용하려면 <code class="language-plaintext highlighter-rouge">Vue.use(Vuex)</code>를 입력하여 Vuex의 사용을 선언해야합니다.</p>
+
+<h6 id="vuex-사용-선언">Vuex 사용 선언</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">Vue</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Vuex</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vuex</span><span class="dl">'</span>
+
+<span class="nx">Vue</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">Vuex</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>하지만 CDN을 통해 Vuex를 import하여 모듈방식으로 개발하는 경우 Vuex를 로드하면 자동으로 Vuex를 사용하도록 설정되기 때문에 생략가능합니다. Vue 2버전의 경우 Vuex 3버전을 로드합니다.</p>
+
+<p>Vuex의 사용을 선언하고 Vue 인스턴스의 옵션으로 store를 넣어주면 해당 컴포넌트에서 스토어를 사용할 수 있습니다.</p>
+
+<h6 id="indexhtml">index.html</h6>
+<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vuex@3/dist/vuex.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h6 id="mainjs">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="storejs">store.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>이제 스토어의 옵션을 알아보겠습니다.</p>
+
+<h2 id="상태state">상태(State)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">상태(State)</code>는 어플리케이션에서 공통으로 관리할 상태, 즉 모델(Model)을 의미합니다. Vuex는 단일 상태 트리를 사용하며, 이 단일 객체는 원본 소스의 역할을 합니다. 이는 각 어플리케이션마다 하나의 저장소만 갖게 된다는 것을 의미합니다.</p>
+
+<p>컴포넌트에서 스토어의 접근은 <code class="language-plaintext highlighter-rouge">$store</code> 프로퍼티를 통해 접근할 수 있으며, 컴포넌트에서 스토어의 상태에 접근하려면 Vue 인스턴스의 <code class="language-plaintext highlighter-rouge">computed</code>를 통해 접근합니다.</p>
+
+<h6 id="indexhtml-1">index.html</h6>
+<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vuex@3/dist/vuex.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>{{ num }}<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h6 id="mainjs-1">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">num</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">num</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="storejs-1">store.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
+  <span class="na">state</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">num</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h6 id="출력-결과">출력 결과</h6>
+<p><img src="/assets/images/vue/img055.png" alt="img55" style="margin-top:-1.5em" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">this.$store.state</code>를 통해 상태에 접근하면 여러 상태에 접근할 경우 반복적이고 장황해질 수 있는데, 이때 Vuex에서 제공하는 <code class="language-plaintext highlighter-rouge">mapState</code> 헬퍼 함수를 사용하면 간결하게 접근할 수 있습니다.</p>
+
+<h6 id="mainjs-2">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">mapState</span><span class="p">([</span><span class="dl">'</span><span class="s1">num</span><span class="dl">'</span><span class="p">])</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>헬퍼 함수 뿐만 아니라 다른 computed를 함께 사용하고 싶다면 <code class="language-plaintext highlighter-rouge">객체 전개 연산자(Object Spread Operator)</code>를 사용하면 됩니다.</p>
+
+<h6 id="mainjs-3">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span><span class="nx">Vuex</span><span class="p">.</span><span class="nx">mapState</span><span class="p">([</span><span class="dl">'</span><span class="s1">num</span><span class="dl">'</span><span class="p">])</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="게터getters">게터(Getters)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">게터(Getters)</code>는 스토어 내에서 Vue의 computed와 같은 역할을 합니다. 컴포넌트에서 스토어 상태를 기반으로 상태를 계산하는 경우 다음과 같이 작성할 수 있습니다.</p>
+
+<h6 id="mainjs-4">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">double</span><span class="p">:</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">num</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>double 데이터는 스토어에 있는 num 데이터에 2를 곱한 값을 반환합니다. 간단한 식이기 때문에 문제없어 보이지만 만약 식이 복잡할 경우 해당 리턴값을 다른 컴포넌트에서 사용한다면 동일한 식을 중복해서 작성해야 합니다.</p>
+
+<p>게터를 사용한다면 중복된 식을 각각의 컴포넌트에 작성할 필요없이 스토어로부터 캐시된 데이터값을 가져올 수 있게 됩니다.</p>
+
+<h6 id="indexhtml-2">index.html</h6>
+<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vuex@3/dist/vuex.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>{{ double }}<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h6 id="mainjs-5">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">double</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">getters</span><span class="p">.</span><span class="nx">double</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="storejs-2">store.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
+  <span class="na">state</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">num</span><span class="p">:</span> <span class="mi">2</span>
+  <span class="p">},</span>
+  <span class="na">getters</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">double</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">_getters</span><span class="p">){</span>
+      <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="nx">state</span><span class="p">.</span><span class="nx">num</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h6 id="출력-결과-1">출력 결과</h6>
+<p><img src="/assets/images/vue/img056.png" alt="img56" style="margin-top:-1.5em" /></p>
+
+<p>getters에 선언된 함수는 1번째 매개변수로 스토어의 상태를, 2번째 매개변수로 getters 속성 자체를 전달받습니다.</p>
+
+<p>상태와 마찬가지로 Vuex의 <code class="language-plaintext highlighter-rouge">mapGetters</code> 헬퍼 함수를 통해 간결한 접근을 할 수도 있습니다.</p>
+
+<h6 id="mainjs-6">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">mapGetters</span><span class="p">([</span><span class="dl">'</span><span class="s1">double</span><span class="dl">'</span><span class="p">])</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>역시 헬퍼 함수 뿐만 아니라 다른 computed를 함께 사용하고 싶다면 <code class="language-plaintext highlighter-rouge">객체 전개 연산자(Object Spread Operator)</code>를 사용하면 됩니다.</p>
+
+<h6 id="mainjs-7">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span><span class="nx">Vuex</span><span class="p">.</span><span class="nx">mapGetters</span><span class="p">([</span><span class="dl">'</span><span class="s1">double</span><span class="dl">'</span><span class="p">])</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="변이mutation">변이(Mutation)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">변이(Mutation)</code>는 스토어 상태를 변경할 수 있는 유일한 방법입니다. 변이 함수의 이름은 액션의 타입과 동일하며, 스토어 상태를 변경하는 로직을 가집니다.</p>
+
+<h6 id="indexhtml-3">index.html</h6>
+<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vuex@3/dist/vuex.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>{{ num }}<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"increment"</span><span class="nt">&gt;</span>증가<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h6 id="mainjs-8">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">mapState</span><span class="p">([</span><span class="dl">'</span><span class="s1">num</span><span class="dl">'</span><span class="p">]),</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">commit</span><span class="p">(</span><span class="dl">'</span><span class="s1">INCREMENT</span><span class="dl">'</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="storejs-3">store.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
+  <span class="na">state</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">num</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="na">mutations</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">INCREMENT</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">state</span><span class="p">.</span><span class="nx">num</span> <span class="o">+=</span> <span class="nx">payload</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h6 id="출력-결과-2">출력 결과</h6>
+<p><img src="/assets/images/vue/img057.gif" alt="img57" style="margin-top:-1.5em" /></p>
+
+<p>mutations에 선언된 함수는 1번째 매개변수로 스토어의 상태를, 2번째 매개변수로 payload를 전달받습니다.</p>
+
+<p>컴포넌트에서 변이에 접근하려면 <code class="language-plaintext highlighter-rouge">this.$store.mutations</code>와 같은 직접적인 접근은 불가하며, 스토어의 <code class="language-plaintext highlighter-rouge">commit</code> 메소드를 실행시켜야 합니다. 1번째 매개변수로 변이 함수 이름(액션 타입)을, 2번째 매개변수로 payload를 전달합니다.</p>
+
+<p>변이 역시 Vuex에서 <code class="language-plaintext highlighter-rouge">mapMutations</code> 헬퍼 함수를 제공하고 있으므로 다음과 같이 작성할 수 있습니다.</p>
+
+<h6 id="mainjs-9">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">mapState</span><span class="p">([</span><span class="dl">'</span><span class="s1">num</span><span class="dl">'</span><span class="p">]),</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span><span class="nx">Vuex</span><span class="p">.</span><span class="nx">mapMutations</span><span class="p">([</span><span class="dl">'</span><span class="s1">INCREMENT</span><span class="dl">'</span><span class="p">]),</span>
+    <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">INCREMENT</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="액션actions">액션(Actions)</h2>
+
+<p>변이 안에서 중요한 사실은 반드시 <code class="language-plaintext highlighter-rouge">동기적(Synchronized)</code>이어야 한다는 것입니다. Vue의 공식 디버그 툴인 <code class="language-plaintext highlighter-rouge">Vue Devtools</code>는 UI를 통해 변이를 추적하여 스토어의 상태를 확인할 수 있는데, 이때 변이의 추적은 commit 메소드의 호출을 기준으로 합니다.</p>
+
+<p>만약 변이를 비동기(Asynchronized) 함수로 작성한다면 commit 시점과 콜백 시점이 다르기 때문에 어플리케이션의 상태 추적을 힘들게 만들 수 있습니다.</p>
+
+<p>아래와 같이 INCREMENT 변이 함수에 setTimeout을 통해 비동기적으로 상태를 변경시켜 보겠습니다.</p>
+
+<h6 id="storejs-4">store.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
+  <span class="na">state</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">num</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="na">mutations</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">INCREMENT</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">state</span><span class="p">.</span><span class="nx">num</span> <span class="o">+=</span> <span class="nx">payload</span>
+      <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>출력 결과를 확인하면 Vue Devtools에서 스토어 상태를 제대로 반영하지 못하는 것을 확인할 수 있습니다.</p>
+
+<h6 id="출력-결과-3">출력 결과</h6>
+<p><img src="/assets/images/vue/img058.gif" alt="img58" style="margin-top:-1.5em" /></p>
+
+<p>이를 해결하기 위한 기능이 <code class="language-plaintext highlighter-rouge">액션(Actions)</code>입니다.</p>
+
+<p>액션 함수를 비동기로 작성하여 콜백 함수에서 commit를 통해 변이 함수를 호출하여 스토어 상태를 변경할 수 있습니다.</p>
+
+<h6 id="mainjs-10">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">mapState</span><span class="p">([</span><span class="dl">'</span><span class="s1">num</span><span class="dl">'</span><span class="p">]),</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="dl">'</span><span class="s1">increment</span><span class="dl">'</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="storejs-5">store.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="k">new</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
+  <span class="na">state</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">num</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="na">mutations</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">INCREMENT</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">state</span><span class="p">.</span><span class="nx">num</span> <span class="o">+=</span> <span class="nx">payload</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">actions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">increment</span> <span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">context</span><span class="p">.</span><span class="nx">commit</span><span class="p">(</span><span class="dl">'</span><span class="s1">INCREMENT</span><span class="dl">'</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span>
+      <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h6 id="출력-결과-4">출력 결과</h6>
+<p><img src="/assets/images/vue/img059.gif" alt="img59" style="margin-top:-1.5em" /></p>
+
+<p>actions에 선언된 함수는 1번째 매개변수로 스토어 context 자체를, 2번째 매개변수로 payload를 전달받습니다.</p>
+
+<p>컴포넌트에서 액션에 접근하려면 스토어의 <code class="language-plaintext highlighter-rouge">dispatch</code> 메소드를 실행시켜야 합니다. 1번째 매개변수로 액션 함수 이름을, 2번째 매개변수로 padyload를 전달합니다.</p>
+
+<p>변이 역시 Vuex에서 <code class="language-plaintext highlighter-rouge">mapActions</code> 헬퍼 함수를 제공하고 있으므로 다음과 같이 작성할 수 있습니다.</p>
+
+<h6 id="indexhtml-4">index.html</h6>
+<div data-lang="HTML" class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"ko"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://cdn.jsdelivr.net/npm/vuex@3/dist/vuex.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">defer</span> <span class="na">type=</span><span class="s">"module"</span> <span class="na">src=</span><span class="s">"./main.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;title&gt;</span>Vue 연습<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"app"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div&gt;</span>{{ num }}<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"incrementHandler"</span><span class="nt">&gt;</span>증가<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre></div></div>
+
+<h6 id="mainjs-11">main.js</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">new</span> <span class="nx">Vue</span><span class="p">({</span>
+  <span class="nx">store</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">mapState</span><span class="p">([</span><span class="dl">'</span><span class="s1">num</span><span class="dl">'</span><span class="p">]),</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span><span class="nx">Vuex</span><span class="p">.</span><span class="nx">mapActions</span><span class="p">([</span><span class="dl">'</span><span class="s1">increment</span><span class="dl">'</span><span class="p">]),</span>
+    <span class="nx">incrementHandler</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">increment</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}).</span><span class="nx">$mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/vue/vue-lifecycle">Vue.js: lifecycle</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/vue/vue-component">Vue.js: component</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/vue/vue-option">Vue.js: option</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/javascript/">
+                                
+                                    See all 6 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/etc/oh-my-zsh">
+                <div class="post-card-image" style="background-image: url(/assets/images/oh-my-zsh-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/etc/oh-my-zsh">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">Oh My Zsh</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>이번 글에서는 우분투에 zsh Configuration 프레임워크인 Oh My Zsh를 설치해보도록 하겠습니다.
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      3 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">Vue.js: Vuex</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Vue.js%3A+Vuex&amp;url=vue/vuex"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=vue/vuex"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2023</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
