@@ -417,7 +417,7 @@ into the {body} of the default.hbs template -->
 
 <h6 id="boarddetailjs">BoardDetail.js</h6>
 <div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;div&gt;documentId: &lt;/div&gt;`</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;div&gt;documentId: {{ $route.params.documentId }}&lt;/div&gt;`</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -440,7 +440,7 @@ into the {body} of the default.hbs template -->
 
 <h6 id="boarddetailjs-1">BoardDetail.js</h6>
 <div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;div&gt;documentId: &lt;/div&gt;`</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;div&gt;documentId: {{ $route.params.documentId }}&lt;/div&gt;`</span><span class="p">,</span>
   <span class="na">watch</span><span class="p">:</span> <span class="p">{</span>
     <span class="dl">'</span><span class="s1">$route</span><span class="dl">'</span> <span class="p">(</span><span class="nx">to</span><span class="p">,</span> <span class="k">from</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">old path: </span><span class="dl">"</span><span class="p">,</span> <span class="k">from</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">documentId</span><span class="p">);</span>
@@ -738,7 +738,7 @@ into the {body} of the default.hbs template -->
 
 <h6 id="boarddetailjs-4">BoardDetail.js</h6>
 <div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;div&gt;documentId: &lt;/div&gt;`</span><span class="p">,</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s2">`&lt;div&gt;documentId: {{ documentId }}&lt;/div&gt;`</span><span class="p">,</span>
   <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">documentId</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
@@ -870,6 +870,15 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
+                                        
+                                        
+                                            <li><a href="/javascript/javascript">자바스크립트 기초</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
                                   
                                 
                                   
@@ -895,8 +904,6 @@ into the {body} of the default.hbs template -->
                                   
                                     
                                         
-                                        
-                                            <li><a href="/vue/vue-component">Vue.js: component</a></li>
                                         
                                     
                                   
@@ -1008,7 +1015,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/javascript/">
                                 
-                                    See all 7 posts  →
+                                    See all 8 posts  →
                                 
                             </a>
                         </footer>
@@ -1017,6 +1024,48 @@ into the {body} of the default.hbs template -->
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/javascript/javascript">
+                <div class="post-card-image" style="background-image: url(/assets/images/javascript-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/javascript/javascript">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">자바스크립트 기초</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>자바스크립트란?
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      2 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
             
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
