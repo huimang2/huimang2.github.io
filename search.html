@@ -193,15 +193,6 @@ into the {body} of the default.hbs template -->
     }
     ,
     
-    "javascript-javascript-prototype": {
-        "title": "자바스크립트: 프로토타입",
-            "author": "rubisco",
-            "category": "",
-            "content": "객체(Object)자바스크립트는 객체 기반 스크립트 언어입니다. 객체(Object)는 데이터와 데이터의 동작을 모두 포함하고 있는 개념으로, 자신의 정보를 가지고 있는 독립적인 주체입니다. 자바스크립트에서 원시타입을 제외한 모든 값은 객체로 구성되어 있습니다.자바스크립트의 객체는 키(key)와 값(value)로 구성된 프로퍼티(Property)의 집합입니다. 프로퍼티의 값으로는 일급객체인 함수를 포함하여 모든 값을 사용할 수 있습니다. 프로퍼티의 값이 함수인 경우, 일반 함수와 구분하기위해 메소드(method)라고 부릅니다.프로토타입자바(JAVA)와 같은 클래스 기반 객체 지향 언어의 경우 클래스를 정의하고 new 연산자를 통해 인스턴스를 생성하는 방식으로 객체를 생성합니다. 하지만 자바스크립트는 클래스라는 개념이 없으며 객체의 원형인 프로토타입을 복사하여 새로운 객체를 생성합니다.자바스크립트에서 함수를 정의하고 파싱단계에 들어가면 함수의 멤버로 prototype 속성을 가지며, 이 속성은 함수 이름으로 생성된 프로토타입 객체를 참조합니다.함수 정의function User() {};프로토타입 객체는 constructor 속성을 가지며, 해당 속성은 함수를 참조합니다.객체의 내부 구조프로토타입 객체는 new 연산자를 통해 생성되는 모든 User 객체의 원형이 되는 객체입니다.객체 생성function User() {};const user1 = new User();const user2 = new User();위의 코드와 같이 new를 통해 User 객체를 생성한다면 해당 객체는 __proto__ 속성을 통해 User 함수의 프로토타입 객체를 참조하고 링크됩니다.프로토타입 객체 참조이러한 구조를 통해 프로토타입 객체에 메소드를 동적으로 추가해 줄 수 있습니다.메소드 추가function User(name) {  this.name = name;};User.prototype.printName = function() {  console.log(this.name);}const user1 = new User('루비스코');const user2 = new User('스팟');만약 User 프로토타입 객체에 동적으로 메소드를 추가한다면 user1 객체와 user2 객체에 해당 메소드가 없는 경우 __proto__ 프로퍼티를 통해 상위 객체에 해당 메소드가 있는지 탐색합니다.user1, user2 객체에는 printName이라는 메소드가 존재하지 않으므로 __proto__ 프로퍼티가 참조하는 User 프로토타입 객체에서 printName 메소드를 찾습니다.프로토타입 체인",
-        "url": "/javascript/javascript-prototype"
-    }
-    ,
-    
     "javascript-javascript-array": {
         "title": "자바스크립트: 배열 메소드",
             "author": "rubisco",
