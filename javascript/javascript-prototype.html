@@ -11,7 +11,7 @@
 
 
 
-    <title>자바스크립트 개요</title>
+    <title>자바스크립트: 프로토타입</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,24 +51,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/javascript/javascript" />
+    <link rel="canonical" href="https://huimang2.github.io/javascript/javascript-prototype" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="자바스크립트 개요" />
-    <meta property="og:description" content="자바스크립트란? 자바스크립트(Javascript)는 프로토타입 기반의 스크립트 언어입니다. 오늘날 HTML, CSS와 함께 웹을 구성하는 요소 중 하나이며, 모든 웹 브라우저에는 자바스크립트 인터프리터가 내장되어 있습니다. 자바스크립트는 1995년에 넷스케이프(Netscape)의 브랜든 아이크(Brendan Eich)가 10일만에 설계한 것으로 시작되었습니다. 처음에는 모카(Mocha)라는 이름으로 개발되었지만 4달 만에 라이브스크립트(LiveScript)로 개명한 후 다시 3달 후에 자바스크립트(JavaScript)로 이름을 변경하여 오늘날까지 이어지고 있습니다." />
-    <meta property="og:url" content="https://huimang2.github.io/javascript/javascript" />
+    <meta property="og:title" content="자바스크립트: 프로토타입" />
+    <meta property="og:description" content="객체(Object) 자바스크립트는 객체 기반 스크립트 언어입니다. 객체(Object)는 데이터와 데이터의 동작을 모두 포함하고 있는 개념으로, 자신의 정보를 가지고 있는 독립적인 주체입니다. 자바스크립트에서 원시타입을 제외한 모든 값은 객체로 구성되어 있습니다. 자바스크립트의 객체는 키(key)와 값(value)로 구성된 프로퍼티(Property)의 집합입니다. 프로퍼티의 값으로는 일급객체인 함수를 포함하여 모든 값을 사용할 수 있습니다. 프로퍼티의 값이 함수인 경우, 일반" />
+    <meta property="og:url" content="https://huimang2.github.io/javascript/javascript-prototype" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/javascript-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2023-01-26T20:00:00+09:00" />
-    <meta property="article:modified_time" content="2023-01-26T20:00:00+09:00" />
+    <meta property="article:published_time" content="2023-01-29T20:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-01-29T20:00:00+09:00" />
     <meta property="article:tag" content="Javascript" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="자바스크립트 개요" />
-    <meta name="twitter:description" content="자바스크립트란? 자바스크립트(Javascript)는 프로토타입 기반의 스크립트 언어입니다. 오늘날 HTML, CSS와 함께 웹을 구성하는 요소 중 하나이며, 모든 웹 브라우저에는 자바스크립트 인터프리터가 내장되어 있습니다. 자바스크립트는 1995년에 넷스케이프(Netscape)의 브랜든 아이크(Brendan Eich)가 10일만에 설계한 것으로 시작되었습니다. 처음에는 모카(Mocha)라는 이름으로 개발되었지만 4달 만에 라이브스크립트(LiveScript)로 개명한 후 다시 3달 후에 자바스크립트(JavaScript)로 이름을 변경하여 오늘날까지 이어지고 있습니다." />
+    <meta name="twitter:title" content="자바스크립트: 프로토타입" />
+    <meta name="twitter:description" content="객체(Object) 자바스크립트는 객체 기반 스크립트 언어입니다. 객체(Object)는 데이터와 데이터의 동작을 모두 포함하고 있는 개념으로, 자신의 정보를 가지고 있는 독립적인 주체입니다. 자바스크립트에서 원시타입을 제외한 모든 값은 객체로 구성되어 있습니다. 자바스크립트의 객체는 키(key)와 값(value)로 구성된 프로퍼티(Property)의 집합입니다. 프로퍼티의 값으로는 일급객체인 함수를 포함하여 모든 값을 사용할 수 있습니다. 프로퍼티의 값이 함수인 경우, 일반" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/javascript-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -89,7 +89,7 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/javascript/javascript",
+    "url": "https://huimang2.github.io/javascript/javascript-prototype",
     "image": {
         "@type": "ImageObject",
         "url": "https://huimang2.github.io/assets/images/javascript-logo.png",
@@ -98,9 +98,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/javascript/javascript"
+        "@id": "https://huimang2.github.io/javascript/javascript-prototype"
     },
-    "description": "자바스크립트란? 자바스크립트(Javascript)는 프로토타입 기반의 스크립트 언어입니다. 오늘날 HTML, CSS와 함께 웹을 구성하는 요소 중 하나이며, 모든 웹 브라우저에는 자바스크립트 인터프리터가 내장되어 있습니다. 자바스크립트는 1995년에 넷스케이프(Netscape)의 브랜든 아이크(Brendan Eich)가 10일만에 설계한 것으로 시작되었습니다. 처음에는 모카(Mocha)라는 이름으로 개발되었지만 4달 만에 라이브스크립트(LiveScript)로 개명한 후 다시 3달 후에 자바스크립트(JavaScript)로 이름을 변경하여 오늘날까지 이어지고 있습니다."
+    "description": "객체(Object) 자바스크립트는 객체 기반 스크립트 언어입니다. 객체(Object)는 데이터와 데이터의 동작을 모두 포함하고 있는 개념으로, 자신의 정보를 가지고 있는 독립적인 주체입니다. 자바스크립트에서 원시타입을 제외한 모든 값은 객체로 구성되어 있습니다. 자바스크립트의 객체는 키(key)와 값(value)로 구성된 프로퍼티(Property)의 집합입니다. 프로퍼티의 값으로는 일급객체인 함수를 포함하여 모든 값을 사용할 수 있습니다. 프로퍼티의 값이 함수인 경우, 일반"
 }
     </script>
 
@@ -113,7 +113,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="자바스크립트 개요" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="자바스크립트: 프로토타입" href="/feed.xml" />
 
 
     <!-- MathJax -->
@@ -175,7 +175,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="26 January 2023">26 January 2023</time>
+                    <time class="post-full-meta-date" datetime="29 January 2023">29 January 2023</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -187,7 +187,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">자바스크립트 개요</h1>
+                <h1 class="post-full-title">자바스크립트: 프로토타입</h1>
             </header>
 
             <!-- 
@@ -198,152 +198,65 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#자바스크립트란"><span>자바스크립트란?</span></a></li><li><a href="#ecmascript"><span>ECMAScript</span></a></li><li><a href="#ecmascript-6"><span>ECMAScript 6</span></a><ul><li><a href="#템플릿-리터럴"><span>템플릿 리터럴</span></a></li><li><a href="#화살표-함수"><span>화살표 함수</span></a></li><li><a href="#변수-선언"><span>변수 선언</span></a></li></ul></li></ul>
+                        <ul><li><a href="#객체object"><span>객체(Object)</span></a></li><li><a href="#프로토타입"><span>프로토타입</span></a></li></ul>
 
                     </div>
-                    <h1 id="자바스크립트란">자바스크립트란?</h1>
+                    <h1 id="객체object">객체(Object)</h1>
 
-<p><code class="language-plaintext highlighter-rouge">자바스크립트(Javascript)</code>는 프로토타입 기반의 스크립트 언어입니다. 오늘날 HTML, CSS와 함께 웹을 구성하는 요소 중 하나이며, 모든 웹 브라우저에는 자바스크립트 인터프리터가 내장되어 있습니다.</p>
+<p>자바스크립트는 객체 기반 스크립트 언어입니다. <code class="language-plaintext highlighter-rouge">객체(Object)</code>는 데이터와 데이터의 동작을 모두 포함하고 있는 개념으로, 자신의 정보를 가지고 있는 독립적인 주체입니다. 자바스크립트에서 원시타입을 제외한 모든 값은 객체로 구성되어 있습니다.</p>
 
-<p>자바스크립트는 1995년에 넷스케이프(Netscape)의 브랜든 아이크(Brendan Eich)가 10일만에 설계한 것으로 시작되었습니다. 처음에는 모카(Mocha)라는 이름으로 개발되었지만 4달 만에 라이브스크립트(LiveScript)로 개명한 후 다시 3달 후에 자바스크립트(JavaScript)로 이름을 변경하여 오늘날까지 이어지고 있습니다.</p>
+<p>자바스크립트의 객체는 <code class="language-plaintext highlighter-rouge">키(key)</code>와 <code class="language-plaintext highlighter-rouge">값(value)</code>로 구성된 <code class="language-plaintext highlighter-rouge">프로퍼티(Property)</code>의 집합입니다. 프로퍼티의 값으로는 일급객체인 함수를 포함하여 모든 값을 사용할 수 있습니다. 프로퍼티의 값이 함수인 경우, 일반 함수와 구분하기위해 <code class="language-plaintext highlighter-rouge">메소드(method)</code>라고 부릅니다.</p>
 
-<h1 id="ecmascript">ECMAScript</h1>
+<h1 id="프로토타입">프로토타입</h1>
 
-<p>자바스크립트가 개발된 이후 마이크로소프트(Microsoft)에서는 자바스크립트에 자사만의 문법을 넣어 <code class="language-plaintext highlighter-rouge">JScript</code>를 개발했습니다.</p>
+<p>자바(JAVA)와 같은 클래스 기반 객체 지향 언어의 경우 클래스를 정의하고 new 연산자를 통해 인스턴스를 생성하는 방식으로 객체를 생성합니다. 하지만 자바스크립트는 클래스라는 개념이 없으며 객체의 원형인 프로토타입을 복사하여 새로운 객체를 생성합니다.</p>
 
-<p>넷스케이프의 자바스크립트와 마이크로소프트의 JScript는 서로 호환되지 못하는 경우가 있어서 크로스 브라우징 문제를 일으켰습니다.</p>
+<p>자바스크립트에서 함수를 정의하고 파싱단계에 들어가면 함수의 멤버로 <code class="language-plaintext highlighter-rouge">prototype</code> 속성을 가지며, 이 속성은 함수 이름으로 생성된 프로토타입 객체를 참조합니다.</p>
 
-<p>이 문제를 해결하기 위해 넷스케이프는 표준화를 위한 기술 규격을 비영리 표준화기구인 ECMA 인터네셔널에 제출하였고, ECMA-262라는 이름으로 1997년 표준화가 시작되었습니다.</p>
-
-<p>초기에는 마이크로소프트의 비협조적인 태도로 표준화에 실패했지만, 2차 브라우저 전쟁에서 구글의 Chrome에게 패배하고 2009년 <code class="language-plaintext highlighter-rouge">ECMAScript 5</code>가 제정되면서 표준 문제가 다소 해결되었습니다.</p>
-
-<p>오늘날 구글 크롬(Chrome)의 V8 엔진, 모질라 파이어폭스(Firefox)의 SpiderMonkey 엔진, 마이크로소프트 에지(Edge)의 Chakra 엔진 등은 ECMAScript 표준을 따르고 있습니다.</p>
-
-<h1 id="ecmascript-6">ECMAScript 6</h1>
-
-<p>ECMAScript 6은 ECMA-262 표준의 제 6판입니다. ES6, ES2015, ECMAScript 2015는 모두 ECMAScript 6를 뜻합니다.</p>
-
-<p>ES6에서는 다양한 문법들이 추가되었습니다.</p>
-
-<h2 id="템플릿-리터럴">템플릿 리터럴</h2>
-
-<p>ES6에서는 템플릿 리터럴을 통해 문자열 표현이 간단해졌습니다. 작은 따옴표(‘)나 큰 따옴표(“) 대신 백틱(`)을 통해 문자열을 감싸 표현할 수 있습니다. 이때 플레이스 홀더(${변수})를 통해 백틱 내부에 문자열과 변수를 함께 표현할 수 있습니다.</p>
-
-<h6 id="es5">ES5</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">nickName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">루비스코</span><span class="dl">"</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">닉네임은 </span><span class="dl">"</span> <span class="o">+</span> <span class="nx">nickName</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">입니다.</span><span class="dl">"</span><span class="p">);</span>
+<h6 id="함수-정의">함수 정의</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">()</span> <span class="p">{};</span>
 </code></pre></div></div>
 
-<h6 id="es6">ES6</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">nickName</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">루비스코</span><span class="dl">"</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`닉네임은 </span><span class="p">${</span><span class="nx">nickName</span><span class="p">}</span><span class="s2">입니다.`</span><span class="p">);</span>
+<p>프로토타입 객체는 <code class="language-plaintext highlighter-rouge">constructor</code> 속성을 가지며, 해당 속성은 함수를 참조합니다.</p>
+
+<h6 id="객체의-내부-구조">객체의 내부 구조</h6>
+<p><img src="/assets/images/javascript/img010.png" alt="img010" style="margin-top:-1.5em" /></p>
+
+<p>프로토타입 객체는 new 연산자를 통해 생성되는 모든 User 객체의 원형이 되는 객체입니다.</p>
+
+<h6 id="객체-생성">객체 생성</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">()</span> <span class="p">{};</span>
+
+<span class="kd">const</span> <span class="nx">user1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">user2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
 </code></pre></div></div>
 
-<h2 id="화살표-함수">화살표 함수</h2>
+<p>위의 코드와 같이 new를 통해 User 객체를 생성한다면 해당 객체는 <code class="language-plaintext highlighter-rouge">__proto__</code> 속성을 통해 User 함수의 프로토타입 객체를 참조하고 링크됩니다.</p>
 
-<p>ES6에서는 람다식이라 불리는 화살표 함수를 통해 함수 선언이 조금 더 간단해졌습니다.</p>
+<h6 id="프로토타입-객체-참조">프로토타입 객체 참조</h6>
+<p><img src="/assets/images/javascript/img011.png" alt="img011" style="margin-top:-1.5em" /></p>
 
-<p>ES5의 경우 익명함수는 다음과 같이 선언합니다.</p>
+<p>이러한 구조를 통해 프로토타입 객체에 메소드를 동적으로 추가해 줄 수 있습니다.</p>
 
-<h6 id="es5-1">ES5</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">plus</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
+<h6 id="메소드-추가">메소드 추가</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">User</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">printName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">plus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="kd">const</span> <span class="nx">user1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="dl">'</span><span class="s1">루비스코</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">user2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="dl">'</span><span class="s1">스팟</span><span class="dl">'</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>ES6에서는 다음과 같이 표현할 수 있습니다.</p>
+<p>만약 User 프로토타입 객체에 동적으로 메소드를 추가한다면 user1 객체와 user2 객체에 해당 메소드가 없는 경우 __proto__ 프로퍼티를 통해 상위 객체에 해당 메소드가 있는지 탐색합니다.</p>
 
-<h6 id="es6-1">ES6</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">plus</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
-<span class="p">}</span>
+<p>user1, user2 객체에는 <code class="language-plaintext highlighter-rouge">printName</code>이라는 메소드가 존재하지 않으므로 __proto__ 프로퍼티가 참조하는 User 프로토타입 객체에서 printName 메소드를 찾습니다.</p>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">plus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-</code></pre></div></div>
-
-<p>리턴문이 위와 같이 한줄이라면 블록과 retrun문을 생략하여 다음과 같이 나타낼 수 있습니다.</p>
-
-<h6 id="es6-2">ES6</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">plus</span> <span class="o">=</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">plus</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-</code></pre></div></div>
-
-<p>매개변수가 1개인 경우 괄호의 생략도 가능합니다.</p>
-
-<h6 id="es6-3">ES6</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">text</span> <span class="o">=&gt;</span> <span class="s2">`메시지: </span><span class="p">${</span><span class="nx">text</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">msg</span><span class="p">(</span><span class="dl">'</span><span class="s1">메시지입니다.</span><span class="dl">'</span><span class="p">));</span>
-</code></pre></div></div>
-
-<p>람다식을 통해 함수를 선언할 경우 블록 스코프가 무시되므로 this를 따로 변수에 담을 필요가 없습니다.</p>
-
-<h6 id="es5-2">ES5</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">model</span><span class="p">:</span> <span class="dl">'</span><span class="s1">k5</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">price</span><span class="p">:</span> <span class="mi">6000</span><span class="p">,</span>
-  <span class="nx">msg</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nb">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="nx">model</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="s2">`모델: </span><span class="p">${</span><span class="nx">text</span><span class="p">()}</span><span class="s2">`</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">car</span><span class="p">.</span><span class="nx">msg</span><span class="p">());</span>
-</code></pre></div></div>
-
-<h6 id="es6-4">ES6</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">car</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">model</span><span class="p">:</span> <span class="dl">'</span><span class="s1">k5</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">price</span><span class="p">:</span> <span class="mi">6000</span><span class="p">,</span>
-  <span class="nx">msg</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">;</span>
-    <span class="k">return</span> <span class="s2">`모델: </span><span class="p">${</span><span class="nx">text</span><span class="p">()}</span><span class="s2">`</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">car</span><span class="p">.</span><span class="nx">msg</span><span class="p">());</span>
-</code></pre></div></div>
-
-<h2 id="변수-선언">변수 선언</h2>
-
-<p>ES5에서는 <code class="language-plaintext highlighter-rouge">var</code>를 통해 변수를 선언합니다. 반면 ES6에서는 <code class="language-plaintext highlighter-rouge">let</code>, <code class="language-plaintext highlighter-rouge">const</code>를 통해 변수를 선언할 수 있습니다.</p>
-
-<p>var는 변수의 중복선언과 재할당이 가능합니다.</p>
-
-<h6 id="es5-3">ES5</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">루비스코</span><span class="dl">'</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span> <span class="c1">// 루비스코</span>
-
-<span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">스팟</span><span class="dl">'</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span> <span class="c1">// 스팟</span>
-</code></pre></div></div>
-
-<p>let은 변수의 중복선언은 불가능하지만 재할당은 가능합니다.</p>
-
-<h6 id="es6-5">ES6</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">루비스코</span><span class="dl">'</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span> <span class="c1">// 루비스코</span>
-
-<span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">스팟</span><span class="dl">'</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span> <span class="c1">// 스팟</span>
-
-<span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">루비스코</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// Uncaught SyntaxError: Identifier 'text' has already been declared</span>
-</code></pre></div></div>
-
-<p>const는 변수의 중복선언 뿐만 아니라 재할당도 불가능합니다.</p>
-
-<h6 id="es6-6">ES6</h6>
-<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">루비스코</span><span class="dl">'</span><span class="p">;</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span> <span class="c1">// 루비스코</span>
-
-<span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">스팟</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// Uncaught SyntaxError: Identifier 'text' has already been declared</span>
-</code></pre></div></div>
+<h6 id="프로토타입-체인">프로토타입 체인</h6>
+<p><img src="/assets/images/javascript/img012.png" alt="img012" style="margin-top:-1.5em" /></p>
 
                 </div>
             </section>
@@ -425,6 +338,12 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
+                                
+                                  
+                                    
+                                  
+                                
+                                  
                                     
                                         
                                         
@@ -434,6 +353,11 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                            <li><a href="/javascript/javascript-basic">자바스크립트 개요</a></li>
+                                        
                                     
                                   
                                 
@@ -449,8 +373,6 @@ into the {body} of the default.hbs template -->
                                   
                                     
                                         
-                                        
-                                            <li><a href="/vue/vuex">Vue.js: Vuex</a></li>
                                         
                                     
                                   
@@ -578,7 +500,7 @@ into the {body} of the default.hbs template -->
                         <footer class="read-next-card-footer">
                             <a href="/tag/javascript/">
                                 
-                                    See all 9 posts  →
+                                    See all 10 posts  →
                                 
                             </a>
                         </footer>
@@ -587,6 +509,51 @@ into the {body} of the default.hbs template -->
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/raspberrypi/raspberrypi-nginx">
+                <div class="post-card-image" style="background-image: url(/assets/images/raspberrypi-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/raspberrypi/raspberrypi-nginx">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">라즈베리파이: Nginx 설치</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>웹서버(Web Server)란?
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      5 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
                 
 
@@ -622,52 +589,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      4 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
-
-            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
-            
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/vue/vue-router">
-                <div class="post-card-image" style="background-image: url(/assets/images/vue-logo.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/vue/vue-router">
-                <header class="post-card-header">
-                    
-                        <div class="post-card-tags-container">
-                            
-                        </div>
-                    
-
-                    <h2 class="post-card-title">Vue.js: Vue Router</h2>
-                </header>
-                <!-- <section class="post-card-excerpt">
-                    
-                        <p>Vue Router란?
-
-</p>
-                    
-                </section> -->
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      8 min read
+                      3 min read
                     
                 </span>
             </footer>
@@ -689,18 +611,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">자바스크립트 개요</div>
+    <div class="floating-header-title">자바스크립트: 프로토타입</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8+%EA%B0%9C%EC%9A%94&amp;url=javascript/javascript"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%3A+%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85&amp;url=javascript/javascript-prototype"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=javascript/javascript"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=javascript/javascript-prototype"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>라즈베리파이: Nginx 설치</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/raspberrypi/raspberrypi-nginx" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="라즈베리파이: Nginx 설치" />
+    <meta property="og:description" content="웹서버(Web Server)란? 웹서버(Web Server)는 HTTP에 의한 요청(request)을 받아들여 응답(Response)하는 프로그램입니다. 주로 이미지, CSS, Javascript를 포함한 정적인 HTML 문서를 처리합니다. 웹서버에는 아파치(Apache)와 엔진엑스(Nginx) 등이 있습니다. 아파치는 쓰레드/프로세서 기반의 구조이고 엔진엑스는 이벤트 기반의 구조를 가지고 있습니다. 엔진엑스(Nginx)란? 엔진엑스(Nginx)는 러시아의 프로그래머인 이고르 시쇼브(Igor Sysoev)가 개발한 동시접속 처리에 특화된 웹 서버 프로그램 입니다. 아파치보다" />
+    <meta property="og:url" content="https://huimang2.github.io/raspberrypi/raspberrypi-nginx" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/raspberrypi-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2023-01-30T20:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-01-30T20:00:00+09:00" />
+    <meta property="article:tag" content="Raspberrypi Nginx" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="라즈베리파이: Nginx 설치" />
+    <meta name="twitter:description" content="웹서버(Web Server)란? 웹서버(Web Server)는 HTTP에 의한 요청(request)을 받아들여 응답(Response)하는 프로그램입니다. 주로 이미지, CSS, Javascript를 포함한 정적인 HTML 문서를 처리합니다. 웹서버에는 아파치(Apache)와 엔진엑스(Nginx) 등이 있습니다. 아파치는 쓰레드/프로세서 기반의 구조이고 엔진엑스는 이벤트 기반의 구조를 가지고 있습니다. 엔진엑스(Nginx)란? 엔진엑스(Nginx)는 러시아의 프로그래머인 이고르 시쇼브(Igor Sysoev)가 개발한 동시접속 처리에 특화된 웹 서버 프로그램 입니다. 아파치보다" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/raspberrypi-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Raspberrypi Nginx" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/raspberrypi/raspberrypi-nginx",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/raspberrypi-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/raspberrypi/raspberrypi-nginx"
+    },
+    "description": "웹서버(Web Server)란? 웹서버(Web Server)는 HTTP에 의한 요청(request)을 받아들여 응답(Response)하는 프로그램입니다. 주로 이미지, CSS, Javascript를 포함한 정적인 HTML 문서를 처리합니다. 웹서버에는 아파치(Apache)와 엔진엑스(Nginx) 등이 있습니다. 아파치는 쓰레드/프로세서 기반의 구조이고 엔진엑스는 이벤트 기반의 구조를 가지고 있습니다. 엔진엑스(Nginx)란? 엔진엑스(Nginx)는 러시아의 프로그래머인 이고르 시쇼브(Igor Sysoev)가 개발한 동시접속 처리에 특화된 웹 서버 프로그램 입니다. 아파치보다"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="라즈베리파이: Nginx 설치" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-raspberrypi-nginx post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="30 January 2023">30 January 2023</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">라즈베리파이: Nginx 설치</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/raspberrypi-logo.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#웹서버web-server란"><span>웹서버(Web Server)란?</span></a></li><li><a href="#엔진엑스nginx란"><span>엔진엑스(Nginx)란?</span></a></li><li><a href="#엔진엑스nginx의-기능"><span>엔진엑스(Nginx)의 기능</span></a><ul><li><a href="#정적-페이지를-처리하는-웹서버-역할"><span>정적 페이지를 처리하는 웹서버 역할</span></a></li><li><a href="#리버스-프록시reverse-proxy-역할"><span>리버스 프록시(Reverse Proxy) 역할</span></a></li></ul></li><li><a href="#nginx-설치"><span>Nginx 설치</span></a></li><li><a href="#nginx-환경설정"><span>Nginx 환경설정</span></a></li><li><a href="#reverse-proxy"><span>Reverse Proxy</span></a></li></ul>
+
+                    </div>
+                    <h1 id="웹서버web-server란">웹서버(Web Server)란?</h1>
+
+<p><code class="language-plaintext highlighter-rouge">웹서버(Web Server)</code>는 HTTP에 의한 요청(request)을 받아들여 응답(Response)하는 프로그램입니다. 주로 이미지, CSS, Javascript를 포함한 정적인 HTML 문서를 처리합니다.</p>
+
+<p>웹서버에는 <code class="language-plaintext highlighter-rouge">아파치(Apache)</code>와 <code class="language-plaintext highlighter-rouge">엔진엑스(Nginx)</code> 등이 있습니다. 아파치는 쓰레드/프로세서 기반의 구조이고 엔진엑스는 이벤트 기반의 구조를 가지고 있습니다.</p>
+
+<h1 id="엔진엑스nginx란">엔진엑스(Nginx)란?</h1>
+
+<p><code class="language-plaintext highlighter-rouge">엔진엑스(Nginx)</code>는 러시아의 프로그래머인 이고르 시쇼브(Igor Sysoev)가 개발한 동시접속 처리에 특화된 웹 서버 프로그램 입니다.</p>
+
+<p>아파치보다 역사가 오래되지는 않았지만, 아파치가 많은 한계를 보이고 있는 상황에서, 가볍고 높은 성능을 무기로 점유율을 빠르게 늘려나가다 현재는 아파치를 재치고 웹 서버 시장점유율 1위가 되었습니다.</p>
+
+<h1 id="엔진엑스nginx의-기능">엔진엑스(Nginx)의 기능</h1>
+
+<h2 id="정적-페이지를-처리하는-웹서버-역할">정적 페이지를 처리하는 웹서버 역할</h2>
+
+<p>웹페이지는 크게 <code class="language-plaintext highlighter-rouge">정적 페이지</code>와 <code class="language-plaintext highlighter-rouge">동적 페이지</code>로 나눠집니다.</p>
+
+<p>정적 페이지는 이미지, CSS, Javascript를 포함한 저장된 HTML 문서를 그대로 전달하는 웹페이지입니다.</p>
+
+<p>반면 동적 페이지는 스크립트에 의해 가공된 데이터를 전달하는 웹페이지입니다.</p>
+
+<p>물론 웹서버가 php같은 서버 사이드 스크립트를 지원하기도 하지만 기본적으로는 정적 페이지를 처리합니다.</p>
+
+<h2 id="리버스-프록시reverse-proxy-역할">리버스 프록시(Reverse Proxy) 역할</h2>
+
+<p><code class="language-plaintext highlighter-rouge">프록시(Proxy)</code>는 클라이언트와 서버 사이에서 데이터를 중계해주는 서버입니다. 여기에는 <code class="language-plaintext highlighter-rouge">포워드 프록시(forward proxy)</code>와 <code class="language-plaintext highlighter-rouge">리버스 프록시(reverse proxy)</code>가 있습니다. nginx는 자체적으로 리버스 프록시 기능을 제공합니다.</p>
+
+<p>포워드 프록시는 클라이언트의 요청을 직접적으로 전달하지 않고 프록시 서버를 통해 간접적으로 요청합니다. 회사의 인트라넷같은 경우 인터넷상의 서버에 요청을 할때 프록시서버를 통해 요청을 하게 됩니다. 클라이언트의 요청을 감독할 수 있고 서버에서는 클라이언트의 신분을 알 수 없어 프라이버시와 보안을 강화할 수 있습니다.</p>
+
+<h6 id="포워드-프록시">포워드 프록시</h6>
+<p><img src="/assets/images/raspberrypi/img001.png" alt="img001" style="margin-top:-1.5em" /></p>
+
+<p>리버스 프록시는 그 반대입니다. 서버에서 받은 응답을 프록시 서버를 통해 전달합니다. 클라이언트의 요청을 분산하여 서버의 부담을 줄일 수 있고 클라이언트는 서버의 신분을 알 수 없어 서버 보안을 강화할 수 있습니다.</p>
+
+<h6 id="리버스-프록시">리버스 프록시</h6>
+<p><img src="/assets/images/raspberrypi/img002.png" alt="img002" style="margin-top:-1.5em" /></p>
+
+<h1 id="nginx-설치">Nginx 설치</h1>
+
+<p>우선 명령프롬프트(cmd)를 통해 라즈베리파이에 ssh로 연결합니다.</p>
+
+<h6 id="ssh-연결">ssh 연결</h6>
+<div data-lang="CMD" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> ssh pi@raspberrypi
+</code></pre></div></div>
+
+<p>접속 후 apt를 업데이트 해주세요.</p>
+
+<h6 id="apt-업데이트">apt 업데이트</h6>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt update <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>apt upgrade <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>apt를 통해 nginx를 설치합니다.</p>
+
+<h6 id="nginx-설치-1">nginx 설치</h6>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>nginx <span class="nt">-y</span>
+</code></pre></div></div>
+
+<p>설치후 <a href="http://raspberrypi" target="_blank">http://raspberrypi</a>에 접속하면 다음과 같이 기본 웹페이지가 뜹니다.</p>
+
+<h6 id="기본-웹페이지">기본 웹페이지</h6>
+<p><img src="/assets/images/raspberrypi/img003.png" alt="img003" style="margin-top:-1.5em" /></p>
+
+<h1 id="nginx-환경설정">Nginx 환경설정</h1>
+
+<p>Nginx의 환경설정을 튜닝해보겠습니다. 환경설정 파일은 <code class="language-plaintext highlighter-rouge">/etc/nginx/nginx.conf</code> 파일입니다. nano 에디터로 해당 파일을 열어봅시다.</p>
+
+<h6 id="etcnginxnginxconf-편집">/etc/nginx/nginx.conf 편집</h6>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>nano /etc/nginx/nginx.conf
+</code></pre></div></div>
+
+<p><img src="/assets/images/raspberrypi/img004.png" alt="img004" /></p>
+
+<p><strong style="color:royalblue">1. 코어(core)</strong></p>
+
+<blockquote>
+  <p>nginx는 메인 프로세스(master)와 작업 프로세스(worker)로 구성되는데, 작업 프로세스가 실질적인 웹서버 역할을 합니다.</p>
+</blockquote>
+
+<ul>
+  <li><strong>user</strong> : 작업 프로세스의 권한을 지정합니다.</li>
+  <li><strong>worker_processes</strong> :  워커 프로세스 실행 갯수를 지정합니다. 보통 코어 갯수만큼 설정하거나 auto로 적으면 됩니다.</li>
+  <li><strong>pid</strong> : 마스터 프로세스의 id정보가 저장됩니다.</li>
+  <li><strong>include</strong> : 다른 파일을 가져옵니다.</li>
+</ul>
+
+<p><br /></p>
+
+<p><strong style="color:royalblue">2. events 블록</strong></p>
+
+<blockquote>
+  <p>비동기 이벤트 처리 방식에 대한 옵션을 설정합니다.</p>
+</blockquote>
+
+<ul>
+  <li><strong>worker_connections</strong> : 하나의 작업 프로세스에서 처리할 수 있는 접속자 수를 지정합니다.</li>
+  <li><strong>multi_accept</strong> : 다중 접속의 여부를 지정합니다. 기본값은 off 입니다.</li>
+</ul>
+
+<p><br /></p>
+
+<p><strong style="color:royalblue">3. http 블록</strong></p>
+
+<blockquote>
+  <p>HTTP 프로토콜을 설정합니다.</p>
+</blockquote>
+
+<ul>
+  <li><strong>sendfile</strong>: sendfile() 함수의 사용여부를 지정합니다.</li>
+  <li><strong>tcp_nopush</strong> : TCP_CORK 사용 여부를 지정합니다. on인 경우 버퍼가 가득찼을때만 패킷을 전송합니다.</li>
+  <li><strong>tcp_nodelay</strong> : on인경우 패킷 크기에 상관없이 버퍼에 데이터를 보냅니다.</li>
+  <li><strong>keepalive_timeout</strong> : 연결을 유지할 수 있는 최대 시간을 지정합니다.</li>
+  <li><strong>types_hash_max_size</strong> : 도메인 이름 최대 길이를 지정합니다.</li>
+  <li><strong>ssl_protocols</strong> : 사용할 SSL-TLS 버전을 지정합니다.</li>
+  <li><strong>ssl_ciphers</strong> : 사용할 알고리즘을 지정합니다.</li>
+  <li><strong>ssl_prefer_server_ciphers</strong> : SSL-TLS 핸드쉐이크 과정에서 서버 알고리즘을 우선할지 설정합니다.</li>
+  <li><strong>gz​ip</strong> : gzip 압축 전송을 사용할지 설정합니다.</li>
+  <li><strong>access_log</strong> : 접근로그를 기록할 경로를 지정합니다.</li>
+  <li><strong>error_log</strong> : 에러로그를 기록할 경로를 지정합니다.</li>
+  <li><strong>server_tokens</strong> : nginx 버전을 나타낼지를 설정합니다. 기본값은 on 입니다.</li>
+</ul>
+
+<h6 id="server_tokens이-on인-경우-response-데이터">server_tokens이 on인 경우 response 데이터</h6>
+<p><img src="/assets/images/raspberrypi/img005.png" alt="img005" style="margin-top:-1.5em" /></p>
+
+<h6 id="server_tokens이-off인-경우-response-데이터">server_tokens이 off인 경우 response 데이터</h6>
+<p><img src="/assets/images/raspberrypi/img006.png" alt="img006" style="margin-top:-1.5em" /></p>
+
+<p><br /></p>
+
+<p><strong style="color:royalblue">3. server 블록</strong></p>
+
+<blockquote>
+  <p>웹서버를 설정합니다. http 블록에서 <code class="language-plaintext highlighter-rouge">/etc/nginx/sites-enabled/*</code> 파일을 include 하고 있기때문에 서버블록은 해당 폴더에 작성하셔도 됩니다. 기본적으로 <code class="language-plaintext highlighter-rouge">/etc/nginx/sites-available</code> 폴더에 server 블록을 작성하고 <code class="language-plaintext highlighter-rouge">/etc/nginx/sites-enabled</code> 폴더에는 심볼릭링크를 생성합니다.</p>
+</blockquote>
+
+<ul>
+  <li><strong>listen</strong> : ip와 포트번호입니다. ip는 생략가능하며 default 포트는 80입니다.</li>
+  <li><strong>server_name</strong> : 도메인 네임입니다. 서브도메인으로 와일드카드 *을 사용가능합니다.</li>
+  <li><strong>root</strong> : 서버의 루트 경로입니다.</li>
+  <li><strong>index</strong> : 파일명이 없을때 접근할 기본파일입니다.</li>
+  <li><strong>try_files</strong> : URI에 일치하는 파일이 없는 경우 제공되는 파일입니다.</li>
+  <li><strong>allow</strong> : 해당 ip로 오는 요청만 허용합니다.</li>
+  <li><strong>deny</strong> : 해당 ip로 오는 요청은 거부하고 403 forbidden을 리턴합니다.</li>
+  <li><strong>return</strong> : 해당 경로로 redirect합니다. URI가 변합니다.</li>
+  <li><strong>rewrite</strong> : URI 변화없이 내부적으로 해당 경로로 응답합니다.</li>
+  <li><strong>proxy_pass</strong> : 프록시 서버로 작동합니다.</li>
+  <li><strong>location</strong> : request URI 매핑을 설정을 합니다. 변경자에 따라 우선순위가 정해져 있는데, 아래 표를 참고하세요.</li>
+</ul>
+
+<h6 id="location-속성">location 속성</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">우선순위</th>
+      <th style="text-align: center">변경자</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">=</td>
+      <td>URI와 정확하게 일치합니다.<br /><strong>예) location =/test { }</strong><br />http://localhost/test <font style="color:green">(일치)</font><br />http://localhost/test/ <font style="color:red">(불일치)</font></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">^~</td>
+      <td>URI의 앞부분이 일치합니다.<br /><strong>예) location ^~/t {}</strong><br />http://localhost/test <font style="color:green">(일치)</font><br />http://localhost/Test <font style="color:red">(불일치)</font></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">~</td>
+      <td>정규표현식과 일치합니다.<br /><strong>예) location ~/Test[0-9]+ { }</strong><br />http://localhost/Test1 <font style="color:green">(일치)</font><br />http://localhost/test1 <font style="color:red">(불일치)</font></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">~*</td>
+      <td>대소문자 구분없이 정규표현식과 일치합니다.<br /><strong>예) location ~*/Test[0-9]+ { }</strong><br />http://localhost/test2 <font style="color:green">(일치)</font><br />http://localhost/test <font style="color:red">(불일치)</font></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center"> </td>
+      <td>아무것도 없으면 prefix로 작용합니다. ^~와 같지만 우선순위가 다릅니다.<br /><strong>예) location location /test { }</strong><br />http://localhost/test <font style="color:green">(일치)</font><br />http://localhost/Test <font style="color:red">(불일치)</font></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<p><strong style="color:royalblue">4. upstream 블록</strong></p>
+
+<blockquote>
+  <p>upstream 서버를 설정합니다. 클라이언트의 요청을 각 서버에 분배하는 로드밸런싱을 설정합니다. 프록시 서버가 upstream으로 작용합니다.</p>
+</blockquote>
+
+<h6 id="upstream-블록">upstream 블록</h6>
+<div data-lang="TEXT" class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>upstream &lt;이름&gt; {
+    &lt;밸런스타입&gt;;
+    server &lt;host1&gt;:&lt;port1&gt; [파라미터];
+    ...
+    server &lt;host2&gt;:&lt;port2&gt; [파라미터];
+}
+</code></pre></div></div>
+
+<p>로드밸런싱에 대한 내용은 다음에 알아보도록 하고, 이번 글에서는 생략합니다.</p>
+
+<h1 id="reverse-proxy">Reverse Proxy</h1>
+
+<p>Nginx 환경설정을 통해 리버스 프록시를 해보도록 하겠습니다. 예제로 사용하기 위해 node.js로 react 서버를 구축하여 실행시킨 후 <a href="http://raspberrypi:3000" target="_blank">http://raspberrypi:3000</a>에 접속하면 리액트 웹어플리케이션에 접속됩니다.</p>
+
+<p>리버스 프록시를 통해 http 프로토콜의 기본 포트인 80으로 요청하면 리액트 웹어플리케이션 서버에 접속되도록 해보겠습니다.</p>
+
+<p>server 블록을 작성해야 합니다. Nginx를 설치하면 <code class="language-plaintext highlighter-rouge">/etc/nginx/sites-available/default</code> 파일이 생성되어 기본 server 블록이 작성되어 있습니다. 해당 파일을 수정하겠습니다.</p>
+
+<h6 id="etcnginxsites-availabledefault-편집">/etc/nginx/sites-available/default 편집</h6>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>nano /etc/nginx/sites-available/default
+</code></pre></div></div>
+
+<h6 id="etcnginxsites-availabledefault">/etc/nginx/sites-available/default</h6>
+<p><img src="/assets/images/raspberrypi/img007.png" alt="img007" style="margin-top:-1.5em" /></p>
+
+<p>80번 포트로 요청을 보내면 <code class="language-plaintext highlighter-rouge">/var/www/html</code> 폴더를 루트로 하는 페이지가 매핑됩니다. 해당 폴더를 확인하면 <code class="language-plaintext highlighter-rouge">index.nginx-debian.html</code> 파일이 하나 있습니다. location 속성을 통해 <code class="language-plaintext highlighter-rouge">/</code> 경로를 매핑해두었으며, 해당 경로에 접속하면 인덱스 파일을 응답으로 전송하게 됩니다.</p>
+
+<p>server 블록을 다음과 같이 수정하도록 합시다.</p>
+
+<h6 id="server-블록-수정">server 블록 수정</h6>
+<div data-lang="TEXT" class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+
+  server_name raspberrypi;
+
+  location / {
+    proxy_pass http://127.0.0.1:3000;
+  }
+}
+</code></pre></div></div>
+
+<p>nginx를 재실행합니다.</p>
+
+<h6 id="nginx-서비스-재실행">nginx 서비스 재실행</h6>
+<div data-lang="BASH" class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>service nginx restart
+</code></pre></div></div>
+
+<p><a href="http://raspberrypi" target="_blank">http://raspberrypi</a>에 접속하면 리액트 웹어플리케이션에 접속되는 것을 확인할 수 있습니다.</p>
+
+<p><strong>server_name</strong> 속성에는 보통 접속할 도메인을 입력합니다. 서브 도메인을 입력해도 되며, 와일드카드(*)를 통해 모든 서브도메인에 대하여 웹서버를 설정 할 수도 있습니다.</p>
+
+<p><strong>proxy_pass</strong> 속성에는 리버스 프록시를 위한 포워딩 주소를 입력합니다. 리버스 프록시 서버이므로 root 속성이나 index 속성은 필요하지 않습니다.</p>
+
+<p>80번 포트로 들어오는 요청은 로컬서버의 3000번 포트로 요청을 넘겨주고, 해당 포트에서 오는 응답을 80번 포트를 통해 전송합니다. 클라이언트는 프록시 서버를 통해서 통신을 할 뿐, 웹어플리케이션 서버의 정보를 알 수 없기때문에 서버 보안을 강화할 수 있습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/javascript/javascript-prototype">
+                <div class="post-card-image" style="background-image: url(/assets/images/javascript-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/javascript/javascript-prototype">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">자바스크립트: 프로토타입</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>객체(Object)
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">라즈베리파이: Nginx 설치</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4%3A+Nginx+%EC%84%A4%EC%B9%98&amp;url=raspberrypi/raspberrypi-nginx"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=raspberrypi/raspberrypi-nginx"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2023</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
