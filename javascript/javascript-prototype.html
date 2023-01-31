@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>자바스크립트: 프로토타입</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/javascript/javascript-prototype" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="자바스크립트: 프로토타입" />
+    <meta property="og:description" content="객체(Object) 자바스크립트는 객체 기반 스크립트 언어입니다. 객체(Object)는 데이터와 데이터의 동작을 모두 포함하고 있는 개념으로, 자신의 정보를 가지고 있는 독립적인 주체입니다. 자바스크립트에서 원시타입을 제외한 모든 값은 객체로 구성되어 있습니다. 자바스크립트의 객체는 키(key)와 값(value)로 구성된 프로퍼티(Property)의 집합입니다. 프로퍼티의 값으로는 일급객체인 함수를 포함하여 모든 값을 사용할 수 있습니다. 프로퍼티의 값이 함수인 경우, 일반" />
+    <meta property="og:url" content="https://huimang2.github.io/javascript/javascript-prototype" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/javascript-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2023-01-29T20:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-01-29T20:00:00+09:00" />
+    <meta property="article:tag" content="Javascript" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="자바스크립트: 프로토타입" />
+    <meta name="twitter:description" content="객체(Object) 자바스크립트는 객체 기반 스크립트 언어입니다. 객체(Object)는 데이터와 데이터의 동작을 모두 포함하고 있는 개념으로, 자신의 정보를 가지고 있는 독립적인 주체입니다. 자바스크립트에서 원시타입을 제외한 모든 값은 객체로 구성되어 있습니다. 자바스크립트의 객체는 키(key)와 값(value)로 구성된 프로퍼티(Property)의 집합입니다. 프로퍼티의 값으로는 일급객체인 함수를 포함하여 모든 값을 사용할 수 있습니다. 프로퍼티의 값이 함수인 경우, 일반" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/javascript-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Javascript" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/javascript/javascript-prototype",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/javascript-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/javascript/javascript-prototype"
+    },
+    "description": "객체(Object) 자바스크립트는 객체 기반 스크립트 언어입니다. 객체(Object)는 데이터와 데이터의 동작을 모두 포함하고 있는 개념으로, 자신의 정보를 가지고 있는 독립적인 주체입니다. 자바스크립트에서 원시타입을 제외한 모든 값은 객체로 구성되어 있습니다. 자바스크립트의 객체는 키(key)와 값(value)로 구성된 프로퍼티(Property)의 집합입니다. 프로퍼티의 값으로는 일급객체인 함수를 포함하여 모든 값을 사용할 수 있습니다. 프로퍼티의 값이 함수인 경우, 일반"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="자바스크립트: 프로토타입" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-javascript post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="29 January 2023">29 January 2023</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/javascript/'>#JAVASCRIPT</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">자바스크립트: 프로토타입</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/javascript-logo.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#객체object"><span>객체(Object)</span></a></li><li><a href="#프로토타입"><span>프로토타입</span></a></li><li><a href="#코드의-재사용"><span>코드의 재사용</span></a><ul><li><a href="#classical-방식"><span>classical 방식</span></a></li><li><a href="#prototypal-방식"><span>prototypal 방식</span></a></li></ul></li><li><a href="#클래스class"><span>클래스(Class)</span></a></li></ul>
+
+                    </div>
+                    <h1 id="객체object">객체(Object)</h1>
+
+<p>자바스크립트는 객체 기반 스크립트 언어입니다. <code class="language-plaintext highlighter-rouge">객체(Object)</code>는 데이터와 데이터의 동작을 모두 포함하고 있는 개념으로, 자신의 정보를 가지고 있는 독립적인 주체입니다. 자바스크립트에서 원시타입을 제외한 모든 값은 객체로 구성되어 있습니다.</p>
+
+<p>자바스크립트의 객체는 <code class="language-plaintext highlighter-rouge">키(key)</code>와 <code class="language-plaintext highlighter-rouge">값(value)</code>로 구성된 <code class="language-plaintext highlighter-rouge">프로퍼티(Property)</code>의 집합입니다. 프로퍼티의 값으로는 일급객체인 함수를 포함하여 모든 값을 사용할 수 있습니다. 프로퍼티의 값이 함수인 경우, 일반 함수와 구분하기위해 <code class="language-plaintext highlighter-rouge">메소드(method)</code>라고 부릅니다.</p>
+
+<h1 id="프로토타입">프로토타입</h1>
+
+<p>자바(JAVA)와 같은 클래스 기반 객체 지향 언어의 경우 클래스를 정의하고 new 연산자를 통해 인스턴스를 생성하는 방식으로 객체를 생성합니다. 하지만 자바스크립트는 클래스라는 개념이 없으며 객체의 원형인 프로토타입을 복사하여 새로운 객체를 생성합니다.</p>
+
+<p>자바스크립트에서 함수를 정의하고 파싱단계에 들어가면 함수의 멤버로 <code class="language-plaintext highlighter-rouge">prototype</code> 속성을 가지며, 이 속성은 함수 이름으로 생성된 프로토타입 객체를 참조합니다.</p>
+
+<h6 id="함수-정의">함수 정의</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">()</span> <span class="p">{};</span>
+</code></pre></div></div>
+
+<p>프로토타입 객체는 <code class="language-plaintext highlighter-rouge">constructor</code> 속성을 가지며, 해당 속성은 함수를 참조합니다.</p>
+
+<h6 id="객체의-내부-구조">객체의 내부 구조</h6>
+<p><img src="/assets/images/javascript/img010.png" alt="img010" style="margin-top:-1.5em" /></p>
+
+<p>프로토타입 객체는 new 연산자를 통해 생성되는 모든 User 객체의 원형이 되는 객체입니다.</p>
+
+<h6 id="객체-생성">객체 생성</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">()</span> <span class="p">{};</span>
+
+<span class="kd">const</span> <span class="nx">user1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">user2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>위의 코드와 같이 new를 통해 User 객체를 생성한다면 해당 객체는 <code class="language-plaintext highlighter-rouge">__proto__</code> 속성을 통해 User 함수의 프로토타입 객체를 참조하고 링크됩니다.</p>
+
+<h6 id="프로토타입-객체-참조">프로토타입 객체 참조</h6>
+<p><img src="/assets/images/javascript/img011.png" alt="img011" style="margin-top:-1.5em" /></p>
+
+<p>이러한 구조를 통해 프로토타입 객체에 메소드를 동적으로 추가해 줄 수 있습니다.</p>
+
+<h6 id="메소드-추가">메소드 추가</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">User</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">User</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">printName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">user1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="dl">'</span><span class="s1">루비스코</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">user2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="dl">'</span><span class="s1">스팟</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>만약 User 프로토타입 객체에 동적으로 메소드를 추가한다면 user1 객체와 user2 객체에 해당 메소드가 없는 경우 __proto__ 프로퍼티를 통해 상위 객체에 해당 메소드가 있는지 탐색합니다.</p>
+
+<p>user1, user2 객체에는 <code class="language-plaintext highlighter-rouge">printName</code>이라는 메소드가 존재하지 않으므로 __proto__ 프로퍼티가 참조하는 User 프로토타입 객체에서 printName 메소드를 찾습니다.</p>
+
+<h6 id="프로토타입-체인">프로토타입 체인</h6>
+<p><img src="/assets/images/javascript/img012.png" alt="img012" style="margin-top:-1.5em" /></p>
+
+<h1 id="코드의-재사용">코드의 재사용</h1>
+
+<p>클래스 기반 객체지향 언어인 자바의 경우 상속을 통해 코드의 재사용이 가능합니다. 자바스크립트는 클래스가 없는 프로토타입 기반 언어이지만 프로토타입 체인을 통해 코드의 재사용이 가능합니다.</p>
+
+<p>프로토타입을 통해 상속을 하는 방법에는 크게 <code class="language-plaintext highlighter-rouge">classical</code>과 <code class="language-plaintext highlighter-rouge">prototypal</code> 2가지가 있습니다.</p>
+
+<h2 id="classical-방식">classical 방식</h2>
+
+<p>classical 방식은 new 연산자를 통해 생성된 객체를 사용하여 상속을 하는 방식입니다. 자바에서 new 연산자를 통해 인스턴스를 생성하는 방식과 유사합니다.</p>
+
+<p>위에서 작성한 코드처럼 부모에 해당하는 함수를 사용하여 객체를 생성합니다. 이렇게 생성된 부모 객체를 자식에 해당하는 함수의 프로토타입 프로퍼티가 참조하도록 한다면 프로토타입 체인을 형성하여 코드의 재사용이 가능해집니다.</p>
+
+<h6 id="classical-방식-1">classical 방식</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">anonymous</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">Korean</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{}</span>
+<span class="nx">Korean</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="nx">rubisco</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Korean</span><span class="p">(</span><span class="dl">"</span><span class="s2">루비스코</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rubisco</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+</code></pre></div></div>
+
+<h6 id="다이어그램">다이어그램</h6>
+<p><img src="/assets/images/javascript/img013.png" alt="img013" style="margin-top:-1.5em" /></p>
+
+<p>부모함수는 <code class="language-plaintext highlighter-rouge">Person</code>이며, 프로토타입 프로퍼티를 통해 <code class="language-plaintext highlighter-rouge">getName</code> 메소드를 추가했습니다.</p>
+
+<p>자식함수는 <code class="language-plaintext highlighter-rouge">Korean</code>이고, 해당 함수 안에 프로토타입 프로퍼티의 참조를 Person 함수로 생성된 객체가 되도록 변경했습니다.</p>
+
+<p>이제 new 연산자를 통해 Korean 함수의 객체인 <code class="language-plaintext highlighter-rouge">rubisco</code>를 생성합니다. 그러면 rubisco 객체가 Person 객체를 참조하고, Person 객체는 Person 프로토타입 객체를 참조하면서 위에 다이어그램과 같은 프로토타입 체인을 형성합니다. rubisco 객체는 getName 메소드를 가지고 있지 않지만 __proto__를 통해 부모인 Person 프로토타입 객체의 getName 메소드를 사용할 수 있습니다. 즉, getName 메소드를 상속받습니다.</p>
+
+<p>하지만 이 코드에는 문제점이 있습니다. Korean 함수를 통해 rubisco 객체를 생성할 때 name 파라미터로 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">루비스코</code>를 넘겨주었지만 부모 객체를 생성할 때 파라미터를 전달하지 않아서 name 속성은 어떤 파라미터를 주더라도 <code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">anonymous</code>로 고정됩니다.</p>
+
+<h6 id="출력-결과">출력 결과</h6>
+<p><img src="/assets/images/javascript/img014.png" alt="img014" style="margin-top:-1.5em" /></p>
+
+<p>아래와 같이 코드를 수정해보겠습니다.</p>
+
+<h6 id="classical-방식-2">classical 방식</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">anonymous</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">Korean</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">Person</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">rubisco</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Korean</span><span class="p">(</span><span class="dl">"</span><span class="s2">루비스코</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rubisco</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Korean 함수 내부에 <code class="language-plaintext highlighter-rouge">apply</code> 메소드를 사용하여 부모객체 Person의 this를 Korean 함수의 this에 바인딩합니다. 이것은 부모의 속성을 자식 함수 안에 모두 복사하여 자신의 속성으로 만들어버립니다.</p>
+
+<h6 id="다이어그램-1">다이어그램</h6>
+<p><img src="/assets/images/javascript/img015.png" alt="img015" style="margin-top:-1.5em" /></p>
+
+<p>Korean 함수를 통해 rubisco 객체를 생성하면 name 파라미터를 통해 Person 객체를 생성하고, Person 객체의 this를 Korean 함수의 this에 바인딩하여 Korean 객체를 생성합니다. 즉, Korean 객체는 Person 객체의 생성자 함수를 빌려 생성된 객체입니다.</p>
+
+<p>위에 다이어그램에서 보는 것과 같이, 참조를 통해 Person 프로토타입 객체의 name 프로퍼티에 접근하는 것이 아니라 Korean 객체의 name 프로퍼티에 직접 접근합니다.</p>
+
+<h6 id="출력-결과-1">출력 결과</h6>
+<p><img src="/assets/images/javascript/img016.png" alt="img016" style="margin-top:-1.5em" /></p>
+
+<p>이 경우 Person 객체의 멤버변수는 상속받을 수 있지만, Person 함수의 프로토타입 객체에 대한 링크가 없기때문에 getName 메소드는 상속받지 못합니다.</p>
+
+<p>아래 코드로 수정하여 Korean 객체를 Person 프로토타입 객체에 링크해줍시다.</p>
+
+<h6 id="classical-방식-3">classical 방식</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">anonymous</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">Korean</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">Person</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">Korean</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Person</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="nx">rubisco</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Korean</span><span class="p">(</span><span class="dl">"</span><span class="s2">루비스코</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rubisco</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+</code></pre></div></div>
+
+<h6 id="다이어그램-2">다이어그램</h6>
+<p><img src="/assets/images/javascript/img017.png" alt="img017" style="margin-top:-1.5em" /></p>
+
+<p>rubisco 객체의 __proto__ 속성이 Person 프로토타입 객체를 참조하므로 getName 메소드를 사용할 수 있습니다.</p>
+
+<h6 id="출력-결과-2">출력 결과</h6>
+<p><img src="/assets/images/javascript/img018.png" alt="img018" style="margin-top:-1.5em" /></p>
+
+<p>하지만 이 코드에도 문제점이 있습니다. 부모의 생성자 함수를 두 번 호출합니다. 다이어그램을 확인하면 name 프로퍼티가 Person 객체에도, Korean 객체인 rubisco 객체에도 존재합니다.</p>
+
+<p>이 문제를 해결하려면 Korean 객체의 prototype 프로퍼티가 new 연산자를 통해 생성된 Person 객체를 참조하는 것이 아니라 Person 프로토타입 객체를 참조하도록 하면 됩니다.</p>
+
+<h6 id="classical-방식-4">classical 방식</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">Person</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">anonymous</span><span class="dl">"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getName</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">Korean</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nx">Korean</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">rubisco</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Korean</span><span class="p">(</span><span class="dl">"</span><span class="s2">루비스코</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rubisco</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+</code></pre></div></div>
+
+<h6 id="다이어그램-3">다이어그램</h6>
+<p><img src="/assets/images/javascript/img019.png" alt="img019" style="margin-top:-1.5em" /></p>
+
+<p>new 연산자를 통해 rubisco 객체를 생성하면 name 프로퍼티가 설정되고, Korean 프로토타입 객체는 Person 프로토타입 객체를 참조하므로 getName 메소드 역시 상속받게 됩니다.</p>
+
+<h6 id="출력-결과-3">출력 결과</h6>
+<p><img src="/assets/images/javascript/img020.png" alt="img020" style="margin-top:-1.5em" /></p>
+
+<h2 id="prototypal-방식">prototypal 방식</h2>
+
+<p>prototypal 방식은 리터럴 또는 Object 객체의 <code class="language-plaintext highlighter-rouge">create</code> 메소드를 사용하여 객체의 생성과 동시에 프로토타입 객체를 설정합니다.</p>
+
+<p>classical 방식보다 간결하게 상속을 구현할 수 있기때문에 해당 방식을 많이 사용합니다.</p>
+
+<h6 id="prototypal-방식-1">prototypal 방식</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">anonymous</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">getName</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">rubisco</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span>
+<span class="nx">rubisco</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">루비스코</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rubisco</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+</code></pre></div></div>
+
+<h6 id="출력-결과-4">출력 결과</h6>
+<p><img src="/assets/images/javascript/img021.png" alt="img021" style="margin-top:-1.5em" /></p>
+
+<p>Object.create는 1번째 파라미터는 부모객체로 사용할 객체를, 2번째 파라미터는 선택적 파라미터로 자식객체의 프로퍼티로 추가됩니다.</p>
+
+<p>아래는 name 프로퍼티를 getter와 setter로 커스텀하여 재정의 했습니다.</p>
+
+<h6 id="prototypal-방식-2">prototypal 방식</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">person</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">anonymous</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">getName</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">rubisco</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">person</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">get</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s2">`이름: </span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">_name</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="na">set</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">rubisco</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">루비스코</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rubisco</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+</code></pre></div></div>
+
+<h6 id="출력-결과-5">출력 결과</h6>
+<p><img src="/assets/images/javascript/img022.png" alt="img022" style="margin-top:-1.5em" /></p>
+
+<h1 id="클래스class">클래스(Class)</h1>
+
+<p>자바스크립트에는 클래스가 존재하지 않았지만, ES6부터 클래스 문법이 추가되었습니다. 새로운 문법은 아니며 프로토타입을 사용하는 Syntatic Sugar 입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">extends</code> 키워드를 통해 상속을 받을 수 있으며, 생성자 메소드는 <code class="language-plaintext highlighter-rouge">constructor</code> 입니다.</p>
+
+<h6 id="class-사용">class 사용</h6>
+<div data-lang="JAVASCRIPT" class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Person</span> <span class="p">{</span>
+
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">anonymous</span><span class="dl">'</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">getName</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nx">Korean</span> <span class="kd">extends</span> <span class="nx">Person</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">rubisco</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Korean</span><span class="p">(</span><span class="dl">'</span><span class="s1">루비스코</span><span class="dl">'</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rubisco</span><span class="p">.</span><span class="nx">getName</span><span class="p">());</span>
+</code></pre></div></div>
+
+<h6 id="출력-결과-6">출력 결과</h6>
+<p><img src="/assets/images/javascript/img023.png" alt="img023" style="margin-top:-1.5em" /></p>
+
+<p>클래스 문법은 자바에서 클래스를 작성하는 것과 많이 유사합니다. 부모 객체의 this는 super를 통해 접근할 수 있습니다.</p>
+
+<p>타입을 붙이는 것을 제외하면 타입스크립트에서 클래스를 작성하는 것과 동일하므로 클래스 문법에 대한 자세한 내용은 타입스크립트 문법을 참고해주세요.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/javascript/">Javascript</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/javascript/javascript-array">자바스크립트: 배열 메소드</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/javascript/javascript-basic">자바스크립트 개요</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/vue/vue-router">Vue.js: Vue Router</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/javascript/">
+                                
+                                    See all 10 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/raspberrypi/raspberrypi-nginx">
+                <div class="post-card-image" style="background-image: url(/assets/images/raspberrypi-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/raspberrypi/raspberrypi-nginx">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">라즈베리파이: Nginx 설치</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>웹서버(Web Server)란?
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      5 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/javascript/javascript-array">
+                <div class="post-card-image" style="background-image: url(/assets/images/javascript-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/javascript/javascript-array">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">자바스크립트: 배열 메소드</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>이번 글에서는 자바스크립트에서 유용하게 사용할 수 있는 배열과 관련된 메소드를 알아보도록 하겠습니다.
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      3 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">자바스크립트: 프로토타입</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%3A+%ED%94%84%EB%A1%9C%ED%86%A0%ED%83%80%EC%9E%85&amp;url=javascript/javascript-prototype"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=javascript/javascript-prototype"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2023</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

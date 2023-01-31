@@ -23,6 +23,21 @@
     
       
       <item>
+        <title>자바스크립트: 프로토타입</title>
+        
+          <description>&lt;h1 id=&quot;객체object&quot;&gt;객체(Object)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Sun, 29 Jan 2023 20:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/javascript/javascript-prototype</link>
+        <guid isPermaLink="true">https://huimang2.github.io/javascript/javascript-prototype</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>자바스크립트: 배열 메소드</title>
         
           <description>&lt;p&gt;이번 글에서는 자바스크립트에서 유용하게 사용할 수 있는 배열과 관련된 메소드를 알아보도록 하겠습니다.&lt;/p&gt;
