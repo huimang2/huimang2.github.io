@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-02-12T02:45:13+09:00</updated>
+  <updated>2023-02-12T02:57:37+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -95,7 +95,7 @@
 
 &lt;p&gt;외부 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;사용자 관점&lt;/code&gt;에서 데이터베이스를 이해하고 표현하는 단계로, 각각의 사용자나 응용 프로그래머가 접근하는 데이터베이스를 정의합니다.&lt;/p&gt;
 
-&lt;p&gt;내부 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;조직 전체의 관점&lt;/code&gt;에서 이해하고 표현하는 단계로, 데이터베이스에 저장되는 데이터 간의 관계를 기술합니다.&lt;/p&gt;
+&lt;p&gt;개념 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;조직 전체의 관점&lt;/code&gt;에서 이해하고 표현하는 단계로, 데이터베이스에 저장되는 데이터 간의 관계를 기술합니다.&lt;/p&gt;
 
 &lt;p&gt;외부 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;저장 장치의 관점&lt;/code&gt;에서 데이터베이스를 이해하고 표현하는 단계로, 데이터가 물리적 장치에 실제로 저장되는 방법을 표현합니다.&lt;/p&gt;
 

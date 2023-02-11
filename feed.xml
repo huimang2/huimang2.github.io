@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-02-12T02:45:13+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">SQL - 데이터 모델의 이해</title><link href="https://huimang2.github.io/sql/sql-concept" rel="alternate" type="text/html" title="SQL - 데이터 모델의 이해" /><published>2023-02-11T20:00:00+09:00</published><updated>2023-02-11T20:00:00+09:00</updated><id>https://huimang2.github.io/sql/sql-concept</id><content type="html" xml:base="https://huimang2.github.io/sql/sql-concept">&lt;h1 id=&quot;모델링modeling이란&quot;&gt;모델링(Modeling)이란?&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-02-12T02:57:37+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">SQL - 데이터 모델의 이해</title><link href="https://huimang2.github.io/sql/sql-concept" rel="alternate" type="text/html" title="SQL - 데이터 모델의 이해" /><published>2023-02-11T20:00:00+09:00</published><updated>2023-02-11T20:00:00+09:00</updated><id>https://huimang2.github.io/sql/sql-concept</id><content type="html" xml:base="https://huimang2.github.io/sql/sql-concept">&lt;h1 id=&quot;모델링modeling이란&quot;&gt;모델링(Modeling)이란?&lt;/h1&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;모델(Model)&lt;/code&gt;은 현실 세계를 일정한 표기법에 따라 표현해 놓은 추상화된 모형입니다. 현실 세계에서 나타날 수 있는 다양한 현상은 사람, 사물, 개념 등에 의해 발생되는데, 이것을 표기법에 의해 규칙을 가지고 표현하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;모델링(Modeling)&lt;/code&gt;이라고 합니다. 즉, 모델을 만들어가는 일 자체를 모델링이라고 정의할 수 있습니다.&lt;/p&gt;
 
@@ -56,7 +56,7 @@
 
 &lt;p&gt;외부 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;사용자 관점&lt;/code&gt;에서 데이터베이스를 이해하고 표현하는 단계로, 각각의 사용자나 응용 프로그래머가 접근하는 데이터베이스를 정의합니다.&lt;/p&gt;
 
-&lt;p&gt;내부 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;조직 전체의 관점&lt;/code&gt;에서 이해하고 표현하는 단계로, 데이터베이스에 저장되는 데이터 간의 관계를 기술합니다.&lt;/p&gt;
+&lt;p&gt;개념 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;조직 전체의 관점&lt;/code&gt;에서 이해하고 표현하는 단계로, 데이터베이스에 저장되는 데이터 간의 관계를 기술합니다.&lt;/p&gt;
 
 &lt;p&gt;외부 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;저장 장치의 관점&lt;/code&gt;에서 데이터베이스를 이해하고 표현하는 단계로, 데이터가 물리적 장치에 실제로 저장되는 방법을 표현합니다.&lt;/p&gt;
 
