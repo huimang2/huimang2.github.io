@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>SQL - 데이터 모델의 이해</title>
+        
+          <description>&lt;h1 id=&quot;모델링modeling이란&quot;&gt;모델링(Modeling)이란?&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Sat, 11 Feb 2023 20:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/sql/sql-concept</link>
+        <guid isPermaLink="true">https://huimang2.github.io/sql/sql-concept</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>라즈베리파이: Nginx 설치</title>
         
           <description>&lt;h1 id=&quot;웹서버web-server란&quot;&gt;웹서버(Web Server)란?&lt;/h1&gt;

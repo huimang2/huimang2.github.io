@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
+  <link href="https://huimang2.github.io/tag/sql/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
+  <updated>2023-02-12T02:42:21+09:00</updated>
+  <id>https://huimang2.github.io/tag/sql/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">Rubisco’s Programming Note | </title>
+  
+
+  
+    <subtitle>프로그래밍 노트</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">SQL - 데이터 모델의 이해</title>
+      <link href="https://huimang2.github.io/sql/sql-concept" rel="alternate" type="text/html" title="SQL - 데이터 모델의 이해" />
+      <published>2023-02-11T20:00:00+09:00</published>
+      <updated>2023-02-11T20:00:00+09:00</updated>
+      <id>https://huimang2.github.io/sql/sql-concept</id>
+      <content type="html" xml:base="https://huimang2.github.io/sql/sql-concept">&lt;h1 id=&quot;모델링modeling이란&quot;&gt;모델링(Modeling)이란?&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;모델(Model)&lt;/code&gt;은 현실 세계를 일정한 표기법에 따라 표현해 놓은 추상화된 모형입니다. 현실 세계에서 나타날 수 있는 다양한 현상은 사람, 사물, 개념 등에 의해 발생되는데, 이것을 표기법에 의해 규칙을 가지고 표현하는 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;모델링(Modeling)&lt;/code&gt;이라고 합니다. 즉, 모델을 만들어가는 일 자체를 모델링이라고 정의할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;모델링&quot;&gt;모델링&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img001.png&quot; alt=&quot;img001&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;모델링의 특징에는 현실세계를 일정한 형식에 맞춰 표현하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;추상화&lt;/code&gt;, 복잡한 현실세계를 제한된 표기법이나 언어로 효현하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;단순화&lt;/code&gt;, 누구나 이해하기 쉽게 현상을 기술하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;명확화&lt;/code&gt;가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;모델링은 크게 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터 관점&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로세스 관점&lt;/code&gt;, 데이터와 프로세스의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;상관관점&lt;/code&gt;으로 구분할 수 있습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;데이터 관점&lt;/strong&gt;: 업무가 어떤 데이터와 관련이 있는지 또는 데이터간의 관계가 무엇인지에 대해서 모델링하는 방법&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;프로세스 관점&lt;/strong&gt;: 업무가 실제하고 있는 일이 무엇인지 또는 무엇을 해야 하는지를 모델링하는 방법&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;상관관점&lt;/strong&gt;: 업무가 처리하는 일의 방법에 따라 데이터가 어떻게 영향을 받고 있는지 모델링하는 방법&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;데이터-모델링이란&quot;&gt;데이터 모델링이란?&lt;/h1&gt;
+
+&lt;p&gt;데이터 모델링은 정보시스템을 구축하기 위한 &lt;strong&gt;&lt;u&gt;데이터관점&lt;/u&gt;&lt;/strong&gt;의 업무 분석 기법으로, 현실 세계에 존재하는 데이터를 컴퓨터 세계의 데이터베이스로 옮기는 과정을 말합니다. 조금 더 실무적으로 해석해보면 업무에 필요로 하는 데이터를 시스템 구축 방법론에 의해 분석하고 설계하여 정보시스템을 구축하는 과정으로 정의할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;데이터 모델링을 하는 이유는 업무정보를 구성하는 기초가 되는 정보들을 일정한 표기법에 의해 표현함으로써 정보시스템 구축의 대상이 되는 업무내용을 정확하게 분석하기 위함입니다. 또한 분석된 모델을 통해 실제 데이터베이스를 생성하여 개발 및 데이터관리에 사용하기 위함입니다.&lt;/p&gt;
+
+&lt;p&gt;데이터 모델이 제공하는 기능은 다음과 같습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;시스템을 현재 또는 원하는 모습으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가시화&lt;/code&gt;하도록 도와줍니다.&lt;/li&gt;
+  &lt;li&gt;시스템을 구축하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;구조화&lt;/code&gt;된 틀을 제공합니다.&lt;/li&gt;
+  &lt;li&gt;시스템의 구조와 행동을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;명세화&lt;/code&gt; 할 수 있습니다.&lt;/li&gt;
+  &lt;li&gt;시스템을 구축하는 과정에서 결정한 것을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;문서화&lt;/code&gt;합니다.&lt;/li&gt;
+  &lt;li&gt;다양한 영역에 집중하기 위해 다른 영역의 세부 사항은 숨기는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;다양한 관점&lt;/code&gt;을 제공합니다.&lt;/li&gt;
+  &lt;li&gt;특정 목표에 따라 구체화된 상세 수준의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;표현방법을 제공&lt;/code&gt;합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;데이터 모델링을 수행하는 과정에서 유의할 점은 데이터와 프로세스간의 유연성을 향상시키고, 데이터의 중복 저장을 피하며, 데이터에 모순이 발생하지 않아야 한다는 점입니다.&lt;/p&gt;
+
+&lt;p&gt;데이터 모델링은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;사물(Things)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;속성(Attibutes)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;관계(Relationship)&lt;/code&gt; 3가지 요소로 구성되며, 추상화 수준에 따라 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;개념적 데이터 모델링&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;논리적 데이터 모델링&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;물리적 데이터 모델링&lt;/code&gt;의 3단계로 진행됩니다&lt;/p&gt;
+
+&lt;h6 id=&quot;데이터-모델링의-3단계-진행&quot;&gt;데이터 모델링의 3단계 진행&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img002.png&quot; alt=&quot;img002&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;개념적 데이터 모델링은 조직, 사용자의 데이터 요구사항을 찾고 분석하는데서 시작됩니다. 이 단계에서는 핵심 엔티티와 그들 간의 관계를 발견하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;개체-관계 다이어그램(Entity-Relation Diagram, ERD)&lt;/code&gt;를 도출합니다. ERD는 조직과 다양한 데이터베이스 사용자에게 어떠한 데이터가 중요한지 나타내기위해 사용됩니다.&lt;/p&gt;
+
+&lt;p&gt;논리적 데이터 모델링은 비즈니스 정보의 논리적인 구조와 규칙을 명확하게 표현하는 과정으로, 데이터 모델링의 핵심이라고 할 수 있습니다. 이 단계에서는 업무에 대해 식별자, 속성, 관계 등을 명확히 표현하고, 데이터 정규화 작업을 합니다.&lt;/p&gt;
+
+&lt;p&gt;물리적 데이터 모델링은 논리 데이터 모델이 데이터 컴퓨터 하드웨어에 어떻게 저장될 것인지를 다루는 과정입니다. 데이터가 물리적으로 컴퓨터에 어떻게 저장될 것인가에 대한 정의를 물리적 스키마라고 하며, 이 단계에서는 물리적 스키마를 설계합니다. 이는 실제로 데이터베이스를 구축할 때 참고되는 모델입니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;데이터-독립성이란&quot;&gt;데이터 독립성이란?&lt;/h1&gt;
+
+&lt;p&gt;데이터 독립성은 하위 단계의 데이터 구조가 변경되더라도 상위 단계에 영향을 미치지 않는 속성을 의미합니다. 과거 파일방식으로 데이터를 구성할 때는 응용 프로그램과 데이터가 상호 밀접하게 연관되어 데이터의 종속성과 중복성이 발생했습니다. 다시 말해서 데이터가 변경되면 응용 프로그램이 수정되어야 했으며, 데이터의 중복으로 인해 데이터 일관성에 문제가 발생했습니다.&lt;/p&gt;
+
+&lt;p&gt;이러한 배경으로 데이터베이스 간에 서로 독립성을 유지하기 위해 데이터 독립성 개념이 출현했으며, 미국 표준 협회(ANSI-SPARC)에서는 일반 사용자가 데이터베이스를 쉽게 이해하고 사용할 수 있도록 3단계 데이터베이스 구조를 제안했습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;데이터베이스-3단계-구조&quot;&gt;데이터베이스 3단계 구조&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img003.png&quot; alt=&quot;img003&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;외부 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;사용자 관점&lt;/code&gt;에서 데이터베이스를 이해하고 표현하는 단계로, 각각의 사용자나 응용 프로그래머가 접근하는 데이터베이스를 정의합니다.&lt;/p&gt;
+
+&lt;p&gt;내부 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;조직 전체의 관점&lt;/code&gt;에서 이해하고 표현하는 단계로, 데이터베이스에 저장되는 데이터 간의 관계를 기술합니다.&lt;/p&gt;
+
+&lt;p&gt;외부 단계는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;저장 장치의 관점&lt;/code&gt;에서 데이터베이스를 이해하고 표현하는 단계로, 데이터가 물리적 장치에 실제로 저장되는 방법을 표현합니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;엔티티entity란&quot;&gt;엔티티(Entity)란?&lt;/h1&gt;
+
+&lt;p&gt;엔티티(Entity)는 실체 또는 객체라는 뜻으로, 저장되고 관리되어야 할 데이터의 집합을 의미합니다. 데이터베이스의 권위자가 정의한 엔티티는 다음과 같습니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;변별할 수 있는 사물 - Peter Chen (1976) -&lt;/li&gt;
+  &lt;li&gt;데이터베이스 내에서 변별 가능한 객체 - C.J Date (1986) -&lt;/li&gt;
+  &lt;li&gt;정보를 저장할 수 있는 어떤 것 - James Martin (1989) -&lt;/li&gt;
+  &lt;li&gt;정보가 저장될 수 있는 사람, 장소, 물건, 사건 그리고 개념 등 - Thomas Bruce (1992) -&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;즉, 엔티티란 업무에 필요하고 유용한 정보를 저장하고 관리하기 위한 집합적인 것(Thing)으로 설명할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;엔티티는 다음과 같은 특징을 가집니다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;반드시 해당 업무에서 필요하고 관리하고자 하는 정보이어야 합니다.&lt;/li&gt;
+  &lt;li&gt;유일한 식별자에 의해 식별이 가능해야 합니다.&lt;/li&gt;
+  &lt;li&gt;영속적으로 존재하는 두 개 이상의 인스턴스의 집합이어야 합니다.&lt;/li&gt;
+  &lt;li&gt;업무 프로세스에 의해 이용되어야 합니다.&lt;/li&gt;
+  &lt;li&gt;반드시 두 개 이상의 속성이 있어야 합니다. 단, 관계 엔티티의 경우 주 식별자만 있어도 엔티티로 인정됩니다.&lt;/li&gt;
+  &lt;li&gt;다른 엔터티와 최소 한 개 이상의 관계가 있어야 합니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;엔티티는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;실체의 유/무형&lt;/code&gt;에 따라 &lt;strong&gt;유형 엔티티(Tangible Entity)&lt;/strong&gt;, &lt;strong&gt;개념 엔티티(Conceptual Entity)&lt;/strong&gt;, &lt;strong&gt;사건 엔티티(Event Entity)&lt;/strong&gt;로 구분되고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;발생 시점&lt;/code&gt;에 따라 &lt;strong&gt;기본 엔티티(Fundamental Entity)&lt;/strong&gt;, &lt;strong&gt;중심 엔티티(Main Entity)&lt;/strong&gt;, &lt;strong&gt;행위 엔티티(Active Entity)&lt;/strong&gt;로 구분할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;유형 엔티티&lt;/code&gt;는 물리적인 형태가 있고 안정적/지속적으로 활용되는 엔티티로 사원, 물품, 강사 등이 이에 해당합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;개념 엔티티&lt;/code&gt;는 물리적 형태가 존재하지 않고 관리해야 할 개념적 정보로 구분이 되는 엔티티로 조직, 보험상품 등이 이에 해당합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;사건 엔티티&lt;/code&gt;는 업무를 수행함에 따라 발생되는 엔티티로 주문, 청구, 미납 등이 이에 해당합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;기본 엔티티&lt;/code&gt;는 그 업무에 원래 존재하는 정보로서 다른 엔터티와 관계에 의해 생성되지 않고 독립적으로 생성이 가능하고 자신은 타 엔터티의 부모의 역할을 합니다. 사원, 부서, 고객, 상품, 자재 등이 기본 엔티티가 될 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;중심 엔티티&lt;/code&gt;는 기본엔터티로부터 발생되고 그 업무에 있어서 중심적인 역할을 합니다. 데이터의 양이 많이 발생되고 다른 엔터티와의 관계를 통해 많은 행위엔터티를 생성하며, 계약, 사고, 예금원장, 청구, 주문, 매출 등이 중심 엔티티가 될 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;행위 엔티티&lt;/code&gt;는 두 개 이상의 부모엔터티로부터 발생되며, 분석초기 단계에서는 잘 나타나지 않고 상세 설계단계나 프로세스와 상관모델링을 진행하면서 도출될 수 있습니다. 주문목록, 사원변경이력 등이 행위 엔티티가 될 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;속성attribute이란&quot;&gt;속성(Attribute)이란?&lt;/h1&gt;
+
+&lt;p&gt;속성은 사물의 본질적인 성질로서, 사물이나 개념이 어떤 것인지를 나타내고 그것을 구별하는 성질이라고 할 수 있습니다. 데이터 모델링 관점에서는 업무에서 필요로 하는 인스턴스로 관리하고자 하는 의미상 더 이상 분리되지 않는 최소의 데이터 단위로 속성을 정의할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;속성은 업무에서 필요하고 관리하고자 하는 정보로 함수적 종속성을 가지며 하나의 속성은 하나의 값만 가질 수 있으며, 속성이 가질 수 있는 값의 범위를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;도메인(Domain)&lt;/code&gt;이라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;속성은 특성에 따라 업무로 부터 추출한 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;기본 속성&lt;/code&gt;, 데이터 모델링이나 업무를 규칙화하기 위해 새로 만들거나 변형하여 정의하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;설계 속성&lt;/code&gt;, 다른 속성에 영향을 받아 발생하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;파생 속성&lt;/code&gt;으로 구분할 수 있고, 엔티티 구성방식에 따라 인스턴스를 식별할 수 있는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;기본키(Primary Key, PK) 속성&lt;/code&gt;, 다른 엔티티와 관계에서 포함되는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;외래키(Foreign Key, FK) 속성&lt;/code&gt;, 나머지 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;일반 속성&lt;/code&gt;으로 구분할 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;관계relationship란&quot;&gt;관계(Relationship)란?&lt;/h1&gt;
+
+&lt;p&gt;데이터 모델링에서 관계는 개체와 개체 간의 의미 있는 연관성을 뜻하며, 개체 집합들 사이의 대응관계를 말합니다.&lt;/p&gt;
+
+&lt;p&gt;관계는 존재에 의한 관계와 행위에 의한 관계로 구분될 수 있으며, 두 엔티티 간의 관계에서 참여자의 수에 따라 1:1, 1:m, m:n 관계차수를 나타낼 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 하나의 회원은 하나의 회원정보를 가지므로, 1:1 관계를 가집니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;11-연관관계&quot;&gt;1:1 연관관계&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img004.png&quot; alt=&quot;img004&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;하나의 회원은 다수의 게시글을 작성할 수 있으므로, 1:m 관계를 가집니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;1m-연관관계&quot;&gt;1:m 연관관계&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img005.png&quot; alt=&quot;img005&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;하나의 영화에는 다수의 배우가 출연할 수 있고, 하나의 배우는 다수의 영화에 출연할 수 있으므로 m:n 관계를 가집니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;mn-연관관계&quot;&gt;m:n 연관관계&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img006.png&quot; alt=&quot;img006&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="sql" />
+      
+
+      
+        <summary type="html">모델링(Modeling)이란?</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
