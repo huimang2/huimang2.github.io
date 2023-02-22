@@ -8,6 +8,36 @@
     
       
       <item>
+        <title>SQL - 트랜잭션(Transaction)</title>
+        
+          <description>&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트랜잭션(Transaction)&lt;/code&gt;은 업무 처리를 위한 데이터베이스의 논리적인 작업 단위입니다. 하나의 트랜잭션은 한 개 이상의 연산으로 이루어질 수 있으며, 연산들은 완전히 처리되거나 하나도 처리되지 않아야 합니다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 23 Feb 2023 01:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/sql/transaction</link>
+        <guid isPermaLink="true">https://huimang2.github.io/sql/transaction</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>SQL - 데이터베이스(Database)</title>
+        
+          <description>&lt;h1 id=&quot;데이터베이스database&quot;&gt;데이터베이스(Database)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Mon, 13 Feb 2023 01:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/sql/database</link>
+        <guid isPermaLink="true">https://huimang2.github.io/sql/database</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>SQL - 데이터 모델의 이해</title>
         
           <description>&lt;h1 id=&quot;모델링modeling이란&quot;&gt;모델링(Modeling)이란?&lt;/h1&gt;
@@ -16,8 +46,8 @@
         
         <pubDate>Sat, 11 Feb 2023 20:00:00 +0900</pubDate>
         <link>
-        https://huimang2.github.io/sql/sql-concept</link>
-        <guid isPermaLink="true">https://huimang2.github.io/sql/sql-concept</guid>
+        https://huimang2.github.io/sql/concept</link>
+        <guid isPermaLink="true">https://huimang2.github.io/sql/concept</guid>
       </item>
       
     
