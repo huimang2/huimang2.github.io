@@ -198,7 +198,7 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#트랜잭션이란"><span>트랜잭션이란?</span></a></li><li><a href="#트랜잭션-제어어transaction-control-language-tcl"><span>트랜잭션 제어어(Transaction Control Language, TCL)</span></a><ul><li><a href="#commit"><span>COMMIT</span></a></li><li><a href="#rollback"><span>ROLLBACK</span></a></li><li><a href="#savepoint"><span>SAVEPOINT</span></a></li></ul></li><li><a href="#트랜잭션의-특성-acid"><span>트랜잭션의 특성: ACID</span></a></li><li><a href="#트랜잭션의-격리성-수준"><span>트랜잭션의 격리성 수준</span></a><ul><li><a href="#0단계-redad-uncommitted"><span>0단계: REDAD-UNCOMMITTED</span></a></li><li><a href="#1단계-redad-committed"><span>1단계: REDAD-COMMITTED</span></a></li><li><a href="#2단계-repeatable-read"><span>2단계: REPEATABLE-READ</span></a></li><li><a href="#3단계-serializable-read"><span>3단계: Serializable Read</span></a></li></ul></li></ul>
+                        <ul><li><a href="#트랜잭션이란"><span>트랜잭션이란?</span></a></li><li><a href="#트랜잭션-제어어transaction-control-language-tcl"><span>트랜잭션 제어어(Transaction Control Language, TCL)</span></a><ul><li><a href="#commit"><span>COMMIT</span></a></li><li><a href="#rollback"><span>ROLLBACK</span></a></li><li><a href="#savepoint"><span>SAVEPOINT</span></a></li></ul></li><li><a href="#트랜잭션의-특성-acid"><span>트랜잭션의 특성: ACID</span></a></li><li><a href="#트랜잭션의-격리성-수준"><span>트랜잭션의 격리성 수준</span></a><ul><li><a href="#0단계-redad-uncommitted"><span>0단계: REDAD-UNCOMMITTED</span></a></li><li><a href="#1단계-redad-committed"><span>1단계: REDAD-COMMITTED</span></a></li><li><a href="#2단계-repeatable-read"><span>2단계: REPEATABLE-READ</span></a></li><li><a href="#3단계-serializable-read"><span>3단계: SERIALIZABLE-READ</span></a></li></ul></li></ul>
 
                     </div>
                     <h1 id="트랜잭션이란">트랜잭션이란?</h1>
@@ -276,7 +276,7 @@ into the {body} of the default.hbs template -->
 
 <p>MySQL이나 MariaDB의 InnoDB 스토리지 엔진에서는 REPEATAbLE-READ를 기본 격리수준으로 사용하며, 다중 버전 병행 제어(Multi Version Concurrency Control, MVCC)를 통해 해당 격리 수준에서도 Pantom Read 현상이 발생하지 않습니다.</p>
 
-<h2 id="3단계-serializable-read">3단계: Serializable Read</h2>
+<h2 id="3단계-serializable-read">3단계: SERIALIZABLE-READ</h2>
 
 <p>3단계는 가장 엄격한 격리 수준으로, 읽기 작업에도 Shared-Lock을 적용하기 때문에 트랜잭션이 COMMIT 되기 전까지 다른 트랜잭션에서는 해당 데이터를 수정하지 못할 뿐만 아니라 읽을 수도 없습니다. 그렇기 때문에 Pantom Read 현상이 발생하지 않습니다.</p>
 

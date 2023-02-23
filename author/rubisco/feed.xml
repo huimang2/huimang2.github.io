@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-02-23T21:51:52+09:00</updated>
+  <updated>2023-02-23T22:10:10+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -112,7 +112,7 @@
 
 &lt;p&gt;MySQL이나 MariaDB의 InnoDB 스토리지 엔진에서는 REPEATAbLE-READ를 기본 격리수준으로 사용하며, 다중 버전 병행 제어(Multi Version Concurrency Control, MVCC)를 통해 해당 격리 수준에서도 Pantom Read 현상이 발생하지 않습니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;3단계-serializable-read&quot;&gt;3단계: Serializable Read&lt;/h2&gt;
+&lt;h2 id=&quot;3단계-serializable-read&quot;&gt;3단계: SERIALIZABLE-READ&lt;/h2&gt;
 
 &lt;p&gt;3단계는 가장 엄격한 격리 수준으로, 읽기 작업에도 Shared-Lock을 적용하기 때문에 트랜잭션이 COMMIT 되기 전까지 다른 트랜잭션에서는 해당 데이터를 수정하지 못할 뿐만 아니라 읽을 수도 없습니다. 그렇기 때문에 Pantom Read 현상이 발생하지 않습니다.&lt;/p&gt;
 
