@@ -58,7 +58,7 @@
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="SQL - 트랜잭션(Transaction)" />
-    <meta property="og:description" content="트랜잭션(Transaction)은 업무 처리를 위한 데이터베이스의 논리적인 작업 단위입니다. 하나의 트랜잭션은 한 개 이상의 연산으로 이루어질 수 있으며, 연산들은 완전히 처리되거나 하나도 처리되지 않아야 합니다. 트랜잭션의 특성: ACID 트랜잭션은 원자성(Atomicity), 일관성(Consistency), 격리성(Isolation), 영속성(Durability) 4가지 특성을 가집니다. 원자성은 트랜잭션의 작업이 부분적으로 실행되거나 중단되지 않는 것을 보장하는 성질을 말합니다. 즉, 트랜잭션에서 정의된 연산들은" />
+    <meta property="og:description" content="트랜잭션이란? 트랜잭션(Transaction)은 업무 처리를 위한 데이터베이스의 논리적인 작업 단위입니다. 하나의 트랜잭션은 한 개 이상의 연산으로 이루어질 수 있으며, 연산들은 완전히 처리되거나 하나도 처리되지 않아야 합니다. 트랜잭션 제어어(Transaction Control Language, TCL) 트랜잭션 제어어(Transaction Control Language, TCL)는 트랜잭션을 제어하는 SQL 명령어이며, 여기에는 COMMIT, ROLLBACK, SAVEPOINT가 있습니다. COMMIT COMMIT 명령어는 하나의 트랜잭션을 정상적으로" />
     <meta property="og:url" content="https://huimang2.github.io/sql/transaction" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/sql-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
@@ -68,7 +68,7 @@
     <meta property="article:tag" content="Sql" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="SQL - 트랜잭션(Transaction)" />
-    <meta name="twitter:description" content="트랜잭션(Transaction)은 업무 처리를 위한 데이터베이스의 논리적인 작업 단위입니다. 하나의 트랜잭션은 한 개 이상의 연산으로 이루어질 수 있으며, 연산들은 완전히 처리되거나 하나도 처리되지 않아야 합니다. 트랜잭션의 특성: ACID 트랜잭션은 원자성(Atomicity), 일관성(Consistency), 격리성(Isolation), 영속성(Durability) 4가지 특성을 가집니다. 원자성은 트랜잭션의 작업이 부분적으로 실행되거나 중단되지 않는 것을 보장하는 성질을 말합니다. 즉, 트랜잭션에서 정의된 연산들은" />
+    <meta name="twitter:description" content="트랜잭션이란? 트랜잭션(Transaction)은 업무 처리를 위한 데이터베이스의 논리적인 작업 단위입니다. 하나의 트랜잭션은 한 개 이상의 연산으로 이루어질 수 있으며, 연산들은 완전히 처리되거나 하나도 처리되지 않아야 합니다. 트랜잭션 제어어(Transaction Control Language, TCL) 트랜잭션 제어어(Transaction Control Language, TCL)는 트랜잭션을 제어하는 SQL 명령어이며, 여기에는 COMMIT, ROLLBACK, SAVEPOINT가 있습니다. COMMIT COMMIT 명령어는 하나의 트랜잭션을 정상적으로" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/sql-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -100,7 +100,7 @@
         "@type": "WebPage",
         "@id": "https://huimang2.github.io/sql/transaction"
     },
-    "description": "트랜잭션(Transaction)은 업무 처리를 위한 데이터베이스의 논리적인 작업 단위입니다. 하나의 트랜잭션은 한 개 이상의 연산으로 이루어질 수 있으며, 연산들은 완전히 처리되거나 하나도 처리되지 않아야 합니다. 트랜잭션의 특성: ACID 트랜잭션은 원자성(Atomicity), 일관성(Consistency), 격리성(Isolation), 영속성(Durability) 4가지 특성을 가집니다. 원자성은 트랜잭션의 작업이 부분적으로 실행되거나 중단되지 않는 것을 보장하는 성질을 말합니다. 즉, 트랜잭션에서 정의된 연산들은"
+    "description": "트랜잭션이란? 트랜잭션(Transaction)은 업무 처리를 위한 데이터베이스의 논리적인 작업 단위입니다. 하나의 트랜잭션은 한 개 이상의 연산으로 이루어질 수 있으며, 연산들은 완전히 처리되거나 하나도 처리되지 않아야 합니다. 트랜잭션 제어어(Transaction Control Language, TCL) 트랜잭션 제어어(Transaction Control Language, TCL)는 트랜잭션을 제어하는 SQL 명령어이며, 여기에는 COMMIT, ROLLBACK, SAVEPOINT가 있습니다. COMMIT COMMIT 명령어는 하나의 트랜잭션을 정상적으로"
 }
     </script>
 
@@ -198,12 +198,32 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#트랜잭션의-특성-acid"><span>트랜잭션의 특성: ACID</span></a></li><li><a href="#트랜잭션의-격리성-수준"><span>트랜잭션의 격리성 수준</span></a></li></ul>
+                        <ul><li><a href="#트랜잭션이란"><span>트랜잭션이란?</span></a></li><li><a href="#트랜잭션-제어어transaction-control-language-tcl"><span>트랜잭션 제어어(Transaction Control Language, TCL)</span></a><ul><li><a href="#commit"><span>COMMIT</span></a></li><li><a href="#rollback"><span>ROLLBACK</span></a></li><li><a href="#savepoint"><span>SAVEPOINT</span></a></li></ul></li><li><a href="#트랜잭션의-특성-acid"><span>트랜잭션의 특성: ACID</span></a></li><li><a href="#트랜잭션의-격리성-수준"><span>트랜잭션의 격리성 수준</span></a><ul><li><a href="#0단계-redad-uncommitted"><span>0단계: REDAD-UNCOMMITTED</span></a></li><li><a href="#1단계-redad-committed"><span>1단계: REDAD-COMMITTED</span></a></li><li><a href="#2단계-repeatable-read"><span>2단계: REPEATABLE-READ</span></a></li><li><a href="#3단계-serializable-read"><span>3단계: Serializable Read</span></a></li></ul></li></ul>
 
                     </div>
-                    <p><code class="language-plaintext highlighter-rouge">트랜잭션(Transaction)</code>은 업무 처리를 위한 데이터베이스의 논리적인 작업 단위입니다. 하나의 트랜잭션은 한 개 이상의 연산으로 이루어질 수 있으며, 연산들은 완전히 처리되거나 하나도 처리되지 않아야 합니다.</p>
+                    <h1 id="트랜잭션이란">트랜잭션이란?</h1>
 
-<h3 id="트랜잭션의-특성-acid">트랜잭션의 특성: ACID</h3>
+<p><code class="language-plaintext highlighter-rouge">트랜잭션(Transaction)</code>은 업무 처리를 위한 데이터베이스의 논리적인 작업 단위입니다. 하나의 트랜잭션은 한 개 이상의 연산으로 이루어질 수 있으며, 연산들은 완전히 처리되거나 하나도 처리되지 않아야 합니다.</p>
+
+<h1 id="트랜잭션-제어어transaction-control-language-tcl">트랜잭션 제어어(Transaction Control Language, TCL)</h1>
+
+<p><code class="language-plaintext highlighter-rouge">트랜잭션 제어어(Transaction Control Language, TCL)</code>는 트랜잭션을 제어하는 SQL 명령어이며, 여기에는 <code class="language-plaintext highlighter-rouge">COMMIT</code>, <code class="language-plaintext highlighter-rouge">ROLLBACK</code>, <code class="language-plaintext highlighter-rouge">SAVEPOINT</code>가 있습니다.</p>
+
+<h2 id="commit">COMMIT</h2>
+
+<p><code class="language-plaintext highlighter-rouge">COMMIT</code> 명령어는 하나의 트랜잭션을 정상적으로 완료하고 그 결과를 데이터베이스에 반영하는 명령어 입니다.</p>
+
+<h2 id="rollback">ROLLBACK</h2>
+
+<p><code class="language-plaintext highlighter-rouge">ROLLBACK</code> 명령어는 트랜잭션을 취소하기 위한 명령어 입니다. 데이터베이스가 트랜잭션 도중에 비정상적으로 종료되면 자동으로 ROLLBACK이 됩니다.</p>
+
+<h2 id="savepoint">SAVEPOINT</h2>
+
+<p><code class="language-plaintext highlighter-rouge">SAVEPOINT</code> 명령어는 하나의 트랜잭션을 여러 지점으로 분리하여 저장하는 명령어 입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">SAVEPOINT 지점명</code>으로 SAVEPOINT를 설정하고, <code class="language-plaintext highlighter-rouge">ROLLBACK TO 지점명</code>으로 해당 SAVEPOINT까지 ROLLBACK을 할 수 있습니다.</p>
+
+<h1 id="트랜잭션의-특성-acid">트랜잭션의 특성: ACID</h1>
 
 <p>트랜잭션은 <code class="language-plaintext highlighter-rouge">원자성(Atomicity)</code>, <code class="language-plaintext highlighter-rouge">일관성(Consistency)</code>, <code class="language-plaintext highlighter-rouge">격리성(Isolation)</code>, <code class="language-plaintext highlighter-rouge">영속성(Durability)</code> 4가지 특성을 가집니다.</p>
 
@@ -215,7 +235,52 @@ into the {body} of the default.hbs template -->
 
 <p><code class="language-plaintext highlighter-rouge">영속성</code>은 트랜잭션이 성공적으로 수행될 경우 그 결과는 영구적으로 데이터베이스에 저장되는 성질을 말합니다. 송금 트랜잭션이 성공적으로 수행되었다면 송금 시스템이 재부팅 되더라도 송금 결과는 변하지 않아야 합니다.</p>
 
-<h3 id="트랜잭션의-격리성-수준">트랜잭션의 격리성 수준</h3>
+<h1 id="트랜잭션의-격리성-수준">트랜잭션의 격리성 수준</h1>
+
+<p>트랜잭션의 격리성을 보장하기 위해서는 동시에 처리되는 트랜잭션을 차례대로 실행해야 하지만, 이 경우 처리 성능이 나빠질 수 있습니다. 이러한 문제로 인하여 ANSI/ISO SQL 표준에서는 격리 수준을 4가지로 정의합니다.</p>
+
+<h2 id="0단계-redad-uncommitted">0단계: REDAD-UNCOMMITTED</h2>
+
+<p>0단계에서는 트랜잭션에서 변경된 내용이 COMMIT이나 ROLLBACK의 여부에 상관없이 다른 트랜잭션에서 값을 읽을 수 있습니다.</p>
+
+<h6 id="redad-uncommitted">REDAD-UNCOMMITTED</h6>
+<p><img src="/assets/images/sql/img015.png" alt="img015" style="margin-top:-1.5em" /></p>
+
+<p>트랜잭션1에서 DOCUMENT_IDX가 2인 레코드를 INSERT하고 아직 COMMIT이 이루어지지 않았지만 트랜잭션2에서 DOCUMENT_IDX가 2인 레코드를 조회했습니다. 이 경우 트랜잭션1에서 문제가 발생하여 ROLLBACK이 되거나 UPDATE를 통해 내용을 수정하더라도 트랜잭션2에서는 잘못된 데이터를 가지고 처리를 하게 됩니다.</p>
+
+<p>이렇게 아직 COMMIT 되지 않은 데이터를 읽어 일관성이 보장되지 않는 현상을 <code class="language-plaintext highlighter-rouge">Dirty Read</code>라고 합니다. 데이터 정합성 문제가 많기때문에 RDBMS에서는 거의 사용하지 않습니다.</p>
+
+<h2 id="1단계-redad-committed">1단계: REDAD-COMMITTED</h2>
+
+<p>1단계에서는 COMMIT이 완료된 데이터만 다른 트랜잭션에서 값을 읽을 수 있습니다.</p>
+
+<h6 id="redad-uncommitted-1">REDAD-UNCOMMITTED</h6>
+<p><img src="/assets/images/sql/img016.png" alt="img016" style="margin-top:-1.5em" /></p>
+
+<p>트랜잭션1에서 DOCUMENT_IDX가 2인 레코드를 UPDATE하면 수정되기 전 레코드는 UNDO 영역에 백업이 됩니다. 트랜잭션2는 트랜잭션1의 COMMIT이 수행되기 전까지 UNDO 영역에 백업된 레코드를 읽게 되므로 Dirty Read 현상이 발생하지 않습니다.</p>
+
+<p>그러나 트랜잭션1이 COMMIT을 수행한 후 트랜잭션2에서 동일한 레코드를 조회하면 값이 변경되어 일관성이 보장되지 않게 되는데, 이러한 현상을 <code class="language-plaintext highlighter-rouge">Non-Repeatable Read</code>라고 합니다.</p>
+
+<p>오라클에서는 READ-COMMITTED를 기본 격리수준으로 사용합니다.</p>
+
+<h2 id="2단계-repeatable-read">2단계: REPEATABLE-READ</h2>
+
+<p>2단계에서는 트랜잭션이 완료되기 전까지 Shared-Lock을 적용하여 다른 트랜잭션에서 해당 데이터를 수정할 수 없도록 합니다.</p>
+
+<h6 id="repeatable-read">REPEATABLE-READ</h6>
+<p><img src="/assets/images/sql/img017.png" alt="img017" style="margin-top:-1.5em" /></p>
+
+<p>트랜잭션1이 COMMIT을 수행하더라도 트랜잭션2는 COMMIT을 수행하기 전까지 UNDO 영역에 백업된 데이터를 읽으므로 Non-Repeatable Read 현상이 발생하지 않습니다.</p>
+
+<p>그러나 트랜잭션2가 COMMIT을 수행한다면 트랜잭션 중에 없던 레코드가 추가되거나 없어지는 현상이 발생하는데, 이러한 현상을 <code class="language-plaintext highlighter-rouge">Pantom Read</code>라고 합니다.</p>
+
+<p>MySQL이나 MariaDB의 InnoDB 스토리지 엔진에서는 REPEATAbLE-READ를 기본 격리수준으로 사용하며, 다중 버전 병행 제어(Multi Version Concurrency Control, MVCC)를 통해 해당 격리 수준에서도 Pantom Read 현상이 발생하지 않습니다.</p>
+
+<h2 id="3단계-serializable-read">3단계: Serializable Read</h2>
+
+<p>3단계는 가장 엄격한 격리 수준으로, 읽기 작업에도 Shared-Lock을 적용하기 때문에 트랜잭션이 COMMIT 되기 전까지 다른 트랜잭션에서는 해당 데이터를 수정하지 못할 뿐만 아니라 읽을 수도 없습니다. 그렇기 때문에 Pantom Read 현상이 발생하지 않습니다.</p>
+
+<p>그러나 트랜잭션의 동시제어가 불가능하여 성능이 좋지 않기때문에 RDBMS에서는 거의 사용되지 않습니다. MySQL의 경우 위에서 설명한 MCVCC를 통해 REPEATABLE-READ 격리 수준에서도 Pantom Read 현상이 발생하지 않기 때문에 사용할 필요가 없어보입니다.</p>
 
                 </div>
             </section>
