@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-02-27T02:05:58+09:00</updated>
+  <updated>2023-03-18T14:50:18+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -30,6 +30,1724 @@
   
   
 
+  
+    <entry>
+      <title type="html">SQL - 내장 함수(Built-in Function)</title>
+      <link href="https://huimang2.github.io/sql/built-in-function" rel="alternate" type="text/html" title="SQL - 내장 함수(Built-in Function)" />
+      <published>2023-03-07T23:00:00+09:00</published>
+      <updated>2023-03-07T23:00:00+09:00</updated>
+      <id>https://huimang2.github.io/sql/built-in-function</id>
+      <content type="html" xml:base="https://huimang2.github.io/sql/built-in-function">&lt;h1 id=&quot;함수function&quot;&gt;함수(Function)&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;함수(Function)&lt;/code&gt;는 데이터베이스에서 입력값을 처리하여 결과값을 반환하는 프로그램으로, 크게 밴더에서 제공하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;내장 함수(Built-in Function)&lt;/code&gt;와 사용자가 작성하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;사용자 정의 함수(User Defined Function)&lt;/code&gt;로 나눌 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;이번 시간에는 내장 함수를 알아보고자 합니다. 내장 함수는 단일 행 값을 입력하여 단일 값을 반환하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;단일 행 함수(Single-Row Function)&lt;/code&gt;, 다중 행 값을 입력하여 단일 값을 반환하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;다중 행 함수(Multi-Row Function)&lt;/code&gt;으로 나눌 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;단일-행-함수&quot;&gt;단일 행 함수&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;단일 행 함수&lt;/code&gt;의 유형은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;문자형 함수&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;숫자형 함수&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;날짜형 함수&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;형 변환 함수&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NULL 관련 함수&lt;/code&gt;가 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;문자형-함수&quot;&gt;문자형 함수&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;문자형 함수&lt;/code&gt;는 문자 또는 문자열을 입력받아 처리하는 함수로, SELECT, WHERE, ORDER BY절에서 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;문자형-함수-1&quot;&gt;문자형 함수&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;함수&lt;/th&gt;
+      &lt;th&gt;내용&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LOWER(문자열)&lt;/td&gt;
+      &lt;td&gt;문자열을 소문자로 변환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;UPPER(문자열)&lt;/td&gt;
+      &lt;td&gt;문자열을 대문자로 변환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;INITCAP(문자열)&lt;/td&gt;
+      &lt;td&gt;문자열의 첫 문자를 대문자로 변환합니다. (Pascal Case)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ASCII(문자)&lt;/td&gt;
+      &lt;td&gt;문자를 아스키 코드로 변환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CHR(아스키 코드)&lt;/td&gt;
+      &lt;td&gt;아스키 코드를 문자로 변환합니다. SQL Server에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CHAR()&lt;/code&gt;를 사용합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CONCAT(문자열1, 문자열2)&lt;/td&gt;
+      &lt;td&gt;문자열1과 문자열2를 연결합니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;'문자열1'                                                                                                                                                           |  | '문자열2'&lt;/code&gt;와 같습니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SUBSTR(문자열, 시작위치[, 길이])&lt;/td&gt;
+      &lt;td&gt;문자열의 시작위치에서 길이만큼 반환하며, 길이를 생략하면 마지막 문자열까지 반환합니다.&lt;br /&gt;시작위치를 음수로 입력하면 오른쪽 방향으로 계산하여 출력되며, SQL Server에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SUBSTRING()&lt;/code&gt;을 사용합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LENGTH(문자열)&lt;/td&gt;
+      &lt;td&gt;문자열의 길이를 출력합니다. 바이트를 반환하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LENGTHB()&lt;/code&gt;를 사용하며, SQL Server에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LEN()&lt;/code&gt;을 사용합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LTRIM(문자열[, 지정문자])&lt;/td&gt;
+      &lt;td&gt;문자열의 왼쪽에서 연속되는 지정문자를 제거하며, 지정문자가 생략되면 공백을 제거합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RTRIM(문자열[, 지정문자])&lt;/td&gt;
+      &lt;td&gt;문자열의 오른쪽에서 연속되는 지정문자를 제거하며, 지정문자가 생략되면 공백을 제거합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TRIM([LEADING | TRAILING | BOTH]&lt;br /&gt;[지정문자 FROM] 문자열)&lt;/td&gt;
+      &lt;td&gt;문자열의 머릿말, 꼬릿말 또는 양쪽에서 지정문자를 제거하며, 지정문자를 생략하면 공백을 제거합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LPAD(문자열, 길이[, 채움문자])&lt;/td&gt;
+      &lt;td&gt;길이만큼 문자열의 왼쪽에 채움문자를 채우며, 채움문자를 생략하면 공백을 채웁니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RPAD(문자열, 길이[, 채움문자])&lt;/td&gt;
+      &lt;td&gt;길이만큼 문자열의 오른쪽에 채움문자를 채우며, 채움문자를 생략하면 공백을 채웁니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REPLACE(문자열, 지정문자열, 변환문자열)&lt;/td&gt;
+      &lt;td&gt;문자열에서 지정문자열을 변환문자열로 변경합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TRANSLATE(문자열, 지정문자열, 변환문자열)&lt;/td&gt;
+      &lt;td&gt;REPLACE와 유사하며, 지정문자열의 한글자씩 변환문자열에 매핑하여 문자열을 변경합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;숫자형-함수&quot;&gt;숫자형 함수&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;숫자형 함수&lt;/code&gt;는 수치형 데이터를 입력받아 처리하는 함수입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;숫자형-함수-1&quot;&gt;숫자형 함수&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;함수&lt;/th&gt;
+      &lt;th&gt;내용&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ABS(숫자)&lt;/td&gt;
+      &lt;td&gt;숫자의 절대값을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SIGN(숫자)&lt;/td&gt;
+      &lt;td&gt;숫자가 양수이면 1, 음수이면 -1, 0이면 0을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MOD(숫자1, 숫자2)&lt;/td&gt;
+      &lt;td&gt;숫자1을 숫자2로 나눈 나머지를 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CEIL(숫자)&lt;/td&gt;
+      &lt;td&gt;숫자의 올림값을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;FLOOR(숫자)&lt;/td&gt;
+      &lt;td&gt;숫자의 내림값을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ROUND(숫자[, 소수점자리수])&lt;/td&gt;
+      &lt;td&gt;숫자를 소수점 자릿수에서 반올림합니다.&lt;br /&gt;소수점자리수를 생략하면 기본값으로 0이 적용됩니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TRUNC(숫자[, 소수점자리수])&lt;/td&gt;
+      &lt;td&gt;숫자의 소수점 자릿수 뒷자리를 버립니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;날짜형-함수&quot;&gt;날짜형 함수&lt;/h3&gt;
+
+&lt;p&gt;날짜형 함수는 DATE 타입의 데이터를 계산합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;날짜형-함수-1&quot;&gt;날짜형 함수&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;함수&lt;/th&gt;
+      &lt;th&gt;내용&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SYSDATE&lt;/td&gt;
+      &lt;td&gt;현재 날짜와 시간을 반환합니다. SQL Server에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GETDATE()&lt;/code&gt;를 사용합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;EXTRACT&lt;br /&gt;(YEAR | MONTH | DAY FROM 날짜)&lt;/td&gt;
+      &lt;td&gt;날짜에서 년(YEAR), 월(MONTH), 일(DAY)을 추출합니다.&lt;br /&gt;SQL Server에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DATEPART()&lt;/code&gt;를 사용합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;형-변환-함수&quot;&gt;형 변환 함수&lt;/h3&gt;
+
+&lt;p&gt;형 변환 함수는 데이터 타입을 변환하기 위해 사용하는 함수입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;형-변환-함수-1&quot;&gt;형 변환 함수&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;함수&lt;/th&gt;
+      &lt;th&gt;내용&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TO_NUMBER(문자열)&lt;/td&gt;
+      &lt;td&gt;문자열을 숫자로 변환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TO_CHAR(숫자 | 날짜[, 포맷])&lt;/td&gt;
+      &lt;td&gt;숫자 또는 날짜를 포맷에 맞는 문자열로 변환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;TO_DATE(문자열[, 포맷])&lt;/td&gt;
+      &lt;td&gt;문자열을 포맷에 맞는 날짜 타입으로 변환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;null-관련-함수&quot;&gt;NULL 관련 함수&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NULL 관련 함수&lt;/code&gt;눈 정해지지 않은 값을 의미하며,  과 관련된 함수는 다음과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;null-관련-함수-1&quot;&gt;NULL 관련 함수&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;함수&lt;/th&gt;
+      &lt;th&gt;내용&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NVL(표현식1, 표현식2)&lt;/td&gt;
+      &lt;td&gt;표현식1이 NULL이면 표현식2를 반환합니다.&lt;br /&gt;SQL Server에서는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ISNULL()&lt;/code&gt;을 사용합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NVL2(표현식1, 표현식2, 표현식3)&lt;/td&gt;
+      &lt;td&gt;표현식1이 NULL이 아니면 표현식2를, NULL이면 표현식3을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;IFNULL(표현식1, 표현식2)&lt;/td&gt;
+      &lt;td&gt;표현식1과 표현식2가 같으면 NULL을, 같지않으면 표현식1을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;COALESE(표현식1, 표현식2, …)&lt;/td&gt;
+      &lt;td&gt;표현식 중 NULL이 아닌 첫번째 값을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;다중-행-함수&quot;&gt;다중 행 함수&lt;/h2&gt;
+
+&lt;p&gt;다중 행 함수의 유형은 집계 함수, 그룹 함수, 윈도우 함수가 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;집계-함수&quot;&gt;집계 함수&lt;/h3&gt;
+
+&lt;p&gt;집계 함수는 특정 컬럼에 대한 행들의 값을 통계적으로 계산한 결과를 반환하는 함수입니다. SELECT절, HAVING절, GROUP BY절에 사용할 수 있으며,  값은 제외하고 계산됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;집계-함수-1&quot;&gt;집계 함수&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;함수&lt;/th&gt;
+      &lt;th&gt;내용&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;COUNT(*)&lt;/td&gt;
+      &lt;td&gt;값을 포함한 컬럼 전체 행의 수를 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;COUNT(컬럼 | 표현식)&lt;/td&gt;
+      &lt;td&gt;값을 제외한 컬럼이나 표현식에 해당하는 행의 수를 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SUM(컬럼 | 표현식)&lt;/td&gt;
+      &lt;td&gt;컬럼이나 표현식에 해당하는 값의 합계를 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AVG(컬럼 | 표현식)&lt;/td&gt;
+      &lt;td&gt;컬럼이나 표현식에 해당하는 값의 평균을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MAX(컬럼 | 표현식)&lt;/td&gt;
+      &lt;td&gt;컬럼이나 표현식에 해당하는 값 중 최대값을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MIN(컬럼 | 표현식)&lt;/td&gt;
+      &lt;td&gt;컬럼이나 표현식에 해당하는 값 중 최소값을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;STDDEV(컬럼 | 표현식)&lt;/td&gt;
+      &lt;td&gt;컬럼이나 표현식에 해당하는 값들의 표준편차를 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;VARIANCE(컬럼 | 표현식)&lt;/td&gt;
+      &lt;td&gt;컬럼이나 표현식에 해당하는 값들의 분산을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;그룹-함수&quot;&gt;그룹 함수&lt;/h3&gt;
+
+&lt;p&gt;그룹 함수는 데이터를 그룹화하고 각 그룹 내의 데이터를 분석하는 데 사용되는 함수입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SELECT&lt;/code&gt; 문에서 사용되며 일반적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GROUP BY&lt;/code&gt; 구문과 함께 사용됩니다.&lt;/p&gt;
+
+&lt;h4 style=&quot;color:royalblue; margin-bottom:1.5em&quot; id=&quot;1-rollup-함수&quot;&gt;(1) ROLLUP 함수&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ROLLUP&lt;/code&gt; 함수는 지정된 컬럼의 소계 및 총계를 구하기 위해 사용하는 그룹 함수입니다. 각 열을 기준으로 데이터를 그룹화하고, 각 그룹에 대해 집계 연산을 수행한 다음, 상위 수준에서도 그룹화 및 집계를 수행합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;rollup-함수-구문&quot;&gt;ROLLUP 함수 구문&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼명&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;집계&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;함수&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블명&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROLLUP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;해당 그룹함수는 다음과 같은 행의 합집합과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;rollup-함수를-합집합으로-표현&quot;&gt;ROLLUP 함수를 합집합으로 표현&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROLLUP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;UNION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ALL&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;UNION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ALL&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;전체&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;집합&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;결과&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;예를 들어, 다음과 같은 데이터가 있다고 가정해 봅시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;rollup-함수-예제-데이터&quot;&gt;ROLLUP 함수 예제 데이터&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;지역&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;부서&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;금액&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2500&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위의 데이터에서, 이름, 성별, 국가별 판매량을 계산하고 싶다고 가정해 봅시다. 이를 수행하기 위해 ROLLUP 함수를 사용할 수 있습니다. 다음 SQL 문은 이름, 성별, 국가를 기준으로 판매량을 계산하고, ROLLUP 함수를 사용하여 계층 구조를 만듭니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;rollup-함수-예제&quot;&gt;ROLLUP 함수 예제&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;지역&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;부서&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SUM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;금액&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블명&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ROLLUP&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;지역&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;부서&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 구문을 사용하여, 지역별 금액 합계, 부서별 금액 합계, 전체 금액 합계를 각각 계산할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;아래는 위의 SQL 문의 결과입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;rollup-함수-예제-결과&quot;&gt;ROLLUP 함수 예제 결과&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;지역&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;부서&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SUM(금액)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 style=&quot;color:royalblue; margin-bottom:1.5em&quot; id=&quot;2-cube-함수&quot;&gt;(2) CUBE 함수&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CUBE&lt;/code&gt; 함수는 다차원 그룹화를 수행하기 위한 기능입니다. ROLLUP 함수와 마찬가지로 GROUP BY 절에 사용되며, 여러 열을 기준으로 데이터를 그룹화하고 각 그룹 단위의 합계를 계산합니다. 하지만, ROLLUP 함수와 달리 CUBE 함수는 모든 가능한 조합에 대한 그룹 단위의 합계를 계산합니다.&lt;/p&gt;
+
+&lt;p&gt;CUBE 함수는 내부적으로 대상 컬럼의 순서를 변경하여 쿼리를 수행하기 때문에 다른 그룹 함수보다 시스템에 대한 부하가 크므로 사용시 주의해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;CUBE 함수 구문은 다음과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;cube-함수-구문&quot;&gt;CUBE 함수 구문&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼명&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;집계&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;함수&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블명&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CUBE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;해당 그룹함수는 다음과 같은 행의 합집합과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;cube-함수를-합집합으로-표현&quot;&gt;CUBE 함수를 합집합으로 표현&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CUBE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;UNION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ALL&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;UNION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ALL&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;UNION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ALL&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;전체&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;집합&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;결과&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;예를 들어, 다음과 같은 데이터가 있다고 가정해 봅시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;cube-함수-예제-데이터&quot;&gt;CUBE 함수 예제 데이터&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;날짜&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;지역&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;부서&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;금액&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1800&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1600&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2400&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위의 데이터에서, 날짜, 지역, 부서별로 금액의 합계를 계산하려면 다음과 같은 SQL 문을 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;cube-함수-예제&quot;&gt;CUBE 함수 예제&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;날짜&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;지역&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;부서&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SUM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;금액&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블명&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;CUBE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;날짜&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;지역&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;부서&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;이 구문을 사용하여, 지역별 금액 합계, 부서별 금액 합계, 전체 금액 합계를 각각 계산할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;아래는 위의 SQL 문의 결과입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;cube-함수-결과&quot;&gt;CUBE 함수 결과&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;날짜&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;지역&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;부서&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SUM(금액)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8700&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5300&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4900&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3100&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3800&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2800&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2400&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1600&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1800&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1200&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 style=&quot;color:royalblue; margin-bottom:1.5em&quot; id=&quot;3-grouping-sets-함수&quot;&gt;(3) GROUPING SETS 함수&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GROUPING SETS&lt;/code&gt; 함수는 다중 그룹화를 수행하기 위한 기능입니다. ROLLUP 함수 및 CUBE 함수와 비슷하지만, GROUPING SETS 함수는 그룹화에 대한 집합을 명시적으로 지정할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;GROUPING SETS 함수는 GROUP BY 절에 사용되며, 다중 열을 기준으로 데이터를 그룹화하고 각 그룹 단위의 합계를 계산합니다.&lt;/p&gt;
+
+&lt;p&gt;ROLLUP 함수나 CUBE 함수처럼 모든 가능한 조합을 계산하지 않고, 사용자가 지정한 그룹의 소계만 계산합니다. 또한 ROLLUP 함수와 달리 컬럼 간 순서와 무관한 결과를 얻을 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;GROUPING SETS 함수의 구문은 다음과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;grouping-sets-함수-구문&quot;&gt;GROUPING SETS 함수 구문&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼명&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;집계&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;함수&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블명&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;GROUPING&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SETS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;해당 그룹함수는 다음과 같은 행의 합집합과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;grouping-sets-함수를-합집합으로-표현&quot;&gt;GROUPING SETS 함수를 합집합으로 표현&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;GROUPING&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SETS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;UNION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ALL&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;예를 들어, 다음과 같은 데이터가 있다고 가정해 봅시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;grouping-sets-함수-예제-데이터&quot;&gt;GROUPING SETS 함수 예제 데이터&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;날짜&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;지역&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;부서&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;금액&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2500&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1800&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1600&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2400&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위의 데이터에서, 날짜, 지역, 부서별로 금액의 합계를 계산하려면 다음과 같은 SQL 문을 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;grouping-sets-함수-예제&quot;&gt;GROUPING SETS 함수 예제&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;날짜&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;지역&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;부서&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SUM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;금액&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블명&lt;/span&gt;
+ &lt;span class=&quot;k&quot;&gt;GROUP&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;GROUPING&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;SETS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;날짜&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;지역&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;부서&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위의 SQL 문에서, GROUPING SETS 구문은 그룹화에 대한 집합을 명시적으로 지정합니다. GROUPING SETS 구문 안에는 그룹화에 사용할 열을 나열하며, 각각을 괄호로 묶어서 집합으로 표시합니다.&lt;/p&gt;
+
+&lt;p&gt;아래는 위의 SQL 문의 결과입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;grouping-sets-함수-결과&quot;&gt;GROUPING SETS 함수 결과&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;날짜&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;지역&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;부서&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SUM(금액)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;서울&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;부산&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;마케팅&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5300&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;영업&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8700&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;윈도우-함수&quot;&gt;윈도우 함수&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;윈도우 함수(Window Function)&lt;/code&gt;는 OVER 절을 사용하여 데이터 집합을 기반으로 계산되는 함수입니다. 집계 함수와 달리 그룹화하지 않고 개별 행에 대해 계산합니다. 각 행의 계산 결과는 해당 행의 윈도우(Window)에 속하는 모든 행의 값을 사용하여 계산됩니다.&lt;/p&gt;
+
+&lt;p&gt;윈도우 함수를 사용하면 데이터 집합에서 개별 행에 대한 값을 계산하는 것이 가능합니다. 일반적으로, 윈도우 함수는 데이터 집합에서 일부 행에 대한 통계를 계산하기 위해 사용됩니다. 윈도우 함수는 행과 행 사이에서 연산을 수행하고 결과 집합에 포함될 행을 결정하는 데 사용됩니다.&lt;/p&gt;
+
+&lt;p&gt;데이터베이스를 사용한 온라인 분석 처리 용도로 사용하기 위해 추가된 기능으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;OLAP(On-Line Analytical Processing)&lt;/code&gt; 함수라고도 합니다.&lt;/p&gt;
+
+&lt;p&gt;윈도우 함수는 다음과 같은 구문을 가집니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;윈도우-함수-구문&quot;&gt;윈도우 함수 구문&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;윈도우함수&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;인수&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OEVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...]]&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ASC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[,&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ASC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...]]&lt;/span&gt;
+         &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WINDOWING&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;절&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블명&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;윈도우 함수를 사용하려면 OVER() 구문을 사용하여 윈도우를 정의해야 합니다. 윈도우는 연산을 수행할 데이터의 범위를 지정하며, 연산 범위는 WINDOWING절에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ROWS&lt;/code&gt;나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RANGE&lt;/code&gt;로 정의됩니다. ROWS는 행 수로, RANGE는 값의 범위로 윈도우를 정의합니다. ROWS나 RANGE 구문 뒤에는 윈도우 크기를 나타내는 값이 올 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;WINDOWING절은 다음과 같은 구문을 가집니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;windowing절-구문&quot;&gt;WINDOWING절 구문&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ROWS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RANGE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BETWEEN&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;시작점&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;끝점&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;시작점은 다음과 같은 키워드를 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;키워드&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;UNBOUNDED PRECEDING&lt;/td&gt;
+      &lt;td&gt;최초의 레코드&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CURRENT ROW&lt;/td&gt;
+      &lt;td&gt;현재의 레코드&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;값 PRECEDING&lt;/td&gt;
+      &lt;td&gt;값만큼 이전의 레코드&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;값 FOLLOWING&lt;/td&gt;
+      &lt;td&gt;값만큼 이후의 레코드&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;끝점은 다음과 같은 키워드를 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;키워드&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;UNBOUNDED FOLLOWING&lt;/td&gt;
+      &lt;td&gt;마지막 레코드&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CURRENT ROW&lt;/td&gt;
+      &lt;td&gt;현재의 레코드&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;값 PRECEDING&lt;/td&gt;
+      &lt;td&gt;값만큼 이전의 레코드&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;값 FOLLOWING&lt;/td&gt;
+      &lt;td&gt;값만큼 이후의 레코드&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;WINDOWING절을 명시하지 않는 경우 기본값으로 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW&lt;/code&gt;가 적용됩니다.&lt;/p&gt;
+
+&lt;p&gt;윈도우 함수의 유형에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;순위 함수&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;집계 함수&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;순서 함수&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;비율 함수&lt;/code&gt;가 있습니다.&lt;/p&gt;
+
+&lt;h4 style=&quot;color:royalblue; margin-bottom:1.5em&quot; id=&quot;1-순위-함수&quot;&gt;(1) 순위 함수&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;순위 함수&lt;/code&gt;는 데이터의 순위를 계산하여 출력합니다. 이 때, 데이터가 중복되는 경우 같은 순위를 가지게 됩니다. SQL에서는 다음과 같은 3가지의 순위 함수를 제공합니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;순위함수&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RANK&lt;/td&gt;
+      &lt;td&gt;데이터의 순위를 계산하고, 같은 값이 있을 경우 중복 순위를 건너뛰고 다음 순위를 출력합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;DENSE_RANK&lt;/td&gt;
+      &lt;td&gt;데이터의 순위를 계산하고, 같은 값이 있을 경우 중복 순위를 건너뛰지 않고 중복 순위를 포함한 순위를 출력합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;ROW_NUMBER&lt;/td&gt;
+      &lt;td&gt;데이터의 순서에 따라 순번을 부여합니다. 같은 값이 있을 경우에도 중복되지 않고 각각의 순번을 출력합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;예를 들어, 다음과 같은 SCORES 테이블이 있다고 가정해 봅시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;순위-함수-예제-데이터&quot;&gt;순위 함수 예제 데이터&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;NAME&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SCORE&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Carol&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dave&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;70&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;이 테이블에서 NAME 컬럼을 기준으로 정렬된 결과를 가지고, SCORE 컬럼의 누적 합계를 계산하려면 다음과 같이 윈도우 함수를 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;rank-함수-예제&quot;&gt;RANK 함수 예제&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;RANK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RANK&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCORES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 쿼리는 SCORES 테이블에서 SCORE 컬럼을 기준으로 내림차순으로 정렬한 결과를 기반으로, 각 데이터의 순위를 계산합니다. RANK() 함수는 동일한 순위를 갖는 데이터가 있을 경우 같은 순위를 부여하고, 그 다음 순위는 건너뛰어 다음으로 높은 순위를 부여합니다. 예를 들어, 첫 번째와 두 번째 데이터는 같은 순위(2위)를 부여하고, 그 다음 데이터는 4위를 부여합니다. 결과는 다음과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;rank-함수-결과&quot;&gt;RANK 함수 결과&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;NAME&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SCORE&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;RANK&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Carol&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dave&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;70&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;다음은 DENSE_RANK() 함수를 사용하여 score 열을 기준으로 순위를 계산하는 쿼리의 예제입니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;dense_rank-함수-예제&quot;&gt;DENSE_RANK 함수 예제&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;DENSE_RANK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RANK&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCORES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 쿼리는 RANK() 함수와 비슷하게, SCORES 테이블에서 SCORE 컬럼을 기준으로 내림차순으로 정렬한 결과를 기반으로, 각 데이터의 순위를 계산합니다. 하지만 DENSE_RANK() 함수는 동일한 순위를 갖는 데이터가 있을 경우 같은 순위를 부여하고, 그 다음 순위는 건너뛰지 않고 동일한 순위를 부여합니다. 예를 들어, 첫 번째와 두 번째 데이터는 같은 순위(2위)를 부여하고, 그 다음 데이터는 3위를 부여합니다. 결과는 다음과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;dense_rank-함수-결과&quot;&gt;DENSE_RANK 함수 결과&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;NAME&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SCORE&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;RANK&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Carol&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dave&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;70&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;마지막으로, ROW_NUMBER() 함수를 사용하여 SCORE 컬럼을 기준으로 순위를 계산하는 쿼리의 예제를 살펴보겠습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;row_number-함수-예제&quot;&gt;ROW_NUMBER 함수 예제&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;ROW_NUMBER&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RANK&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCORES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;위 쿼리는 RANK() 함수와 DENSE_RANK() 함수와 달리, 각 데이터를 유일하게 구별하는 번호를 부여합니다. SCORES 테이블에서 SCORE 컬럼을 기준으로 내림차순으로 정렬한 결과를 기반으로, 각 데이터에 대해 1부터 순차적으로 번호를 부여합니다. 결과는 다음과 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;row_number-함수-결과&quot;&gt;ROW_NUMBER 함수 결과&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;NAME&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SCORE&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;RANK&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Carol&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Dave&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;70&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;ROW_NUMBER() 함수는 특히 페이징 처리(paging)에 유용합니다. 페이징 처리란, 대량의 데이터를 페이지 단위로 나누어 출력하는 것을 의미합니다. 예를 들어, 위 쿼리 결과에서 첫 번째 페이지에는 1부터 2까지의 데이터를, 두 번째 페이지에는 3부터 4까지의 데이터를 출력할 수 있습니다.&lt;/p&gt;
+
+&lt;h4 style=&quot;color:royalblue; margin-bottom:1.5em&quot; id=&quot;2-집계-함수&quot;&gt;(2) 집계 함수&lt;/h4&gt;
+
+&lt;p&gt;윈도우 함수의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;집계 함수&lt;/code&gt;는 파티션 별 윈도우 내에서 데이터를 그룹화하여 통계적으로 계산한 결과를 반환하는 함수입니다. 전체 데이터셋을 기준으로 계산하는 일반적인 집계 함수와는 달리 더욱 세부적인 집계 결과를 얻을 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;윈도우 함수 중 집계 함수로는 다음과 같은 함수가 있습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;집계함수&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SUM&lt;/td&gt;
+      &lt;td&gt;윈도우 내 숫자형 데이터의 합을 계산합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AVG&lt;/td&gt;
+      &lt;td&gt;윈도우 내 숫자형 데이터의 평균을 계산합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MIN&lt;/td&gt;
+      &lt;td&gt;윈도우 내 숫자형 데이터의 최소값을 계산합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MAX&lt;/td&gt;
+      &lt;td&gt;윈도우 내 숫자형 데이터의 최대값을 계산합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;COUNT&lt;/td&gt;
+      &lt;td&gt;윈도우 내 데이터의 개수를 계산합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;다음과 같은 SCORES 테이블이 있다고 가정해 봅시다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;ID&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;NAME&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SUBJECT&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SCORE&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;math&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;math&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;math&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;95&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;math&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;science&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;science&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;science&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;science&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;english&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;70&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;english&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;english&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;english&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;85&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위 테이블에서 윈도우 함수의 집계 함수를 사용하여 SUBJECT를 그룹으로 묶어 각 그룹의 집계 결과를 구할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;윈도우-함수-중-집계-함수의-예제&quot;&gt;윈도우 함수 중 집계 함수의 예제&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	     &lt;span class=&quot;n&quot;&gt;SUBJECT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	     &lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	     &lt;span class=&quot;k&quot;&gt;SUM&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBJECT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBJECT_TOTAL_SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	     &lt;span class=&quot;k&quot;&gt;AVG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBJECT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBJECT_AVG_SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	     &lt;span class=&quot;k&quot;&gt;MIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBJECT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBJECT_MIN_SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	     &lt;span class=&quot;k&quot;&gt;MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBJECT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBJECT_MAX_SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+	     &lt;span class=&quot;k&quot;&gt;COUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SCORE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;PARTITION&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBJECT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SUBJECT_COUNT_SCORE&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SCORES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;결과는 다음과 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;NAME&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SUBJECT&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SCORE&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SUBJECT_TOTAL_SCORE&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SUBJECT_AVG_SCORE&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SUBJECT_MIN_SCORE&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SUBJECT_MAX_SCORE&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;SUBJECT_COUNT_SCORE&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;english&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;310&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;77.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;70&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;85&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;english&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;310&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;77.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;70&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;85&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;english&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;70&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;310&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;77.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;70&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;85&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;english&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;85&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;310&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;77.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;70&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;85&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;math&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;85&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;350&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;87.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;95&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;math&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;350&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;87.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;95&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;math&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;350&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;87.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;95&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;math&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;95&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;350&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;87.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;95&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;science&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;85&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;330&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;82.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;science&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;330&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;82.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Alice&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;science&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;330&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;82.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;science&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;80&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;330&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;82.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;90&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 style=&quot;color:royalblue; margin-bottom:1.5em&quot; id=&quot;3-순서-함수&quot;&gt;(3) 순서 함수&lt;/h4&gt;
+
+&lt;p&gt;윈도우 함수 중 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;순서 함수&lt;/code&gt;는 각 행의 이전이나 다음 행의 값을 가져오거나, 윈도우 내에서의 첫 번째나 마지막 값을 가져오는 함수입니다.&lt;/p&gt;
+
+&lt;p&gt;윈도우 함수 중 순서 함수로는 다음과 같은 함수가 있습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;순서함수&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LAG&lt;/td&gt;
+      &lt;td&gt;윈도우 내에서 이전 행의 값을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LEAD&lt;/td&gt;
+      &lt;td&gt;윈도우 내에서 이후 행의 값을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;FIRST_VALUE&lt;/td&gt;
+      &lt;td&gt;윈도우 내에서 첫 번째 값을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;LAST_VALUE&lt;/td&gt;
+      &lt;td&gt;윈도우 내에서 마지막 값을 반환합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;다음과 같은 SALES 테이블이 있다고 가정해 봅시다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;ID&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;DATA&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;AMOUNT&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-03&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;300&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-04&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;400&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-05&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;500&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위 테이블에에서 순서 함수를 사용해 보겠습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;윈도우-함수-중-순서-함수의-예제&quot;&gt;윈도우 함수 중 순서 함수의 예제&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;nv&quot;&gt;&quot;DATE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;LEAD&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot;DATE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NEXT_AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;LAG&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot;DATE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PREV_AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;FIRST_VALUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot;DATE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FIRST_AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;LAST_VALUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot;DATE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LAST_AMOUNT&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SALES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;결과는 다음과 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;ID&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;DATE&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;AMOUNT&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;NEXT_AMOUNT&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;PREV_AMOUNT&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;FIRST_AMOUNT&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;LAST_AMOUNT&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;200&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;200&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;300&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-03&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;300&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;400&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;200&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;300&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-04&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;400&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;500&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;300&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;400&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-05&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;500&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;400&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;500&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;파티셔닝을 하지 않았기 때문에 전체 행을 하나로 그룹화 합니다. LEAD와 LAG 함수는 직관적으로 알 수 있을 것입니다. FIRST_VALUE와 LAST_VALUE의 경우 이해가 어려울 수 있는데 앞서 말한 WINDOWING절의 기본값이 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW&lt;/code&gt; 이기 때문에 이러한 결과가 나왔습니다. 처음 행부터 현재 행까지가 하나의 윈도우가 되기 때문에 FIRST_AMOUNT는 항상 첫 번째 행의 AMOUNT인 100이, LAST_AMOUNT는 현재 행의 AMOUNT가 출력됩니다.&lt;/p&gt;
+
+&lt;h4 style=&quot;color:royalblue; margin-bottom:1.5em&quot; id=&quot;4-비율-함수&quot;&gt;(4) 비율 함수&lt;/h4&gt;
+
+&lt;p&gt;윈도우 함수 중 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;비율 함수&lt;/code&gt;는 파티션 내 백분율을 계산하거나 비율에 따라 n등분 할 수 있는 함수입니다.&lt;/p&gt;
+
+&lt;p&gt;윈도우 함수 중 비율 함수에는 다음과 같은 함수가 있습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;순서함수&lt;/th&gt;
+      &lt;th&gt;설명&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;RATIO_TO_RERORT&lt;/td&gt;
+      &lt;td&gt;윈도우 내 SUM 값에 대한 백분율을 계산합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;PERCENT_RANK&lt;/td&gt;
+      &lt;td&gt;윈도우 내 순서별 백분율을 계산합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CUME_DIST&lt;/td&gt;
+      &lt;td&gt;윈도우 내 순서별 누적 백분율을 계산합니다.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;NTILE&lt;/td&gt;
+      &lt;td&gt;윈도우 내 데이터를 정렬하여 동일한 크기의 버킷으로 분할 한 후 각 버킷에 번호를 할당하는 함수입니다.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;다음과 같은 SALES 테이블이 있다고 가정해 봅시다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;ID&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;DATA&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;AMOUNT&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-03&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;300&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-04&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;400&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-05&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;500&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위 테이블에에서 비율 함수를 사용해 보겠습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;윈도우-함수-중-비율-함수의-예제&quot;&gt;윈도우 함수 중 비율 함수의 예제&lt;/h6&gt;
+&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;nv&quot;&gt;&quot;DATE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;RATIO_TO_REPORT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AMOUNT_SUM_RATIO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;PERCENT_RANK&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot;DATE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AMOUNT_RATIO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;CUME_DIST&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OVER&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;&quot;DATE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;AMOUNT_CUM_DIST&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SALES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;RATIO_TO_REPORT 함수는 SUM값을 그룹하기 위한 컬럼을 인수로 설정하고, OVER() 구문에서 ORDER BY절을 사용하지 않습니다.&lt;/p&gt;
+
+&lt;p&gt;반면 PERCENT_RANK와 CUME_DIST 함수는 인수가 없으며, OVER() 구문에서 ORDER BY절을 통한 정렬이 필요합니다.&lt;/p&gt;
+
+&lt;p&gt;결과는 다음과 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;ID&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;DATE&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;AMOUNT&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;AMOUNT_SUM_RATIO&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;AMOUNT_RATIO&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;AMOUNT_CUM_DIST&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-01&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;100&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.0666666667&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-02&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;200&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.1333333333&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.25&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-03&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;300&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-04&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;400&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.2666666667&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.75&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2022-01-05&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;500&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0.3333333333&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="sql" />
+      
+
+      
+        <summary type="html">함수(Function)</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">SQL - WHERE절</title>
@@ -2850,496 +4568,6 @@
 
       
         <summary type="html">Vue Router란?</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">Vue.js: Vuex</title>
-      <link href="https://huimang2.github.io/vue/vuex" rel="alternate" type="text/html" title="Vue.js: Vuex" />
-      <published>2023-01-11T20:00:00+09:00</published>
-      <updated>2023-01-11T20:00:00+09:00</updated>
-      <id>https://huimang2.github.io/vue/vuex</id>
-      <content type="html" xml:base="https://huimang2.github.io/vue/vuex">&lt;h1 id=&quot;vuex란&quot;&gt;Vuex란?&lt;/h1&gt;
-
-&lt;p&gt;Vuex는 Vue로 작성된 어플리케이션의 상태를 통합적으로 관리할 수 있도록 도와주는 라이브러리입니다.&lt;/p&gt;
-
-&lt;p&gt;어플리케이션의 규모가 커지면 컴포넌트가 많아지고, 각 컴포넌트의 상태는 분산됩니다. 컴포넌트가 많아질 수록 각각의 상태에 대한 상호작용이 어려워지는데, Vuex는 분산된 상태를 하나의 저장소에 모아 복잡한 상호작용을 단순화 할 수 있습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;flux-패턴&quot;&gt;Flux 패턴&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Flux&lt;/code&gt;는 기존의 MVC 패턴의 문제점을 해결하기 위해 페이스북에서 고안한 아키텍처입니다.&lt;/p&gt;
-
-&lt;p&gt;MVC 패턴의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;컨트롤러(Controller)&lt;/code&gt;는 모델(Model)의 데이터를 조회하거나 업데이트하는 역할을 하며, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;모델(Model)&lt;/code&gt;의 변화는 뷰(View)에 반영됩니다. 또한 사용자가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;뷰(View)&lt;/code&gt;를 통해 데이터를 입력하면, 모델(Model)에 영향을 주면서 데이터를 관리합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;mvc-패턴의-데이터-흐름&quot;&gt;MVC 패턴의 데이터 흐름&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/vue/img051.png&quot; alt=&quot;img51&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;MVC 패턴을 사용함으로써 개발자들은 조금 더 확장이 유연하고 유지 보수하기에 용이한 어플리케이션을 작성할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;그러나 MVC 패턴의 문제 중 하나는 하나의 컨트롤러가 여러 개의 모델이나 뷰를 컨트롤러를 제어할 수 있다는 점입니다. 페이스북과 같은 대규모 어플리케이션들이 등장하게 되면서 어플리케이션의 내부 구조가 복잡하게 되었습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;mvc-패턴의-복잡성&quot;&gt;MVC 패턴의 복잡성&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/vue/img052.png&quot; alt=&quot;img52&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이를 해결하고자 페이스북 개발팀은 Flux 아키텍처를 개발했습니다. Flux 패턴의 경우 MVC 패턴과 달리 데이터 흐름이 양방향이 아닌 단방향으로 흐릅니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;flux-패턴의-데이터-흐름&quot;&gt;Flux 패턴의 데이터 흐름&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/vue/img053.png&quot; alt=&quot;img53&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Flux 패턴에서 데이터는 언제나 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;액션 -&amp;gt; 디스패처 -&amp;gt; 스토어 -&amp;gt; 뷰&lt;/code&gt;의 순서로 흐르기 때문에 뷰에서 사용자 액션에 의하여 데이터가 업데이트 된다면 액션부터 다시 시작하여 디스패처를 통해 스토어에 있는 데이터를 업데이트한 후 뷰에 반영합니다.&lt;/p&gt;
-
-&lt;p&gt;이러한 단방향 데이터의 흐름은 데이터의 상태를 예측하기 쉽게 만들어 디버깅을 용이하게 함으로써 유지보수를 용이하게 합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;액션action&quot;&gt;액션(Action)&lt;/h2&gt;
-
-&lt;p&gt;스토어(Store)를 변경하기 위해서는 디스패처(Dispatcher)를 통한 업데이트가 이루어져야 하는데, 이때 디스패처를 실행시키는 인수 객체가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;액션(Action)&lt;/code&gt;입니다.&lt;/p&gt;
-
-&lt;p&gt;액션은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;타입(type)&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;페이로드(payload)&lt;/code&gt;로 이루어진 단순한 객체입니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;액션action-1&quot;&gt;액션(Action)&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;INCREASE_NUM&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;액션의 타입은 개발자가 직정 정의한 상수입니다. 이러한 액션은 액션 생성자(Action Creator)를 통해 생성됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;디스패처dispatcher&quot;&gt;디스패처(Dispatcher)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;디스패처(Dispatcher)&lt;/code&gt;는 Flux의 모든 데이터 흐름을 관리하는 역할을 합니다. 액션에 대한 콜백 함수를 제공하며, 액션이 발생하면 디스패처의 콜백 함수를 통해 액션의 메시지를 전달받습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;스토어store&quot;&gt;스토어(Store)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스토어(Store)&lt;/code&gt;는 어플리케이션의 모든 상태와 로직을 담고 있으며, MVC 패턴의 모델(Model)과 같은 역할을 합니다.&lt;/p&gt;
-
-&lt;p&gt;스토어의 상태를 변경하기 위해서는 반드시 액션을 생성한 후 디스패처를 통해 스토어 상태 변경을 요청해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;콜백 함수를 통해 스토어 상태가 변경되면 이벤트를 통해 뷰(View)에 새로운 상태를 전달하여 뷰가 스스로 업데이트 하도록 합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;뷰view&quot;&gt;뷰(View)&lt;/h2&gt;
-
-&lt;p&gt;Flux 패턴의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;뷰(View)&lt;/code&gt;는 MVC 패턴의 뷰와는 다르게 단순히 화면을 렌더링하는 것 이외에도 컨트롤러(Controller) 역할을 하기도 합니다.&lt;/p&gt;
-
-&lt;p&gt;최상위 뷰는 스토어의 상태를 가져와 자식 뷰에 분배하는 역할을 하기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;컨트롤러-뷰(Controller-View)&lt;/code&gt;라고도 부릅니다.&lt;/p&gt;
-
-&lt;p&gt;자식 뷰는 직접 스토어의 데이터를 받아오는 대신 부모 뷰로부터 Props를 통해 데이터를 전달받습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;vuex&quot;&gt;Vuex&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Vuex&lt;/code&gt;는 Flux 아키텍처에 영감을 받아 제작된 상태관리 라이브러리입니다. 많은 부분에서 Flux 아키텍처의 메커니즘을 차용하고 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;vuex의-데이터-흐름&quot;&gt;Vuex의 데이터 흐름&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/vue/img054.png&quot; alt=&quot;img54&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Vue에서 Vuex를 사용하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Vue.use(Vuex)&lt;/code&gt;를 입력하여 Vuex의 사용을 선언해야합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;vuex-사용-선언&quot;&gt;Vuex 사용 선언&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vue&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;하지만 CDN을 통해 Vuex를 import하여 모듈방식으로 개발하는 경우 Vuex를 로드하면 자동으로 Vuex를 사용하도록 설정되기 때문에 생략가능합니다. Vue 2버전의 경우 Vuex 3버전을 로드합니다.&lt;/p&gt;
-
-&lt;p&gt;Vuex의 사용을 선언하고 Vue 인스턴스의 옵션으로 store를 넣어주면 해당 컴포넌트에서 스토어를 사용할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;indexhtml&quot;&gt;index.html&lt;/h6&gt;
-&lt;div data-lang=&quot;HTML&quot; class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ko&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vuex@3/dist/vuex.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;defer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;module&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./main.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Vue 연습&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;mainjs&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;storejs&quot;&gt;store.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이제 스토어의 옵션을 알아보겠습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;상태state&quot;&gt;상태(State)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;상태(State)&lt;/code&gt;는 어플리케이션에서 공통으로 관리할 상태, 즉 모델(Model)을 의미합니다. Vuex는 단일 상태 트리를 사용하며, 이 단일 객체는 원본 소스의 역할을 합니다. 이는 각 어플리케이션마다 하나의 저장소만 갖게 된다는 것을 의미합니다.&lt;/p&gt;
-
-&lt;p&gt;컴포넌트에서 스토어의 접근은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$store&lt;/code&gt; 프로퍼티를 통해 접근할 수 있으며, 컴포넌트에서 스토어의 상태에 접근하려면 Vue 인스턴스의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;computed&lt;/code&gt;를 통해 접근합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;indexhtml-1&quot;&gt;index.html&lt;/h6&gt;
-&lt;div data-lang=&quot;HTML&quot; class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ko&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vuex@3/dist/vuex.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;defer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;module&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./main.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Vue 연습&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ num }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;mainjs-1&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;storejs-1&quot;&gt;store.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;출력-결과&quot;&gt;출력 결과&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/vue/img055.png&quot; alt=&quot;img55&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;this.$store.state&lt;/code&gt;를 통해 상태에 접근하면 여러 상태에 접근할 경우 반복적이고 장황해질 수 있는데, 이때 Vuex에서 제공하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapState&lt;/code&gt; 헬퍼 함수를 사용하면 간결하게 접근할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;mainjs-2&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;헬퍼 함수 뿐만 아니라 다른 computed를 함께 사용하고 싶다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;객체 전개 연산자(Object Spread Operator)&lt;/code&gt;를 사용하면 됩니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;mainjs-3&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;게터getters&quot;&gt;게터(Getters)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;게터(Getters)&lt;/code&gt;는 스토어 내에서 Vue의 computed와 같은 역할을 합니다. 컴포넌트에서 스토어 상태를 기반으로 상태를 계산하는 경우 다음과 같이 작성할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;mainjs-4&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;double 데이터는 스토어에 있는 num 데이터에 2를 곱한 값을 반환합니다. 간단한 식이기 때문에 문제없어 보이지만 만약 식이 복잡할 경우 해당 리턴값을 다른 컴포넌트에서 사용한다면 동일한 식을 중복해서 작성해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;게터를 사용한다면 중복된 식을 각각의 컴포넌트에 작성할 필요없이 스토어로부터 캐시된 데이터값을 가져올 수 있게 됩니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;indexhtml-2&quot;&gt;index.html&lt;/h6&gt;
-&lt;div data-lang=&quot;HTML&quot; class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ko&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vuex@3/dist/vuex.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;defer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;module&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./main.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Vue 연습&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;{{ double }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;mainjs-5&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;storejs-2&quot;&gt;store.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;출력-결과-1&quot;&gt;출력 결과&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/vue/img056.png&quot; alt=&quot;img56&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;getters에 선언된 함수는 1번째 매개변수로 스토어의 상태를, 2번째 매개변수로 getters 속성 자체를 전달받습니다.&lt;/p&gt;
-
-&lt;p&gt;상태와 마찬가지로 Vuex의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapGetters&lt;/code&gt; 헬퍼 함수를 통해 간결한 접근을 할 수도 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;mainjs-6&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapGetters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;역시 헬퍼 함수 뿐만 아니라 다른 computed를 함께 사용하고 싶다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;객체 전개 연산자(Object Spread Operator)&lt;/code&gt;를 사용하면 됩니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;mainjs-7&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapGetters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;변이mutation&quot;&gt;변이(Mutation)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;변이(Mutation)&lt;/code&gt;는 스토어 상태를 변경할 수 있는 유일한 방법입니다. 변이 함수의 이름은 액션의 타입과 동일하며, 스토어 상태를 변경하는 로직을 가집니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;indexhtml-3&quot;&gt;index.html&lt;/h6&gt;
-&lt;div data-lang=&quot;HTML&quot; class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ko&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vuex@3/dist/vuex.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;defer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;module&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./main.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Vue 연습&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;{{ num }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;increment&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;증가&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;mainjs-8&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;INCREMENT&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;storejs-3&quot;&gt;store.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;mutations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;INCREMENT&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;출력-결과-2&quot;&gt;출력 결과&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/vue/img057.gif&quot; alt=&quot;img57&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;mutations에 선언된 함수는 1번째 매개변수로 스토어의 상태를, 2번째 매개변수로 payload를 전달받습니다.&lt;/p&gt;
-
-&lt;p&gt;컴포넌트에서 변이에 접근하려면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;this.$store.mutations&lt;/code&gt;와 같은 직접적인 접근은 불가하며, 스토어의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt; 메소드를 실행시켜야 합니다. 1번째 매개변수로 변이 함수 이름(액션 타입)을, 2번째 매개변수로 payload를 전달합니다.&lt;/p&gt;
-
-&lt;p&gt;변이 역시 Vuex에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapMutations&lt;/code&gt; 헬퍼 함수를 제공하고 있으므로 다음과 같이 작성할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;mainjs-9&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapMutations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;INCREMENT&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;INCREMENT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;액션actions&quot;&gt;액션(Actions)&lt;/h2&gt;
-
-&lt;p&gt;변이 안에서 중요한 사실은 반드시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;동기적(Synchronized)&lt;/code&gt;이어야 한다는 것입니다. Vue의 공식 디버그 툴인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Vue Devtools&lt;/code&gt;는 UI를 통해 변이를 추적하여 스토어의 상태를 확인할 수 있는데, 이때 변이의 추적은 commit 메소드의 호출을 기준으로 합니다.&lt;/p&gt;
-
-&lt;p&gt;만약 변이를 비동기(Asynchronized) 함수로 작성한다면 commit 시점과 콜백 시점이 다르기 때문에 어플리케이션의 상태 추적을 힘들게 만들 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;아래와 같이 INCREMENT 변이 함수에 setTimeout을 통해 비동기적으로 상태를 변경시켜 보겠습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;storejs-4&quot;&gt;store.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;mutations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;INCREMENT&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;출력 결과를 확인하면 Vue Devtools에서 스토어 상태를 제대로 반영하지 못하는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;출력-결과-3&quot;&gt;출력 결과&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/vue/img058.gif&quot; alt=&quot;img58&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이를 해결하기 위한 기능이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;액션(Actions)&lt;/code&gt;입니다.&lt;/p&gt;
-
-&lt;p&gt;액션 함수를 비동기로 작성하여 콜백 함수에서 commit를 통해 변이 함수를 호출하여 스토어 상태를 변경할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;mainjs-10&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;storejs-5&quot;&gt;store.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;mutations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;INCREMENT&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;actions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;commit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;INCREMENT&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;출력-결과-4&quot;&gt;출력 결과&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/vue/img059.gif&quot; alt=&quot;img59&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;actions에 선언된 함수는 1번째 매개변수로 스토어 context 자체를, 2번째 매개변수로 payload를 전달받습니다.&lt;/p&gt;
-
-&lt;p&gt;컴포넌트에서 액션에 접근하려면 스토어의 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dispatch&lt;/code&gt; 메소드를 실행시켜야 합니다. 1번째 매개변수로 액션 함수 이름을, 2번째 매개변수로 padyload를 전달합니다.&lt;/p&gt;
-
-&lt;p&gt;변이 역시 Vuex에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapActions&lt;/code&gt; 헬퍼 함수를 제공하고 있으므로 다음과 같이 작성할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;indexhtml-4&quot;&gt;index.html&lt;/h6&gt;
-&lt;div data-lang=&quot;HTML&quot; class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;lang=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ko&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;head&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/npm/vuex@3/dist/vuex.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;defer&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;module&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./main.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;title&amp;gt;&lt;/span&gt;Vue 연습&lt;span class=&quot;nt&quot;&gt;&amp;lt;/title&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/head&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;app&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;{{ num }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;button&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;click=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;incrementHandler&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;증가&lt;span class=&quot;nt&quot;&gt;&amp;lt;/button&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;mainjs-11&quot;&gt;main.js&lt;/h6&gt;
-&lt;div data-lang=&quot;JAVASCRIPT&quot; class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;./store.js&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapActions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;incrementHandler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>huimang2</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="javascript" />
-      
-        <category term="vue" />
-      
-
-      
-        <summary type="html">Vuex란?</summary>
       
 
       

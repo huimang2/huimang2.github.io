@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>SQL - 내장 함수(Built-in Function)</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/sql/built-in-function" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="SQL - 내장 함수(Built-in Function)" />
+    <meta property="og:description" content="함수(Function) 함수(Function)는 데이터베이스에서 입력값을 처리하여 결과값을 반환하는 프로그램으로, 크게 밴더에서 제공하는 내장 함수(Built-in Function)와 사용자가 작성하는 사용자 정의 함수(User Defined Function)로 나눌 수 있습니다. 이번 시간에는 내장 함수를 알아보고자 합니다. 내장 함수는 단일 행 값을 입력하여 단일 값을 반환하는 단일 행 함수(Single-Row Function), 다중 행 값을 입력하여 단일 값을 반환하는" />
+    <meta property="og:url" content="https://huimang2.github.io/sql/built-in-function" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/sql-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2023-03-07T23:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-03-07T23:00:00+09:00" />
+    <meta property="article:tag" content="Sql" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="SQL - 내장 함수(Built-in Function)" />
+    <meta name="twitter:description" content="함수(Function) 함수(Function)는 데이터베이스에서 입력값을 처리하여 결과값을 반환하는 프로그램으로, 크게 밴더에서 제공하는 내장 함수(Built-in Function)와 사용자가 작성하는 사용자 정의 함수(User Defined Function)로 나눌 수 있습니다. 이번 시간에는 내장 함수를 알아보고자 합니다. 내장 함수는 단일 행 값을 입력하여 단일 값을 반환하는 단일 행 함수(Single-Row Function), 다중 행 값을 입력하여 단일 값을 반환하는" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/sql-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Sql" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/sql/built-in-function",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/sql-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/sql/built-in-function"
+    },
+    "description": "함수(Function) 함수(Function)는 데이터베이스에서 입력값을 처리하여 결과값을 반환하는 프로그램으로, 크게 밴더에서 제공하는 내장 함수(Built-in Function)와 사용자가 작성하는 사용자 정의 함수(User Defined Function)로 나눌 수 있습니다. 이번 시간에는 내장 함수를 알아보고자 합니다. 내장 함수는 단일 행 값을 입력하여 단일 값을 반환하는 단일 행 함수(Single-Row Function), 다중 행 값을 입력하여 단일 값을 반환하는"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="SQL - 내장 함수(Built-in Function)" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-sql post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime=" 7 March 2023"> 7 March 2023</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/sql/'>#SQL</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">SQL - 내장 함수(Built-in Function)</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/sql-logo.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#함수function"><span>함수(Function)</span></a><ul><li><a href="#단일-행-함수"><span>단일 행 함수</span></a><ul><li><a href="#문자형-함수"><span>문자형 함수</span></a></li><li><a href="#숫자형-함수"><span>숫자형 함수</span></a></li><li><a href="#날짜형-함수"><span>날짜형 함수</span></a></li><li><a href="#형-변환-함수"><span>형 변환 함수</span></a></li><li><a href="#null-관련-함수"><span>NULL 관련 함수</span></a></li></ul></li><li><a href="#다중-행-함수"><span>다중 행 함수</span></a><ul><li><a href="#집계-함수"><span>집계 함수</span></a></li><li><a href="#그룹-함수"><span>그룹 함수</span></a></li><li><a href="#윈도우-함수"><span>윈도우 함수</span></a></li></ul></li></ul></li></ul>
+
+                    </div>
+                    <h1 id="함수function">함수(Function)</h1>
+
+<p><code class="language-plaintext highlighter-rouge">함수(Function)</code>는 데이터베이스에서 입력값을 처리하여 결과값을 반환하는 프로그램으로, 크게 밴더에서 제공하는 <code class="language-plaintext highlighter-rouge">내장 함수(Built-in Function)</code>와 사용자가 작성하는 <code class="language-plaintext highlighter-rouge">사용자 정의 함수(User Defined Function)</code>로 나눌 수 있습니다.</p>
+
+<p>이번 시간에는 내장 함수를 알아보고자 합니다. 내장 함수는 단일 행 값을 입력하여 단일 값을 반환하는 <code class="language-plaintext highlighter-rouge">단일 행 함수(Single-Row Function)</code>, 다중 행 값을 입력하여 단일 값을 반환하는 <code class="language-plaintext highlighter-rouge">다중 행 함수(Multi-Row Function)</code>으로 나눌 수 있습니다.</p>
+
+<h2 id="단일-행-함수">단일 행 함수</h2>
+
+<p><code class="language-plaintext highlighter-rouge">단일 행 함수</code>의 유형은 <code class="language-plaintext highlighter-rouge">문자형 함수</code>, <code class="language-plaintext highlighter-rouge">숫자형 함수</code>, <code class="language-plaintext highlighter-rouge">날짜형 함수</code>, <code class="language-plaintext highlighter-rouge">형 변환 함수</code>, <code class="language-plaintext highlighter-rouge">NULL 관련 함수</code>가 있습니다.</p>
+
+<h3 id="문자형-함수">문자형 함수</h3>
+
+<p><code class="language-plaintext highlighter-rouge">문자형 함수</code>는 문자 또는 문자열을 입력받아 처리하는 함수로, SELECT, WHERE, ORDER BY절에서 사용할 수 있습니다.</p>
+
+<h6 id="문자형-함수-1">문자형 함수</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>함수</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LOWER(문자열)</td>
+      <td>문자열을 소문자로 변환합니다.</td>
+    </tr>
+    <tr>
+      <td>UPPER(문자열)</td>
+      <td>문자열을 대문자로 변환합니다.</td>
+    </tr>
+    <tr>
+      <td>INITCAP(문자열)</td>
+      <td>문자열의 첫 문자를 대문자로 변환합니다. (Pascal Case)</td>
+    </tr>
+    <tr>
+      <td>ASCII(문자)</td>
+      <td>문자를 아스키 코드로 변환합니다.</td>
+    </tr>
+    <tr>
+      <td>CHR(아스키 코드)</td>
+      <td>아스키 코드를 문자로 변환합니다. SQL Server에서는 <code class="language-plaintext highlighter-rouge">CHAR()</code>를 사용합니다.</td>
+    </tr>
+    <tr>
+      <td>CONCAT(문자열1, 문자열2)</td>
+      <td>문자열1과 문자열2를 연결합니다. <code class="language-plaintext highlighter-rouge">'문자열1'                                                                                                                                                           |  | '문자열2'</code>와 같습니다.</td>
+    </tr>
+    <tr>
+      <td>SUBSTR(문자열, 시작위치[, 길이])</td>
+      <td>문자열의 시작위치에서 길이만큼 반환하며, 길이를 생략하면 마지막 문자열까지 반환합니다.<br />시작위치를 음수로 입력하면 오른쪽 방향으로 계산하여 출력되며, SQL Server에서는 <code class="language-plaintext highlighter-rouge">SUBSTRING()</code>을 사용합니다.</td>
+    </tr>
+    <tr>
+      <td>LENGTH(문자열)</td>
+      <td>문자열의 길이를 출력합니다. 바이트를 반환하려면 <code class="language-plaintext highlighter-rouge">LENGTHB()</code>를 사용하며, SQL Server에서는 <code class="language-plaintext highlighter-rouge">LEN()</code>을 사용합니다.</td>
+    </tr>
+    <tr>
+      <td>LTRIM(문자열[, 지정문자])</td>
+      <td>문자열의 왼쪽에서 연속되는 지정문자를 제거하며, 지정문자가 생략되면 공백을 제거합니다.</td>
+    </tr>
+    <tr>
+      <td>RTRIM(문자열[, 지정문자])</td>
+      <td>문자열의 오른쪽에서 연속되는 지정문자를 제거하며, 지정문자가 생략되면 공백을 제거합니다.</td>
+    </tr>
+    <tr>
+      <td>TRIM([LEADING | TRAILING | BOTH]<br />[지정문자 FROM] 문자열)</td>
+      <td>문자열의 머릿말, 꼬릿말 또는 양쪽에서 지정문자를 제거하며, 지정문자를 생략하면 공백을 제거합니다.</td>
+    </tr>
+    <tr>
+      <td>LPAD(문자열, 길이[, 채움문자])</td>
+      <td>길이만큼 문자열의 왼쪽에 채움문자를 채우며, 채움문자를 생략하면 공백을 채웁니다.</td>
+    </tr>
+    <tr>
+      <td>RPAD(문자열, 길이[, 채움문자])</td>
+      <td>길이만큼 문자열의 오른쪽에 채움문자를 채우며, 채움문자를 생략하면 공백을 채웁니다.</td>
+    </tr>
+    <tr>
+      <td>REPLACE(문자열, 지정문자열, 변환문자열)</td>
+      <td>문자열에서 지정문자열을 변환문자열로 변경합니다.</td>
+    </tr>
+    <tr>
+      <td>TRANSLATE(문자열, 지정문자열, 변환문자열)</td>
+      <td>REPLACE와 유사하며, 지정문자열의 한글자씩 변환문자열에 매핑하여 문자열을 변경합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="숫자형-함수">숫자형 함수</h3>
+
+<p><code class="language-plaintext highlighter-rouge">숫자형 함수</code>는 수치형 데이터를 입력받아 처리하는 함수입니다.</p>
+
+<h6 id="숫자형-함수-1">숫자형 함수</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>함수</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ABS(숫자)</td>
+      <td>숫자의 절대값을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>SIGN(숫자)</td>
+      <td>숫자가 양수이면 1, 음수이면 -1, 0이면 0을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>MOD(숫자1, 숫자2)</td>
+      <td>숫자1을 숫자2로 나눈 나머지를 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>CEIL(숫자)</td>
+      <td>숫자의 올림값을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>FLOOR(숫자)</td>
+      <td>숫자의 내림값을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>ROUND(숫자[, 소수점자리수])</td>
+      <td>숫자를 소수점 자릿수에서 반올림합니다.<br />소수점자리수를 생략하면 기본값으로 0이 적용됩니다.</td>
+    </tr>
+    <tr>
+      <td>TRUNC(숫자[, 소수점자리수])</td>
+      <td>숫자의 소수점 자릿수 뒷자리를 버립니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="날짜형-함수">날짜형 함수</h3>
+
+<p>날짜형 함수는 DATE 타입의 데이터를 계산합니다.</p>
+
+<h6 id="날짜형-함수-1">날짜형 함수</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>함수</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SYSDATE</td>
+      <td>현재 날짜와 시간을 반환합니다. SQL Server에서는 <code class="language-plaintext highlighter-rouge">GETDATE()</code>를 사용합니다.</td>
+    </tr>
+    <tr>
+      <td>EXTRACT<br />(YEAR | MONTH | DAY FROM 날짜)</td>
+      <td>날짜에서 년(YEAR), 월(MONTH), 일(DAY)을 추출합니다.<br />SQL Server에서는 <code class="language-plaintext highlighter-rouge">DATEPART()</code>를 사용합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="형-변환-함수">형 변환 함수</h3>
+
+<p>형 변환 함수는 데이터 타입을 변환하기 위해 사용하는 함수입니다.</p>
+
+<h6 id="형-변환-함수-1">형 변환 함수</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>함수</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>TO_NUMBER(문자열)</td>
+      <td>문자열을 숫자로 변환합니다.</td>
+    </tr>
+    <tr>
+      <td>TO_CHAR(숫자 | 날짜[, 포맷])</td>
+      <td>숫자 또는 날짜를 포맷에 맞는 문자열로 변환합니다.</td>
+    </tr>
+    <tr>
+      <td>TO_DATE(문자열[, 포맷])</td>
+      <td>문자열을 포맷에 맞는 날짜 타입으로 변환합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="null-관련-함수">NULL 관련 함수</h3>
+
+<p><code class="language-plaintext highlighter-rouge">NULL 관련 함수</code>눈 정해지지 않은 값을 의미하며,  과 관련된 함수는 다음과 같습니다.</p>
+
+<h6 id="null-관련-함수-1">NULL 관련 함수</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>함수</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NVL(표현식1, 표현식2)</td>
+      <td>표현식1이 NULL이면 표현식2를 반환합니다.<br />SQL Server에서는 <code class="language-plaintext highlighter-rouge">ISNULL()</code>을 사용합니다.</td>
+    </tr>
+    <tr>
+      <td>NVL2(표현식1, 표현식2, 표현식3)</td>
+      <td>표현식1이 NULL이 아니면 표현식2를, NULL이면 표현식3을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>IFNULL(표현식1, 표현식2)</td>
+      <td>표현식1과 표현식2가 같으면 NULL을, 같지않으면 표현식1을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>COALESE(표현식1, 표현식2, …)</td>
+      <td>표현식 중 NULL이 아닌 첫번째 값을 반환합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="다중-행-함수">다중 행 함수</h2>
+
+<p>다중 행 함수의 유형은 집계 함수, 그룹 함수, 윈도우 함수가 있습니다.</p>
+
+<h3 id="집계-함수">집계 함수</h3>
+
+<p>집계 함수는 특정 컬럼에 대한 행들의 값을 통계적으로 계산한 결과를 반환하는 함수입니다. SELECT절, HAVING절, GROUP BY절에 사용할 수 있으며,  값은 제외하고 계산됩니다.</p>
+
+<h6 id="집계-함수-1">집계 함수</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>함수</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>COUNT(*)</td>
+      <td>값을 포함한 컬럼 전체 행의 수를 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>COUNT(컬럼 | 표현식)</td>
+      <td>값을 제외한 컬럼이나 표현식에 해당하는 행의 수를 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>SUM(컬럼 | 표현식)</td>
+      <td>컬럼이나 표현식에 해당하는 값의 합계를 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>AVG(컬럼 | 표현식)</td>
+      <td>컬럼이나 표현식에 해당하는 값의 평균을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>MAX(컬럼 | 표현식)</td>
+      <td>컬럼이나 표현식에 해당하는 값 중 최대값을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>MIN(컬럼 | 표현식)</td>
+      <td>컬럼이나 표현식에 해당하는 값 중 최소값을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>STDDEV(컬럼 | 표현식)</td>
+      <td>컬럼이나 표현식에 해당하는 값들의 표준편차를 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>VARIANCE(컬럼 | 표현식)</td>
+      <td>컬럼이나 표현식에 해당하는 값들의 분산을 반환합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="그룹-함수">그룹 함수</h3>
+
+<p>그룹 함수는 데이터를 그룹화하고 각 그룹 내의 데이터를 분석하는 데 사용되는 함수입니다. <code class="language-plaintext highlighter-rouge">SELECT</code> 문에서 사용되며 일반적으로 <code class="language-plaintext highlighter-rouge">GROUP BY</code> 구문과 함께 사용됩니다.</p>
+
+<h4 style="color:royalblue; margin-bottom:1.5em" id="1-rollup-함수">(1) ROLLUP 함수</h4>
+
+<p><code class="language-plaintext highlighter-rouge">ROLLUP</code> 함수는 지정된 컬럼의 소계 및 총계를 구하기 위해 사용하는 그룹 함수입니다. 각 열을 기준으로 데이터를 그룹화하고, 각 그룹에 대해 집계 연산을 수행한 다음, 상위 수준에서도 그룹화 및 집계를 수행합니다.</p>
+
+<h6 id="rollup-함수-구문">ROLLUP 함수 구문</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼명</span><span class="p">,</span> <span class="err">집계</span> <span class="err">함수</span>
+  <span class="k">FROM</span> <span class="err">테이블명</span>
+ <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">ROLLUP</span><span class="p">(</span><span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>해당 그룹함수는 다음과 같은 행의 합집합과 같습니다.</p>
+
+<h6 id="rollup-함수를-합집합으로-표현">ROLLUP 함수를 합집합으로 표현</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">GROUP</span> <span class="k">BY</span> <span class="k">ROLLUP</span><span class="p">(</span><span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">=</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="err">컬럼</span><span class="mi">1</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="err">전체</span> <span class="err">집합</span> <span class="err">결과</span>
+</code></pre></div></div>
+
+<p>예를 들어, 다음과 같은 데이터가 있다고 가정해 봅시다.</p>
+
+<h6 id="rollup-함수-예제-데이터">ROLLUP 함수 예제 데이터</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">지역</th>
+      <th style="text-align: center">부서</th>
+      <th style="text-align: center">금액</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2500</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위의 데이터에서, 이름, 성별, 국가별 판매량을 계산하고 싶다고 가정해 봅시다. 이를 수행하기 위해 ROLLUP 함수를 사용할 수 있습니다. 다음 SQL 문은 이름, 성별, 국가를 기준으로 판매량을 계산하고, ROLLUP 함수를 사용하여 계층 구조를 만듭니다.</p>
+
+<h6 id="rollup-함수-예제">ROLLUP 함수 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">지역</span><span class="p">,</span> <span class="err">부서</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="err">금액</span><span class="p">)</span>
+  <span class="k">FROM</span> <span class="err">테이블명</span>
+ <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">ROLLUP</span><span class="p">(</span><span class="err">지역</span><span class="p">,</span> <span class="err">부서</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이 구문을 사용하여, 지역별 금액 합계, 부서별 금액 합계, 전체 금액 합계를 각각 계산할 수 있습니다.</p>
+
+<p>아래는 위의 SQL 문의 결과입니다.</p>
+
+<h6 id="rollup-함수-예제-결과">ROLLUP 함수 예제 결과</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">지역</th>
+      <th style="text-align: center">부서</th>
+      <th style="text-align: center">SUM(금액)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">3000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">4000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">7000</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 style="color:royalblue; margin-bottom:1.5em" id="2-cube-함수">(2) CUBE 함수</h4>
+
+<p><code class="language-plaintext highlighter-rouge">CUBE</code> 함수는 다차원 그룹화를 수행하기 위한 기능입니다. ROLLUP 함수와 마찬가지로 GROUP BY 절에 사용되며, 여러 열을 기준으로 데이터를 그룹화하고 각 그룹 단위의 합계를 계산합니다. 하지만, ROLLUP 함수와 달리 CUBE 함수는 모든 가능한 조합에 대한 그룹 단위의 합계를 계산합니다.</p>
+
+<p>CUBE 함수는 내부적으로 대상 컬럼의 순서를 변경하여 쿼리를 수행하기 때문에 다른 그룹 함수보다 시스템에 대한 부하가 크므로 사용시 주의해야 합니다.</p>
+
+<p>CUBE 함수 구문은 다음과 같습니다.</p>
+
+<h6 id="cube-함수-구문">CUBE 함수 구문</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼명</span><span class="p">,</span> <span class="err">집계</span> <span class="err">함수</span>
+  <span class="k">FROM</span> <span class="err">테이블명</span>
+ <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">CUBE</span><span class="p">(</span><span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>해당 그룹함수는 다음과 같은 행의 합집합과 같습니다.</p>
+
+<h6 id="cube-함수를-합집합으로-표현">CUBE 함수를 합집합으로 표현</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">GROUP</span> <span class="k">BY</span> <span class="k">CUBE</span><span class="p">(</span><span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">=</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="err">컬럼</span><span class="mi">1</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="err">컬럼</span><span class="mi">2</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="err">전체</span> <span class="err">집합</span> <span class="err">결과</span>
+</code></pre></div></div>
+
+<p>예를 들어, 다음과 같은 데이터가 있다고 가정해 봅시다.</p>
+
+<h6 id="cube-함수-예제-데이터">CUBE 함수 예제 데이터</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">날짜</th>
+      <th style="text-align: center">지역</th>
+      <th style="text-align: center">부서</th>
+      <th style="text-align: center">금액</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1200</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">1800</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1600</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2400</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위의 데이터에서, 날짜, 지역, 부서별로 금액의 합계를 계산하려면 다음과 같은 SQL 문을 사용할 수 있습니다.</p>
+
+<h6 id="cube-함수-예제">CUBE 함수 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">날짜</span><span class="p">,</span> <span class="err">지역</span><span class="p">,</span> <span class="err">부서</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="err">금액</span><span class="p">)</span>
+  <span class="k">FROM</span> <span class="err">테이블명</span>
+ <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">CUBE</span><span class="p">(</span><span class="err">날짜</span><span class="p">,</span> <span class="err">지역</span><span class="p">,</span> <span class="err">부서</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>이 구문을 사용하여, 지역별 금액 합계, 부서별 금액 합계, 전체 금액 합계를 각각 계산할 수 있습니다.</p>
+
+<p>아래는 위의 SQL 문의 결과입니다.</p>
+
+<h6 id="cube-함수-결과">CUBE 함수 결과</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">날짜</th>
+      <th style="text-align: center">지역</th>
+      <th style="text-align: center">부서</th>
+      <th style="text-align: center">SUM(금액)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">14000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">8700</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">5300</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">8000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">4900</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">3100</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">6000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">3800</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">2200</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">7000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">4500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">2500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">4000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">3000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">7000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">4200</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">2800</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">4000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2400</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1600</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">3000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">1800</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1200</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 style="color:royalblue; margin-bottom:1.5em" id="3-grouping-sets-함수">(3) GROUPING SETS 함수</h4>
+
+<p><code class="language-plaintext highlighter-rouge">GROUPING SETS</code> 함수는 다중 그룹화를 수행하기 위한 기능입니다. ROLLUP 함수 및 CUBE 함수와 비슷하지만, GROUPING SETS 함수는 그룹화에 대한 집합을 명시적으로 지정할 수 있습니다.</p>
+
+<p>GROUPING SETS 함수는 GROUP BY 절에 사용되며, 다중 열을 기준으로 데이터를 그룹화하고 각 그룹 단위의 합계를 계산합니다.</p>
+
+<p>ROLLUP 함수나 CUBE 함수처럼 모든 가능한 조합을 계산하지 않고, 사용자가 지정한 그룹의 소계만 계산합니다. 또한 ROLLUP 함수와 달리 컬럼 간 순서와 무관한 결과를 얻을 수 있습니다.</p>
+
+<p>GROUPING SETS 함수의 구문은 다음과 같습니다.</p>
+
+<h6 id="grouping-sets-함수-구문">GROUPING SETS 함수 구문</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼명</span><span class="p">,</span> <span class="err">집계</span> <span class="err">함수</span>
+  <span class="k">FROM</span> <span class="err">테이블명</span>
+ <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">GROUPING</span> <span class="k">SETS</span><span class="p">(</span><span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>해당 그룹함수는 다음과 같은 행의 합집합과 같습니다.</p>
+
+<h6 id="grouping-sets-함수를-합집합으로-표현">GROUPING SETS 함수를 합집합으로 표현</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">GROUP</span> <span class="k">BY</span> <span class="k">GROUPING</span> <span class="k">SETS</span><span class="p">(</span><span class="err">컬럼</span><span class="mi">1</span><span class="p">,</span> <span class="err">컬럼</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">=</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="err">컬럼</span><span class="mi">1</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="err">컬럼</span><span class="mi">2</span>
+</code></pre></div></div>
+
+<p>예를 들어, 다음과 같은 데이터가 있다고 가정해 봅시다.</p>
+
+<h6 id="grouping-sets-함수-예제-데이터">GROUPING SETS 함수 예제 데이터</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">날짜</th>
+      <th style="text-align: center">지역</th>
+      <th style="text-align: center">부서</th>
+      <th style="text-align: center">금액</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2500</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1200</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">1800</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">1600</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">2400</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위의 데이터에서, 날짜, 지역, 부서별로 금액의 합계를 계산하려면 다음과 같은 SQL 문을 사용할 수 있습니다.</p>
+
+<h6 id="grouping-sets-함수-예제">GROUPING SETS 함수 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">날짜</span><span class="p">,</span> <span class="err">지역</span><span class="p">,</span> <span class="err">부서</span><span class="p">,</span> <span class="k">SUM</span><span class="p">(</span><span class="err">금액</span><span class="p">)</span>
+  <span class="k">FROM</span> <span class="err">테이블명</span>
+ <span class="k">GROUP</span> <span class="k">BY</span> <span class="k">GROUPING</span> <span class="k">SETS</span><span class="p">((</span><span class="err">날짜</span><span class="p">),</span> <span class="p">(</span><span class="err">지역</span><span class="p">),</span> <span class="p">(</span><span class="err">부서</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>위의 SQL 문에서, GROUPING SETS 구문은 그룹화에 대한 집합을 명시적으로 지정합니다. GROUPING SETS 구문 안에는 그룹화에 사용할 열을 나열하며, 각각을 괄호로 묶어서 집합으로 표시합니다.</p>
+
+<p>아래는 위의 SQL 문의 결과입니다.</p>
+
+<h6 id="grouping-sets-함수-결과">GROUPING SETS 함수 결과</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">날짜</th>
+      <th style="text-align: center">지역</th>
+      <th style="text-align: center">부서</th>
+      <th style="text-align: center">SUM(금액)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">7000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">7000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">서울</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">6000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">부산</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">8000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">마케팅</td>
+      <td style="text-align: center">5300</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">영업</td>
+      <td style="text-align: center">8700</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="윈도우-함수">윈도우 함수</h3>
+
+<p><code class="language-plaintext highlighter-rouge">윈도우 함수(Window Function)</code>는 OVER 절을 사용하여 데이터 집합을 기반으로 계산되는 함수입니다. 집계 함수와 달리 그룹화하지 않고 개별 행에 대해 계산합니다. 각 행의 계산 결과는 해당 행의 윈도우(Window)에 속하는 모든 행의 값을 사용하여 계산됩니다.</p>
+
+<p>윈도우 함수를 사용하면 데이터 집합에서 개별 행에 대한 값을 계산하는 것이 가능합니다. 일반적으로, 윈도우 함수는 데이터 집합에서 일부 행에 대한 통계를 계산하기 위해 사용됩니다. 윈도우 함수는 행과 행 사이에서 연산을 수행하고 결과 집합에 포함될 행을 결정하는 데 사용됩니다.</p>
+
+<p>데이터베이스를 사용한 온라인 분석 처리 용도로 사용하기 위해 추가된 기능으로 <code class="language-plaintext highlighter-rouge">OLAP(On-Line Analytical Processing)</code> 함수라고도 합니다.</p>
+
+<p>윈도우 함수는 다음과 같은 구문을 가집니다.</p>
+
+<h6 id="윈도우-함수-구문">윈도우 함수 구문</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">윈도우함수</span><span class="p">(</span><span class="err">인수</span><span class="p">)</span> <span class="n">OEVER</span> <span class="p">(</span>
+         <span class="p">[</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="err">컬럼</span><span class="mi">1</span> <span class="p">[,</span> <span class="err">컬럼</span><span class="mi">2</span> <span class="p">...]]</span>
+         <span class="p">[</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="err">컬럼</span><span class="mi">1</span> <span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">]</span> <span class="p">[,</span> <span class="err">컬럼</span><span class="mi">2</span> <span class="p">[</span><span class="k">ASC</span><span class="p">,</span> <span class="k">DESC</span><span class="p">]</span> <span class="p">...]]</span>
+         <span class="p">[</span><span class="n">WINDOWING</span><span class="err">절</span><span class="p">]</span> <span class="p">)</span>
+  <span class="k">FROM</span> <span class="err">테이블명</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>윈도우 함수를 사용하려면 OVER() 구문을 사용하여 윈도우를 정의해야 합니다. 윈도우는 연산을 수행할 데이터의 범위를 지정하며, 연산 범위는 WINDOWING절에서 <code class="language-plaintext highlighter-rouge">ROWS</code>나 <code class="language-plaintext highlighter-rouge">RANGE</code>로 정의됩니다. ROWS는 행 수로, RANGE는 값의 범위로 윈도우를 정의합니다. ROWS나 RANGE 구문 뒤에는 윈도우 크기를 나타내는 값이 올 수 있습니다.</p>
+
+<p>WINDOWING절은 다음과 같은 구문을 가집니다.</p>
+
+<h6 id="windowing절-구문">WINDOWING절 구문</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="k">ROWS</span><span class="o">|</span><span class="n">RANGE</span><span class="p">]</span> <span class="k">BETWEEN</span> <span class="err">시작점</span> <span class="k">AND</span> <span class="err">끝점</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>시작점은 다음과 같은 키워드를 사용할 수 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>키워드</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UNBOUNDED PRECEDING</td>
+      <td>최초의 레코드</td>
+    </tr>
+    <tr>
+      <td>CURRENT ROW</td>
+      <td>현재의 레코드</td>
+    </tr>
+    <tr>
+      <td>값 PRECEDING</td>
+      <td>값만큼 이전의 레코드</td>
+    </tr>
+    <tr>
+      <td>값 FOLLOWING</td>
+      <td>값만큼 이후의 레코드</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>끝점은 다음과 같은 키워드를 사용할 수 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>키워드</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UNBOUNDED FOLLOWING</td>
+      <td>마지막 레코드</td>
+    </tr>
+    <tr>
+      <td>CURRENT ROW</td>
+      <td>현재의 레코드</td>
+    </tr>
+    <tr>
+      <td>값 PRECEDING</td>
+      <td>값만큼 이전의 레코드</td>
+    </tr>
+    <tr>
+      <td>값 FOLLOWING</td>
+      <td>값만큼 이후의 레코드</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>WINDOWING절을 명시하지 않는 경우 기본값으로 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code>가 적용됩니다.</p>
+
+<p>윈도우 함수의 유형에는 <code class="language-plaintext highlighter-rouge">순위 함수</code>, <code class="language-plaintext highlighter-rouge">집계 함수</code>, <code class="language-plaintext highlighter-rouge">순서 함수</code>, <code class="language-plaintext highlighter-rouge">비율 함수</code>가 있습니다.</p>
+
+<h4 style="color:royalblue; margin-bottom:1.5em" id="1-순위-함수">(1) 순위 함수</h4>
+
+<p><code class="language-plaintext highlighter-rouge">순위 함수</code>는 데이터의 순위를 계산하여 출력합니다. 이 때, 데이터가 중복되는 경우 같은 순위를 가지게 됩니다. SQL에서는 다음과 같은 3가지의 순위 함수를 제공합니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>순위함수</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RANK</td>
+      <td>데이터의 순위를 계산하고, 같은 값이 있을 경우 중복 순위를 건너뛰고 다음 순위를 출력합니다.</td>
+    </tr>
+    <tr>
+      <td>DENSE_RANK</td>
+      <td>데이터의 순위를 계산하고, 같은 값이 있을 경우 중복 순위를 건너뛰지 않고 중복 순위를 포함한 순위를 출력합니다.</td>
+    </tr>
+    <tr>
+      <td>ROW_NUMBER</td>
+      <td>데이터의 순서에 따라 순번을 부여합니다. 같은 값이 있을 경우에도 중복되지 않고 각각의 순번을 출력합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>예를 들어, 다음과 같은 SCORES 테이블이 있다고 가정해 봅시다.</p>
+
+<h6 id="순위-함수-예제-데이터">순위 함수 예제 데이터</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">NAME</th>
+      <th style="text-align: center">SCORE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">80</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">80</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Carol</td>
+      <td style="text-align: center">75</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Dave</td>
+      <td style="text-align: center">70</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이 테이블에서 NAME 컬럼을 기준으로 정렬된 결과를 가지고, SCORE 컬럼의 누적 합계를 계산하려면 다음과 같이 윈도우 함수를 사용할 수 있습니다.</p>
+
+<h6 id="rank-함수-예제">RANK 함수 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">NAME</span><span class="p">,</span>
+       <span class="n">SCORE</span><span class="p">,</span>
+       <span class="n">RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">SCORE</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="n">RANK</span>
+  <span class="k">FROM</span> <span class="n">SCORES</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위 쿼리는 SCORES 테이블에서 SCORE 컬럼을 기준으로 내림차순으로 정렬한 결과를 기반으로, 각 데이터의 순위를 계산합니다. RANK() 함수는 동일한 순위를 갖는 데이터가 있을 경우 같은 순위를 부여하고, 그 다음 순위는 건너뛰어 다음으로 높은 순위를 부여합니다. 예를 들어, 첫 번째와 두 번째 데이터는 같은 순위(2위)를 부여하고, 그 다음 데이터는 4위를 부여합니다. 결과는 다음과 같습니다.</p>
+
+<h6 id="rank-함수-결과">RANK 함수 결과</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">NAME</th>
+      <th style="text-align: center">SCORE</th>
+      <th style="text-align: center">RANK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Carol</td>
+      <td style="text-align: center">75</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Dave</td>
+      <td style="text-align: center">70</td>
+      <td style="text-align: center">4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>다음은 DENSE_RANK() 함수를 사용하여 score 열을 기준으로 순위를 계산하는 쿼리의 예제입니다.</p>
+
+<h6 id="dense_rank-함수-예제">DENSE_RANK 함수 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">NAME</span><span class="p">,</span>
+       <span class="n">SCORE</span><span class="p">,</span>
+       <span class="n">DENSE_RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">SCORE</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="n">RANK</span>
+  <span class="k">FROM</span> <span class="n">SCORES</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위 쿼리는 RANK() 함수와 비슷하게, SCORES 테이블에서 SCORE 컬럼을 기준으로 내림차순으로 정렬한 결과를 기반으로, 각 데이터의 순위를 계산합니다. 하지만 DENSE_RANK() 함수는 동일한 순위를 갖는 데이터가 있을 경우 같은 순위를 부여하고, 그 다음 순위는 건너뛰지 않고 동일한 순위를 부여합니다. 예를 들어, 첫 번째와 두 번째 데이터는 같은 순위(2위)를 부여하고, 그 다음 데이터는 3위를 부여합니다. 결과는 다음과 같습니다.</p>
+
+<h6 id="dense_rank-함수-결과">DENSE_RANK 함수 결과</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">NAME</th>
+      <th style="text-align: center">SCORE</th>
+      <th style="text-align: center">RANK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Carol</td>
+      <td style="text-align: center">75</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Dave</td>
+      <td style="text-align: center">70</td>
+      <td style="text-align: center">3</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>마지막으로, ROW_NUMBER() 함수를 사용하여 SCORE 컬럼을 기준으로 순위를 계산하는 쿼리의 예제를 살펴보겠습니다.</p>
+
+<h6 id="row_number-함수-예제">ROW_NUMBER 함수 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">NAME</span><span class="p">,</span>
+       <span class="n">SCORE</span><span class="p">,</span>
+       <span class="n">ROW_NUMBER</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="n">SCORE</span> <span class="k">DESC</span><span class="p">)</span> <span class="k">AS</span> <span class="n">RANK</span>
+  <span class="k">FROM</span> <span class="n">SCORES</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위 쿼리는 RANK() 함수와 DENSE_RANK() 함수와 달리, 각 데이터를 유일하게 구별하는 번호를 부여합니다. SCORES 테이블에서 SCORE 컬럼을 기준으로 내림차순으로 정렬한 결과를 기반으로, 각 데이터에 대해 1부터 순차적으로 번호를 부여합니다. 결과는 다음과 같습니다.</p>
+
+<h6 id="row_number-함수-결과">ROW_NUMBER 함수 결과</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">NAME</th>
+      <th style="text-align: center">SCORE</th>
+      <th style="text-align: center">RANK</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Carol</td>
+      <td style="text-align: center">75</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Dave</td>
+      <td style="text-align: center">70</td>
+      <td style="text-align: center">4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>ROW_NUMBER() 함수는 특히 페이징 처리(paging)에 유용합니다. 페이징 처리란, 대량의 데이터를 페이지 단위로 나누어 출력하는 것을 의미합니다. 예를 들어, 위 쿼리 결과에서 첫 번째 페이지에는 1부터 2까지의 데이터를, 두 번째 페이지에는 3부터 4까지의 데이터를 출력할 수 있습니다.</p>
+
+<h4 style="color:royalblue; margin-bottom:1.5em" id="2-집계-함수">(2) 집계 함수</h4>
+
+<p>윈도우 함수의 <code class="language-plaintext highlighter-rouge">집계 함수</code>는 파티션 별 윈도우 내에서 데이터를 그룹화하여 통계적으로 계산한 결과를 반환하는 함수입니다. 전체 데이터셋을 기준으로 계산하는 일반적인 집계 함수와는 달리 더욱 세부적인 집계 결과를 얻을 수 있습니다.</p>
+
+<p>윈도우 함수 중 집계 함수로는 다음과 같은 함수가 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>집계함수</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SUM</td>
+      <td>윈도우 내 숫자형 데이터의 합을 계산합니다.</td>
+    </tr>
+    <tr>
+      <td>AVG</td>
+      <td>윈도우 내 숫자형 데이터의 평균을 계산합니다.</td>
+    </tr>
+    <tr>
+      <td>MIN</td>
+      <td>윈도우 내 숫자형 데이터의 최소값을 계산합니다.</td>
+    </tr>
+    <tr>
+      <td>MAX</td>
+      <td>윈도우 내 숫자형 데이터의 최대값을 계산합니다.</td>
+    </tr>
+    <tr>
+      <td>COUNT</td>
+      <td>윈도우 내 데이터의 개수를 계산합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>다음과 같은 SCORES 테이블이 있다고 가정해 봅시다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">ID</th>
+      <th style="text-align: center">NAME</th>
+      <th style="text-align: center">SUBJECT</th>
+      <th style="text-align: center">SCORE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">math</td>
+      <td style="text-align: center">80</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">math</td>
+      <td style="text-align: center">90</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">math</td>
+      <td style="text-align: center">95</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">math</td>
+      <td style="text-align: center">85</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">science</td>
+      <td style="text-align: center">75</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">science</td>
+      <td style="text-align: center">80</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">science</td>
+      <td style="text-align: center">90</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">8</td>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">science</td>
+      <td style="text-align: center">85</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">9</td>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">english</td>
+      <td style="text-align: center">70</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">10</td>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">english</td>
+      <td style="text-align: center">75</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">11</td>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">english</td>
+      <td style="text-align: center">80</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">12</td>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">english</td>
+      <td style="text-align: center">85</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위 테이블에서 윈도우 함수의 집계 함수를 사용하여 SUBJECT를 그룹으로 묶어 각 그룹의 집계 결과를 구할 수 있습니다.</p>
+
+<h6 id="윈도우-함수-중-집계-함수의-예제">윈도우 함수 중 집계 함수의 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">NAME</span><span class="p">,</span>
+	     <span class="n">SUBJECT</span><span class="p">,</span>
+	     <span class="n">SCORE</span><span class="p">,</span>
+	     <span class="k">SUM</span><span class="p">(</span><span class="n">SCORE</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">SUBJECT</span><span class="p">)</span> <span class="k">AS</span> <span class="n">SUBJECT_TOTAL_SCORE</span><span class="p">,</span>
+	     <span class="k">AVG</span><span class="p">(</span><span class="n">SCORE</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">SUBJECT</span><span class="p">)</span> <span class="k">AS</span> <span class="n">SUBJECT_AVG_SCORE</span><span class="p">,</span>
+	     <span class="k">MIN</span><span class="p">(</span><span class="n">SCORE</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">SUBJECT</span><span class="p">)</span> <span class="k">AS</span> <span class="n">SUBJECT_MIN_SCORE</span><span class="p">,</span>
+	     <span class="k">MAX</span><span class="p">(</span><span class="n">SCORE</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">SUBJECT</span><span class="p">)</span> <span class="k">AS</span> <span class="n">SUBJECT_MAX_SCORE</span><span class="p">,</span>
+	     <span class="k">COUNT</span><span class="p">(</span><span class="n">SCORE</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="n">PARTITION</span> <span class="k">BY</span> <span class="n">SUBJECT</span><span class="p">)</span> <span class="k">AS</span> <span class="n">SUBJECT_COUNT_SCORE</span>
+  <span class="k">FROM</span> <span class="n">SCORES</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>결과는 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">NAME</th>
+      <th style="text-align: center">SUBJECT</th>
+      <th style="text-align: center">SCORE</th>
+      <th style="text-align: center">SUBJECT_TOTAL_SCORE</th>
+      <th style="text-align: center">SUBJECT_AVG_SCORE</th>
+      <th style="text-align: center">SUBJECT_MIN_SCORE</th>
+      <th style="text-align: center">SUBJECT_MAX_SCORE</th>
+      <th style="text-align: center">SUBJECT_COUNT_SCORE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">english</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">310</td>
+      <td style="text-align: center">77.5</td>
+      <td style="text-align: center">70</td>
+      <td style="text-align: center">85</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">english</td>
+      <td style="text-align: center">75</td>
+      <td style="text-align: center">310</td>
+      <td style="text-align: center">77.5</td>
+      <td style="text-align: center">70</td>
+      <td style="text-align: center">85</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">english</td>
+      <td style="text-align: center">70</td>
+      <td style="text-align: center">310</td>
+      <td style="text-align: center">77.5</td>
+      <td style="text-align: center">70</td>
+      <td style="text-align: center">85</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">english</td>
+      <td style="text-align: center">85</td>
+      <td style="text-align: center">310</td>
+      <td style="text-align: center">77.5</td>
+      <td style="text-align: center">70</td>
+      <td style="text-align: center">85</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">math</td>
+      <td style="text-align: center">85</td>
+      <td style="text-align: center">350</td>
+      <td style="text-align: center">87.5</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">95</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">math</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">350</td>
+      <td style="text-align: center">87.5</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">95</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">math</td>
+      <td style="text-align: center">90</td>
+      <td style="text-align: center">350</td>
+      <td style="text-align: center">87.5</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">95</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">math</td>
+      <td style="text-align: center">95</td>
+      <td style="text-align: center">350</td>
+      <td style="text-align: center">87.5</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">95</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">science</td>
+      <td style="text-align: center">85</td>
+      <td style="text-align: center">330</td>
+      <td style="text-align: center">82.5</td>
+      <td style="text-align: center">75</td>
+      <td style="text-align: center">90</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">science</td>
+      <td style="text-align: center">90</td>
+      <td style="text-align: center">330</td>
+      <td style="text-align: center">82.5</td>
+      <td style="text-align: center">75</td>
+      <td style="text-align: center">90</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Alice</td>
+      <td style="text-align: center">science</td>
+      <td style="text-align: center">75</td>
+      <td style="text-align: center">330</td>
+      <td style="text-align: center">82.5</td>
+      <td style="text-align: center">75</td>
+      <td style="text-align: center">90</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bob</td>
+      <td style="text-align: center">science</td>
+      <td style="text-align: center">80</td>
+      <td style="text-align: center">330</td>
+      <td style="text-align: center">82.5</td>
+      <td style="text-align: center">75</td>
+      <td style="text-align: center">90</td>
+      <td style="text-align: center">4</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 style="color:royalblue; margin-bottom:1.5em" id="3-순서-함수">(3) 순서 함수</h4>
+
+<p>윈도우 함수 중 <code class="language-plaintext highlighter-rouge">순서 함수</code>는 각 행의 이전이나 다음 행의 값을 가져오거나, 윈도우 내에서의 첫 번째나 마지막 값을 가져오는 함수입니다.</p>
+
+<p>윈도우 함수 중 순서 함수로는 다음과 같은 함수가 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>순서함수</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LAG</td>
+      <td>윈도우 내에서 이전 행의 값을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>LEAD</td>
+      <td>윈도우 내에서 이후 행의 값을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>FIRST_VALUE</td>
+      <td>윈도우 내에서 첫 번째 값을 반환합니다.</td>
+    </tr>
+    <tr>
+      <td>LAST_VALUE</td>
+      <td>윈도우 내에서 마지막 값을 반환합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>다음과 같은 SALES 테이블이 있다고 가정해 봅시다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">ID</th>
+      <th style="text-align: center">DATA</th>
+      <th style="text-align: center">AMOUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">100</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">200</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2022-01-03</td>
+      <td style="text-align: center">300</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">2022-01-04</td>
+      <td style="text-align: center">400</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">2022-01-05</td>
+      <td style="text-align: center">500</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위 테이블에에서 순서 함수를 사용해 보겠습니다.</p>
+
+<h6 id="윈도우-함수-중-순서-함수의-예제">윈도우 함수 중 순서 함수의 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span>
+       <span class="nv">"DATE"</span><span class="p">,</span>
+       <span class="n">AMOUNT</span><span class="p">,</span>
+       <span class="n">LEAD</span><span class="p">(</span><span class="n">AMOUNT</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nv">"DATE"</span><span class="p">)</span> <span class="k">AS</span> <span class="n">NEXT_AMOUNT</span><span class="p">,</span>
+       <span class="n">LAG</span><span class="p">(</span><span class="n">AMOUNT</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nv">"DATE"</span><span class="p">)</span> <span class="k">AS</span> <span class="n">PREV_AMOUNT</span><span class="p">,</span>
+       <span class="n">FIRST_VALUE</span><span class="p">(</span><span class="n">AMOUNT</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nv">"DATE"</span><span class="p">)</span> <span class="k">AS</span> <span class="n">FIRST_AMOUNT</span><span class="p">,</span>
+       <span class="n">LAST_VALUE</span><span class="p">(</span><span class="n">AMOUNT</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nv">"DATE"</span><span class="p">)</span> <span class="k">AS</span> <span class="n">LAST_AMOUNT</span>
+  <span class="k">FROM</span> <span class="n">SALES</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>결과는 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">ID</th>
+      <th style="text-align: center">DATE</th>
+      <th style="text-align: center">AMOUNT</th>
+      <th style="text-align: center">NEXT_AMOUNT</th>
+      <th style="text-align: center">PREV_AMOUNT</th>
+      <th style="text-align: center">FIRST_AMOUNT</th>
+      <th style="text-align: center">LAST_AMOUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">100</td>
+      <td style="text-align: center">200</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">100</td>
+      <td style="text-align: center">100</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">200</td>
+      <td style="text-align: center">300</td>
+      <td style="text-align: center">100</td>
+      <td style="text-align: center">100</td>
+      <td style="text-align: center">200</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2022-01-03</td>
+      <td style="text-align: center">300</td>
+      <td style="text-align: center">400</td>
+      <td style="text-align: center">200</td>
+      <td style="text-align: center">100</td>
+      <td style="text-align: center">300</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">2022-01-04</td>
+      <td style="text-align: center">400</td>
+      <td style="text-align: center">500</td>
+      <td style="text-align: center">300</td>
+      <td style="text-align: center">100</td>
+      <td style="text-align: center">400</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">2022-01-05</td>
+      <td style="text-align: center">500</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">400</td>
+      <td style="text-align: center">100</td>
+      <td style="text-align: center">500</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>파티셔닝을 하지 않았기 때문에 전체 행을 하나로 그룹화 합니다. LEAD와 LAG 함수는 직관적으로 알 수 있을 것입니다. FIRST_VALUE와 LAST_VALUE의 경우 이해가 어려울 수 있는데 앞서 말한 WINDOWING절의 기본값이 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">RANGE BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code> 이기 때문에 이러한 결과가 나왔습니다. 처음 행부터 현재 행까지가 하나의 윈도우가 되기 때문에 FIRST_AMOUNT는 항상 첫 번째 행의 AMOUNT인 100이, LAST_AMOUNT는 현재 행의 AMOUNT가 출력됩니다.</p>
+
+<h4 style="color:royalblue; margin-bottom:1.5em" id="4-비율-함수">(4) 비율 함수</h4>
+
+<p>윈도우 함수 중 <code class="language-plaintext highlighter-rouge">비율 함수</code>는 파티션 내 백분율을 계산하거나 비율에 따라 n등분 할 수 있는 함수입니다.</p>
+
+<p>윈도우 함수 중 비율 함수에는 다음과 같은 함수가 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>순서함수</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>RATIO_TO_RERORT</td>
+      <td>윈도우 내 SUM 값에 대한 백분율을 계산합니다.</td>
+    </tr>
+    <tr>
+      <td>PERCENT_RANK</td>
+      <td>윈도우 내 순서별 백분율을 계산합니다.</td>
+    </tr>
+    <tr>
+      <td>CUME_DIST</td>
+      <td>윈도우 내 순서별 누적 백분율을 계산합니다.</td>
+    </tr>
+    <tr>
+      <td>NTILE</td>
+      <td>윈도우 내 데이터를 정렬하여 동일한 크기의 버킷으로 분할 한 후 각 버킷에 번호를 할당하는 함수입니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>다음과 같은 SALES 테이블이 있다고 가정해 봅시다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">ID</th>
+      <th style="text-align: center">DATA</th>
+      <th style="text-align: center">AMOUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">100</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">200</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2022-01-03</td>
+      <td style="text-align: center">300</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">2022-01-04</td>
+      <td style="text-align: center">400</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">2022-01-05</td>
+      <td style="text-align: center">500</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>위 테이블에에서 비율 함수를 사용해 보겠습니다.</p>
+
+<h6 id="윈도우-함수-중-비율-함수의-예제">윈도우 함수 중 비율 함수의 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span>
+       <span class="nv">"DATE"</span><span class="p">,</span>
+       <span class="n">AMOUNT</span><span class="p">,</span>
+       <span class="n">RATIO_TO_REPORT</span><span class="p">(</span><span class="n">AMOUNT</span><span class="p">)</span> <span class="n">OVER</span> <span class="p">()</span> <span class="k">AS</span> <span class="n">AMOUNT_SUM_RATIO</span><span class="p">,</span>
+       <span class="n">PERCENT_RANK</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nv">"DATE"</span><span class="p">)</span> <span class="k">AS</span> <span class="n">AMOUNT_RATIO</span><span class="p">,</span>
+       <span class="n">CUME_DIST</span><span class="p">()</span> <span class="n">OVER</span> <span class="p">(</span><span class="k">ORDER</span> <span class="k">BY</span> <span class="nv">"DATE"</span><span class="p">)</span> <span class="k">AS</span> <span class="n">AMOUNT_CUM_DIST</span>
+<span class="k">FROM</span> <span class="n">SALES</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>RATIO_TO_REPORT 함수는 SUM값을 그룹하기 위한 컬럼을 인수로 설정하고, OVER() 구문에서 ORDER BY절을 사용하지 않습니다.</p>
+
+<p>반면 PERCENT_RANK와 CUME_DIST 함수는 인수가 없으며, OVER() 구문에서 ORDER BY절을 통한 정렬이 필요합니다.</p>
+
+<p>결과는 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">ID</th>
+      <th style="text-align: center">DATE</th>
+      <th style="text-align: center">AMOUNT</th>
+      <th style="text-align: center">AMOUNT_SUM_RATIO</th>
+      <th style="text-align: center">AMOUNT_RATIO</th>
+      <th style="text-align: center">AMOUNT_CUM_DIST</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2022-01-01</td>
+      <td style="text-align: center">100</td>
+      <td style="text-align: center">0.0666666667</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0.2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2022-01-02</td>
+      <td style="text-align: center">200</td>
+      <td style="text-align: center">0.1333333333</td>
+      <td style="text-align: center">0.25</td>
+      <td style="text-align: center">0.4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2022-01-03</td>
+      <td style="text-align: center">300</td>
+      <td style="text-align: center">0.2</td>
+      <td style="text-align: center">0.5</td>
+      <td style="text-align: center">0.6</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">2022-01-04</td>
+      <td style="text-align: center">400</td>
+      <td style="text-align: center">0.2666666667</td>
+      <td style="text-align: center">0.75</td>
+      <td style="text-align: center">0.8</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">2022-01-05</td>
+      <td style="text-align: center">500</td>
+      <td style="text-align: center">0.3333333333</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/sql/">Sql</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/sql/where">SQL - WHERE절</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/sql/transaction">SQL - 트랜잭션(Transaction)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/sql/database">SQL - 데이터베이스(Database)</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/sql/">
+                                
+                                    See all 4 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/sql/where">
+                <div class="post-card-image" style="background-image: url(/assets/images/sql-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/sql/where">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">SQL - WHERE절</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>WHERE절
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      4 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">SQL - 내장 함수(Built-in Function)</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=SQL+-+%EB%82%B4%EC%9E%A5+%ED%95%A8%EC%88%98%28Built-in+Function%29&amp;url=sql/built-in-function"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=sql/built-in-function"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2023</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
