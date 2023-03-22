@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://huimang2.github.io/sql/join.html</loc>
+        
+        <lastmod>2023-03-22T22:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://huimang2.github.io/sql/built-in-function.html</loc>
         
         <lastmod>2023-03-07T23:00:00+09:00</lastmod>

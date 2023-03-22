@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>SQL - 조인(JOIN)</title>
+        
+          <description>&lt;h1 id=&quot;조인join&quot;&gt;조인(JOIN)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Wed, 22 Mar 2023 22:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/sql/join</link>
+        <guid isPermaLink="true">https://huimang2.github.io/sql/join</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>SQL - 내장 함수(Built-in Function)</title>
         
           <description>&lt;h1 id=&quot;함수function&quot;&gt;함수(Function)&lt;/h1&gt;
