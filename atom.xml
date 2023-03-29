@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>SQL - 집합연산자 / 계층형 질의</title>
+        
+          <description>&lt;h1 id=&quot;집합연산자set-operation&quot;&gt;집합연산자(Set Operation)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Wed, 29 Mar 2023 02:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/sql/set-and-hierarchical</link>
+        <guid isPermaLink="true">https://huimang2.github.io/sql/set-and-hierarchical</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>SQL - 조인(JOIN)</title>
         
           <description>&lt;h1 id=&quot;조인join&quot;&gt;조인(JOIN)&lt;/h1&gt;

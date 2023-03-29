@@ -11,7 +11,7 @@
 
 
 
-    <title>SQL - WHERE절</title>
+    <title>SQL - 집합연산자 / 계층형 질의</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,24 +51,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/sql/where" />
+    <link rel="canonical" href="https://huimang2.github.io/sql/set-and-hierarchical" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="SQL - WHERE절" />
-    <meta property="og:description" content="WHERE절 WHERE절은 SELECT문을 통해 데이터를 조회할때 특정 조건에 부합하는 자료를 검색하기 위한 명령어입니다. WHERE절은 FROM절 다음에 위치합니다. WHERE절 SELECT 컬럼명 FROM 테이블명 WHERE 조건식; WHERE절의 조건식을 구성하하는 연산자에는 비교 연산자, SQL 연산자, 논리 연산자, 부정 연산자 4가지 종류가 있습니다. 비교 연산자 비교 연산자는 연산자를 기준으로 하여 왼쪽값과 오른쪽값의 크기를 비교하기" />
-    <meta property="og:url" content="https://huimang2.github.io/sql/where" />
+    <meta property="og:title" content="SQL - 집합연산자 / 계층형 질의" />
+    <meta property="og:description" content="집합연산자(Set Operation) 집합연산자는 두 개 이상의 테이블을 연결하여 하나로 결합하는 연산자 입니다. 집합연산자를 사용하기 위해서는 컬럼의 수와 타입이 동일해야 합니다. 집합연산자에는 다음과 같은 유형이 있습니다. 집합연산자 유형 유형 설명 UNION 합집합 연산을 수행하며, 중복을 제거하여 결과를 표시합니다. UNION ALL 합집합 연산을 수행하며, 중복을 포함하여 결과를 표시합니다. INTERSECT 교집합 연산을 수행합니다." />
+    <meta property="og:url" content="https://huimang2.github.io/sql/set-and-hierarchical" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/sql-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2023-02-26T11:00:00+09:00" />
-    <meta property="article:modified_time" content="2023-02-26T11:00:00+09:00" />
+    <meta property="article:published_time" content="2023-03-29T02:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-03-29T02:00:00+09:00" />
     <meta property="article:tag" content="Sql" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SQL - WHERE절" />
-    <meta name="twitter:description" content="WHERE절 WHERE절은 SELECT문을 통해 데이터를 조회할때 특정 조건에 부합하는 자료를 검색하기 위한 명령어입니다. WHERE절은 FROM절 다음에 위치합니다. WHERE절 SELECT 컬럼명 FROM 테이블명 WHERE 조건식; WHERE절의 조건식을 구성하하는 연산자에는 비교 연산자, SQL 연산자, 논리 연산자, 부정 연산자 4가지 종류가 있습니다. 비교 연산자 비교 연산자는 연산자를 기준으로 하여 왼쪽값과 오른쪽값의 크기를 비교하기" />
+    <meta name="twitter:title" content="SQL - 집합연산자 / 계층형 질의" />
+    <meta name="twitter:description" content="집합연산자(Set Operation) 집합연산자는 두 개 이상의 테이블을 연결하여 하나로 결합하는 연산자 입니다. 집합연산자를 사용하기 위해서는 컬럼의 수와 타입이 동일해야 합니다. 집합연산자에는 다음과 같은 유형이 있습니다. 집합연산자 유형 유형 설명 UNION 합집합 연산을 수행하며, 중복을 제거하여 결과를 표시합니다. UNION ALL 합집합 연산을 수행하며, 중복을 포함하여 결과를 표시합니다. INTERSECT 교집합 연산을 수행합니다." />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/sql-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -89,7 +89,7 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/sql/where",
+    "url": "https://huimang2.github.io/sql/set-and-hierarchical",
     "image": {
         "@type": "ImageObject",
         "url": "https://huimang2.github.io/assets/images/sql-logo.png",
@@ -98,9 +98,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/sql/where"
+        "@id": "https://huimang2.github.io/sql/set-and-hierarchical"
     },
-    "description": "WHERE절 WHERE절은 SELECT문을 통해 데이터를 조회할때 특정 조건에 부합하는 자료를 검색하기 위한 명령어입니다. WHERE절은 FROM절 다음에 위치합니다. WHERE절 SELECT 컬럼명 FROM 테이블명 WHERE 조건식; WHERE절의 조건식을 구성하하는 연산자에는 비교 연산자, SQL 연산자, 논리 연산자, 부정 연산자 4가지 종류가 있습니다. 비교 연산자 비교 연산자는 연산자를 기준으로 하여 왼쪽값과 오른쪽값의 크기를 비교하기"
+    "description": "집합연산자(Set Operation) 집합연산자는 두 개 이상의 테이블을 연결하여 하나로 결합하는 연산자 입니다. 집합연산자를 사용하기 위해서는 컬럼의 수와 타입이 동일해야 합니다. 집합연산자에는 다음과 같은 유형이 있습니다. 집합연산자 유형 유형 설명 UNION 합집합 연산을 수행하며, 중복을 제거하여 결과를 표시합니다. UNION ALL 합집합 연산을 수행하며, 중복을 포함하여 결과를 표시합니다. INTERSECT 교집합 연산을 수행합니다."
 }
     </script>
 
@@ -113,7 +113,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="SQL - WHERE절" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="SQL - 집합연산자 / 계층형 질의" href="/feed.xml" />
 
 
     <!-- MathJax -->
@@ -175,7 +175,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="26 February 2023">26 February 2023</time>
+                    <time class="post-full-meta-date" datetime="29 March 2023">29 March 2023</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -187,7 +187,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">SQL - WHERE절</h1>
+                <h1 class="post-full-title">SQL - 집합연산자 / 계층형 질의</h1>
             </header>
 
             <!-- 
@@ -198,318 +198,615 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#where절"><span>WHERE절</span></a><ul><li><a href="#비교-연산자"><span>비교 연산자</span></a></li><li><a href="#sql-연산자"><span>SQL 연산자</span></a></li><li><a href="#논리-연산자"><span>논리 연산자</span></a></li><li><a href="#부정-연산자"><span>부정 연산자</span></a></li></ul></li><li><a href="#top-n-쿼리"><span>Top N 쿼리</span></a></li></ul>
+                        <ul><li><a href="#집합연산자set-operation"><span>집합연산자(Set Operation)</span></a><ul><li><a href="#union"><span>UNION</span></a></li><li><a href="#union-1"><span>UNION</span></a></li><li><a href="#intersect"><span>INTERSECT</span></a></li><li><a href="#minus"><span>MINUS</span></a></li></ul></li><li><a href="#계층형-질의hierarchical-query"><span>계층형 질의(Hierarchical Query)</span></a></li></ul>
 
                     </div>
-                    <h1 id="where절">WHERE절</h1>
+                    <h1 id="집합연산자set-operation">집합연산자(Set Operation)</h1>
 
-<p><code class="language-plaintext highlighter-rouge">WHERE절</code>은 SELECT문을 통해 데이터를 조회할때 특정 조건에 부합하는 자료를 검색하기 위한 명령어입니다. WHERE절은 FROM절 다음에 위치합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">집합연산자</code>는 두 개 이상의 테이블을 연결하여 하나로 결합하는 연산자 입니다. 집합연산자를 사용하기 위해서는 컬럼의 수와 타입이 동일해야 합니다.</p>
 
-<h6 id="where절-1">WHERE절</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼명</span>
-  <span class="k">FROM</span> <span class="err">테이블명</span>
- <span class="k">WHERE</span> <span class="err">조건식</span><span class="p">;</span>
-</code></pre></div></div>
+<p>집합연산자에는 다음과 같은 유형이 있습니다.</p>
 
-<p>WHERE절의 조건식을 구성하하는 연산자에는 <code class="language-plaintext highlighter-rouge">비교 연산자</code>, <code class="language-plaintext highlighter-rouge">SQL 연산자</code>, <code class="language-plaintext highlighter-rouge">논리 연산자</code>, <code class="language-plaintext highlighter-rouge">부정 연산자</code> 4가지 종류가 있습니다.</p>
-
-<h2 id="비교-연산자">비교 연산자</h2>
-
-<p><code class="language-plaintext highlighter-rouge">비교 연산자</code>는 연산자를 기준으로 하여 왼쪽값과 오른쪽값의 크기를 비교하기 위한 연산자 입니다.</p>
-
-<h6 id="비교-연산자-종류">비교 연산자 종류</h6>
+<h6 id="집합연산자-유형">집합연산자 유형</h6>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center">연산자</th>
+      <th>유형</th>
       <th>설명</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center">=</td>
-      <td>같음</td>
+      <td>UNION</td>
+      <td>합집합 연산을 수행하며, 중복을 제거하여 결과를 표시합니다.</td>
     </tr>
     <tr>
-      <td style="text-align: center">&gt;</td>
-      <td>보다 큼</td>
+      <td>UNION ALL</td>
+      <td>합집합 연산을 수행하며, 중복을 포함하여 결과를 표시합니다.</td>
     </tr>
     <tr>
-      <td style="text-align: center">&gt;=</td>
-      <td>보다 크거나 작음</td>
+      <td>INTERSECT</td>
+      <td>교집합 연산을 수행합니다.</td>
     </tr>
     <tr>
-      <td style="text-align: center">&lt;</td>
-      <td>보다 작음</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">&lt;=</td>
-      <td>보다 작거나 같음</td>
+      <td>MINUS</td>
+      <td>차집합 연산을 수행합니다.</td>
     </tr>
   </tbody>
 </table>
 
-<p>예를 들어 BOARD 테이블에서 DOCUMENT_IDX가 10보다 작은 레코드를 선택하려면 다음과 같이 쿼리문을 작성하면 됩니다.</p>
+<p>기본 구조는 다음과 같습니다.</p>
 
-<h6 id="비교연산자-예제">비교연산자 예제</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span>
+<h6 id="집합연산자-기본-구조">집합연산자 기본 구조</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="p">...</span>
+<span class="p">[</span><span class="k">UNION</span> <span class="o">|</span> <span class="k">UNION</span> <span class="k">ALL</span> <span class="o">|</span> <span class="k">INTERSECT</span> <span class="o">|</span> <span class="n">MINUS</span><span class="p">]</span>
+<span class="k">SELECT</span> <span class="p">...</span>
 </code></pre></div></div>
 
-<h2 id="sql-연산자">SQL 연산자</h2>
+<h2 id="union">UNION</h2>
 
-<p><code class="language-plaintext highlighter-rouge">SQL 연산자</code>는 기본적으로 예약된 연산자로서 모든 데이터 타입에 대하여 연산이 가능합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">UNION</code>은 합집합 연산을 수행하며, 중복된 행은 하나로 표시합니다. 내부적으로 중복된 값을 제거하는 과정에서 SORT 기능이 동작합니다.</p>
 
-<h6 id="sql-연산자-종류">SQL 연산자 종류</h6>
+<p>아래와 같은 예제 데이터가 있습니다.</p>
+
+<h6 id="employees_1">EMPLOYEES_1</h6>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center">연산자</th>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Alice</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Bob</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">Charlie</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">David</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="employees_2">EMPLOYEES_2</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">Emily</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Bob</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">David</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">Fiona</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>두 테이블의 결과에 대하여 중복을 제거하여 합쳐 출력하기 위해서는 다음과 같은 쿼리문을 작성하면 됩니다.</p>
+
+<h6 id="union-예제">UNION 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES_1</span>
+<span class="k">UNION</span>
+<span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES_2</span>
+</code></pre></div></div>
+
+<h6 id="union-결과">UNION 결과</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Alice</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Bob</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">Charlie</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">David</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">Emily</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">Fiona</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="union-1">UNION</h2>
+
+<p><code class="language-plaintext highlighter-rouge">UNION ALL</code>은 합집합 연산을 수행하며, 중복된 행을 그대로 표시합니다. UNION과 달리 데이터의 중복을 제거하거나 정렬 과정을 거치지 않기 때문에 성능상 UNION보다 유리합니다.</p>
+
+<h6 id="union-all-예제">UNION ALL 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES_1</span>
+<span class="k">UNION</span> <span class="k">ALL</span>
+<span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES_2</span>
+</code></pre></div></div>
+
+<h6 id="union-all-결과">UNION ALL 결과</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Alice</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Bob</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">Charlie</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">David</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">Emily</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Bob</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">David</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">Fiona</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="intersect">INTERSECT</h2>
+
+<p><code class="language-plaintext highlighter-rouge">INTERSECT</code>는 교집합 연산을 수행하며, 중복된 행은 제거하여 출력합니다.</p>
+
+<h6 id="intersect-예제">INTERSECT 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES_1</span>
+<span class="k">INTERSECT</span>
+<span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES_2</span>
+</code></pre></div></div>
+
+<h6 id="intersect-결과">INTERSECT 결과</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">Alice</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">Charlie</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="minus">MINUS</h2>
+
+<p><code class="language-plaintext highlighter-rouge">MINUS</code>는 차집합 연산을 수행하며, 중복된 행은 제거하여 출력합니다. SQL Server에서는 <code class="language-plaintext highlighter-rouge">EXCEPT</code>를 사용합니다.</p>
+
+<h6 id="minus-예제">MINUS 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES_1</span>
+<span class="n">MINUS</span>
+<span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES_2</span>
+</code></pre></div></div>
+
+<h6 id="intersect-결과-1">INTERSECT 결과</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">id</th>
+      <th style="text-align: center">name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Bob</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">David</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>MINUS는 다음과 같이 NOT EXISTS나 NOT IN 서브쿼리를 통해서도 출력할 수 있습니다.</p>
+
+<h6 id="not-exists를-사용한-차집합-예제">NOT EXISTS를 사용한 차집합 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES_1</span> <span class="n">A</span>
+ <span class="k">WHERE</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="p">(</span>
+        <span class="k">SELECT</span> <span class="mi">1</span>
+          <span class="k">FROM</span> <span class="n">EMPLOYEES_2</span> <span class="n">B</span>
+         <span class="k">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
+           <span class="k">AND</span> <span class="n">A</span><span class="p">.</span><span class="n">ID</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">ID</span>
+           <span class="k">AND</span> <span class="n">A</span><span class="p">.</span><span class="n">NAME</span> <span class="o">=</span> <span class="n">B</span><span class="p">.</span><span class="n">NAME</span>
+       <span class="p">)</span>
+</code></pre></div></div>
+
+<h6 id="not-in을-사용한-차집합-예제">NOT IN을 사용한 차집합 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES_1</span>
+ <span class="k">WHERE</span> <span class="p">(</span><span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">IN</span> <span class="p">(</span><span class="k">SELECT</span> <span class="n">ID</span><span class="p">,</span> <span class="n">NAME</span> <span class="k">FROM</span> <span class="n">EMPLOYEES_2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h1 id="계층형-질의hierarchical-query">계층형 질의(Hierarchical Query)</h1>
+
+<p><code class="language-plaintext highlighter-rouge">계층형 질의</code>는 동일한 테이블에 대하여 상위와 하위 포함 관계를 가진 계층형 데이터를 계층형 구조로 조회하기 위한 질의어 입니다.</p>
+
+<p>기본 구조는 다음과 같습니다.</p>
+
+<h6 id="계층형-질의-기본-구조">계층형 질의 기본 구조</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">SELECT</span> <span class="err">컬럼명</span>
+   <span class="k">FROM</span> <span class="err">테이블명</span>
+  <span class="k">WHERE</span> <span class="err">조건문</span>
+  <span class="k">START</span> <span class="k">WITH</span> <span class="err">조건문</span>
+<span class="k">CONNECT</span> <span class="k">BY</span> <span class="p">[</span><span class="n">NOCYCLE</span><span class="p">]</span> <span class="err">조건문</span>
+  <span class="k">ORDER</span> <span class="n">SIBLINGS</span> <span class="k">BY</span> <span class="err">컬럼명</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">START WITH</code> 키워드에서는 계층 구조의 시작(ROOT)를 지정하고, <code class="language-plaintext highlighter-rouge">CONNECT BY</code> 키워드에서는 자식 노드의 조건을 설정합니다. 이때 PRIOR 키워드를 사용하는데, 해당 키워드의 위치에 따라 순방향 계층형 질의 또는 역방향 계층형 질의를 할 수 있습니다.</p>
+
+<p>조건문 앞에 <code class="language-plaintext highlighter-rouge">NOCYCLE</code> 키워드를 붙인다면 순환 데이터를 조회하지 않게 됩니다. 즉, 그래프 구조가 아닌 트리형 구조로 데이터를 조회할 수 있습니다.</p>
+
+<p>같은 레벨인 형제 노드 간 정렬을 위해서는 <code class="language-plaintext highlighter-rouge">ORER SIBLINGS BY</code> 키워드를 사용합니다.</p>
+
+<p>계층형 질의문에서는 다음과 같은 가상 컬럼을 사용할 수 있습니다.</p>
+
+<h6 id="계층형-질의문-가상-컬럼">계층형 질의문 가상 컬럼</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>가상 컬럼</th>
       <th>설명</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center">BETWEEN A AND B</td>
-      <td>A이상 B이하의 값</td>
+      <td>LEVEL</td>
+      <td>루트 데이터를 1로 하며, 리프 데이터까지 1씩 증가합니다.</td>
     </tr>
     <tr>
-      <td style="text-align: center">IN (LIST)</td>
-      <td>LIST에 있는 값 중 하나 이상을 포함</td>
+      <td>CONNECT_BY_ISLEAF</td>
+      <td>리프 데이터이면 1, 아니면 0을 출력합니다.</td>
     </tr>
     <tr>
-      <td style="text-align: center">LIKE ‘비교문자열’</td>
-      <td>비교 문자열과 형태가 일치</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">IS NULL</td>
-      <td>NULL값을 가짐</td>
+      <td>CONNECT_BY_ISCYCLE</td>
+      <td>사이클이 존재하면 1, 아니면 0을 출력합니다.</td>
     </tr>
   </tbody>
 </table>
 
-<p>예를 들어 BOARD 테이블에서 DOCUMENT_IDX가 5이상 10이하인 작은 레코드를 선택하려면 다음과 같이 쿼리문을 작성하면 됩니다.</p>
+<p>다음과 같은 함수도 사용할 수 있습니다.</p>
 
-<h6 id="between-연산자">BETWEEN 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="k">BETWEEN</span> <span class="mi">5</span> <span class="k">AND</span> <span class="n">B</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>해당 쿼리문은 아래에서 설명할 논리 연산자를 통해 다음과 같이 나타낼 수도 있습니다.</p>
-
-<h6 id="between-연산자를-논리-연산자로-표현">BETWEEN 연산자를 논리 연산자로 표현</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&gt;=</span> <span class="mi">5</span>
-   <span class="k">AND</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></div></div>
-
-<hr />
-
-<p>BOARD 테이블에서 DOCUMENT_IDX가 1, 10인 레코드를 선택하려면 다음과 같이 쿼리문을 작성합니다.</p>
-
-<h6 id="in-연산자">IN 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">IN</code> 연산자 또한 논리 연산자로 나타낼 수 있습니다.</p>
-
-<h6 id="in-연산자를-논리-연산자로-표현">IN 연산자를 논리 연산자로 표현</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">OR</span> <span class="n">DOCUMENT_IDX</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></div></div>
-
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">와일드카드</code>는 한 개 또는 0개 이상의 문자를 대신하여 사용하기 위한 특수 문자열입니다. <code class="language-plaintext highlighter-rouge">LIKE 연산자</code>의 경우 와일드카드를 사용하여 비교문자열을 나타냄으로써 다양한 형태의 문자열을 선택할 수 있습니다.</p>
-
-<p>와일드카드는 정규표현식과 유사한데, 0개 이상의 임의 문자열은 <code class="language-plaintext highlighter-rouge">%</code>, 1개의 임의 문자열은 <code class="language-plaintext highlighter-rouge">_</code>으로 나타냅니다. 와일드 카드를 사용한 사례는 다음과 같습니다.</p>
-
-<h6 id="와일드카드-사용-사례">와일드카드 사용 사례</h6>
+<h6 id="계층형-질의문-함수">계층형 질의문 함수</h6>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center">와일드카드</th>
+      <th>함수</th>
       <th>설명</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center">a%</td>
-      <td>a로 시작하는 모든 문자열</td>
+      <td>SYS_CONNECT_BY_PATH</td>
+      <td>루트 데이터부터 현재 데이터까지의 경로를 출력합니다.</td>
     </tr>
     <tr>
-      <td style="text-align: center">%a</td>
-      <td>a로 끝나는 모든 문자열</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">%a%</td>
-      <td>a가 포함된 모든 문자열</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">___</td>
-      <td>3글자인 모든 문자열</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">[abc]%</td>
-      <td>a 또는 b 또는 c로 시작하는 모든 문자열</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">[^a]%</td>
-      <td>1번째 글자가 a가 아닌 모든 문자열</td>
+      <td>CONNECT_BY_ROOT</td>
+      <td>현재 데이터의 루트 데이터를 출력합니다.</td>
     </tr>
   </tbody>
 </table>
 
-<p>예를 들어 BOARD 테이블에서 TITLE이 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">제목</code>으로 시작하는 레코드를 선택하려면 다음과 같이 쿼리문을 작성하면 됩니다.</p>
+<p>예를 들어 아래와 같은 예제 데이터가 있습니다.</p>
 
-<h6 id="like-연산자">LIKE 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">TITLE</span> <span class="k">LIKE</span> <span class="s1">'제목%'</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>만약 비교문자열에 <code class="language-plaintext highlighter-rouge">%</code>나 <code class="language-plaintext highlighter-rouge">_</code>와 같은 와일드카드로 사용하는 특수문자가 포함된다면 <code class="language-plaintext highlighter-rouge">ESCAPE</code>를 사용합니다.</p>
-
-<h6 id="escape-사용">ESCAPE 사용</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">CONTENTS</span> <span class="k">LIKE</span> <span class="s1">'제목#_%'</span> <span class="k">ESCAPE</span> <span class="s1">'#'</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>위에 쿼리문의 경우 <code class="language-plaintext highlighter-rouge">#</code>을 ESCAPE 문자로 인식하여 <code class="language-plaintext highlighter-rouge">#</code>문자 뒤에 나오는 <code class="language-plaintext highlighter-rouge">_</code>를 와일드카드가 아닌 일반 문자열로 인식하여 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">제목_</code>으로 시작하는 레코드를 선택하게 됩니다.</p>
-
-<hr />
-
-<p>만약 값이 NULL이라면 알 수 없는 값으로 비교 자체가 불가하므로 비교연산자 <code class="language-plaintext highlighter-rouge">=</code>을 사용하여 조건문을 작성할 수 없습니다. 대신에 <code class="language-plaintext highlighter-rouge">IS NULL</code> 연산자를 사용할 수 있습니다.</p>
-
-<p>예를 들어 BOARD 테이블에서 CONTENTS가 NULL인 레코드를 선택하려면 다음과 같이 쿼리문을 작성합니다.</p>
-
-<h6 id="is-null-연산자">IS NULL 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">CONTETS</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>
-</code></pre></div></div>
-
-<h2 id="논리-연산자">논리 연산자</h2>
-
-<p><code class="language-plaintext highlighter-rouge">논리 연산자</code>는 여러 조건을 논리적으로 연결하기 위해 사용되는 연산자 입니다.</p>
-
-<h6 id="논리-연산자-종류">논리 연산자 종류</h6>
+<h6 id="employees">EMPLOYEES</h6>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center">연산자</th>
-      <th>설명</th>
+      <th style="text-align: center">EMPLOYEE_ID</th>
+      <th style="text-align: center">EMPLOYEE_NAME</th>
+      <th style="text-align: center">MANAGER_ID</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center">AND</td>
-      <td>모든 조건을 만족(교집합)</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">John</td>
+      <td style="text-align: center">NULL</td>
     </tr>
     <tr>
-      <td style="text-align: center">OR</td>
-      <td>조건 중 하나라도 만족(합집합)</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Adam</td>
+      <td style="text-align: center">1</td>
     </tr>
     <tr>
-      <td style="text-align: center">NOT</td>
-      <td>반대의 조건을 만족(여집합)</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">Emily</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">Sarah</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">Tom</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">Jason</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">Alex</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">8</td>
+      <td style="text-align: center">Chris</td>
+      <td style="text-align: center">4</td>
     </tr>
   </tbody>
 </table>
 
-<p>예를 들어 BOARD 테이블에서 DOCUMENT_IDX가 10이상이고 TITLE이 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">제목</code>으로 시작하는 레코드를 선택하려면 다음과 같이 쿼리문을 작성할 수 있습니다.</p>
+<p>MANAGER_ID를 상위노드로 하는 트리구조를 다음 그림과 같이 나타낼 수 있습니다.</p>
 
-<h6 id="논리-연산자-1">논리 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
-   <span class="k">AND</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&gt;=</span> <span class="mi">10</span>
-   <span class="k">AND</span> <span class="n">TITLE</span> <span class="k">LIKE</span> <span class="s1">'제목%'</span><span class="p">;</span>
+<h6 id="트리구조">트리구조</h6>
+<p><img src="/assets/images/sql/img018.png" alt="img018" style="margin-top:-1.5em" /></p>
+
+<p>해당 데이터를 계층형 질의문으로 출력해보겠습니다.</p>
+
+<h6 id="계층형-질의문-예제">계층형 질의문 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">SELECT</span> <span class="n">EMPLOYEES_ID</span>
+	   <span class="p">,</span> <span class="n">EMPLOYEES_NAME</span>
+	   <span class="p">,</span> <span class="n">MANAGER_ID</span>
+	   <span class="p">,</span> <span class="k">LEVEL</span>
+	   <span class="p">,</span> <span class="n">CONNECT_BY_ISLEAF</span> <span class="k">AS</span> <span class="n">IS_LEAF</span>
+  	 <span class="p">,</span> <span class="n">SYS_CONNECT_BY_PATH</span><span class="p">(</span><span class="n">EMPLOYEES_NAME</span><span class="p">,</span> <span class="s1">'/'</span><span class="p">)</span> <span class="k">AS</span> <span class="n">PATH</span>
+	   <span class="p">,</span> <span class="n">CONNECT_BY_ROOT</span><span class="p">(</span><span class="n">EMPLOYEES_NAME</span><span class="p">)</span> <span class="k">AS</span> <span class="n">ROOT</span>
+    <span class="k">FROM</span> <span class="n">EMPLOYEES</span>
+   <span class="k">START</span> <span class="k">WITH</span> <span class="n">MANAGER_ID</span> <span class="k">IS</span> <span class="k">NULL</span>
+ <span class="k">CONNECT</span> <span class="k">BY</span> <span class="n">NOCYCLE</span> <span class="k">PRIOR</span> <span class="n">EMPLOYEES_ID</span> <span class="o">=</span> <span class="n">MANAGER_ID</span>
 </code></pre></div></div>
 
-<p>논리 연산자를 가시성있도록 표현하기위해 관례적으로 WHERE 키워드 뒤에는 <code class="language-plaintext highlighter-rouge">1 = 1</code>을 붙이는데, 이 표현은 항상 참(True)이 됩니다.</p>
+<p>MANAGER_ID가 NULL인 데이터가 루트 노드가 되고, EMPLOYEES_ID의 상위 데이터가 MANAGER_ID인 트리 구조를 DFS로 탐색합니다.
+해당 트리는 순방향으로 진행됩니다. 결과는 다음과 같습니다.</p>
 
-<hr />
+<h6 id="계층형-질의문-결과">계층형 질의문 결과</h6>
 
-<p>NOT 연산자를 통해 SQL 연산자의 부정을 나타낼 수도 있습니다. 예를 들어 TITLE이 NULL이 아닌 레코드를 선택하려면 다음과 같이 쿼리문을 작성할 수 있습니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">EMPLOYEES_ID</th>
+      <th style="text-align: center">EMPLOYEES_NAME</th>
+      <th style="text-align: center">MANAGER_ID</th>
+      <th style="text-align: center">LEVEL</th>
+      <th style="text-align: center">IS_LEAF</th>
+      <th>PATH</th>
+      <th style="text-align: center">ROOT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">John</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td>/John</td>
+      <td style="text-align: center">John</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Adam</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">0</td>
+      <td>/John/Adam</td>
+      <td style="text-align: center">John</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">Sarah</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">0</td>
+      <td>/John/Adam/Sarah</td>
+      <td style="text-align: center">John</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">Alex</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">1</td>
+      <td>/John/Adam/Sarah/Alex</td>
+      <td style="text-align: center">John</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">8</td>
+      <td style="text-align: center">Chris</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">1</td>
+      <td>/John/Adam/Sarah/Chris</td>
+      <td style="text-align: center">John</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">Tom</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">1</td>
+      <td>/John/Adam/Tom</td>
+      <td style="text-align: center">John</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">Emily</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">0</td>
+      <td>/John/Emily</td>
+      <td style="text-align: center">John</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">Jason</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">1</td>
+      <td>/John/Emily/Jason</td>
+      <td style="text-align: center">John</td>
+    </tr>
+  </tbody>
+</table>
 
-<h6 id="not-연산자">NOT 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">TITLE</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">;</span>
+<p>해당 계층형 질의문은 다음과 같이 셀프조인을 통해 나타낼 수도 있습니다.</p>
+
+<h6 id="셀프-조인-예제">셀프 조인 예제</h6>
+<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">A</span><span class="p">.</span><span class="n">EMPLOYEES_ID</span><span class="p">,</span>
+	   <span class="n">A</span><span class="p">.</span><span class="n">EMPLOYEES_NAME</span><span class="p">,</span>
+	   <span class="n">A</span><span class="p">.</span><span class="n">MANAGER_ID</span><span class="p">,</span>
+	   <span class="n">B</span><span class="p">.</span><span class="n">EMPLOYEES_NAME</span> <span class="k">AS</span> <span class="n">MANAGER_NAME</span>
+  <span class="k">FROM</span> <span class="n">EMPLOYEES</span> <span class="n">A</span><span class="p">,</span> <span class="n">EMPLOYEES</span> <span class="n">B</span>
+ <span class="k">WHERE</span> <span class="n">B</span><span class="p">.</span><span class="n">EMPLOYEES_ID</span> <span class="o">=</span> <span class="n">A</span><span class="p">.</span><span class="n">MANAGER_ID</span><span class="p">;</span>
 </code></pre></div></div>
 
-<h2 id="부정-연산자">부정 연산자</h2>
+<p>결과는 다음과 같습니다.</p>
 
-<p>부정 연산자는 비교 연산자나 SQL 연산자의 부정을 나타냅니다. 비교연산자의 경우 ISO 표준으로 <code class="language-plaintext highlighter-rouge">&lt;&gt;</code> 기호를 사용하며, 일부 DBMS에서는 <code class="language-plaintext highlighter-rouge">!=</code> 또는 <code class="language-plaintext highlighter-rouge">^=</code> 기호를 사용하여 부정을 나타낼 수도 있습니다.</p>
+<h6 id="셀프-조인-결과">셀프 조인 결과</h6>
 
-<p>마이바티스에서는 XML 문서를 통해 Mapper에 SQL 쿼리문을 작성하게 되는데, 이때 <code class="language-plaintext highlighter-rouge">&lt;&gt;</code> 기호의 경우 태그가 아닌 문자 데이터임을 나타내기 위해 CDATA를 사용하여 쿼리문을 감싸줍니다. 하지만 CDATA를 사용하지 않고 바로 쿼리문을 작성하기 위해 <code class="language-plaintext highlighter-rouge">!=</code> 기호를 사용하기도 합니다.</p>
-
-<h6 id="부정-연산자-1">부정 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="k">NOT</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>위와 같이 쿼리문을 작성한다면 DOCUMENT_IDX가 10 이상인 레코드를 선택하게 되며, 다음과 같이 나타낼 수 있습니다.</p>
-
-<h6 id="not-연산자-제거">NOT 연산자 제거</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></div></div>
-
-<h1 id="top-n-쿼리">Top N 쿼리</h1>
-
-<p>테이블에서 상위 N개의 레코드를 선택하기 이한 쿼리문을 <code class="language-plaintext highlighter-rouge">Top N 쿼리</code>라고 합니다. 오라클의 경우 <code class="language-plaintext highlighter-rouge">ROWNUM</code>이라는 가상 컬럼을 사용하여 해당 쿼리를 수행할 수 있습니다.</p>
-
-<h6 id="rownum을-통한-top-n-쿼리-수행">ROWNUM을 통한 Top N 쿼리 수행</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="p">(</span> <span class="k">SELECT</span> <span class="o">*</span>
-           <span class="k">FROM</span> <span class="n">PRODUCT</span>
-          <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">PRICE</span> <span class="k">DESC</span> <span class="p">)</span>
- <span class="k">WHERE</span> <span class="n">ROWNUM</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>위에 쿼리의 경우 PRODUCT 테이블에서 PRICE를 높은 순서로 배열하여 상위 3개의 레코드를 선택하게 되는데 뭔가 복잡해 보입니다. 이렇게 작성된 이유는 쿼리문의 실행 순서때문인데, 차후 설명할 인라인뷰에서 다시 설명하도록 하겠습니다.</p>
-
-<hr />
-
-<p>SQL Server에서는 다음과 같이 쿼리를 작성할 수 있습니다.</p>
-
-<h6 id="sql-server에서-top-n-쿼리-수행">SQL Server에서 Top N 쿼리 수행</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">TOP</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">PRODUCT</span>
- <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">PRICE</span> <span class="k">DESC</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>PRICE가 상위 20% 이내에 포함된 레코드를 선택하려면 다음과 같이 작성합니다.</p>
-
-<h6 id="가격이-상위-20-이내인-레코드-선택">가격이 상위 20% 이내인 레코드 선택</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">TOP</span> <span class="mi">20</span> <span class="n">PERCENT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">PRODUCT</span>
- <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">PRICE</span> <span class="k">DESC</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>N에 상관없이 마지막 레코드와 동일한 값을 가지는 레코드를 모두 선택하려면 WITH TIES 키워드를 입력합니다.</p>
-
-<h6 id="동일한-값을-가지는-모든-레코드-선택">동일한 값을 가지는 모든 레코드 선택</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">TOP</span> <span class="mi">3</span> <span class="k">WITH</span> <span class="n">TIES</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">PRODUCT</span>
- <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">PRICE</span> <span class="k">DESC</span><span class="p">;</span>
-</code></pre></div></div>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">EMPLOYEES_ID</th>
+      <th style="text-align: center">EMPLOYEES_NAME</th>
+      <th style="text-align: center">MANAGER_ID</th>
+      <th style="text-align: center">MANAGER_NAME</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">Emily</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">John</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Adam</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">John</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">Tom</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Adam</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">Sarah</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">Adam</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">Jason</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">Emily</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">8</td>
+      <td style="text-align: center">Chris</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">Sarah</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">Alex</td>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">Sarah</td>
+    </tr>
+  </tbody>
+</table>
 
                 </div>
             </section>
@@ -592,11 +889,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/sql/set-and-hierarchical">SQL - 집합연산자 / 계층형 질의</a></li>
-                                        
-                                    
                                   
                                 
                                   
@@ -618,6 +910,11 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                            <li><a href="/sql/where">SQL - WHERE절</a></li>
+                                        
                                     
                                   
                                 
@@ -757,48 +1054,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/sql/built-in-function">
-                <div class="post-card-image" style="background-image: url(/assets/images/sql-logo.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/sql/built-in-function">
-                <header class="post-card-header">
-                    
-                        <div class="post-card-tags-container">
-                            
-                        </div>
-                    
-
-                    <h2 class="post-card-title">SQL - 내장 함수(Built-in Function)</h2>
-                </header>
-                <!-- <section class="post-card-excerpt">
-                    
-                        <p>함수(Function)
-
-</p>
-                    
-                </section> -->
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      20 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -806,12 +1061,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/sql/transaction">
+            <a class="post-card-image-link" href="/sql/join">
                 <div class="post-card-image" style="background-image: url(/assets/images/sql-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/sql/transaction">
+            <a class="post-card-content-link" href="/sql/join">
                 <header class="post-card-header">
                     
                         <div class="post-card-tags-container">
@@ -819,11 +1074,11 @@ into the {body} of the default.hbs template -->
                         </div>
                     
 
-                    <h2 class="post-card-title">SQL - 트랜잭션(Transaction)</h2>
+                    <h2 class="post-card-title">SQL - 조인(JOIN)</h2>
                 </header>
                 <!-- <section class="post-card-excerpt">
                     
-                        <p>트랜잭션이란?
+                        <p>조인(JOIN)
 
 </p>
                     
@@ -836,7 +1091,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      2 min read
+                      5 min read
                     
                 </span>
             </footer>
@@ -858,18 +1113,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">SQL - WHERE절</div>
+    <div class="floating-header-title">SQL - 집합연산자 / 계층형 질의</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=SQL+-+WHERE%EC%A0%88&amp;url=sql/where"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=SQL+-+%EC%A7%91%ED%95%A9%EC%97%B0%EC%82%B0%EC%9E%90+%2F+%EA%B3%84%EC%B8%B5%ED%98%95+%EC%A7%88%EC%9D%98&amp;url=sql/set-and-hierarchical"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=sql/where"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=sql/set-and-hierarchical"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
