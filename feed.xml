@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-03-29T22:56:15+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">SQL - 집합연산자 / 계층형 질의</title><link href="https://huimang2.github.io/sql/set-and-hierarchical" rel="alternate" type="text/html" title="SQL - 집합연산자 / 계층형 질의" /><published>2023-03-29T02:00:00+09:00</published><updated>2023-03-29T02:00:00+09:00</updated><id>https://huimang2.github.io/sql/set-and-hierarchical</id><content type="html" xml:base="https://huimang2.github.io/sql/set-and-hierarchical">&lt;h1 id=&quot;집합연산자set-operation&quot;&gt;집합연산자(Set Operation)&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-03-29T23:06:29+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">SQL - 집합연산자 / 계층형 질의</title><link href="https://huimang2.github.io/sql/set-and-hierarchical" rel="alternate" type="text/html" title="SQL - 집합연산자 / 계층형 질의" /><published>2023-03-29T02:00:00+09:00</published><updated>2023-03-29T02:00:00+09:00</updated><id>https://huimang2.github.io/sql/set-and-hierarchical</id><content type="html" xml:base="https://huimang2.github.io/sql/set-and-hierarchical">&lt;h1 id=&quot;집합연산자set-operation&quot;&gt;집합연산자(Set Operation)&lt;/h1&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;집합연산자&lt;/code&gt;는 두 개 이상의 테이블을 연결하여 하나로 결합하는 연산자 입니다. 집합연산자를 사용하기 위해서는 컬럼의 수와 타입이 동일해야 합니다.&lt;/p&gt;
 
@@ -152,7 +152,7 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&quot;union-1&quot;&gt;UNION&lt;/h2&gt;
+&lt;h2 id=&quot;union-all&quot;&gt;UNION ALL&lt;/h2&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UNION ALL&lt;/code&gt;은 합집합 연산을 수행하며, 중복된 행을 그대로 표시합니다. UNION과 달리 데이터의 중복을 제거하거나 정렬 과정을 거치지 않기 때문에 성능상 UNION보다 유리합니다.&lt;/p&gt;
 
