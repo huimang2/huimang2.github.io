@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>SQL - 데이터베이스 정규화</title>
+        
+          <description>&lt;h1 id=&quot;정규화normalization&quot;&gt;정규화(Normalization)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Thu, 30 Mar 2023 22:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/sql/normalization</link>
+        <guid isPermaLink="true">https://huimang2.github.io/sql/normalization</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>SQL - 집합연산자 / 계층형 질의</title>
         
           <description>&lt;h1 id=&quot;집합연산자set-operation&quot;&gt;집합연산자(Set Operation)&lt;/h1&gt;

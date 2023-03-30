@@ -11,7 +11,7 @@
 
 
 
-    <title>SQL - WHERE절</title>
+    <title>SQL - 데이터베이스 정규화</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,24 +51,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/sql/where" />
+    <link rel="canonical" href="https://huimang2.github.io/sql/normalization" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="SQL - WHERE절" />
-    <meta property="og:description" content="WHERE절 WHERE절은 SELECT문을 통해 데이터를 조회할때 특정 조건에 부합하는 자료를 검색하기 위한 명령어입니다. WHERE절은 FROM절 다음에 위치합니다. WHERE절 SELECT 컬럼명 FROM 테이블명 WHERE 조건식; WHERE절의 조건식을 구성하하는 연산자에는 비교 연산자, SQL 연산자, 논리 연산자, 부정 연산자 4가지 종류가 있습니다. 비교 연산자 비교 연산자는 연산자를 기준으로 하여 왼쪽값과 오른쪽값의 크기를 비교하기" />
-    <meta property="og:url" content="https://huimang2.github.io/sql/where" />
+    <meta property="og:title" content="SQL - 데이터베이스 정규화" />
+    <meta property="og:description" content="정규화(Normalization) 데이터베이스 정규화는 관계형 데이터 모델에서 데이터의 중복을 제거하여 이상현상을 방지하고 데이터의 일관성을 유지하기 위해 테이블을 분해하는 과정입니다. 제 1 정규화 제 1 정규화는 테이블의 컬럼이 원자값을 가지도록 테이블을 분해하는 단계입니다. 예를 들어 아래와 같은 테이블이 있다고 가정합시다. 사원 취미 이름 취미 홍길동 프로그래밍, 천체관측, 유튜브 감상 해당 테이블은 취미라는" />
+    <meta property="og:url" content="https://huimang2.github.io/sql/normalization" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/sql-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2023-02-26T11:00:00+09:00" />
-    <meta property="article:modified_time" content="2023-02-26T11:00:00+09:00" />
+    <meta property="article:published_time" content="2023-03-30T22:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-03-30T22:00:00+09:00" />
     <meta property="article:tag" content="Sql" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SQL - WHERE절" />
-    <meta name="twitter:description" content="WHERE절 WHERE절은 SELECT문을 통해 데이터를 조회할때 특정 조건에 부합하는 자료를 검색하기 위한 명령어입니다. WHERE절은 FROM절 다음에 위치합니다. WHERE절 SELECT 컬럼명 FROM 테이블명 WHERE 조건식; WHERE절의 조건식을 구성하하는 연산자에는 비교 연산자, SQL 연산자, 논리 연산자, 부정 연산자 4가지 종류가 있습니다. 비교 연산자 비교 연산자는 연산자를 기준으로 하여 왼쪽값과 오른쪽값의 크기를 비교하기" />
+    <meta name="twitter:title" content="SQL - 데이터베이스 정규화" />
+    <meta name="twitter:description" content="정규화(Normalization) 데이터베이스 정규화는 관계형 데이터 모델에서 데이터의 중복을 제거하여 이상현상을 방지하고 데이터의 일관성을 유지하기 위해 테이블을 분해하는 과정입니다. 제 1 정규화 제 1 정규화는 테이블의 컬럼이 원자값을 가지도록 테이블을 분해하는 단계입니다. 예를 들어 아래와 같은 테이블이 있다고 가정합시다. 사원 취미 이름 취미 홍길동 프로그래밍, 천체관측, 유튜브 감상 해당 테이블은 취미라는" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/sql-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -89,7 +89,7 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/sql/where",
+    "url": "https://huimang2.github.io/sql/normalization",
     "image": {
         "@type": "ImageObject",
         "url": "https://huimang2.github.io/assets/images/sql-logo.png",
@@ -98,9 +98,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/sql/where"
+        "@id": "https://huimang2.github.io/sql/normalization"
     },
-    "description": "WHERE절 WHERE절은 SELECT문을 통해 데이터를 조회할때 특정 조건에 부합하는 자료를 검색하기 위한 명령어입니다. WHERE절은 FROM절 다음에 위치합니다. WHERE절 SELECT 컬럼명 FROM 테이블명 WHERE 조건식; WHERE절의 조건식을 구성하하는 연산자에는 비교 연산자, SQL 연산자, 논리 연산자, 부정 연산자 4가지 종류가 있습니다. 비교 연산자 비교 연산자는 연산자를 기준으로 하여 왼쪽값과 오른쪽값의 크기를 비교하기"
+    "description": "정규화(Normalization) 데이터베이스 정규화는 관계형 데이터 모델에서 데이터의 중복을 제거하여 이상현상을 방지하고 데이터의 일관성을 유지하기 위해 테이블을 분해하는 과정입니다. 제 1 정규화 제 1 정규화는 테이블의 컬럼이 원자값을 가지도록 테이블을 분해하는 단계입니다. 예를 들어 아래와 같은 테이블이 있다고 가정합시다. 사원 취미 이름 취미 홍길동 프로그래밍, 천체관측, 유튜브 감상 해당 테이블은 취미라는"
 }
     </script>
 
@@ -113,7 +113,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="SQL - WHERE절" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="SQL - 데이터베이스 정규화" href="/feed.xml" />
 
 
     <!-- MathJax -->
@@ -175,7 +175,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="26 February 2023">26 February 2023</time>
+                    <time class="post-full-meta-date" datetime="30 March 2023">30 March 2023</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -187,7 +187,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">SQL - WHERE절</h1>
+                <h1 class="post-full-title">SQL - 데이터베이스 정규화</h1>
             </header>
 
             <!-- 
@@ -198,318 +198,334 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#where절"><span>WHERE절</span></a><ul><li><a href="#비교-연산자"><span>비교 연산자</span></a></li><li><a href="#sql-연산자"><span>SQL 연산자</span></a></li><li><a href="#논리-연산자"><span>논리 연산자</span></a></li><li><a href="#부정-연산자"><span>부정 연산자</span></a></li></ul></li><li><a href="#top-n-쿼리"><span>Top N 쿼리</span></a></li></ul>
+                        <ul><li><a href="#정규화normalization"><span>정규화(Normalization)</span></a><ul><li><a href="#제-1-정규화"><span>제 1 정규화</span></a></li><li><a href="#제-2-정규화"><span>제 2 정규화</span></a></li><li><a href="#제-3-정규화"><span>제 3 정규화</span></a></li><li><a href="#bcnf-정규화"><span>BCNF 정규화</span></a></li></ul></li></ul>
 
                     </div>
-                    <h1 id="where절">WHERE절</h1>
+                    <h1 id="정규화normalization">정규화(Normalization)</h1>
 
-<p><code class="language-plaintext highlighter-rouge">WHERE절</code>은 SELECT문을 통해 데이터를 조회할때 특정 조건에 부합하는 자료를 검색하기 위한 명령어입니다. WHERE절은 FROM절 다음에 위치합니다.</p>
+<p>데이터베이스 정규화는 관계형 데이터 모델에서 데이터의 중복을 제거하여 이상현상을 방지하고 데이터의 일관성을 유지하기 위해 테이블을 분해하는 과정입니다.</p>
 
-<h6 id="where절-1">WHERE절</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="err">컬럼명</span>
-  <span class="k">FROM</span> <span class="err">테이블명</span>
- <span class="k">WHERE</span> <span class="err">조건식</span><span class="p">;</span>
-</code></pre></div></div>
+<h2 id="제-1-정규화">제 1 정규화</h2>
 
-<p>WHERE절의 조건식을 구성하하는 연산자에는 <code class="language-plaintext highlighter-rouge">비교 연산자</code>, <code class="language-plaintext highlighter-rouge">SQL 연산자</code>, <code class="language-plaintext highlighter-rouge">논리 연산자</code>, <code class="language-plaintext highlighter-rouge">부정 연산자</code> 4가지 종류가 있습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">제 1 정규화</code>는 테이블의 컬럼이 원자값을 가지도록 테이블을 분해하는 단계입니다.</p>
 
-<h2 id="비교-연산자">비교 연산자</h2>
+<p>예를 들어 아래와 같은 테이블이 있다고 가정합시다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">비교 연산자</code>는 연산자를 기준으로 하여 왼쪽값과 오른쪽값의 크기를 비교하기 위한 연산자 입니다.</p>
-
-<h6 id="비교-연산자-종류">비교 연산자 종류</h6>
+<h6 id="사원-취미">사원 취미</h6>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center">연산자</th>
-      <th>설명</th>
+      <th style="text-align: center">이름</th>
+      <th style="text-align: center">취미</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center">=</td>
-      <td>같음</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">&gt;</td>
-      <td>보다 큼</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">&gt;=</td>
-      <td>보다 크거나 작음</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">&lt;</td>
-      <td>보다 작음</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">&lt;=</td>
-      <td>보다 작거나 같음</td>
+      <td style="text-align: center">홍길동</td>
+      <td style="text-align: center">프로그래밍, 천체관측, 유튜브 감상</td>
     </tr>
   </tbody>
 </table>
 
-<p>예를 들어 BOARD 테이블에서 DOCUMENT_IDX가 10보다 작은 레코드를 선택하려면 다음과 같이 쿼리문을 작성하면 됩니다.</p>
+<p>해당 테이블은 취미라는 속성에 2개 이상의 값이 존재합니다. 속성값을 원자값으로 구성하기 위해 제 1 정규화를 진행합니다.</p>
 
-<h6 id="비교연산자-예제">비교연산자 예제</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></div></div>
-
-<h2 id="sql-연산자">SQL 연산자</h2>
-
-<p><code class="language-plaintext highlighter-rouge">SQL 연산자</code>는 기본적으로 예약된 연산자로서 모든 데이터 타입에 대하여 연산이 가능합니다.</p>
-
-<h6 id="sql-연산자-종류">SQL 연산자 종류</h6>
+<h6 id="사원-취미-1">사원 취미</h6>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center">연산자</th>
-      <th>설명</th>
+      <th style="text-align: center">이름</th>
+      <th style="text-align: center">취미</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center">BETWEEN A AND B</td>
-      <td>A이상 B이하의 값</td>
+      <td style="text-align: center">홍길동</td>
+      <td style="text-align: center">프로그래밍</td>
     </tr>
     <tr>
-      <td style="text-align: center">IN (LIST)</td>
-      <td>LIST에 있는 값 중 하나 이상을 포함</td>
+      <td style="text-align: center">홍길동</td>
+      <td style="text-align: center">천체관측</td>
     </tr>
     <tr>
-      <td style="text-align: center">LIKE ‘비교문자열’</td>
-      <td>비교 문자열과 형태가 일치</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">IS NULL</td>
-      <td>NULL값을 가짐</td>
+      <td style="text-align: center">홍길동</td>
+      <td style="text-align: center">유튜브 감상</td>
     </tr>
   </tbody>
 </table>
 
-<p>예를 들어 BOARD 테이블에서 DOCUMENT_IDX가 5이상 10이하인 작은 레코드를 선택하려면 다음과 같이 쿼리문을 작성하면 됩니다.</p>
+<h2 id="제-2-정규화">제 2 정규화</h2>
 
-<h6 id="between-연산자">BETWEEN 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="k">BETWEEN</span> <span class="mi">5</span> <span class="k">AND</span> <span class="n">B</span><span class="p">;</span>
-</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">제 2 정규화</code>는 제 1 정규화를 진행한 테이블에 대하여 부분 함수 종속을 제거하여 완전 함수 종속을 만족하도록 테이블을 분해하는 단계입니다.</p>
 
-<p>해당 쿼리문은 아래에서 설명할 논리 연산자를 통해 다음과 같이 나타낼 수도 있습니다.</p>
+<p>완전 함수 종속이란 기본키의 부분집합이 결정자가 되어서는 안된다는 것을 의미합니다.</p>
 
-<h6 id="between-연산자를-논리-연산자로-표현">BETWEEN 연산자를 논리 연산자로 표현</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&gt;=</span> <span class="mi">5</span>
-   <span class="k">AND</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&lt;=</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></div></div>
+<p>예를 들어 아래와 같은 테이블이 있다고 가정합시다.</p>
 
-<hr />
-
-<p>BOARD 테이블에서 DOCUMENT_IDX가 1, 10인 레코드를 선택하려면 다음과 같이 쿼리문을 작성합니다.</p>
-
-<h6 id="in-연산자">IN 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="k">IN</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-</code></pre></div></div>
-
-<p><code class="language-plaintext highlighter-rouge">IN</code> 연산자 또한 논리 연산자로 나타낼 수 있습니다.</p>
-
-<h6 id="in-연산자를-논리-연산자로-표현">IN 연산자를 논리 연산자로 표현</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">OR</span> <span class="n">DOCUMENT_IDX</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></div></div>
-
-<hr />
-
-<p><code class="language-plaintext highlighter-rouge">와일드카드</code>는 한 개 또는 0개 이상의 문자를 대신하여 사용하기 위한 특수 문자열입니다. <code class="language-plaintext highlighter-rouge">LIKE 연산자</code>의 경우 와일드카드를 사용하여 비교문자열을 나타냄으로써 다양한 형태의 문자열을 선택할 수 있습니다.</p>
-
-<p>와일드카드는 정규표현식과 유사한데, 0개 이상의 임의 문자열은 <code class="language-plaintext highlighter-rouge">%</code>, 1개의 임의 문자열은 <code class="language-plaintext highlighter-rouge">_</code>으로 나타냅니다. 와일드 카드를 사용한 사례는 다음과 같습니다.</p>
-
-<h6 id="와일드카드-사용-사례">와일드카드 사용 사례</h6>
+<h6 id="수강정보">수강정보</h6>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center">와일드카드</th>
-      <th>설명</th>
+      <th style="text-align: center"><u>이름</u></th>
+      <th style="text-align: center"><u>담당교수</u></th>
+      <th style="text-align: center">과목</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center">a%</td>
-      <td>a로 시작하는 모든 문자열</td>
+      <td style="text-align: center">홍길동</td>
+      <td style="text-align: center">장영실</td>
+      <td style="text-align: center">수학</td>
     </tr>
     <tr>
-      <td style="text-align: center">%a</td>
-      <td>a로 끝나는 모든 문자열</td>
+      <td style="text-align: center">이순신</td>
+      <td style="text-align: center">장영실</td>
+      <td style="text-align: center">수학</td>
     </tr>
     <tr>
-      <td style="text-align: center">%a%</td>
-      <td>a가 포함된 모든 문자열</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">___</td>
-      <td>3글자인 모든 문자열</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">[abc]%</td>
-      <td>a 또는 b 또는 c로 시작하는 모든 문자열</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">[^a]%</td>
-      <td>1번째 글자가 a가 아닌 모든 문자열</td>
+      <td style="text-align: center">김유신</td>
+      <td style="text-align: center">허준</td>
+      <td style="text-align: center">생물</td>
     </tr>
   </tbody>
 </table>
 
-<p>예를 들어 BOARD 테이블에서 TITLE이 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">제목</code>으로 시작하는 레코드를 선택하려면 다음과 같이 쿼리문을 작성하면 됩니다.</p>
+<p>해당 테이블의 경우 이름과 담당교수가 기본키가 되며, 해당 기본키의 부분집합인 담당교수가 과목을 결정하게 되어 제 2 정규형을 만족시키지 못합니다.</p>
 
-<h6 id="like-연산자">LIKE 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">TITLE</span> <span class="k">LIKE</span> <span class="s1">'제목%'</span><span class="p">;</span>
-</code></pre></div></div>
+<h6 id="부분-함수-종속성">부분 함수 종속성</h6>
+<p><img src="/assets/images/sql/img019.png" alt="img019" style="margin-top:-1.5em" /></p>
 
-<p>만약 비교문자열에 <code class="language-plaintext highlighter-rouge">%</code>나 <code class="language-plaintext highlighter-rouge">_</code>와 같은 와일드카드로 사용하는 특수문자가 포함된다면 <code class="language-plaintext highlighter-rouge">ESCAPE</code>를 사용합니다.</p>
+<p>해당 테이블을 다음과 같이 분해하게 되면 두 테이블은 완전 함수 종속성을 만족하게 됩니다.</p>
 
-<h6 id="escape-사용">ESCAPE 사용</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">CONTENTS</span> <span class="k">LIKE</span> <span class="s1">'제목#_%'</span> <span class="k">ESCAPE</span> <span class="s1">'#'</span><span class="p">;</span>
-</code></pre></div></div>
-
-<p>위에 쿼리문의 경우 <code class="language-plaintext highlighter-rouge">#</code>을 ESCAPE 문자로 인식하여 <code class="language-plaintext highlighter-rouge">#</code>문자 뒤에 나오는 <code class="language-plaintext highlighter-rouge">_</code>를 와일드카드가 아닌 일반 문자열로 인식하여 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">제목_</code>으로 시작하는 레코드를 선택하게 됩니다.</p>
-
-<hr />
-
-<p>만약 값이 NULL이라면 알 수 없는 값으로 비교 자체가 불가하므로 비교연산자 <code class="language-plaintext highlighter-rouge">=</code>을 사용하여 조건문을 작성할 수 없습니다. 대신에 <code class="language-plaintext highlighter-rouge">IS NULL</code> 연산자를 사용할 수 있습니다.</p>
-
-<p>예를 들어 BOARD 테이블에서 CONTENTS가 NULL인 레코드를 선택하려면 다음과 같이 쿼리문을 작성합니다.</p>
-
-<h6 id="is-null-연산자">IS NULL 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">CONTETS</span> <span class="k">IS</span> <span class="k">NULL</span><span class="p">;</span>
-</code></pre></div></div>
-
-<h2 id="논리-연산자">논리 연산자</h2>
-
-<p><code class="language-plaintext highlighter-rouge">논리 연산자</code>는 여러 조건을 논리적으로 연결하기 위해 사용되는 연산자 입니다.</p>
-
-<h6 id="논리-연산자-종류">논리 연산자 종류</h6>
+<h6 id="수강정보-1">수강정보</h6>
 
 <table>
   <thead>
     <tr>
-      <th style="text-align: center">연산자</th>
-      <th>설명</th>
+      <th style="text-align: center"><u>이름</u></th>
+      <th style="text-align: center"><u>담당교수</u></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: center">AND</td>
-      <td>모든 조건을 만족(교집합)</td>
+      <td style="text-align: center">홍길동</td>
+      <td style="text-align: center">장영실</td>
     </tr>
     <tr>
-      <td style="text-align: center">OR</td>
-      <td>조건 중 하나라도 만족(합집합)</td>
+      <td style="text-align: center">이순신</td>
+      <td style="text-align: center">장영실</td>
     </tr>
     <tr>
-      <td style="text-align: center">NOT</td>
-      <td>반대의 조건을 만족(여집합)</td>
+      <td style="text-align: center">김유신</td>
+      <td style="text-align: center">허준</td>
     </tr>
   </tbody>
 </table>
 
-<p>예를 들어 BOARD 테이블에서 DOCUMENT_IDX가 10이상이고 TITLE이 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">제목</code>으로 시작하는 레코드를 선택하려면 다음과 같이 쿼리문을 작성할 수 있습니다.</p>
+<h6 id="담당교수">담당교수</h6>
 
-<h6 id="논리-연산자-1">논리 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="mi">1</span> <span class="o">=</span> <span class="mi">1</span>
-   <span class="k">AND</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&gt;=</span> <span class="mi">10</span>
-   <span class="k">AND</span> <span class="n">TITLE</span> <span class="k">LIKE</span> <span class="s1">'제목%'</span><span class="p">;</span>
-</code></pre></div></div>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><u>담당교수</u></th>
+      <th style="text-align: center">과목</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">장영실</td>
+      <td style="text-align: center">수학</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">허준</td>
+      <td style="text-align: center">생물</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>논리 연산자를 가시성있도록 표현하기위해 관례적으로 WHERE 키워드 뒤에는 <code class="language-plaintext highlighter-rouge">1 = 1</code>을 붙이는데, 이 표현은 항상 참(True)이 됩니다.</p>
+<h2 id="제-3-정규화">제 3 정규화</h2>
 
-<hr />
+<p><code class="language-plaintext highlighter-rouge">제 3 정규화</code>는 제 2 정규형을 만족하는 테이블에 대하여 이행 함수 종속을 제거하도록 테이블을 분해하는 단계입니다.</p>
 
-<p>NOT 연산자를 통해 SQL 연산자의 부정을 나타낼 수도 있습니다. 예를 들어 TITLE이 NULL이 아닌 레코드를 선택하려면 다음과 같이 쿼리문을 작성할 수 있습니다.</p>
+<p>이행 함수 종속이란 식별자가 아닌 일반 속성이 다른 일반 속성을 결정하는 상태를 말합니다.</p>
 
-<h6 id="not-연산자">NOT 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">TITLE</span> <span class="k">IS</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">;</span>
-</code></pre></div></div>
+<p>예를 들어 아래와 같은 테이블이 있다고 가정합시다.</p>
 
-<h2 id="부정-연산자">부정 연산자</h2>
+<h6 id="수강정보-2">수강정보</h6>
 
-<p>부정 연산자는 비교 연산자나 SQL 연산자의 부정을 나타냅니다. 비교연산자의 경우 ISO 표준으로 <code class="language-plaintext highlighter-rouge">&lt;&gt;</code> 기호를 사용하며, 일부 DBMS에서는 <code class="language-plaintext highlighter-rouge">!=</code> 또는 <code class="language-plaintext highlighter-rouge">^=</code> 기호를 사용하여 부정을 나타낼 수도 있습니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><u>이름</u></th>
+      <th style="text-align: center">과목</th>
+      <th style="text-align: center">담당교수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">홍길동</td>
+      <td style="text-align: center">수학</td>
+      <td style="text-align: center">장영실</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">이순신</td>
+      <td style="text-align: center">수학</td>
+      <td style="text-align: center">장영실</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">김유신</td>
+      <td style="text-align: center">생물</td>
+      <td style="text-align: center">허준</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>마이바티스에서는 XML 문서를 통해 Mapper에 SQL 쿼리문을 작성하게 되는데, 이때 <code class="language-plaintext highlighter-rouge">&lt;&gt;</code> 기호의 경우 태그가 아닌 문자 데이터임을 나타내기 위해 CDATA를 사용하여 쿼리문을 감싸줍니다. 하지만 CDATA를 사용하지 않고 바로 쿼리문을 작성하기 위해 <code class="language-plaintext highlighter-rouge">!=</code> 기호를 사용하기도 합니다.</p>
+<p>식별자가 아닌 과목이 등록금을 결정하는 상태이므로 이행 함수 종속을 가집니다.</p>
 
-<h6 id="부정-연산자-1">부정 연산자</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="k">NOT</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></div></div>
+<h6 id="이행-함수-종속성">이행 함수 종속성</h6>
+<p><img src="/assets/images/sql/img020.png" alt="img020" style="margin-top:-1.5em" /></p>
 
-<p>위와 같이 쿼리문을 작성한다면 DOCUMENT_IDX가 10 이상인 레코드를 선택하게 되며, 다음과 같이 나타낼 수 있습니다.</p>
+<p>해당 테이블을 다음과 같이 분해하게 되면 이행 함수 종속이 제거됩니다.</p>
 
-<h6 id="not-연산자-제거">NOT 연산자 제거</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">BOARD</span>
- <span class="k">WHERE</span> <span class="n">DOCUMENT_IDX</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">;</span>
-</code></pre></div></div>
+<h6 id="수강과목">수강과목</h6>
 
-<h1 id="top-n-쿼리">Top N 쿼리</h1>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><u>이름</u></th>
+      <th style="text-align: center">과목</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">홍길동</td>
+      <td style="text-align: center">수학</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">이순신</td>
+      <td style="text-align: center">수학</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">김유신</td>
+      <td style="text-align: center">생물</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>테이블에서 상위 N개의 레코드를 선택하기 이한 쿼리문을 <code class="language-plaintext highlighter-rouge">Top N 쿼리</code>라고 합니다. 오라클의 경우 <code class="language-plaintext highlighter-rouge">ROWNUM</code>이라는 가상 컬럼을 사용하여 해당 쿼리를 수행할 수 있습니다.</p>
+<h6 id="과목정보">과목정보</h6>
 
-<h6 id="rownum을-통한-top-n-쿼리-수행">ROWNUM을 통한 Top N 쿼리 수행</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="p">(</span> <span class="k">SELECT</span> <span class="o">*</span>
-           <span class="k">FROM</span> <span class="n">PRODUCT</span>
-          <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">PRICE</span> <span class="k">DESC</span> <span class="p">)</span>
- <span class="k">WHERE</span> <span class="n">ROWNUM</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span>
-</code></pre></div></div>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><u>과목</u></th>
+      <th style="text-align: center">담당교수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">수학</td>
+      <td style="text-align: center">장영실</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">생물</td>
+      <td style="text-align: center">허준</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>위에 쿼리의 경우 PRODUCT 테이블에서 PRICE를 높은 순서로 배열하여 상위 3개의 레코드를 선택하게 되는데 뭔가 복잡해 보입니다. 이렇게 작성된 이유는 쿼리문의 실행 순서때문인데, 차후 설명할 인라인뷰에서 다시 설명하도록 하겠습니다.</p>
+<h2 id="bcnf-정규화">BCNF 정규화</h2>
 
-<hr />
+<p><code class="language-plaintext highlighter-rouge">BCNF 정규화</code>는 제 3 정규형을 만족하는 테이블에 대하여 모든 결정자가 후보키가 되도록 테이블을 분해하는 단계입니다.</p>
 
-<p>SQL Server에서는 다음과 같이 쿼리를 작성할 수 있습니다.</p>
+<p>예를 들어 아래와 같은 테이블이 있다고 가정합시다.</p>
 
-<h6 id="sql-server에서-top-n-쿼리-수행">SQL Server에서 Top N 쿼리 수행</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">TOP</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">PRODUCT</span>
- <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">PRICE</span> <span class="k">DESC</span><span class="p">;</span>
-</code></pre></div></div>
+<h6 id="수강정보-3">수강정보</h6>
 
-<p>PRICE가 상위 20% 이내에 포함된 레코드를 선택하려면 다음과 같이 작성합니다.</p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><u>이름</u></th>
+      <th style="text-align: center"><u>과목</u></th>
+      <th style="text-align: center">담당교수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">홍길동</td>
+      <td style="text-align: center">수학</td>
+      <td style="text-align: center">장영실</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">이순신</td>
+      <td style="text-align: center">수학</td>
+      <td style="text-align: center">정약용</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">김유신</td>
+      <td style="text-align: center">생물</td>
+      <td style="text-align: center">허준</td>
+    </tr>
+  </tbody>
+</table>
 
-<h6 id="가격이-상위-20-이내인-레코드-선택">가격이 상위 20% 이내인 레코드 선택</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">TOP</span> <span class="mi">20</span> <span class="n">PERCENT</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">PRODUCT</span>
- <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">PRICE</span> <span class="k">DESC</span><span class="p">;</span>
-</code></pre></div></div>
+<p>기본키인 이름과 과목이 담당교수를 결정하며, 담당교수가 과목을 결정합니다. 하지만 결정자인 담당교수는 후보키가 아닙니다.</p>
 
-<p>N에 상관없이 마지막 레코드와 동일한 값을 가지는 레코드를 모두 선택하려면 WITH TIES 키워드를 입력합니다.</p>
+<h6 id="후보키가-아닌-결정자">후보키가 아닌 결정자</h6>
+<p><img src="/assets/images/sql/img021.png" alt="img021" style="margin-top:-1.5em" /></p>
 
-<h6 id="동일한-값을-가지는-모든-레코드-선택">동일한 값을 가지는 모든 레코드 선택</h6>
-<div data-lang="SQL" class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span> <span class="n">TOP</span> <span class="mi">3</span> <span class="k">WITH</span> <span class="n">TIES</span> <span class="o">*</span>
-  <span class="k">FROM</span> <span class="n">PRODUCT</span>
- <span class="k">ORDER</span> <span class="k">BY</span> <span class="n">PRICE</span> <span class="k">DESC</span><span class="p">;</span>
-</code></pre></div></div>
+<p>해당 테이블은 다음과 같이 분해할 수 있습니다.</p>
+
+<h6 id="수강정보-4">수강정보</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><u>이름</u></th>
+      <th style="text-align: center">담당교수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">홍길동</td>
+      <td style="text-align: center">장영실</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">이순신</td>
+      <td style="text-align: center">정약용</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">김유신</td>
+      <td style="text-align: center">허준</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="담당교수-1">담당교수</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">과목</th>
+      <th style="text-align: center"><u>담당교수</u></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">수학</td>
+      <td style="text-align: center">장영실</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">수학</td>
+      <td style="text-align: center">정약용</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">생물</td>
+      <td style="text-align: center">허준</td>
+    </tr>
+  </tbody>
+</table>
 
                 </div>
             </section>
@@ -592,11 +608,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/sql/normalization">SQL - 데이터베이스 정규화</a></li>
-                                        
-                                    
                                   
                                 
                                   
@@ -621,10 +632,15 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
+                                            <li><a href="/sql/built-in-function">SQL - 내장 함수(Built-in Function)</a></li>
+                                        
                                     
                                   
                                 
                                   
+                                    
+                                        
+                                        
                                     
                                   
                                 
@@ -764,48 +780,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/sql/built-in-function">
-                <div class="post-card-image" style="background-image: url(/assets/images/sql-logo.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/sql/built-in-function">
-                <header class="post-card-header">
-                    
-                        <div class="post-card-tags-container">
-                            
-                        </div>
-                    
-
-                    <h2 class="post-card-title">SQL - 내장 함수(Built-in Function)</h2>
-                </header>
-                <!-- <section class="post-card-excerpt">
-                    
-                        <p>함수(Function)
-
-</p>
-                    
-                </section> -->
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      20 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -813,12 +787,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/sql/transaction">
+            <a class="post-card-image-link" href="/sql/set-and-hierarchical">
                 <div class="post-card-image" style="background-image: url(/assets/images/sql-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/sql/transaction">
+            <a class="post-card-content-link" href="/sql/set-and-hierarchical">
                 <header class="post-card-header">
                     
                         <div class="post-card-tags-container">
@@ -826,11 +800,11 @@ into the {body} of the default.hbs template -->
                         </div>
                     
 
-                    <h2 class="post-card-title">SQL - 트랜잭션(Transaction)</h2>
+                    <h2 class="post-card-title">SQL - 집합연산자 / 계층형 질의</h2>
                 </header>
                 <!-- <section class="post-card-excerpt">
                     
-                        <p>트랜잭션이란?
+                        <p>집합연산자(Set Operation)
 
 </p>
                     
@@ -843,7 +817,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      2 min read
+                      3 min read
                     
                 </span>
             </footer>
@@ -865,18 +839,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">SQL - WHERE절</div>
+    <div class="floating-header-title">SQL - 데이터베이스 정규화</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=SQL+-+WHERE%EC%A0%88&amp;url=sql/where"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=SQL+-+%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4+%EC%A0%95%EA%B7%9C%ED%99%94&amp;url=sql/normalization"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=sql/where"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=sql/normalization"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

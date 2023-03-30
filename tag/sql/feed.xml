@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/sql/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-03-29T23:13:03+09:00</updated>
+  <updated>2023-03-31T01:47:56+09:00</updated>
   <id>https://huimang2.github.io/tag/sql/feed.xml</id>
 
   
@@ -30,6 +30,364 @@
   
   
 
+  
+    <entry>
+      <title type="html">SQL - 데이터베이스 정규화</title>
+      <link href="https://huimang2.github.io/sql/normalization" rel="alternate" type="text/html" title="SQL - 데이터베이스 정규화" />
+      <published>2023-03-30T22:00:00+09:00</published>
+      <updated>2023-03-30T22:00:00+09:00</updated>
+      <id>https://huimang2.github.io/sql/normalization</id>
+      <content type="html" xml:base="https://huimang2.github.io/sql/normalization">&lt;h1 id=&quot;정규화normalization&quot;&gt;정규화(Normalization)&lt;/h1&gt;
+
+&lt;p&gt;데이터베이스 정규화는 관계형 데이터 모델에서 데이터의 중복을 제거하여 이상현상을 방지하고 데이터의 일관성을 유지하기 위해 테이블을 분해하는 과정입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;제-1-정규화&quot;&gt;제 1 정규화&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;제 1 정규화&lt;/code&gt;는 테이블의 컬럼이 원자값을 가지도록 테이블을 분해하는 단계입니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 아래와 같은 테이블이 있다고 가정합시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;사원-취미&quot;&gt;사원 취미&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;이름&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;취미&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;홍길동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;프로그래밍, 천체관측, 유튜브 감상&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;해당 테이블은 취미라는 속성에 2개 이상의 값이 존재합니다. 속성값을 원자값으로 구성하기 위해 제 1 정규화를 진행합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;사원-취미-1&quot;&gt;사원 취미&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;이름&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;취미&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;홍길동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;프로그래밍&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;홍길동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;천체관측&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;홍길동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;유튜브 감상&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;제-2-정규화&quot;&gt;제 2 정규화&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;제 2 정규화&lt;/code&gt;는 제 1 정규화를 진행한 테이블에 대하여 부분 함수 종속을 제거하여 완전 함수 종속을 만족하도록 테이블을 분해하는 단계입니다.&lt;/p&gt;
+
+&lt;p&gt;완전 함수 종속이란 기본키의 부분집합이 결정자가 되어서는 안된다는 것을 의미합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 아래와 같은 테이블이 있다고 가정합시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;수강정보&quot;&gt;수강정보&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;이름&lt;/u&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;담당교수&lt;/u&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;과목&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;홍길동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이순신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;김유신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;허준&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;생물&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;해당 테이블의 경우 이름과 담당교수가 기본키가 되며, 해당 기본키의 부분집합인 담당교수가 과목을 결정하게 되어 제 2 정규형을 만족시키지 못합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;부분-함수-종속성&quot;&gt;부분 함수 종속성&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img019.png&quot; alt=&quot;img019&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;해당 테이블을 다음과 같이 분해하게 되면 두 테이블은 완전 함수 종속성을 만족하게 됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;수강정보-1&quot;&gt;수강정보&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;이름&lt;/u&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;담당교수&lt;/u&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;홍길동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이순신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;김유신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;허준&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h6 id=&quot;담당교수&quot;&gt;담당교수&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;담당교수&lt;/u&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;과목&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;허준&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;생물&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;제-3-정규화&quot;&gt;제 3 정규화&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;제 3 정규화&lt;/code&gt;는 제 2 정규형을 만족하는 테이블에 대하여 이행 함수 종속을 제거하도록 테이블을 분해하는 단계입니다.&lt;/p&gt;
+
+&lt;p&gt;이행 함수 종속이란 식별자가 아닌 일반 속성이 다른 일반 속성을 결정하는 상태를 말합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 아래와 같은 테이블이 있다고 가정합시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;수강정보-2&quot;&gt;수강정보&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;이름&lt;/u&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;과목&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;담당교수&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;홍길동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이순신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;김유신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;생물&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;허준&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;식별자가 아닌 과목이 등록금을 결정하는 상태이므로 이행 함수 종속을 가집니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;이행-함수-종속성&quot;&gt;이행 함수 종속성&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img020.png&quot; alt=&quot;img020&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;해당 테이블을 다음과 같이 분해하게 되면 이행 함수 종속이 제거됩니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;수강과목&quot;&gt;수강과목&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;이름&lt;/u&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;과목&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;홍길동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이순신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;김유신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;생물&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h6 id=&quot;과목정보&quot;&gt;과목정보&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;과목&lt;/u&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;담당교수&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;생물&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;허준&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;bcnf-정규화&quot;&gt;BCNF 정규화&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BCNF 정규화&lt;/code&gt;는 제 3 정규형을 만족하는 테이블에 대하여 모든 결정자가 후보키가 되도록 테이블을 분해하는 단계입니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 아래와 같은 테이블이 있다고 가정합시다.&lt;/p&gt;
+
+&lt;h6 id=&quot;수강정보-3&quot;&gt;수강정보&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;이름&lt;/u&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;과목&lt;/u&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;담당교수&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;홍길동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이순신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;정약용&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;김유신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;생물&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;허준&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;기본키인 이름과 과목이 담당교수를 결정하며, 담당교수가 과목을 결정합니다. 하지만 결정자인 담당교수는 후보키가 아닙니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;후보키가-아닌-결정자&quot;&gt;후보키가 아닌 결정자&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img021.png&quot; alt=&quot;img021&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;해당 테이블은 다음과 같이 분해할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;수강정보-4&quot;&gt;수강정보&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;이름&lt;/u&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;담당교수&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;홍길동&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;이순신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;정약용&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;김유신&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;허준&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h6 id=&quot;담당교수-1&quot;&gt;담당교수&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;과목&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;u&gt;담당교수&lt;/u&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;장영실&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;수학&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;정약용&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;생물&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;허준&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="sql" />
+      
+
+      
+        <summary type="html">정규화(Normalization)</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">SQL - 집합연산자 / 계층형 질의</title>
