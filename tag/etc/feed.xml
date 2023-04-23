@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/etc/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-04-23T21:46:13+09:00</updated>
+  <updated>2023-04-24T01:34:25+09:00</updated>
   <id>https://huimang2.github.io/tag/etc/feed.xml</id>
 
   
@@ -30,6 +30,105 @@
   
   
 
+  
+    <entry>
+      <title type="html">CPU의 작동 원리</title>
+      <link href="https://huimang2.github.io/etc/computer-cpu" rel="alternate" type="text/html" title="CPU의 작동 원리" />
+      <published>2023-04-22T01:00:00+09:00</published>
+      <updated>2023-04-22T01:00:00+09:00</updated>
+      <id>https://huimang2.github.io/etc/computer-cpu</id>
+      <content type="html" xml:base="https://huimang2.github.io/etc/computer-cpu">&lt;p&gt;CPU는 트랜지스터라는 반도체로 구성되어 있습니다. 반도체는 주로 실리콘으로 만들어집니다. 실리콘은 원자번호 14로 최외각 전자가 4개이며, 실리콘 원자들끼리 전자를 공유하여 강하게 공유결합하고 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img003.png&quot; alt=&quot;img003&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;원자는 최외각 전자가 8개일 때 가장 안정적인 구조를 가지게 되므로 순수한 실리콘의 경우 전자가 이동하지 않으므로 전류가 흐를 수 없습니다. 그러므로 최외각 전자가 3개이거나 5개인 원소를 첨가하여 전류가 흐를 수 있는 상태로 만들게 되는데, 이 과정을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;도핑(Doping)&lt;/code&gt;이라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;붕소(B)와 같이 최외각 전자가 3개인 원소를 첨가하게 되면 빈 자리가 생기게 되는데, 이를 양공이라고 합니다. 공유결합하고 있는 최외각 전자가 양공으로 이동하면서 전류가 흐를 수 있으며, 해당 반도체를 P형 반도체라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;인(P)과 같이 최외각 전자가 5개인 원소를 첨가하게 되면 자유전자가 1개 늘어 전류가 흐를 수 있으며, 해당 반도체는 N형 반도체라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img004.png&quot; alt=&quot;img004&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;두 반도체는 전기적으로 중성상태에 있습니다. 두 반도체를 서로 연결한다면 N형 반도체의 자유전자가 P형 반도체의 양공으로 이동하게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;N형 반도체는 상대적으로 자유전자를 빼앗겨 (+)전하를 가지게 되고, P형 반도체는 상대적으로 자유전자를 얻으면서 (-)전하를 가지게 되면서 전기장이 형성됩니다.&lt;/p&gt;
+
+&lt;p&gt;어느정도 이동하다가 P형 반도체의 전자 반발력으로 인해 자유전자가 양공으로 이동하지 못하게 되는데, 이때 양공이 채워져 더이상 전자가 이동할 수 없는 영역을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;공핍영역&lt;/code&gt;이라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img005.png&quot; alt=&quot;img005&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 건전지의 (+)극을 N형 반도체에 연결하고 (-)극을 P형 반도체에 연결한다면 공핍영역이 넓어져 전자가 이동할 수
+없습니다. 이것을 역방향 연결이라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img006.png&quot; alt=&quot;img006&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;건전지를 반대로 연결한다면 공핍영역의 전기장을 극복하고 전자가 P형 반도체에서 N형 반도체로 이동하면서 전류가 흐를 수 있게 됩니다. 이것은 순방향 연결이라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img007.png&quot; alt=&quot;img007&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;건전지를 순방향으로 연결할 때만 전류가 흐를 수 있으며, 이때 전류의 방향은 P형 반도체에서 N형 반도체로 흐릅니다. 즉, 전류를 한방향으로 흐를 수 있게 하는데, 이를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;다이오드(Diode)&lt;/code&gt;라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img008.png&quot; alt=&quot;img008&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여담으로 전자가 공핍영역을 지날 때 빛으로 에너지를 발산하기도 하는데, 이것이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;발광 다이오드(Light Emitting Diode)&lt;/code&gt; 즉, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LED&lt;/code&gt;입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img009.png&quot; alt=&quot;img009&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번에는 2개의 P형 반도체 사이에 N형 반도체를 연결하여 건전지를 각각 순방향과 역방향으로 연결해 보겠습니다. 이 경우 순방향으로 연결된 회로에만 전류가 흐릅니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img010.png&quot; alt=&quot;img010&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;하지만 순방향 회로의 전압을 높여준다면 공핍영역에 의한 전자 반발력보다 건전지에 의한 양전하의 반발력이 더 커지면서 역방향 회로를 통해서도 전류가 흐를 수 있게 됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img011.png&quot; alt=&quot;img011&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;역방향 회로에 전압을 더 높여준다면 더 많은 전자가 공핍영역을 통과할 수 있으므로 더 많은 전류가 흐르도록 할 수 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img012.png&quot; alt=&quot;img012&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이런 식으로 전압을 높이거나 낮추어 전류의 흐름을 제어하는 장치를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트랜지스터(Transistor)&lt;/code&gt;라고 합니다. 트랜지스터는 위와 같은 PNP 트랜지스터와 NPN 트랜지스터가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;CPU는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MOSFET&lt;/code&gt;이라는 0.1nm 크기의 트랜지스터로 구성되어 있습니다. MOSFET은 금속(Metal)과 반도체(Semiconductor) 사이에 부도체인 산화막(Oxide)이 들어있는 적층 구조로 되어 있습니다. 이 구조를 MOS 구조라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img019.png&quot; alt=&quot;img019&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;반도체 기판이 N형이면 NMOS, P형이면 PMOS라고 부르며, 산화물인 SiO2로는 전류가 흐르지 않습니다. 아래와 같이 건전지를 연결해보겠습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img020.png&quot; alt=&quot;img020&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 경우 오른쪽 회로가 역방향으로 연결되었기 때문에 전류가 흐르지 않습니다. 이번에는 가운데 금속에 전압을 걸어봅시다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img021.png&quot; alt=&quot;img021&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 경우 산화물에 의하여 전류는 흐르지 않지만 위에서 아래로 전기장이 걸리면서 전자가 산화물 아래에 모이게 됩니다. 이 전자들이 N형 반도체를 이어주는 통로가 되어 전류가 흐르게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;즉, MOSFET이란 MOS의 전계 효과(Field Efect)를 활용한 트랜지스터(Transistor)입니다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="etc" />
+      
+
+      
+        <summary type="html">CPU는 트랜지스터라는 반도체로 구성되어 있습니다. 반도체는 주로 실리콘으로 만들어집니다. 실리콘은 원자번호 14로 최외각 전자가 4개이며, 실리콘 원자들끼리 전자를 공유하여 강하게 공유결합하고 있습니다.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">컴퓨터의 구조</title>

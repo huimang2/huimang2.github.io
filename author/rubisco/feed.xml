@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-04-23T21:46:13+09:00</updated>
+  <updated>2023-04-24T01:34:25+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -30,6 +30,105 @@
   
   
 
+  
+    <entry>
+      <title type="html">CPU의 작동 원리</title>
+      <link href="https://huimang2.github.io/etc/computer-cpu" rel="alternate" type="text/html" title="CPU의 작동 원리" />
+      <published>2023-04-22T01:00:00+09:00</published>
+      <updated>2023-04-22T01:00:00+09:00</updated>
+      <id>https://huimang2.github.io/etc/computer-cpu</id>
+      <content type="html" xml:base="https://huimang2.github.io/etc/computer-cpu">&lt;p&gt;CPU는 트랜지스터라는 반도체로 구성되어 있습니다. 반도체는 주로 실리콘으로 만들어집니다. 실리콘은 원자번호 14로 최외각 전자가 4개이며, 실리콘 원자들끼리 전자를 공유하여 강하게 공유결합하고 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img003.png&quot; alt=&quot;img003&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;원자는 최외각 전자가 8개일 때 가장 안정적인 구조를 가지게 되므로 순수한 실리콘의 경우 전자가 이동하지 않으므로 전류가 흐를 수 없습니다. 그러므로 최외각 전자가 3개이거나 5개인 원소를 첨가하여 전류가 흐를 수 있는 상태로 만들게 되는데, 이 과정을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;도핑(Doping)&lt;/code&gt;이라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;붕소(B)와 같이 최외각 전자가 3개인 원소를 첨가하게 되면 빈 자리가 생기게 되는데, 이를 양공이라고 합니다. 공유결합하고 있는 최외각 전자가 양공으로 이동하면서 전류가 흐를 수 있으며, 해당 반도체를 P형 반도체라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;인(P)과 같이 최외각 전자가 5개인 원소를 첨가하게 되면 자유전자가 1개 늘어 전류가 흐를 수 있으며, 해당 반도체는 N형 반도체라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img004.png&quot; alt=&quot;img004&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;두 반도체는 전기적으로 중성상태에 있습니다. 두 반도체를 서로 연결한다면 N형 반도체의 자유전자가 P형 반도체의 양공으로 이동하게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;N형 반도체는 상대적으로 자유전자를 빼앗겨 (+)전하를 가지게 되고, P형 반도체는 상대적으로 자유전자를 얻으면서 (-)전하를 가지게 되면서 전기장이 형성됩니다.&lt;/p&gt;
+
+&lt;p&gt;어느정도 이동하다가 P형 반도체의 전자 반발력으로 인해 자유전자가 양공으로 이동하지 못하게 되는데, 이때 양공이 채워져 더이상 전자가 이동할 수 없는 영역을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;공핍영역&lt;/code&gt;이라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img005.png&quot; alt=&quot;img005&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 건전지의 (+)극을 N형 반도체에 연결하고 (-)극을 P형 반도체에 연결한다면 공핍영역이 넓어져 전자가 이동할 수
+없습니다. 이것을 역방향 연결이라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img006.png&quot; alt=&quot;img006&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;건전지를 반대로 연결한다면 공핍영역의 전기장을 극복하고 전자가 P형 반도체에서 N형 반도체로 이동하면서 전류가 흐를 수 있게 됩니다. 이것은 순방향 연결이라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img007.png&quot; alt=&quot;img007&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;건전지를 순방향으로 연결할 때만 전류가 흐를 수 있으며, 이때 전류의 방향은 P형 반도체에서 N형 반도체로 흐릅니다. 즉, 전류를 한방향으로 흐를 수 있게 하는데, 이를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;다이오드(Diode)&lt;/code&gt;라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img008.png&quot; alt=&quot;img008&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여담으로 전자가 공핍영역을 지날 때 빛으로 에너지를 발산하기도 하는데, 이것이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;발광 다이오드(Light Emitting Diode)&lt;/code&gt; 즉, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LED&lt;/code&gt;입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img009.png&quot; alt=&quot;img009&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이번에는 2개의 P형 반도체 사이에 N형 반도체를 연결하여 건전지를 각각 순방향과 역방향으로 연결해 보겠습니다. 이 경우 순방향으로 연결된 회로에만 전류가 흐릅니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img010.png&quot; alt=&quot;img010&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;하지만 순방향 회로의 전압을 높여준다면 공핍영역에 의한 전자 반발력보다 건전지에 의한 양전하의 반발력이 더 커지면서 역방향 회로를 통해서도 전류가 흐를 수 있게 됩니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img011.png&quot; alt=&quot;img011&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;역방향 회로에 전압을 더 높여준다면 더 많은 전자가 공핍영역을 통과할 수 있으므로 더 많은 전류가 흐르도록 할 수 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img012.png&quot; alt=&quot;img012&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이런 식으로 전압을 높이거나 낮추어 전류의 흐름을 제어하는 장치를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트랜지스터(Transistor)&lt;/code&gt;라고 합니다. 트랜지스터는 위와 같은 PNP 트랜지스터와 NPN 트랜지스터가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;CPU는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MOSFET&lt;/code&gt;이라는 0.1nm 크기의 트랜지스터로 구성되어 있습니다. MOSFET은 금속(Metal)과 반도체(Semiconductor) 사이에 부도체인 산화막(Oxide)이 들어있는 적층 구조로 되어 있습니다. 이 구조를 MOS 구조라고 합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img019.png&quot; alt=&quot;img019&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;반도체 기판이 N형이면 NMOS, P형이면 PMOS라고 부르며, 산화물인 SiO2로는 전류가 흐르지 않습니다. 아래와 같이 건전지를 연결해보겠습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img020.png&quot; alt=&quot;img020&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 경우 오른쪽 회로가 역방향으로 연결되었기 때문에 전류가 흐르지 않습니다. 이번에는 가운데 금속에 전압을 걸어봅시다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img021.png&quot; alt=&quot;img021&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 경우 산화물에 의하여 전류는 흐르지 않지만 위에서 아래로 전기장이 걸리면서 전자가 산화물 아래에 모이게 됩니다. 이 전자들이 N형 반도체를 이어주는 통로가 되어 전류가 흐르게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;즉, MOSFET이란 MOS의 전계 효과(Field Efect)를 활용한 트랜지스터(Transistor)입니다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="etc" />
+      
+
+      
+        <summary type="html">CPU는 트랜지스터라는 반도체로 구성되어 있습니다. 반도체는 주로 실리콘으로 만들어집니다. 실리콘은 원자번호 14로 최외각 전자가 4개이며, 실리콘 원자들끼리 전자를 공유하여 강하게 공유결합하고 있습니다.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">컴퓨터의 구조</title>
@@ -5139,292 +5238,6 @@
 
       
         <summary type="html">모델링(Modeling)이란?</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">라즈베리파이: Nginx 설치</title>
-      <link href="https://huimang2.github.io/raspberrypi/raspberrypi-nginx" rel="alternate" type="text/html" title="라즈베리파이: Nginx 설치" />
-      <published>2023-01-30T20:00:00+09:00</published>
-      <updated>2023-01-30T20:00:00+09:00</updated>
-      <id>https://huimang2.github.io/raspberrypi/raspberrypi-nginx</id>
-      <content type="html" xml:base="https://huimang2.github.io/raspberrypi/raspberrypi-nginx">&lt;h1 id=&quot;웹서버web-server란&quot;&gt;웹서버(Web Server)란?&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;웹서버(Web Server)&lt;/code&gt;는 HTTP에 의한 요청(request)을 받아들여 응답(Response)하는 프로그램입니다. 주로 이미지, CSS, Javascript를 포함한 정적인 HTML 문서를 처리합니다.&lt;/p&gt;
-
-&lt;p&gt;웹서버에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;아파치(Apache)&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;엔진엑스(Nginx)&lt;/code&gt; 등이 있습니다. 아파치는 쓰레드/프로세서 기반의 구조이고 엔진엑스는 이벤트 기반의 구조를 가지고 있습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;엔진엑스nginx란&quot;&gt;엔진엑스(Nginx)란?&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;엔진엑스(Nginx)&lt;/code&gt;는 러시아의 프로그래머인 이고르 시쇼브(Igor Sysoev)가 개발한 동시접속 처리에 특화된 웹 서버 프로그램 입니다.&lt;/p&gt;
-
-&lt;p&gt;아파치보다 역사가 오래되지는 않았지만, 아파치가 많은 한계를 보이고 있는 상황에서, 가볍고 높은 성능을 무기로 점유율을 빠르게 늘려나가다 현재는 아파치를 재치고 웹 서버 시장점유율 1위가 되었습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;엔진엑스nginx의-기능&quot;&gt;엔진엑스(Nginx)의 기능&lt;/h1&gt;
-
-&lt;h2 id=&quot;정적-페이지를-처리하는-웹서버-역할&quot;&gt;정적 페이지를 처리하는 웹서버 역할&lt;/h2&gt;
-
-&lt;p&gt;웹페이지는 크게 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;정적 페이지&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;동적 페이지&lt;/code&gt;로 나눠집니다.&lt;/p&gt;
-
-&lt;p&gt;정적 페이지는 이미지, CSS, Javascript를 포함한 저장된 HTML 문서를 그대로 전달하는 웹페이지입니다.&lt;/p&gt;
-
-&lt;p&gt;반면 동적 페이지는 스크립트에 의해 가공된 데이터를 전달하는 웹페이지입니다.&lt;/p&gt;
-
-&lt;p&gt;물론 웹서버가 php같은 서버 사이드 스크립트를 지원하기도 하지만 기본적으로는 정적 페이지를 처리합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;리버스-프록시reverse-proxy-역할&quot;&gt;리버스 프록시(Reverse Proxy) 역할&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프록시(Proxy)&lt;/code&gt;는 클라이언트와 서버 사이에서 데이터를 중계해주는 서버입니다. 여기에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;포워드 프록시(forward proxy)&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;리버스 프록시(reverse proxy)&lt;/code&gt;가 있습니다. nginx는 자체적으로 리버스 프록시 기능을 제공합니다.&lt;/p&gt;
-
-&lt;p&gt;포워드 프록시는 클라이언트의 요청을 직접적으로 전달하지 않고 프록시 서버를 통해 간접적으로 요청합니다. 회사의 인트라넷같은 경우 인터넷상의 서버에 요청을 할때 프록시서버를 통해 요청을 하게 됩니다. 클라이언트의 요청을 감독할 수 있고 서버에서는 클라이언트의 신분을 알 수 없어 프라이버시와 보안을 강화할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;포워드-프록시&quot;&gt;포워드 프록시&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/raspberrypi/img001.png&quot; alt=&quot;img001&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;리버스 프록시는 그 반대입니다. 서버에서 받은 응답을 프록시 서버를 통해 전달합니다. 클라이언트의 요청을 분산하여 서버의 부담을 줄일 수 있고 클라이언트는 서버의 신분을 알 수 없어 서버 보안을 강화할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;리버스-프록시&quot;&gt;리버스 프록시&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/raspberrypi/img002.png&quot; alt=&quot;img002&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;nginx-설치&quot;&gt;Nginx 설치&lt;/h1&gt;
-
-&lt;p&gt;우선 명령프롬프트(cmd)를 통해 라즈베리파이에 ssh로 연결합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;ssh-연결&quot;&gt;ssh 연결&lt;/h6&gt;
-&lt;div data-lang=&quot;CMD&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; ssh pi@raspberrypi
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;접속 후 apt를 업데이트 해주세요.&lt;/p&gt;
-
-&lt;h6 id=&quot;apt-업데이트&quot;&gt;apt 업데이트&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt upgrade &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;apt를 통해 nginx를 설치합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;nginx-설치-1&quot;&gt;nginx 설치&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nginx &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;설치후 &lt;a href=&quot;http://raspberrypi&quot; target=&quot;_blank&quot;&gt;http://raspberrypi&lt;/a&gt;에 접속하면 다음과 같이 기본 웹페이지가 뜹니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;기본-웹페이지&quot;&gt;기본 웹페이지&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/raspberrypi/img003.png&quot; alt=&quot;img003&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;nginx-환경설정&quot;&gt;Nginx 환경설정&lt;/h1&gt;
-
-&lt;p&gt;Nginx의 환경설정을 튜닝해보겠습니다. 환경설정 파일은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/nginx/nginx.conf&lt;/code&gt; 파일입니다. nano 에디터로 해당 파일을 열어봅시다.&lt;/p&gt;
-
-&lt;h6 id=&quot;etcnginxnginxconf-편집&quot;&gt;/etc/nginx/nginx.conf 편집&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano /etc/nginx/nginx.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/raspberrypi/img004.png&quot; alt=&quot;img004&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong style=&quot;color:royalblue&quot;&gt;1. 코어(core)&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;nginx는 메인 프로세스(master)와 작업 프로세스(worker)로 구성되는데, 작업 프로세스가 실질적인 웹서버 역할을 합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;user&lt;/strong&gt; : 작업 프로세스의 권한을 지정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;worker_processes&lt;/strong&gt; :  워커 프로세스 실행 갯수를 지정합니다. 보통 코어 갯수만큼 설정하거나 auto로 적으면 됩니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;pid&lt;/strong&gt; : 마스터 프로세스의 id정보가 저장됩니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;include&lt;/strong&gt; : 다른 파일을 가져옵니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong style=&quot;color:royalblue&quot;&gt;2. events 블록&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;비동기 이벤트 처리 방식에 대한 옵션을 설정합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;worker_connections&lt;/strong&gt; : 하나의 작업 프로세스에서 처리할 수 있는 접속자 수를 지정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;multi_accept&lt;/strong&gt; : 다중 접속의 여부를 지정합니다. 기본값은 off 입니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong style=&quot;color:royalblue&quot;&gt;3. http 블록&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;HTTP 프로토콜을 설정합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;sendfile&lt;/strong&gt;: sendfile() 함수의 사용여부를 지정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;tcp_nopush&lt;/strong&gt; : TCP_CORK 사용 여부를 지정합니다. on인 경우 버퍼가 가득찼을때만 패킷을 전송합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;tcp_nodelay&lt;/strong&gt; : on인경우 패킷 크기에 상관없이 버퍼에 데이터를 보냅니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;keepalive_timeout&lt;/strong&gt; : 연결을 유지할 수 있는 최대 시간을 지정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;types_hash_max_size&lt;/strong&gt; : 도메인 이름 최대 길이를 지정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;ssl_protocols&lt;/strong&gt; : 사용할 SSL-TLS 버전을 지정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;ssl_ciphers&lt;/strong&gt; : 사용할 알고리즘을 지정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;ssl_prefer_server_ciphers&lt;/strong&gt; : SSL-TLS 핸드쉐이크 과정에서 서버 알고리즘을 우선할지 설정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;gz​ip&lt;/strong&gt; : gzip 압축 전송을 사용할지 설정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;access_log&lt;/strong&gt; : 접근로그를 기록할 경로를 지정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;error_log&lt;/strong&gt; : 에러로그를 기록할 경로를 지정합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;server_tokens&lt;/strong&gt; : nginx 버전을 나타낼지를 설정합니다. 기본값은 on 입니다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h6 id=&quot;server_tokens이-on인-경우-response-데이터&quot;&gt;server_tokens이 on인 경우 response 데이터&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/raspberrypi/img005.png&quot; alt=&quot;img005&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;server_tokens이-off인-경우-response-데이터&quot;&gt;server_tokens이 off인 경우 response 데이터&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/raspberrypi/img006.png&quot; alt=&quot;img006&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong style=&quot;color:royalblue&quot;&gt;3. server 블록&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;웹서버를 설정합니다. http 블록에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/nginx/sites-enabled/*&lt;/code&gt; 파일을 include 하고 있기때문에 서버블록은 해당 폴더에 작성하셔도 됩니다. 기본적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/nginx/sites-available&lt;/code&gt; 폴더에 server 블록을 작성하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/nginx/sites-enabled&lt;/code&gt; 폴더에는 심볼릭링크를 생성합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;listen&lt;/strong&gt; : ip와 포트번호입니다. ip는 생략가능하며 default 포트는 80입니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;server_name&lt;/strong&gt; : 도메인 네임입니다. 서브도메인으로 와일드카드 *을 사용가능합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;root&lt;/strong&gt; : 서버의 루트 경로입니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;index&lt;/strong&gt; : 파일명이 없을때 접근할 기본파일입니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;try_files&lt;/strong&gt; : URI에 일치하는 파일이 없는 경우 제공되는 파일입니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;allow&lt;/strong&gt; : 해당 ip로 오는 요청만 허용합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;deny&lt;/strong&gt; : 해당 ip로 오는 요청은 거부하고 403 forbidden을 리턴합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;return&lt;/strong&gt; : 해당 경로로 redirect합니다. URI가 변합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;rewrite&lt;/strong&gt; : URI 변화없이 내부적으로 해당 경로로 응답합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;proxy_pass&lt;/strong&gt; : 프록시 서버로 작동합니다.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;location&lt;/strong&gt; : request URI 매핑을 설정을 합니다. 변경자에 따라 우선순위가 정해져 있는데, 아래 표를 참고하세요.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h6 id=&quot;location-속성&quot;&gt;location 속성&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;우선순위&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;변경자&lt;/th&gt;
-      &lt;th&gt;설명&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;=&lt;/td&gt;
-      &lt;td&gt;URI와 정확하게 일치합니다.&lt;br /&gt;&lt;strong&gt;예) location =/test { }&lt;/strong&gt;&lt;br /&gt;http://localhost/test &lt;font style=&quot;color:green&quot;&gt;(일치)&lt;/font&gt;&lt;br /&gt;http://localhost/test/ &lt;font style=&quot;color:red&quot;&gt;(불일치)&lt;/font&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;^~&lt;/td&gt;
-      &lt;td&gt;URI의 앞부분이 일치합니다.&lt;br /&gt;&lt;strong&gt;예) location ^~/t {}&lt;/strong&gt;&lt;br /&gt;http://localhost/test &lt;font style=&quot;color:green&quot;&gt;(일치)&lt;/font&gt;&lt;br /&gt;http://localhost/Test &lt;font style=&quot;color:red&quot;&gt;(불일치)&lt;/font&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;~&lt;/td&gt;
-      &lt;td&gt;정규표현식과 일치합니다.&lt;br /&gt;&lt;strong&gt;예) location ~/Test[0-9]+ { }&lt;/strong&gt;&lt;br /&gt;http://localhost/Test1 &lt;font style=&quot;color:green&quot;&gt;(일치)&lt;/font&gt;&lt;br /&gt;http://localhost/test1 &lt;font style=&quot;color:red&quot;&gt;(불일치)&lt;/font&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;~*&lt;/td&gt;
-      &lt;td&gt;대소문자 구분없이 정규표현식과 일치합니다.&lt;br /&gt;&lt;strong&gt;예) location ~*/Test[0-9]+ { }&lt;/strong&gt;&lt;br /&gt;http://localhost/test2 &lt;font style=&quot;color:green&quot;&gt;(일치)&lt;/font&gt;&lt;br /&gt;http://localhost/test &lt;font style=&quot;color:red&quot;&gt;(불일치)&lt;/font&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td&gt;아무것도 없으면 prefix로 작용합니다. ^~와 같지만 우선순위가 다릅니다.&lt;br /&gt;&lt;strong&gt;예) location location /test { }&lt;/strong&gt;&lt;br /&gt;http://localhost/test &lt;font style=&quot;color:green&quot;&gt;(일치)&lt;/font&gt;&lt;br /&gt;http://localhost/Test &lt;font style=&quot;color:red&quot;&gt;(불일치)&lt;/font&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong style=&quot;color:royalblue&quot;&gt;4. upstream 블록&lt;/strong&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;upstream 서버를 설정합니다. 클라이언트의 요청을 각 서버에 분배하는 로드밸런싱을 설정합니다. 프록시 서버가 upstream으로 작용합니다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h6 id=&quot;upstream-블록&quot;&gt;upstream 블록&lt;/h6&gt;
-&lt;div data-lang=&quot;TEXT&quot; class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;upstream &amp;lt;이름&amp;gt; {
-    &amp;lt;밸런스타입&amp;gt;;
-    server &amp;lt;host1&amp;gt;:&amp;lt;port1&amp;gt; [파라미터];
-    ...
-    server &amp;lt;host2&amp;gt;:&amp;lt;port2&amp;gt; [파라미터];
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;로드밸런싱에 대한 내용은 다음에 알아보도록 하고, 이번 글에서는 생략합니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;reverse-proxy&quot;&gt;Reverse Proxy&lt;/h1&gt;
-
-&lt;p&gt;Nginx 환경설정을 통해 리버스 프록시를 해보도록 하겠습니다. 예제로 사용하기 위해 node.js로 react 서버를 구축하여 실행시킨 후 &lt;a href=&quot;http://raspberrypi:3000&quot; target=&quot;_blank&quot;&gt;http://raspberrypi:3000&lt;/a&gt;에 접속하면 리액트 웹어플리케이션에 접속됩니다.&lt;/p&gt;
-
-&lt;p&gt;리버스 프록시를 통해 http 프로토콜의 기본 포트인 80으로 요청하면 리액트 웹어플리케이션 서버에 접속되도록 해보겠습니다.&lt;/p&gt;
-
-&lt;p&gt;server 블록을 작성해야 합니다. Nginx를 설치하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/nginx/sites-available/default&lt;/code&gt; 파일이 생성되어 기본 server 블록이 작성되어 있습니다. 해당 파일을 수정하겠습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;etcnginxsites-availabledefault-편집&quot;&gt;/etc/nginx/sites-available/default 편집&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;nano /etc/nginx/sites-available/default
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;etcnginxsites-availabledefault&quot;&gt;/etc/nginx/sites-available/default&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/raspberrypi/img007.png&quot; alt=&quot;img007&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;80번 포트로 요청을 보내면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/www/html&lt;/code&gt; 폴더를 루트로 하는 페이지가 매핑됩니다. 해당 폴더를 확인하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.nginx-debian.html&lt;/code&gt; 파일이 하나 있습니다. location 속성을 통해 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt; 경로를 매핑해두었으며, 해당 경로에 접속하면 인덱스 파일을 응답으로 전송하게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;server 블록을 다음과 같이 수정하도록 합시다.&lt;/p&gt;
-
-&lt;h6 id=&quot;server-블록-수정&quot;&gt;server 블록 수정&lt;/h6&gt;
-&lt;div data-lang=&quot;TEXT&quot; class=&quot;language-text highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;server {
-  listen 80 default_server;
-  listen [::]:80 default_server;
-
-  server_name raspberrypi;
-
-  location / {
-    proxy_pass http://127.0.0.1:3000;
-  }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;nginx를 재실행합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;nginx-서비스-재실행&quot;&gt;nginx 서비스 재실행&lt;/h6&gt;
-&lt;div data-lang=&quot;BASH&quot; class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;service nginx restart
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://raspberrypi&quot; target=&quot;_blank&quot;&gt;http://raspberrypi&lt;/a&gt;에 접속하면 리액트 웹어플리케이션에 접속되는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;server_name&lt;/strong&gt; 속성에는 보통 접속할 도메인을 입력합니다. 서브 도메인을 입력해도 되며, 와일드카드(*)를 통해 모든 서브도메인에 대하여 웹서버를 설정 할 수도 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;proxy_pass&lt;/strong&gt; 속성에는 리버스 프록시를 위한 포워딩 주소를 입력합니다. 리버스 프록시 서버이므로 root 속성이나 index 속성은 필요하지 않습니다.&lt;/p&gt;
-
-&lt;p&gt;80번 포트로 들어오는 요청은 로컬서버의 3000번 포트로 요청을 넘겨주고, 해당 포트에서 오는 응답을 80번 포트를 통해 전송합니다. 클라이언트는 프록시 서버를 통해서 통신을 할 뿐, 웹어플리케이션 서버의 정보를 알 수 없기때문에 서버 보안을 강화할 수 있습니다.&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>huimang2</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="raspberrypi nginx" />
-      
-
-      
-        <summary type="html">웹서버(Web Server)란?</summary>
       
 
       
