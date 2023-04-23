@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://huimang2.github.io/etc/computer-architecture.html</loc>
+        
+        <lastmod>2023-04-21T01:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://huimang2.github.io/sql/normalization.html</loc>
         
         <lastmod>2023-03-30T22:00:00+09:00</lastmod>

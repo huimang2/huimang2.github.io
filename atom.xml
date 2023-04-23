@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>컴퓨터의 구조</title>
+        
+          <description>&lt;h1 id=&quot;중앙처리장치cpu&quot;&gt;중앙처리장치(CPU)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Fri, 21 Apr 2023 01:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/computer-architecture</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/computer-architecture</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>SQL - 데이터베이스 정규화</title>
         
           <description>&lt;h1 id=&quot;정규화normalization&quot;&gt;정규화(Normalization)&lt;/h1&gt;

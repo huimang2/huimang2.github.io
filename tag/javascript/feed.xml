@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/javascript/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-03-31T01:47:56+09:00</updated>
+  <updated>2023-04-23T21:00:07+09:00</updated>
   <id>https://huimang2.github.io/tag/javascript/feed.xml</id>
 
   
@@ -2009,7 +2009,7 @@
 &lt;h6 id=&quot;출력-결과-2&quot;&gt;출력 결과&lt;/h6&gt;
 &lt;p&gt;&lt;img src=&quot;/assets/images/vue/img049.png&quot; alt=&quot;img49&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;업데이트undating-단계&quot;&gt;업데이트(Undating) 단계&lt;/h2&gt;
+&lt;h2 id=&quot;업데이트updating-단계&quot;&gt;업데이트(Updating) 단계&lt;/h2&gt;
 
 &lt;p&gt;DOM이 리렌더링되는 단계입니다. Vue 인스턴스의 데이터 모델이 변경되거나 View가 리렌더링 될 때 훅이 실행됩니다.&lt;/p&gt;
 

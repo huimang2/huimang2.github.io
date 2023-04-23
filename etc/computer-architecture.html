@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>컴퓨터의 구조</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/etc/computer-architecture" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="컴퓨터의 구조" />
+    <meta property="og:description" content="중앙처리장치(CPU) CPU는 컴퓨터에서 기억, 해석, 연산, 제어라는 4가지의 주요 기능을 담당하는 장치입니다. 컴퓨터의 대뇌에 해당하며, 프로그램의 명령어를 해석하여 데이터를 연산 및 처리함으로써 컴퓨터의 각 장치들을 제어합니다. CPU는 크게 산술논리장치, 제어장치, 레지스터 3가지로 구성되어 있습니다. 산술논리장치 산술논리장치(Arithmetic and Logical Unit, ALU)는 덧셈과 뺄셈 같은 산술연산과 논리합, 논리곱, 배타적 논리합과 같은 논리연산을" />
+    <meta property="og:url" content="https://huimang2.github.io/etc/computer-architecture" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/M31_starspike.jpg" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2023-04-21T01:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-04-21T01:00:00+09:00" />
+    <meta property="article:tag" content="Etc" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="컴퓨터의 구조" />
+    <meta name="twitter:description" content="중앙처리장치(CPU) CPU는 컴퓨터에서 기억, 해석, 연산, 제어라는 4가지의 주요 기능을 담당하는 장치입니다. 컴퓨터의 대뇌에 해당하며, 프로그램의 명령어를 해석하여 데이터를 연산 및 처리함으로써 컴퓨터의 각 장치들을 제어합니다. CPU는 크게 산술논리장치, 제어장치, 레지스터 3가지로 구성되어 있습니다. 산술논리장치 산술논리장치(Arithmetic and Logical Unit, ALU)는 덧셈과 뺄셈 같은 산술연산과 논리합, 논리곱, 배타적 논리합과 같은 논리연산을" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/M31_starspike.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Etc" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/etc/computer-architecture",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/M31_starspike.jpg",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/etc/computer-architecture"
+    },
+    "description": "중앙처리장치(CPU) CPU는 컴퓨터에서 기억, 해석, 연산, 제어라는 4가지의 주요 기능을 담당하는 장치입니다. 컴퓨터의 대뇌에 해당하며, 프로그램의 명령어를 해석하여 데이터를 연산 및 처리함으로써 컴퓨터의 각 장치들을 제어합니다. CPU는 크게 산술논리장치, 제어장치, 레지스터 3가지로 구성되어 있습니다. 산술논리장치 산술논리장치(Arithmetic and Logical Unit, ALU)는 덧셈과 뺄셈 같은 산술연산과 논리합, 논리곱, 배타적 논리합과 같은 논리연산을"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="컴퓨터의 구조" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-etc post no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="21 April 2023">21 April 2023</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/etc/'>#기타</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">컴퓨터의 구조</h1>
+            </header>
+
+            <!--  -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#중앙처리장치cpu"><span>중앙처리장치(CPU)</span></a><ul><li><a href="#산술논리장치"><span>산술논리장치</span></a></li><li><a href="#제어장치"><span>제어장치</span></a></li><li><a href="#레지스터"><span>레지스터</span></a></li></ul></li><li><a href="#메모리"><span>메모리</span></a><ul><li><a href="#ram"><span>RAM</span></a></li><li><a href="#캐시-메모리"><span>캐시 메모리</span></a></li></ul></li><li><a href="#보조기억장치"><span>보조기억장치</span></a></li><li><a href="#입출력장치"><span>입출력장치</span></a></li></ul>
+
+                    </div>
+                    <h1 id="중앙처리장치cpu">중앙처리장치(CPU)</h1>
+
+<p>CPU는 컴퓨터에서 기억, 해석, 연산, 제어라는 4가지의 주요 기능을 담당하는 장치입니다.</p>
+
+<p>컴퓨터의 대뇌에 해당하며, 프로그램의 명령어를 해석하여 데이터를 연산 및 처리함으로써 컴퓨터의 각 장치들을 제어합니다.</p>
+
+<p align="center"><img src="/assets/images/computer/img001.png" alt="img001" /></p>
+
+<p>CPU는 크게 <code class="language-plaintext highlighter-rouge">산술논리장치</code>, <code class="language-plaintext highlighter-rouge">제어장치</code>, <code class="language-plaintext highlighter-rouge">레지스터</code> 3가지로 구성되어 있습니다.</p>
+
+<h2 id="산술논리장치">산술논리장치</h2>
+
+<p><code class="language-plaintext highlighter-rouge">산술논리장치(Arithmetic and Logical Unit, ALU)</code>는 덧셈과 뺄셈 같은 <code class="language-plaintext highlighter-rouge">산술연산</code>과 논리합, 논리곱, 배타적 논리합과 같은 <code class="language-plaintext highlighter-rouge">논리연산</code>을 계산하는 디지털 회로입니다.</p>
+
+<p align="center"><img src="/assets/images/computer/img013.png" alt="img013" /></p>
+
+<p>산술논리장치는 논리합을 계산하는 <code class="language-plaintext highlighter-rouge">가산기(adder)</code>, 보수값을 출력하는 <code class="language-plaintext highlighter-rouge">보수기(complementer)</code>, 산술 및 논리 연산의 결과를 일시적으로 저장하는 <code class="language-plaintext highlighter-rouge">누산기(accumulator)</code>, 명령어를 수행하기 위해 필요한 데이터를 저장하는 <code class="language-plaintext highlighter-rouge">데이터 레지스터(data register)</code> 등으로 구성됩니다.</p>
+
+<p>산술논리장치가 수행하는 마이크로 연산은 다음과 같이 분류할 수 있습니다.</p>
+
+<h6 id="산술-연산">산술 연산</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>연산</th>
+      <th>동작</th>
+      <th>기능</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ADD</td>
+      <td>X ← A + B</td>
+      <td>A와 B를 더합니다.</td>
+    </tr>
+    <tr>
+      <td>SUB</td>
+      <td>X ← A + (~B + 1)</td>
+      <td>A에 B를 뺍니다.</td>
+    </tr>
+    <tr>
+      <td>MUL</td>
+      <td>X ← A × B</td>
+      <td>A와 B를 곱합니다.</td>
+    </tr>
+    <tr>
+      <td>DIV</td>
+      <td>X ← A ÷ B</td>
+      <td>A를 B로 나눕니다.</td>
+    </tr>
+    <tr>
+      <td>INC</td>
+      <td>X ← A + 1</td>
+      <td>A를 1 증가 시킵니다.</td>
+    </tr>
+    <tr>
+      <td>DEC</td>
+      <td>X ← A - 1</td>
+      <td>A를 1 감소 시킵니다.</td>
+    </tr>
+    <tr>
+      <td>NEG</td>
+      <td>X ← ~A + 1</td>
+      <td>A의 음수값을 나타냅니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h6 id="논리-연산">논리 연산</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>연산</th>
+      <th>동작</th>
+      <th>기능</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AND</td>
+      <td>X ← A &amp; B</td>
+      <td>A와 B를 비트단위로 AND 연산 합니다.</td>
+    </tr>
+    <tr>
+      <td>OR</td>
+      <td>X ← A | B</td>
+      <td>A와 B를 비트단위로 OR 연산 합니다.</td>
+    </tr>
+    <tr>
+      <td>NOT</td>
+      <td>X ← ~A</td>
+      <td>A의 보수를 나타냅니다.</td>
+    </tr>
+    <tr>
+      <td>XOR</td>
+      <td>X ← A ^ B</td>
+      <td>A와 B를 비트단위로 XOR 연산 합니다.</td>
+    </tr>
+    <tr>
+      <td>ASL</td>
+      <td>X ← A « n</td>
+      <td>A를 왼쪽으로 n비트 만큼 이동시킵니다.</td>
+    </tr>
+    <tr>
+      <td>ASR</td>
+      <td>X ← A » n, A[7] ← A[7]</td>
+      <td>부호를 유지시킨 채 A를 오른쪽으로 n비트 만큼 이동시킵니다.</td>
+    </tr>
+    <tr>
+      <td>LSL</td>
+      <td>X ← A « n</td>
+      <td>A를 왼쪽으로 n비트 만큼 이동시킵니다.</td>
+    </tr>
+    <tr>
+      <td>LSR</td>
+      <td>X ← A » n</td>
+      <td>A를 오른쪽으로쪽으로 n비트 만큼 이동시킵니다.</td>
+    </tr>
+    <tr>
+      <td>ROL</td>
+      <td>X ← A « 1, A[0] ← A[7]</td>
+      <td>첫 번째 비트를 마지막 비트로 이동시킵니다.</td>
+    </tr>
+    <tr>
+      <td>ROR</td>
+      <td>X ← A » 1, A[7] ← A[0]</td>
+      <td>마지막 비트를 첫 번째 비트로 이동시킵니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>산술논리장치는 제어장치로부터 전달받은 제어신호를 통해 두 데이터 레지스터의 값을 연산하여 결과값을 누산기에 저장합니다. 이때 연산 결과에 대한 부가정보를 상태 레지스터에 저장합니다. 상태 레지스터의 구조는 CPU마다 다를 수 있으며, 상태 레지스터에 저장되는 플래그의 종류는 다음과 같습니다.</p>
+
+<h6 id="상태-레지스터-플래그">상태 레지스터 플래그</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">플래그 종류</th>
+      <th style="text-align: center">부호</th>
+      <th>의미</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">부호 플래그</td>
+      <td style="text-align: center">S</td>
+      <td>연산 결과의 부호를 나타냅니다. 1이면 음수, 0이면 양수임을 의미합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">제로 플래그</td>
+      <td style="text-align: center">Z</td>
+      <td>연산 결과가 0인지 여부를 나타냅니다. 1이면 0, 0이면 0이 아님을 의미합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">캐리 플래그</td>
+      <td style="text-align: center">C</td>
+      <td>연산 결과에서 올림수나 빌림수가 발생했는지를 나타냅니다. 1이면 올림수나 빌림수가 발생했음을, 0이면 발생하지 않았음을 의미합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">오버플로우 플래그</td>
+      <td style="text-align: center">O</td>
+      <td>연산 과정에서 오버플로우가 발생했는지를 나타냅니다. 1이면 오버플로우가 발생했음을, 0이면 발생하지 않았음을 의미합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">인터럽트 플래그</td>
+      <td style="text-align: center">I</td>
+      <td>인터럽트가 가능한지를 나타냅니다. 1이면 인터럽트가 가능함을, 0이면 불가능함을 의미합니다.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">슈퍼바이저 플래그</td>
+      <td style="text-align: center">P</td>
+      <td>커널모드로 실행중인지 사용자모드로 실행중인지를 나타냅니다. 1이면 커널모드, 0이면 사용자모드임을 의미합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="제어장치">제어장치</h2>
+
+<p><code class="language-plaintext highlighter-rouge">제어장치(Control Unit, CU)</code>는 입출력장치 간 통신 및 조율을 제어하는 제어 신호를 보내고, 명령어를 읽고 해석하여 데이터 처리의 순서를 결정하는 장치입니다.</p>
+
+<p align="center"><img src="/assets/images/computer/img014.png" alt="img014" /></p>
+
+<p>제어장치는 클럭(Clock), 명령어, 상태 플래그, 제어신호를 받아들이고, CPU 내부의 ALU나 레지스터 또는 CPU 외부의 제어버스로 제어신호를 내보냅니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">클럭(clock)</code>이란 컴퓨터 부품을 움직이게 할 수 있는 시간 단위입니다. 클럭은 1과 0이 반복되어 나타나는데, 이 반복의 기본 단위를 클럭의 주기(period)라고 합니다.</p>
+
+<p align="center"><img src="/assets/images/computer/img015.png" alt="img015" /></p>
+
+<p>1초동안 반복되는 주기의 횟수는 <code class="language-plaintext highlighter-rouge">주파수(frequency)</code>라고 하며, 단위는 <code class="language-plaintext highlighter-rouge">헤르츠(Hz)</code>를 사용합니다. 인텔 코어 i5를 기준으로 기본 클럭이 2.4GHz 이며, 이것은 1초에 2.4 × 10^9번의 주기가 반복됨을 의미합니다. 그러므로 오버클럭을 하게 되면 주기가 증가하여 CPU의 처리속도를 증가시킬 수 있습니다.</p>
+
+<p>정리하면, 제어장치는 클럭에 맞추어 명령어 레지스터로부터 해석할 명령어를 가져와서 적절한 제어신호를 내보냅니다.</p>
+
+<h2 id="레지스터">레지스터</h2>
+
+<p><code class="language-plaintext highlighter-rouge">레지스터</code> CPU 내부의 작은 임시 저장장치 입니다. 프로그램 속의 명령어와 데이터는 프로그램 실행 전/후로 레지스터에 저장됩니다. CPU 내부에는 다양한 레지스터가 존재하며, 각기 다른 역할을 수행합니다.</p>
+
+<p><strong><font color="royalblue">1. 프로그램 카운터(Program Counter, PC)</font></strong></p>
+
+<p>프로그램 카운터는 메모리에서 읽어들일 명령어의 주소를 저장합니다. 프로그램을 순차적으로 처리하기 위해 프로그램의 순서를 카운트하며, <code class="language-plaintext highlighter-rouge">명령어 포인터(Instruction Pointer, IP)</code>라고도 부릅니다.</p>
+
+<p><strong><font color="royalblue">2. 명령어 레지스터(Instruction Register, IR)</font></strong></p>
+
+<p>명령어 레지스터는 메모리에서 읽어들인 명령어를 저장하는 레지스터 입니다. 제어장치는 IR에 있는 명령어를 해석하여 제어신호를 내보냅니다.</p>
+
+<p><strong><font color="royalblue">3. 메모리 주소 레지스터(Memory Address Register, MAR)</font></strong></p>
+
+<p>메모리 주소 레지스터는 메모리의 주소를 저장하는 레지스터 입니다. CPU가 읽고자 하는 주소 값을 주소 버스로 보내기 위해서는 MAR를 거쳐야 합니다.</p>
+
+<p><strong><font color="royalblue">4. 메모리 버퍼 레지스터(Memory Buffer Register, MBR)</font></strong></p>
+
+<p>메모리 버퍼 레지스터는 메모리와 주고 받을 값을 저장하는 레지스터 입니다. 메모리에 값을 쓰기 위해서는 MBR을 거쳐야 하며, 메모리의 데이터 버스를 통해 값을 전달받을 때도 MBR을 거쳐야 합니다.</p>
+
+<p><strong><font color="royalblue">5. 상태 레지스터(Status Register, SR)</font></strong></p>
+
+<p>연산 결과 또는 CPU의 상태에 대한 부가적인 정보를 저장하고 있는 레지스터 입니다.</p>
+
+<p><strong><font color="royalblue">6. 작업 레지스터(Working Resister, WR)</font></strong></p>
+
+<p>ALU와 직접 연결되어 있는 레지스터로, 연산 과정의 중간값이나 결과를 저장하는 누산기 입니다.</p>
+
+<p><strong><font color="royalblue">7. 범용 레지스터(General Resister, GR)</font></strong></p>
+
+<p>일반적인 상황에서 자유롭게 사용할 수 있는 레지스터로, 데이터와 주소를 모두 저장할 수 있습니다. ALU와는 연결되어 있지 않습니다.</p>
+
+<p><strong><font color="royalblue">8. 스택 포인터(Stack Pointer)</font></strong></p>
+
+<p>스택 포인터는 스택 주소 지정 방식에 사용되는 레지스터 입니다. 메모리 스택 영역의 꼭대기 주소를 저장하고 있습니다.</p>
+
+<p align="center"><img src="/assets/images/computer/img016.png" alt="img016" /></p>
+
+<p><strong><font color="royalblue">9. 베이스 레지스터(Stack Pointer)</font></strong></p>
+
+<p>베이스 레지스터는 프로그램 카운터와 함께 변위 주소 지정 방식에 사용되는 레지스터 입니다. 주소를 지정하기 위한 기준이 되는 주소를 저장하고 있습니다.</p>
+
+<p>변위 주소 지정 방식은 오퍼랜드의 필드값과 특정 레지스터 값을 더하여 유효 주소를 얻게 되는데, 오퍼랜더 값과 프로그램 카운터의 값을 더한 주소 지정 방식을 <code class="language-plaintext highlighter-rouge">상대 주소 지정 방식</code>, 오퍼랜더 값과 베이스 레지스터의 값을 더한 주소 지정 방식을 <code class="language-plaintext highlighter-rouge">변위 주소 지정 방식</code> 이라고 합니다.</p>
+
+<h1 id="메모리">메모리</h1>
+
+<p>메모리는 현재 실행되는 프로그램의 명령어와 데이터를 저장하는 장치입니다.</p>
+
+<p>메모리는 <code class="language-plaintext highlighter-rouge">메모리 주소 레지스터(MAR)</code>와 <code class="language-plaintext highlighter-rouge">메모리 버퍼 레지스터(MBR)</code>로 구성되며, CPU와 데이터를 주고 받기 위해 <code class="language-plaintext highlighter-rouge">시스템 버스(system bus)</code>를 사용합니다.</p>
+
+<p>시스템 버스는 기본적으로 <code class="language-plaintext highlighter-rouge">주소 버스(address bus)</code>와 <code class="language-plaintext highlighter-rouge">데이터 버스(data bus)</code>, <code class="language-plaintext highlighter-rouge">제어 버스(control bus)</code>로 구성됩니다.</p>
+
+<p>메모리는 크게 읽기 전용 비 휘발성 메모리인 <code class="language-plaintext highlighter-rouge">ROM(Read Only Memory)</code>과 휘발성 메모리인 <code class="language-plaintext highlighter-rouge">RAM(Random Access Memory)</code>, 비 휘발성 메모리인 <code class="language-plaintext highlighter-rouge">플래시 메모리(Flash Memory)</code>로 나눌 수 있으며, 통상적으로 메모리는 RAM을 의미합니다.</p>
+
+<h2 id="ram">RAM</h2>
+
+<p>RAM의 종류는 크게 <code class="language-plaintext highlighter-rouge">DRAM</code>, <code class="language-plaintext highlighter-rouge">SRAM</code>, <code class="language-plaintext highlighter-rouge">SDRAM</code>, <code class="language-plaintext highlighter-rouge">DDR SDRAM</code>으로 나눌 수 있습니다.</p>
+
+<p><strong><font color="royalblue">1. DRAM(Dynamic RAM)</font></strong></p>
+
+<p>DRAM은 전원이 연결되어 있더라도 저장된 데이터가 동적으로 사라지는 RAM 입니다. 그렇기 때문에 데이터의 소멸을 막기 위해서는 주기적으로 저장된 데이터를 재활성화(refresh) 해야 합니다.</p>
+
+<p>상대적으로 소비전력이 낮고 저렴하며 집적도가 높아 대용량으로 설계하기 용이하기 때문에 일반적으로 메모리에 사용되는 RAM은 DRAM 입니다.</p>
+
+<p><strong><font color="royalblue">2. SRAM(Static RAM)</font></strong></p>
+
+<p>SRAM은 전원이 연결되어 있다면 저장된 데이터가 사라지지 않는 RAM 입니다.</p>
+
+<p>상대적으로 소비전력이 높고 가격이 비싸며 집적도가 낮기 때문에 일반적으로 대용량으로 설계할 필요가 없고 빨라야 하는 캐시 메모리에서 사용되는 RAM 입니다.</p>
+
+<p><strong><font color="royalblue">3. SDRAM(Synchronous RAM)</font></strong></p>
+
+<p>SDRAM은 클럭 신호와 동기화되는 발전된 형태의 DRAM 입니다.</p>
+
+<p><strong><font color="royalblue">4. DDR SDRAM(Double Data Rate SDRAM)</font></strong></p>
+
+<p>DDR SDRAM은 데이터를 주고 받는 대역폭을 넓혀 속도를 빠르게 만든 SDRAM 입니다. 최근 대중적으로 사용하는 RAM 입니다.</p>
+
+<p>DDR SDRAM은 SDRAM 보다 대역폭이 두 배 넓다면, DDR2 SDRAM은 DDR SDRAM 보다 대역폭이 두 배 넓습니다. 즉, DDR2 SDRAM은 SDRAM 보다 대역폭이 네 배 넓습니다.</p>
+
+<p>동일하게 DDR3 SDRAM은 DDR2 SDRAM 보다 대역폭이 두 배 넓으며, DDR4 SDRAM은 DDR3 SDRAM 보다 대역폭이 두 배 넓습니다. 그러므로 DDR4 SDRAM 4G는 DDR3 SDRAM 8G와 속도가 동일합니다.</p>
+
+<h2 id="캐시-메모리">캐시 메모리</h2>
+
+<p>캐시 메모리는 CPU와 메모리 사이에 위치한 레지스터보다 용량이 크고 메모리보다 빠른 SRAM 기반의 저장 장치 입니다. CPU의 연산 속도와 메모리 접근 속도의 차이를 조금이나마 줄이기 위해 사용합니다.</p>
+
+<p>캐시 메모리는 계층적으로 L1, L2, L3 캐시 메모리로 구성할 수 있으며, 일반적으로 L1 캐시와 L2 캐시는 CPU 내부에, L3 캐시는 CPU 외부에 위치합니다.</p>
+
+<p align="center"><img src="/assets/images/computer/img017.png" alt="img017" /></p>
+
+<p>멀티 프로세서의 경우 코어마다 L1, L2 캐시가 있기 때문에 데이터의 일관성을 유지하기 위해 캐시 메모리를 동기화 시키는 것이 중요합니다.</p>
+
+<p align="center"><img src="/assets/images/computer/img018.png" alt="img018" /></p>
+
+<p>캐시 메모리는 메모리보다 용량이 작기 때문에 메모리의 일부 내용을 저장합니다. 그렇기 때문에 CPU가 자주 사용할 법한 내용을 예측하여 캐시 메모리에 저장합니다.</p>
+
+<p>CPU는 최근에 접근했던 메모리 공간에 다시 접근하려고 하며, 접근한 메모리 공간 근처를 접근하려는 경향이 있는데, 이러한 경향을 바탕으로 만들어진 원리를 <code class="language-plaintext highlighter-rouge">참조 지역성의 원리</code>라고 합니다. 이 원리를 바탕으로 캐시 메모리를 사용한다면 캐시 메모리의 성능을 향상시킬 수 있습니다.</p>
+
+<h1 id="보조기억장치">보조기억장치</h1>
+
+<p>보조기억장치는 현재 실행되지 않는 프로그램이나 데이터를 저장하고 있다가 필요한 경우 RAM으로 데이터를 전달하는 장치 입니다.</p>
+
+<p>메모리는 보조기억장치에 비하여 비쌀 뿐만 아니라 전원이 꺼지면 저장된 내용을 잃어버린다는 단점이 존재합니다. 그러므로 데이터를 영구적으로 저장하기 위해서는 보조 기억장치에 데이터를 저장해야 합니다.</p>
+
+<p>보조기억장치에는 하드디스크와 플래시 메모리가 있습니다. 하드디스크는 자기적인 방식으로 데이터를 저장하는 장치이며, 플래시 메모리는 전기적으로 데이터를 읽고 쓰는 반도체 기반 저장 장치입니다. 대표적으로 SSD가 플래시 메모리에 속합니다.</p>
+
+<h1 id="입출력장치">입출력장치</h1>
+
+<p>입출력장치는 컴퓨터 외부에 연결되어 컴퓨터 내부와 정보를 교환할 수 있는 장치입니다. 대표적인 입출력 장치로 키보드, 모니터, 마우스 등이 있습니다.</p>
+
+<p>컴퓨터로 데이터를 처리하기 위해서는 입력장치를 통해 컴퓨터로 데이터를 입력해야 하며, 컴퓨터가 처리한 결과의 데이터는 출력장치를 통해 사용자가 읽을 수 있는 형태로 돌려주어야 합니다.</p>
+
+<p>입력장치는 컴퓨터가 인식할 수 있는 형태로 변환시켜 메모리로 읽어 들이는 장치이고, 출력장치는 컴퓨터에서 처리된 내용을 사용자가 인식할 수 있는 형태로 바꾸어 표시하는 장치입니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/etc/">Etc</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/etc/oh-my-zsh">Oh My Zsh</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/etc/mosh">향상된 SSH 프로토콜 : Mosh</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/etc/plantuml">VSCode로 UML 그리기</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/etc/">
+                                
+                                    See all 3 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/sql/normalization">
+                <div class="post-card-image" style="background-image: url(/assets/images/sql-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/sql/normalization">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">SQL - 데이터베이스 정규화</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>정규화(Normalization)
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      1 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">컴퓨터의 구조</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%BB%B4%ED%93%A8%ED%84%B0%EC%9D%98+%EA%B5%AC%EC%A1%B0&amp;url=etc/computer-architecture"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=etc/computer-architecture"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2023</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>
