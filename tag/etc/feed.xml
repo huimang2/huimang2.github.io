@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/etc/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-04-24T01:34:25+09:00</updated>
+  <updated>2023-04-24T20:13:00+09:00</updated>
   <id>https://huimang2.github.io/tag/etc/feed.xml</id>
 
   
@@ -30,6 +30,263 @@
   
   
 
+  
+    <entry>
+      <title type="html">데이터의 표현</title>
+      <link href="https://huimang2.github.io/etc/computer-logical" rel="alternate" type="text/html" title="데이터의 표현" />
+      <published>2023-04-23T01:00:00+09:00</published>
+      <updated>2023-04-23T01:00:00+09:00</updated>
+      <id>https://huimang2.github.io/etc/computer-logical</id>
+      <content type="html" xml:base="https://huimang2.github.io/etc/computer-logical">&lt;p&gt;지난번 글에서는 CPU의 작동원리에 대하여 알아보았습니다. MOSFET에 전압을 주거나 주지 않는 것으로 전류 흐름을 제어했습니다. 이번 글에서는 컴퓨터가 데이터를 인식하는 원리를 알아보도록 하겠습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;정보의-단위&quot;&gt;정보의 단위&lt;/h1&gt;
+
+&lt;p&gt;컴퓨터는 MOSFET을 통해 전류가 흐르거나 흐르지 않는 상태를 인식할 수 있습니다. 전류가 흐르면 1, 전류가 흐르지 않는다면 0으로 나타낼 수 있는데, 이렇게 0과 1을 표현하는 가장 작은 정보 단위를 비트(bit)라고 합니다.&lt;/p&gt;
+
+&lt;p&gt;1비트를 통해서는 2가지 정보를 알 수 있으며, 2비트로는 (0, 0), (0, 1), (1, 0), (1, 1) 이렇게 4가지 정보를 알 수 있습니다. n비트를 통해서는 &lt;strong class=&quot;bgcolor orange&quot; style=&quot;color:orangered&quot;&gt;2&lt;sup&gt;n&lt;/sup&gt;&lt;/strong&gt;가지 정보를 표현할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;프로그램은 수많은 비트로 이루어져 있어서 비트 단위로 데이터를 나타내기 힘들기 때문에, 데이터는 8개의 비트를 묶어 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;바이트(byte)&lt;/code&gt;를 정보의 기본단위로 사용합니다. 즉, 1byte는 8bit에 해당하며, 2&lt;sup&gt;8&lt;/sup&gt; = 256가지의 정보를 나타낼 수 있습니다. 보통 1byte로는 하나의 문자를 나타낼 수 있지만, 한글이나 한자 등 동양권 문자의 경우 1byte로 나타낼 수 없어서 하나의 문자당 2byte를 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;8bit가 모여 1byte가 된 것처럼, byte는 1000개씩 묶어 더 큰 단위를 나타낼 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;데이터-단위&quot;&gt;데이터 단위&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;단위&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;정의&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;비트(bit)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0, 1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;바이트(Byte)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8 bit&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;킬로바이트(KB)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1000 Byte&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;메가바이트(MB)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1000 KB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;기가바이트(GB)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1000 MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;테라바이트(TB)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1000 GB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;페타바이트(PB)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1000 TB&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;이 외에도 CPU가 한 번에 처리할 수 있는 정보의 단위는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;워드(word)&lt;/code&gt;로 나타냅니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;이진법&quot;&gt;이진법&lt;/h1&gt;
+
+&lt;p&gt;컴퓨터는 0과 1을 사용하는 2진법(binary)을 통해 데이터를 이해합니다. 2진법은 자릿값이 올라감에 따라 그 크기가 2배씩 커지게 되므로 2진법을 십진법으로 바꾸기 위해서는 자릿수마다 2&lt;sup&gt;n&lt;/sup&gt;을 곱한 값을 모두 더하면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 이진수 0b1101을 십진수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0b1101 = 1 * 2&lt;sup&gt;3&lt;/sup&gt; + 1 * 2&lt;sup&gt;2&lt;/sup&gt; + 0 * 2&lt;sup&gt;1&lt;/sup&gt; + 1 * 2&lt;sup&gt;0&lt;/sup&gt; = 8 + 4 + 1 = 13&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;컴퓨터가 이진수로 음수를 표현하는 방법은 3가지가 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;부호-비트와-절댓값-방법&quot;&gt;부호 비트와 절댓값 방법&lt;/h2&gt;
+
+&lt;p&gt;2진법으로 수를 표현할 때, 가장 왼쪽에 있는 비트의 값을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;최상위 비트(Most Significant Bit, MSB)&lt;/code&gt;라고 합니다. 부호 비트와 절댓값 방법은 최상위 비트를 이용하여 음수를 표현합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 정수 13의 경우 다음과 같이 2진법으로 나타낼 수 있습니다.(보통 정수 자료형은 4byte의 크기를 가집니다.)&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1101&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이를 -13으로 나타내기 위해서는 최상위 비트를 1로 바꾸면 됩니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1000 0000 0000 0000 0000 0000 0000 1101&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이 방법을 사용하면 1비트가 부호를 표현하기 위해 사용되어 표현할 수 있는 절대값의 범위는 절반으로 줄어들게 됩니다. (0 ~ 2&lt;sup&gt;16&lt;/sup&gt; - 1)&lt;/p&gt;
+
+&lt;p&gt;또한 +0과 -0이 따로 존재하게 됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;1의-보수법&quot;&gt;1의 보수법&lt;/h2&gt;
+
+&lt;p&gt;1의 보수법은 비트를 반전시켜 음수를 표현하는 방법입니다. 이 방법을 사용하면 비트의 NOT 연산만으로도 음수를 표현할 수 있어서 연산이 간단해집니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 13을 음수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 0010&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;1의 보수법을 통해 연산을 하는 데 있어서 캐리(carry)가 중요합니다. 캐리는 상태 레지스터의 플래그를 설명할 때 언급한 적이 있는데, 올림수나 빌림수 여부를 나타냅니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 13 - 5 를 계산해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;13을 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1101&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;-5를 1의 보수법을 통해 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 1010&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;두 수를 더하면 다음과 같이 캐리가 생깁니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;font color=&quot;skyblue&quot;&gt;1&lt;/font&gt; 0000 0000 0000 0000 0000 0000 0000 0111&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;캐리를 최하위 비트에 더해주면 결과값이 됩니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0b0111 + 0b0001 = 0b1000&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;해당 2진수는 10진수로 나타내면 8이 되며, 이는 13 - 5와 동일한 결과입니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;이번에는 5 - 13 을 계산해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;5를 2진수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 0101&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;-13을 1의 보수법을 통해 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 0010&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;두수를 더하면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 0111&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;해당 결과는 캐리가 없습니다. 이 경우 결과값을 다시 1의 보수법으로 나타내면 최종 결과값이 됩니다. 부호는 마이너스(-) 입니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1000&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;1의 보수법은 부호 비트와 절댓값 방법과 마찬가지로 +0과 -0이 따로 존재한다는 문제점이 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;2의-보수법&quot;&gt;2의 보수법&lt;/h2&gt;
+
+&lt;p&gt;2의 보수법은 1의 보수법을 통해 표현한 값에 1을 더하여 음수를 표현하는 방법입니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 13을 음수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 0011&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;2의 보수법을 통해 연산을 하는 데 있어서 1의 보수법과 달리 캐리가 발생하면 캐리를 버립니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 13 - 5 를 계산해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;13을 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1101&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;-5를 2의 보수법을 통해 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 1011&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;두 수를 더하면 다음과 같이 캐리가 생깁니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;font color=&quot;skyblue&quot;&gt;1&lt;/font&gt; 0000 0000 0000 0000 0000 0000 0000 1000&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;1의 보수법과 달리 캐리를 버린 값이 최종 결과값이 됩니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1000&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;이번에는 5 - 13 을 계산해보겠습니다.&lt;/p&gt;
+
+&lt;p&gt;5를 2진수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 0101&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;-13을 2의 보수법을 통해 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 0011&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;두수를 더하면 다음과 같습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 1000&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;해당 결과는 캐리가 없습니다. 이 경우 결과값을 다시 2의 보수법으로 나타내면 최종 결과값이 됩니다. 부호는 마이너스(-) 입니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1000&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이 방법을 사용하면 -0은 2의 보수를 구하는 과정에서 최상위 비트를 초과한 오버플로우가 발생하여 +0이 됩니다. 그러므로 2의 보수법에서는 하나의 0만 존재하게 됩니다. 때문에 현재 대부분의 시스템에서는 2의 보수법을 사용하여 음수를 표현합니다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="etc" />
+      
+
+      
+        <summary type="html">지난번 글에서는 CPU의 작동원리에 대하여 알아보았습니다. MOSFET에 전압을 주거나 주지 않는 것으로 전류 흐름을 제어했습니다. 이번 글에서는 컴퓨터가 데이터를 인식하는 원리를 알아보도록 하겠습니다.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">CPU의 작동 원리</title>
