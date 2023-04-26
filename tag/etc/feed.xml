@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/etc/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-04-25T04:12:11+09:00</updated>
+  <updated>2023-04-26T23:13:41+09:00</updated>
   <id>https://huimang2.github.io/tag/etc/feed.xml</id>
 
   
@@ -32,12 +32,379 @@
 
   
     <entry>
+      <title type="html">논리회로</title>
+      <link href="https://huimang2.github.io/etc/computer-logic-gate" rel="alternate" type="text/html" title="논리회로" />
+      <published>2023-04-24T01:00:00+09:00</published>
+      <updated>2023-04-24T01:00:00+09:00</updated>
+      <id>https://huimang2.github.io/etc/computer-logic-gate</id>
+      <content type="html" xml:base="https://huimang2.github.io/etc/computer-logic-gate">&lt;p&gt;지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;논리회로logic-gate&quot;&gt;논리회로(Logic Gate)&lt;/h1&gt;
+
+&lt;p&gt;트랜지스터를 도식화하면 다음과 같은데, Gate에 전압을 걸어주거나 걸어주지 않는 것으로 Drain으로 전류를 흐르게 하거나 흐르지 않게 할 수 있습니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img022.png&quot; alt=&quot;img022&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이런 트랜지스터의 특성을 통해 스위치 역할을 함으로써 &lt;code class=&quot;language-plaintext bgcolor blue highlighter-rouge&quot; style=&quot;color:royalblue&quot;&gt;논리회로(Logic Gate)&lt;/code&gt;를 만들 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;not-gate&quot;&gt;NOT gate&lt;/h2&gt;
+
+&lt;p&gt;NOT gate는 참을 거짓으로, 거짓을 참으로 출력하는 회로입니다. 즉, Gate에 전류가 흐르면 거짓, 전류가 흐르지 않으면 참을 출력합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img023.png&quot; alt=&quot;img023&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A에 전류가 흐르지 않으면 GND로 전류가 흐르지 않아서 출력선으로 전류가 흐르게 됩니다. 즉, 참을 출력합니다.&lt;/p&gt;
+
+&lt;p&gt;반면에 A에 전류가 흐르면 GND로 전류가 흐를 수 있어서 출력선으로는 전류가 흐르지 않습니다. 즉, 거짓을 출력합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;진리표&quot;&gt;진리표&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;NOT A&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;논리식은 $ \bar A $로 나타내며, 기호는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img024.png&quot; alt=&quot;img024&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;and-gate&quot;&gt;AND gate&lt;/h2&gt;
+
+&lt;p&gt;AND gate는 두 입력선이 모두 참이면 참, 아니면 거짓을 출력하는 회로입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img025.png&quot; alt=&quot;img025&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;진리표-1&quot;&gt;진리표&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A AND B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;논리식은 $ A \cdot B $로 나타내며, 기호는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img026.png&quot; alt=&quot;img026&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;or-gate&quot;&gt;OR gate&lt;/h2&gt;
+
+&lt;p&gt;OR gate는 두 입력선 중 하나라도 참이면 참을 출력하는 회로입니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img027.png&quot; alt=&quot;img027&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;진리표-2&quot;&gt;진리표&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A OR B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;논리식은 $ A + B $로 나타내며, 기호는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img028.png&quot; alt=&quot;img028&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;nand-gate&quot;&gt;NAND gate&lt;/h2&gt;
+
+&lt;p&gt;NAND gate는 AND gate의 반대값을 출력하는 회로입니다. 즉, 모든 입력이 참일 경우에만 거짓을 출력합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img029.png&quot; alt=&quot;img029&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;진리표-3&quot;&gt;진리표&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A NAND B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;논리식은 $ \overline {A \cdot B} $로 나타내며, 기호는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img030.png&quot; alt=&quot;img030&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;nor-gate&quot;&gt;NOR gate&lt;/h2&gt;
+
+&lt;p&gt;NOR gate는 OR gate의 반대값을 출력하는 회로입니다. 즉, 두 입력선 중 하나라도 참일 경우에는 거짓을 출력합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img031.png&quot; alt=&quot;img031&quot; /&gt;&lt;/p&gt;
+
+&lt;h6 id=&quot;진리표-4&quot;&gt;진리표&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A NOR B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;논리식은 $ \overline {A + B} $로 나타내며, 기호는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img032.png&quot; alt=&quot;img032&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;xor-gate&quot;&gt;XOR gate&lt;/h2&gt;
+
+&lt;p&gt;XOR gate는 배타적 논리합을 구현한 회로입니다. 즉, 두 입력선의 값이 서로 다른 경우에만 참을 출력합니다.
+논리식은 $ A \oplus B $로 나타내며, $ \bar A \cdot B + A \cdot \bar B $와 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;진리표-5&quot;&gt;진리표&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar A \cdot B $&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;$ A \cdot \bar B $&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A XOR B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위 논리식을 토대로 회로를 구성하면 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img033.png&quot; alt=&quot;img033&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기호는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img034.png&quot; alt=&quot;img034&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;xnor-gate&quot;&gt;XNOR gate&lt;/h2&gt;
+
+&lt;p&gt;XOR gate는 XOR gate의 반대값을 출력하는 회로입니다. 즉, 두 입력선의 값이 서로 같은 경우에만 참을 출력합니다.
+논리식은 $ \overline {A \oplus B} $ 또는 $ A⊙B $로 나타내며, $ \bar A \cdot \bar B + A \cdot B $와 같습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;진리표-6&quot;&gt;진리표&lt;/h6&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar A \cdot \bar B $&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;$ A \cdot B $&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A XNOR B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;위 논리식을 토대로 회로를 구성하면 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img035.png&quot; alt=&quot;img035&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;기호는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img036.png&quot; alt=&quot;img036&quot; /&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="etc" />
+      
+
+      
+        <summary type="html">지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
       <title type="html">데이터의 표현</title>
-      <link href="https://huimang2.github.io/etc/computer-logical" rel="alternate" type="text/html" title="데이터의 표현" />
+      <link href="https://huimang2.github.io/etc/computer-binary" rel="alternate" type="text/html" title="데이터의 표현" />
       <published>2023-04-23T01:00:00+09:00</published>
       <updated>2023-04-23T01:00:00+09:00</updated>
-      <id>https://huimang2.github.io/etc/computer-logical</id>
-      <content type="html" xml:base="https://huimang2.github.io/etc/computer-logical">&lt;p&gt;지난번 글에서는 CPU의 작동원리에 대하여 알아보았습니다. MOSFET에 전압을 주거나 주지 않는 것으로 전류 흐름을 제어했습니다. 이번 글에서는 컴퓨터가 데이터를 인식하는 원리를 알아보도록 하겠습니다.&lt;/p&gt;
+      <id>https://huimang2.github.io/etc/computer-binary</id>
+      <content type="html" xml:base="https://huimang2.github.io/etc/computer-binary">&lt;p&gt;지난번 글에서는 CPU의 작동원리에 대하여 알아보았습니다. MOSFET에 전압을 주거나 주지 않는 것으로 전류 흐름을 제어했습니다. 이번 글에서는 컴퓨터가 데이터를 인식하는 원리를 알아보도록 하겠습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;정보의-단위&quot;&gt;정보의 단위&lt;/h1&gt;
 
