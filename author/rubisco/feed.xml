@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-04-26T23:13:41+09:00</updated>
+  <updated>2023-04-29T21:38:48+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -370,7 +370,202 @@
 
 &lt;p&gt;기호는 다음과 같습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img036.png&quot; alt=&quot;img036&quot; /&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img036.png&quot; alt=&quot;img036&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;조합회로combinational-circuit&quot;&gt;조합회로(Combinational Circuit)&lt;/h1&gt;
+
+&lt;p&gt;조합회로는 출력값이 입력값에만 영향을 받는 논리회로입니다. 논리회로에 입력이 주어지면 바로 출력이 나오며, 이전의 회로 상태가 출력에 영향을 미치지 않습니다. 즉, 메모리 소자를 가지지 않습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;가산기adder&quot;&gt;가산기(Adder)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가산기(Adder)&lt;/code&gt;는 입력들의 합을 출력하는 논리회로입니다. 가산기에는 2개의 입력을 더하는 반가산기(Half Adder, HA)와, 3개의 입력을 더하는 전가산기(Full Adder, FA)가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;1. 반가산기(Half Adder, HA)&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;반가산기(HA)&lt;/code&gt;는 2진수 한 자리를 덧셈하여 캐리(Carry)와 덧셈의 결과를 출력합니다. 반가산기의 진리표는 아래와 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;캐리(C)&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;덧셈(S)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;진리표를 보면, 올림수인 캐리는 AND gate, 덧셈의 결과는 XOR gate와 동일함을 알 수 있습니다. 회로는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img037.png&quot; alt=&quot;img037&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;반가산기의 경우 캐리에 대한 입력을 받지 않기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;최하위 비트(Least Significant Bit, LSB)&lt;/code&gt;에서만 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;2. 전가산기(Full Adder, FA)&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;전가산기(FA)&lt;/code&gt;는 반가산기에 캐리를 추가한 3개의 입력을 더하여 캐리와 덧셈의 결과를 출력하는 회로입니다. 전가산기의 진리표는 아래와 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;C&lt;sub&gt;in&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;C&lt;sub&gt;out&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;S&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;진리표만으로는 회로를 설계하기 어렵습니다. 논리식을 설계하기위해 카르노맵을 그려보겠습니다. 카르노맵에 대한 설명은 이 글에서 생략합니다.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img038.png&quot; alt=&quot;img038&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;카르노맵을 통해 다음과 같은 논리식을 설계할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;$$
+\begin{aligned}
+C_{out}
+&amp;amp;= \bar A \cdot B \cdot C_{in} + A \cdot \bar B \cdot C_{in} + A \cdot B \cdot \bar C_{in} + A \cdot B \cdot C_{in} \\
+&amp;amp;= (\bar A \cdot B + A \cdot \bar B) \cdot C_{in} + A \cdot B \cdot (\bar C_{in} + C_{in}) \\
+&amp;amp;= (A \oplus B) \cdot C_{in} + A \cdot B \\
+\\
+S &amp;amp;= \bar A \cdot B \cdot \bar C_{in} + A \cdot \bar B \cdot \bar C_{in} + \bar A \cdot \bar B \cdot C_{in} + A \cdot B \cdot C_{in} \\
+&amp;amp;= (\bar A \cdot B + A \cdot \bar B) \cdot \bar C_{in} + (\bar A \cdot \bar B + A \cdot B) \cdot C_{in} \\
+&amp;amp;= A \oplus B \cdot \bar C_{in} + A \odot B \cdot C_{in} \\
+&amp;amp;= A \oplus B \cdot \bar C_{in} + \overline{A \oplus B} \cdot C_{in} \\
+&amp;amp;= A \oplus B \oplus C_{in}
+\end{aligned}
+$$&lt;/p&gt;
+
+&lt;p&gt;해당 논리식을 토대로 회로를 그리면 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img039.png&quot; alt=&quot;img039&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2개의 반가산기와 OR gate로 구성되어 있음을 알 수 있습니다. 간략화하면 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img040.png&quot; alt=&quot;img040&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;전가산기 n개를 병렬로 연결한다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;리플 캐리 가산기(Ripple Cary Adder)&lt;/code&gt;라는 n비트 가산기를 만들 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img041.png&quot; alt=&quot;img041&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;가산기의 B 입력을 부호 플래그와 XOR하여 사용한다면 덧셈과 뺄셈이 모두 가능한 회로가 됩니다. 이것은 2의 보수법을 이용한 것입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img042.png&quot; alt=&quot;img042&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;3. 캐리 예측 가산기(Carry Look-ahead Adder, CLA)&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;리플 캐리 가산기는 전가산기를 통해 간단하게 설계할 수 있지만, 비트수가 늘어날수록 연산속도가 느려진다는 문제가 있습니다. 왜냐하면 캐리를 입력으로 받기 때문에 상위 비트는 하위 비트가 계산될 때까지 연산을 하지 못하고 대기해야 하기 때문입니다. 이것을 해결하기 위해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;캐리 예측 가산기(CLA)&lt;/code&gt;를 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;캐리 예측 가산기는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;부분 전가산기(Partial Full Adder, PFA)&lt;/code&gt;로부터 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;생성(Generation)&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;전파(Propagation)&lt;/code&gt; 함수를 입력받아 이전 비트의 계산결과를 기다릴 필요 없이 연산을 한번에 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;부분 전가산기(PFA)&lt;/code&gt;는 전가산기(FA)에서 캐리 생성과 관련된 회로를 제외한 회로입니다. 캐리는 PFA에서 2개의 출력선에 의해 결정됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img043.png&quot; alt=&quot;img043&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;생성(G) 함수&lt;/strong&gt;는 이전 비트의 결과값에 상관없이 캐리의 생성여부를 결정합니다. 부분 전가산기의 AND gate에 의해 출력된 값이 이에 해당합니다.&lt;/p&gt;
+
+&lt;p&gt;$ G(A, B) = A \cdot B $&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;전파(P) 함수&lt;/strong&gt;는 이전 비트의 결과값에 따른 캐리의 생성여부를 출력합니다. 부분 전가산기의 XOR gate에 의해 출력된 값이 이에 해당합니다.&lt;/p&gt;
+
+&lt;p&gt;$ P(A, B) = A \oplus B $&lt;/p&gt;
+
+&lt;p&gt;G와 P를 통해 S와 C를 구하는 논리식을 다음과 같이 세울 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;$$
+S_{i} = P_{i} \oplus C_{i} \\
+C_{i+1} = G_{i} + P_{i} \cdot C_{i}
+$$&lt;/p&gt;
+
+&lt;p&gt;부분 전가산기 4개로 4비트 전가산기를 구성한다면 4개의 캐리에 대한 회로를 구성해야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img044.png&quot; alt=&quot;img044&quot; /&gt;&lt;/p&gt;</content>
 
       
       

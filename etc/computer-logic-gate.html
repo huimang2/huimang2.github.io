@@ -120,16 +120,18 @@
     
         <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        TeX: {
-          equationNumbers: {
-            autoNumber: "AMS"
-          }
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
         },
-        tex2jax: {
+        extensions: ["color.js"]
+      },
+      tex2jax: {
         inlineMath: [ ['$', '$'] ],
         displayMath: [ ['$$', '$$'] ],
         processEscapes: true,
-      }
+      },
+      displayAlign: "left"
     });
     MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
           alert("Math Processing Error: "+message[1]);
@@ -222,7 +224,7 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#논리회로logic-gate"><span>논리회로(Logic Gate)</span></a><ul><li><a href="#not-gate"><span>NOT gate</span></a></li><li><a href="#and-gate"><span>AND gate</span></a></li><li><a href="#or-gate"><span>OR gate</span></a></li><li><a href="#nand-gate"><span>NAND gate</span></a></li><li><a href="#nor-gate"><span>NOR gate</span></a></li><li><a href="#xor-gate"><span>XOR gate</span></a></li><li><a href="#xnor-gate"><span>XNOR gate</span></a></li></ul></li></ul>
+                        <ul><li><a href="#논리회로logic-gate"><span>논리회로(Logic Gate)</span></a><ul><li><a href="#not-gate"><span>NOT gate</span></a></li><li><a href="#and-gate"><span>AND gate</span></a></li><li><a href="#or-gate"><span>OR gate</span></a></li><li><a href="#nand-gate"><span>NAND gate</span></a></li><li><a href="#nor-gate"><span>NOR gate</span></a></li><li><a href="#xor-gate"><span>XOR gate</span></a></li><li><a href="#xnor-gate"><span>XNOR gate</span></a></li></ul></li><li><a href="#조합회로combinational-circuit"><span>조합회로(Combinational Circuit)</span></a><ul><li><a href="#가산기adder"><span>가산기(Adder)</span></a></li></ul></li></ul>
 
                     </div>
                     <p>지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.</p>
@@ -559,6 +561,202 @@ into the {body} of the default.hbs template -->
 <p>기호는 다음과 같습니다.</p>
 
 <p><img src="/assets/images/computer/img036.png" alt="img036" /></p>
+
+<h1 id="조합회로combinational-circuit">조합회로(Combinational Circuit)</h1>
+
+<p>조합회로는 출력값이 입력값에만 영향을 받는 논리회로입니다. 논리회로에 입력이 주어지면 바로 출력이 나오며, 이전의 회로 상태가 출력에 영향을 미치지 않습니다. 즉, 메모리 소자를 가지지 않습니다.</p>
+
+<h2 id="가산기adder">가산기(Adder)</h2>
+
+<p><code class="language-plaintext highlighter-rouge">가산기(Adder)</code>는 입력들의 합을 출력하는 논리회로입니다. 가산기에는 2개의 입력을 더하는 반가산기(Half Adder, HA)와, 3개의 입력을 더하는 전가산기(Full Adder, FA)가 있습니다.</p>
+
+<p><strong><font color="royalblue">1. 반가산기(Half Adder, HA)</font></strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">반가산기(HA)</code>는 2진수 한 자리를 덧셈하여 캐리(Carry)와 덧셈의 결과를 출력합니다. 반가산기의 진리표는 아래와 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">A</th>
+      <th style="text-align: center">B</th>
+      <th style="text-align: center">캐리(C)</th>
+      <th style="text-align: center">덧셈(S)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>진리표를 보면, 올림수인 캐리는 AND gate, 덧셈의 결과는 XOR gate와 동일함을 알 수 있습니다. 회로는 다음과 같습니다.</p>
+
+<p><img src="/assets/images/computer/img037.png" alt="img037" /></p>
+
+<p>반가산기의 경우 캐리에 대한 입력을 받지 않기 때문에 <code class="language-plaintext highlighter-rouge">최하위 비트(Least Significant Bit, LSB)</code>에서만 사용할 수 있습니다.</p>
+
+<p><strong><font color="royalblue">2. 전가산기(Full Adder, FA)</font></strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">전가산기(FA)</code>는 반가산기에 캐리를 추가한 3개의 입력을 더하여 캐리와 덧셈의 결과를 출력하는 회로입니다. 전가산기의 진리표는 아래와 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">A</th>
+      <th style="text-align: center">B</th>
+      <th style="text-align: center">C<sub>in</sub></th>
+      <th style="text-align: center">C<sub>out</sub></th>
+      <th style="text-align: center">S</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>진리표만으로는 회로를 설계하기 어렵습니다. 논리식을 설계하기위해 카르노맵을 그려보겠습니다. 카르노맵에 대한 설명은 이 글에서 생략합니다.</p>
+
+<p align="center"><img src="/assets/images/computer/img038.png" alt="img038" /></p>
+
+<p>카르노맵을 통해 다음과 같은 논리식을 설계할 수 있습니다.</p>
+
+<p>$$
+\begin{aligned}
+C_{out}
+&amp;= \bar A \cdot B \cdot C_{in} + A \cdot \bar B \cdot C_{in} + A \cdot B \cdot \bar C_{in} + A \cdot B \cdot C_{in} \\
+&amp;= (\bar A \cdot B + A \cdot \bar B) \cdot C_{in} + A \cdot B \cdot (\bar C_{in} + C_{in}) \\
+&amp;= (A \oplus B) \cdot C_{in} + A \cdot B \\
+\\
+S &amp;= \bar A \cdot B \cdot \bar C_{in} + A \cdot \bar B \cdot \bar C_{in} + \bar A \cdot \bar B \cdot C_{in} + A \cdot B \cdot C_{in} \\
+&amp;= (\bar A \cdot B + A \cdot \bar B) \cdot \bar C_{in} + (\bar A \cdot \bar B + A \cdot B) \cdot C_{in} \\
+&amp;= A \oplus B \cdot \bar C_{in} + A \odot B \cdot C_{in} \\
+&amp;= A \oplus B \cdot \bar C_{in} + \overline{A \oplus B} \cdot C_{in} \\
+&amp;= A \oplus B \oplus C_{in}
+\end{aligned}
+$$</p>
+
+<p>해당 논리식을 토대로 회로를 그리면 다음과 같습니다.</p>
+
+<p><img src="/assets/images/computer/img039.png" alt="img039" /></p>
+
+<p>2개의 반가산기와 OR gate로 구성되어 있음을 알 수 있습니다. 간략화하면 다음과 같습니다.</p>
+
+<p><img src="/assets/images/computer/img040.png" alt="img040" /></p>
+
+<p>전가산기 n개를 병렬로 연결한다면 <code class="language-plaintext highlighter-rouge">리플 캐리 가산기(Ripple Cary Adder)</code>라는 n비트 가산기를 만들 수 있습니다.</p>
+
+<p><img src="/assets/images/computer/img041.png" alt="img041" /></p>
+
+<p>가산기의 B 입력을 부호 플래그와 XOR하여 사용한다면 덧셈과 뺄셈이 모두 가능한 회로가 됩니다. 이것은 2의 보수법을 이용한 것입니다.</p>
+
+<p><img src="/assets/images/computer/img042.png" alt="img042" /></p>
+
+<p><strong><font color="royalblue">3. 캐리 예측 가산기(Carry Look-ahead Adder, CLA)</font></strong></p>
+
+<p>리플 캐리 가산기는 전가산기를 통해 간단하게 설계할 수 있지만, 비트수가 늘어날수록 연산속도가 느려진다는 문제가 있습니다. 왜냐하면 캐리를 입력으로 받기 때문에 상위 비트는 하위 비트가 계산될 때까지 연산을 하지 못하고 대기해야 하기 때문입니다. 이것을 해결하기 위해서 <code class="language-plaintext highlighter-rouge">캐리 예측 가산기(CLA)</code>를 사용할 수 있습니다.</p>
+
+<p>캐리 예측 가산기는 <code class="language-plaintext highlighter-rouge">부분 전가산기(Partial Full Adder, PFA)</code>로부터 <code class="language-plaintext highlighter-rouge">생성(Generation)</code>과 <code class="language-plaintext highlighter-rouge">전파(Propagation)</code> 함수를 입력받아 이전 비트의 계산결과를 기다릴 필요 없이 연산을 한번에 할 수 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">부분 전가산기(PFA)</code>는 전가산기(FA)에서 캐리 생성과 관련된 회로를 제외한 회로입니다. 캐리는 PFA에서 2개의 출력선에 의해 결정됩니다.</p>
+
+<p><img src="/assets/images/computer/img043.png" alt="img043" /></p>
+
+<p><strong>생성(G) 함수</strong>는 이전 비트의 결과값에 상관없이 캐리의 생성여부를 결정합니다. 부분 전가산기의 AND gate에 의해 출력된 값이 이에 해당합니다.</p>
+
+<p>$ G(A, B) = A \cdot B $</p>
+
+<p><strong>전파(P) 함수</strong>는 이전 비트의 결과값에 따른 캐리의 생성여부를 출력합니다. 부분 전가산기의 XOR gate에 의해 출력된 값이 이에 해당합니다.</p>
+
+<p>$ P(A, B) = A \oplus B $</p>
+
+<p>G와 P를 통해 S와 C를 구하는 논리식을 다음과 같이 세울 수 있습니다.</p>
+
+<p>$$
+S_{i} = P_{i} \oplus C_{i} \\
+C_{i+1} = G_{i} + P_{i} \cdot C_{i}
+$$</p>
+
+<p>부분 전가산기 4개로 4비트 전가산기를 구성한다면 4개의 캐리에 대한 회로를 구성해야 합니다.</p>
+
+<p><img src="/assets/images/computer/img044.png" alt="img044" /></p>
+
 
                 </div>
             </section>
