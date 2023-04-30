@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-04-30T16:52:58+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">논리회로</title><link href="https://huimang2.github.io/etc/computer-logic-gate" rel="alternate" type="text/html" title="논리회로" /><published>2023-04-24T01:00:00+09:00</published><updated>2023-04-24T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-logic-gate</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-logic-gate">&lt;p&gt;지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-04-30T17:06:36+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">논리회로</title><link href="https://huimang2.github.io/etc/computer-logic-gate" rel="alternate" type="text/html" title="논리회로" /><published>2023-04-24T01:00:00+09:00</published><updated>2023-04-24T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-logic-gate</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-logic-gate">&lt;p&gt;지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;논리회로logic-gate&quot;&gt;논리회로(Logic Gate)&lt;/h1&gt;
 
@@ -658,7 +658,7 @@ $$&lt;/p&gt;
 
 &lt;h2 id=&quot;멀티플렉서multiplexer-mux&quot;&gt;멀티플렉서(Multiplexer, MUX)&lt;/h2&gt;
 
-&lt;p&gt;멜티플렉서는 n개의 선택선 입력을 통해 2n개의 데이터 입력 중 하나를 선택하여 출력선으로 연결하는 논리회로입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터 선택기(Data Selector)&lt;/code&gt;라고도 불립니다.&lt;/p&gt;
+&lt;p&gt;멀티플렉서는 n개의 선택선 입력을 통해 2n개의 데이터 입력 중 하나를 선택하여 출력선으로 연결하는 논리회로입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터 선택기(Data Selector)&lt;/code&gt;라고도 불립니다.&lt;/p&gt;
 
 &lt;p&gt;CPU에서 연산을 하기 위해서는 RAM으로부터 데이터를 가져와야합니다. 이때 데이터를 가져오는 가장 간단한 방법은 램과 레지스터를 1:1로 연결하는 것입니다.&lt;/p&gt;
 
