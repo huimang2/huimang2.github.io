@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-04-29T21:38:48+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">논리회로</title><link href="https://huimang2.github.io/etc/computer-logic-gate" rel="alternate" type="text/html" title="논리회로" /><published>2023-04-24T01:00:00+09:00</published><updated>2023-04-24T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-logic-gate</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-logic-gate">&lt;p&gt;지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-04-30T16:52:58+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">논리회로</title><link href="https://huimang2.github.io/etc/computer-logic-gate" rel="alternate" type="text/html" title="논리회로" /><published>2023-04-24T01:00:00+09:00</published><updated>2023-04-24T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-logic-gate</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-logic-gate">&lt;p&gt;지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;논리회로logic-gate&quot;&gt;논리회로(Logic Gate)&lt;/h1&gt;
 
@@ -526,7 +526,159 @@ $$&lt;/p&gt;
 
 &lt;p&gt;부분 전가산기 4개로 4비트 전가산기를 구성한다면 4개의 캐리에 대한 회로를 구성해야 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img044.png&quot; alt=&quot;img044&quot; /&gt;&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="etc" /><summary type="html">지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.</summary></entry><entry><title type="html">데이터의 표현</title><link href="https://huimang2.github.io/etc/computer-binary" rel="alternate" type="text/html" title="데이터의 표현" /><published>2023-04-23T01:00:00+09:00</published><updated>2023-04-23T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-binary</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-binary">&lt;p&gt;지난번 글에서는 CPU의 작동원리에 대하여 알아보았습니다. MOSFET에 전압을 주거나 주지 않는 것으로 전류 흐름을 제어했습니다. 이번 글에서는 컴퓨터가 데이터를 인식하는 원리를 알아보도록 하겠습니다.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img044.png&quot; alt=&quot;img044&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이렇게 구성된 4비트 가산기를 2개 연결하면 8비트 가산기, 4개 연결하면 16비트 가산기를 만들 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img045.png&quot; alt=&quot;img045&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;디코더decoder--인코더encoder&quot;&gt;디코더(Decoder) / 인코더(Encoder)&lt;/h2&gt;
+
+&lt;p&gt;디코더는 입력 변수들의 최소항(minterm)을 생성하는 논리회로입니다. n개의 입력을 통해 2&lt;sup&gt;n&lt;/sup&gt;개의 최소항을 출력합니다.&lt;/p&gt;
+
+&lt;p&gt;최소항은 진리표에서 하나의 행만 1이 되고 나머지는 0이 되는 곱을 말합니다. 예를 들어 2개의 입력을 통해 다음과 같이 4개의 최소항을 생성할 수 있습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;0&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;1&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;2&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;3&lt;/sub&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;해당 진리표를 통해 다음과 같이 회로를 그릴 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img046.png&quot; alt=&quot;img046&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;해당 회로를 활성화 또는 비활성화 시키기위해 다음과 같이 Enable 입력을 연결하면 2X4 디코더가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img047.png&quot; alt=&quot;img047&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;2X4 디코더를 2개 연결한다면 3X8 디코더를 만들 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img048.png&quot; alt=&quot;img048&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;인코더는 디코더의 반대입니다. 2&lt;sup&gt;n&lt;/sup&gt;개의 입력으로 부터 n개의 이진코드를 출력합니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;0&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;1&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;2&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;3&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;인코더는 OR gate를 통해 간단하게 회로를 구성할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img049.png&quot; alt=&quot;img049&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;인코더를 통해 암호화된 출력이 디코더의 입력이 된다면 원래의 입력으로 해독할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img050.png&quot; alt=&quot;img050&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;멀티플렉서multiplexer-mux&quot;&gt;멀티플렉서(Multiplexer, MUX)&lt;/h2&gt;
+
+&lt;p&gt;멜티플렉서는 n개의 선택선 입력을 통해 2n개의 데이터 입력 중 하나를 선택하여 출력선으로 연결하는 논리회로입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터 선택기(Data Selector)&lt;/code&gt;라고도 불립니다.&lt;/p&gt;
+
+&lt;p&gt;CPU에서 연산을 하기 위해서는 RAM으로부터 데이터를 가져와야합니다. 이때 데이터를 가져오는 가장 간단한 방법은 램과 레지스터를 1:1로 연결하는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img051.png&quot; alt=&quot;img051&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;4비트만 연결해도 16개의 출력선이 필요하여 너무 복잡해집니다. 이를 해결하기 위해 멀티플렉서를 사용합니다. 멀티플렉서는 여러 입력 가운데서 하나의 입력을 선택하여 출력합니다.&lt;/p&gt;
+
+&lt;p&gt;n개의 제어 입력을 통해 2&lt;sup&gt;n&lt;/sup&gt;개의 데이터 입력을 제어할 수 있습니다. 아래는 4비트의 입력선을 제어하기 위한 4X1 멀티플렉서 회로입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img052.png&quot; alt=&quot;img052&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;제어 입력선은 디코더와 동일하며, 디코더의 출력선은 데이터 입력선과 AND 연산을 통해 입력선을 선택할 수 있습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;멀티플렉서를 통해 메모리에서 출력된 데이터는 버스(bus)를 통해 CPU의 레지스터로 전달됩니다. 이때 2&lt;sup&gt;n&lt;/sup&gt;개의 출력선 중 하나를 선택하여 전송하는데, 이것은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;디멀티플렉서(Demultiplexer, DMUX)&lt;/code&gt;에 의해 수행됩니다.&lt;/p&gt;
+
+&lt;p&gt;디멀티플렉서의 회로 또한 n개의 제어 입력이 필요하며, 하나의 데이터 입력선과 AND 연산을 통해 출력선을 선택할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img053.png&quot; alt=&quot;img053&quot; /&gt;&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="etc" /><summary type="html">지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.</summary></entry><entry><title type="html">데이터의 표현</title><link href="https://huimang2.github.io/etc/computer-binary" rel="alternate" type="text/html" title="데이터의 표현" /><published>2023-04-23T01:00:00+09:00</published><updated>2023-04-23T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-binary</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-binary">&lt;p&gt;지난번 글에서는 CPU의 작동원리에 대하여 알아보았습니다. MOSFET에 전압을 주거나 주지 않는 것으로 전류 흐름을 제어했습니다. 이번 글에서는 컴퓨터가 데이터를 인식하는 원리를 알아보도록 하겠습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;정보의-단위&quot;&gt;정보의 단위&lt;/h1&gt;
 
