@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/etc/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-04-30T17:06:36+09:00</updated>
+  <updated>2023-05-15T04:18:21+09:00</updated>
   <id>https://huimang2.github.io/tag/etc/feed.xml</id>
 
   
@@ -717,7 +717,317 @@ $$&lt;/p&gt;
 
 &lt;p&gt;디멀티플렉서의 회로 또한 n개의 제어 입력이 필요하며, 하나의 데이터 입력선과 AND 연산을 통해 출력선을 선택할 수 있습니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img053.png&quot; alt=&quot;img053&quot; /&gt;&lt;/p&gt;</content>
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img053.png&quot; alt=&quot;img053&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;순차회로sequential-circuit&quot;&gt;순차회로(Sequential Circuit)&lt;/h1&gt;
+
+&lt;p&gt;순차회로는 출력값이 이전 상태와 현재 입력값에 영향을 받는 논리회로입니다. 즉, 조합회로에 기억 기능이 추가된 회로입니다.&lt;/p&gt;
+
+&lt;p&gt;순차회로는 클럭 신호에 의해 상태가 변하는 동기회로와 그렇지 않은 비동기회로로 나눌 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;순차회로가 1비트의 정보를 기억하는 방법은 피드백(Feedback) 경로라 불리는 폐루프를 형성하는 것입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img054.png&quot; alt=&quot;img054&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 회로와 같이 피드백을 통해 NOT 게이트 사이에 비트 정보를 저장할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;래치latch&quot;&gt;래치(Latch)&lt;/h2&gt;
+
+&lt;p&gt;래치는 클럭 입력을 가지지 않는 비동기회로입니다. 래치는 SR래치와 D래치가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;1. S-R 래치&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;SR래치에서 S는 Set을 의미하며 1을 출력하고, R은 Reset을 의미하며 0을 출력합니다. 각각의 출력 Q와 Q’은 다시 입력으로 들어가서 피드백을 형성합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img055.png&quot; alt=&quot;img055&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;진리표는 다음과 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;S&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;R&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Q&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;유지&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;reset&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;set&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;제한&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;$ R = 1, S = 0 $ 이면 $ Q = 0$ 이 출력되며, 출력된 Q는 S가 연결된 NOR 게이트로 피드백됩니다. $ S = 0 $ 이므로 $ \bar Q = 1 $ 이 출력되며, 출력된 $ \bar Q $ 는 R이 연결된 NOR 게이트로 피드백 됩니다. R이 연결된 NOR 게이트의 입력은 1, 1이 되므로 $ Q = 0 $ 이 되어 Reset 상태가 됩니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ Q = 0, \bar Q = 1 $&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;반면 $ R = 0, S = 1 $ 이면 $ \bar Q = 0 $ 이 출력되며, 출력된 $ \bar Q $ 는 R이 연결된 NOR 게이트로 피드백됩니다. $ R = 0 $ 이므로 $ Q = 1 $ 이 출력되며, 출력된 Q는 S가 연결된 NOR 게이트로 피드백됩니다. NOR 게이트의 입력은 1, 1이 되므로 $ \bar Q = 0 $ 이 되어 Set 상태가 됩니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;$ Q = 1, \bar Q = 0 $&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;$ R = 0, S = 0 $ 이면 $ Q = Q, \bar Q = \bar Q $ 가 되어 상태가 유지되며, $ R = 1, S = 1 $ 이면 Q와 $ \bar Q $ 가 0, 1 로 진동하게 되므로 입력이 제한됩니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;NAND 게이트를 사용하여 SR 래치를 만들 수도 있습니다. 이 경우 입력이 반전됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img056.png&quot; alt=&quot;img056&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;진리표는 다음과 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;S&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;R&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;제한&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;set&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;reset&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Q&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;유지&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;$ R = 0, S = 1 $ 이면 $ Q = 0, \bar Q = 1 $ 이 되어 reset 상태가 되며, $ R = 1, S = 0 $ 이면 $ Q = 1, \bar Q = 0 $ 이 되어 set 상태가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;또한 $ R = 0, S = 0 $ 이면 Q와 $ \bar Q $ 가 0, 1 로 진동하므로 입력이 제한되며, $ R = 1, S = 1 $ 이면 $ Q = Q, \bar Q = \bar Q $ 가 되어 상태가 유지됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;2. 게이트형 S-R 래치&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;게이트형 SR 래치는 Enable 이라 불리는 게이트 신호를 통해 출력을 결정하는 기억회로입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img057.png&quot; alt=&quot;img057&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;E 신호가 HIGH인 경우 래치의 입력이 출력에 반영되고, E 신호가 LOW인 경우 래치의 입력은 출력에 반영되지 않고 상태를 유지합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;3. D 래치&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;D 래치는 하나의 입력을 통해 출력 Q를 결정하는 회로입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img058.png&quot; alt=&quot;img058&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;S = 0, R = 0 인 입력과 S = 1, R = 1 인 입력을 배제하여 입력과 출력이 동일한 회로를 만들 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;진리표는 다음과 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;reset&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;set&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;플립플롭flip-flop&quot;&gt;플립플롭(Flip-Flop)&lt;/h2&gt;
+
+&lt;p&gt;플립플롭은 클럭 입력을 가지는 동기회로입니다.&lt;/p&gt;
+
+&lt;p&gt;엄밀하게 말하자면 래치 또한 클럭신호를 가질 수 있습니다. 하지만 CLOCK 신호가 HIGH인 동안 동작하는 래치와 달리 플립플롭의 경우 CLOCK 신호가 HIGH가 되는 순간에만 동작합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;래치의-경우&quot;&gt;래치의 경우&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img059.png&quot; alt=&quot;img059&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;래치는 위와 같이 CLOCK이 HIGH이면 INPUT을 출력하고 CLOCK이 LOW이면 상태를 유지합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;플립플롭의-경우&quot;&gt;플립플롭의 경우&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img060.png&quot; alt=&quot;img060&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;플립플롭의 경우 CLOCK이 HIGH가 되는 순간에만 INPUT을 출력하고 상태를 유지합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;1. S-R 플립플롭&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;S-R 플립플롭은 다음과 같이 게이트형 S-R 래치 2개로 구성할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img061.png&quot; alt=&quot;img061&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;앞에 있는 래치를 마스터, 뒤에 있는 래치를 슬레이브라고 하기때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;마스터-슬레이브 플립플롭&lt;/code&gt;이라고도 합니다.&lt;/p&gt;
+
+&lt;p&gt;아래 타이밍을 살펴보면 CLOCK이 HIGH인 순간에만 Q&lt;sub&gt;1&lt;/sub&gt;의 상태가 Q&lt;sub&gt;2&lt;/sub&gt;에 반영되고 &lt;sub&gt;2&lt;/sub&gt;의 상태가 유지되는 것을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img062.png&quot; alt=&quot;img062&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;2. D 플립플롭&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;D 플립플롭은 다음과 같이 D 래치 2개로 구성할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img063.png&quot; alt=&quot;img063&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;3. J-K 플립플롭&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;JK 플립플롭은 S = 1, R = 1 입력이 제한되는 문제를 보완하기 위한 회로입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img064.png&quot; alt=&quot;img064&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위와 같은 회로를 JK 래치라고 하며, J = 1, K = 1이 입력되면 $ Q = \bar Q $ 로 토글됩니다. 물론 하나의 JK 래치로는 반복적으로 토글되므로 2개의 JK 래치를 통해 플립플롭으로 구성한다면 CLOCK이 HIGH가 되는 순간에만 토글이 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img065.png&quot; alt=&quot;img065&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;진리표는 다음과 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;J&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;K&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Q&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;유지&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;reset&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;set&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Q&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;토글&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;4. T 플립플롭&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;T 플립플롭은 JK 플립플롭에서 D 플립플롯처럼 입력을 하나만 주는 회로입니다. T가 0이면 이전값을 유지하고, T가 1이면 출력값이 토글 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img066.png&quot; alt=&quot;img066&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;진리표는 다음과 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;T&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;sub&gt;1&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;sub&gt;2&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;유지&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;유지&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;토글&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;토글&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content>
 
       
       
