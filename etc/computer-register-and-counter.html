@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Base Meta -->
+    <!-- dynamically fixing the title for tag/author pages -->
+
+
+
+    <title>레지스터와 카운터</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.edited.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- 웹 폰트 설정 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/nanumgothic.css">
+
+    <!-- custom.css -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/custom.css" />
+    
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- syntax.css -->
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!--[if IE]>
+        <style>
+            p, ol, ul{
+                width: 100%;
+            }
+            blockquote{
+                width: 100%;
+            }
+        </style>
+    <![endif]-->
+    
+    <!-- This tag outputs SEO meta+structured data and other important settings -->
+    <meta name="description" content="프로그래밍 노트" />
+    <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
+    <link rel="canonical" href="https://huimang2.github.io/etc/computer-register-and-counter" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+
+     <!--title below is coming from _includes/dynamic_title-->
+    <meta property="og:site_name" content="Rubisco's Programming Note" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="레지스터와 카운터" />
+    <meta property="og:description" content="레지스터(Register) 레지스터는 여러 비트를 저장하는 기억 소자입니다. 일반적으로 D 플립플롭으로 구성되어 있으며, 하나의 플립플롭은 1비트를 구성합니다. 즉, 8개의 플립플롭은 8비트, 16개의 플립플롭은 16비트 레지스터가 됩니다. 레지스터는 주로 CPU 내부에서 연산결과를 중간저장하거나 데이터를 선택할 때 사용합니다. 로드(Load) 신호 로드 신호는 레지스터를 동작시키는 신호입니다. 레지스터에 저장된 데이터를 입력값으로 변경시키는 역할을 합니다. ClrN" />
+    <meta property="og:url" content="https://huimang2.github.io/etc/computer-register-and-counter" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/computer-logo.png" />
+    <meta property="article:publisher" content="https://www.facebook.com/" />
+    <meta property="article:author" content="https://www.facebook.com/" />
+    <meta property="article:published_time" content="2023-05-19T01:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-05-19T01:00:00+09:00" />
+    <meta property="article:tag" content="Etc" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="레지스터와 카운터" />
+    <meta name="twitter:description" content="레지스터(Register) 레지스터는 여러 비트를 저장하는 기억 소자입니다. 일반적으로 D 플립플롭으로 구성되어 있으며, 하나의 플립플롭은 1비트를 구성합니다. 즉, 8개의 플립플롭은 8비트, 16개의 플립플롭은 16비트 레지스터가 됩니다. 레지스터는 주로 CPU 내부에서 연산결과를 중간저장하거나 데이터를 선택할 때 사용합니다. 로드(Load) 신호 로드 신호는 레지스터를 동작시키는 신호입니다. 레지스터에 저장된 데이터를 입력값으로 변경시키는 역할을 합니다. ClrN" />
+    <meta name="twitter:url" content="https://huimang2.github.io/" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/computer-logo.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Rubisco's Programming Note" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Etc" />
+    <meta name="twitter:site" content="@" />
+    <meta name="twitter:creator" content="@" />
+    <meta property="og:image:width" content="1400" />
+    <meta property="og:image:height" content="933" />
+
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Website",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Rubisco's Programming Note",
+        "logo": "https://huimang2.github.io/"
+    },
+    "url": "https://huimang2.github.io/etc/computer-register-and-counter",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://huimang2.github.io/assets/images/computer-logo.png",
+        "width": 2000,
+        "height": 666
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://huimang2.github.io/etc/computer-register-and-counter"
+    },
+    "description": "레지스터(Register) 레지스터는 여러 비트를 저장하는 기억 소자입니다. 일반적으로 D 플립플롭으로 구성되어 있으며, 하나의 플립플롭은 1비트를 구성합니다. 즉, 8개의 플립플롭은 8비트, 16개의 플립플롭은 16비트 레지스터가 됩니다. 레지스터는 주로 CPU 내부에서 연산결과를 중간저장하거나 데이터를 선택할 때 사용합니다. 로드(Load) 신호 로드 신호는 레지스터를 동작시키는 신호입니다. 레지스터에 저장된 데이터를 입력값으로 변경시키는 역할을 합니다. ClrN"
+}
+    </script>
+
+    <!-- <script type="text/javascript" src="https://demo.ghost.io/public/ghost-sdk.min.js?v=724281a32e"></script>
+    <script type="text/javascript">
+    ghost.init({
+    	clientId: "ghost-frontend",
+    	clientSecret: "f84a07a72b17"
+    });
+    </script> -->
+
+    <meta name="generator" content="Jekyll 3.6.2" />
+    <link rel="alternate" type="application/rss+xml" title="레지스터와 카운터" href="/feed.xml" />
+
+
+    <!-- MathJax -->
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        },
+        extensions: ["color.js"]
+      },
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      },
+      displayAlign: "left"
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+
+</head>
+<body class="post-template">
+
+    <div class="site-wrapper">
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template -->
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+        
+            
+                <a class="site-nav-logo" href="https://huimang2.github.io/">Rubisco's Programming Note</a>
+            
+        
+        
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
+    <li class="nav-java" role="menuitem"><a href="/tag/java/">JAVA</a></li>
+    <li class="nav-typescript" role="menuitem"><a href="/tag/typescript/">Typescript</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/python/">Python</a></li>
+    <li class="nav-python" role="menuitem"><a href="/tag/algorithm/">Algorithm</a></li>
+    <li class="nav-python" role="menuitem"><a href="/archive.html">All Posts</a></li>
+    <li class="nav-python" role="menuitem"><a href="/author_archive.html">Tag별 Posts</a></li>
+</ul>
+
+        
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+            
+            
+        </div>
+        
+            <a class="subscribe-button" href="#subscribe">Search</a>
+        
+    </div>
+</nav>
+
+    </div>
+</header>
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full  tag-etc post ">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="19 May 2023">19 May 2023</time>
+                    
+                        <span class="date-divider">/</span>
+                        
+                            
+                                
+                                <a href='/tag/etc/'>#기타</a>
+                                
+                            
+                        
+                    
+                </section>
+                <h1 class="post-full-title">레지스터와 카운터</h1>
+            </header>
+
+            <!-- 
+            <figure class="post-full-image" style="background-image: url(/assets/images/computer-logo.png)">
+            </figure>
+             -->
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown">
+                    <div id="toc">
+                        <ul><li><a href="#레지스터register"><span>레지스터(Register)</span></a><ul><li><a href="#로드load-신호"><span>로드(Load) 신호</span></a></li><li><a href="#쉬프트-레지스터shift-register"><span>쉬프트 레지스터(Shift Register)</span></a></li></ul></li><li><a href="#카운터counter"><span>카운터(Counter)</span></a><ul><li><a href="#비동기식-카운터"><span>비동기식 카운터</span></a></li><li><a href="#동기식-카운터"><span>동기식 카운터</span></a></li><li><a href="#링-카운터"><span>링 카운터</span></a></li></ul></li></ul>
+
+                    </div>
+                    <h1 id="레지스터register">레지스터(Register)</h1>
+
+<p>레지스터는 여러 비트를 저장하는 기억 소자입니다. 일반적으로 D 플립플롭으로 구성되어 있으며, 하나의 플립플롭은 1비트를 구성합니다. 즉, 8개의 플립플롭은 8비트, 16개의 플립플롭은 16비트 레지스터가 됩니다.</p>
+
+<p>레지스터는 주로 CPU 내부에서 연산결과를 중간저장하거나 데이터를 선택할 때 사용합니다.</p>
+
+<h2 id="로드load-신호">로드(Load) 신호</h2>
+
+<p>로드 신호는 레지스터를 동작시키는 신호입니다. 레지스터에 저장된 데이터를 입력값으로 변경시키는 역할을 합니다.</p>
+
+<p><img src="/assets/images/computer/img067.png" alt="img067" /></p>
+
+<p>ClrN 신호는 비동기 카운터로 우선은 무시하시면 됩니다.</p>
+
+<p>로드(Load)는 클럭(Clk)과 AND 게이트로 연결하여 로드가 1일때 클럭 신호에 따라 레지스터 값을 변경할 수 있습니다. 그러나 클럭 신호가 다른 신호와 묶이는 경우 타이밍 문제가 발생할 수 있습니다.</p>
+
+<p>이러한 문제를 해결하기 위해서 다음과 같이 레지스터의 CE(Clock Enable)에 로드를 연결하여 사용합니다.</p>
+
+<p><img src="/assets/images/computer/img068.png" alt="img068" /></p>
+
+<p>로드가 0인 경우 클럭 신호와 상관없이 레지스터에 저장된 데이터는 이전 상태를 유지하게 되며, 로드가 1인 경우 클럭 신호에 따라 레지스터의 데이터가 입력값으로 변경됩니다.</p>
+
+<h2 id="쉬프트-레지스터shift-register">쉬프트 레지스터(Shift Register)</h2>
+
+<p>쉬프트 레지스터는 플립플롭에 출력과 입력을 연결하는 방법에 따라 데이터를 왼쪽 또는 오른쪽으로 자리이동하는 레지스터 입니다.</p>
+
+<p>쉬프트 레지스터의 종류는 직렬 쉬프트 레지스터와 병렬 쉬프트 레지스터가 있습니다.</p>
+
+<hr />
+
+<p>직렬 쉬프트 레지스터는 <code class="language-plaintext highlighter-rouge">직렬 입력(Serial in, SI)</code>과 <code class="language-plaintext highlighter-rouge">직렬 출력(Serial out, SO)</code>을 가지는 레지스터로, 데이터가 한 번에 한 비트씩 쉬프트 됩니다.</p>
+
+<p><img src="/assets/images/computer/img069.png" alt="img069" /></p>
+
+<p>Shift 신호는 CE와 연결되며, 신호가 1인 경우 쉬프트 레지스터가 동작하며, 신호가 0인 경우 데이터가 쉬프트 되지 않고 상태를 유지합니다.</p>
+
+<p>예를 들어 초기 레지스터 값이 0101이고 직렬 입력(SI)이 1101인 경우 타이밍도는 다음과 같습니다.</p>
+
+<p><img src="/assets/images/computer/img070.png" alt="img070" /></p>
+
+<p>한 번의 클럭 주기마다 데이터가 쉬프트 됨을 확인 할 수 있습니다. 또한 Q<sub>0</sub>는 직렬 출력(SO)이 되는데, 4번의 클럭 주기동안 SO는 초기 레지스터 값인 0101이 출력됨을 확인할 수 있습니다.</p>
+
+<hr />
+
+<p>병렬 쉬프트 레지스터는 <code class="language-plaintext highlighter-rouge">병렬 입력(Parallel in, PI)</code>과 <code class="language-plaintext highlighter-rouge">병렬 출력(Parallel out, PO)</code>을 가지는 레지스터 이며, 다음과 같이 플립플롭과 멀티플렉서(MUX)를 통해 만들 수 있습니다.</p>
+
+<p><img src="/assets/images/computer/img071.png" alt="img071" /></p>
+
+<p>직렬 쉬프트 레지스터와 달리 한 클럭에 모든 데이터가 동시에 로드되고 동시에 출력됩니다. 이때 쉬프트 신호와 로드 신호가 멀티플렉서의 제어신호가 됩니다.</p>
+
+<p>쉬프트 신호가 1인 경우 로드 신호에 상관없이 데이터가 쉬프트되며, 쉬프트 신호가 0, 로드 신호가 1이면 레지스터에 데이터가 저장됩니다. 두 신호가 모두 0인 경우에는 레지스터 상태가 유지됩니다.</p>
+
+<p>위에 그림과 같이 Q<sub>0</sub>는 직렬 출력(SO)이 되므로 병렬 데이터를 직렬 데이터로 변환하기 위해 해당 레지스터를 사용할 수도 있습니다.</p>
+
+<h1 id="카운터counter">카운터(Counter)</h1>
+
+<p>카운터는 고정된 순환 회로를 통해 클럭 펄스의 갯수를 처리하기 위한 논리회로입니다.</p>
+
+<p>대표적으로 2진수 값이 1씩 증가하는 2진 카운터가 있으며, n비트의 레지스터를 통해 2<sup>n</sup>-1 까지 카운트할 수 있습니다. 예를 들어 3비트의 레지스터를 통해서는 0 ~ 7까지 카운트 할 수 있으며 다음과 같이 순환합니다.</p>
+
+<p><img src="/assets/images/computer/img072.png" alt="img072" /></p>
+
+<p>카운터에는 동기식 카운터와 비동기식 카운터가 있습니다.</p>
+
+<h2 id="비동기식-카운터">비동기식 카운터</h2>
+
+<p>리플 카운터라고도 불리는 비동기식 카운터는 이전 플립플롭의 출력이 다음 플립플롭의 클럭으로 사용되는 카운터 입니다.</p>
+
+<p>보통 J-K 플립플롭 또는 T 플립플롭으로 설계되며, 숫자가 증가하는 상향 카운터(Up Counter)와 숫자가 감소하는 하향 카운터(Down Counter)가 있습니다.</p>
+
+<p><img src="/assets/images/computer/img074.png" alt="img074" /></p>
+
+<p>해당 카운터는 카운트가 1씩 증가하는 상향 카운터이며, 다음과 같은 타이밍도로 나타낼 수 있습니다.</p>
+
+<p><img src="/assets/images/computer/img073.png" alt="img073" /></p>
+
+<p>Enable이 1인 경우 진리표는 다음과 같습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Clock 주기</th>
+      <th style="text-align: center">Q<sub>2</sub></th>
+      <th style="text-align: center">Q<sub>1</sub></th>
+      <th style="text-align: center">Q<sub>2</sub></th>
+      <th style="text-align: center">10진수</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">3</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">5</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">6</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">7</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">8</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">7</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>하향 카운터의 경우 Q’ 출력을 클럭으로 사용하며, 카운트가 1씩 감소합니다.</p>
+
+<p><img src="/assets/images/computer/img075.png" alt="img075" /></p>
+
+<p>멀티플렉서를 통해 상하향 카운터를 만들 수도 있습니다.</p>
+
+<p><img src="/assets/images/computer/img076.png" alt="img076" /></p>
+
+<p>비동기식 카운터는 동기식 카운터에 비해 회로는 간단하지만 전달지연이 커진다는 단점이 있습니다.</p>
+
+<h2 id="동기식-카운터">동기식 카운터</h2>
+
+<p>동기식 카운터는 비동기식 카운터의 전달지연을 보완하기 위해 플립플롭에 공통의 클럭신호를 사용하는 카운터입니다.</p>
+
+<p><img src="/assets/images/computer/img077.png" alt="img077" /></p>
+
+<p>모든 플립플롭은 동일한 클럭신호를 받으며, 이전 플립플롭의 출력이 1인 경우에만 다음 플립플롭이 토글됩니다.</p>
+
+<h2 id="링-카운터">링 카운터</h2>
+
+<p>링 카운터는 마지막 플립플롭의 출력이 첫 번째 플립플롭의 입력으로 피드백되는 링 형태로 구성된 카운터를 말합니다.</p>
+
+<p><img src="/assets/images/computer/img078.png" alt="img078" /></p>
+
+<p>링카운터는 모든 플립플롭이 0이라면 000만 출력되기 때문에 최소한 1비트는 1로 프리셋할 필요가 있습니다.</p>
+
+                </div>
+            </section>
+
+            <!-- Email subscribe form at the bottom of the page -->
+            <!-- 
+                <section class="subscribe-form">
+                    <h3 class="subscribe-form-title">Subscribe to Rubisco's Programming Note</h3>
+                    <p>Get the latest posts delivered right to your inbox</p>
+                    <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+                </section>
+             -->
+
+            <footer class="post-full-footer">
+                <!-- Everything inside the #author tags pulls data from the author -->
+                <!-- #author-->
+                
+                    
+                
+                <!-- /author  -->
+            </footer>
+
+            <!-- utterances -->
+            <div id="comment">
+                <script src="https://utteranc.es/client.js"
+                repo="huimang2/huimang2.github.io"
+                issue-term="pathname"
+                theme="github-light"
+                crossorigin="anonymous"
+                async></script>
+            </div>
+        </article>
+
+    </div>
+</main>
+
+<!-- Links to Previous/Next posts -->
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+            
+                
+                
+                
+                
+                    <article class="read-next-card"
+                        
+                            style="background-image: url(/assets/images/M31_starspike.jpg)"
+                        
+                    >
+                        <header class="read-next-card-header">
+                            <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
+                            
+                                <h3 class="read-next-card-header-title"><a href="/tag/etc/">Etc</a></h3>
+                            
+                        </header>
+                        <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                        <div class="read-next-card-content">
+                            <ul>
+                                
+                                
+                                  
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/etc/computer-logic-gate">논리회로</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/etc/computer-binary">데이터의 표현</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/etc/computer-cpu">CPU의 작동 원리</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                                  
+                                
+                            </ul>
+                        </div>
+                        <footer class="read-next-card-footer">
+                            <a href="/tag/etc/">
+                                
+                                    See all 7 posts  →
+                                
+                            </a>
+                        </footer>
+                    </article>
+                
+            
+
+            <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
+            
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
+                
+
+    <article class="post-card post-template">
+        
+            <a class="post-card-image-link" href="/etc/computer-logic-gate">
+                <div class="post-card-image" style="background-image: url(/assets/images/computer-logo.png)"></div>
+            </a>
+        
+        <div class="post-card-content">
+            <a class="post-card-content-link" href="/etc/computer-logic-gate">
+                <header class="post-card-header">
+                    
+                        <div class="post-card-tags-container">
+                            
+                        </div>
+                    
+
+                    <h2 class="post-card-title">논리회로</h2>
+                </header>
+                <!-- <section class="post-card-excerpt">
+                    
+                        <p>지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.
+
+</p>
+                    
+                </section> -->
+            </a>
+            <footer class="post-card-meta">
+                
+                    
+                
+                <span class="reading-time">
+                    
+                    
+                      10 min read
+                    
+                </span>
+            </footer>
+        </div>
+    </article>
+
+            
+
+        </div>
+    </div>
+</aside>
+
+<!-- Floating header which appears on-scroll, included from includes/floating-header.hbs -->
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://huimang2.github.io/">
+            
+            <span>Rubisco's Programming Note</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">레지스터와 카운터</div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EB%A0%88%EC%A7%80%EC%8A%A4%ED%84%B0%EC%99%80+%EC%B9%B4%EC%9A%B4%ED%84%B0&amp;url=etc/computer-register-and-counter"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=etc/computer-register-and-counter"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+        <!-- Previous/next page links - displayed on every page -->
+        
+
+        <!-- The footer at the very bottom of the screen -->
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://huimang2.github.io/">Rubisco's Programming Note</a> &copy; 2023</section>
+                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+                <nav class="site-footer-nav">
+                    <a href="/">Latest Posts</a>
+                    
+                    
+                    <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- The big email subscribe modal content -->
+    
+    <div id="subscribe" class="subscribe-overlay">
+        <a class="subscribe-overlay-close" href="#"></a>
+        <div class="subscribe-overlay-content">
+            
+            <h1 class="subscribe-overlay-title">Search Rubisco's Programming Note</h1>
+            <p class="subscribe-overlay-description">
+            lunr.js를 이용한 posts 검색 </p>
+            <span id="searchform" method="post" action="/subscribe/" class="">
+    <input class="confirm" type="hidden" name="confirm"  />
+    <input class="location" type="hidden" name="location"  />
+    <input class="referrer" type="hidden" name="referrer"  />
+
+    <div class="form-group">
+        <input class="subscribe-email" onkeyup="myFunc()" 
+               id="searchtext" type="text" name="searchtext"  
+               placeholder="Search..." />
+    </div>
+    <script type="text/javascript">
+        function myFunc() {
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent($("#searchtext").val());
+                location.href = "/search.html?query=" + url;
+            }
+        }
+    </script>
+</span>
+        </div>
+    </div>
+
+
+    <!-- highlight.js -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.10.0/components/prism-abap.min.js"></script>
+    <script>$(document).ready(function() {
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    });</script> -->
+
+    <!-- jQuery + Fitvids, which makes all video embeds responsive -->
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
+
+
+    <!-- Paginator increased to "infinit" in _config.yml -->
+    <!-- if paginator.posts  -->
+    <!-- <script>
+        var maxPages = parseInt('');
+    </script>
+    <script src="/assets/js/infinitescroll.js"></script> -->
+    <!-- /endif -->
+
+    
+
+
+    <!-- Add Google Analytics  -->
+    <!-- Google Analytics Tracking code -->
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+
+ </script>
+
+
+    <!-- The #block helper will pull in data from the #contentFor other template files. In this case, there's some JavaScript which we only want to use in post.hbs, but it needs to be included down here, after jQuery has already loaded. -->
+    
+        <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    /* toc ---------------------------------------------------------------------*/
+
+    var tocTitle = document.getElementsByClassName("post-full-title")[0];
+    var tocTitleY = window.pageYOffset + title.getBoundingClientRect().top;
+    
+    var tocArticle = document.getElementsByClassName("post-full-content")[0];
+    var tocArticleY = window.pageYOffset + tocArticle.getBoundingClientRect().top;
+  
+    var toc = document.getElementById("toc");
+    var tocHeaderNodes = getHeaderNodes(tocArticle);
+    var tocNodes = getTOCNodes(toc);
+  
+    var tocBefore = undefined;
+
+    function getTOCNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var tocNodes = nodes.filter(function(elem) {
+            return elem.tagName == "A";
+        });
+        return tocNodes;
+    }
+    
+    function getHeaderNodes(master) {
+        var nodes = Array.prototype.slice.call(master.getElementsByTagName("*"), 0);
+        var headerNodes = nodes.filter(function(elem) {
+            return elem.tagName == "H1" || elem.tagName == "H2" || elem.tagName == "H3" && !elem.classList.contains('no-toc');
+        });
+        return headerNodes;
+    }
+
+    tocNodes.forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    document.querySelector('.post-full-content').querySelectorAll('p a[href^="#"]').forEach(el => {
+        el.addEventListener('click', function(e){
+            e.preventDefault();
+            let id = this.getAttribute('href').slice(1);
+            window.scrollTo(window.scrollX, window.scrollY + document.getElementById(id).getBoundingClientRect().top - 80);
+        });
+    });
+
+    /*--------------------------------------------------------------------------*/
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 30;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+            toc.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+            toc.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+
+        // toc
+        var tocCurrent = tocHeaderNodes.filter(function(header) {
+            var headerY = window.pageYOffset + header.getBoundingClientRect().top;
+            return window.scrollY >= headerY - 90;
+        });
+  
+        if (tocCurrent.length > 0) {
+            tocCurrent = tocCurrent[tocCurrent.length-1];
+  
+            var tocCurrentA = tocNodes.filter(function(tocNode) {
+                return tocNode.getElementsByTagName("span")[0].innerHTML == tocCurrent.innerHTML;
+            })
+            
+            tocCurrentA = tocCurrentA[0];
+
+            if (tocCurrentA) {
+                if (tocBefore == undefined) tocBefore = tocCurrentA;
+    
+                if (tocBefore != tocCurrentA) {
+                    tocBefore.classList.remove("toc-active");
+                    tocBefore = tocCurrentA;
+                }
+    
+                tocCurrentA.classList.add("toc-active");
+            }
+            else {
+                if (tocBefore) 
+                    tocBefore.classList.remove("toc-active");
+            }
+        }
+        else {
+            if (tocBefore) 
+                tocBefore.classList.remove("toc-active");
+        }
+        
+        if(toc && tocArticle.getBoundingClientRect().bottom <= 0) {
+            toc.classList.add('toc-hidden');
+        } else {
+            toc.classList.remove('toc-hidden');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+
+    
+
+    <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
+    <!-- ghost_foot -->
+
+</body>
+</html>

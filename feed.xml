@@ -1,4 +1,176 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-05-15T04:18:21+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">논리회로</title><link href="https://huimang2.github.io/etc/computer-logic-gate" rel="alternate" type="text/html" title="논리회로" /><published>2023-04-24T01:00:00+09:00</published><updated>2023-04-24T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-logic-gate</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-logic-gate">&lt;p&gt;지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-05-28T14:50:54+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">레지스터와 카운터</title><link href="https://huimang2.github.io/etc/computer-register-and-counter" rel="alternate" type="text/html" title="레지스터와 카운터" /><published>2023-05-19T01:00:00+09:00</published><updated>2023-05-19T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-register-and-counter</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-register-and-counter">&lt;h1 id=&quot;레지스터register&quot;&gt;레지스터(Register)&lt;/h1&gt;
+
+&lt;p&gt;레지스터는 여러 비트를 저장하는 기억 소자입니다. 일반적으로 D 플립플롭으로 구성되어 있으며, 하나의 플립플롭은 1비트를 구성합니다. 즉, 8개의 플립플롭은 8비트, 16개의 플립플롭은 16비트 레지스터가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;레지스터는 주로 CPU 내부에서 연산결과를 중간저장하거나 데이터를 선택할 때 사용합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;로드load-신호&quot;&gt;로드(Load) 신호&lt;/h2&gt;
+
+&lt;p&gt;로드 신호는 레지스터를 동작시키는 신호입니다. 레지스터에 저장된 데이터를 입력값으로 변경시키는 역할을 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img067.png&quot; alt=&quot;img067&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ClrN 신호는 비동기 카운터로 우선은 무시하시면 됩니다.&lt;/p&gt;
+
+&lt;p&gt;로드(Load)는 클럭(Clk)과 AND 게이트로 연결하여 로드가 1일때 클럭 신호에 따라 레지스터 값을 변경할 수 있습니다. 그러나 클럭 신호가 다른 신호와 묶이는 경우 타이밍 문제가 발생할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;이러한 문제를 해결하기 위해서 다음과 같이 레지스터의 CE(Clock Enable)에 로드를 연결하여 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img068.png&quot; alt=&quot;img068&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;로드가 0인 경우 클럭 신호와 상관없이 레지스터에 저장된 데이터는 이전 상태를 유지하게 되며, 로드가 1인 경우 클럭 신호에 따라 레지스터의 데이터가 입력값으로 변경됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;쉬프트-레지스터shift-register&quot;&gt;쉬프트 레지스터(Shift Register)&lt;/h2&gt;
+
+&lt;p&gt;쉬프트 레지스터는 플립플롭에 출력과 입력을 연결하는 방법에 따라 데이터를 왼쪽 또는 오른쪽으로 자리이동하는 레지스터 입니다.&lt;/p&gt;
+
+&lt;p&gt;쉬프트 레지스터의 종류는 직렬 쉬프트 레지스터와 병렬 쉬프트 레지스터가 있습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;직렬 쉬프트 레지스터는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;직렬 입력(Serial in, SI)&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;직렬 출력(Serial out, SO)&lt;/code&gt;을 가지는 레지스터로, 데이터가 한 번에 한 비트씩 쉬프트 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img069.png&quot; alt=&quot;img069&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Shift 신호는 CE와 연결되며, 신호가 1인 경우 쉬프트 레지스터가 동작하며, 신호가 0인 경우 데이터가 쉬프트 되지 않고 상태를 유지합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 초기 레지스터 값이 0101이고 직렬 입력(SI)이 1101인 경우 타이밍도는 다음과 같습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img070.png&quot; alt=&quot;img070&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;한 번의 클럭 주기마다 데이터가 쉬프트 됨을 확인 할 수 있습니다. 또한 Q&lt;sub&gt;0&lt;/sub&gt;는 직렬 출력(SO)이 되는데, 4번의 클럭 주기동안 SO는 초기 레지스터 값인 0101이 출력됨을 확인할 수 있습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;병렬 쉬프트 레지스터는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;병렬 입력(Parallel in, PI)&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;병렬 출력(Parallel out, PO)&lt;/code&gt;을 가지는 레지스터 이며, 다음과 같이 플립플롭과 멀티플렉서(MUX)를 통해 만들 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img071.png&quot; alt=&quot;img071&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;직렬 쉬프트 레지스터와 달리 한 클럭에 모든 데이터가 동시에 로드되고 동시에 출력됩니다. 이때 쉬프트 신호와 로드 신호가 멀티플렉서의 제어신호가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;쉬프트 신호가 1인 경우 로드 신호에 상관없이 데이터가 쉬프트되며, 쉬프트 신호가 0, 로드 신호가 1이면 레지스터에 데이터가 저장됩니다. 두 신호가 모두 0인 경우에는 레지스터 상태가 유지됩니다.&lt;/p&gt;
+
+&lt;p&gt;위에 그림과 같이 Q&lt;sub&gt;0&lt;/sub&gt;는 직렬 출력(SO)이 되므로 병렬 데이터를 직렬 데이터로 변환하기 위해 해당 레지스터를 사용할 수도 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;카운터counter&quot;&gt;카운터(Counter)&lt;/h1&gt;
+
+&lt;p&gt;카운터는 고정된 순환 회로를 통해 클럭 펄스의 갯수를 처리하기 위한 논리회로입니다.&lt;/p&gt;
+
+&lt;p&gt;대표적으로 2진수 값이 1씩 증가하는 2진 카운터가 있으며, n비트의 레지스터를 통해 2&lt;sup&gt;n&lt;/sup&gt;-1 까지 카운트할 수 있습니다. 예를 들어 3비트의 레지스터를 통해서는 0 ~ 7까지 카운트 할 수 있으며 다음과 같이 순환합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img072.png&quot; alt=&quot;img072&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;카운터에는 동기식 카운터와 비동기식 카운터가 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;비동기식-카운터&quot;&gt;비동기식 카운터&lt;/h2&gt;
+
+&lt;p&gt;리플 카운터라고도 불리는 비동기식 카운터는 이전 플립플롭의 출력이 다음 플립플롭의 클럭으로 사용되는 카운터 입니다.&lt;/p&gt;
+
+&lt;p&gt;보통 J-K 플립플롭 또는 T 플립플롭으로 설계되며, 숫자가 증가하는 상향 카운터(Up Counter)와 숫자가 감소하는 하향 카운터(Down Counter)가 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img074.png&quot; alt=&quot;img074&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;해당 카운터는 카운트가 1씩 증가하는 상향 카운터이며, 다음과 같은 타이밍도로 나타낼 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img073.png&quot; alt=&quot;img073&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Enable이 1인 경우 진리표는 다음과 같습니다.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Clock 주기&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;sub&gt;2&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;sub&gt;1&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;sub&gt;2&lt;/sub&gt;&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;10진수&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;하향 카운터의 경우 Q’ 출력을 클럭으로 사용하며, 카운트가 1씩 감소합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img075.png&quot; alt=&quot;img075&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;멀티플렉서를 통해 상하향 카운터를 만들 수도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img076.png&quot; alt=&quot;img076&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;비동기식 카운터는 동기식 카운터에 비해 회로는 간단하지만 전달지연이 커진다는 단점이 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;동기식-카운터&quot;&gt;동기식 카운터&lt;/h2&gt;
+
+&lt;p&gt;동기식 카운터는 비동기식 카운터의 전달지연을 보완하기 위해 플립플롭에 공통의 클럭신호를 사용하는 카운터입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img077.png&quot; alt=&quot;img077&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;모든 플립플롭은 동일한 클럭신호를 받으며, 이전 플립플롭의 출력이 1인 경우에만 다음 플립플롭이 토글됩니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;링-카운터&quot;&gt;링 카운터&lt;/h2&gt;
+
+&lt;p&gt;링 카운터는 마지막 플립플롭의 출력이 첫 번째 플립플롭의 입력으로 피드백되는 링 형태로 구성된 카운터를 말합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img078.png&quot; alt=&quot;img078&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;링카운터는 모든 플립플롭이 0이라면 000만 출력되기 때문에 최소한 1비트는 1로 프리셋할 필요가 있습니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="etc" /><summary type="html">레지스터(Register)</summary></entry><entry><title type="html">논리회로</title><link href="https://huimang2.github.io/etc/computer-logic-gate" rel="alternate" type="text/html" title="논리회로" /><published>2023-04-24T01:00:00+09:00</published><updated>2023-04-24T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-logic-gate</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-logic-gate">&lt;p&gt;지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;논리회로logic-gate&quot;&gt;논리회로(Logic Gate)&lt;/h1&gt;
 
@@ -5328,83 +5500,4 @@ $$&lt;/p&gt;
 &lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TOP&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;WITH&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TIES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
   &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PRODUCT&lt;/span&gt;
  &lt;span class=&quot;k&quot;&gt;ORDER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BY&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PRICE&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;DESC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>huimang2</name></author><category term="sql" /><category term="sql" /><summary type="html">WHERE절</summary></entry><entry><title type="html">SQL - 트랜잭션(Transaction)</title><link href="https://huimang2.github.io/sql/transaction" rel="alternate" type="text/html" title="SQL - 트랜잭션(Transaction)" /><published>2023-02-23T01:00:00+09:00</published><updated>2023-02-23T01:00:00+09:00</updated><id>https://huimang2.github.io/sql/transaction</id><content type="html" xml:base="https://huimang2.github.io/sql/transaction">&lt;h1 id=&quot;트랜잭션이란&quot;&gt;트랜잭션이란?&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트랜잭션(Transaction)&lt;/code&gt;은 업무 처리를 위한 데이터베이스의 논리적인 작업 단위입니다. 하나의 트랜잭션은 한 개 이상의 연산으로 이루어질 수 있으며, 연산들은 완전히 처리되거나 하나도 처리되지 않아야 합니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;트랜잭션-제어어transaction-control-language-tcl&quot;&gt;트랜잭션 제어어(Transaction Control Language, TCL)&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트랜잭션 제어어(Transaction Control Language, TCL)&lt;/code&gt;는 트랜잭션을 제어하는 SQL 명령어이며, 여기에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COMMIT&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ROLLBACK&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SAVEPOINT&lt;/code&gt;가 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;commit&quot;&gt;COMMIT&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COMMIT&lt;/code&gt; 명령어는 하나의 트랜잭션을 정상적으로 완료하고 그 결과를 데이터베이스에 반영하는 명령어 입니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;rollback&quot;&gt;ROLLBACK&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ROLLBACK&lt;/code&gt; 명령어는 트랜잭션을 취소하기 위한 명령어 입니다. 데이터베이스가 트랜잭션 도중에 비정상적으로 종료되면 자동으로 ROLLBACK이 됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;savepoint&quot;&gt;SAVEPOINT&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SAVEPOINT&lt;/code&gt; 명령어는 하나의 트랜잭션을 여러 지점으로 분리하여 저장하는 명령어 입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SAVEPOINT 지점명&lt;/code&gt;으로 SAVEPOINT를 설정하고, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ROLLBACK TO 지점명&lt;/code&gt;으로 해당 SAVEPOINT까지 ROLLBACK을 할 수 있습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;트랜잭션의-특성-acid&quot;&gt;트랜잭션의 특성: ACID&lt;/h1&gt;
-
-&lt;p&gt;트랜잭션은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;원자성(Atomicity)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;일관성(Consistency)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;격리성(Isolation)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;영속성(Durability)&lt;/code&gt; 4가지 특성을 가집니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;원자성&lt;/code&gt;은 트랜잭션의 작업이 부분적으로 실행되거나 중단되지 않는 것을 보장하는 성질을 말합니다. 즉, 트랜잭션에서 정의된 연산들은 모두 성공적으로 실행되거나 전혀 실행되지 않아야 한다는 것(All or Nothing)을 의미합니다. 예를 들어 인터넷 뱅킹으로 송금을 한다면 나의 계좌에서 금액이 차감되고 상대방의 계좌에서는 금액이 증가합니다. 두 연산은 모두 수행되어야하며, 중간에 오류가 발생한다면 ROLLBACK되어 모든 연산이 수행되지 않은 상태로 돌아가게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;일관성&lt;/code&gt;은 트랜잭션이 실행되기 전과 후의 데이터베이스 상태가 일관되어야 한다는 성질을 말합니다. 예를 들어 송금을 하기 위해서는 수신자와 발신자의 데이터가 모두 입력되어야 하는 제약사항을 가지는데, 수신자의 계좌번호를 입력하지 않는다면 데이터베이스의 일관성이 변하게 되므로 트랜잭션이 수행되지 않습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;격리성&lt;/code&gt;은 모든 트랜잭션은 다른 트랜잭션으로부터 독립된다는 성질을 말합니다. 예를 들어 내 계좌에 10,000원이 있고 두 사람에게 동시에 6,000원씩 이체한다면 한꺼번에 12,000원이 송금되는 것이 아니라 첫번재 사람에게 먼저 송금 트랜잭션이 수행되고 순차적으로 2번째 사람에게 송금 트랜잭션이 수행됩니다. 이때 계좌의 금액은 0원 이상이 되어야 한다는 일관성이 유지되어야 하므로 2번째 송금은 수행되지 않습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;영속성&lt;/code&gt;은 트랜잭션이 성공적으로 수행될 경우 그 결과는 영구적으로 데이터베이스에 저장되는 성질을 말합니다. 송금 트랜잭션이 성공적으로 수행되었다면 송금 시스템이 재부팅 되더라도 송금 결과는 변하지 않아야 합니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;트랜잭션의-격리성-수준&quot;&gt;트랜잭션의 격리성 수준&lt;/h1&gt;
-
-&lt;p&gt;트랜잭션의 격리성을 보장하기 위해서는 동시에 처리되는 트랜잭션을 차례대로 실행해야 하지만, 이 경우 처리 성능이 나빠질 수 있습니다. 이러한 문제로 인하여 ANSI/ISO SQL 표준에서는 격리 수준을 4가지로 정의합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;0단계-redad-uncommitted&quot;&gt;0단계: REDAD-UNCOMMITTED&lt;/h2&gt;
-
-&lt;p&gt;0단계에서는 트랜잭션에서 변경된 내용이 COMMIT이나 ROLLBACK의 여부에 상관없이 다른 트랜잭션에서 값을 읽을 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;redad-uncommitted&quot;&gt;REDAD-UNCOMMITTED&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img015.png&quot; alt=&quot;img015&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;트랜잭션1에서 DOCUMENT_IDX가 2인 레코드를 INSERT하고 아직 COMMIT이 이루어지지 않았지만 트랜잭션2에서 DOCUMENT_IDX가 2인 레코드를 조회했습니다. 이 경우 트랜잭션1에서 문제가 발생하여 ROLLBACK이 되거나 UPDATE를 통해 내용을 수정하더라도 트랜잭션2에서는 잘못된 데이터를 가지고 처리를 하게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;이렇게 아직 COMMIT 되지 않은 데이터를 읽어 일관성이 보장되지 않는 현상을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dirty Read&lt;/code&gt;라고 합니다. 데이터 정합성 문제가 많기때문에 RDBMS에서는 거의 사용하지 않습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1단계-redad-committed&quot;&gt;1단계: REDAD-COMMITTED&lt;/h2&gt;
-
-&lt;p&gt;1단계에서는 COMMIT이 완료된 데이터만 다른 트랜잭션에서 값을 읽을 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;redad-uncommitted-1&quot;&gt;REDAD-UNCOMMITTED&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img016.png&quot; alt=&quot;img016&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;트랜잭션1에서 DOCUMENT_IDX가 2인 레코드를 UPDATE하면 수정되기 전 레코드는 UNDO 영역에 백업이 됩니다. 트랜잭션2는 트랜잭션1의 COMMIT이 수행되기 전까지 UNDO 영역에 백업된 레코드를 읽게 되므로 Dirty Read 현상이 발생하지 않습니다.&lt;/p&gt;
-
-&lt;p&gt;그러나 트랜잭션1이 COMMIT을 수행한 후 트랜잭션2에서 동일한 레코드를 조회하면 값이 변경되어 일관성이 보장되지 않게 되는데, 이러한 현상을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Non-Repeatable Read&lt;/code&gt;라고 합니다.&lt;/p&gt;
-
-&lt;p&gt;오라클에서는 READ-COMMITTED를 기본 격리수준으로 사용합니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;2단계-repeatable-read&quot;&gt;2단계: REPEATABLE-READ&lt;/h2&gt;
-
-&lt;p&gt;2단계에서는 트랜잭션이 완료되기 전까지 Shared-Lock을 적용하여 다른 트랜잭션에서 해당 데이터를 수정할 수 없도록 합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;repeatable-read&quot;&gt;REPEATABLE-READ&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/sql/img017.png&quot; alt=&quot;img017&quot; style=&quot;margin-top:-1.5em&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;트랜잭션1이 COMMIT을 수행하더라도 트랜잭션2는 COMMIT을 수행하기 전까지 UNDO 영역에 백업된 데이터를 읽으므로 Non-Repeatable Read 현상이 발생하지 않습니다.&lt;/p&gt;
-
-&lt;p&gt;그러나 트랜잭션2가 COMMIT을 수행한다면 트랜잭션 중에 없던 레코드가 추가되거나 없어지는 현상이 발생하는데, 이러한 현상을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pantom Read&lt;/code&gt;라고 합니다.&lt;/p&gt;
-
-&lt;p&gt;MySQL이나 MariaDB의 InnoDB 스토리지 엔진에서는 REPEATAbLE-READ를 기본 격리수준으로 사용하며, 다중 버전 병행 제어(Multi Version Concurrency Control, MVCC)를 통해 해당 격리 수준에서도 Pantom Read 현상이 발생하지 않습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;3단계-serializable-read&quot;&gt;3단계: SERIALIZABLE-READ&lt;/h2&gt;
-
-&lt;p&gt;3단계는 가장 엄격한 격리 수준으로, 읽기 작업에도 Shared-Lock을 적용하기 때문에 트랜잭션이 COMMIT 되기 전까지 다른 트랜잭션에서는 해당 데이터를 수정하지 못할 뿐만 아니라 읽을 수도 없습니다. 그렇기 때문에 Pantom Read 현상이 발생하지 않습니다.&lt;/p&gt;
-
-&lt;p&gt;그러나 트랜잭션의 동시제어가 불가능하여 성능이 좋지 않기때문에 RDBMS에서는 거의 사용되지 않습니다. MySQL의 경우 위에서 설명한 MCVCC를 통해 REPEATABLE-READ 격리 수준에서도 Pantom Read 현상이 발생하지 않기 때문에 사용할 필요가 없어보입니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="sql" /><category term="sql" /><summary type="html">트랜잭션이란?</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>huimang2</name></author><category term="sql" /><category term="sql" /><summary type="html">WHERE절</summary></entry></feed>
