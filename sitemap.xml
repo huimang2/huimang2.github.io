@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://huimang2.github.io/etc/computer-instruction-cycle.html</loc>
+        
+        <lastmod>2023-05-29T01:00:00+09:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://huimang2.github.io/etc/computer-register-and-counter.html</loc>
         
         <lastmod>2023-05-19T01:00:00+09:00</lastmod>

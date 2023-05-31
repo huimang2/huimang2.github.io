@@ -11,7 +11,7 @@
 
 
 
-    <title>Git 길라잡이</title>
+    <title>명령어 사이클과 인터럽트</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,30 +51,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/etc/git" />
+    <link rel="canonical" href="https://huimang2.github.io/etc/computer-instruction-cycle" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Git 길라잡이" />
-    <meta property="og:description" content="Git와 Github 차이 Git는 컴퓨터 파일의 변경사항을 추적하고 여러 명의 사용자들 간에 해당 파일들의 작업을 조율하기 위한 분산 버전 관리 시스템입니다. 원래는 Linux 소스코드를 관리할 목적으로 개발 되었습니다. Git를 통해 버전을 관리하면 소스 코드가 변경된 이력을 쉽게 확인할 수 있으며, 특정 시점의 버전과 비교하거나 그 시점의 버전으로 파일을 되돌릴 수" />
-    <meta property="og:url" content="https://huimang2.github.io/etc/git" />
-    <meta property="og:image" content="https://huimang2.github.io/assets/images/github-logo.png" />
+    <meta property="og:title" content="명령어 사이클과 인터럽트" />
+    <meta property="og:description" content="명령어 사이클(Instruction Cycle) CPU는 프로그램 명령어를 클럭에 따라 일정한 주기를 반복하여 실행하는데, 이 주기를 명령어 사이클(Instruction Cycle)이라고 합니다. 명령어 사이클은 CPU가 하나의 명령어를 실행하는 데 필요한 전체 처리 과정으로서, CPU가 프로그램을 실행한 순간부터 전원을 끄거나 오류가 발생하여 프로그램이 중단될 때까지 반복됩니다. 명령어 사이클은 주 기억 장치로부터 명령어를 읽어오는 단계인 인출" />
+    <meta property="og:url" content="https://huimang2.github.io/etc/computer-instruction-cycle" />
+    <meta property="og:image" content="https://huimang2.github.io/assets/images/computer-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2022-09-04T07:00:00+09:00" />
-    <meta property="article:modified_time" content="2022-09-04T07:00:00+09:00" />
-    <meta property="article:tag" content="Github" />
+    <meta property="article:published_time" content="2023-05-29T01:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-05-29T01:00:00+09:00" />
+    <meta property="article:tag" content="Etc" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Git 길라잡이" />
-    <meta name="twitter:description" content="Git와 Github 차이 Git는 컴퓨터 파일의 변경사항을 추적하고 여러 명의 사용자들 간에 해당 파일들의 작업을 조율하기 위한 분산 버전 관리 시스템입니다. 원래는 Linux 소스코드를 관리할 목적으로 개발 되었습니다. Git를 통해 버전을 관리하면 소스 코드가 변경된 이력을 쉽게 확인할 수 있으며, 특정 시점의 버전과 비교하거나 그 시점의 버전으로 파일을 되돌릴 수" />
+    <meta name="twitter:title" content="명령어 사이클과 인터럽트" />
+    <meta name="twitter:description" content="명령어 사이클(Instruction Cycle) CPU는 프로그램 명령어를 클럭에 따라 일정한 주기를 반복하여 실행하는데, 이 주기를 명령어 사이클(Instruction Cycle)이라고 합니다. 명령어 사이클은 CPU가 하나의 명령어를 실행하는 데 필요한 전체 처리 과정으로서, CPU가 프로그램을 실행한 순간부터 전원을 끄거나 오류가 발생하여 프로그램이 중단될 때까지 반복됩니다. 명령어 사이클은 주 기억 장치로부터 명령어를 읽어오는 단계인 인출" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
-    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/github-logo.png" />
+    <meta name="twitter:image" content="https://huimang2.github.io/assets/images/computer-logo.png" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="Rubisco's Programming Note" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Github" />
+    <meta name="twitter:data2" content="Etc" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -89,18 +89,18 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/etc/git",
+    "url": "https://huimang2.github.io/etc/computer-instruction-cycle",
     "image": {
         "@type": "ImageObject",
-        "url": "https://huimang2.github.io/assets/images/github-logo.png",
+        "url": "https://huimang2.github.io/assets/images/computer-logo.png",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/etc/git"
+        "@id": "https://huimang2.github.io/etc/computer-instruction-cycle"
     },
-    "description": "Git와 Github 차이 Git는 컴퓨터 파일의 변경사항을 추적하고 여러 명의 사용자들 간에 해당 파일들의 작업을 조율하기 위한 분산 버전 관리 시스템입니다. 원래는 Linux 소스코드를 관리할 목적으로 개발 되었습니다. Git를 통해 버전을 관리하면 소스 코드가 변경된 이력을 쉽게 확인할 수 있으며, 특정 시점의 버전과 비교하거나 그 시점의 버전으로 파일을 되돌릴 수"
+    "description": "명령어 사이클(Instruction Cycle) CPU는 프로그램 명령어를 클럭에 따라 일정한 주기를 반복하여 실행하는데, 이 주기를 명령어 사이클(Instruction Cycle)이라고 합니다. 명령어 사이클은 CPU가 하나의 명령어를 실행하는 데 필요한 전체 처리 과정으로서, CPU가 프로그램을 실행한 순간부터 전원을 끄거나 오류가 발생하여 프로그램이 중단될 때까지 반복됩니다. 명령어 사이클은 주 기억 장치로부터 명령어를 읽어오는 단계인 인출"
 }
     </script>
 
@@ -113,10 +113,36 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="Git 길라잡이" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="명령어 사이클과 인터럽트" href="/feed.xml" />
 
 
     <!-- MathJax -->
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      TeX: {
+        equationNumbers: {
+          autoNumber: "AMS"
+        },
+        extensions: ["color.js"]
+      },
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$'] ],
+        processEscapes: true,
+      },
+      displayAlign: "left"
+    });
+    MathJax.Hub.Register.MessageHook("Math Processing Error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
+          alert("Math Processing Error: "+message[1]);
+        });
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
     
 
 </head>
@@ -171,210 +197,187 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-github post ">
+        <article class="post-full  tag-etc post ">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime=" 4 September 2022"> 4 September 2022</time>
+                    <time class="post-full-meta-date" datetime="29 May 2023">29 May 2023</time>
                     
                         <span class="date-divider">/</span>
                         
                             
                                 
-                                <a href='/tag/github/'>#GITHUB</a>
+                                <a href='/tag/etc/'>#기타</a>
                                 
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">Git 길라잡이</h1>
+                <h1 class="post-full-title">명령어 사이클과 인터럽트</h1>
             </header>
 
             <!-- 
-            <figure class="post-full-image" style="background-image: url(/assets/images/github-logo.png)">
+            <figure class="post-full-image" style="background-image: url(/assets/images/computer-logo.png)">
             </figure>
              -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#git와-github-차이"><span>Git와 Github 차이</span></a></li><li><a href="#git-용어"><span>Git 용어</span></a><ul><li><a href="#저장소repository"><span>저장소(Repository)</span></a></li><li><a href="#작업-트리work-tree--인덱스index"><span>작업 트리(Work Tree) / 인덱스(Index)</span></a></li><li><a href="#풀pull--푸시push"><span>풀(pull) / 푸시(push)</span></a></li><li><a href="#커밋commit"><span>커밋(Commit)</span></a></li><li><a href="#브랜치branch"><span>브랜치(Branch)</span></a></li><li><a href="#헤드head"><span>헤드(HEAD)</span></a></li><li><a href="#원격-브랜치remote-branch"><span>원격 브랜치(Remote Branch)</span></a></li><li><a href="#병합merge"><span>병합(merge)</span></a></li><li><a href="#패치fetch"><span>패치(fetch)</span></a></li></ul></li></ul>
+                        <ul><li><a href="#명령어-사이클instruction-cycle"><span>명령어 사이클(Instruction Cycle)</span></a><ul><li><a href="#인출-사이클fetch-cycle"><span>인출 사이클(Fetch Cycle)</span></a></li><li><a href="#실행-사이클execution-cycle"><span>실행 사이클(Execution Cycle)</span></a><ul><li><a href="#데이터-이동-load-addr-명령어"><span>데이터 이동: Load addr 명령어</span></a></li><li><a href="#데이터-저장-sta-addr-명령어"><span>데이터 저장: STA addr 명령어</span></a></li><li><a href="#데이터-처리-add-addr-명령어"><span>데이터 처리: ADD addr 명령어</span></a></li><li><a href="#프로그램-제어-jump-addr-명령어"><span>프로그램 제어: JUMP addr 명령어</span></a></li></ul></li></ul></li><li><a href="#인터럽트interrupt"><span>인터럽트(Interrupt)</span></a><ul><li><a href="#인터럽트-종류"><span>인터럽트 종류</span></a></li><li><a href="#인터럽트-처리-순서"><span>인터럽트 처리 순서</span></a></li></ul></li></ul>
 
                     </div>
-                    <h1 id="git와-github-차이">Git와 Github 차이</h1>
+                    <h1 id="명령어-사이클instruction-cycle">명령어 사이클(Instruction Cycle)</h1>
 
-<p><code class="language-plaintext highlighter-rouge">Git</code>는 컴퓨터 파일의 변경사항을 추적하고 여러 명의 사용자들 간에 해당 파일들의 작업을 조율하기 위한 분산 버전 관리 시스템입니다. 원래는 Linux 소스코드를 관리할 목적으로 개발 되었습니다.</p>
+<p>CPU는 프로그램 명령어를 클럭에 따라 일정한 주기를 반복하여 실행하는데, 이 주기를 <code class="language-plaintext highlighter-rouge">명령어 사이클(Instruction Cycle)</code>이라고 합니다.</p>
 
-<p>Git를 통해 버전을 관리하면 소스 코드가 변경된 이력을 쉽게 확인할 수 있으며, 특정 시점의 버전과 비교하거나 그 시점의 버전으로 파일을 되돌릴 수 있습니다. 또한 협업을 하는 경우 충돌을 감지하여 사용자에게 경고를 주기도 합니다.</p>
+<p>명령어 사이클은 CPU가 하나의 명령어를 실행하는 데 필요한 전체 처리 과정으로서, CPU가 프로그램을 실행한 순간부터 전원을 끄거나 오류가 발생하여 프로그램이 중단될 때까지 반복됩니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">GitHub</code>는 Git Repository를 위한 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">웹 기반 호스팅 서비스</code> 입니다. 클라우드 서버를 통해 로컬에서 관리하는 소스코드를 업로드하고 공유할 수 있어서 공동작업이 가능하도록 합니다. Git의 기본적인 기능을 제공하여 한 프로젝트에 여러 사람이 공동으로 작업하여도 효율적으로 버전관리를 할 수 있도록 합니다.</p>
+<p>명령어 사이클은 주 기억 장치로부터 명령어를 읽어오는 단계인 <code class="language-plaintext highlighter-rouge">인출 사이클(Fetch Cycle)</code>과 명령어를 실행하는 단계인 <code class="language-plaintext highlighter-rouge">실행 사이클(Execution Cycle)</code>로 분리할 수 있습니다.</p>
 
-<h1 id="git-용어">Git 용어</h1>
+<p><img src="/assets/images/computer/img079.png" alt="img079" /></p>
 
-<h2 id="저장소repository">저장소(Repository)</h2>
+<h2 id="인출-사이클fetch-cycle">인출 사이클(Fetch Cycle)</h2>
 
-<p><code class="language-plaintext highlighter-rouge">저장소(Repository)</code>는 말그대로 파일이나 폴더를 저장해 두는 장소를 말합니다. <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">파일의 변경 이력을 관리</code>하며, <code class="language-plaintext highlighter-rouge">원격 저장소(Remote Repository)</code>와 <code class="language-plaintext highlighter-rouge">로컬 저장소(Local Repository)</code>로 구분됩니다.</p>
+<p>인출 사이클의 진행은 다음과 같습니다.</p>
 
-<p>원격 저장소는 Github와 같이 소스코드를 공유하고 공동작업을 하기위한 저장소이고, 로컬 저장소는 개인 전용 저장소입니다.</p>
-
-<p>평소에는 로컬 저장소에서 작업을 하지만 공동작업이 필요하다면 원격 저장소에 저장하고, <code class="language-plaintext highlighter-rouge">clone</code> 명령어를 통해 로컬 저장소로 코드를 가져올 수 있습니다.</p>
-
-<h2 id="작업-트리work-tree--인덱스index">작업 트리(Work Tree) / 인덱스(Index)</h2>
-
-<p><code class="language-plaintext highlighter-rouge">작업 트리(work tree)</code>는 소스코드를 편집하는 작업 공간(workspace) 그 자체를 말하고, <code class="language-plaintext highlighter-rouge">인덱스(index)</code>는 커밋을 하기 전에 작업 트리와 저장소 사이에 존재하는 공간을 말합니다.</p>
-
-<p>커밋 작업은 작업 트리의 변경 이력을 바로 기록하지 않고 인덱스에 저장되어 있는 파일의 상태를 우선적으로 기록하게 됩니다.</p>
-
-<p>인덱스에 파일 상태를 기록하는 것을 <code class="language-plaintext highlighter-rouge">스테이징(staging)</code>이라고 하며, <code class="language-plaintext highlighter-rouge">add</code> 명령어를 통해 스테이징 상태로 만들 수 있습니다. 커밋은 인덱스에 스테이징 상태로 있는 파일의 이력만 저장소에 저장하게 됩니다.</p>
-
-<h2 id="풀pull--푸시push">풀(pull) / 푸시(push)</h2>
-
-<p><code class="language-plaintext highlighter-rouge">풀(pull)</code>은 원격 저장소에 저장된 파일을 로컬 저장소로 가져오는 것을 말하고, <code class="language-plaintext highlighter-rouge">푸시(push)</code>는 로컬 저장소에 저장된 파일을 원격 저장소에 반영하는 것을 말합니다. 각각 <code class="language-plaintext highlighter-rouge">pull</code>과 <code class="language-plaintext highlighter-rouge">push</code> 명령어를 통해 작업할 수 있습니다.</p>
-
-<h2 id="커밋commit">커밋(Commit)</h2>
-
-<p><code class="language-plaintext highlighter-rouge">commit</code>은 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color:orangered">파일의 변경 이력을 기록</code>하는 명령어 입니다. 작업 트리(work tree)의 파일을 저장소(repository)에 스냅샷으로 기록하며, 시간순으로 저장되어 과거 변경 이력과 그 내용을 알 수 있습니다.</p>
-
-<p>커밋들은 서로 체인구조를 형성하여 참조하고 있기 때문에 과거 커밋 내용이 훼손되면 그 이후의 커밋도 훼손되어 버립니다.</p>
-
-<p align="center"><img src="/assets/images/git/git-img-01.png" alt="img01" /></p>
-
-<p>위 그래프에서 각 노드는 커밋 시점을 나타냅니다. 보는 바와 같이 커밋 시점은 순차적으로 연결되어 있습니다.</p>
-
-<p>각 커밋은 영문과 숫자로 구성된 40자리의 <code class="language-plaintext highlighter-rouge">커밋 해시(commit hash)</code>를 통해 구분되며, 커밋을 하기 위해서는 커밋 메시지의 작성이 필요합니다. 커밋 메시지를 작성하지 않으면 커밋이 이루어지지 않습니다.</p>
-
-<p>커밋은 코드에 이력을 남기는 중요한 작업이므로 커밋 메시지에는 코드의 변경 내용과 변경 사유 등을 간략히 기록해 두는것이 권장됩니다.</p>
-
-<h2 id="브랜치branch">브랜치(Branch)</h2>
-
-<p><code class="language-plaintext highlighter-rouge">브랜치(Branch)</code>는 독립적인 작업을 진행할 수 있도록 해주는 기능입니다. 각각의 브랜치는 다른 브랜치의 영향을 받지않아서 여러 작업을 동시에 진행할 수 있습니다.</p>
-
-<p align="center"><img src="/assets/images/git/git-img-06.png" alt="img06" /></p>
-
-<p>로컬 저장소를 생성하면 기본적으로 <code class="language-plaintext highlighter-rouge">메인(main)</code> 브랜치에서 작업을 수행하게 되고, <code class="language-plaintext highlighter-rouge">체크아웃(checkout)</code> 하기 전까지 모든 작업은 메인 브랜치에서 이루어집니다. 여기에서 체크아웃이란 브랜치를 옮기는 작업을 말합니다.</p>
-
-<p>공동작업을 할때에는 우선 로컬 저장소의 메인 브랜치를 pull을 통해 원격 저장소의 메인 브랜치와 동기화 시킨 후, 작업전용 브랜치를 만들어 독립적인 작업을 하게 됩니다. 이때 브랜치가 생성되는데, 브랜치는 항상 최신 커밋을 참조하고 있습니다.</p>
-
-<p align="center"><img src="/assets/images/git/git-img-11.png" alt="img11" /></p>
-
-<p>브랜치는 작업에 따라 자유롭게 만들 수 있지만, 이를 효율적으로 관리하기 위해서는 사전에 팀원들과 어떤 방식으로 브랜치를 만들고 통합할 것인지 미리 정해두는 것이 좋습니다. 즉, 브랜치 전략이 있어야 합니다.</p>
-
-<p>가정 널리 사용되는 브랜치 전략으로는 <code class="language-plaintext highlighter-rouge">Git-Flow</code>, <code class="language-plaintext highlighter-rouge">Github-Flow</code>, <code class="language-plaintext highlighter-rouge">Gitlab-Flow</code>가 있습니다.</p>
-
-<h3 class="no-toc">Git-Flow</h3>
-
-<p><code class="language-plaintext highlighter-rouge">git flow</code>는 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">메인(main)</code> 브랜치(기존 master 브랜치)와 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">개발(devlop)</code> 브랜치를 중점으로 운영하는 브랜치 전략입니다.</p>
-
-<p align="center"><img src="/assets/images/git/git-img-07.png" alt="img07" title="Vincent Driessen" /></p>
-
-<p>이 전략에는 다음과 같이 5개의 브랜치가 존재합니다.</p>
+<p><img src="/assets/images/computer/img080.png" alt="img080" /></p>
 
 <blockquote>
-  <ol>
-    <li><strong>main</strong> : 정식 배포되는 브랜치 입니다.</li>
-    <li><strong>develop</strong> : 개발 브랜치로, 이 브랜치를 기준으로 하여 각자 작업한 기능등을 병합합니다.</li>
-    <li><strong>feature</strong> : 단위 기능을 개발하는 브랜치 입니다. 개발이 완료되면 develop 브랜치에 병합됩니다.</li>
-    <li><strong>release</strong> : main 브랜치에 보내기 전에 품질검사를 하기 위한 브랜치 입니다.</li>
-    <li><strong>hotpix</strong> : main 브랜치에 배포한 이후 버그가 생겼을 때 긴급 패치를 위한 브랜치 입니다.</li>
-  </ol>
+  <p><strong>t<sub>0</sub></strong> : MAR &lt;- PC<br />
+<strong>t<sub>1</sub></strong> : MBR &lt;- M[MAR], PC &lt;- PC + 1<br />
+<strong>t<sub>2</sub></strong> : IR &lt;- MBR</p>
 </blockquote>
 
-<p>이 전략의 운영과정은 다음과 같습니다.</p>
+<p>첫 번째 주기 t<sub>0</sub>에서는 프로그램 카운터(PC)에 저장된 명령어 주소를 CPU 내부 버스를 통해 메모리 주소 레지스터(MAR)로 보냅니다.</p>
 
-<ol>
-  <li>main 브랜치에서 develop 브랜치를 분기하고, 개발자들은 develop 브랜치에 커밋을 합니다.</li>
-  <li>기능 구현이 있는 경우 develop 브랜치에서 feature-* 브랜치를 분기합니다.</li>
-  <li>배포를 준비하기위해 develop 브랜치에서 release-* 브랜치를 분기합니다.</li>
-  <li>테스트를 진행하면서 발생하는 버그 수정은 release-* 브랜치에 직접 반영합니다.</li>
-  <li>테스트가 완료되면 release 브랜치를 main과 develop 브랜치에 병합합니다.</li>
-</ol>
+<p>두 번째 주기 t<sub>1</sub>에서는 MAR가 지정하는 기억장치 주소로부터 명령어를 읽어서 데이터 버스를 통해 메모리 버퍼 레지스터(MBR)에 저장합니다. 동시에 프로그램 카운터가 1 증가합니다.</p>
 
-<h3 class="no-toc">Github-Flow</h3>
+<p>세 번째 주기 t<sub>2</sub>에서는 MBR에 저장된 명령어를 명령어 레지스터(IR)에 저장합니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">github flow</code>는 git flow가 Github에서 사용하기에는 너무 복잡하여 나온 브랜치 전략입니다.</p>
+<h2 id="실행-사이클execution-cycle">실행 사이클(Execution Cycle)</h2>
 
-<p align="center"><img src="/assets/images/git/git-img-08.png" alt="img08" /></p>
+<p>실행 사이클 동안에는 CPU가 명령어 코드를 해독(decode)하고, 그 결과에 따라 필요한 연산들을 수행합니다. CPU가 수행하는 연산에는 <code class="language-plaintext highlighter-rouge">데이터 이동</code>, <code class="language-plaintext highlighter-rouge">데이터 처리</code>, <code class="language-plaintext highlighter-rouge">데이터 저장</code>, <code class="language-plaintext highlighter-rouge">프로그램 제어</code>가 있습니다.</p>
 
-<p>hotfix 브랜치와 feature 브랜치를 따로 구분하지 않으며, <code class="language-plaintext highlighter-rouge">Pull Request</code>를 사용하는 것을 권장합니다.</p>
+<p>명령어는 연산 코드(Operation Code)와 오퍼랜드(operand)로 구성됩니다.</p>
 
-<p>브랜치는 항상 메인 브랜치를 통해 분기하며, 브랜치 이름과 커밋 메시지는 목적에 맞도록 명확하게 작성하는 것이 좋습니다. 또한 원격 브랜치로 수시로 push하고 자신이 하고 있는 작업을 다른사람이 확인할 수 있도록 합니다.</p>
+<p><img src="/assets/images/computer/img081.png" alt="img081" /></p>
 
-<p>피드백이나 도움요청, 또는 병합 준비가 되었을 때는 <code class="language-plaintext highlighter-rouge">pull request</code>를 생성합니다.</p>
+<p>실행 사이클에서 수행되는 마이크로 연산들은 명령어의 연산 코드에 의해 결정되며, 명령어 실행에 필요한 데이터가 저장된 주소는 오퍼랜드에 의해 결정됩니다.</p>
 
-<p>현재 우리팀에서는 이 전략을 통해 버전을 관리하고 있으며, 이슈를 기반으로 하여 브랜치를 생성합니다. 다음 글을 참고하세요.</p>
+<h3 id="데이터-이동-load-addr-명령어">데이터 이동: Load addr 명령어</h3>
 
-<p><a href="/etc/github_issue" target="_blank">GitHub로 프로젝트 관리하기</a></p>
+<p>Load ddr 명령어은 기억장치에 저장되어 있는 데이터를 CPU 내부 누산기(AC)에 저장하는 명령어 입니다.</p>
 
-<h3 class="no-toc">Gitlab-Flow</h3>
+<blockquote>
+  <p><strong>t<sub>0</sub></strong> : MAR &lt;- IR(addr)<br />
+<strong>t<sub>1</sub></strong> : MBR &lt;- M[MAR]<br />
+<strong>t<sub>2</sub></strong> : AC &lt;- MBR</p>
+</blockquote>
 
-<p>gitlab flow는 복잡하지 않고 효율성을 높이기 위해 생긴 브랜치 전략으로, master, feature, production 브랜치가 존재합니다.</p>
+<p>첫 번째 주기 t<sub>0</sub>에서는 명령어 레지스터(IR)에 있는 오퍼랜드를 메모리 주소 레지스터(MAR)에 저장합니다.</p>
 
-<p align="center"><img src="/assets/images/git/git-img-09.png" alt="img09" /></p>
+<p>두 번째 주기 t<sub>1</sub>에서는 MAR가 지정하는 기억장치 주소로부터 데이터를 읽어서 메모리 버퍼 레지스터(MBR)에 저장합니다.</p>
 
-<p>기능 구현은 feature 브랜치를 통해서 이루어지며, master 브랜치는 production 브랜치로 병합됩니다. production 브랜치는 오직 배포만을 담당합니다.</p>
+<p>세 번째 주기 t<sub>2</sub>에서는 MBR에 저장된 데이터를 누산기(AC)에 저장합니다.</p>
 
-<p>Gitlab을 사용해 본적이 없어서 자세한 내용은 생략하겠습니다.</p>
+<h3 id="데이터-저장-sta-addr-명령어">데이터 저장: STA addr 명령어</h3>
 
-<h2 id="헤드head">헤드(HEAD)</h2>
+<p>STA addr 명령어은 누산기(AC)에 저장된 데이터를 기억장치에 저장하는 명령어 입니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">헤드(HEAD)</code>는 <code class="language-plaintext bgcolor orange highlighter-rouge" style="color: orangered">현재 체크아웃된 브랜치의 커밋에 대한 참조 포인터</code>입니다. 평소에는 브랜치를 통해 간접적으로 최신 커밋을 참조하고 있습니다.</p>
+<blockquote>
+  <p><strong>t<sub>0</sub></strong> : MAR &lt;- IR(addr)<br />
+<strong>t<sub>1</sub></strong> : MBR &lt;- AC<br />
+<strong>t<sub>2</sub></strong> : M[MAR] &lt;- MBR</p>
+</blockquote>
 
-<p align="center"><img src="/assets/images/git/git-img-12.png" alt="img12" /></p>
+<p>첫 번째 주기 t<sub>0</sub>에서는 명령어 레지스터(IR)에 있는 오퍼랜드를 메모리 주소 레지스터(MAR)에 저장합니다.</p>
 
-<p>브랜치를 설명할때 체크아웃을 브랜치를 옮기는 작업이라고 했지만, 정확하게는 헤드의 참조를 변경하는 작업입니다. 위에 그림처럼 헤드가 브랜치를 통해 간접적으로 커밋을 참조하는 상태를 <code class="language-plaintext highlighter-rouge">Attached HEAD State</code>라고 하며, 직접적으로 커밋을 참조하는 상태를 <code class="language-plaintext highlighter-rouge">Detached HEAD State</code>라고 합니다.</p>
+<p>두 번째 주기 t<sub>1</sub>에서는 누산기(AC)에 저장된 데이터를 메모리 버퍼 레지스터(MBR)에 저장합니다.</p>
 
-<p align="center"><img src="/assets/images/git/git-img-13.png" alt="img13" /></p>
+<p>세 번째 주기 t<sub>2</sub>에서는 MBR에 저장된 데이터를 MAR가 지정하는 기억장치 주소에 저장합니다.</p>
 
-<p>체크아웃을 통해 헤드를 옮김으로써 이전 커밋 지점으로 되돌아가는 것이 가능합니다.</p>
+<h3 id="데이터-처리-add-addr-명령어">데이터 처리: ADD addr 명령어</h3>
 
-<h2 id="원격-브랜치remote-branch">원격 브랜치(Remote Branch)</h2>
+<p>ADD addr 명령어은 기억장치에 저장된 데이터를 누산기(AC)에 저장된 값에 더하여 그 결과를 다시 누산기에 저장하는 명령어 입니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">원격 브랜치(remote branch)</code>는 원격 저장소의 브랜치를 트래킹(Tracking)하는 브랜치 입니다. 로컬에 존재하면서 원격 저장소와 통신하며 자동으로 업데이트 됩니다.</p>
+<p><img src="/assets/images/computer/img082.png" alt="img082" /></p>
 
-<p>원격 저장소를 clone하면 <code class="language-plaintext highlighter-rouge">origin</code>이라는 이름의 원격 브랜치가 생성되고, 로컬 브랜치를 원격 브랜치와 동기화시킵니다.</p>
+<blockquote>
+  <p><strong>t<sub>0</sub></strong> : MAR &lt;- IR(addr)<br />
+<strong>t<sub>1</sub></strong> : MBR &lt;- M[MAR]<br />
+<strong>t<sub>2</sub></strong> : AC &lt;- AC + MBR</p>
+</blockquote>
 
-<p align="center"><img src="/assets/images/git/git-img-14.png" alt="img14" /></p>
+<p>첫 번째 주기 t<sub>0</sub>에서는 명령어 레지스터(IR)에 있는 오퍼랜드를 메모리 주소 레지스터(MAR)에 저장합니다.</p>
 
-<p>원격 브랜치와 로컬 브랜치는 독립적으로 존재하기 때문에 로컬 브랜치에서 커밋하더라도 원격 브랜치에 바로 반영되지는 않습니다.</p>
+<p>두 번째 주기 t<sub>1</sub>에서는 저장할 데이터를 MAR가 지정하는 기억장치 주소로부터 읽어서 메모리 버퍼 레지스터(MBR)에 저장합니다.</p>
 
-<p align="center"><img src="/assets/images/git/git-img-15.png" alt="img15" /></p>
+<p>세 번째 주기 t<sub>2</sub>에서는 MBR에 저장된 데이터를 산술논리연산장치(ALU)에서 연산하여 그 결과값을 누산기(AC)에 저장합니다.</p>
 
-<h2 id="병합merge">병합(merge)</h2>
+<h3 id="프로그램-제어-jump-addr-명령어">프로그램 제어: JUMP addr 명령어</h3>
 
-<p>병합은 브랜치로 분기되어 있는 커밋을 하나의 브랜치로 합치는 작업을 말합니다. 병합 방식에 따라 <code class="language-plaintext highlighter-rouge">fast-forward merge</code>와 <code class="language-plaintext highlighter-rouge">3-way merge</code>로 나눌 수 있습니다.</p>
+<p>JUMP addr 명령어은 오퍼랜드가 가리키는 주소의 명령어로 실행 순서를 변경하는 분기(branch) 명령어 입니다.</p>
 
-<h3 class="no-toc">fast-forward merge</h3>
+<blockquote>
+  <p><strong>t<sub>0</sub></strong> : PC &lt;- IR(addr)</p>
+</blockquote>
 
-<p>다음과 같이 브랜치가 분기점으로부터 변화가 없는 상태를 <code class="language-plaintext highlighter-rouge">빨리감기(fast-forward) 상태</code>라고 합니다.</p>
+<p>명령어 레지스터(IR)에 저장된 오퍼랜드를 PC에 저장하여 명령어 순서를 변경합니다.</p>
 
-<p align="center"><img src="/assets/images/git/git-img-16.png" alt="img16" /></p>
+<h1 id="인터럽트interrupt">인터럽트(Interrupt)</h1>
 
-<p><code class="language-plaintext highlighter-rouge">main</code> 브랜치는 <code class="language-plaintext highlighter-rouge">issue1</code> 브랜치가 분기한 이후로 변화가 없는 상태이며, 이 경우 merge를 하면 커밋 지점을 따로 만들지 않고 브랜치의 참조만 변경하게 됩니다.</p>
+<p>인터럽트는 컴퓨터 내부나 외부에서 발생하는 갑작스러운 사건에 대응하는 기능입니다. 인터럽트 요청이 발생하면 CPU는 현재 처리 순서를 중단하고 요구된 인터럽트 서비스 프로그램을 먼저 수행하게 됩니다.</p>
 
-<p align="center"><img src="/assets/images/git/git-img-17.png" alt="img17" /></p>
+<p><img src="/assets/images/computer/img083.png" alt="img083" /></p>
 
-<h3 class="no-toc">non fast-forward merge</h3>
+<p>위에 그림처럼 명령어 사이클은 인출(fetch)과 실행(execution) 사이클이 반복되는데, 실행 사이클이 끝날때마다 CPU는 반복적으로 인터럽트 요청이 발생했는지 확인합니다.</p>
 
-<p>다음과 같이 빨리감기 상태가 아니라면 참조변수를 옮기는 것 만으로 병합을 할 수 없습니다.</p>
+<p><img src="/assets/images/computer/img084.png" alt="img084" /></p>
 
-<p align="center"><img src="/assets/images/git/git-img-18.png" alt="img18" /></p>
+<p>인터럽트 요청이 발생했다면 프로그램 실행을 중단하고 인터럽트 처리를 합니다. 인터럽트 요청을 처리한 이후에는 다시 프로그램을 재실행합니다.</p>
 
-<p>이 경우 새로운 커밋을 만들어서 병합을 수행하게 됩니다.</p>
+<h2 id="인터럽트-종류">인터럽트 종류</h2>
 
-<p align="center"><img src="/assets/images/git/git-img-19.png" alt="img19" /></p>
+<p>인터럽트는 크게 내부 인터럽트와 외부 인터럽트로 나눌 수 있습니다.</p>
 
-<p>이때 main 브랜치에서 수정한 파일을 issue1 브랜치에서도 수정했다면 병합충돌이 발생할 수 있습니다.
-튜토리얼을 참고해주세요.</p>
+<p><code class="language-plaintext highlighter-rouge">내부 인터럽트</code>는 다음과 같은 상황에서 발생합니다.</p>
 
-<h2 id="패치fetch">패치(fetch)</h2>
+<p><strong>1. 하드웨어 고장</strong> : 정전, 패리티 비터 오류 등<br />
+<strong>2. 실행할 수 없는</strong> 명령어 : 정의되지 않은 명령어<br />
+<strong>3. 명령어 실행 오류</strong> : 0으로 나눈 경우<br />
+<strong>4. 사용 권한 위배</strong></p>
 
-<p>pull은 패치와 병합 2가지 작업으로 구성되어 있습니다.</p>
+<p>주로 긴급한 상황에 발생하기 때문에 상태 레지스터의 인터럽트 플래그를 통한 제어가 불가능합니다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">패치(fetch)</code>는 원격 브랜치만 원격 저장소와 동기화시키며, 병합은 위에서 설명한 것과 같이 로컬 저장소를 원격 저장소와 동기화 시킵니다.</p>
+<hr />
 
-<p>패치작업의 경우 바로 로컬 저장소에 변경 내용이 반영되지 않기 때문에 헤드만 이동하여 원격 저장소의 커밋을 확인할 수 있어서 병합충돌의 위험을 줄일 수 있습니다.</p>
+<p><code class="language-plaintext highlighter-rouge">외부 인터럽트</code>는 주로 입출력 장치에 의해 발생하며, 여기에는 타이머 인터럽트와 입출력 인터럽트가 있습니다.</p>
 
-<p align="center"><img src="/assets/images/git/git-img-20.png" alt="img23" /></p>
+<p><strong>1. 타이머 인터럽트</strong> : 일정한 시간 간격으로 CPU에게 인터럽트를 요청합니다.<br />
+<strong>2. 입출력 인터럽트</strong> : 속도가 비교적 느린 입출력장치의 사용 준비가 완료되었음을 알리기 위해 인터럽트를 요청합니다.</p>
+
+<p>외부 인터럽트는 인터럽트 플래그를 통해 제어할 수 있습니다.</p>
+
+<h2 id="인터럽트-처리-순서">인터럽트 처리 순서</h2>
+
+<p><img src="/assets/images/computer/img087.png" alt="img087" /></p>
+
+<p><strong>1.</strong> 입출력장치에서 CPU에 <code class="language-plaintext highlighter-rouge">인터럽트 요청 신호(Interrupt Request, INTR)</code>를 보냅니다.</p>
+
+<p><img src="/assets/images/computer/img085.png" alt="img085" /></p>
+
+<p><strong>2.</strong> CPU는 실행 사이클을 끝내고 인터럽트 요청신호를 확인합니다. 인터럽트 요청을 확인 후 <code class="language-plaintext highlighter-rouge">인터럽트 가능 플래그(Interrupt Enable Flag, IE)</code>를 통해 현재 인터럽트를 받아들일 수 있는지 확인합니다.</p>
+
+<p><img src="/assets/images/computer/img086.png" alt="img086" /></p>
+
+<p><strong>3.</strong> 인터럽트를 받아들일 수 있다면 현재 실행하던 프로그램을 중단하고, <code class="language-plaintext highlighter-rouge">PC(Program Counter)</code>와 <code class="language-plaintext highlighter-rouge">SR(Status Register)</code>를 스택에 저장합니다.</p>
+
+<p><strong>4.</strong> CPU는 <code class="language-plaintext highlighter-rouge">인터럽트 벡터(Interrupt Vector)</code>를 참조하여 <code class="language-plaintext highlighter-rouge">인터럽트 서비스 루틴(Interrupt Service Routine, ISR)</code>을 실행합니다.</p>
+
+<p>ISR는 인터럽트가 발생한 경우 인터럽트를 처리하기 위한 프로그램으로, 일반적으로 메모리에 저장되어 있습니다.</p>
+
+<p><strong>5.</strong> ISR 실행이 끝나면 스택에 저장한 PC와 SR값을 복구하여 프래그램 실행을 재개합니다.</p>
 
                 </div>
             </section>
@@ -446,7 +449,7 @@ into the {body} of the default.hbs template -->
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; Rubisco's Programming Note &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/github/">Github</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/etc/">Etc</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
@@ -456,7 +459,48 @@ into the {body} of the default.hbs template -->
                                 
                                 
                                   
+                                    
+                                  
                                 
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/etc/computer-register-and-counter">레지스터와 카운터</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/etc/computer-logic-gate">논리회로</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                            <li><a href="/etc/computer-binary">데이터의 표현</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -488,9 +532,10 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
-                                
-                                  
-                                
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -545,23 +590,6 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                            <li><a href="/etc/git-tutorial">Git 튜토리얼</a></li>
-                                        
-                                    
-                                  
-                                
-                                  
-                                    
-                                  
-                                
-                                  
-                                
-                                  
-                                    
-                                        
-                                        
-                                            <li><a href="/etc/github_issue">GitHub로 프로젝트 관리하기</a></li>
-                                        
                                     
                                   
                                 
@@ -571,6 +599,13 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                 
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
                                   
                                 
                                   
@@ -602,9 +637,9 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/github/">
+                            <a href="/tag/etc/">
                                 
-                                    See all 2 posts  →
+                                    See all 8 posts  →
                                 
                             </a>
                         </footer>
@@ -614,48 +649,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/etc/git-tutorial">
-                <div class="post-card-image" style="background-image: url(/assets/images/github-logo.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/etc/git-tutorial">
-                <header class="post-card-header">
-                    
-                        <div class="post-card-tags-container">
-                            
-                        </div>
-                    
-
-                    <h2 class="post-card-title">Git 튜토리얼</h2>
-                </header>
-                <!-- <section class="post-card-excerpt">
-                    
-                        <p>git 설치
-
-</p>
-                    
-                </section> -->
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      11 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -663,12 +656,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/etc/mosh">
-                <div class="post-card-image" style="background-image: url(/assets/images/mosh-logo.png)"></div>
+            <a class="post-card-image-link" href="/etc/computer-register-and-counter">
+                <div class="post-card-image" style="background-image: url(/assets/images/computer-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/etc/mosh">
+            <a class="post-card-content-link" href="/etc/computer-register-and-counter">
                 <header class="post-card-header">
                     
                         <div class="post-card-tags-container">
@@ -676,11 +669,11 @@ into the {body} of the default.hbs template -->
                         </div>
                     
 
-                    <h2 class="post-card-title">향상된 SSH 프로토콜 : Mosh</h2>
+                    <h2 class="post-card-title">레지스터와 카운터</h2>
                 </header>
                 <!-- <section class="post-card-excerpt">
                     
-                        <p>Mosh란?
+                        <p>레지스터(Register)
 
 </p>
                     
@@ -693,7 +686,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      1 min read
+                      2 min read
                     
                 </span>
             </footer>
@@ -715,18 +708,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">Git 길라잡이</div>
+    <div class="floating-header-title">명령어 사이클과 인터럽트</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=Git+%EA%B8%B8%EB%9D%BC%EC%9E%A1%EC%9D%B4&amp;url=etc/git"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EB%AA%85%EB%A0%B9%EC%96%B4+%EC%82%AC%EC%9D%B4%ED%81%B4%EA%B3%BC+%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8&amp;url=etc/computer-instruction-cycle"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=etc/git"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=etc/computer-instruction-cycle"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
