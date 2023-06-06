@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-06-07T00:45:50+09:00</updated>
+  <updated>2023-06-07T01:26:40+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -75,7 +75,7 @@
 
 &lt;p&gt;명령어1은 R&lt;sub&gt;2&lt;/sub&gt;와 R&lt;sub&gt;3&lt;/sub&gt; 레지스터값을 더하여 R&lt;sub&gt;1&lt;/sub&gt; 레지스터에 저장하고, 명령어2는 R&lt;sub&gt;1&lt;/sub&gt;과 R&lt;sub&gt;2&lt;/sub&gt; 레지스터값을 곱하여 R&lt;sub&gt;4&lt;/sub&gt; 레지스터에 저장합니다.&lt;/p&gt;
 
-&lt;p&gt;이 경우 아래와 같이 명령어 파이프라인을 사용한다면 R&lt;sub&gt;1&lt;/sub&gt; 레지스터에 명령어1의 저장단계가 수행되기 전에 명령어2의 인출 및 해석이 발생하기 때문에 잘못된 결과값이 R&lt;sub&gt;14&lt;/sub&gt; 레지스터에 저장됩니다.&lt;/p&gt;
+&lt;p&gt;이 경우 아래와 같이 명령어 파이프라인을 사용한다면 R&lt;sub&gt;1&lt;/sub&gt; 레지스터에 명령어1의 저장단계가 수행되기 전에 명령어2의 인출 및 해석이 발생하기 때문에 잘못된 결과값이 R&lt;sub&gt;4&lt;/sub&gt; 레지스터에 저장됩니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/computer/img090.png&quot; alt=&quot;img090&quot; /&gt;&lt;/p&gt;
 
