@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>명령어 파이프라인</title>
+        
+          <description>&lt;h1 id=&quot;명령어-파이프라인instruction-pipeline&quot;&gt;명령어 파이프라인(Instruction Pipeline)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Tue, 06 Jun 2023 01:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/computer-instruction-pipeline</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/computer-instruction-pipeline</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>명령어 사이클과 인터럽트</title>
         
           <description>&lt;h1 id=&quot;명령어-사이클instruction-cycle&quot;&gt;명령어 사이클(Instruction Cycle)&lt;/h1&gt;

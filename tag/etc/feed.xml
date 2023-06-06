@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/tag/etc/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-05-31T20:15:56+09:00</updated>
+  <updated>2023-06-07T00:45:50+09:00</updated>
   <id>https://huimang2.github.io/tag/etc/feed.xml</id>
 
   
@@ -30,6 +30,141 @@
   
   
 
+  
+    <entry>
+      <title type="html">명령어 파이프라인</title>
+      <link href="https://huimang2.github.io/etc/computer-instruction-pipeline" rel="alternate" type="text/html" title="명령어 파이프라인" />
+      <published>2023-06-06T01:00:00+09:00</published>
+      <updated>2023-06-06T01:00:00+09:00</updated>
+      <id>https://huimang2.github.io/etc/computer-instruction-pipeline</id>
+      <content type="html" xml:base="https://huimang2.github.io/etc/computer-instruction-pipeline">&lt;h1 id=&quot;명령어-파이프라인instruction-pipeline&quot;&gt;명령어 파이프라인(Instruction Pipeline)&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;명령어 파이프라인(Instruction Pipeline)&lt;/code&gt;은 CPU의 성능을 향상시키기 위해 명령어 처리를 여러 단계로 나누어 동시에 실행하는 명령어 병렬 처리 기법입니다.&lt;/p&gt;
+
+&lt;p&gt;CPU의 명령어가 처리되는 과정은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;인출(fetch)&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;실행(execution)&lt;/code&gt; 2단계로 나눌 수 있다고 했는데, 이를 비슷한 시간 간격으로 나누어 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;명령어 인출(Instruction Fetch)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;명령어 해석(Instruction Decode)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;명령어 실행(Execute Instruction)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;결과 저장(Write Back)&lt;/code&gt; 4단계로 나눌 수도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. 명령어 인출(Instruction Fetch)&lt;/strong&gt; : 명령어를 기억장치로 부터 인출&lt;br /&gt;
+&lt;strong&gt;2. 명령어 해석(Instruction Decode)&lt;/strong&gt; : 디코더를 사용하여 명령어 해석&lt;br /&gt;
+&lt;strong&gt;3. 명령어 실행(Execute Instruction)&lt;/strong&gt; : 해석된 명령어에 따라 데이터 연산을 수행&lt;br /&gt;
+&lt;strong&gt;4. 결과 저장(Write Back)&lt;/strong&gt; : 명령어대로 처리된 데이터를 메모리에 기록&lt;/p&gt;
+
+&lt;p&gt;만약 명령어 파이프라인을 사용하지 않는다면 다음과 같이 명령어가 순차적으로 실행 될 것입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img088.png&quot; alt=&quot;img088&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;명령어 파이프라인을 사용한다면 각 명령어를 겹쳐 동시에 실행함으로써 명령어 처리 시간을 줄여 CPU의 성능을 향상시킬 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img089.png&quot; alt=&quot;img089&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;파이프라인-위험pipeline-hazard&quot;&gt;파이프라인 위험(Pipeline Hazard)&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;파이프라인 위험(Pipeline Hazard)&lt;/code&gt;은 파이프라인 기법을 사용하는데 있어서 발생할 수 있는 문제점을 말합니다.&lt;/p&gt;
+
+&lt;p&gt;파이프라인 위험에는 크게 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터 위험(Data Hazard)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;제어 위험(Control Harzard)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;구조적 위험(Structural Harzard)&lt;/code&gt; 3가지로 나눌 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;데이터-위험data-hazard&quot;&gt;데이터 위험(Data Hazard)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터 위험(Data Hazard)&lt;/code&gt;은 명령어 간의 의존성으로 인해 아직 수행되지 않은 명령어의 결과값을 참조함으로써 발생하는 위험입니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 아래와 같이 명령어1, 명령어2가 있습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;명령어1 : R&lt;sub&gt;1&lt;/sub&gt; ← R&lt;sub&gt;2&lt;/sub&gt; + R&lt;sub&gt;3&lt;/sub&gt;&lt;br /&gt;
+명령어2 : R&lt;sub&gt;4&lt;/sub&gt; ← R&lt;sub&gt;1&lt;/sub&gt; * R&lt;sub&gt;2&lt;/sub&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;명령어1은 R&lt;sub&gt;2&lt;/sub&gt;와 R&lt;sub&gt;3&lt;/sub&gt; 레지스터값을 더하여 R&lt;sub&gt;1&lt;/sub&gt; 레지스터에 저장하고, 명령어2는 R&lt;sub&gt;1&lt;/sub&gt;과 R&lt;sub&gt;2&lt;/sub&gt; 레지스터값을 곱하여 R&lt;sub&gt;4&lt;/sub&gt; 레지스터에 저장합니다.&lt;/p&gt;
+
+&lt;p&gt;이 경우 아래와 같이 명령어 파이프라인을 사용한다면 R&lt;sub&gt;1&lt;/sub&gt; 레지스터에 명령어1의 저장단계가 수행되기 전에 명령어2의 인출 및 해석이 발생하기 때문에 잘못된 결과값이 R&lt;sub&gt;14&lt;/sub&gt; 레지스터에 저장됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img090.png&quot; alt=&quot;img090&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이러한 위험을 데이터 위험이라고 합니다. 데이터 위험의 경우 다음과 같이 명령어 단계가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;지연(Stall)&lt;/code&gt;됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img091.png&quot; alt=&quot;img091&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;제어-위험control-harzard&quot;&gt;제어 위험(Control Harzard)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;제어 위험(Control Harzard)&lt;/code&gt;은 Jump나 Call, Interupt 같은 분기 명령어에 의해 프로그램 카운터(PC)가 갑작스럽게 변함으로써 발생하는 위험입니다.&lt;/p&gt;
+
+&lt;p&gt;기본적으로 명령어는 프로그램 카운터가 순차적으로 증가하여 실행됩니다. 하지만 분기(branch) 명령어를 싱행하게 된다면 프로그램 카운터가 비순차적으로 변하기 때문에 동시에 실행되는 명령어가 필요없어지게 될 수도 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img092.png&quot; alt=&quot;img092&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이러한 위험을 제어 위험이라고 합니다. 제어 위험의 경우 인출 단계 이후에 명령어 단계가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;지연(Stall)&lt;/code&gt;됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img093.png&quot; alt=&quot;img093&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;구조적-위험structural-harzard&quot;&gt;구조적 위험(Structural Harzard)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;구조적 위험(Structural Harzard)&lt;/code&gt;은 서로 다른 명령어가 같은 자원에 접근함으로써 발생하는 위험입니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 Load 명령어의 경우 데이터를 인출하기 위해 메모리에 접근하는 단계가 있어는데, 다음과 같이 동일한 레지스터에 쓰기 접근을 할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img094.png&quot; alt=&quot;img094&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이러한 위험을 구조적 위험이라고 합니다. 구조적 위험의 경우 다음과 같이 명령어 단계가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;지연(Stall)&lt;/code&gt;됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img095.png&quot; alt=&quot;img095&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;슈퍼스칼라supserscalar&quot;&gt;슈퍼스칼라(Supserscalar)&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;슈퍼스칼라(Supserscalar)&lt;/code&gt;는 CPU 내에 파이프라인을 여러 개 두어 명령어를 동시에 실행하는 기술로서, 멀티 스레드 프로세서를 의미합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img096.png&quot; alt=&quot;img096&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이론적으로는 파이프라인 개수에 비례하여 CPU의 처리 속도가 증가하지만, 그만큼 파이프라인 위험도 증가하므로 실제로 파이프라인 개수에 비례하여 처리 속도가 증가하지는 않습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;명령어-집합-구조instruction-set-architecture-isa&quot;&gt;명령어 집합 구조(Instruction set architecture, ISA)&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;명령어 집합 구조(Instruction set architecture, ISA)&lt;/code&gt;는 CPU가 이해할 수 있는 기계어 명령어들의 집합을 의미합니다. 하드웨어와 시스템 소프트웨어 사이의 인터페이스를 정의하며, 최하위 레벨의 프로그래밍 인터페이스로서 CPU가 실행할 수 있는 모든 명령어를 포함합니다.&lt;/p&gt;
+
+&lt;p&gt;ISA를 물리적으로 구현한 CPU 내부의 하드웨어 구조를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;마이크로 아키텍쳐(Micro Architecture)&lt;/code&gt;라고 합니다. CPU 제조사마다 마이크로 아키텍쳐가 다르므로 ISA 역시 서로 다릅니다. 대표적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CISC(Complex Instruction Set Computer)&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RISC(Reduced Instruction Set Computer)&lt;/code&gt;가 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;cisccomplex-instruction-set-computer&quot;&gt;CISC(Complex Instruction Set Computer)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CISC(Complex Instruction Set Computer)&lt;/code&gt;는 복잡한 명령어 집합을 가지는 CPU로서, 인텔이나 AMD의 x86, x86-64는 CISC 기반의 ISA를 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;CISC는 복잡하고 다양한 가변 길이 명령어를 사용하며, 상대적으로 적은 수의 명령어만으로도 프로그램을 실행할 수 있습니다. 그렇기 때문에 메모리를 최대한 아끼며 개발해야 했던 시절에 인기가 높은 아키텍쳐였으나, 가변 길이 명령어를 사용하므로 명령어 파이프라이닝이 불리하며 속도가 느리고 가격이 비싸다는 단점이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;일반적으로 하드웨어 스택(Stack)이 내장되어 있으며, 서브루틴의 return 주소나 파라미터, 지역변수 등을 저장하는데 사용됩니다. 따라서 call, ret, push, pop 같은 명령어를 통해 스택 데이터를 관리할 수 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;riscreduced-instruction-set-computer&quot;&gt;RISC(Reduced Instruction Set Computer)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RISC(Reduced Instruction Set Computer)&lt;/code&gt;는 명령어 집합의 수를 줄여 하드웨어 구조를 간단하게 만든 CPU로서, ARM 계열의 CPU는 RISC 기반의 ISA를 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;RISC는 짧고 규격화된 명령어를 사용하여 명령어 파이프라이닝에 유리합니다. 또한 메모리 접근을 최소화 하고 많은 범용 레지스터를 사용하므로 속도가 빠르며, 전력소모가 적고 가격이 저렴합니다.&lt;/p&gt;
+
+&lt;p&gt;CISC와 달리 스택 관련 명령어가 존재하지 않기 때문에 서브루틴의 return 주소나 파라미터, 지역변수 등은 소프트웨어적으로 처리해야 합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;cisc--risc-비교&quot;&gt;CISC / RISC 비교&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img097.png&quot; alt=&quot;img097&quot; /&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="etc" />
+      
+
+      
+        <summary type="html">명령어 파이프라인(Instruction Pipeline)</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">명령어 사이클과 인터럽트</title>
@@ -154,7 +289,7 @@
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;내부 인터럽트&lt;/code&gt;는 다음과 같은 상황에서 발생합니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;1. 하드웨어 고장&lt;/strong&gt; : 정전, 패리티 비터 오류 등&lt;br /&gt;
-&lt;strong&gt;2. 실행할 수 없는&lt;/strong&gt; 명령어 : 정의되지 않은 명령어&lt;br /&gt;
+&lt;strong&gt;2. 실행할 수 없는 명령어&lt;/strong&gt; : 정의되지 않은 명령어&lt;br /&gt;
 &lt;strong&gt;3. 명령어 실행 오류&lt;/strong&gt; : 0으로 나눈 경우&lt;br /&gt;
 &lt;strong&gt;4. 사용 권한 위배&lt;/strong&gt;&lt;/p&gt;
 
