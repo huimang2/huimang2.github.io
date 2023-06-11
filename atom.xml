@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>입출력장치</title>
+        
+          <description>&lt;h1 id=&quot;장치-컨트롤러device-controller&quot;&gt;장치 컨트롤러(Device Controller)&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Sun, 11 Jun 2023 01:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/computer-input-output-unit</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/computer-input-output-unit</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>명령어 파이프라인</title>
         
           <description>&lt;h1 id=&quot;명령어-파이프라인instruction-pipeline&quot;&gt;명령어 파이프라인(Instruction Pipeline)&lt;/h1&gt;

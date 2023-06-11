@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-06-07T01:26:40+09:00</updated>
+  <updated>2023-06-11T22:25:50+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -30,6 +30,143 @@
   
   
 
+  
+    <entry>
+      <title type="html">입출력장치</title>
+      <link href="https://huimang2.github.io/etc/computer-input-output-unit" rel="alternate" type="text/html" title="입출력장치" />
+      <published>2023-06-11T01:00:00+09:00</published>
+      <updated>2023-06-11T01:00:00+09:00</updated>
+      <id>https://huimang2.github.io/etc/computer-input-output-unit</id>
+      <content type="html" xml:base="https://huimang2.github.io/etc/computer-input-output-unit">&lt;h1 id=&quot;장치-컨트롤러device-controller&quot;&gt;장치 컨트롤러(Device Controller)&lt;/h1&gt;
+
+&lt;p&gt;입출력장치는 하드디스크, 마우스, 모니터 등과 같이 컴퓨터 외부에 연결되어 CPU와 정보를 교환할 수 있는 장치입니다.&lt;/p&gt;
+
+&lt;p&gt;입출력 장치는 종류가 다양하기 때문에 CPU와 정보를 주고 받는 방식을 규격화하기 어렵습니다. 또한 CPU에 비하여 데이터 전송률이 낮기 때문에 CPU와 직접적으로 통신하게 되면 CPU의 성능이 좋더라도 이를 활용할 수 없게 됩니다. 이러한 문제를 해결하기 위한 하드웨어를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;장치 컨트롤러(Device Controller)&lt;/code&gt;라고 합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;하드디스크의-장치-컨트롤러&quot;&gt;하드디스크의 장치 컨트롤러&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img098.png&quot; alt=&quot;img098&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;장치 컨트롤러는 CPU와 입출력장치 간의 통신을 중개하여 각 장치들을 규격화 해주며, 오류를 검출하고 버퍼링을 통해 CPU와 데이터 전송률을 맞추는 역할을 합니다.&lt;/p&gt;
+
+&lt;p&gt;장치 컨트롤러는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터 레지스터&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;상태 레지스터&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;제어 레지스터&lt;/code&gt;로 구성되며, CPU는 버스를 통해 장치 컨트롤러에 데이터를 전송합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img099.png&quot; alt=&quot;img099&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;데이터 레지스터는 CPU와 입출력장치 사이에 주고 받을 데이터를 저장하는 레지스터로, 버퍼 역할을 합니다. 최근에는 입출력 장치와 주고 받을 데이터가 많아졌기 때문에 데이터 레지스터 대신에 RAM을 사용하기도 합니다.&lt;/p&gt;
+
+&lt;p&gt;상태 레지스터는 입출력장치가 입출력 작업할 준비가 되었는지, 입출력 작업 완료가 되었는지, 입출력장치에 오류가 없는지 등의 상태 정보를 저장하는 레지스터 입니다.&lt;/p&gt;
+
+&lt;p&gt;제어 레지스터는 입출력장치가 수행할 내용에 대한 제어 정보를 저장하는 레지스터 입니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;장치-드라이버device-driver&quot;&gt;장치 드라이버(Device Driver)&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;장치 드라이버(Device Driver)&lt;/code&gt;는 장치 컨트롤러의 동작을 감지하고 제어하는 프로그램 입니다.&lt;/p&gt;
+
+&lt;p&gt;장치 컨트롤러가 입출력장치를 연결하는 하드웨어라면, 장치 드라이버는 입출력장치를 연결하는 소프트웨어 입니다. 장치 드라이버를 통해 CPU가 입출력장치를 제어할 수 있습니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;usb-장치-드라이버&quot;&gt;USB 장치 드라이버&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img100.png&quot; alt=&quot;img100&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;요즘은 OS가 장치 드라이버를 자동으로 설치해주는 경우가 많은데, 이전에는 프린터를 컴퓨터에 연결하여 사용하려면 해당 프린터에 대한 프린트 드라이버를 설치해야 했습니다. 장치 드라이버가 설치되지 않는다면 CPU가 프린터를 동작시키는 방식을 모르기 때문에 해당 프린터를 사용할 수 없게 됩니다. 즉, 장치 드라이버를 인식하고 실행하는 주체는 운영체제(OS) 입니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;입출력-방식&quot;&gt;입출력 방식&lt;/h1&gt;
+
+&lt;p&gt;입출력장치가 CPU와 정보를 교환하는 방식에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로그램 입출력&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;인터럽트 기반 입출력&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DMA 입출력&lt;/code&gt;이 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;프로그램-입출력programmed-inputoutput-pio&quot;&gt;프로그램 입출력(Programmed Input/Output, PIO)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로그램 입출력(Programmed Input/Output, PIO)&lt;/code&gt;은 프로그램 명령어를 통해 장치 컨트롤러를 제어하는 방식입니다. CPU에서 명령어를 전송한 후 입출력장치의 상태를 주기적으로 확인하여 데이터 송수신을 제어합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 메모리에 저장된 정보를 하드디스크에 저장한다고 한다면 CPU는 쓰기 명령어를 전송하고 상태 레지스터의 확인하고 입출력 장치가 사용가능하다면 데이터를 전송합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;하드디스크-쓰기-제어&quot;&gt;하드디스크 쓰기 제어&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img101.png&quot; alt=&quot;img101&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;아래와 같이 주기적으로 상태 레지스터를 확인하는 과정을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;폴링(Polling)&lt;/code&gt;이라고 하며, 그러므로 프로그램 입출력 방식을 폴링 방식이라고도 합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;폴링-순환&quot;&gt;폴링 순환&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img102.png&quot; alt=&quot;img102&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 입출력 방식은 가장 간단하고 최소의 하드웨어를 필요로 하지만, 반복적으로 입출력장치의 상태를 점검하여 CPU의 효율을 저하시키키며 입출력이 완료될 때까지 CPU가 동작하지 못한다는 단점이 있습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;프로그램 입출력 방식은 CPU가 입출력장치에 접근하는 방식에 따라 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;메모리 맵 입출력&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;고립형 입출력&lt;/code&gt;으로 나눌 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;메모리-맵-입출력memmory-mapped-io&quot;&gt;메모리 맵 입출력(Memmory-mapped I/O)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;메모리 맵 입출력(Memmory-mapped I/O)&lt;/code&gt;은 메모리에 접근하기 위한 주소 공간과 입출력장치에 접근하기 위한 주소 공간을 하나의 주소공간으로 취급하여 접근하는 방식입니다.&lt;/p&gt;
+
+&lt;p&gt;메모리의 일부 공간을 입출력 포트에 할당하여 메모리 주소 공간이 축소되지만, 메모리에 접근하는 명령어와 입출력장치에 접근하는 명령어가 동일하기 때문에 CPU 로직이 단순해집니다. 주로 ARM 계열의 RISC에서 사용하며, LOAD나 STORE 명령을 통해 접근할 수 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;고립형-입출력isolated-io&quot;&gt;고립형 입출력(Isolated I/O)&lt;/h3&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;고립형 입출력(Isolated I/O)&lt;/code&gt;은 메모리에 접근하기 위한 주소 공간과 입출력장치에 접근하기 위한 주소 공간을 분리하는 입출력 방식입니다.&lt;/p&gt;
+
+&lt;p&gt;입출력장치에 접근하기 위한 별도의 명령어가 필요하고 CPU 로직이 복잡해지지만, 메모리 주소 공간 전체를 활용할 수 있습니다. 주로 x86 계열의 CISC에서 사용합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;인터럽트-기반-입출력interrupt-driven-io&quot;&gt;인터럽트 기반 입출력(Interrupt-Driven I/O)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;인터럽트 기반 입출력(Interrupt-Driven I/O)&lt;/code&gt;은 인터럽트를 기반으로 장치 컨트롤러를 제어하는 방식입니다. CPU에서 명령어를 전송하면 장치 컨트롤러에서 명령어를 수행한 후 CPU에 인터럽트 요청 신호를 보냅니다. 인터럽트 요청신호를 받은 CPU는 하던 일을 멈추고 인터럽트 서비스 루틴을 실행합니다.&lt;/p&gt;
+
+&lt;p&gt;여러 입출력장치에서 인터럽트가 동시에 발생한 경우 우선순위를 고려하여 우선순위가 높은 인터럽트를 먼저 처리합니다. 우선순위를 반영한 인터럽트를 처리하는 방식에는 여러 방식이 존재하지만 일반적으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로그래머블 인터럽트 컨트롤러(Programmable Interrupt Controller, PIC)&lt;/code&gt;라는 하드웨어를 사용하여 처리합니다.&lt;/p&gt;
+
+&lt;h6 id=&quot;pic&quot;&gt;PIC&lt;/h6&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img103.png&quot; alt=&quot;img103&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;PIC는 장치 컨트롤러와 CPU 사이에서 어떤 인터럽트를 먼저 처리할 것인지를 판단하여 CPU에게 인터럽트 신호를 전송합니타.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img104.png&quot; alt=&quot;img104&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;PIC는 보통 여러 개를 계층적으로 사용하여 사용하는 경우가 많습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;dma-입출력direct-memory-access-io&quot;&gt;DMA 입출력(Direct Memory Access I/O)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DMA 입출력(Direct Memory Access I/O)&lt;/code&gt;은 입출력장치와 메모리가 CPU를 거치지 않고 상호작용할 수 있는 입출력 방식입니다.&lt;/p&gt;
+
+&lt;p&gt;프로그램 입출력과 인터럽트 기반 입출력은 입출력장치와 메모리 사이에 전송되는 모든 데이터가 반드시 CPU를 거치게 되어 하드디스크 백업과 같은 대용량 데이터의 전송이 필요하다면 CPU의 부담이 커지게 됩니다. 이를 해결하기 위한 입출력 방식이 DMA 입출력 방식이며, DMA 입출력 방식은 입출력장치가 CPU를 거치지 않고 직접 메모리에 접근할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;DMA 입출력을 위해서는 시스템 버스에 연결된 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DMA 컨트롤러&lt;/code&gt;라는 하드웨어가 필요합니다. CPU가 DMA 컨트롤러에 명령어를 보내면 DMA 컨트롤러는 CPU를 대신하여 입출력 작업을 수행하고, 입출력 작업이 끝나면 인터럽트 신호를 통해 CPU에게 입출력 작업이 끝났음을 알립니다. 그동안 CPU는 다른 작업을 할 수 있게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img105.png&quot; alt=&quot;img105&quot; /&gt;
+&lt;img src=&quot;/assets/images/computer/img106.png&quot; alt=&quot;img106&quot; /&gt;
+&lt;img src=&quot;/assets/images/computer/img107.png&quot; alt=&quot;img107&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서 시스템 버스는 공용 자원이기 때문에 CPU와 DMA 컨트롤러는 동시에 시스템 버스를 사용할 수 없습니다. 그러므로 DMA 컨트롤러는 CPU가 시스템 버스를 사용하지 않을때 조금씩 시스템 버스를 사용하거나 CPU가 일시적으로 시스템 버스를 사용하지 않도록 요청을 보내고 시스템 버스를 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;DMA 컨트롤러는 메모리에서 데이터를 가져오기 위해 시스템 버스를 한 번, 장치컨트롤러에 데이터를 전송하기 위해 시스템 버스를 또 한 번 사용하여 총 2번 사용하게 됩니다. 그만큼 CPU가 시스템 버스를 사용하지 못하는 문제가 발생하는데, 이를 해결하기 위해 입출력장치를 입출력 버스(I/O Bus)라는 별도의 버스에 연결하여 사용할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img108.png&quot; alt=&quot;img108&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;예를 들어 그래픽 카드나 SSD를 연결하는 PCIe 슬롯은 입출력 버스와 연결됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img109.png&quot; alt=&quot;img109&quot; /&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="etc" />
+      
+
+      
+        <summary type="html">장치 컨트롤러(Device Controller)</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">명령어 파이프라인</title>
@@ -3268,864 +3405,6 @@ $$&lt;/p&gt;
 
       
         <summary type="html">집합연산자(Set Operation)</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">SQL - 조인(JOIN)</title>
-      <link href="https://huimang2.github.io/sql/join" rel="alternate" type="text/html" title="SQL - 조인(JOIN)" />
-      <published>2023-03-22T22:00:00+09:00</published>
-      <updated>2023-03-22T22:00:00+09:00</updated>
-      <id>https://huimang2.github.io/sql/join</id>
-      <content type="html" xml:base="https://huimang2.github.io/sql/join">&lt;h1 id=&quot;조인join&quot;&gt;조인(JOIN)&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;조인&lt;/code&gt;은 데이터베이스에서 두 개 이상의 테이블을 관련된 컬럼을 기반으로 결합하여 하나의 테이블로 합치는 메커니즘을 의미합니다.&lt;/p&gt;
-
-&lt;p&gt;일반적으로 행들은 기본키(PK)와 외래키(FK)의 연관관계에 의해 조인이 성립됩니다. 하지만 PK, FK의 관계가 없더라도 논리적인 값들의 연관관계만으로도 조인이 성립할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;동등-조인equi-join&quot;&gt;동등 조인(Equi Join)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;동등 조인&lt;/code&gt;은 일반적으로 “조인 키”라고 하는 일치하는 열을 기반으로 두 테이블을 결합하는 조인 작업 유형입니다.&lt;/p&gt;
-
-&lt;p&gt;특히 동등 조인은 조인 키가 정확히 일치하는 두 테이블의 행만 반환합니다. 즉, 조인 키 값이 두 테이블에서 동일한 두 테이블의 모든 열을 포함하는 새 테이블을 생성합니다.&lt;/p&gt;
-
-&lt;p&gt;예를 들어 “ORDERS”와 “EMPLOYEES”라는 두 개의 테이블이 있다고 가정합니다. 각 주문에는 “EMPLOYEES” 테이블의 직원에 해당하는 EMPLOYEE_ID가 있습니다. 모든 주문 및 관련 고객 정보를 찾으려면 두 테이블의 EMPLOYEE_ID 컬럼에서 동등 조인을 수행하면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;아래는 예제 데이터 입니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;employees&quot;&gt;EMPLOYEES&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;EMPLOYEE_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;FIRST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;LAST_NAME&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Johnson&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lee&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h6 id=&quot;orders&quot;&gt;ORDERS&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;EMPLOYEE_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_DATE&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1001&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1002&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1003&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1004&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-15&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;두 테이블 모두에 존재하는 EMPLOYEE_ID 컬럼을 통해 동등 조인을 수행할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;동등-조인-예제&quot;&gt;동등 조인 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;결과는 다음과 같습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;동등-조인-결과&quot;&gt;동등 조인 결과&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;LAST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;FIRST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_DATE&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1001&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1002&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Johnson&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1003&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lee&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1004&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-15&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;비동등-조인non-equi-join&quot;&gt;비동등 조인(Non Equi Join)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;비동등 조인&lt;/code&gt;은 조인 조건이 같지 않은 비교 연산자를 기반으로 하는 SQL의 조인 유형입니다. 동등 연산자(=)가 아닌 다른 연산자를 사용하여 조인을 수행합니다.&lt;/p&gt;
-
-&lt;p&gt;대부분 비동등 조인을 수행할 수 있지만, 설계상의 이유로 수행이 불가능할 수도 있습니다.&lt;/p&gt;
-
-&lt;p&gt;아래는 예제 데이터 입니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;customers&quot;&gt;CUSTOMERS&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;CUSTOMER_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;AMOUNT&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;450000&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;150000&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;600000&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;300000&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h6 id=&quot;grade&quot;&gt;GRADE&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;GRADE&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;LOW&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;HIGH&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;100000&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;199999&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;200000&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;299999&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;300000&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;399999&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;400000&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;499999&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;500000&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;599999&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;600000&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;699999&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;고객의 총 구매액에 대하여 등급을 구하고 싶다면 다음과 같은 비동등 조인 쿼리를 작성할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;비동등-조인-예제&quot;&gt;비동등 조인 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CUSTOMERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;CUSTOMERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AMOUNT&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;GRADE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GRADE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CUSTOMERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GRADE&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CUSTOMERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AMOUNT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;BETWEEN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GRADE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LOW&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;AND&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GRADE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;HIGH&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;결과는 다음과 같습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;비동등-조인-결과&quot;&gt;비동등 조인 결과&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;AMOUNT&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;GRADE&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;450000&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;150000&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;600000&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;300000&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h1 id=&quot;표준-조인&quot;&gt;표준 조인&lt;/h1&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;표준 조인&lt;/code&gt;은 ANSI/ISO 표준에서 규정한 조인입니다.&lt;/p&gt;
-
-&lt;p&gt;표준 조인에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;내부 조인(Inner Join)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;외부 조인(Outer Join)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;크로스 조인(Cross Join)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;자연 조인(Natural Join)&lt;/code&gt;이 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;내부-조인inner-join&quot;&gt;내부 조인(Inner Join)&lt;/h2&gt;
-
-&lt;p&gt;내부 조인은 조인 조건에서 동일한 값이 있는 행만 반환하는 조인입니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;내부-조인-문법&quot;&gt;내부 조인 문법&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼명&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;조건절&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;다음과 같은 예제 데이터가 있다고 가정합시다.&lt;/p&gt;
-
-&lt;h6 id=&quot;employees-1&quot;&gt;EMPLOYEES&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;EMPLOYEE_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;FIRST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;LAST_NAME&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Johnson&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lee&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h6 id=&quot;orders-1&quot;&gt;ORDERS&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;EMPLOYEE_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_DATE&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1001&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1002&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1003&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1004&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-15&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;EMPLOYEES 테이블에 있는 직원 중 주문 이력이 있는 직원을 확인하고 싶다면 다음과 같이 쿼리를 작성하면 됩니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;내부-조인-예제&quot;&gt;내부 조인 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;결과는 다음과 같습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;내부-조인-결과&quot;&gt;내부 조인 결과&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;EMPLOYEE_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;FIRST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;LAST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_DATE&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;오라클의 경우 다음과 같이 내부 조인 쿼리를 작성할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;오라클-내부-조인-예제&quot;&gt;오라클 내부 조인 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;외부-조인outer-join&quot;&gt;외부 조인(Outer Join)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;외부 조인&lt;/code&gt;은 조인 조건에서 동일한 값이 없더라도 행을 반환하는 조인입니다.&lt;/p&gt;
-
-&lt;p&gt;외부 조인은 왼쪽 테이블을 기준으로 외부 조인을 수행하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Left Outer Join&lt;/code&gt;, 오른쪽 테이블을 기준으로 외부 조인을 수행하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Right Outer Join&lt;/code&gt;, 양쪽 테이블을 기준으로 외부 조인을 수행하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Full Outer Join&lt;/code&gt;이 있습니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;left-outer-join&quot;&gt;Left Outer Join&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Left Outer Join&lt;/code&gt;은 왼쪽 테이블을 기준으로 외부 조인을 수행합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;left-outer-join-예제&quot;&gt;Left Outer Join 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;LEFT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OUTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;결과는 다음과 같습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;left-outer-join-결과&quot;&gt;Left Outer Join 결과&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;EMPLOYEE_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;FIRST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;LAST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_DATE&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lee&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Johnson&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;오라클의 경우 다음과 같이 Left Outer Join 쿼리를 작성할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;오라클-left-outer-join-예제&quot;&gt;오라클 Left Outer Join 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;right-outer-join&quot;&gt;Right Outer Join&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Right Outer Join&lt;/code&gt;은 오른쪽 테이블을 기준으로 외부 조인을 수행합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;right-outer-join-예제&quot;&gt;Right Outer Join 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;RIGHT&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OUTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;결과는 다음과 같습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;right-outer-join-결과&quot;&gt;Right Outer Join 결과&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;EMPLOYEE_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;FIRST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;LAST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_DATE&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-15&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;오라클의 경우 다음과 같이 Left Outer Join 쿼리를 작성할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;오라클-right-outer-join-예제&quot;&gt;오라클 Right Outer Join 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;WHERE&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;full-outer-join&quot;&gt;Full Outer Join&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Full Outer Join&lt;/code&gt;은 오른쪽 테이블을 기준으로 외부 조인을 수행합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;full-outer-join-예제&quot;&gt;Full Outer Join 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FULL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;OUTER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;ON&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;결과는 다음과 같습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;full-outer-join-결과&quot;&gt;Full Outer Join 결과&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;EMPLOYEE_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;FIRST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;LAST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_DATE&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lee&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Johnson&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;오라클의 경우 Full Outer Join 문법이 없습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;크로스-조인cross-join&quot;&gt;크로스 조인(Cross Join)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;크로스 조인&lt;/code&gt;은 조인 조건 없이 모든 데이터의 조합을 나타내는 조인입니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;크로스-조인-문법&quot;&gt;크로스 조인 문법&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼명&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;CROSS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;크로스-조인-예제&quot;&gt;크로스 조인 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;CROSS&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;결과는 다음과 같습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;크로스-조인-결과&quot;&gt;크로스 조인 결과&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;EMPLOYEE_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;FIRST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;LAST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_DATE&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Johnson&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Johnson&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Johnson&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Bob&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Johnson&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lee&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lee&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lee&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Sarah&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Lee&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-15&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;자연-조인natural-join&quot;&gt;자연 조인(Natural Join)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;자연 조인&lt;/code&gt;은 서로 다른 테이블에서 동일한 이름을 갖는 컬럼에 대하여 자동으로 동등 조인을 수행합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;자연-조인-문법&quot;&gt;자연 조인 문법&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;컬럼명&lt;/span&gt;
-   &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;NATURAL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;테이블&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h6 id=&quot;자연-조인-예제&quot;&gt;자연 조인 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-   &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;NATURAL&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;EMPLOYEES 테이블과 ORDERS 테이블에서 동일한 이름을 가지는 EMPLOYEE_ID 컬럼은 별명(Alias)를 주지 않았습니다. 이때 Natural Join을 사용하면 EMPLOYEE_ID 컬럼을 기준으로 내부 조인을 수행하게 됩니다.&lt;/p&gt;
-
-&lt;p&gt;결과는 다음과 같이 내부 조인의 결과와 같음을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;자연-조인-결과&quot;&gt;자연 조인 결과&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;EMPLOYEE_ID&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;FIRST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;LAST_NAME&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;ORDER_DATE&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-01&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Jane&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Doe&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-01-15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;John&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Smith&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2023-02-01&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;내부 조인에서도 ON 조건절 대신에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;USING&lt;/code&gt; 조건절을 사용한다면 자연 조인처럼 별명(Alias) 없이 컬럼을 지정할 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;using-조건절-예제&quot;&gt;USING 조건절 예제&lt;/h6&gt;
-&lt;div data-lang=&quot;SQL&quot; class=&quot;language-sql highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;SELECT&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;FIRST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LAST_NAME&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;TO_CHAR&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YYYY-MM-DD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDER_DATE&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;FROM&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;EMPLOYEES&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;INNER&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;JOIN&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ORDERS&lt;/span&gt;
- &lt;span class=&quot;k&quot;&gt;USING&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EMPLOYEE_ID&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>huimang2</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="sql" />
-      
-
-      
-        <summary type="html">조인(JOIN)</summary>
       
 
       
