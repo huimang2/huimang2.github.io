@@ -391,6 +391,7 @@ into the {body} of the default.hbs template -->
 <div data-lang="C" class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;unistd.h&gt;
+#include &lt;sys/wait.h&gt;
 </span>
 <span class="kt">void</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
 
@@ -401,12 +402,12 @@ into the {body} of the default.hbs template -->
   <span class="n">cpid</span> <span class="o">=</span> <span class="n">fork</span><span class="p">();</span>
 
   <span class="k">if</span><span class="p">(</span><span class="n">cpid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">exec</span><span class="p">(</span><span class="s">"./child"</span><span class="p">);</span>
+    <span class="n">execl</span><span class="p">(</span><span class="s">"./child"</span><span class="p">,</span> <span class="s">"./child"</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
     <span class="n">printf</span><span class="p">(</span><span class="s">"child process failed to exec</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
-    <span class="n">xit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
   <span class="p">}</span>
 
-  <span class="n">wait</span><span class="p">();</span>
+  <span class="n">wait</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>
   <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -427,6 +428,8 @@ into the {body} of the default.hbs template -->
 <p>부모 프로세스가 먼저 종료되면 자식 프로세스도 종료되기 때문에 parent 코드에서 wait 함수를 통해 자식 프로세스와 동기화 시킵니다.</p>
 
 <p>parent를 실행하면 fork 시스템 호출에 의해 자식 프로세스가 생성되고, exec 시스템 호출에 의해 자식 프로세스는 child를 실행합니다. 코드 영역이 child 코드로 변경되었기 때문에 “child process failed to exec” 라는 메시지는 출력되지 않습니다.</p>
+
+<hr />
 
 <p>fork와 exec를 통해 프로세스를 생성하는 방식은 프로세스 생성 과정 전체를 거치지 않기 때문에 프로세스 생성 속도가 빠르고 추가 작업 없이 자원의 상속이 가능하여 시스템 관리에 효율적입니다.</p>
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-06-19T00:39:53+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">프로세스</title><link href="https://huimang2.github.io/etc/computer-process" rel="alternate" type="text/html" title="프로세스" /><published>2023-06-18T01:00:00+09:00</published><updated>2023-06-18T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-process</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-process">&lt;h1 id=&quot;프로세스process&quot;&gt;프로세스(Process)&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-06-19T01:01:15+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">프로세스</title><link href="https://huimang2.github.io/etc/computer-process" rel="alternate" type="text/html" title="프로세스" /><published>2023-06-18T01:00:00+09:00</published><updated>2023-06-18T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-process</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-process">&lt;h1 id=&quot;프로세스process&quot;&gt;프로세스(Process)&lt;/h1&gt;
 
 &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로세스(Process)&lt;/code&gt;란 현재 실행되고 있는 프로그램의 인스턴스를 말합니다. 프로그램은 데이터 상태로 보조기억장치에 저장되어 있으며, 프로그램이 실행되면 메모리에 적재되어 프로세스가 됩니다. 윈도우에서 작업 관리자를 열면 현재 실행중인 프로세스를 확인할 수 있습니다.&lt;/p&gt;
 
@@ -162,6 +162,7 @@
 &lt;div data-lang=&quot;C&quot; class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;stdio.h&amp;gt;
 #include &amp;lt;stdlib.h&amp;gt;
 #include &amp;lt;unistd.h&amp;gt;
+#include &amp;lt;sys/wait.h&amp;gt;
 &lt;/span&gt;
 &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
 
@@ -172,12 +173,12 @@
   &lt;span class=&quot;n&quot;&gt;cpid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
 
   &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cpid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./child&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;execl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;./child&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;./child&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;child process failed to exec&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;xit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 
-  &lt;span class=&quot;n&quot;&gt;wait&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;wait&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;NULL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -198,6 +199,8 @@
 &lt;p&gt;부모 프로세스가 먼저 종료되면 자식 프로세스도 종료되기 때문에 parent 코드에서 wait 함수를 통해 자식 프로세스와 동기화 시킵니다.&lt;/p&gt;
 
 &lt;p&gt;parent를 실행하면 fork 시스템 호출에 의해 자식 프로세스가 생성되고, exec 시스템 호출에 의해 자식 프로세스는 child를 실행합니다. 코드 영역이 child 코드로 변경되었기 때문에 “child process failed to exec” 라는 메시지는 출력되지 않습니다.&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;p&gt;fork와 exec를 통해 프로세스를 생성하는 방식은 프로세스 생성 과정 전체를 거치지 않기 때문에 프로세스 생성 속도가 빠르고 추가 작업 없이 자원의 상속이 가능하여 시스템 관리에 효율적입니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="etc" /><summary type="html">프로세스(Process)</summary></entry><entry><title type="html">운영체제</title><link href="https://huimang2.github.io/etc/computer-operating-system" rel="alternate" type="text/html" title="운영체제" /><published>2023-06-17T01:00:00+09:00</published><updated>2023-06-17T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-operating-system</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-operating-system">&lt;h1 id=&quot;운영체제operating-system란&quot;&gt;운영체제(Operating System)란?&lt;/h1&gt;
 
