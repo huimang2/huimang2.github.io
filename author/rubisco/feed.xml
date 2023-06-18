@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-06-19T00:35:42+09:00</updated>
+  <updated>2023-06-19T00:39:53+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -74,11 +74,11 @@
 
 &lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;4. 레지스터(Register) 값&lt;/font&gt;:&lt;/strong&gt; 프로세스가 현재 사용 중인 레지스터의 값을 저장합니다. 이는 프로세스가 실행되는 동안 레지스터 값이 유지되도록 합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;5.스케줄링 정보(Scheduling Information)&lt;/font&gt;:&lt;/strong&gt; 프로세스의 우선 순위, CPU 점유 시간, 대기 시간 등 스케줄링과 관련된 정보를 포함합니다. 운영 체제는 이 정보를 기반으로 프로세스 스케줄링 알고리즘을 실행하여 어떤 프로세스를 실행시킬지 결정합니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;5. 스케줄링 정보(Scheduling Information)&lt;/font&gt;:&lt;/strong&gt; 프로세스의 우선 순위, CPU 점유 시간, 대기 시간 등 스케줄링과 관련된 정보를 포함합니다. 운영 체제는 이 정보를 기반으로 프로세스 스케줄링 알고리즘을 실행하여 어떤 프로세스를 실행시킬지 결정합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;6.메모리 관리 정보(Memory Management Information)&lt;/font&gt;:&lt;/strong&gt; 프로세스가 사용하는 메모리 주소 범위, 페이지 테이블 정보 등과 같은 메모리 관리에 필요한 정보를 포함합니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;6. 메모리 관리 정보(Memory Management Information)&lt;/font&gt;:&lt;/strong&gt; 프로세스가 사용하는 메모리 주소 범위, 페이지 테이블 정보 등과 같은 메모리 관리에 필요한 정보를 포함합니다.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;7.입출력 상태(I/O Status)&lt;/font&gt;:&lt;/strong&gt; 프로세스가 사용 중인 입출력 장치와 관련된 정보를 저장합니다. 이 정보는 프로세스가 입출력 작업을 수행하는 데 필요합니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;7. 입출력 상태(I/O Status)&lt;/font&gt;:&lt;/strong&gt; 프로세스가 사용 중인 입출력 장치와 관련된 정보를 저장합니다. 이 정보는 프로세스가 입출력 작업을 수행하는 데 필요합니다.&lt;/p&gt;
 
 &lt;h1 id=&quot;프로세스-상태&quot;&gt;프로세스 상태&lt;/h1&gt;
 
