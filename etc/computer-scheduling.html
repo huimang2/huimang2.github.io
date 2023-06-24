@@ -11,7 +11,7 @@
 
 
 
-    <title>레지스터와 카운터</title>
+    <title>CPU 스케줄링</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,24 +51,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="프로그래밍 노트" />
     <link rel="shortcut icon" href="https://huimang2.github.io/assets/images/favicon.jpg" type="image/png" />
-    <link rel="canonical" href="https://huimang2.github.io/etc/computer-register-and-counter" />
+    <link rel="canonical" href="https://huimang2.github.io/etc/computer-scheduling" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="Rubisco's Programming Note" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="레지스터와 카운터" />
-    <meta property="og:description" content="레지스터(Register) 레지스터는 여러 비트를 저장하는 기억 소자입니다. 일반적으로 D 플립플롭으로 구성되어 있으며, 하나의 플립플롭은 1비트를 구성합니다. 즉, 8개의 플립플롭은 8비트, 16개의 플립플롭은 16비트 레지스터가 됩니다. 레지스터는 주로 CPU 내부에서 연산결과를 중간저장하거나 데이터를 선택할 때 사용합니다. 로드(Load) 신호 로드 신호는 레지스터를 동작시키는 신호입니다. 레지스터에 저장된 데이터를 입력값으로 변경시키는 역할을 합니다. ClrN" />
-    <meta property="og:url" content="https://huimang2.github.io/etc/computer-register-and-counter" />
+    <meta property="og:title" content="CPU 스케줄링" />
+    <meta property="og:description" content="CPU 스케줄링(CPU Scheduling) CPU 스케줄링(CPU Scheduling)이란 운영체제가 프로세스에 합리적으로 CPU 자원을 할당하는 정책을 만드는 것을 말합니다. 앞서 말했듯이 멀티태스킹을 위해서는 운영체제가 CPU의 가동시간을 적절히 나누어 프로세스에게 사용시간을 분배합니다. 이때 시스템과 사용자의 입장에서 CPU 성능에 대한 척도가 다를 수 있습니다. 1. 시스템 입장에서의 성능 척도 CPU 사용률(CPU Utilization): 전체 시스템 시간" />
+    <meta property="og:url" content="https://huimang2.github.io/etc/computer-scheduling" />
     <meta property="og:image" content="https://huimang2.github.io/assets/images/computer-logo.png" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2023-05-19T01:00:00+09:00" />
-    <meta property="article:modified_time" content="2023-05-19T01:00:00+09:00" />
+    <meta property="article:published_time" content="2023-06-24T01:00:00+09:00" />
+    <meta property="article:modified_time" content="2023-06-24T01:00:00+09:00" />
     <meta property="article:tag" content="Etc" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="레지스터와 카운터" />
-    <meta name="twitter:description" content="레지스터(Register) 레지스터는 여러 비트를 저장하는 기억 소자입니다. 일반적으로 D 플립플롭으로 구성되어 있으며, 하나의 플립플롭은 1비트를 구성합니다. 즉, 8개의 플립플롭은 8비트, 16개의 플립플롭은 16비트 레지스터가 됩니다. 레지스터는 주로 CPU 내부에서 연산결과를 중간저장하거나 데이터를 선택할 때 사용합니다. 로드(Load) 신호 로드 신호는 레지스터를 동작시키는 신호입니다. 레지스터에 저장된 데이터를 입력값으로 변경시키는 역할을 합니다. ClrN" />
+    <meta name="twitter:title" content="CPU 스케줄링" />
+    <meta name="twitter:description" content="CPU 스케줄링(CPU Scheduling) CPU 스케줄링(CPU Scheduling)이란 운영체제가 프로세스에 합리적으로 CPU 자원을 할당하는 정책을 만드는 것을 말합니다. 앞서 말했듯이 멀티태스킹을 위해서는 운영체제가 CPU의 가동시간을 적절히 나누어 프로세스에게 사용시간을 분배합니다. 이때 시스템과 사용자의 입장에서 CPU 성능에 대한 척도가 다를 수 있습니다. 1. 시스템 입장에서의 성능 척도 CPU 사용률(CPU Utilization): 전체 시스템 시간" />
     <meta name="twitter:url" content="https://huimang2.github.io/" />
     <meta name="twitter:image" content="https://huimang2.github.io/assets/images/computer-logo.png" />
     <meta name="twitter:label1" content="Written by" />
@@ -89,7 +89,7 @@
         "name": "Rubisco's Programming Note",
         "logo": "https://huimang2.github.io/"
     },
-    "url": "https://huimang2.github.io/etc/computer-register-and-counter",
+    "url": "https://huimang2.github.io/etc/computer-scheduling",
     "image": {
         "@type": "ImageObject",
         "url": "https://huimang2.github.io/assets/images/computer-logo.png",
@@ -98,9 +98,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://huimang2.github.io/etc/computer-register-and-counter"
+        "@id": "https://huimang2.github.io/etc/computer-scheduling"
     },
-    "description": "레지스터(Register) 레지스터는 여러 비트를 저장하는 기억 소자입니다. 일반적으로 D 플립플롭으로 구성되어 있으며, 하나의 플립플롭은 1비트를 구성합니다. 즉, 8개의 플립플롭은 8비트, 16개의 플립플롭은 16비트 레지스터가 됩니다. 레지스터는 주로 CPU 내부에서 연산결과를 중간저장하거나 데이터를 선택할 때 사용합니다. 로드(Load) 신호 로드 신호는 레지스터를 동작시키는 신호입니다. 레지스터에 저장된 데이터를 입력값으로 변경시키는 역할을 합니다. ClrN"
+    "description": "CPU 스케줄링(CPU Scheduling) CPU 스케줄링(CPU Scheduling)이란 운영체제가 프로세스에 합리적으로 CPU 자원을 할당하는 정책을 만드는 것을 말합니다. 앞서 말했듯이 멀티태스킹을 위해서는 운영체제가 CPU의 가동시간을 적절히 나누어 프로세스에게 사용시간을 분배합니다. 이때 시스템과 사용자의 입장에서 CPU 성능에 대한 척도가 다를 수 있습니다. 1. 시스템 입장에서의 성능 척도 CPU 사용률(CPU Utilization): 전체 시스템 시간"
 }
     </script>
 
@@ -113,7 +113,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="레지스터와 카운터" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="CPU 스케줄링" href="/feed.xml" />
 
 
     <!-- MathJax -->
@@ -201,7 +201,7 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="19 May 2023">19 May 2023</time>
+                    <time class="post-full-meta-date" datetime="24 June 2023">24 June 2023</time>
                     
                         <span class="date-divider">/</span>
                         
@@ -213,7 +213,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">레지스터와 카운터</h1>
+                <h1 class="post-full-title">CPU 스케줄링</h1>
             </header>
 
             <!-- 
@@ -224,182 +224,115 @@ into the {body} of the default.hbs template -->
             <section class="post-full-content">
                 <div class="kg-card-markdown">
                     <div id="toc">
-                        <ul><li><a href="#레지스터register"><span>레지스터(Register)</span></a><ul><li><a href="#로드load-신호"><span>로드(Load) 신호</span></a></li><li><a href="#쉬프트-레지스터shift-register"><span>쉬프트 레지스터(Shift Register)</span></a></li></ul></li><li><a href="#카운터counter"><span>카운터(Counter)</span></a><ul><li><a href="#비동기식-카운터"><span>비동기식 카운터</span></a></li><li><a href="#동기식-카운터"><span>동기식 카운터</span></a></li><li><a href="#링-카운터"><span>링 카운터</span></a></li></ul></li></ul>
+                        <ul><li><a href="#cpu-스케줄링cpu-scheduling"><span>CPU 스케줄링(CPU Scheduling)</span></a><ul><li><a href="#비선점형-스케줄링"><span>비선점형 스케줄링</span></a><ul><li><a href="#선입-선처리first-come-first-served-fcfs-알고리즘"><span>선입 선처리(First Come First Served, FCFS) 알고리즘</span></a></li><li><a href="#최단-작업-우선shortest-job-first-sjf-알고리즘"><span>최단 작업 우선(Shortest Job First, SJF) 알고리즘</span></a></li><li><a href="#최고-응답률-우선highest-response-ratio-next-hrn-알고리즘"><span>최고 응답률 우선(Highest Response-ratio Next, HRN) 알고리즘</span></a></li></ul></li><li><a href="#선점형-스케줄링"><span>선점형 스케줄링</span></a><ul><li><a href="#라운드-로빈round-robin-rr-알고리즘"><span>라운드 로빈(Round Robin, RR) 알고리즘</span></a></li><li><a href="#최소-잔여-시간-우선sortest-remaining-time-srt-알고리즘"><span>최소 잔여 시간 우선(Sortest Remaining Time, SRT) 알고리즘</span></a></li><li><a href="#다단계-큐multi-level-queue-mq-알고리즘"><span>다단계 큐(Multi-level Queue, MQ) 알고리즘</span></a></li><li><a href="#다단계-피드백-큐multi-level-feedback-queue-mfq-알고리즘"><span>다단계 피드백 큐(Multi-level Feedback Queue, MFQ) 알고리즘</span></a></li></ul></li></ul></li></ul>
 
                     </div>
-                    <h1 id="레지스터register">레지스터(Register)</h1>
+                    <h1 id="cpu-스케줄링cpu-scheduling">CPU 스케줄링(CPU Scheduling)</h1>
 
-<p>레지스터는 여러 비트를 저장하는 기억 소자입니다. 일반적으로 D 플립플롭으로 구성되어 있으며, 하나의 플립플롭은 1비트를 구성합니다. 즉, 8개의 플립플롭은 8비트, 16개의 플립플롭은 16비트 레지스터가 됩니다.</p>
+<p><code class="language-plaintext highlighter-rouge">CPU 스케줄링(CPU Scheduling)</code>이란 운영체제가 프로세스에 합리적으로 CPU 자원을 할당하는 정책을 만드는 것을 말합니다.</p>
 
-<p>레지스터는 주로 CPU 내부에서 연산결과를 중간저장하거나 데이터를 선택할 때 사용합니다.</p>
+<p>앞서 말했듯이 멀티태스킹을 위해서는 운영체제가 CPU의 가동시간을 적절히 나누어 프로세스에게 사용시간을 분배합니다. 이때 시스템과 사용자의 입장에서 CPU 성능에 대한 척도가 다를 수 있습니다.</p>
 
-<h2 id="로드load-신호">로드(Load) 신호</h2>
+<p><code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">1. 시스템 입장에서의 성능 척도</code></p>
 
-<p>로드 신호는 레지스터를 동작시키는 신호입니다. 레지스터에 저장된 데이터를 입력값으로 변경시키는 역할을 합니다.</p>
+<ul>
+  <li><strong>CPU 사용률(CPU Utilization)</strong>: 전체 시스템 시간 중 CPU가 작업을 처리하는 시간의 비율</li>
+  <li><strong>처리량(Throughput)</strong>: CPU가 단위 시간당 처리하는 프로세스의 개수</li>
+</ul>
 
-<p><img src="/assets/images/computer/img067.png" alt="img067" /></p>
+<p><code class="language-plaintext bgcolor blue highlighter-rouge" style="color:royalblue">2. 사용자 입장에서의 성능 척도</code></p>
 
-<p>ClrN 신호는 비동기 카운터로 우선은 무시하시면 됩니다.</p>
+<ul>
+  <li><strong>대기시간(Waiting Time)</strong>: 프로세스가 준비 상태에서 CPU를 할당 받을 때까지 대기한 시간</li>
+  <li><strong>응답시간(Response Time)</strong>: 프로세스의 명령 요청 후 응답이 올 때까지의 시간</li>
+  <li><strong>반환시간(Turnaround Time)</strong>: 프로세스가 시작해서 끝날 때까지 걸리는 시간</li>
+</ul>
 
-<p>로드(Load)는 클럭(Clk)과 AND 게이트로 연결하여 로드가 1일때 클럭 신호에 따라 레지스터 값을 변경할 수 있습니다. 그러나 클럭 신호가 다른 신호와 묶이는 경우 타이밍 문제가 발생할 수 있습니다.</p>
+<p>시스템 입장에서는 CPU를 쉬지않고 최대한 많이 가동시키는 것이 중요하고, 사용자 입장에서는 요청한 작업이 빨리 처리되는 것이 중요하므로 운영체제는 상황에 맞게 CPU 스케줄링을 설계할 필요가 있습니다.</p>
 
-<p>이러한 문제를 해결하기 위해서 다음과 같이 레지스터의 CE(Clock Enable)에 로드를 연결하여 사용합니다.</p>
+<p>CPU 스케줄링은 스케줄링 방식에 따라 <code class="language-plaintext highlighter-rouge">선점형</code>과 <code class="language-plaintext highlighter-rouge">비선점형</code>으로 나눌 수 있습니다.</p>
 
-<p><img src="/assets/images/computer/img068.png" alt="img068" /></p>
+<p><code class="language-plaintext highlighter-rouge">선점(preemptive)</code>이란 빼앗을 수 있음을 의미합니다. 즉, 선점형 스케줄링의 경우 운영체제가 필요하다고 판단하면 실행중인 프로세스를 중단하고 다른 프로세스에게 CPU 자원을 할당하여 실행시킬 수 있습니다. 반대로 비선점형 스케줄링은 프로세스에게 할당된 CPU를 강제로 빼앗을 수 없고 프로세스의 사용이 끝난 이후 다른 프로세스에게 CPU의 자원을 할당할 수 있습니다.</p>
 
-<p>로드가 0인 경우 클럭 신호와 상관없이 레지스터에 저장된 데이터는 이전 상태를 유지하게 되며, 로드가 1인 경우 클럭 신호에 따라 레지스터의 데이터가 입력값으로 변경됩니다.</p>
+<p>선점형 스케줄링이 경우 하나의 프로세스가 자원 독점하지 못하도록 막을 수 있지만 문맥교환 과정에서 오버헤드가 발생할 수 있습니다. 반대로 비선점형 스케줄링의 경우 문맥교환에 대한 오버헤드가 없지만 전체 시스템의 처리율이 떨어질 수 있습니다.</p>
 
-<h2 id="쉬프트-레지스터shift-register">쉬프트 레지스터(Shift Register)</h2>
+<p>운영체제는 PCB를 <code class="language-plaintext highlighter-rouge">스케줄링 큐(Queue)</code>에서 리스트 형태로 관리합니다. 보통 큐는 선입선출의 방식을 따르는 자료 구조이지만 스케줄링 큐는 스케줄링 전략에 따라 다른 자료구조를 가질 수도 있습니다. 스케줄링 큐는 프로세스 상태에 따라 <code class="language-plaintext highlighter-rouge">준비 큐(Ready Queue)</code>, <code class="language-plaintext highlighter-rouge">대기 큐(Waitubg Queue)</code> 등 여러 큐가 존재합니다.</p>
 
-<p>쉬프트 레지스터는 플립플롭에 출력과 입력을 연결하는 방법에 따라 데이터를 왼쪽 또는 오른쪽으로 자리이동하는 레지스터 입니다.</p>
+<h2 id="비선점형-스케줄링">비선점형 스케줄링</h2>
 
-<p>쉬프트 레지스터의 종류는 직렬 쉬프트 레지스터와 병렬 쉬프트 레지스터가 있습니다.</p>
+<h3 id="선입-선처리first-come-first-served-fcfs-알고리즘">선입 선처리(First Come First Served, FCFS) 알고리즘</h3>
 
-<hr />
+<p>FCFS 알고리즘은 프로세스 도착순으로 CPU를 할당하는 CPU 스케줄링 알고리즘 입니다. 즉, 준비 큐에 도착한 순서대로 CPU에 자원을 할당합니다. 직관적이고 단순한 알고리즘 이지만 평균 대기시간이 길어지는 <code class="language-plaintext highlighter-rouge">호위 효과(Convoy Effect)</code> 문제가 있습니다.</p>
 
-<p>직렬 쉬프트 레지스터는 <code class="language-plaintext highlighter-rouge">직렬 입력(Serial in, SI)</code>과 <code class="language-plaintext highlighter-rouge">직렬 출력(Serial out, SO)</code>을 가지는 레지스터로, 데이터가 한 번에 한 비트씩 쉬프트 됩니다.</p>
+<p><img src="/assets/images/computer/img128.png" alt="img128" /></p>
 
-<p><img src="/assets/images/computer/img069.png" alt="img069" /></p>
+<p>위에 그림을 보면 P<sub>1</sub>은 20초, P<sub>2</sub>는 3초, P<sub>3</sub>은 7초, P<sub>4</sub>는 5초의 실행시간을 추정할 수 있습니다.</p>
 
-<p>Shift 신호는 CE와 연결되며, 신호가 1인 경우 쉬프트 레지스터가 동작하며, 신호가 0인 경우 데이터가 쉬프트 되지 않고 상태를 유지합니다.</p>
+<p>도착시간이 0초로 모두 동일하다고 가정하면 FCFS 알고리즘의 경우 <strong class="bgcolor orange" style="color:orangered">P<sub>1</sub> →  P<sub>2</sub> → P<sub>3</sub> → P<sub>4</sub></strong> 순서로 실행되며, P<sub>1</sub>은 0초, P<sub>2</sub>는 20초, P<sub>3</sub>은 23초, P<sub>4</sub>는 30초의 대기시간을 가지게 되어 평균 대기시간은 <strong>18.25초</strong>가 됩니다. [(0 + 20 + 23 + 30) / 4 = 18.25]</p>
 
-<p>예를 들어 초기 레지스터 값이 0101이고 직렬 입력(SI)이 1101인 경우 타이밍도는 다음과 같습니다.</p>
+<p>이는 아래 알고리즘과 비교하면 긴 대기시간을 가집니다.</p>
 
-<p><img src="/assets/images/computer/img070.png" alt="img070" /></p>
+<h3 id="최단-작업-우선shortest-job-first-sjf-알고리즘">최단 작업 우선(Shortest Job First, SJF) 알고리즘</h3>
 
-<p>한 번의 클럭 주기마다 데이터가 쉬프트 됨을 확인 할 수 있습니다. 또한 Q<sub>0</sub>는 직렬 출력(SO)이 되는데, 4번의 클럭 주기동안 SO는 초기 레지스터 값인 0101이 출력됨을 확인할 수 있습니다.</p>
+<p>SJF 스케줄링은 FCFS 알고리즘을 보완하여 실행시간이 짧다고 추정되는 프로세스에게 먼저 자원을 할당하는 CPU 스케줄링 알고리즘 입니다.</p>
 
-<hr />
+<p><img src="/assets/images/computer/img128.png" alt="img128" /></p>
 
-<p>병렬 쉬프트 레지스터는 <code class="language-plaintext highlighter-rouge">병렬 입력(Parallel in, PI)</code>과 <code class="language-plaintext highlighter-rouge">병렬 출력(Parallel out, PO)</code>을 가지는 레지스터 이며, 다음과 같이 플립플롭과 멀티플렉서(MUX)를 통해 만들 수 있습니다.</p>
+<p>도착시간이 0초로 모두 동일하다고 가정하면 SJF 알고리즘의 경우 <strong class="bgcolor orange" style="color:orangered">P<sub>2</sub> →  P<sub>4</sub> → P<sub>3</sub> → P<sub>1</sub></strong> 순서로 실행되며, P<sub>2</sub>는 0초, P<sub>4</sub>는 3초, P<sub>3</sub>은 8초, P<sub>1</sub>은 15초의 대기시간을 가지게 되어 평균 대기시간은 <strong>6.5초</strong>가 됩니다. [(0 + 3 + 8 + 15) / 4 = 6.5]</p>
 
-<p><img src="/assets/images/computer/img071.png" alt="img071" /></p>
+<p>SJF 알고리즘은 호위효과 문제가 해결되었지만 실행시간이 긴 프로세스의 경우 영원히 CPU를 할당받지 못하는 <code class="language-plaintext highlighter-rouge">기아(Starvation) 현상</code>이 발생할 수 있습니다.</p>
 
-<p>직렬 쉬프트 레지스터와 달리 한 클럭에 모든 데이터가 동시에 로드되고 동시에 출력됩니다. 이때 쉬프트 신호와 로드 신호가 멀티플렉서의 제어신호가 됩니다.</p>
+<h3 id="최고-응답률-우선highest-response-ratio-next-hrn-알고리즘">최고 응답률 우선(Highest Response-ratio Next, HRN) 알고리즘</h3>
 
-<p>쉬프트 신호가 1인 경우 로드 신호에 상관없이 데이터가 쉬프트되며, 쉬프트 신호가 0, 로드 신호가 1이면 레지스터에 데이터가 저장됩니다. 두 신호가 모두 0인 경우에는 레지스터 상태가 유지됩니다.</p>
+<p>HRN 알고리즘은 점유의 불평등 현상이 발생하는 SJF 알고리즘을 보완하여 응답률이 높은 프로세스에게 먼저 자원을 할당하는 CPU 알고리즘이며, 다음과 같은 계산을 통해 프로세스의 우선순위를 결정합니다.</p>
 
-<p>위에 그림과 같이 Q<sub>0</sub>는 직렬 출력(SO)이 되므로 병렬 데이터를 직렬 데이터로 변환하기 위해 해당 레지스터를 사용할 수도 있습니다.</p>
+<blockquote>
+  <p>우선순위 = (대기시간 + 실행시간) / 실행시간</p>
+</blockquote>
 
-<h1 id="카운터counter">카운터(Counter)</h1>
+<p><img src="/assets/images/computer/img128.png" alt="img128" /></p>
 
-<p>카운터는 고정된 순환 회로를 통해 클럭 펄스의 갯수를 처리하기 위한 논리회로입니다.</p>
+<p>도착시간이 0초로 모두 동일하고 실행시간이 짧은 P<sub>2</sub>가 처음 실행되었다고 가정하면 나머지 프로세스의 우선순위를 다음과 같이 계산할 수 있습니다.</p>
 
-<p>대표적으로 2진수 값이 1씩 증가하는 2진 카운터가 있으며, n비트의 레지스터를 통해 2<sup>n</sup>-1 까지 카운트할 수 있습니다. 예를 들어 3비트의 레지스터를 통해서는 0 ~ 7까지 카운트 할 수 있으며 다음과 같이 순환합니다.</p>
+<ul>
+  <li>P<sub>1</sub>: (3 + 20) / 20 = 1.15</li>
+  <li>P<sub>3</sub>: (23 + 7) / 7 = 4.3</li>
+  <li>P<sub>4</sub>: (30 + 5) / 5 = 7</li>
+</ul>
 
-<p><img src="/assets/images/computer/img072.png" alt="img072" /></p>
+<p>그러므로 P<sub>2</sub> 다음으로 우선순위가 높은 <strong class="bgcolor orange" style="color:orangered">P<sub>4</sub> →  P<sub>3</sub> → P<sub>1</sub></strong> 순서로 프로세스가 실행됩니다. 대기 시간이 길어질수록 우선순위가 높아지므로 P<sub>4</sub>의 기아현상도 해소할 수 있습니다.</p>
 
-<p>카운터에는 동기식 카운터와 비동기식 카운터가 있습니다.</p>
+<h2 id="선점형-스케줄링">선점형 스케줄링</h2>
 
-<h2 id="비동기식-카운터">비동기식 카운터</h2>
+<h3 id="라운드-로빈round-robin-rr-알고리즘">라운드 로빈(Round Robin, RR) 알고리즘</h3>
 
-<p>리플 카운터라고도 불리는 비동기식 카운터는 이전 플립플롭의 출력이 다음 플립플롭의 클럭으로 사용되는 카운터 입니다.</p>
+<p>RR 알고리즘은 FCFS 알고리즘을 선점형으로 변형한 알고리즘 입니다. 선점형 스케줄링의 경우 프로세스가 정해진 시간만큼 돌아가면서 CPU를 사용하며, 해당 시간을 초과하면 타임아웃 인터럽트에 의해 CPU 점유를 빼앗기고 준비 큐에 들어가게 됩니다.</p>
 
-<p>보통 J-K 플립플롭 또는 T 플립플롭으로 설계되며, 숫자가 증가하는 상향 카운터(Up Counter)와 숫자가 감소하는 하향 카운터(Down Counter)가 있습니다.</p>
+<p>이 정해진 시간을 <code class="language-plaintext highlighter-rouge">타임 슬라이스(Time Slice)</code>라고 하며, 선점형 스케줄링 알고리즘에서는 타임 슬라이스의 크기가 중요합니다. 타임 슬라이스가 너무 크면 선점형과 다를바 없어져 호위 효과 문제가 발생할 수 있으며, 타임 슬라이스가 너무 작으면 잦은 문맥 교환으로 인한 오버헤드가 발생하여 CPU 성능이 떨어질 수 있습니다.</p>
 
-<p><img src="/assets/images/computer/img074.png" alt="img074" /></p>
+<p><img src="/assets/images/computer/img129.png" alt="img129" /></p>
 
-<p>해당 카운터는 카운트가 1씩 증가하는 상향 카운터이며, 다음과 같은 타이밍도로 나타낼 수 있습니다.</p>
+<p>도착시간이 0초로 모두 동일하고 타임 슬라이스는 5초라고 가정하면, P<sub>1</sub>과 P<sub>3</sub>은 타임슬라이스를 초과하여 문맥 교환이 발생합니다. 그러므로 <strong class="bgcolor orange" style="color:orangered">P<sub>1</sub> → (문맥교환) → P<sub>2</sub> → P<sub>3</sub> → (문맥교환) → P<sub>4</sub> → P<sub>1</sub> → (문맥교환) → P<sub>3</sub> → P<sub>1</sub></strong> 순서로 실행됩니다.</p>
 
-<p><img src="/assets/images/computer/img073.png" alt="img073" /></p>
+<h3 id="최소-잔여-시간-우선sortest-remaining-time-srt-알고리즘">최소 잔여 시간 우선(Sortest Remaining Time, SRT) 알고리즘</h3>
 
-<p>Enable이 1인 경우 진리표는 다음과 같습니다.</p>
+<p>SRT 알고리즘은 SJF 알고리즘을 선점형으로 변형한 알고리즘입니다. 프로세스는 정해진 시간만큼 CPU를 사용하며, 남은 실행시간이 짧다고 추정되는 프로세스에게 먼저 자원을 할당하는 CPU 스케줄링 알고리즘 입니다.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center">Clock 주기</th>
-      <th style="text-align: center">Q<sub>2</sub></th>
-      <th style="text-align: center">Q<sub>1</sub></th>
-      <th style="text-align: center">Q<sub>2</sub></th>
-      <th style="text-align: center">10진수</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">2</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">1</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">3</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">2</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">4</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">3</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">5</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">4</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">6</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">5</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">7</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">0</td>
-      <td style="text-align: center">6</td>
-    </tr>
-    <tr>
-      <td style="text-align: center">8</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">1</td>
-      <td style="text-align: center">7</td>
-    </tr>
-  </tbody>
-</table>
+<p><img src="/assets/images/computer/img130.png" alt="img130" /></p>
 
-<p>하향 카운터의 경우 Q’ 출력을 클럭으로 사용하며, 카운트가 1씩 감소합니다.</p>
+<p>도착시간이 0초로 모두 동일하고 타임 슬라이스는 5초라고 가정하면 <strong class="bgcolor orange" style="color:orangered">P<sub>2</sub> → P<sub>4</sub> → P<sub>3</sub> → (문맥교환) → P<sub>1</sub> → (문맥교환) → P<sub>3</sub> → P<sub>1</sub></strong> 순서로 실행됩니다.</p>
 
-<p><img src="/assets/images/computer/img075.png" alt="img075" /></p>
+<h3 id="다단계-큐multi-level-queue-mq-알고리즘">다단계 큐(Multi-level Queue, MQ) 알고리즘</h3>
 
-<p>멀티플렉서를 통해 상하향 카운터를 만들 수도 있습니다.</p>
+<p>MQ 알고리즘은 프로세스의 특성별로 준비 큐를 여러 개 두어 우선순위를 부여하고, 높은 우선순위의 큐에 있는 프로세스들에게 먼저 자원을 할당하는 CPU 스케줄링 알고리즘 입니다.</p>
 
-<p><img src="/assets/images/computer/img076.png" alt="img076" /></p>
+<p><img src="/assets/images/computer/img131.png" alt="img131" /></p>
 
-<p>비동기식 카운터는 동기식 카운터에 비해 회로는 간단하지만 전달지연이 커진다는 단점이 있습니다.</p>
+<p>이 알고리즘은 큐 별로 서로 다른 CPU 스케줄링 알고리즘을 적용할 수 있지만, 프로세스가 큐 간의 이동을 할 수 없기 때문에 우선순위가 낮은 큐에 있는 프로세스들은 기아 현상이 발생할 수 있습니다.</p>
 
-<h2 id="동기식-카운터">동기식 카운터</h2>
+<h3 id="다단계-피드백-큐multi-level-feedback-queue-mfq-알고리즘">다단계 피드백 큐(Multi-level Feedback Queue, MFQ) 알고리즘</h3>
 
-<p>동기식 카운터는 비동기식 카운터의 전달지연을 보완하기 위해 플립플롭에 공통의 클럭신호를 사용하는 카운터입니다.</p>
-
-<p><img src="/assets/images/computer/img077.png" alt="img077" /></p>
-
-<p>모든 플립플롭은 동일한 클럭신호를 받으며, 이전 플립플롭의 출력이 1인 경우에만 다음 플립플롭이 토글됩니다.</p>
-
-<h2 id="링-카운터">링 카운터</h2>
-
-<p>링 카운터는 마지막 플립플롭의 출력이 첫 번째 플립플롭의 입력으로 피드백되는 링 형태로 구성된 카운터를 말합니다.</p>
-
-<p><img src="/assets/images/computer/img078.png" alt="img078" /></p>
-
-<p>링카운터는 모든 플립플롭이 0이라면 000만 출력되기 때문에 최소한 1비트는 1로 프리셋할 필요가 있습니다.</p>
+<p>MFQ 알고리즘은 MQ 알고리즘이 발전된 형태로, 프로세스가 큐 간의 이동이 가능한 CPU 스케줄링 알고리즘 입니다. MQ 알고리즘은 정해진 시간동안 작업을 처리하지 못하면 동일한 우선순위의 준비 큐에 들어가지만, MFQ 알고리즘의 경우 우선순위가 낮은 큐에 들어감으로써 프로세스의 기아 현상을 해결할 수 있습니다. 이 기법을 <code class="language-plaintext highlighter-rouge">에이징(aging)</code>이라고 합니다.</p>
 
                 </div>
             </section>
@@ -482,11 +415,6 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/etc/computer-scheduling">CPU 스케줄링</a></li>
-                                        
-                                    
                                   
                                 
                                   
@@ -511,12 +439,7 @@ into the {body} of the default.hbs template -->
                                     
                                         
                                         
-                                    
-                                  
-                                
-                                  
-                                    
-                                        
+                                            <li><a href="/etc/computer-input-output-unit">입출력장치</a></li>
                                         
                                     
                                   
@@ -529,6 +452,16 @@ into the {body} of the default.hbs template -->
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
                                     
                                   
                                 
@@ -706,48 +639,6 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/etc/computer-instruction-cycle">
-                <div class="post-card-image" style="background-image: url(/assets/images/computer-logo.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/etc/computer-instruction-cycle">
-                <header class="post-card-header">
-                    
-                        <div class="post-card-tags-container">
-                            
-                        </div>
-                    
-
-                    <h2 class="post-card-title">명령어 사이클과 인터럽트</h2>
-                </header>
-                <!-- <section class="post-card-excerpt">
-                    
-                        <p>명령어 사이클(Instruction Cycle)
-
-</p>
-                    
-                </section> -->
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      2 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
@@ -755,12 +646,12 @@ into the {body} of the default.hbs template -->
 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/etc/computer-logic-gate">
+            <a class="post-card-image-link" href="/etc/computer-process">
                 <div class="post-card-image" style="background-image: url(/assets/images/computer-logo.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/etc/computer-logic-gate">
+            <a class="post-card-content-link" href="/etc/computer-process">
                 <header class="post-card-header">
                     
                         <div class="post-card-tags-container">
@@ -768,11 +659,11 @@ into the {body} of the default.hbs template -->
                         </div>
                     
 
-                    <h2 class="post-card-title">논리회로</h2>
+                    <h2 class="post-card-title">프로세스</h2>
                 </header>
                 <!-- <section class="post-card-excerpt">
                     
-                        <p>지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.
+                        <p>프로세스(Process)
 
 </p>
                     
@@ -785,7 +676,7 @@ into the {body} of the default.hbs template -->
                 <span class="reading-time">
                     
                     
-                      10 min read
+                      7 min read
                     
                 </span>
             </footer>
@@ -807,18 +698,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">레지스터와 카운터</div>
+    <div class="floating-header-title">CPU 스케줄링</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EB%A0%88%EC%A7%80%EC%8A%A4%ED%84%B0%EC%99%80+%EC%B9%B4%EC%9A%B4%ED%84%B0&amp;url=etc/computer-register-and-counter"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=CPU+%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81&amp;url=etc/computer-scheduling"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=etc/computer-register-and-counter"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=etc/computer-scheduling"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
