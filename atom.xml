@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>프로세스 동기화</title>
+        
+          <description>&lt;h1 id=&quot;프로세스-동기화synchronization란&quot;&gt;프로세스 동기화(Synchronization)란?&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Sun, 25 Jun 2023 01:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/computer-synchronization</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/computer-synchronization</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>CPU 스케줄링</title>
         
           <description>&lt;h1 id=&quot;cpu-스케줄링cpu-scheduling&quot;&gt;CPU 스케줄링(CPU Scheduling)&lt;/h1&gt;
