@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>교착상태</title>
+        
+          <description>&lt;h1 id=&quot;교착상태deadlack란&quot;&gt;교착상태(Deadlack)란?&lt;/h1&gt;
+
+</description>
+        
+        <pubDate>Mon, 03 Jul 2023 01:00:00 +0900</pubDate>
+        <link>
+        https://huimang2.github.io/etc/computer-deadlock</link>
+        <guid isPermaLink="true">https://huimang2.github.io/etc/computer-deadlock</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>프로세스 동기화</title>
         
           <description>&lt;h1 id=&quot;프로세스-동기화synchronization란&quot;&gt;프로세스 동기화(Synchronization)란?&lt;/h1&gt;

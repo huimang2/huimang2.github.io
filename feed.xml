@@ -1,4 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-06-29T22:00:19+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">프로세스 동기화</title><link href="https://huimang2.github.io/etc/computer-synchronization" rel="alternate" type="text/html" title="프로세스 동기화" /><published>2023-06-25T01:00:00+09:00</published><updated>2023-06-25T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-synchronization</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-synchronization">&lt;h1 id=&quot;프로세스-동기화synchronization란&quot;&gt;프로세스 동기화(Synchronization)란?&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="https://huimang2.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://huimang2.github.io/" rel="alternate" type="text/html" /><updated>2023-07-04T23:35:11+09:00</updated><id>https://huimang2.github.io/feed.xml</id><title type="html">Rubisco’s Programming Note</title><subtitle>프로그래밍 노트</subtitle><entry><title type="html">교착상태</title><link href="https://huimang2.github.io/etc/computer-deadlock" rel="alternate" type="text/html" title="교착상태" /><published>2023-07-03T01:00:00+09:00</published><updated>2023-07-03T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-deadlock</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-deadlock">&lt;h1 id=&quot;교착상태deadlack란&quot;&gt;교착상태(Deadlack)란?&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;교착상태(Deadlock)&lt;/code&gt;란 멀티프로세스나 멀티스레드 환경에서 발생할 수 있는 상황으로, 각 프로세스 또는 스레드가 서로가 가지고 있는 자원을 점유한 채로 다른 프로세스 또는 스레드가 필요로 하는 자원을 기다리는 상태를 말합니다. 이러한 상태에서는 모든 프로세스 또는 스레드가 무한히 기다리는 현상이 발생하며, 작업이 진행되지 않고 시스템이 정체되는 문제가 발생할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;식사하는 철학자들 문제는 교착상태를 설명하는 대표적인 예시입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img140.png&quot; alt=&quot;img140&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;다섯 명의 철학자가 하나의 원탁에 앉아 식사를 한다. 각각의 철학자들 사이에는 포크가 하나씩 있고, 앞에는 접시가 있다. 접시 안에 든 요리는 스파게티 같은 면 요리이기 때문에 식사를 하기 위해서는 동시에 두 개의 포크가 필요하다. 그리고 각각의 철학자는 다른 철학자에게 말을 할 수 없으며, 번갈아가며 각자 식사하거나 생각하는 것만 가능하다. 따라서 식사를 하기 위해서는 왼쪽과 오른쪽의 인접한 철학자가 모두 식사를 하지 않고 생각하고 있어야만 한다. 또한 식사를 마치고 나면, 왼손과 오른손에 든 포크를 다른 철학자가 쓸 수 있도록 내려놓아야 한다. 이 때, 어떤 철학자도 굶지 않고 식사할 수 있도록 하는 방법은 무엇인가?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;철학자들이 다음의 과정을 통해 식사를 한다고 가정해 봅시다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;① 일정 시간 생각을 한다.&lt;br /&gt;
+② 왼쪽 포크가 사용 가능해질 때까지 대기한다. 만약 사용 가능하다면 집어든다.&lt;br /&gt;
+③ 오른쪽 포크가 사용 가능해질 때까지 대기한다. 만약 사용 가능하다면 집어든다.&lt;br /&gt;
+④ 양쪽의 포크를 잡으면 일정 시간만큼 식사를 한다.&lt;br /&gt;
+⑤ 오른쪽 포크를 내려놓는다.&lt;br /&gt;
+⑥ 왼쪽 포크를 내려놓는다.&lt;br /&gt;
+⑦ 다시 1번으로 돌아간다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;이 경우 모든 철학자가 왼쪽 포크를 들고 오른쪽 포크를 기다린다면 어떠한 경우에서도 식사를 할 수 없는 상태가 되는데, 이것이 교착상태 입니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;자원-할당-그래프&quot;&gt;자원 할당 그래프&lt;/h1&gt;
+
+&lt;p&gt;교착상태를 파악하기 위해서는 자원 할당 그래프를 그려서 어떤 프로세스가 어떤 자원을 할당받아 사용 중인지 확인할 수 있습니다. 자원할당 그래프는 프로세스를 원으로, 자원을 사각형으로 표현합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img141.png&quot; alt=&quot;img141&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;사용할 수 있는 자원의 개수는 자원 사각형 내에 점으로 표현합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img142.png&quot; alt=&quot;img142&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;프로세스가 자원을 할당받았다면 자원에서 프로세스로 화살표를 그려 표시합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img143.png&quot; alt=&quot;img143&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;프로세스가 자원을 할당받기 위해 기다린다면 프로세스에서 자원으로 화살표를 그려 표시합니다. 아래 그림은 프로세스4가 자원2를 할당받기 위해 대기상태인 경우입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img144.png&quot; alt=&quot;img144&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;식사하는 철학자 문제를 자원할당 그래프로 나타내면 다음과 같이 나타낼 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img145.png&quot; alt=&quot;img145&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;교착상태-발생-조건&quot;&gt;교착상태 발생 조건&lt;/h1&gt;
+
+&lt;p&gt;교착상태가 발생하기 위해서는 다음의 네 가지 조건이 동시에 충족되어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;1. 상호 배제(Mutual Exclusion)&lt;/font&gt;:&lt;/strong&gt; 자원은 한 번에 하나의 프로세스 또는 스레드만이 사용할 수 있어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;2. 점유와 대기(Hold and Wait)&lt;/font&gt;:&lt;/strong&gt; 프로세스 또는 스레드가 이미 자원을 할당받았는데 추가적인 자원을 기다리는 상태여야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;3. 비선점(No Preemption)&lt;/font&gt;:&lt;/strong&gt; 다른 프로세스 또는 스레드가 점유하고 있는 자원을 강제로 빼앗을 수 없어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalBlue&quot;&gt;4. 원형 대기(Circular Wait)&lt;/font&gt;:&lt;/strong&gt; 프로세스 또는 스레드 간에 자원을 기다리는 원형 형태의 사슬이 형성되어야 합니다.&lt;/p&gt;
+
+&lt;p&gt;식사하는 철학자 문제에서 포크는 한 번에 한 철학자만 사용할 수 있으며, 각 철학자는 왼쪽 포크를 점유하면서 오른쪽 포크를 기다리고 있습니다. 또한 포크를 강제로 뺏을 수 없으며, 자원 할당 그래프에서 본 것과 같이 원형 형태로 자원을 대기하고 있으므로 교착 상태에 있다고 볼 수 있습니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;교착상태-해결법&quot;&gt;교착상태 해결법&lt;/h1&gt;
+
+&lt;h2 id=&quot;교착상태-예방deadlock-prevention&quot;&gt;교착상태 예방(Deadlock Prevention)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;교착상태 예방(Deadlock Prevention)&lt;/code&gt;은 교착상태가 발생되지 않도록 사전에 예방하는 방법입니다. 교착상태가 발생하는 조건 중 적어도 하나가 성립하지 않게 만들면 교착상태를 해결할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;상호 배제 조건을 없애기 위해는 여러 프로세스가 공유자원을 사용할 수 있도록 하면 되지만, 동기화 문제가 발생할 수 있습니다. 또한 식사하는 철학자 문제의 경우와 같이 하나의 포크를 여러 철학자가 동시에 사용하는 것은 현실적으로 불가능 합니다.&lt;/p&gt;
+
+&lt;p&gt;점유와 대기 조건을 없애기 위해서는 프로세스 실행에 필요한 모든 자원을 한꺼번에 할당받거나 할당받지 않으면 됩니다. 예를 들어 식사하는 철학자 문제에서 오른쪽 포크와 왼쪽 포크를 한꺼번에 점유하도록 한다면 식사를 할 수 있습니다. 그러나 이것은 자원의 활용률을 낮출 수 있다는 단점이 있습니다. 어떤 철학자는 배가 많이 고파서 식사를 빨리 할 필요가 있지만 포크를 가지지 못하여 식사를 못할 수도 있고, 어떤 철학자는 오른손잡이라서 왼쪽 포크의 활용이 낮아 왼쪽 포크의 사용률이 낮아질 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;비선점 조건을 없애는 방법은 선점이 가능한 자원에 한해서는 효과적일지는 몰라도 모든 자원이 선점 가능한 것이 아니라는 단점이 있습니다. 한 철학자가 포크를 가지고 있으면 다른 철학자는 해당 포크를 점유할 수 없습니다.&lt;/p&gt;
+
+&lt;p&gt;원형 대기 조건을 없애기 위해서는 자원에 순서를 부여하고, 각 프로세스가 오름차순으로만 자원을 요청할 수 있도록 하면 됩니다. 예를 들어 아래 자원 할당 그래프와 같이 철학자1이 처음에 순서가 높은 포크5를 점유하지 못하게 하면 &lt;code class=&quot;language-plaintext bgcolor orange highlighter-rouge&quot; style=&quot;color:orangered&quot;&gt;철학자5 → 철학자4 → 철학자3 → 철학자2 → 철학자1&lt;/code&gt; 순서로 식사를 할 수 있게 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img146.png&quot; alt=&quot;img146&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;교착상태-회피deadlock-avoidance&quot;&gt;교착상태 회피(Deadlock Avoidance)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;교착상태 회피(Deadlock Avoidance)&lt;/code&gt;는 교착상태를 무분별한 자원 할당으로 인해 발생했다고 간주하며 교착상태가 발생하는 조건인지 확인하면서 적절히 회피하는 방법입니다.&lt;/p&gt;
+
+&lt;p&gt;이 방법은 원형 대기가 발생하지 않도록 자원 할당 상태를 검사하면서 시스템이 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;안전 상태&lt;/code&gt;인지 확인합니다. 안전 상태는 교착상태가 없이 모든 프로세스가 자원을 할당 받고 종료될 수 있는 상태를 말합니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 자원이 12개이고 프로세스 P1, P2, P3가 각각 5개, 2개, 2개의 자원을 할당받았고, 각각 최대 10개, 4개, 9개의 자원을 요구한다고 가정합시다. 이 상태에서 운영체제가 할당할 수 있는 자원은 3개가 남습니다.&lt;/p&gt;
+
+&lt;p&gt;이때 P2에 2개의 자원을 할당하면 P2가 종료되고 자원을 반환하여 남은 자원은 5개가 됩니다(3 - 2 + 4 = 5). 그 후 P1에 5개의 자원을 할당하면 P1이 종료되고 자원을 반환하여 남은 자원은 10개가 되며(5 - 5 + 10 = 10), 마지막으로 P3에 7개의 자원을 할당하면 모든 프로세스가 자원을 할당받고 종료될 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;P2 → P1 → P3 순서로 프로세스에게 자원을 할당하면 안전 상태가 되는데, 이 순서를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;안전 순서열&lt;/code&gt;이라고 합니다. 즉, 교착상태 회피는 안전 상태를 유지하도록 안전 순서열인지 검사하면서 자원을 할당합니다. 안전 순서열을 찾아내는 대표적인 알고리즘으로는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;은행원 알고리즘(Banker's Algorithm)&lt;/code&gt;이 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;교착상태-탐지-및-회복deadlock-detection--recovery&quot;&gt;교착상태 탐지 및 회복(Deadlock Detection &amp;amp; Recovery)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;교착상태 탐지 및 회복(Deadlock Detection &amp;amp; Recovery)&lt;/code&gt;은 교착상태의 발생을 인정하고 사후에 조치하는 방법입니다. 프로세스가 자원을 요구하면 우선 할당하며, 교착상태가 탐지되면 이를 회복하는 알고리즘을 사용합니다.&lt;/p&gt;
+
+&lt;p&gt;교착상태를 회복하는 방식에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;선점을 통한 회복&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;프로세스의 강제 종료를 통한 회복&lt;/code&gt;이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;선점을 통한 회복은 교착상태가 회복될 때까지 한 프로세스에게 자원을 몰아줍니다.&lt;/p&gt;
+
+&lt;p&gt;프로세스의 강제 종료를 통한 회복은 교착상태에 있는 모든 프로세스를 강제 종료하거나 교착상태가 해결될 때까지 한 프로세스씩 강제로 종료합니다. 전자의 경우 작업 내역을 한번에 잃어버릴 수 있는 위험이 있으며, 후자의 경우 오버헤드가 발생할 위험이 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;교착상태-무시deadlock-ignorance&quot;&gt;교착상태 무시((Deadlock Ignorance)&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;교착상태 무시((Deadlock Ignorance)&lt;/code&gt;는 교착상태를 무시하고 특별한 조치를 취하지 않는 방법입니다. 이를 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;타조 알고리즘&lt;/code&gt;이라고 하며, 교착상태의 발생 확률이 낮은 상황에서 효율적인 방법입니다. 유닉스(UNIX), 윈도우(Windows) 등 대부분의 운영체제는 이 방법을 사용합니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="etc" /><summary type="html">교착상태(Deadlack)란?</summary></entry><entry><title type="html">프로세스 동기화</title><link href="https://huimang2.github.io/etc/computer-synchronization" rel="alternate" type="text/html" title="프로세스 동기화" /><published>2023-06-25T01:00:00+09:00</published><updated>2023-06-25T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-synchronization</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-synchronization">&lt;h1 id=&quot;프로세스-동기화synchronization란&quot;&gt;프로세스 동기화(Synchronization)란?&lt;/h1&gt;
 
 &lt;p&gt;프로세스 동기화란 프로세스의 실행 순서를 제어하고 동시에 접근할 수 없는 자원에 하나의 프로세스만 접근하게 하여 데이터의 일관성을 유지하는 과정을 말합니다.&lt;/p&gt;
 
@@ -2366,227 +2468,4 @@ $$&lt;/p&gt;
       &lt;td style=&quot;text-align: center&quot;&gt;토글&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
-&lt;/table&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="etc" /><summary type="html">지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.</summary></entry><entry><title type="html">데이터의 표현</title><link href="https://huimang2.github.io/etc/computer-binary" rel="alternate" type="text/html" title="데이터의 표현" /><published>2023-04-23T01:00:00+09:00</published><updated>2023-04-23T01:00:00+09:00</updated><id>https://huimang2.github.io/etc/computer-binary</id><content type="html" xml:base="https://huimang2.github.io/etc/computer-binary">&lt;p&gt;지난번 글에서는 CPU의 작동원리에 대하여 알아보았습니다. MOSFET에 전압을 주거나 주지 않는 것으로 전류 흐름을 제어했습니다. 이번 글에서는 컴퓨터가 데이터를 인식하는 원리를 알아보도록 하겠습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;정보의-단위&quot;&gt;정보의 단위&lt;/h1&gt;
-
-&lt;p&gt;컴퓨터는 MOSFET을 통해 전류가 흐르거나 흐르지 않는 상태를 인식할 수 있습니다. 전류가 흐르면 1, 전류가 흐르지 않는다면 0으로 나타낼 수 있는데, 이렇게 0과 1을 표현하는 가장 작은 정보 단위를 비트(bit)라고 합니다.&lt;/p&gt;
-
-&lt;p&gt;1비트를 통해서는 2가지 정보를 알 수 있으며, 2비트로는 (0, 0), (0, 1), (1, 0), (1, 1) 이렇게 4가지 정보를 알 수 있습니다. n비트를 통해서는 &lt;strong class=&quot;bgcolor orange&quot; style=&quot;color:orangered&quot;&gt;2&lt;sup&gt;n&lt;/sup&gt;&lt;/strong&gt;가지 정보를 표현할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;프로그램은 수많은 비트로 이루어져 있어서 비트 단위로 데이터를 나타내기 힘들기 때문에, 데이터는 8개의 비트를 묶어 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;바이트(byte)&lt;/code&gt;를 정보의 기본단위로 사용합니다. 즉, 1byte는 8bit에 해당하며, 2&lt;sup&gt;8&lt;/sup&gt; = 256가지의 정보를 나타낼 수 있습니다. 보통 1byte로는 하나의 문자를 나타낼 수 있지만, 한글이나 한자 등 동양권 문자의 경우 1byte로 나타낼 수 없어서 하나의 문자당 2byte를 사용합니다.&lt;/p&gt;
-
-&lt;p&gt;8bit가 모여 1byte가 된 것처럼, byte는 1000개씩 묶어 더 큰 단위를 나타낼 수 있습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;데이터-단위&quot;&gt;데이터 단위&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;단위&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;정의&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;비트(bit)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0, 1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;바이트(Byte)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8 bit&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;킬로바이트(KB)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1000 Byte&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;메가바이트(MB)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1000 KB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;기가바이트(GB)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1000 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;테라바이트(TB)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1000 GB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;페타바이트(PB)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1000 TB&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;이 외에도 CPU가 한 번에 처리할 수 있는 정보의 단위는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;워드(word)&lt;/code&gt;로 나타냅니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;이진법&quot;&gt;이진법&lt;/h1&gt;
-
-&lt;p&gt;컴퓨터는 0과 1을 사용하는 2진법(binary)을 통해 데이터를 이해합니다. 2진법은 자릿값이 올라감에 따라 그 크기가 2배씩 커지게 되므로 2진법을 십진법으로 바꾸기 위해서는 자릿수마다 2&lt;sup&gt;n&lt;/sup&gt;을 곱한 값을 모두 더하면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;예를 들어 이진수 0b1101을 십진수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0b1101 = 1 * 2&lt;sup&gt;3&lt;/sup&gt; + 1 * 2&lt;sup&gt;2&lt;/sup&gt; + 0 * 2&lt;sup&gt;1&lt;/sup&gt; + 1 * 2&lt;sup&gt;0&lt;/sup&gt; = 8 + 4 + 1 = 13&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;컴퓨터가 이진수로 음수를 표현하는 방법은 3가지가 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;부호-비트와-절댓값-방법&quot;&gt;부호 비트와 절댓값 방법&lt;/h2&gt;
-
-&lt;p&gt;2진법으로 수를 표현할 때, 가장 왼쪽에 있는 비트의 값을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;최상위 비트(Most Significant Bit, MSB)&lt;/code&gt;라고 합니다. 부호 비트와 절댓값 방법은 최상위 비트를 이용하여 음수를 표현합니다.&lt;/p&gt;
-
-&lt;p&gt;예를 정수 13의 경우 다음과 같이 2진법으로 나타낼 수 있습니다.(보통 정수 자료형은 4byte의 크기를 가집니다.)&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1101&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이를 -13으로 나타내기 위해서는 최상위 비트를 1로 바꾸면 됩니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1000 0000 0000 0000 0000 0000 0000 1101&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이 방법을 사용하면 1비트가 부호를 표현하기 위해 사용되어 표현할 수 있는 절대값의 범위는 절반으로 줄어들게 됩니다. (0 ~ 2&lt;sup&gt;16&lt;/sup&gt; - 1)&lt;/p&gt;
-
-&lt;p&gt;또한 +0과 -0이 따로 존재하게 됩니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;1의-보수법&quot;&gt;1의 보수법&lt;/h2&gt;
-
-&lt;p&gt;1의 보수법은 비트를 반전시켜 음수를 표현하는 방법입니다. 이 방법을 사용하면 비트의 NOT 연산만으로도 음수를 표현할 수 있어서 연산이 간단해집니다.&lt;/p&gt;
-
-&lt;p&gt;예를 들어 13을 음수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 0010&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;1의 보수법을 통해 연산을 하는 데 있어서 캐리(carry)가 중요합니다. 캐리는 상태 레지스터의 플래그를 설명할 때 언급한 적이 있는데, 올림수나 빌림수 여부를 나타냅니다.&lt;/p&gt;
-
-&lt;p&gt;예를 들어 13 - 5 를 계산해보겠습니다.&lt;/p&gt;
-
-&lt;p&gt;13을 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1101&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;-5를 1의 보수법을 통해 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 1010&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;두 수를 더하면 다음과 같이 캐리가 생깁니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;font color=&quot;skyblue&quot;&gt;1&lt;/font&gt; 0000 0000 0000 0000 0000 0000 0000 0111&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;캐리를 최하위 비트에 더해주면 결과값이 됩니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0b0111 + 0b0001 = 0b1000&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;해당 2진수는 10진수로 나타내면 8이 되며, 이는 13 - 5와 동일한 결과입니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;이번에는 5 - 13 을 계산해보겠습니다.&lt;/p&gt;
-
-&lt;p&gt;5를 2진수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 0101&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;-13을 1의 보수법을 통해 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 0010&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;두수를 더하면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 0111&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;해당 결과는 캐리가 없습니다. 이 경우 결과값을 다시 1의 보수법으로 나타내면 최종 결과값이 됩니다. 부호는 마이너스(-) 입니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1000&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;1의 보수법은 부호 비트와 절댓값 방법과 마찬가지로 +0과 -0이 따로 존재한다는 문제점이 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;2의-보수법&quot;&gt;2의 보수법&lt;/h2&gt;
-
-&lt;p&gt;2의 보수법은 1의 보수법을 통해 표현한 값에 1을 더하여 음수를 표현하는 방법입니다.&lt;/p&gt;
-
-&lt;p&gt;예를 들어 13을 음수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 0011&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;2의 보수법을 통해 연산을 하는 데 있어서 1의 보수법과 달리 캐리가 발생하면 캐리를 버립니다.&lt;/p&gt;
-
-&lt;p&gt;예를 들어 13 - 5 를 계산해보겠습니다.&lt;/p&gt;
-
-&lt;p&gt;13을 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1101&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;-5를 2의 보수법을 통해 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 1011&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;두 수를 더하면 다음과 같이 캐리가 생깁니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;font color=&quot;skyblue&quot;&gt;1&lt;/font&gt; 0000 0000 0000 0000 0000 0000 0000 1000&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;1의 보수법과 달리 캐리를 버린 값이 최종 결과값이 됩니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1000&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;이번에는 5 - 13 을 계산해보겠습니다.&lt;/p&gt;
-
-&lt;p&gt;5를 2진수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 0101&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;-13을 2의 보수법을 통해 이진수로 나타내면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 0011&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;두수를 더하면 다음과 같습니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1111 1111 1111 1111 1111 1111 1111 1000&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;해당 결과는 캐리가 없습니다. 이 경우 결과값을 다시 2의 보수법으로 나타내면 최종 결과값이 됩니다. 부호는 마이너스(-) 입니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0000 0000 0000 0000 0000 0000 0000 1000&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;이 방법을 사용하면 -0은 2의 보수를 구하는 과정에서 최상위 비트를 초과한 오버플로우가 발생하여 +0이 됩니다. 그러므로 2의 보수법에서는 하나의 0만 존재하게 됩니다. 때문에 현재 대부분의 시스템에서는 2의 보수법을 사용하여 음수를 표현합니다.&lt;/p&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="etc" /><summary type="html">지난번 글에서는 CPU의 작동원리에 대하여 알아보았습니다. MOSFET에 전압을 주거나 주지 않는 것으로 전류 흐름을 제어했습니다. 이번 글에서는 컴퓨터가 데이터를 인식하는 원리를 알아보도록 하겠습니다.</summary></entry></feed>
+&lt;/table&gt;</content><author><name>huimang2</name></author><category term="etc" /><category term="etc" /><summary type="html">지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.</summary></entry></feed>
