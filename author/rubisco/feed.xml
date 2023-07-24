@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator>
   <link href="https://huimang2.github.io/author/rubisco/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://huimang2.github.io/" rel="alternate" type="text/html" />
-  <updated>2023-07-04T23:35:11+09:00</updated>
+  <updated>2023-07-24T05:49:01+09:00</updated>
   <id>https://huimang2.github.io/author/rubisco/feed.xml</id>
 
   
@@ -30,6 +30,110 @@
   
   
 
+  
+    <entry>
+      <title type="html">자료구조</title>
+      <link href="https://huimang2.github.io/etc/data-structure" rel="alternate" type="text/html" title="자료구조" />
+      <published>2023-07-10T01:00:00+09:00</published>
+      <updated>2023-07-10T01:00:00+09:00</updated>
+      <id>https://huimang2.github.io/etc/data-structure</id>
+      <content type="html" xml:base="https://huimang2.github.io/etc/data-structure">&lt;h1 id=&quot;자료구조란&quot;&gt;자료구조란?&lt;/h1&gt;
+
+&lt;p&gt;자료구조란 여러 데이터를 논리적인 규칙을 통해 나열하고 이를 효율적으로 처리하기 위한 사용법을 정의한 것입니다.&lt;/p&gt;
+
+&lt;p&gt;예를 들어 도서관에는 여러 책이 있습니다. 각각의 책을 이름 순서로 나열할 수도 있지만, 이렇게 된다면 원하는 책을 쉽게 찾는 것이 어렵게 됩니다. 이때 각각의 책들을 주제에 따라 유형을 나누어 분류한다면 조금 더 원하는 책을 쉽게 찾을 수 있습니다. 우리 나라에서는 한국 십진분류법에 따라 10가지 유형으로 나누어 책을 분류하는데, 이것이 자료구조에 해당합니다.&lt;/p&gt;
+
+&lt;p&gt;정수형을 나타내는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;int&lt;/code&gt; 역시 자료구조 입니다. int는 4바이트의 메모리를 할당받으며, 첫 비트는 부호를 표현하고 나머지 공간은 2진수의 정수를 표현합니다. 또한 덧셈, 뺄셈, 나눗셈, 곱셈 등 여러 연산을 정의하고 있습니다.&lt;/p&gt;
+
+&lt;p&gt;자료구조는 알고리즘과 밀접한 관련이 있습니다. 알고리즘은 문제 해결을 위한 일련의 절차를 정의한 것입니다. 예를 들어 도서관에서 책을 분류하는 것이 자료구조라면, 원하는 책을 찾는 방법이 알고리즘에 해당합니다.&lt;/p&gt;
+
+&lt;p&gt;보통 알고리즘은 자료구조에 의존적이기 때문에 자료구조가 정의된다면 적용할 알고리즘은 명확해집니다. 책의 일련번호가 한국 십진분류법에 따른 자료구조를 가진다면 자연과학에 관련된 책을 찾기 위해서는 400번대의 일련번호를 가진 책을 찾는 알고리즘을 적용하면 됩니다. 이렇듯 효율적인 문제해결을 위해서는 자료구조가 우선 정의되는 것이 중요합니다.&lt;/p&gt;
+
+&lt;h1 id=&quot;자료구조의-종류&quot;&gt;자료구조의 종류&lt;/h1&gt;
+
+&lt;p&gt;자료구조는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;단순 자료구조(Primitive Data Structure)&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;복합 자료구조(Non-Primitive Data Structure)&lt;/code&gt;로 나눌 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;단순 자료구조는 int, float, character 등 프로그래밍 언어에서 통상적으로 제공되는 기본 데이터 형식입니다.&lt;/p&gt;
+
+&lt;p&gt;복합 자료구조는 다시 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;선형 자료구조(Linear Data Structure)&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;비선형 자료구조(Non-Linear Data Structure)&lt;/code&gt;로 나눌 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;선형 자료구조에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;배열(Array)&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;리스트(List)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;스택(Stack)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;큐(Queue)&lt;/code&gt; 등이 있으며, 비선형 자료구조에는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;그래프(Graph)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;트리(Tree)&lt;/code&gt; 등이 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img147.png&quot; alt=&quot;img147&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;배열array&quot;&gt;배열(Array)&lt;/h2&gt;
+
+&lt;p&gt;배열은 동일한 타입의 데이터들을 저장하고 고정된 크기를 가지며, 메모리의 물리적인 순서를 통해 인덱스가 부여됩니다. 배열에 저장된 데이터는 인덱스를 통해 접근할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img148.png&quot; alt=&quot;img148&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;배열은 다른 데이터 구조를 구축하기 위한 블록으로 사용되며, 정렬에 용이하지만 구조를 재구성하는데 어려움이 있습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;연결-리스트linked-list&quot;&gt;연결 리스트(Linked List)&lt;/h2&gt;
+
+&lt;p&gt;연결 리스트는 인덱스가 아닌 참조를 통해 순차적으로 연결되는 구조입니다. 데이터는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;노드(Node)&lt;/code&gt;라는 단위요소에 저장되며, 각 노드는 데이터를 참조하는 key와 다음 노드를 참조하는 next로 구성되어 있습니다. 또한 첫 번째 요소를 참조하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;head&lt;/code&gt;, 마지막 요소를 참조하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tail&lt;/code&gt;이 포함됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img149.png&quot; alt=&quot;img149&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;리스트는 데이터의 추가 및 삭제시 구조를 재구성할 필요가 없이 참조만 변경하면 되기 때문에 동적인 메모리 할당에 효율적입니다. 하지만 배열보다 메모리를 더 많이 사용하며, 데이터를 찾기위해 head부터 tail까지 순회하기 때문에 검색에는 비효율적입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;스택stack&quot;&gt;스택(Stack)&lt;/h2&gt;
+
+&lt;p&gt;스택은 배열이나 리스트로 구성되어 순서가 보존되는 선형 데이터 구조이며, 마지막에 입력된 데이터부터 처리하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;후입선출(Last In First Out, LIFO)&lt;/code&gt; 메커니즘을 가집니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img150.png&quot; alt=&quot;img150&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;스택은 수학적 표현식을 분석하거나 재귀함수의 호출을 구현하는데 효율적인 구조입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;큐queue&quot;&gt;큐(Queue)&lt;/h2&gt;
+
+&lt;p&gt;큐는 스택과 비슷하지만 먼저 입력된 데이터부터 처리하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;선입선출(First In First Out, FIFO)&lt;/code&gt; 메커니즘을 가집니다. 또한 첫 번째 요소를 참조하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;back&lt;/code&gt;과, 마지막 요소를 참조하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;front&lt;/code&gt;가 포함됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img151.png&quot; alt=&quot;img151&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;큐는 앞서 설명했던 CPU 스케줄링이나 캐시(Cache)를 구현하기에 효율적인 구조입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;그래프graph&quot;&gt;그래프(Graph)&lt;/h2&gt;
+
+&lt;p&gt;그래프는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;노드(node)&lt;/code&gt;와 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;간선(edge)&lt;/code&gt;으로 이루어진 집합(collection) 입니다. 각각의 노드는 간선으로 연결되며, 간선은 방향을 가지거나 방향을 가지지 않을 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img152.png&quot; alt=&quot;img152&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;그래프는 네트워크나 검색엔진 알고리즘 등 다양한 알고리즘에 응용이 가능한 구조입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;트리tree&quot;&gt;트리(Tree)&lt;/h2&gt;
+
+&lt;p&gt;트리는 일종의 그래프이며, 노드가 계층적인 구조를 가집니다. 최상위 노드는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;루트 노드(root node)&lt;/code&gt;이며, 상위 노드인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;부모 노드(parent node)&lt;/code&gt;와 하위 노드인 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;자식 노드(child node)&lt;/code&gt;로 구성됩니다. 같은 부모 노드를 가지는 자식 노드의 집합은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;형제 노드(siblings node)&lt;/code&gt;가 되며, 자식이 없는 노드는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;단말 노드(leaf node)&lt;/code&gt;가 됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img153.png&quot; alt=&quot;img153&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;트리는 탐색 알고리즘이나 머신러닝 알고리즘에 많이 사용되는 구조입니다.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>huimang2</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="etc" />
+      
+
+      
+        <summary type="html">자료구조란?</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">교착상태</title>
@@ -1811,1030 +1915,6 @@
 
       
         <summary type="html">레지스터(Register)</summary>
-      
-
-      
-      
-    </entry>
-  
-    <entry>
-      <title type="html">논리회로</title>
-      <link href="https://huimang2.github.io/etc/computer-logic-gate" rel="alternate" type="text/html" title="논리회로" />
-      <published>2023-04-24T01:00:00+09:00</published>
-      <updated>2023-04-24T01:00:00+09:00</updated>
-      <id>https://huimang2.github.io/etc/computer-logic-gate</id>
-      <content type="html" xml:base="https://huimang2.github.io/etc/computer-logic-gate">&lt;p&gt;지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.&lt;/p&gt;
-
-&lt;h1 id=&quot;논리회로logic-gate&quot;&gt;논리회로(Logic Gate)&lt;/h1&gt;
-
-&lt;p&gt;트랜지스터를 도식화하면 다음과 같은데, Gate에 전압을 걸어주거나 걸어주지 않는 것으로 Drain으로 전류를 흐르게 하거나 흐르지 않게 할 수 있습니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img022.png&quot; alt=&quot;img022&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이런 트랜지스터의 특성을 통해 스위치 역할을 함으로써 &lt;code class=&quot;language-plaintext bgcolor blue highlighter-rouge&quot; style=&quot;color:royalblue&quot;&gt;논리회로(Logic Gate)&lt;/code&gt;를 만들 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;not-gate&quot;&gt;NOT gate&lt;/h2&gt;
-
-&lt;p&gt;NOT gate는 참을 거짓으로, 거짓을 참으로 출력하는 회로입니다. 즉, Gate에 전류가 흐르면 거짓, 전류가 흐르지 않으면 참을 출력합니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img023.png&quot; alt=&quot;img023&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;A에 전류가 흐르지 않으면 GND로 전류가 흐르지 않아서 출력선으로 전류가 흐르게 됩니다. 즉, 참을 출력합니다.&lt;/p&gt;
-
-&lt;p&gt;반면에 A에 전류가 흐르면 GND로 전류가 흐를 수 있어서 출력선으로는 전류가 흐르지 않습니다. 즉, 거짓을 출력합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;진리표&quot;&gt;진리표&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;NOT A&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;논리식은 $ \bar A $로 나타내며, 기호는 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img024.png&quot; alt=&quot;img024&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;and-gate&quot;&gt;AND gate&lt;/h2&gt;
-
-&lt;p&gt;AND gate는 두 입력선이 모두 참이면 참, 아니면 거짓을 출력하는 회로입니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img025.png&quot; alt=&quot;img025&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;진리표-1&quot;&gt;진리표&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A AND B&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;논리식은 $ A \cdot B $로 나타내며, 기호는 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img026.png&quot; alt=&quot;img026&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;or-gate&quot;&gt;OR gate&lt;/h2&gt;
-
-&lt;p&gt;OR gate는 두 입력선 중 하나라도 참이면 참을 출력하는 회로입니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img027.png&quot; alt=&quot;img027&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;진리표-2&quot;&gt;진리표&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A OR B&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;논리식은 $ A + B $로 나타내며, 기호는 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img028.png&quot; alt=&quot;img028&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;nand-gate&quot;&gt;NAND gate&lt;/h2&gt;
-
-&lt;p&gt;NAND gate는 AND gate의 반대값을 출력하는 회로입니다. 즉, 모든 입력이 참일 경우에만 거짓을 출력합니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img029.png&quot; alt=&quot;img029&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;진리표-3&quot;&gt;진리표&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A NAND B&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;논리식은 $ \overline {A \cdot B} $로 나타내며, 기호는 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img030.png&quot; alt=&quot;img030&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;nor-gate&quot;&gt;NOR gate&lt;/h2&gt;
-
-&lt;p&gt;NOR gate는 OR gate의 반대값을 출력하는 회로입니다. 즉, 두 입력선 중 하나라도 참일 경우에는 거짓을 출력합니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img031.png&quot; alt=&quot;img031&quot; /&gt;&lt;/p&gt;
-
-&lt;h6 id=&quot;진리표-4&quot;&gt;진리표&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A NOR B&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;논리식은 $ \overline {A + B} $로 나타내며, 기호는 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img032.png&quot; alt=&quot;img032&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;xor-gate&quot;&gt;XOR gate&lt;/h2&gt;
-
-&lt;p&gt;XOR gate는 배타적 논리합을 구현한 회로입니다. 즉, 두 입력선의 값이 서로 다른 경우에만 참을 출력합니다.
-논리식은 $ A \oplus B $로 나타내며, $ \bar A \cdot B + A \cdot \bar B $와 같습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;진리표-5&quot;&gt;진리표&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar A \cdot B $&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;$ A \cdot \bar B $&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A XOR B&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;위 논리식을 토대로 회로를 구성하면 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img033.png&quot; alt=&quot;img033&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;기호는 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img034.png&quot; alt=&quot;img034&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;xnor-gate&quot;&gt;XNOR gate&lt;/h2&gt;
-
-&lt;p&gt;XOR gate는 XOR gate의 반대값을 출력하는 회로입니다. 즉, 두 입력선의 값이 서로 같은 경우에만 참을 출력합니다.
-논리식은 $ \overline {A \oplus B} $ 또는 $ A⊙B $로 나타내며, $ \bar A \cdot \bar B + A \cdot B $와 같습니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;진리표-6&quot;&gt;진리표&lt;/h6&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar A \cdot \bar B $&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;$ A \cdot B $&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A XNOR B&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;위 논리식을 토대로 회로를 구성하면 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img035.png&quot; alt=&quot;img035&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;기호는 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img036.png&quot; alt=&quot;img036&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;조합회로combinational-circuit&quot;&gt;조합회로(Combinational Circuit)&lt;/h1&gt;
-
-&lt;p&gt;조합회로는 출력값이 입력값에만 영향을 받는 논리회로입니다. 논리회로에 입력이 주어지면 바로 출력이 나오며, 이전의 회로 상태가 출력에 영향을 미치지 않습니다. 즉, 메모리 소자를 가지지 않습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;가산기adder&quot;&gt;가산기(Adder)&lt;/h2&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;가산기(Adder)&lt;/code&gt;는 입력들의 합을 출력하는 논리회로입니다. 가산기에는 2개의 입력을 더하는 반가산기(Half Adder, HA)와, 3개의 입력을 더하는 전가산기(Full Adder, FA)가 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;1. 반가산기(Half Adder, HA)&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;반가산기(HA)&lt;/code&gt;는 2진수 한 자리를 덧셈하여 캐리(Carry)와 덧셈의 결과를 출력합니다. 반가산기의 진리표는 아래와 같습니다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;캐리(C)&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;덧셈(S)&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;진리표를 보면, 올림수인 캐리는 AND gate, 덧셈의 결과는 XOR gate와 동일함을 알 수 있습니다. 회로는 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img037.png&quot; alt=&quot;img037&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;반가산기의 경우 캐리에 대한 입력을 받지 않기 때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;최하위 비트(Least Significant Bit, LSB)&lt;/code&gt;에서만 사용할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;2. 전가산기(Full Adder, FA)&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;전가산기(FA)&lt;/code&gt;는 반가산기에 캐리를 추가한 3개의 입력을 더하여 캐리와 덧셈의 결과를 출력하는 회로입니다. 전가산기의 진리표는 아래와 같습니다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;C&lt;sub&gt;in&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;C&lt;sub&gt;out&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;S&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;진리표만으로는 회로를 설계하기 어렵습니다. 논리식을 설계하기위해 카르노맵을 그려보겠습니다. 카르노맵에 대한 설명은 이 글에서 생략합니다.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;/assets/images/computer/img038.png&quot; alt=&quot;img038&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;카르노맵을 통해 다음과 같은 논리식을 설계할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;$$
-\begin{aligned}
-C_{out}
-&amp;amp;= \bar A \cdot B \cdot C_{in} + A \cdot \bar B \cdot C_{in} + A \cdot B \cdot \bar C_{in} + A \cdot B \cdot C_{in} \\
-&amp;amp;= (\bar A \cdot B + A \cdot \bar B) \cdot C_{in} + A \cdot B \cdot (\bar C_{in} + C_{in}) \\
-&amp;amp;= (A \oplus B) \cdot C_{in} + A \cdot B \\
-\\
-S &amp;amp;= \bar A \cdot B \cdot \bar C_{in} + A \cdot \bar B \cdot \bar C_{in} + \bar A \cdot \bar B \cdot C_{in} + A \cdot B \cdot C_{in} \\
-&amp;amp;= (\bar A \cdot B + A \cdot \bar B) \cdot \bar C_{in} + (\bar A \cdot \bar B + A \cdot B) \cdot C_{in} \\
-&amp;amp;= A \oplus B \cdot \bar C_{in} + A \odot B \cdot C_{in} \\
-&amp;amp;= A \oplus B \cdot \bar C_{in} + \overline{A \oplus B} \cdot C_{in} \\
-&amp;amp;= A \oplus B \oplus C_{in}
-\end{aligned}
-$$&lt;/p&gt;
-
-&lt;p&gt;해당 논리식을 토대로 회로를 그리면 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img039.png&quot; alt=&quot;img039&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2개의 반가산기와 OR gate로 구성되어 있음을 알 수 있습니다. 간략화하면 다음과 같습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img040.png&quot; alt=&quot;img040&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;전가산기 n개를 병렬로 연결한다면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;리플 캐리 가산기(Ripple Cary Adder)&lt;/code&gt;라는 n비트 가산기를 만들 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img041.png&quot; alt=&quot;img041&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;가산기의 B 입력을 부호 플래그와 XOR하여 사용한다면 덧셈과 뺄셈이 모두 가능한 회로가 됩니다. 이것은 2의 보수법을 이용한 것입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img042.png&quot; alt=&quot;img042&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;3. 캐리 예측 가산기(Carry Look-ahead Adder, CLA)&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;리플 캐리 가산기는 전가산기를 통해 간단하게 설계할 수 있지만, 비트수가 늘어날수록 연산속도가 느려진다는 문제가 있습니다. 왜냐하면 캐리를 입력으로 받기 때문에 상위 비트는 하위 비트가 계산될 때까지 연산을 하지 못하고 대기해야 하기 때문입니다. 이것을 해결하기 위해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;캐리 예측 가산기(CLA)&lt;/code&gt;를 사용할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;캐리 예측 가산기는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;부분 전가산기(Partial Full Adder, PFA)&lt;/code&gt;로부터 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;생성(Generation)&lt;/code&gt;과 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;전파(Propagation)&lt;/code&gt; 함수를 입력받아 이전 비트의 계산결과를 기다릴 필요 없이 연산을 한번에 할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;부분 전가산기(PFA)&lt;/code&gt;는 전가산기(FA)에서 캐리 생성과 관련된 회로를 제외한 회로입니다. 캐리는 PFA에서 2개의 출력선에 의해 결정됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img043.png&quot; alt=&quot;img043&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;생성(G) 함수&lt;/strong&gt;는 이전 비트의 결과값에 상관없이 캐리의 생성여부를 결정합니다. 부분 전가산기의 AND gate에 의해 출력된 값이 이에 해당합니다.&lt;/p&gt;
-
-&lt;p&gt;$ G(A, B) = A \cdot B $&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;전파(P) 함수&lt;/strong&gt;는 이전 비트의 결과값에 따른 캐리의 생성여부를 출력합니다. 부분 전가산기의 XOR gate에 의해 출력된 값이 이에 해당합니다.&lt;/p&gt;
-
-&lt;p&gt;$ P(A, B) = A \oplus B $&lt;/p&gt;
-
-&lt;p&gt;G와 P를 통해 S와 C를 구하는 논리식을 다음과 같이 세울 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;$$
-S_{i} = P_{i} \oplus C_{i} \\
-C_{i+1} = G_{i} + P_{i} \cdot C_{i}
-$$&lt;/p&gt;
-
-&lt;p&gt;부분 전가산기 4개로 4비트 전가산기를 구성한다면 4개의 캐리에 대한 회로를 구성해야 합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img044.png&quot; alt=&quot;img044&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;이렇게 구성된 4비트 가산기를 2개 연결하면 8비트 가산기, 4개 연결하면 16비트 가산기를 만들 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img045.png&quot; alt=&quot;img045&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;디코더decoder--인코더encoder&quot;&gt;디코더(Decoder) / 인코더(Encoder)&lt;/h2&gt;
-
-&lt;p&gt;디코더는 입력 변수들의 최소항(minterm)을 생성하는 논리회로입니다. n개의 입력을 통해 2&lt;sup&gt;n&lt;/sup&gt;개의 최소항을 출력합니다.&lt;/p&gt;
-
-&lt;p&gt;최소항은 진리표에서 하나의 행만 1이 되고 나머지는 0이 되는 곱을 말합니다. 예를 들어 2개의 입력을 통해 다음과 같이 4개의 최소항을 생성할 수 있습니다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;0&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;1&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;2&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;3&lt;/sub&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;해당 진리표를 통해 다음과 같이 회로를 그릴 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img046.png&quot; alt=&quot;img046&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;해당 회로를 활성화 또는 비활성화 시키기위해 다음과 같이 Enable 입력을 연결하면 2X4 디코더가 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img047.png&quot; alt=&quot;img047&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;2X4 디코더를 2개 연결한다면 3X8 디코더를 만들 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img048.png&quot; alt=&quot;img048&quot; /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;인코더는 디코더의 반대입니다. 2&lt;sup&gt;n&lt;/sup&gt;개의 입력으로 부터 n개의 이진코드를 출력합니다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;0&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;1&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;2&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;sub&gt;3&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;인코더는 OR gate를 통해 간단하게 회로를 구성할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img049.png&quot; alt=&quot;img049&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;인코더를 통해 암호화된 출력이 디코더의 입력이 된다면 원래의 입력으로 해독할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img050.png&quot; alt=&quot;img050&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;멀티플렉서multiplexer-mux&quot;&gt;멀티플렉서(Multiplexer, MUX)&lt;/h2&gt;
-
-&lt;p&gt;멀티플렉서는 n개의 선택선 입력을 통해 2n개의 데이터 입력 중 하나를 선택하여 출력선으로 연결하는 논리회로입니다. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;데이터 선택기(Data Selector)&lt;/code&gt;라고도 불립니다.&lt;/p&gt;
-
-&lt;p&gt;CPU에서 연산을 하기 위해서는 RAM으로부터 데이터를 가져와야합니다. 이때 데이터를 가져오는 가장 간단한 방법은 램과 레지스터를 1:1로 연결하는 것입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img051.png&quot; alt=&quot;img051&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;4비트만 연결해도 16개의 출력선이 필요하여 너무 복잡해집니다. 이를 해결하기 위해 멀티플렉서를 사용합니다. 멀티플렉서는 여러 입력 가운데서 하나의 입력을 선택하여 출력합니다.&lt;/p&gt;
-
-&lt;p&gt;n개의 제어 입력을 통해 2&lt;sup&gt;n&lt;/sup&gt;개의 데이터 입력을 제어할 수 있습니다. 아래는 4비트의 입력선을 제어하기 위한 4X1 멀티플렉서 회로입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img052.png&quot; alt=&quot;img052&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;제어 입력선은 디코더와 동일하며, 디코더의 출력선은 데이터 입력선과 AND 연산을 통해 입력선을 선택할 수 있습니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;멀티플렉서를 통해 메모리에서 출력된 데이터는 버스(bus)를 통해 CPU의 레지스터로 전달됩니다. 이때 2&lt;sup&gt;n&lt;/sup&gt;개의 출력선 중 하나를 선택하여 전송하는데, 이것은 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;디멀티플렉서(Demultiplexer, DMUX)&lt;/code&gt;에 의해 수행됩니다.&lt;/p&gt;
-
-&lt;p&gt;디멀티플렉서의 회로 또한 n개의 제어 입력이 필요하며, 하나의 데이터 입력선과 AND 연산을 통해 출력선을 선택할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img053.png&quot; alt=&quot;img053&quot; /&gt;&lt;/p&gt;
-
-&lt;h1 id=&quot;순차회로sequential-circuit&quot;&gt;순차회로(Sequential Circuit)&lt;/h1&gt;
-
-&lt;p&gt;순차회로는 출력값이 이전 상태와 현재 입력값에 영향을 받는 논리회로입니다. 즉, 조합회로에 기억 기능이 추가된 회로입니다.&lt;/p&gt;
-
-&lt;p&gt;순차회로는 클럭 신호에 의해 상태가 변하는 동기회로와 그렇지 않은 비동기회로로 나눌 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;순차회로가 1비트의 정보를 기억하는 방법은 피드백(Feedback) 경로라 불리는 폐루프를 형성하는 것입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img054.png&quot; alt=&quot;img054&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위의 회로와 같이 피드백을 통해 NOT 게이트 사이에 비트 정보를 저장할 수 있습니다.&lt;/p&gt;
-
-&lt;h2 id=&quot;래치latch&quot;&gt;래치(Latch)&lt;/h2&gt;
-
-&lt;p&gt;래치는 클럭 입력을 가지지 않는 비동기회로입니다. 래치는 SR래치와 D래치가 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;1. S-R 래치&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;SR래치에서 S는 Set을 의미하며 1을 출력하고, R은 Reset을 의미하며 0을 출력합니다. 각각의 출력 Q와 Q’은 다시 입력으로 들어가서 피드백을 형성합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img055.png&quot; alt=&quot;img055&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;진리표는 다음과 같습니다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;S&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;R&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Q&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;유지&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;reset&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;set&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;제한&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;$ R = 1, S = 0 $ 이면 $ Q = 0$ 이 출력되며, 출력된 Q는 S가 연결된 NOR 게이트로 피드백됩니다. $ S = 0 $ 이므로 $ \bar Q = 1 $ 이 출력되며, 출력된 $ \bar Q $ 는 R이 연결된 NOR 게이트로 피드백 됩니다. R이 연결된 NOR 게이트의 입력은 1, 1이 되므로 $ Q = 0 $ 이 되어 Reset 상태가 됩니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;$ Q = 0, \bar Q = 1 $&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;반면 $ R = 0, S = 1 $ 이면 $ \bar Q = 0 $ 이 출력되며, 출력된 $ \bar Q $ 는 R이 연결된 NOR 게이트로 피드백됩니다. $ R = 0 $ 이므로 $ Q = 1 $ 이 출력되며, 출력된 Q는 S가 연결된 NOR 게이트로 피드백됩니다. NOR 게이트의 입력은 1, 1이 되므로 $ \bar Q = 0 $ 이 되어 Set 상태가 됩니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;$ Q = 1, \bar Q = 0 $&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;$ R = 0, S = 0 $ 이면 $ Q = Q, \bar Q = \bar Q $ 가 되어 상태가 유지되며, $ R = 1, S = 1 $ 이면 Q와 $ \bar Q $ 가 0, 1 로 진동하게 되므로 입력이 제한됩니다.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;NAND 게이트를 사용하여 SR 래치를 만들 수도 있습니다. 이 경우 입력이 반전됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img056.png&quot; alt=&quot;img056&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;진리표는 다음과 같습니다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;S&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;R&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;제한&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;set&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;reset&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Q&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;유지&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;$ R = 0, S = 1 $ 이면 $ Q = 0, \bar Q = 1 $ 이 되어 reset 상태가 되며, $ R = 1, S = 0 $ 이면 $ Q = 1, \bar Q = 0 $ 이 되어 set 상태가 됩니다.&lt;/p&gt;
-
-&lt;p&gt;또한 $ R = 0, S = 0 $ 이면 Q와 $ \bar Q $ 가 0, 1 로 진동하므로 입력이 제한되며, $ R = 1, S = 1 $ 이면 $ Q = Q, \bar Q = \bar Q $ 가 되어 상태가 유지됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;2. 게이트형 S-R 래치&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;게이트형 SR 래치는 Enable 이라 불리는 게이트 신호를 통해 출력을 결정하는 기억회로입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img057.png&quot; alt=&quot;img057&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;E 신호가 HIGH인 경우 래치의 입력이 출력에 반영되고, E 신호가 LOW인 경우 래치의 입력은 출력에 반영되지 않고 상태를 유지합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;3. D 래치&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;D 래치는 하나의 입력을 통해 출력 Q를 결정하는 회로입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img058.png&quot; alt=&quot;img058&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;S = 0, R = 0 인 입력과 S = 1, R = 1 인 입력을 배제하여 입력과 출력이 동일한 회로를 만들 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;진리표는 다음과 같습니다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;D&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;reset&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;set&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;플립플롭flip-flop&quot;&gt;플립플롭(Flip-Flop)&lt;/h2&gt;
-
-&lt;p&gt;플립플롭은 클럭 입력을 가지는 동기회로입니다.&lt;/p&gt;
-
-&lt;p&gt;엄밀하게 말하자면 래치 또한 클럭신호를 가질 수 있습니다. 하지만 CLOCK 신호가 HIGH인 동안 동작하는 래치와 달리 플립플롭의 경우 CLOCK 신호가 HIGH가 되는 순간에만 동작합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;래치의-경우&quot;&gt;래치의 경우&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img059.png&quot; alt=&quot;img059&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;래치는 위와 같이 CLOCK이 HIGH이면 INPUT을 출력하고 CLOCK이 LOW이면 상태를 유지합니다.&lt;/p&gt;
-
-&lt;h6 id=&quot;플립플롭의-경우&quot;&gt;플립플롭의 경우&lt;/h6&gt;
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img060.png&quot; alt=&quot;img060&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;플립플롭의 경우 CLOCK이 HIGH가 되는 순간에만 INPUT을 출력하고 상태를 유지합니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;1. S-R 플립플롭&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;S-R 플립플롭은 다음과 같이 게이트형 S-R 래치 2개로 구성할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img061.png&quot; alt=&quot;img061&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;앞에 있는 래치를 마스터, 뒤에 있는 래치를 슬레이브라고 하기때문에 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;마스터-슬레이브 플립플롭&lt;/code&gt;이라고도 합니다.&lt;/p&gt;
-
-&lt;p&gt;아래 타이밍을 살펴보면 CLOCK이 HIGH인 순간에만 Q&lt;sub&gt;1&lt;/sub&gt;의 상태가 Q&lt;sub&gt;2&lt;/sub&gt;에 반영되고 &lt;sub&gt;2&lt;/sub&gt;의 상태가 유지되는 것을 확인할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img062.png&quot; alt=&quot;img062&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;2. D 플립플롭&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;D 플립플롭은 다음과 같이 D 래치 2개로 구성할 수 있습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img063.png&quot; alt=&quot;img063&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;3. J-K 플립플롭&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;JK 플립플롭은 S = 1, R = 1 입력이 제한되는 문제를 보완하기 위한 회로입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img064.png&quot; alt=&quot;img064&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;위와 같은 회로를 JK 래치라고 하며, J = 1, K = 1이 입력되면 $ Q = \bar Q $ 로 토글됩니다. 물론 하나의 JK 래치로는 반복적으로 토글되므로 2개의 JK 래치를 통해 플립플롭으로 구성한다면 CLOCK이 HIGH가 되는 순간에만 토글이 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img065.png&quot; alt=&quot;img065&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;진리표는 다음과 같습니다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;J&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;K&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Q&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;유지&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;reset&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;set&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;$ \bar Q $&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Q&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;토글&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;font color=&quot;royalblue&quot;&gt;4. T 플립플롭&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;T 플립플롭은 JK 플립플롭에서 D 플립플롯처럼 입력을 하나만 주는 회로입니다. T가 0이면 이전값을 유지하고, T가 1이면 출력값이 토글 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/computer/img066.png&quot; alt=&quot;img066&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;진리표는 다음과 같습니다.&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;T&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;sub&gt;1&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Q&lt;sub&gt;2&lt;/sub&gt;&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;기능&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;유지&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;유지&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;토글&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;토글&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-          <name>huimang2</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="etc" />
-      
-
-      
-        <summary type="html">지난번 글에서 컴퓨터는 2진수를 통해 데이터를 인식한다고 설명했습니다. 트랜지스터는 전류가 흐르거나 흐르지 않는 상태를 통해 1 또는 0으로 나타낼 수 있습니다. 즉, 트랜지스터를 통해 컴퓨터가 인식할 수 있는 데이터를 나타낼 수 있습니다.</summary>
       
 
       
